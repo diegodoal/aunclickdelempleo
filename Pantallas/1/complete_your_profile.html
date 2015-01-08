@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Fundación Adecco - Job Search</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+	
+  <!-- HEADER -->
+  <header>
+    <h1><a href="index.html">Completa tu perfil</a></h1>
+  </header>
+
+  <!-- ACCESIBILITY PANEL-->
+  <div id="accessibility">
+    <p>Accesibilidad</p>
+  </div>
+
+  <div id="complete_profile_buttons">
+    <a href="login.html">Ya tengo cuenta</a>
+  </div>
+
+  <!-- MENU DE PASOS DE REGISTRO -->
+  <nav id="menu_steps">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ul>
+  </nav>
+
+  <!-- FORMULARIO -->
+  <div>
+    <form id="complete_profile_form">
+      <!-- PASO 1 -->
+      <div id="step1" class="">
+        <h2>Datos Básicos</h2>
+        <input type="radio" name="group1" value="Empresa"> Soy empresa<br>
+        <input type="radio" name="group1" value="Particular" checked> Soy particular<br>
+
+        Email: <input type="email" name="email" requried="required" /><br>
+        Contraseña: <input type="password" name="password" required="required" /> <br>
+        Repite tu contraseña: <input type="password" name="password2" required="required" /> <br>
+
+        Nombre: <input type="text" name="name" requried="required" /><br>
+        Primer apellido: <input type="text" name="surname1" required="required" /> <br>
+        Segundo apellido: <input type="text" name="surname2"  /> <br>
+        Genero:
+        <div id="complete_profile_gender">
+          <input type="radio" name="group_gender" value="Hombre"> Hombre<br>
+          <input type="radio" name="group_gender" value="Mujer"> Mujer<br>
+        </div>
+
+        Fecha de nacimiento: <input type="date" name="date" /><br>
+
+        <input type="submit" value="Sigue completando tu perfil"/>
+        <input type="submit" value="Ver ofertas de empleo"> <br>
+      </div>
+
+      <!-- PASO 2 -->
+      <div id="step2">
+        <h2>Datos Personales</h2>
+        
+      </div>
+
+
+
+    </form>
+  </div>
+
+</body>
+</html>
