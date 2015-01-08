@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Fundación Adecco - Job Search</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+	
+  <!-- HEADER -->
+  <header>
+    <h1><a href="index.html">Completa tu perfil</a></h1>
+  </header>
+
+  <!-- ACCESIBILITY PANEL-->
+  <div id="accessibility">
+    <p>Accesibilidad</p>
+  </div>
+
+  <div id="complete_profile_buttons">
+    <a href="login.html">Ya tengo cuenta</a>
+  </div>
+
+  <!-- MENU DE PASOS DE REGISTRO -->
+  <nav id="menu_steps">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+      <li>7</li>
+      <li>8</li>
+    </ul>
+  </nav>
+
+  <!-- FORMULARIO -->
+  <div>
+    <form id="complete_profile_form" method="post">
+      <!-- PASO 1 -->
+      <div id="step1" class="register_form">
+        <h2>Datos Básicos</h2>
+        <input type="radio" name="group1" value="Empresa"> Soy empresa<br>
+        <input type="radio" name="group1" value="Particular" checked> Soy particular<br>
+
+        Email: <input type="email" name="email" autofocus="on" required="required" /><br>
+        Contraseña: <input type="password" name="password" required="required" /> <br>
+        Repite tu contraseña: <input type="password" name="password2" required="required" /> <br>
+
+        Nombre: <input type="text" name="name" requried="required" /><br>
+        Primer apellido: <input type="text" name="surname1" required="required" /> <br>
+        Segundo apellido: <input type="text" name="surname2"  /> <br>
+        Genero:
+        <div id="complete_profile_gender">
+          <input type="radio" name="group_gender" value="Hombre"> Hombre<br>
+          <input type="radio" name="group_gender" value="Mujer"> Mujer<br>
+        </div>
+
+        Fecha de nacimiento: <input type="date" name="date" /><br>
+
+        <input type="checkbox" name="accept_politicy" required="required" > He leído y acepto sus <a href="#">Condiciones de Uso</a>, sus <a href="#">Política de Privacidad</a> y su <a href="#">Uso de Cookies.</a><br>
+        <input type="submit" value="Verificar cuenta"/>
+        <input type="submit" value="Seguir completando tu perfil"> <br>
+      </div>
+
+      <!-- PASO 2 -->
+      <div id="step2">
+        <h2>Datos Personales</h2>
+        
+      </div>
+
+
+
+    </form>
+  </div>
+
+</body>
+</html>
