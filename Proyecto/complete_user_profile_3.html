@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Fundación Adecco - Job Search</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<!-- HEADER -->
+	<header>
+		<h1>Completa tu perfil</h1>
+	</header>
+
+	<!-- ACCESIBILITY PANEL-->
+	<!-- MENU -->
+	<nav>
+		<ul>
+			<li><a href="myfile.html"><img src="images/accessibility.jpg" width=50></a></li>
+		</ul>
+	</nav>
+	
+	<!-- PASO 3 -->
+    <section id="step3">
+		<h2>Adjuntar documentos:</h2>
+		
+		+ Adjuntar Curriculum Vitae <input type="file" name="input_cv" multiple="true" onchange="handleFiles(this.files)"><br>
+		No tengo Curriculum Vitae. Hacer online <input type="button" name="create_cv" value=">>"><br>
+		+ Adjuntar Portafolio <input type="file" name="input_pf" onchange="handleFiles(this.files)"><br>
+		+ Adjuntar carta de presentación <input type="file" name="input_cl" onchange="handleFiles(this.files)"><br>
+		No tengo carta de presentación. Hacer online <input type="button" name="create_cl" value=">>"><br>
+		
+		Sitio web, blog, ... <input type="url" name="web_site"><br>
+		Otros links ... <input type="url" name="other_sites"><br>
+		<input type="button" name="finalize" value="Finalizar">
+	</section>
