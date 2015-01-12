@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Fundación Adecco - Job Search</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+  
+
+  <!-- DATOS -->
+  <div>
+    <form id="company_profile2" method="post">
+      
+      <div id="step1" class="register_form">
+        <h2>Completa tu perfil</h2>
+
+        Dirección: <input type="text" name="direction" requried="required" /><br>
+        Teléfono: <input type="number" name="telephone" requried="required" /><br>
+
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Fundación Adecco - Job Search</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+	
+	<!-- HEADER -->
+	<header>
+		<h1>COMPLETA TU PERFIL</h1>
+	</header>
+
+	<!-- ACCESIBILITY PANEL-->
+
+  	<article class="offer_details">
+
+  	</article>
+
+  	<button type="button">Añadir Oferta</button>
+    <button type="button">Añadir Curso</button>
+    <button type="button">Finalizar</button>
+      
+
+</body>
+</html>
