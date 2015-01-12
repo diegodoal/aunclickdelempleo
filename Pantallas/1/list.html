@@ -12,11 +12,27 @@
 		<h1>LISTADO DE CURSOS/OFERTAS</h1>
 	</header>
 
-	<!-- ACCESIBILITY PANEL-->
-  	<div id="accessibility">
-    	<p>Accesibilidad</p>
-  	</div>
-
+	<!-- MENU -->
+	<nav>
+		<ul>
+			<li><a href="myfile.html"><img src="images/accessibility.jpg" width=50></a></li>
+			<li><a href="login_user.html">Entra</a></li>
+			<li><a href="login_business.html">Soy una empresa</a></li>
+		</ul>
+	</nav>
+	
+	<!-- SEARCH BAR -->
+	Ordenar por: <select name="orderBy">
+					<option value="campo1">Campo 1</option>
+					<option value="campo1">Campo 2</option>
+				 </select>
+	
+	<!-- SEARCH BAR -->
+	<div class="search">
+		<input type="search" name="search">
+		<input type="submit" value="Buscar" name="submit_search">
+	</div>
+	
 	<!-- Reutilizar misma clase pasando distinto parámetro en Play-->
 	<div class="container">
 		<ul class="offers_list">
