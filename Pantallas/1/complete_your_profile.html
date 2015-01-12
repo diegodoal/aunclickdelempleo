@@ -65,9 +65,109 @@
       </div>
 
       <!-- PASO 2 -->
-      <div id="step2">
+      <div id="step2" method="post">
         <h2>Datos Personales</h2>
+
+        Provincia: <input type="text" name="provincia" size="15" maxlength="50"/><br>
+        Discapacidad:<br/>
         
+        <input type="radio" name="discapacidad" value="Empresa"> Si<br>
+        <input type="radio" name="discapacidad" value="Empresa" checked>No<br>
+        Tipo:
+        <select name="tipo">
+          <option value="t1">Intelectual</option>
+          <option value="t2">Físicia</option>
+          <option value="t3">Sensorial</option>
+          <option value="t4">Psíquica</option>
+        </select><br/>
+        Grado:
+        <select name="grado">
+          <option value="g1">24%</option>
+          <option value="g2">49%</option>
+          <option value="3">74%</option>
+        </select><br/>
+        Nivel de estudios:<br/>
+        <input type="radio" name="estudios" value="1" checked="checked"/>No tengo estudios<br/>
+         <input type="radio" name="estudios" value="2"/> Graduado en E.S.O.<br/>
+          <input type="radio" name="estudios" value="3"/>Formación Profesional Media<br/>
+         <input type="radio" name="estudios" value="4"/> Bachiller<br/>
+         <input type="radio" name="estudios" value="5"/>Formación Profesional Superior<br/>
+         <input type="radio" name="estudios" value="6"/> Diplomado<br/>
+         <input type="radio" name="estudios" value="7"/> Graduado<br/>
+         <input type="radio" name="estudios" value="8"/> Licenciado <br/>
+         <input type="radio" name="estudios" value="7"/> Master<br/>
+         <input type="radio" name="estudios" value="9"/>  Doctorado<br/>
+
+
+
+         
+         
+
+
+          <script language="javascript">
+          function limitarSelección(casilla,form)
+          {
+          a = casilla.form.profesión[0].checked;
+          b = casilla.form.profesión[1].checked;
+          c = casilla.form.profesión[2].checked;
+          d = casilla.form.profesión[3].checked;
+          e = casilla.form.profesión[4].checked;
+
+          contador = (a ? 1 : 0) + (b ? 1 : 0) + (c ? 1 : 0) + (d ? 1 : 0) + (e ? 1 : 0);
+
+              if (contador > 3)
+              {
+              alert("Solo puedes seleccionar 3 opciones");
+              casilla.checked = false;
+              }
+              else if(contador < 1)
+              {
+                alert("Selecciona al menos una casilla")
+                casilla.checked = false;
+              } 
+          }
+          </script>
+          
+          <form name="login" method="GET" action="login.htm" target="_blank">
+          
+          Intereses Profesionales:<br/>
+
+          Seleccione al menos 3:<br/>
+
+         <input type="checkbox" name="profesión" value="1"  onClick="limitarSelección(this,this.form)"/>Ingenieros y técnicos<br/>
+         <input type="checkbox" name="profesión" value="2"  onClick="limitarSelección(this,this.form)"/>Atención a clientes<br/>
+         <input type="checkbox" name="profesión" value="3"  onClick="limitarSelección(this,this.form)"/>Comercial y Ventas<br/>
+         <input type="checkbox" name="profesión" value="4"  onClick="limitarSelección(this,this.form)"/> Informática y telecomunicaciones <br/>
+         <input type="checkbox" name="profesión" value="5"  onClick="limitarSelección(this,this.form)"/>Administración de empresas<br/>
+         <input type="checkbox" name="profesión" value="6"  onClick="limitarSelección(this,this.form)"/>Profesiones,artes y oficios<br/>
+         <input type="checkbox" name="profesión" value="7"  onClick="limitarSelección(this,this.form)"/>Otros<br/>
+         <input type="checkbox" name="profesión" value="8"  onClick="limitarSelección(this,this.form)"/>Turismo y restauración<br/>
+         <input type="checkbox" name="profesión" value="9"  onClick="limitarSelección(this,this.form)"/>Sanidad y salud<br/>
+         <input type="checkbox" name="profesión" value="10" onClick="limitarSelección(this,this.form)"/>Ventas al detalle<br/>
+         <input type="checkbox" name="profesión" value="11" onClick="limitarSelección(this,this.form)"/>Compras, logística y almacen<br/>
+         <input type="checkbox" name="profesión" value="12" onClick="limitarSelección(this,this.form)"/>Calidad, producción e I+D<br/>
+         <input type="checkbox" name="profesión" value="13" onClick="limitarSelección(this,this.form)"/>Marketing y comunicación<br/>
+         <input type="checkbox" name="profesión" value="15" onClick="limitarSelección(this,this.form)"/>Recursos humanos<br/>
+         <input type="checkbox" name="profesión" value="16" onClick="limitarSelección(this,this.form)"/>Educación y formación<br/>
+         <input type="checkbox" name="profesión" value="17" onClick="limitarSelección(this,this.form)"/>Finaznzas y banca<br/>
+         <input type="checkbox" name="profesión" value="18" onClick="limitarSelección(this,this.form)"/>Inmobiliario y construcción<br/>
+         <input type="checkbox" name="profesión" value="19" onClick="limitarSelección(this,this.form)"/>Educación y formación<br/>
+         <input type="checkbox" name="profesión" value="20" onClick="limitarSelección(this,this.form)"/>Finanzas y banca<br/>
+         <input type="checkbox" name="profesión" value="21" onClick="limitarSelección(this,this.form)"/>Inmobiliario y construcción<br/>
+         <input type="checkbox" name="profesión" value="22" onClick="limitarSelección(this,this.form)"/>Diseño y artes<br/>
+         <input type="checkbox" name="profesión" value="23" onClick="limitarSelección(this,this.form)"/>Legal<br/>
+         <input type="checkbox" name="profesión" value="24" onClick="limitarSelección(this,this.form)"/>Administración Pública<br/>
+
+         
+        </form>
+        
+      </div>
+
+      <!-- PASO 3 -->
+
+      <div id="step3" class="register_form">
+        <h2></h2>
+
       </div>
 
 
