@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>A un click del empleo</title>
+  <meta charset="utf-8">
+</head>
+
+<body>
+	
+	<!-- HEADER -->
+	<header>
+		<h1>Añade más sobre ti</h1>
+	</header>
+
+    <!-- MENU -->
+  <nav>
+    <ul>
+      <li><a href="#"><img src="images/accessibility.jpg" width=50></a></li>
+    </ul>
+  </nav>
+
+    Disponibilidad para Viajar<br/>
+      <input type="radio" name="viajar" value="user">Si<br>
+      <input type="radio" name="viajar" value="user" checked>No<br/>
+        
+      </select><br/>
+
+    Disponibilidad para Cambiar de residencia<br/>
+      <input type="radio" name="residencia" value="user">Si<br>
+      <input type="radio" name="residencia" value="user" checked>No<br/>
+        
+      </select><br/>
+
+
+   Idiomas:<br/>
+      <input type="text" name="puesto" size="15" maxlength="50" placeholder = "Lenguaje"/><br/>
+      <input type="text" name="puesto" size="15" maxlength="50" placeholder = "Nivel"/><br/>
+
+      <h4> Adjuntar Certificado (si tienes) <input type="file" name="input_certificate" onchange="handleFiles(this.files)"><br></h4>
+
+      </select><br/>
+
+  	<article class="">
+      + <input type="submit" value="Añadir  Idioma" name="insert_sector"/><br/>
+      <input type="submit" value="Guardar" name="submit_profile"/> 
+    	
+    </article><br/> 
+  Cursos:<br>
+
+    <input type="text" name="puesto" size="15" maxlength="50" placeholder = "Título"/><br/>
+      <input type="text" name="puesto" size="15" maxlength="50" placeholder = "Horas"/><br/>
+
+    <h4> Adjuntar Certificado (si tienes) <input type="file" name="input_certificate" onchange="handleFiles(this.files)"><br></h4>
+    <article class="">
+      +<input type="button" name="add_course"value="Añadir curso"onclick=location=""><br/>
+      <input type="button" name="finish"value="Guardaar "onclick=location="company_profile.html">
+    </article><br/>
+
+  Otros:<br/>
+
+    <input type="text" name="puesto" size="15" maxlength="50" placeholder = "Cursos"/><br/>
+      <input type="text" name="puesto" size="15" maxlength="50" placeholder = "Nivel"/><br/>
+
+
+  <input type="button" name="finish"value="Siguiente "onclick=location="View_CV.html">
+</body>
+</html>
