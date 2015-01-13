@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Añadir una oferta</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<!-- DATOS -->
+	<section class="">
+		<form id="company_profile2" method="post">
+			<div id="step1" class="register_form">
+				<h2>Añadir una oferta</h2>
+				<h2>Empleo / Curso</h2>
+				<input type="text" name="Empresa" required="required" placeholder="Empresa"/><br>
+				<input type="text" name="web" required="required" placeholder="web"/></br>
+		</form>
+	</section>
+	
+	<article class="">
+		<input type="button" name="save_company" value="Guardar" onclick=location="complete_company_profile_3.html">
+	</article>
+</body>
+</html>

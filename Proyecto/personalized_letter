@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Carta personalizada</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<!-- DATOS -->
+	<section class="">
+			<div id="step1" class="personalized_letter">
+				<h2>Esta es una carta personalizada</h2>
+			</div>
+	</section>
+		<p>Aquí va la carta personalizada</p>
+	<div class"">
+      <input type="button" name="edit" value="Editar" onclick=location="#">
+  	</div>
+ 
+  	<section class="">
+  		<div id="" class="change_style">
+  			<h4>Cambiar estilo</h4>
+  		</div>
+  	</section>
+
+<div id="step2" method="post">
+		<form autocomplete="on" method="post" action="complete_company_profile3.html">
+		
+			Estilo:<br/>
+			<input type="radio" name="estilo">1<br>
+			<input type="radio" name="estilo" checked>2<br/>
+
+	<article class="">
+		<input type="button" name="add" value="Añadir" onclick=location="#">
+	</article>
+</body>
+</html>
