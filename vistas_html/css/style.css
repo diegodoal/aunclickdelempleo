@@ -1,4 +1,3 @@
-
 /* NAVIGATION MENU*/
 nav{
 	position: fixed;
@@ -6,7 +5,7 @@ nav{
 	top: 0;
 	width: 100%;
 	background-color: #FFFFFF;
-	z-index: 1;
+	
 	display: table-cell;
 }
 
@@ -42,23 +41,23 @@ nav ul li a:hover, nav ul li.active a{
 
 /*BANNER*/
 #banner{
-	margin-top: 7em;
+	background: url("../images/banner.jpg") no-repeat;
+	background-size: 100%;
+	margin-top: 8em;
+	padding-left: 2em;
+	height: 400px;
 	width: 100%;
-	position: relative;
+	overflow: hidden;
+}
+#banner_front_img{
+	background-size: 100% 400px;
+	width: 40%;
+	padding-top: 3.5em;
 }
 
-#background_banner{
+#banner_front_img img{
 	width: 100%;
 	height: auto;
-	max-height: 400px;
+	max-width: 400px;
 }
 
-#front_banner{
-	position: absolute;
-	top: 4em;
-	left: 4em;
-	height: 100%;
-	width: auto;
-	max-height: 200px;
-
-}
