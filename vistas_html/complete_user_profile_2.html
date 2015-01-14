@@ -31,19 +31,19 @@
 			<input type="radio" name="discapacidad" value="Empresa" checked>No<br/>
 			Tipo:
 			<select name="type">
-				<option value="t1">Ninguno</option>
-				<option value="t2">Intelectual</option>
-				<option value="t3">Física</option>
-				<option value="t4">Sensorial</option>
-				<option value="t5">Psíquica</option>	
+				<option value="t0">Ninguno</option>
+				<option value="t1">Intelectual</option>
+				<option value="t2">Física</option>
+				<option value="t3">Sensorial</option>
+				<option value="t4">Psíquica</option>	
 			</select><br/>
 
 			Grado:
 			<select name="grade">
-				<option value="g1">Ninguno</option>
-				<option value="g2">24%</option>
-				<option value="g3">49%</option>
-				<option value="g4">74%</option>
+				<option value="g0">Ninguno</option>
+				<option value="g1">24%</option>
+				<option value="g2">49%</option>
+				<option value="g3">74%</option>
 			</select><br/>
 			
 			Nivel de estudios:<br/>
@@ -63,7 +63,7 @@
 			<!-- FALTA HACER PARA QUE AL SELECCIONAR EL CHECKBOX "No tengo experiencia laboral" SE DESHABILITE LA EXPERIENCIA LABORAL -->
 			Experiencia Laboral: <input type="checkbox" name="experience" value="Empresa">No tengo experiencia laboral<br/>	
 			<select name="sector">
-				<option value="" disabled selected="">Sector</option>
+				<option value="s0" disabled selected="">Sector</option>
 				<option value="s1">Ingenieros y técnicos</option>
 				<option value="s2">Atención a clientes</option>
 				<option value="s4">Comercial y Ventas</option>
@@ -90,31 +90,30 @@
 			<input type="text" name="empresa" size="15" maxlength="50" placeholder = "Empresa"/><br/>
 			Fecha inicio: <input type="date" name="start_date"/><br/>
 			Fecha fin: <input type="date" name="end_date"/><br/>
-			+ <input type="submit" value="Añadir/Guardar" name="insert_sector"/>
+			+ <input type="submit" value="Añadir/Guardar" name="insert_sector"/><br>
 
 			Intereses Profesionales: (Máximo 3)<br/>
-		
-			<input type="checkbox" name="profession" value="1"  onChange="habilitaDeshabilita(this)"/>Ingenieros y técnicos<br/>
-			<input type="checkbox" name="profession" value="2"  onChange="habilitaDeshabilita(this)"/>Atención a clientes<br/>
-			<input type="checkbox" name="profession" value="3"  onChange="habilitaDeshabilita(this)"/>Comercial y Ventas<br/>
-			<input type="checkbox" name="profession" value="4"  onChange="habilitaDeshabilita(this)"/>Informática y telecomunicaciones <br/>
-			<input type="checkbox" name="profession" value="5"  onChange="habilitaDeshabilita(this)"/>Administración de empresas<br/>
-			<input type="checkbox" name="profession" value="6"  onChange="habilitaDeshabilita(this)"/>Profesiones,artes y oficios<br/>
-			<input type="checkbox" name="profession" value="7"  onChange="habilitaDeshabilita(this)"/>Otros<br/>
-			<input type="checkbox" name="profession" value="8"  onChange="habilitaDeshabilita(this)"/>Turismo y restauración<br/>
-			<input type="checkbox" name="profession" value="9"  onChange="habilitaDeshabilita(this)"/>Sanidad y salud<br/>
-			<input type="checkbox" name="profession" value="10" onChange="habilitaDeshabilita(this)"/>Ventas al detalle<br/>
-			<input type="checkbox" name="profession" value="11" onChange="habilitaDeshabilita(this)"/>Compras, logística y almacen<br/>
-			<input type="checkbox" name="profession" value="12" onChange="habilitaDeshabilita(this)"/>Calidad, producción e I+D<br/>
-			<input type="checkbox" name="profession" value="13" onChange="habilitaDeshabilita(this)"/>Marketing y comunicación<br/>
-			<input type="checkbox" name="profession" value="14" onChange="habilitaDeshabilita(this)"/>Recursos humanos<br/>
-			<input type="checkbox" name="profession" value="15" onChange="habilitaDeshabilita(this)"/>Educación y formación<br/>
-			<input type="checkbox" name="profession" value="16" onChange="habilitaDeshabilita(this)"/>Finaznzas y banca<br/>
-			<input type="checkbox" name="profession" value="17" onChange="habilitaDeshabilita(this)"/>Inmobiliario y construcción<br/>
-			<input type="checkbox" name="profession" value="18" onChange="habilitaDeshabilita(this)"/>Diseño y artes<br/>
-			<input type="checkbox" name="profession" value="19" onChange="habilitaDeshabilita(this)"/>Legal<br/>
-			<input type="checkbox" name="profession" value="20" onChange="habilitaDeshabilita(this)"/>Administración Pública<br/><br/>
-			<input type="submit" value="Guardar" name="submit_profile"/> 
+			<input type="checkbox" name="profession" value="1"  onclick="enable_cb(this)"/>Administración de empresas<br/>
+			<input type="checkbox" name="profession" value="2"  onclick="enable_cb(this)"/>Administración Pública<br/>
+			<input type="checkbox" name="profession" value="3"  onclick="enable_cb(this)"/>Atención a clientes<br/>
+			<input type="checkbox" name="profession" value="4"  onclick="enable_cb(this)"/>Calidad, producción e I+D<br/>
+			<input type="checkbox" name="profession" value="5"  onclick="enable_cb(this)"/>Comercial y Ventas<br/>
+			<input type="checkbox" name="profession" value="6"  onclick="enable_cb(this)"/>Compras, logística y almacén<br>
+			<input type="checkbox" name="profession" value="7"  onclick="enable_cb(this)"/>Diseño y artes<br/>
+			<input type="checkbox" name="profession" value="8"  onclick="enable_cb(this)"/>Educación y formación<br/>
+			<input type="checkbox" name="profession" value="9"  onclick="enable_cb(this)"/>Finanzas y banca<br/>
+			<input type="checkbox" name="profession" value="10" onclick="enable_cb(this)"/>Informática y telecomunicaciones<br/>
+			<input type="checkbox" name="profession" value="11" onclick="enable_cb(this)"/>Ingenieros y técnicos<br/>
+			<input type="checkbox" name="profession" value="12" onclick="enable_cb(this)"/>Inmobiliario y construcción<br/>
+			<input type="checkbox" name="profession" value="13" onclick="enable_cb(this)"/>Legal<br/>
+			<input type="checkbox" name="profession" value="14" onclick="enable_cb(this)"/>Marketing y comunicación<br/>
+			<input type="checkbox" name="profession" value="15" onclick="enable_cb(this)"/>Profesiones, artes y oficios<br/>
+			<input type="checkbox" name="profession" value="16" onclick="enable_cb(this)"/>Recursos humanos<br/>
+			<input type="checkbox" name="profession" value="17" onclick="enable_cb(this)"/>Sanidad y salud<br/>
+			<input type="checkbox" name="profession" value="18" onclick="enable_cb(this)"/>Turismo y restauración<br/>
+			<input type="checkbox" name="profession" value="19" onclick="enable_cb(this)"/>Ventas al detalle<br/>
+			<input type="checkbox" name="profession" value="20" onclick="enable_cb(this)"/>Otros<br/><br/>
+			<input type="submit" value="Guardar" name="submit_profile"/>
         </form>
 	</div>
 
@@ -123,16 +122,30 @@
 		var num_options = 3;
 		var numcheckbox = Array ();
 		numcheckbox["profession"] = 0;
-		function habilitaDeshabilita(t)
-		{
+		function enable_cb(t) {
+			checkboxes=document.getElementsByName(t.name);
 			if (t.checked) {
-				if (numcheckbox[t.name] >= num_options) {
-					alert ("Seleccionar como máximo " + num_options);
-					t.checked = false;
+				if (numcheckbox[t.name] >= num_options-1) {
+				numcheckbox[t.name]++;
+					for (i=0; i<checkboxes.length; i++) {
+						if (checkboxes[i].checked == true) {
+							// Habilitamos
+							checkboxes[i].disabled = false;
+						} else if (checkboxes[i].checked == false) {
+							// Deshabilitamos
+							checkboxes[i].disabled = true;
+						}
+					}
 				} else
-					numcheckbox[t.name]++;						
+					numcheckbox[t.name]++;
 			} else {
 				numcheckbox[t.name]--;
+				for (i=0; i<checkboxes.length; i++) {
+						if (checkboxes[i].checked == false) {
+							// Habilitamos
+							checkboxes[i].disabled = false;
+						}
+					}
 			}
 		}
 	</script>
