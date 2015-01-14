@@ -5,7 +5,7 @@ nav{
 	left: 0;
 	top: 0;
 	width: 100%;
-	background-color: #000000;
+	background-color: #FFFFFF;
 }
 
 nav ul {
@@ -14,5 +14,25 @@ nav ul {
 }
 nav ul li{
 	display: inline-block;
+	
+}
+
+nav ul li a{
+	color: #d0cbbf;
+	text-decoration: none;
+	font-size: 1.4em;
+	font-weight: bolder;
+	margin: 0 0.5em 0 0.5em;
+	display: block;
+	border-bottom: 3px solid white;
+}
+
+nav ul li a:hover, nav ul li.active a{
+	border-bottom: 3px solid red;
+	color: red;
+}
+
+#img_corporative{
+	height: 4em;
 	
 }
