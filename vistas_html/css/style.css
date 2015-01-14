@@ -12,14 +12,13 @@ nav{
 	background-color: #FFFFFF;
 	display: table-cell;
 }
-nav div{
-	
-}
+
 nav ul {
 	float: right;
 	padding-right: 1em;
 	display: inline-block;
 	list-style: none;
+	width: 100%;
 	
 }
 nav ul li{
@@ -41,9 +40,16 @@ nav ul li a:hover, nav ul li.active a{
 	color: red;
 }
 
+nav ul li:first-child{
+	float: left;
+}
+
 #img_corporative{
-	height: 4em;
-	
+	width: 100%;
+	height: auto;
+	max-width: 5em;
+	vertical-align: text-bottom;
+
 }
 
 
