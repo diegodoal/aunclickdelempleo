@@ -61,37 +61,39 @@
 			</select><br/>
 			
 			<!-- FALTA HACER PARA QUE AL SELECCIONAR EL CHECKBOX "No tengo experiencia laboral" SE DESHABILITE LA EXPERIENCIA LABORAL -->
-			Experiencia Laboral: <input type="checkbox" name="experience" value="Empresa">No tengo experiencia laboral<br/>	
-			<select name="sector">
-				<option value="s0" disabled selected="">Sector</option>
-				<option value="s1">Ingenieros y técnicos</option>
-				<option value="s2">Atención a clientes</option>
-				<option value="s4">Comercial y Ventas</option>
-				<option value="s5">Informática y telecomunicaciones</option>
-				<option value="s6">Administración de empresas</option>
-				<option value="s7">Profesiones, artes y oficios</option>
-				<option value="s8">Administración Pública</option>
-				<option value="s9">Turismo y restauración</option>
-				<option value="s10">Sanidad y salud</option>
-				<option value="s11">Ventas al detalle</option>
-				<option value="s12">Compras, logística y almacen</option>
-				<option value="s13">Calidad, producción e I+D</option>
-				<option value="s14">Marketing y comunicación</option>
-				<option value="s15">Recursos Humanos</option>
-				<option value="s16">Educación y formación</option>
-				<option value="s17">Finaznzas y banca</option>
-				<option value="s18">Inmobiliario y construcción</option>
-				<option value="s19">Diseño y artes</option>
-				<option value="s20">Legal</option>
-				<option value="s21">Hostelería</option>
-				<option value="s22">Otros</option>
-			</select><br/>
-			<input type="text" name="puesto" size="15" maxlength="50" placeholder = "Puesto"/><br/>
-			<input type="text" name="empresa" size="15" maxlength="50" placeholder = "Empresa"/><br/>
-			Fecha inicio: <input type="date" name="start_date"/><br/>
-			Fecha fin: <input type="date" name="end_date"/><br/>
-			+ <input type="submit" value="Añadir/Guardar" name="insert_sector"/><br>
-
+			Experiencia Laboral: <input type="checkbox" name="experience" onclick="disable_je(this.checked)">No tengo experiencia laboral<br/>		
+			<div id="job_experience_info">
+				<select id="sector">
+					<option value="s0" disabled selected="">Sector</option>
+					<option value="s1">Ingenieros y técnicos</option>
+					<option value="s2">Atención a clientes</option>
+					<option value="s4">Comercial y Ventas</option>
+					<option value="s5">Informática y telecomunicaciones</option>
+					<option value="s6">Administración de empresas</option>
+					<option value="s7">Profesiones, artes y oficios</option>
+					<option value="s8">Administración Pública</option>
+					<option value="s9">Turismo y restauración</option>
+					<option value="s10">Sanidad y salud</option>
+					<option value="s11">Ventas al detalle</option>
+					<option value="s12">Compras, logística y almacen</option>
+					<option value="s13">Calidad, producción e I+D</option>
+					<option value="s14">Marketing y comunicación</option>
+					<option value="s15">Recursos Humanos</option>
+					<option value="s16">Educación y formación</option>
+					<option value="s17">Finaznzas y banca</option>
+					<option value="s18">Inmobiliario y construcción</option>
+					<option value="s19">Diseño y artes</option>
+					<option value="s20">Legal</option>
+					<option value="s21">Hostelería</option>
+					<option value="s22">Otros</option>
+				</select><br/>
+				<input type="text" id="position" size="15" maxlength="50" placeholder = "Puesto"/><br/>
+				<input type="text" id="company" size="15" maxlength="50" placeholder = "Empresa"/><br/>
+				Fecha inicio: <input type="date" id="start_date"/><br/>
+				Fecha fin: <input type="date" id="end_date"/><br/>
+				+ <input type="submit" value="Añadir/Guardar" id="insert_sector"/><br>
+			</div>
+			
 			Intereses Profesionales: (Máximo 3)<br/>
 			<input type="checkbox" name="profession" value="1"  onclick="enable_cb(this)"/>Administración de empresas<br/>
 			<input type="checkbox" name="profession" value="2"  onclick="enable_cb(this)"/>Administración Pública<br/>
@@ -117,6 +119,19 @@
         </form>
 	</div>
 
+	<!-- SCRIPTS JS -->
+	<script languaje="javascript">
+		function disable_je(value) {
+			if(value == true) {
+				// Disable
+				document.getElementById("job_experience_info").hidden = true;
+			}else {
+				// Enable
+				document.getElementById("job_experience_info").hidden = false;
+			}
+		}
+	</script>
+	
 	<script languaje="javascript">
 		/* This script is used to select at most 3 options in "Intereses Profesionales:" */
 		var num_options = 3;
@@ -129,10 +144,10 @@
 				numcheckbox[t.name]++;
 					for (i=0; i<checkboxes.length; i++) {
 						if (checkboxes[i].checked == true) {
-							// Habilitamos
+							// Enable
 							checkboxes[i].disabled = false;
 						} else if (checkboxes[i].checked == false) {
-							// Deshabilitamos
+							// Disable
 							checkboxes[i].disabled = true;
 						}
 					}
@@ -142,7 +157,7 @@
 				numcheckbox[t.name]--;
 				for (i=0; i<checkboxes.length; i++) {
 						if (checkboxes[i].checked == false) {
-							// Habilitamos
+							// Enable
 							checkboxes[i].disabled = false;
 						}
 					}
