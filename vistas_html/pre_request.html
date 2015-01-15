@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link href="css/style_request.css" rel='stylesheet' type='text/css' />
   <title>A un click del empleo</title>
   <meta charset="utf-8">
 </head>
@@ -9,16 +10,20 @@
 	
  <!-- MENU -->
   <nav>
-    <ul>       
-     <li><a href="#"><img src="images/accessibility.jpg" width=50></a></li>
-   </ul>
+    
+
+   <a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
+    <ul>
+      <li><a href="#"><img src="images/accessibility.jpg" width=50></a></li>
+      
+    </ul>
   </nav>
 
 <!-- DETAILS-->
-<section>
-  <div class="">
-    <h2>Vas a solicitar:</h2>
-    OFERTA Nº2531: Ingeniero en diseño industrial en Telefónica.
+<section class="details">
+  <div class="item">
+    <a href="#"><h3>Vas a solicitar:</h3></a>
+    <p id="ofert">OFERTA Nº2531: Ingeniero en diseño industrial en Telefónica.</p>
   </div>
 </section>
 
@@ -27,11 +32,15 @@
   <!-- CHOOSING USER TYPE SECTION-->
   <article>
     <div class="">
+
        <h4>Elige tu CV</h4>
         <input type="radio" name="CV" required="required" >CV español
         <input type="radio" name="CV" required="required" >CV ingles
         <input type="radio" name="CV" required="required" >CV adecco<br>
         No tengo CV.<a href="complete_user_profile_2.html">Ayuda</a>
+
+    </div>
+    <div>
        <h4>Elige tu Carta de presentación</h4>
         <input type="radio" name="Carta" required="required" >Carta presentación personal
         <input type="radio" name="Carta" required="required" >Carta presentación adecco<br>
