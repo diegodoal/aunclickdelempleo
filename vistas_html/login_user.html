@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link href="css/style_login.css" rel='stylesheet' type='text/css' />
   <title>A un click del empleo</title>
   <meta charset="utf-8">
 </head>
@@ -9,40 +10,58 @@
 	
  <!-- MENU -->
   <nav>
-    <ul>       
-     <li><a href="#"><img src="images/accessibility.jpg" width=50></a></li>
-     <li><a href="login_company.html">Soy una empresa</a></li>
-   </ul>
-  </nav>
+        <a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
+        <ul>
+            <li><a href="#"><img src="images/accessibility.jpg" width=50></a></li>
+            <li><a href="login_company.scala.html">Soy un particular</a></li>
+        </ul>
+    </nav>
 
 <!-- ADVANTAGES-->
-<section>
-  <div class="">
-    <h2>MILES DE OFERTAS</h2>
-    <h2>ADAPTADAS A TI Y TUS NECESIDADES</h2>
-    <h2>EN MUY POCO TIEMPO</h2>
+<section class="advantages">
+  <div class="item">
+    <a href="#"><img src="images/icono1.png"></a>
+    <a href="#"><h3>MILES DE OFERTAS</h3></a>
+    
+    
   </div>
+
+  <div class="item">
+    <a href="#"><img src="images/icono3.png"></a>
+    <a href="#"><h3>ADAPTADAS A TI Y TUS NECESIDADES</h3></a>
+  </div>
+
+  <div class="item">
+    <a href="#"><img src="images/icono1.png"></a>
+    <a href="#"><h3>EN MUY POCO TIEMPO</h3></a>
+  </div>
+
+
+
+
+
+
+
 </section>
 
+
+<article class="login">
  <!-- ACCESS -->
   <div class="access">
-    <h1>Acceder</h1>
-    <form id="login" action="" autocomplete="on" method="post">
-      <input type="email" name="email" required="required" placeholder="Email"/> <br>
-      <input type="password" name="password" required="required" placeholder="Contraseña" /> <br>
-
-      <input type="submit" name="submit_enter_user" value="Entrar">
-    </form>
-
-    <div id="forgotten_password">
-      <a href="#">He olvidado mi contraseña</a>
-
+            <h1>Accede</h1>
+        <form id="login" action="" autocomplete="on" method="post">
+          <input type="email" name="email" required="required" placeholder="Email"/> <br>
+          <input type="password" name="password" required="required" placeholder="Contraseña" /> <br>
+          <input type="submit" value="Entrar"><br>
+          <a href="#">He olvidado mi contraseña</a><br>
+        </form>
   </div>
-
  <!-- REGISTER -->
     <div class="particular_register">
       <h1>Crear perfil</h1>
-        <!-- PARTICULAR -->
+
+
+<!-- PARTICULAR -->
     <form method="post" action="complete_user_profile_2.html">
         <input type="text" name="name" required="required" placeholder="Nombre"/><br>
         <input type="text" name="surname1" required="required" placeholder="Primer Apellido"/> <br>
