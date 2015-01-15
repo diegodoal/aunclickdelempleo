@@ -75,12 +75,9 @@ nav ul li:first-child{
 	vertical-align: middle;
 }
 
-#bannert_text{
-	display: block;
-}
-
 #banner_text p{
 	text-align: justify;
+	padding-left: 2em;
 	padding-right: 2em;
 	padding-bottom: 2em;
 }
