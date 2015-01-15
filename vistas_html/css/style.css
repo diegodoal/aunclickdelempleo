@@ -18,7 +18,7 @@ nav ul {
 	padding-right: 1em;
 	display: inline-block;
 	list-style: none;
-	width: 100%;
+
 	
 }
 nav ul li{
@@ -46,10 +46,10 @@ nav ul li:first-child{
 
 #img_corporative{
 	width: 100%;
-	height: auto;
-	max-width: 5em;
+	height: 100%;
+	max-width: 7em;
 	vertical-align: text-bottom;
-
+	float: left;
 }
 
 
@@ -60,11 +60,12 @@ nav ul li:first-child{
 	height: auto;
 	width: auto;
 	overflow: hidden;
-	padding: 2em;
 }
 #banner_front_img{
 	float: left;
 	width: 40%;
+	padding: 2em;
+	padding-right: 0;
 }
 
 #banner_front_img img{
@@ -75,5 +76,11 @@ nav ul li:first-child{
 }
 
 #bannert_text{
+	display: block;
+}
 
+#banner_text p{
+	text-align: justify;
+	padding-right: 2em;
+	padding-bottom: 2em;
 }
