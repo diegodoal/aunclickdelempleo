@@ -56,7 +56,7 @@ nav ul li:first-child{
 /*BANNER*/
 #banner{
 	background: #137D93;
-	margin-top: 10em;
+	margin-top: 4em;
 	height: auto;
 	width: auto;
 	overflow: hidden;
@@ -96,6 +96,8 @@ nav ul li:first-child{
 }
 
 .item a{
+	width: 100%;
+	height: 100%;
 	text-decoration: none;
 	display: block;
 }
