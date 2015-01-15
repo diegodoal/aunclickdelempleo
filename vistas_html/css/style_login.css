@@ -1,0 +1,108 @@
+body{
+	padding: 0;
+	margin: 0;
+	background-color: #d0cbbf;
+}
+/* NAVIGATION MENU*/
+nav{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+
+	display: table-cell;
+}
+
+nav ul {
+	float: right;
+	padding-right: 1em;
+	display: inline-block;
+	list-style: none;
+
+	
+}
+nav ul li{
+		display: table-cell;
+}
+
+nav ul li a{
+	color: #d0cbbf;
+	text-decoration: none;
+	font-size: 1.4em;
+	font-weight: bolder;
+	margin: 0 0.5em 0 0.5em;
+	border-bottom: 3px solid white;
+	display: inline-block;
+}
+
+nav ul li a:hover, nav ul li.active a{
+	border-bottom: 3px solid red;
+	color: red;
+}
+
+nav ul li:first-child{
+	float: left;
+}
+
+#img_corporative{
+	width: 100%;
+	height: 100%;
+	max-width: 7em;
+	vertical-align: text-bottom;
+	float: left;
+}
+
+.advantages{
+	margin-top: 150px;
+	-webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+	text-align: center;
+	margin-bottom: 100px;
+}
+
+.item a{
+	text-decoration: none;
+	display: block;
+}
+
+.item a:hover, .item a:active{
+	text-decoration: none;
+	display: block;
+}
+
+.item a img{
+	width: 100%;
+	height: 100%;
+	max-width: 190px;
+	text-decoration: none;
+	display: inline;
+}
+
+.login{
+	display: table-row;
+	text-align:left;
+	width: 100%;
+	height: auto;
+
+}
+.login form input, .login form select{
+	width: 80%;
+	border: 4;
+	padding: 0.75em 0 0.75em 0.75em;
+
+}
+.login form input[type="checkbox"]
+{
+	width: auto;
+}
+
+.access{
+	display: table-cell;
+	width: 50%;
+}
+.company_register{
+	display: table-cell;
+	width:50%;
+
+}
