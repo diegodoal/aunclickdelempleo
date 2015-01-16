@@ -36,7 +36,7 @@ nav ul li a{
 	font-weight: bolder;
 	display: inline-block;
 	padding-top: 0.5em;
-	padding-left: 5em;
+	margin-left: 3em;
 }
 
 nav ul li:first-child, nav ul li:first-child a{
