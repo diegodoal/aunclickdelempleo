@@ -4,60 +4,70 @@
 	<title>A un click del empleo</title>
 	<meta charset="utf-8">
 	<link href="css/style_ventana_emergente.css" rel='stylesheet' type='text/css'/>
+	<link href="css/style_nav.css"rel='stylesheet' type='text/css'/>
+	<script type='text/javascript' src='js/scripts.js'></script>
 </head>
 
 <body>
 	
 	<!-- HEADER -->
 	<header>
-		<h1>LISTADO DE CURSOS/OFERTAS</h1>
+		<h1 class="size_font">LISTADO DE CURSOS/OFERTAS</h1>
 	</header>
+	
+	<!-- POP UP WINDOW -->
+	<div id="accesibility_pop_up" class="mask_pop_up">
+		<div class="box_pop_up resize">
+			<a href="#close" title="Cerrar" class="close">X</a>
 
-	<!-- MENU -->
-	<nav>
-		<ul>
-			<li><a id="accesibility_nav" href="#accesibility_pop_up"><img src="images/accessibility.jpg" width=50></a></li>
-			<li><a href="login_user.html">Entra</a></li>
-			<li><a href="login_company.html">Soy una empresa</a></li>
-		</ul>
-		<!-- POP UP WINDOW -->
-		<div id="accesibility_pop_up" class="mask_pop_up">
-			<div class="box_pop_up resize">
-				<a href="#close" title="Cerrar" class="close">X</a>
-				<h2>¿Qué desea adaptar?</h2>
-				<p>Tamaño texto</p>
-				<p>Colores de texto y fondo</p>
-				<p>...</p>
-			</div>
+			<h2>¿Qué desea adaptar?</h2>
+			<h3>Tamaño texto:</h3><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
+
+			<h3>Colores de texto y fondo</h3>
+			<h3>...</h3>
 		</div>
-	</nav>
-	
-	<!-- SEARCH BAR -->
-	Ordenar por: <select name="orderBy">
-					<option value="campo1">Campo 1</option>
-					<option value="campo1">Campo 2</option>
-				 </select>
-	
-	<!-- SEARCH BAR -->
-	<div class="search">
-		<input type="search" name="search">
-		<input type="submit" value="Buscar" name="submit_search">
-	</div>
-	
-	<!-- Reutilizar misma clase pasando distinto parámetro en Play-->
-	<div class="container">
-		<ul class="offers_list">
-			<li>Item <a href="details.html">+</a></li>
-			<li>Item <a href="#">+</a></li>
-			<li>Item <a href="#">+</a></li>
-			<li>Item <a href="#">+</a></li>
-			<li>Item <a href="#">+</a></li>
-			<li>Item <a href="#">+</a></li>
-			<li>Item <a href="#">+</a></li>
-			<li>Item <a href="#">+</a></li>
-			<li>Item <a href="#">+</a></li>
-		</ul>
 	</div>
 
+	<div class="size_font">
+		<!-- MENU -->
+		<nav>
+			<a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
+			<ul id="nav_menu">
+				<li><a id="accesibility_nav" href="#accesibility_pop_up"><img src="images/ic_adaptabilidad2.png"></a></li>
+				<li><a href="login_user.html">Entra</a></li>
+				<li><a href="login_company.html">Soy una empresa</a></li>
+			</ul>
+		</nav>
+			
+		<!-- SEARCH BAR -->
+		Ordenar por: <select name="orderBy">
+						<option value="campo1">Campo 1</option>
+						<option value="campo1">Campo 2</option>
+					 </select>
+		
+		<!-- SEARCH BAR -->
+		<div class="search">
+			<input type="search" name="search">
+			<input type="submit" value="Buscar" name="submit_search">
+		</div>
+		
+		<!-- Reutilizar misma clase pasando distinto parámetro en Play-->
+		<div class="container">
+			<ul class="offers_list">
+				<li>Item <a href="details.html">+</a></li>
+				<li>Item <a href="#">+</a></li>
+				<li>Item <a href="#">+</a></li>
+				<li>Item <a href="#">+</a></li>
+				<li>Item <a href="#">+</a></li>
+				<li>Item <a href="#">+</a></li>
+				<li>Item <a href="#">+</a></li>
+				<li>Item <a href="#">+</a></li>
+				<li>Item <a href="#">+</a></li>
+			</ul>
+		</div>
+	</div>
 </body>
 </html>
