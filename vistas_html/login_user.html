@@ -2,78 +2,93 @@
 <html lang="es">
 <head>
   <link href="css/style_login.css" rel='stylesheet' type='text/css' />
+  <link href="css/style_nav.css" rel='stylesheet' type='text/css' />
   <title>A un click del empleo</title>
   <meta charset="utf-8">
 </head>
 
 <body>
-	
+
  <!-- MENU -->
-  <nav>
-        <a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
-        <ul>
-            <li><a href="#"><img src="images/accessibility.jpg" width=50></a></li>
-            <li><a href="login_company.html">Soy una Empresa</a></li>
-        </ul>
-    </nav>
+<nav>
+    <a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
+    <ul>
+      <li><a href="#"><img src="images/ic_adaptabilidad2.png"></a></li>
+      
+      <li><a href="login_company.html"><img src="images/ic_soyempresa.png"></a></li>
+    </ul>
+  </nav>
+
+
 
 <!-- ADVANTAGES-->
-<section class="advantages">
-  <div class="item">
-    <a href="#"><img src="images/icono1.png"></a>
-    <a href="#"><h3>MILES DE OFERTAS</h3></a>
+<section id="advantages">
+  <div >
     
+    <div id="item">
+      <a href="#"><img id="img"src="images/ic_manos.png"></a>
+
+    </div>
     
+    <div id="item">
+
+    <a href="#"><img d="img" src="images/ic_puzzle.png"></a>
+
+    </div>
+    <div id="item">
+    <a href="#"><img d="img" src="images/ic_reloj.png"></a>
+    </div>
+
+
   </div>
-
-  <div class="item">
-    <a href="#"><img src="images/icono3.png"></a>
-    <a href="#"><h3>ADAPTADAS A TI Y TUS NECESIDADES</h3></a>
-  </div>
-
-  <div class="item">
-    <a href="#"><img src="images/icono1.png"></a>
-    <a href="#"><h3>EN MUY POCO TIEMPO</h3></a>
-  </div>
-
-
-
-
-
-
-
 </section>
 
 
 <article class="login">
- <!-- ACCESS -->
+  <!-- ACCESS -->
   <div class="access">
-            <h1>Accede</h1>
+        <h1>ACCEDE</h1>
         <form id="login" action="" autocomplete="on" method="post">
           <input type="email" name="email" required="required" placeholder="Email"/> <br>
-          <input type="password" name="password" required="required" placeholder="Contraseña" /> <br>
-          <input type="submit" value="Entrar"><br>
-          <a href="#">He olvidado mi contraseña</a><br>
+          <input type="password" name="password" required="required" placeholder="Contraseña" /><br><br/>
+          <img id="entrar" src="images/ic_entrar.png" class="first">
+          <!--  <input type="submit" value="Entrar"><br> 
+          <a href="#">He olvidado mi contraseña</a><br>-->
         </form>
   </div>
- <!-- REGISTER -->
-    <div class="particular_register">
-      <h1>Crear perfil</h1>
 
 
-<!-- PARTICULAR -->
+<!-- Barra -->
+
+ 
+  <div class="barra">
+        
+          <img  src="images/ic_barrapuntos.png" class="second">
+          
+  </div> 
+
+
+  <!-- REGISTER -->
+  <div class="particular_register">
+    <h1>CREA TU PERFIL</h1>
+
+
+    <!-- PARTICULAR -->
     <form method="post" action="complete_user_profile_2.html">
-        <input type="text" name="name" required="required" placeholder="Nombre"/><br>
-        <input type="text" name="surname1" required="required" placeholder="Primer Apellido"/> <br>
-        <input type="text" name="surname2" placeholder="Segundo Apellido (opcional)" /> <br>
-        <input type="email" name="email" required="required" placeholder="Email"/><br>
-        <input type="password" name="password" required="required" placeholder="Contraseña"/> <br>
-        <input type="password" name="password2" required="required" placeholder="Repite tu contraseña"/> <br>
+      <input type="text" name="name" required="required" placeholder="Nombre"/><br>
+      <input type="text" name="surname1" required="required" placeholder="Primer Apellido"/> <br>
+      <input type="text" name="surname2" placeholder="Segundo Apellido (opcional)" /> <br>
+      <input type="email" name="email" required="required" placeholder="Email"/><br>
+      <input type="password" name="password" required="required" placeholder="Contraseña"/> <br>
+      <input type="password" name="password2" required="required" placeholder="Repite tu contraseña"/> <br><br/>
 
-        <input type="checkbox" name="accept_politicy" required="required" > He leído y acepto sus <a href="#">Condiciones de Uso</a>, sus <a href="#">Política de Privacidad</a> y su <a href="#">Uso de Cookies.</a><br>
-        <input type="submit" name="submit_create_user" value="Crear cuenta"/>
-		
+      <!-- <input type="checkbox" name="accept_politicy" required="required" > He leído y acepto sus <a href="#">Condiciones de Uso</a>, sus <a href="#">Política de Privacidad</a> y su <a href="#">Uso de Cookies.</a><br> -->
+      <img  src="images/ic_entrar.png" class="third">
+      <!-- <input type="submit" name="submit_create_user" value="Crear cuenta"/> -->
+
     </form>
+  </div>
+</article>
 
 
   
