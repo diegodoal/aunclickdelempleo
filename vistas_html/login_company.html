@@ -2,42 +2,45 @@
 <html lang="es">
 <head>
   <link href="css/style_login.css" rel='stylesheet' type='text/css' />
+  <link href="css/style_nav.css" rel='stylesheet' type='text/css' />
   <title>A un click del empleo</title>
   <meta charset="utf-8">
-  <link href="css/style_nav.css"rel='stylesheet' type='text/css'/>
 </head>
 
 <body>
 
 <!-- MENU -->
-  <nav>
-    <a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
-    <ul>
-      <li><a href="#"><img src="images/ic_adaptabilidad2.png"></a></li>
-       <li><a href="login_company.scala.html">Soy un particular</a></li>
-    </ul>
-  </nav>
+    <nav>
+        <a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
+        <ul>
+          <li><a href="#"><img src="images/ic_adaptabilidad2.png"></a></li>
+          
+          <li><a href="login_user.html"><img src="images/ic_soyparticular.png"></a></li>
+        </ul>
+    </nav>
 
 
 
 <!-- ADVANTAGES-->
 
-<section class="advantages">
-        <div class="item">
-            <a href="#"><img src="images/icono1.png"></a>
-            <a href="#"><h3>AHORRA DINERO</h3></a>
+<section id="advantages">
+    <div>
+        <div id="item">
+            <a href="#"><img src="images/ic_reloj.png"></a>
+            
 
         </div>
 
-        <div class="item">
-            <a href="#"><img src="images/icono2.png"></a>
-            <a href="#"><h3>AHORRA TIEMPO</h3></a>
+        <div id="item">
+            <a href="#"><img src="images/ic_monedas.png"></a>
+            
         </div>
 
-        <div class="item">
-            <a href="#"><img src="images/icono3.png"></a>
-            <a href="#"><h3>MILES DE PERFILES</h3></a>
+        <div id="item">
+            <a href="#"><img src="images/ic_personas.png"></a>
+            
         </div> 
+    </div>
         
             
 </section>
@@ -46,19 +49,29 @@
 <article class="login">
  <!-- ACCESS -->
   <div class="access">
-            <h1>Accede</h1>
+        <h1>ACCEDE</h1>
         <form id="login" action="" autocomplete="on" method="post">
           <input type="email" name="email" required="required" placeholder="Email"/> <br>
-          <input type="password" name="password" required="required" placeholder="Contraseña" /> <br>
-          <input type="submit" value="Entrar"><br>
-          <a href="#">He olvidado mi contraseña</a><br>
+          <input type="password" name="password" required="required" placeholder="Contraseña" /><br><br/>
+          <img id="entrar" src="images/ic_entrar.png" class="first">
+          <!--  <input type="submit" value="Entrar"><br> 
+          <a href="#">He olvidado mi contraseña</a><br>-->
         </form>
   </div>
+
+  <!-- Barra -->
+
+ 
+  <div class="barra">
+        
+          <img  src="images/ic_barrapuntos.png" class="second">
+          
+  </div> 
 
 
  <!-- REGISTER -->
     <div class="company_register">
-      <h1>Crea tu perfil</h1>  
+      <h1>CREA TU PERFIL</h1>  
 
 <!-- COMPANY -->
     <form method="post">
@@ -303,9 +316,11 @@
       <input type="text" pattern="[0-9]*" name="user_telephone" placeholder="Teléfono"/> <br>
       <input type="email" name="email" required="required" placeholder="Email"/><br>
       <input type="password" name="password" required="required" placeholder="Contraseña" /> <br>
-      <input type="password" name="password2" required="required" placeholder="Repite tu contraseña"/> <br>
-      <input type="checkbox" name="accept_politicy" required="required" > He leído y acepto sus <a href="#">Condiciones de Uso</a>, sus <a href="#">Política de Privacidad</a> y su <a href="#">Uso de Cookies.</a><br>
-      <input type="submit" />
+      <input type="password" name="password2" required="required" placeholder="Repite tu contraseña"/> <br><br/>
+      <!--<input type="checkbox" name="accept_politicy" required="required" > He leído y acepto sus <a href="#">Condiciones de Uso</a>, sus <a href="#">Política de Privacidad</a> y su <a href="#">Uso de Cookies.</a><br>
+      <input type="submit" />-->
+      <img  src="images/ic_entrar.png" class="third">
+
     </form>
    </div> 
 </article>
