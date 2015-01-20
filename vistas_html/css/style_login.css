@@ -9,6 +9,10 @@ section{
   	border: 1px solid black;
 }
 
+h1 {
+	text-align: center;
+}
+
 #advantages{
 	background-image: url("../images/desenfocado.png");
 	background-repeat: no-repeat;
@@ -45,8 +49,13 @@ section{
 	max-width: 190px;
 	text-decoration: none;
 	display: inline;
+}
 
-	
+.btn-img {
+	padding: 0em;
+	border-width: 0px;
+	border-radius: 0.7em;
+	box-shadow: 0.1em 0.1em 0em #AB9E79;
 }
 
 /*ACCESS*/
@@ -73,7 +82,7 @@ section{
 }
 .login form input, .login form select{
 	width: 80%;
-	border: 4;
+	border: 4em;
 	padding: 0.75em 0 0.75em 0.75em;
 
 }
@@ -94,6 +103,7 @@ img.first{
 	position: relative;
 
 
+
 }
 
 img.second{
@@ -108,7 +118,6 @@ img.third{
 
 }
 
-}
 .barra{
 	isplay: table-cell;
 	width: 50%;
