@@ -1,58 +1,78 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-	<link href="css/style_index.css" rel='stylesheet' type='text/css' />
-	<link href="css/style_nav.css" rel='stylesheet' type='text/css' />
-	<title>A un click del empleo</title>
-	<meta charset="utf-8">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+   <title>A un clicl del empleo</title>
 </head>
 
 <body>
-	<!-- MENU -->
-	<nav>
-		<a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
-		<ul>
-			<li><a href="#"><img src="images/ic_adaptabilidad2.png"></a></li>
-			<li><a href="login_user.html">ENTRA</a></li>
-			<li><a href="login_company.html"><img src="images/ic_soyempresa.png"></a></li>
-		</ul>
-	</nav>
 
-	<!-- CORPORATIVE IMAGE AND MORE-->
-	<section id="banner">
-		<div id="banner_text">
+<!--NAV-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6"><a href="index.html"><img src="images/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
+		</div>
+
+		<div class="col-md-2"><a href="#"><img src="images/ic_adaptabilidad2.png"></a>
+	    </div>
+
+		<div class="col-md-2"><a href="login_user.html"><img src="images/ic_entrar_sin_fondo.png"></a>
+		</div>
+
+		<div class="col-md-2"><a href="login_company.html"><img src="images/ic_soyempresa.png"></a>
+		</div>
+	</div>
+</div>
+
+<!-- CORPORATIVE IMAGE AND MORE-->
+<section class="container-fluid" id="banner">
+	<div class="row" id="banner_text">
+		<div class="col-md-6">
+		</div>
+		<div class="col-md-6">
 			<p><b>Fundación Adecco,</b> con 14 oficinas, y a través de una red de empresas solidarias de todos los sectores de actividad en toda España y de la Administración, ayuda a las personas que lo tienen más difícil a encontrar un empleo adecuado a sus habilidades y expectativas. Cuenta, además, con las 400 oficinas especializadas de Adecco y su red de 15.000 empresas y clientes para cumplir con su misión.</p>
 		</div>
-		
-	</section>
+	</div>	
+</section>
 
-	<!-- CHOOSING USER TYPE SECTION-->
-	<section class="three_buttons_container">
-		<h1>¿QUÉ ESTÁS BUSCANDO?</h1>
-		<h2>En <span style="color: red">Fundación Adecco</span> te ayudamos a encontrar lo que buscas.</h2>
-		<div class="three_buttons">
-			<div class="item" id="item1">
-				<a href="#">
-					<span>CURSOS</span>
-					<img src="images/ic_courses.png" onmouseover="this.src='images/ic_courses_dark.png';" onmouseout="this.src='images/ic_courses.png';">
-				</a>
-			</div>
+<!-- THREE BUTTONS TEXT-->
+<section class="container" id="three_buttons_text">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>¿QUÉ ESTÁS BUSCANDO?</h1>
+			<h2>En <span style="color: red">Fundación Adecco</span> te ayudamos a encontrar lo que buscas.</h2>	
+		</div>
+	</div>
 
-			<div class="item">
-				<a href="#">
-					<span>TRABAJO</span>
-					<img src="images/ic_jobs.png" onmouseover="this.src='images/ic_jobs_dark.png';" onmouseout="this.src='images/ic_jobs.png';">
-				</a>
-			</div>
+<!--THREE BUTTONS-->
+<article class="container" id="three_buttons">
+	<div class="row">
 
-			<div class="item" >
-				<a href="#">
-					<span>TODO</span>
-					<img src="images/ic_all.png" onmouseover="this.src='images/ic_all_dark.png';" onmouseout="this.src='images/ic_all.png';">
-				</a>
-			</div>
+		<div class="col-md-4 " id="item1">
+			<a href="">
+				<h2>CURSOS</h2>
+				<img src="images/ic_courses.png" onmouseover="this.src='images/ic_courses_dark.png';" onmouseout="this.src='images/ic_courses.png';">
+			</a>	
 		</div>
 
-	</section>
+		<div class="col-md-4" id="item2">
+			<a href="#">
+				<h2>TRABAJO</h2>
+				<img src="images/ic_jobs.png" onmouseover="this.src='images/ic_jobs_dark.png';" onmouseout="this.src='images/ic_jobs.png';">
+			</a>
+		</div>
+
+		<div class="col-md-4" id="item3">
+			<a href="#">
+				<h2>TODO</h2>
+				<img src="images/ic_all.png" onmouseover="this.src='images/ic_all_dark.png';" onmouseout="this.src='images/ic_all.png';">
+			</a>
+		</div>
+
+	</div>
+</article>			
 </body>
 </html>
