@@ -72,7 +72,7 @@ section{
 
 }
 .login form input, .login form select{
-	width: 80%;
+	width: 65%;
 	border: 4;
 	padding: 0.75em 0 0.75em 0.75em;
 
@@ -85,12 +85,15 @@ section{
 .access{
 	display: table-cell;
 	width: 50%;
+	color: #ab9e79;
+	text-align: center;
+}
 
 }
 
 img.first{
 
-	left: 62.5%;
+	left: 10.5%;
 	position: relative;
 
 
@@ -102,7 +105,7 @@ img.second{
 }
 
 img.third{
-	left: 62.5%;
+	left: 24%;
 	position: relative;
 
 
@@ -111,7 +114,7 @@ img.third{
 }
 .barra{
 	isplay: table-cell;
-	width: 50%;
+	width: 55%;
 
 }
 
@@ -119,10 +122,29 @@ img.third{
 .particular_register{
 	display: table-cell;
 	width:50%;
+	color: #ab9e79;
+	text-align: center;
+	
+}
 
 }
+
+.item1 img{
+	width: 50%;
+	height: 50%;
+	max-width: 40px;
+	text-decoration: none;
+	display: inline;
+
+}
+
 .company_register{
 	display: table-cell;
 	width:50%;
+	color: #ab9e79;
+	text-align: center;
+	
+}
+
 
 }
