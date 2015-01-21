@@ -18,7 +18,6 @@
 
  /*BANNER*/
 #banner{
-
 	width: 100%;
 	height: 20em;
 	background-image: url("../../images/banner_login.jpg");
@@ -30,17 +29,41 @@
 	color: white;
 }
 
-
 /*THREE BUTTONS*/
 #three_buttons_text{
 	text-align: center;
 }
-	
-#three_buttons a {
 
+#three_buttons a {
 	color: #ab9e79;
 	font-size: 5vmin;
 	font-weight: bold;
 	text-decoration: none;
-}	
+}
+
+/*LOGIN USER*/
+h1 {
+	font-family: Georgia, Cambria;
+}
+
+#user_advantages, #company_advantages{
+	width: 100%;
+	height: 20em;
+	background-image: url("../../images/desenfocado.png");
+	background-repeat: no-repeat;
+	background-size: 100% 20em;
+}
+
+#user_advantages .row, #company_advantages .row{
+	text-align: center;
+	position: relative;
+	top: 3em;
+}
+
+.btn-img {
+	padding: 0em;
+	border-width: 0px;
+	border-radius: 0.7em;
+	box-shadow: 0.1em 0.1em 0em #AB9E79;
+}
 
