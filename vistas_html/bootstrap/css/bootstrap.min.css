@@ -67,3 +67,54 @@ h1 {
 	box-shadow: 0.1em 0.1em 0em #AB9E79;
 }
 
+
+/* LIST.HTML SEARCH*/
+#back_search{
+	margin-top: 5%;
+	width: 80%;
+	height: 20em;
+	margin-left: 17.5%;
+	background-image: url("../../images/list/ic_recuadro.png");
+	background-repeat: no-repeat;
+	background-size: 80% 20em;
+}
+ /*SEARCH*/
+#search_text{
+	font-size: 3vmin;
+	color: red;
+	margin-left: 3.5em;
+
+}
+
+.btn-img{
+	padding: 0em;
+	border-width: 0em;
+	border-radius: 0.7em;
+	box-shadow: 0.1em 0.1em 0em #AB9E79;
+}
+
+#radio_disability{
+	margin-left: -3em;
+}
+
+#search_button{
+	margin-left: 8.5em;
+}
+
+/*OFFERS*/
+
+ #date_offer, #description_offer, #location_offer{
+ 	font-size: 3vmin;
+	color: red;
+ }
+ #offer_item_sector, #offer_item_date{
+ 	font-style: italic;
+ 	font-size: 120%;
+ }
+ #offer_item_description{
+ 	font-style: bolder;
+ 	font-size: 150%;
+ }
+ #offer_item_location{
+ 	font-size: 120%;
+ }
