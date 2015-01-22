@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <title>A un click del empleo</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link href="css/style_ventana_emergente.css" rel='stylesheet' type='text/css'/>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='js/scripts.js'></script>
     <meta charset="utf-8">
+   <title>A un click del empleo</title>
 </head>
 
-<body>
-    <!-- MENU -->
-    <nav class="container-fluid">
-        <div class="row">
-            <div class="col-md-8"><a href="index.html"><img src="images/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
-            </div>
+<body class="size_font">
 
-            <div class="col-md-2"><a href="#"><img src="images/ic_adaptabilidad2.png"></a>
-            </div>
-
-            <div class="col-md-2"><a href="login_company.html"><img src="images/ic_soyempresa.png"></a>
-            </div>
+<!--NAV-->
+<nav class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-xs-3"><a href="index.html"><img src="images/nav/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
         </div>
-    </nav>
+
+        <div class="col-md-offset-2 col-md-2 col-xs-3 col-xs-offset-3"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
+        </div>
+
+        <div class="col-md-2 col-xs-3"><a href="login_company.html"><img src="images/nav/ic_soyempresa.png"></a>
+        </div>
+    </div>
+</nav>
 
     <!-- ADVANTAGES -->
     <section class="container" id="user_advantages">
         <div class="row">
             <div class="col-xs-4 col-md-4" id="user_hands">
-                <img src="images/ic_manos.png">
+                <img src="images/login_user/ic_manos.png">
             </div>
             <div class="col-xs-4 col-md-4" id="user_puzzle">
-                <img src="images/ic_puzzle.png">
+                <img src="images/login_user/ic_puzzle.png">
             </div>
             <div class="col-xs-4 col-md-4" id="user_clock">
-                <img src="images/ic_reloj.png">
+                <img src="images/login_user/ic_reloj.png">
             </div>
         </div>
     </section>
@@ -66,7 +70,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-5 col-md-7">
-                            <button type="submit" class="btn-img"><img id="access_part" src="images/ic_entrar.png"></button>
+                            <button type="submit" class="btn-img"><img id="access_part" src="images/login_user/ic_entrar.png"></button>
                         </div>
                     </div>
                 </form>
@@ -75,7 +79,7 @@
             <!-- Barra -->
             <div class="col-md-2">
                 <div class="col-md-offset-6 hidden-sm">
-                    <img src="images/ic_barrapuntos5.png">
+                    <img src="images/login_user/ic_barrapuntos5.png">
                 </div>
             </div>
 
@@ -124,7 +128,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-5 col-md-7">
-                            <button type="submit" class="btn-img"><img id="particular_register" src="images/ic_entrar.png"></button>
+                            <button type="submit" class="btn-img"><img id="particular_register" src="images/login_user/ic_entrar.png"></button>
                         </div>
                     </div>
                 </form>
@@ -132,5 +136,20 @@
         </div>
     </article>
 
+<!-- POP UP WINDOW (AÑADIR AL FINAL DEL HTML DENTRO DEL BODY)-->
+    <div id="accesibility_pop_up" class="mask_pop_up">
+        <div class="box_pop_up resize">
+            <a href="#close" title="Cerrar" class="close">X</a>
+
+            <h2>¿Qué desea adaptar?</h2>
+            <h3>Tamaño texto:</h3><br>
+            <a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+            <a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+            <a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
+
+            <h3>Colores de texto y fondo</h3>
+            <h3>...</h3>
+        </div>
+    </div>
 </body>
 </html>
