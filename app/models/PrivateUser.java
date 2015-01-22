@@ -10,8 +10,6 @@ public class PrivateUser extends User{
 	private String birth_date;
 	private String province;
 	private boolean hasDisability;
-	private String typeOfDisability;
-	private String levelOfDisability;
 	private String studyLevel;
 	private List<WorkExperience> workExperience;
 	private String[] professionalInterests;
@@ -91,18 +89,6 @@ public class PrivateUser extends User{
 	}
 	public void setHasDisability(boolean hasDisability) {
 		this.hasDisability = hasDisability;
-	}
-	public String getTypeOfDisability() {
-		return typeOfDisability;
-	}
-	public void setTypeOfDisability(String typeOfDisability) {
-		this.typeOfDisability = typeOfDisability;
-	}
-	public String getLevelOfDisability() {
-		return levelOfDisability;
-	}
-	public void setLevelOfDisability(String levelOfDisability) {
-		this.levelOfDisability = levelOfDisability;
 	}
 	public String getStudyLevel() {
 		return studyLevel;
