@@ -20,7 +20,7 @@
 #banner{
 	width: 100%;
 	height: 20em;
-	background-image: url("../../images/banner_login.jpg");
+	background-image: url("../../images/index/banner_login.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 20em;
 }
@@ -49,7 +49,7 @@ h1 {
 #user_advantages, #company_advantages{
 	width: 100%;
 	height: 20em;
-	background-image: url("../../images/desenfocado.png");
+	background-image: url("../../images/login_user/desenfocado.png");
 	background-repeat: no-repeat;
 	background-size: 100% 20em;
 }
