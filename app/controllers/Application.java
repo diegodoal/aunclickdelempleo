@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import models.datasource.CompanyUserDataSource;
 import models.entities.CompanyUser;
 import play.*;
@@ -18,4 +21,10 @@ public class Application extends Controller {
     	return ok("Usuario: "+email + " con contraseña: "+password+" añadido.");
     }
 
+    public static Result listCompanyUsers(){
+    	List<CompanyUser> users = new ArrayList<CompanyUser>();
+    	
+    	return ok();
+    	
+    }
 }
