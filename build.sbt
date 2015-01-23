@@ -1,8 +1,8 @@
+import play.Project._
+
 name := "webAdecco"
 
-resolvers += Resolver.url("Playtch Repository", url("http://cuaqea.github.io/playtch-latch4play/releases/"))(Resolver.ivyStylePatterns)
-
-version := "1.0-SNAPSHOT"
+version := "1.0"
 
 
 libraryDependencies ++= Seq(
@@ -15,4 +15,4 @@ libraryDependencies ++= Seq(
   "org.mongodb" %% "casbah" % "2.6.4"
 )   
 
-play.Project.playJavaSettings
+playJavaSettings
