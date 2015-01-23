@@ -29,11 +29,4 @@ import static org.fest.assertions.Assertions.*;
 */
 public class ApplicationTest {
 
-    @Test
-    public void correctUserCreation() {
-        User user = new User("user", "pass");
-        assertThat(user.getUsername()).isEqualTo("user");
-    }
-
-
 }
