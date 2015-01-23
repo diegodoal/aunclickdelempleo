@@ -1,93 +1,155 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link href="css/style_login.css" rel='stylesheet' type='text/css' />
-  <link href="css/style_nav.css" rel='stylesheet' type='text/css' />
-  <title>A un click del empleo</title>
-  <meta charset="utf-8">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <link href="css/style_ventana_emergente.css" rel='stylesheet' type='text/css'/>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='js/scripts.js'></script>
+    <meta charset="utf-8">
+   <title>A un click del empleo</title>
 </head>
 
+<body class="size_font">
+
 <body>
-
-<!-- MENU -->
-    <nav>
-        <a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
-        <ul>
-          <li><a href="#"><img src="images/ic_adaptabilidad2.png"></a></li>
-          
-          <li><a href="login_user.html"><img src="images/ic_soyparticular.png"></a></li>
-        </ul>
-    </nav>
-
-
-
-<!-- ADVANTAGES-->
-
-<section id="advantages">
-    <div>
-        <div id="item">
-            <a href="#"><img src="images/ic_reloj.png"></a>
-            
-
+<!--NAV-->
+<nav class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-xs-3"><a href="index.html"><img src="images/nav/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
         </div>
 
-        <div id="item">
-            <a href="#"><img src="images/ic_monedas.png"></a>
-            
+        <div class="col-md-offset-2 col-md-2 col-xs-3 col-xs-offset-3"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
         </div>
 
-        <div id="item">
-            <a href="#"><img src="images/ic_personas.png"></a>
-            
-        </div> 
+        <div class="col-md-2 col-xs-3"><a href="login_company.html"><img src="images/nav/ic_soyparticular.png"></a>
+        </div>
     </div>
-        
-            
-</section>
+</nav>
+    <!-- ADVANTAGES -->
+    <section class="container" id="company_advantages">
+        <div class="row">
+            <div class="col-xs-4 col-md-4" id="company_clock">
+                <img src="images/login_company/ic_reloj.png">
+            </div>
+            <div class="col-xs-4 col-md-4" id="company_coins">
+                <img src="images/login_company/ic_monedas.png">
+            </div>
+            <div class="col-xs-4 col-md-4" id="company_people">
+                <img src="images/login_company/ic_personas.png">
+            </div>
+        </div>
+    </section>
 
+    <!-- FORMS -->
+    <article class="container">
+        <div class="row">
+            <!-- ACCESS -->
+            <div class="col-md-5">
+                <h1 class="col-md-offset-4">ACCEDE</h1><br>
 
-<article class="login">
- <!-- ACCESS -->
-  <div class="access">
-        <h1>ACCEDE</h1>
-        <form id="login" action="" autocomplete="on" method="post">
-          <input type="email" name="email" required="required" placeholder="Email"/> <br><br>
-          <input type="password" name="password" required="required" placeholder="Contraseña" /><br><br/>
-          <img id="entrar" src="images/ic_entrar.png" class="first">
-         
-        </form>
-  </div>
+                <form class="form-horizontal" role="form" action="" autocomplete="on" method="post">
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input type="email" class="form-control" id="access_email" required="required" placeholder="Correo electrónico">
+                        </div>
+                    </div>
 
-  <!-- Barra -->
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input type="password" class="form-control" id="access_password" required="required" placeholder="Contraseña">
+                        </div>
+                    </div>
 
- 
-  <div class="barra">
-        
-          <img  src="images/ic_barrapuntos.png" class="second">
-          
-  </div> 
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-7">
+                            <div class="checkbox">
+                                <label><input type="checkbox"> Recuérdame</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-7">
+                            <button type="submit" class="btn-img"><img id="access_part" src="images/login_company/ic_entrar.png"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
 
+            <!-- Barra -->
+            <div class="col-md-2">
+                <div class="col-md-offset-6 hidden-sm">
+                    <img src="images/login_company/ic_barrapuntos5.png">
+                </div>
+            </div>
 
- <!-- REGISTER -->
-    <div class="company_register">
-      <h1>CREA TU PERFIL
-        <a class="item1"><img src="images/ic_micro1.png" onmouseover="this.src='images/ic_micro2.png';" onmouseover="this.src='images/ic_micro1.png';"></a>
-    </h1>
+            <!-- COMPANY REGISTER -->
+            <div class="col-md-5">
+                <h1 class="col-md-offset-2">CREA TU PERFIL</h1><br>
 
-<!-- COMPANY -->
-     <form method="post" action="complete_user_profile_2.html">
-      <input type="text" name="name" required="required" placeholder="Nombre"/><br><br>
-      <input type="text" name="surname1" required="required" placeholder="Apellidos"/> <br><br>
-      
-      <input type="email" name="email" required="required" placeholder="Correo electrónico"/><br><br>
-      <input type="password" name="password" required="required" placeholder="Contraseña"/> <br><br>
-      <input type="password" name="password2" required="required" placeholder="Repitir contraseña"/> <br><br/>
-      <a href="complete_user_profile_2.html"><img  src="images/ic_entrar.png" class="third"></a>
+                <form class="form-horizontal" role="form" action="complete_company_profile_2.html" method="post">
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input type="text" class="form-control" id="register_name" required="required" placeholder="Nombre">
+                        </div>
+                    </div>
 
-    </form>
-  </div>
-</article>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input type="text" class="form-control" id="register_surnames" required="required" placeholder="Apellidos">
+                        </div>
+                    </div>
 
-  
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input type="email" class="form-control" id="register_part_email" required="required" placeholder="Correo electrónico">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input type="password" class="form-control" id="register_part_password_1" required="required" placeholder="Contraseña">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-6">
+                            <input type="password" class="form-control" id="register_part_password_2" required="required" placeholder="Repetir contraseña">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-7">
+                            <div class="checkbox">
+                                <label><input type="checkbox"> Recuérdame</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-5 col-md-7">
+                            <button type="submit" class="btn-img"><img id="particular_register" src="images/login_company/ic_entrar.png"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </article>
+
+<!-- POP UP WINDOW (AÑADIR AL FINAL DEL HTML DENTRO DEL BODY)-->
+    <div id="accesibility_pop_up" class="mask_pop_up">
+        <div class="box_pop_up resize">
+            <a href="#close" title="Cerrar" class="close">X</a>
+
+            <h2>¿Qué desea adaptar?</h2>
+            <h3>Tamaño texto:</h3><br>
+            <a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+            <a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+            <a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
+
+            <h3>Colores de texto y fondo</h3>
+            <h3>...</h3>
+        </div>
+    </div>    
 </body>
 </html>

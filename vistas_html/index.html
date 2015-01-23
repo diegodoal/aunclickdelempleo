@@ -3,26 +3,28 @@
 <head>
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<link href="css/style_ventana_emergente.css" rel='stylesheet' type='text/css'/>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script type='text/javascript' src='js/scripts.js'></script>
     <meta charset="utf-8">
-   <title>A un clicl del empleo</title>
+   <title>A un click del empleo</title>
 </head>
 
-<body>
+<body class="size_font">
 
 <!--NAV-->
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-md-6"><a href="index.html"><img src="images/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
+		<div class="col-md-6"><a href="index.html"><img src="images/nav/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
 		</div>
 
-		<div class="col-md-2"><a href="#"><img src="images/ic_adaptabilidad2.png"></a>
+		<div class="col-md-2"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
 	    </div>
 
-		<div class="col-md-2"><a href="login_user.html"><img src="images/ic_entrar_sin_fondo.png"></a>
+		<div class="col-md-2"><a href="login_user.html"><img src="images/nav/ic_entrar_sin_fondo.png"></a>
 		</div>
 
-		<div class="col-md-2"><a href="login_company.html"><img src="images/ic_soyempresa.png"></a>
+		<div class="col-md-2"><a href="login_company.html"><img src="images/nav/ic_soyempresa.png"></a>
 		</div>
 	</div>
 </div>
@@ -54,25 +56,42 @@
 		<div class="col-md-4 " id="item1">
 			<a href="">
 				<h2>CURSOS</h2>
-				<img src="images/ic_courses.png" onmouseover="this.src='images/ic_courses_dark.png';" onmouseout="this.src='images/ic_courses.png';">
+				<img src="images/index/ic_courses.png" onmouseover="this.src='images/index/ic_courses_dark.png';" onmouseout="this.src='images/index/ic_courses.png';">
 			</a>	
 		</div>
 
 		<div class="col-md-4" id="item2">
 			<a href="#">
 				<h2>TRABAJO</h2>
-				<img src="images/ic_jobs.png" onmouseover="this.src='images/ic_jobs_dark.png';" onmouseout="this.src='images/ic_jobs.png';">
+				<img src="images/index/ic_jobs.png" onmouseover="this.src='images/index/ic_jobs_dark.png';" onmouseout="this.src='images/index/ic_jobs.png';">
 			</a>
 		</div>
 
 		<div class="col-md-4" id="item3">
 			<a href="#">
 				<h2>TODO</h2>
-				<img src="images/ic_all.png" onmouseover="this.src='images/ic_all_dark.png';" onmouseout="this.src='images/ic_all.png';">
+				<img src="images/index/ic_all.png" onmouseover="this.src='images/index/ic_all_dark.png';" onmouseout="this.src='images/index/ic_all.png';">
 			</a>
 		</div>
 
 	</div>
-</article>			
+</article>	
+
+	<!-- POP UP WINDOW -->
+	<div id="accesibility_pop_up" class="mask_pop_up">
+		<div class="box_pop_up resize">
+			<a href="#close" title="Cerrar" class="close">X</a>
+
+			<h2>¿Qué desea adaptar?</h2>
+			<h3>Tamaño texto:</h3><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
+
+			<h3>Colores de texto y fondo</h3>
+			<h3>...</h3>
+		</div>
+	</div>
+		
 </body>
 </html>
