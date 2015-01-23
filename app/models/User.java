@@ -1,7 +1,8 @@
 package models;
 
-public class User  {
-	
+import play.db.ebean.Model;
+
+public class User extends Model {
 	private String email;
 	private String password;
 	private String repeat_password;
@@ -16,8 +17,6 @@ public class User  {
 			return;
 		this.email = email.trim();
 		this.password = password.trim();
-		
-		
 	}
 
 	
