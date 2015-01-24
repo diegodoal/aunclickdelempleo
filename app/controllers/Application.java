@@ -32,7 +32,7 @@ public class Application extends Controller {
     }
     
     public static Result findCompanyUser(String email){
-    	DBObject query = CompanyUserDataSource.getUser(email);
+    	DBObject query = CompanyUserDataSource.getCompanyUser(email);
     	if(query==null)
     		return badRequest("No existe el usuario con email: "+email);
     	else

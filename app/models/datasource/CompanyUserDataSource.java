@@ -7,7 +7,6 @@ import models.entities.CompanyUser;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.WriteConcern;
@@ -79,11 +78,11 @@ public class CompanyUserDataSource {
 	}
 	
 	/**
-	 * This method find an User by its email
+	 * This method find a Company User by its email
 	 * @param email The email of the registered user
 	 * @return a DBObject that contains the user of the query
 	 */
-	public static DBObject getUser(String email){
+	public static DBObject getCompanyUser(String email){
 		DBCollection collection = connectDB();
 		BasicDBObject query = new BasicDBObject().append("email", email);
 		
@@ -95,10 +94,12 @@ public class CompanyUserDataSource {
 		
 		return user;
 	}
-	
+	/**
+	 * This method creates a fake DB with some company users
+	 */
 	public static void initializeCompanyUsersDB(){
 		for(int i=0; i<15; i++){
-			CompanyUserDataSource.insertIntoCompanyUser(new CompanyUser("email"+i, "password"+i));
+			insertIntoCompanyUser(new CompanyUser("email"+i+"@company", "password"+i));
 		}
 	}
 }
