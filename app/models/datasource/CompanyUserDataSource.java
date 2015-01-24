@@ -69,6 +69,8 @@ public class CompanyUserDataSource {
 		DBCollection collection = connectDB();
 		DBCursor all = collection.find();
 		
+		mongoClient.close();
+		
 		return all;
 	}
 	
