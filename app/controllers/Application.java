@@ -1,13 +1,11 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
+import com.mongodb.DBObject;
 
 import models.datasource.CompanyUserDataSource;
 import models.entities.CompanyUser;
-import play.*;
 import play.mvc.*;
-import views.html.*;
 
 public class Application extends Controller {
 
@@ -22,9 +20,14 @@ public class Application extends Controller {
     }
 
     public static Result listCompanyUsers(){
-    	List<CompanyUser> users = new ArrayList<CompanyUser>();
+    	List<DBObject> all = CompanyUserDataSource.getAllCompanyUsers().toArray();
+    	String users = "";
     	
-    	return ok();
+    	for(int i=0; i<all.size(); i++){
+    		users+=all.get(i)+"\n";
+    	}
+    	
+    	return ok(users);
     	
     }
 }
