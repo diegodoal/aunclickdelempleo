@@ -1,12 +1,12 @@
 package models.datasource;
 
 import java.net.UnknownHostException;
-
+import java.util.List;
 import models.entities.ParticularUser;
-
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.WriteConcern;
 import com.typesafe.config.Config;
@@ -62,4 +62,45 @@ public class ParticularUserDataSource {
 		// Returns the new user
 		return particularUser;
 	}
+	
+	/**
+	 * This method gets all Particular Users registered in mongoDB
+	 * @return a DBCursor with all DBObjects (it can be changed to a List after)
+	 */
+	public static List<DBObject> getAllParticularUsers(){
+		DBCollection collection = connectDB();
+		List<DBObject> all = collection.find().toArray();
+		
+		mongoClient.close();
+		
+		return all;
+	}
+	
+	/**
+	 * This method find a Particular User by its email
+	 * @param email The email of the registered user
+	 * @return a DBObject that contains the user of the query
+	 */
+	public static DBObject getParticularUser(String email){
+		DBCollection collection = connectDB();
+		BasicDBObject query = new BasicDBObject().append("email", email);
+		
+		DBObject user = collection.findOne(query);
+		
+		if(user==null)
+			return null;
+		mongoClient.close();
+		
+		return user;
+	}
+	
+	/**
+	 * This method creates a fake DB with some company users
+	 */
+	public static void initializeParticularUsersDB(){
+		for(int i=0; i<15; i++){
+			insertIntoParticularUser(new ParticularUser("email"+i+"@particular", "password"+i));
+		}
+	}
+	
 }
