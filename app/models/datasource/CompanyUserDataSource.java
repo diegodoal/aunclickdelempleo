@@ -1,7 +1,7 @@
 package models.datasource;
 
 import java.net.UnknownHostException;
-
+import java.util.List;
 import models.entities.CompanyUser;
 
 import com.mongodb.BasicDBObject;
@@ -65,13 +65,34 @@ public class CompanyUserDataSource {
 		return companyUser;
 	}
 	
-	public static DBCursor getAllCompanyUsers(){
+	/**
+	 * This method gets all Company Users registered in mongoDB
+	 * @return a DBCursor with all DBObjects (it can be changed to a List after)
+	 */
+	public static List<DBObject> getAllCompanyUsers(){
 		DBCollection collection = connectDB();
-		DBCursor all = collection.find();
+		List<DBObject> all = collection.find().toArray();
 		
 		mongoClient.close();
 		
 		return all;
 	}
 	
+	/**
+	 * This method find an User by its email
+	 * @param email The email of the registered user
+	 * @return a DBObject that contains the user of the query
+	 */
+	public static DBObject getUser(String email){
+		DBCollection collection = connectDB();
+		BasicDBObject query = new BasicDBObject().append("email", email);
+		
+		DBObject user = collection.findOne(query);
+		
+		if(user==null)
+			return null;
+		mongoClient.close();
+		
+		return user;
+	}
 }

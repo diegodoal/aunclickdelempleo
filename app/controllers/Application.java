@@ -20,7 +20,8 @@ public class Application extends Controller {
     }
 
     public static Result listCompanyUsers(){
-    	List<DBObject> all = CompanyUserDataSource.getAllCompanyUsers().toArray();
+    	List<DBObject> all = CompanyUserDataSource.getAllCompanyUsers();
+    	
     	String users = "";
     	
     	for(int i=0; i<all.size(); i++){
@@ -28,6 +29,13 @@ public class Application extends Controller {
     	}
     	
     	return ok(users);
-    	
+    }
+    
+    public static Result findCompanyUser(String email){
+    	DBObject query = CompanyUserDataSource.getUser(email);
+    	if(query==null)
+    		return badRequest("No existe el usuario con email: "+email);
+    	else
+    		return ok(query.toString());
     }
 }

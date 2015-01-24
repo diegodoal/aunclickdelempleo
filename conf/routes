@@ -10,5 +10,6 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 # PRUEBAS
-GET		/newcompany/:email/:password				controllers.Application.newUser(email : String, password : String)
-GET		/newcompany/users							controllers.Application.listCompanyUsers()
+GET		/company/new/:email/:password				controllers.Application.newUser(email : String, password : String)
+GET		/company/findall							controllers.Application.listCompanyUsers()
+GET		/company/find/:email						controllers.Application.findCompanyUser(email : String)
