@@ -38,4 +38,9 @@ public class Application extends Controller {
     	else
     		return ok(query.toString());
     }
+    
+    public static Result initializeCompanyUserDB(){
+    	CompanyUserDataSource.initializeCompanyUsersDB();
+    	return ok("Base de datos de CompanyUser inicializada correctamente");
+    }
 }

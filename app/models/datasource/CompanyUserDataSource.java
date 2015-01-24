@@ -95,4 +95,10 @@ public class CompanyUserDataSource {
 		
 		return user;
 	}
+	
+	public static void initializeCompanyUsersDB(){
+		for(int i=0; i<15; i++){
+			CompanyUserDataSource.insertIntoCompanyUser(new CompanyUser("email"+i, "password"+i));
+		}
+	}
 }
