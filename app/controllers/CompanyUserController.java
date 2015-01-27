@@ -10,12 +10,17 @@ import play.mvc.Result;
 import com.mongodb.DBObject;
 
 public class CompanyUserController extends Controller {
-	
+
 	// COMPANY USERS
 	public static Result newCompanyUser(String email, String password){
+		CompanyUser query = CompanyUserDataSource.getCompanyUser(email);
+		if(query != null){
+			return badRequest("Ya existe un usuario con ese email registrado, inténtelo con otro...");
+		}
+
 		CompanyUser companyUser = new CompanyUser(email, password);
 		CompanyUserDataSource.insertIntoCompanyUser(companyUser);
-		return ok("Usuario: "+email + " con contraseña: "+password+" añadido.");
+		return redirect("/company/sendvalidation/"+email);
 	}
 
 	public static Result listCompanyUsers(){

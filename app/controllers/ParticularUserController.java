@@ -11,9 +11,14 @@ public class ParticularUserController extends Controller{
 
 	// PARTICULAR USERS
 	public static Result newParticularUser(String email, String password){
+		ParticularUser query = ParticularUserDataSource.getParticularUser(email);
+		if(query != null){
+			return badRequest("Ya existe un usuario con ese email registrado, inténtelo con otro...");
+		}
+		
 		ParticularUser particularUser = new ParticularUser(email, password);
 		ParticularUserDataSource.insertIntoParticularUser(particularUser);
-		return ok("Usuario: "+email + " con contraseña: "+password+" añadido.");
+		return redirect("/particular/sendvalidation/"+email);
 	}
 
 	public static Result listParticularUsers(){
