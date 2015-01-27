@@ -1,4 +1,4 @@
-package email;
+package utils;
 
 import java.util.Date;
 import javax.mail.Message;

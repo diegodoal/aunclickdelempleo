@@ -10,16 +10,17 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
 
 # COMPANY
-GET		/company/new/:email/:password				controllers.Application.newCompanyUser(email : String, password : String)
-GET		/company/findall							controllers.Application.listCompanyUsers()
-GET		/company/find/:email						controllers.Application.findCompanyUser(email : String)
-GET		/company/initfakedb							controllers.Application.initializeCompanyUserDB()
-GET		/company/verify/:email/:key					controllers.Application.verifyCompanyUser(email : String, key : String)
+GET		/company/new/:email/:password				controllers.CompanyUserController.newCompanyUser(email : String, password : String)
+GET		/company/findall							controllers.CompanyUserController.listCompanyUsers()
+GET		/company/find/:email						controllers.CompanyUserController.findCompanyUser(email : String)
+GET		/company/initfakedb							controllers.CompanyUserController.initializeCompanyUserDB()
+GET		/company/verify/:email/:key					controllers.CompanyUserController.verifyCompanyUser(email : String, key : String)
 
 # PARTICULAR
-GET		/particular/new/:email/:password			controllers.Application.newParticularUser(email : String, password : String)
-GET		/particular/findall							controllers.Application.listParticularUsers()
-GET		/particular/find/:email						controllers.Application.findParticularUser(email : String)
-GET		/particular/initfakedb						controllers.Application.initializeParticularUserDB()
+GET		/particular/new/:email/:password			controllers.ParticularUserController.newParticularUser(email : String, password : String)
+GET		/particular/findall							controllers.ParticularUserController.listParticularUsers()
+GET		/particular/find/:email						controllers.ParticularUserController.findParticularUser(email : String)
+GET		/particular/initfakedb						controllers.ParticularUserController.initializeParticularUserDB()
 
-GET 	/email/:toEmail							controllers.Application.sendEmail(toEmail : String)
+# UTILS
+GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
