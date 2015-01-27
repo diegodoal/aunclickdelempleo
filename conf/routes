@@ -20,3 +20,5 @@ GET		/particular/new/:email/:password			controllers.Application.newParticularUse
 GET		/particular/findall							controllers.Application.listParticularUsers()
 GET		/particular/find/:email						controllers.Application.findParticularUser(email : String)
 GET		/particular/initfakedb						controllers.Application.initializeParticularUserDB()
+
+GET 	/email/:toEmail							controllers.Application.sendEmail(toEmail : String)

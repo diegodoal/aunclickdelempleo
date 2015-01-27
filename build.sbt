@@ -12,7 +12,8 @@ libraryDependencies ++= Seq(
   anorm,
   cache,
   "org.mongodb" % "mongo-java-driver" % "2.11.3",
-  "org.mongodb" %% "casbah" % "2.6.4"
+  "org.mongodb" %% "casbah" % "2.6.4",
+  "com.sun.mail" % "javax.mail" % "1.5.2"
 )   
 
 playJavaSettings
