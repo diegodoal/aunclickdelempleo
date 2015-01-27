@@ -22,6 +22,7 @@ GET		/particular/findall							controllers.ParticularUserController.listParticul
 GET		/particular/find/:email						controllers.ParticularUserController.findParticularUser(email : String)
 GET		/particular/initfakedb						controllers.ParticularUserController.initializeParticularUserDB()
 GET		/particular/verify/:email/:key				controllers.ParticularUserController.verifyParticularUser(email : String, key : String)
+GET		/particular/sendvalidation/:email			controllers.Application.sendValidationAccountEmail(email : String)
 
 # UTILS
 GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
