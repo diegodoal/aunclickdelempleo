@@ -55,7 +55,8 @@ public class CompanyUserDataSource {
 		// Create the query
 		BasicDBObject query = new BasicDBObject().
 		append("email", companyUser.email).
-		append("password", companyUser.password);
+		append("password", companyUser.password).
+		append("emailVerificationKey", companyUser.emailVerificationKey);
 		
 		collection.insert(WriteConcern.SAFE, query);
 		
@@ -102,6 +103,24 @@ public class CompanyUserDataSource {
 			return null;
 		}
 	}
+	
+	/**
+	 * Method to update the emailVerificationKey when email is verified
+	 * @param email String with the username to update
+	 */
+	public static void updateEmailVerificationKey(String username){
+		DBCollection collection = connectDB();
+		BasicDBObject query = new BasicDBObject().append("email", username);
+		DBObject user = collection.findOne(query);
+		
+		if(user != null){
+			BasicDBObject updateQuery = new BasicDBObject().append("$set", new BasicDBObject().append("emailVerificationKey", null));
+			collection.update(query, updateQuery);
+		}
+		
+		mongoClient.close();
+	}
+	
 	/**
 	 * This method creates a fake DB with some company users
 	 */

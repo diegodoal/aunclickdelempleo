@@ -14,6 +14,7 @@ GET		/company/new/:email/:password				controllers.Application.newCompanyUser(ema
 GET		/company/findall							controllers.Application.listCompanyUsers()
 GET		/company/find/:email						controllers.Application.findCompanyUser(email : String)
 GET		/company/initfakedb							controllers.Application.initializeCompanyUserDB()
+GET		/company/verify/:email/:key					controllers.Application.verifyCompanyUser(email : String, key : String)
 
 # PARTICULAR
 GET		/particular/new/:email/:password			controllers.Application.newParticularUser(email : String, password : String)

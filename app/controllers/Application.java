@@ -81,6 +81,20 @@ public class Application extends Controller {
     		return ok(query.showUserInfo());
     }
     
+    public static Result verifyCompanyUser(String email, String emailVerificationKey){
+    	CompanyUser query = CompanyUserDataSource.getCompanyUser(email);
+    	if(query == null){
+    		return badRequest("Error, el email indicado no está registrado. Contacte con el administrador");
+    	}else if(query.emailVerificationKey == null){
+    		return badRequest("Atención, el usuario ya está verificado");
+    	}else if(query.emailVerificationKey.equals(emailVerificationKey)){
+    		CompanyUserDataSource.updateEmailVerificationKey(email);
+        	return ok("Enhorabuena! Cuenta validada correctamente");
+    	}else{
+    		return badRequest("Error, la clave indicada no se corresponde con la registrada. Contacte con el administrador");
+    	}
+    }
+    
     public static Result initializeCompanyUserDB(){
     	CompanyUserDataSource.initializeCompanyUsersDB();
     	return ok("Base de datos CompanyUser inicializada correctamente");
