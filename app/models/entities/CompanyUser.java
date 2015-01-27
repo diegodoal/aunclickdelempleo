@@ -14,10 +14,20 @@ public class CompanyUser {
 	@MinLength(4)
 	public String password;
 	
+	public CompanyUser() {}
 	
 	public CompanyUser(String email, String password) {
 		this.email = email;
 		this.password = password;
+	}
+	
+	public String showUserInfo(){
+		String info = "";
+		info += "Email: "+this.email;
+		info += "\nPassword: "+this.password;
+		info += "\n";
+		
+		return info;
 	}
 
 }

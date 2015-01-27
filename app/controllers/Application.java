@@ -74,11 +74,11 @@ public class Application extends Controller {
     }
     
     public static Result findCompanyUser(String email){
-    	DBObject query = CompanyUserDataSource.getCompanyUser(email);
+    	CompanyUser query = CompanyUserDataSource.getCompanyUser(email);
     	if(query==null)
     		return badRequest("No existe el usuario con email: "+email);
     	else
-    		return ok(query.toString());
+    		return ok(query.showUserInfo());
     }
     
     public static Result initializeCompanyUserDB(){

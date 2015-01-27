@@ -2,8 +2,10 @@ package models.datasource;
 
 import java.net.UnknownHostException;
 import java.util.List;
+
 import models.entities.CompanyUser;
 
+import com.google.gson.Gson;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -82,17 +84,23 @@ public class CompanyUserDataSource {
 	 * @param email The email of the registered user
 	 * @return a DBObject that contains the user of the query
 	 */
-	public static DBObject getCompanyUser(String email){
+	public static CompanyUser getCompanyUser(String email){
 		DBCollection collection = connectDB();
 		BasicDBObject query = new BasicDBObject().append("email", email);
-		
 		DBObject user = collection.findOne(query);
 		
-		if(user==null)
+		if(user != null){
+			CompanyUser companyUser = new CompanyUser();
+			String userStr = user.toString();
+			
+			companyUser = new Gson().fromJson(userStr, CompanyUser.class);
+			
+			mongoClient.close();
+			return companyUser;
+		}else{
+			mongoClient.close();
 			return null;
-		mongoClient.close();
-		
-		return user;
+		}
 	}
 	/**
 	 * This method creates a fake DB with some company users
