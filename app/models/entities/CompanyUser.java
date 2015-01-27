@@ -5,6 +5,7 @@ import java.util.UUID;
 import play.data.validation.Constraints.Email;
 import play.data.validation.Constraints.MinLength;
 import play.data.validation.Constraints.Required;
+import play.libs.Json;
 
 public class CompanyUser {
 
@@ -27,12 +28,7 @@ public class CompanyUser {
 	}
 	
 	public String showUserInfo(){
-		String info = "";
-		info += "Email: "+this.email;
-		info += "\nPassword: "+this.password;
-		info += "\n";
-		
-		return info;
+		return Json.toJson(this).toString();
 	}
 
 }

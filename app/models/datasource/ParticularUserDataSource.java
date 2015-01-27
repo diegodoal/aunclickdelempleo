@@ -2,7 +2,10 @@ package models.datasource;
 
 import java.net.UnknownHostException;
 import java.util.List;
+
 import models.entities.ParticularUser;
+
+import com.google.gson.Gson;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -52,7 +55,8 @@ public class ParticularUserDataSource {
 		// Create the query
 		BasicDBObject query = new BasicDBObject().
 		append("email", particularUser.email).
-		append("password", particularUser.password);
+		append("password", particularUser.password).
+		append("emailVerificationKey", particularUser.emailVerificationKey);
 		
 		collection.insert(WriteConcern.SAFE, query);
 		
@@ -81,17 +85,40 @@ public class ParticularUserDataSource {
 	 * @param email The email of the registered user
 	 * @return a DBObject that contains the user of the query
 	 */
-	public static DBObject getParticularUser(String email){
+	public static ParticularUser getParticularUser(String email){
 		DBCollection collection = connectDB();
 		BasicDBObject query = new BasicDBObject().append("email", email);
-		
 		DBObject user = collection.findOne(query);
 		
-		if(user==null)
+		if(user != null){
+			ParticularUser particularUser = new ParticularUser();
+			String userStr = user.toString();
+			
+			particularUser = new Gson().fromJson(userStr, ParticularUser.class);
+			
+			mongoClient.close();
+			return particularUser;
+		}else{
+			mongoClient.close();
 			return null;
-		mongoClient.close();
+		}
+	}
+	
+	/**
+	 * Method to update the emailVerificationKey when email is verified
+	 * @param email String with the username to update
+	 */
+	public static void updateEmailVerificationKey(String username){
+		DBCollection collection = connectDB();
+		BasicDBObject query = new BasicDBObject().append("email", username);
+		DBObject user = collection.findOne(query);
 		
-		return user;
+		if(user != null){
+			BasicDBObject updateQuery = new BasicDBObject().append("$set", new BasicDBObject().append("emailVerificationKey", null));
+			collection.update(query, updateQuery);
+		}
+		
+		mongoClient.close();
 	}
 	
 	/**

@@ -1,12 +1,9 @@
 package controllers;
 
 import java.util.List;
-
 import models.datasource.ParticularUserDataSource;
 import models.entities.ParticularUser;
-
 import com.mongodb.DBObject;
-
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -29,11 +26,25 @@ public class ParticularUserController extends Controller{
 	}
 
 	public static Result findParticularUser(String email){
-		DBObject query = ParticularUserDataSource.getParticularUser(email);
+		ParticularUser query = ParticularUserDataSource.getParticularUser(email);
 		if(query==null)
 			return badRequest("No existe el usuario con email: "+email);
 		else
-			return ok(query.toString());
+			return ok(query.showUserInfo());
+	}
+	
+	public static Result verifyParticularUser(String email, String emailVerificationKey){
+		ParticularUser query = ParticularUserDataSource.getParticularUser(email);
+		if(query == null){
+			return badRequest("Error, el email indicado no está registrado. Contacte con el administrador");
+		}else if(query.emailVerificationKey == null){
+			return badRequest("Atención, el usuario ya está verificado");
+		}else if(query.emailVerificationKey.equals(emailVerificationKey)){
+			ParticularUserDataSource.updateEmailVerificationKey(email);
+			return ok("Enhorabuena! Cuenta validada correctamente");
+		}else{
+			return badRequest("Error, la clave indicada no se corresponde con la registrada. Contacte con el administrador");
+		}
 	}
 
 	public static Result initializeParticularUserDB(){
