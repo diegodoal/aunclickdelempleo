@@ -118,3 +118,15 @@ h1 {
  #offer_item_location{
  	font-size: 120%;
  }
+
+ /*FOOTER*/
+
+footer {
+	
+   position:relative;
+   bottom:0;
+   width:100%;
+   height:50px;            /* Altura del footer */
+   margin: 0 auto;
+}
+
