@@ -53,6 +53,10 @@ public class Job {
 			this.phone_number = phone_number;
 		}
 		
+		public String toString(){
+            return "{\"name\":\""+this.name+"\",\"email\":\""+this.email+"\",\"phone_number\":\""+this.phone_number+"\"}";
+        }
+		
 	}
 	
 	public Job() {}
