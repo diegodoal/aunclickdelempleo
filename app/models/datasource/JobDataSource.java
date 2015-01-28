@@ -24,6 +24,7 @@ public class JobDataSource extends DataSource{
 		
 		// Create the query
 		BasicDBObject query = new BasicDBObject().
+			append("job_id", job.id).
 			append("title", job.title).
 			append("sector", job.sector).
 			append("description", job.description).

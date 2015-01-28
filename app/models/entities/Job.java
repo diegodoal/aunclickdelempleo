@@ -3,7 +3,9 @@ package models.entities;
 import play.data.validation.Constraints.Required;
 
 public class Job {
-
+	
+	public static int id = 0;
+	
 	@Required()
 	public String title;
 	
@@ -75,5 +77,6 @@ public class Job {
 		this.general_terms = general_terms;
 		this.requirements = requirements;
 		this.contact = contact;
+		this.id = id+1;
 	}
 }
