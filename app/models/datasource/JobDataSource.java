@@ -61,9 +61,9 @@ public class JobDataSource extends DataSource{
 	}
 	
 	/**
-	 * This method find a Company User by its email
-	 * @param email The email of the registered user
-	 * @return a DBObject that contains the user of the query
+	 * This method finds a Job Offer by its id
+	 * @param id The job_id of the registered Job Offer
+	 * @return a DBObject that contains the job offer of the query
 	 */
 	public static Job getJobOffer(int id){
 		DBCollection collection = connectDB(Constants.MONGO_JOBS_COLLECTION);

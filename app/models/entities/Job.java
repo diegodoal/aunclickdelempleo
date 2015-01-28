@@ -62,7 +62,6 @@ public class Job {
 		public String toString(){
             return "{\"name\":\""+this.name+"\",\"email\":\""+this.email+"\",\"phone_number\":\""+this.phone_number+"\"}";
         }
-		
 	}
 	
 	public Job() {}
