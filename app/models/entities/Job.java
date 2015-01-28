@@ -1,6 +1,7 @@
 package models.entities;
 
 import play.data.validation.Constraints.Required;
+import play.libs.Json;
 
 public class Job {
 	
@@ -34,13 +35,13 @@ public class Job {
 	public String general_terms;
 	
 	@Required()
+	public boolean certificateOf33Disability;
+	
+	@Required()
 	public String requirements;
 	
 	@Required()
 	public ContactProfile contact;
-	
-	@Required()
-	public boolean certificateOf33Disability;
 	
 	public static class ContactProfile{
 		@Required()
@@ -79,10 +80,14 @@ public class Job {
 		this.workday = workday;
 		this.salary = salary;
 		this.general_terms = general_terms;
-		if(certificateOf33Disability){
+		this.certificateOf33Disability = certificateOf33Disability;
+		if(this.certificateOf33Disability == true){
 			this.requirements="Será necesario disponer de un Certificado de Discapacidad de al menos el 33%";
 		}
 		this.contact = contact;
-		this.certificateOf33Disability = certificateOf33Disability;
+	}
+	
+	public String showJobOfferInfo(){
+		return Json.toJson(this).toString();
 	}
 }

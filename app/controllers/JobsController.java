@@ -3,7 +3,12 @@ package controllers;
 import java.util.List;
 
 import models.datasource.JobDataSource;
+import models.datasource.ParticularUserDataSource;
+import models.entities.Job;
+import models.entities.ParticularUser;
+
 import com.mongodb.DBObject;
+
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -17,6 +22,14 @@ public class JobsController extends Controller{
 			jobs+=all.get(i)+"\n\n";
 		}
 		return ok(jobs);
+	}
+	
+	public static Result findJob(int id){
+		Job query = JobDataSource.getJobOffer(id);
+		if(query==null)
+			return badRequest("No existe la oferta de trabajo con id: "+id);
+		else
+			return ok(query.showJobOfferInfo());
 	}
 	
 	public static Result initializeJobsDB(){

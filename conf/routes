@@ -27,6 +27,7 @@ GET		/particular/sendvalidation/:email			controllers.Application.sendParticularV
 
 # JOBS
 GET		/job/initfakedb								controllers.JobsController.initializeJobsDB()
+GET		/job/find/:id								controllers.JobsController.findJob(id : Integer)
 GET		/job/findall								controllers.JobsController.listJobs()
 
 # UTILS

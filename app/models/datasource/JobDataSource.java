@@ -1,6 +1,8 @@
 package models.datasource;
 
 import java.util.List;
+
+import com.google.gson.Gson;
 import com.mongodb.util.JSON;
 import models.entities.Job;
 import utils.Constants;
@@ -35,8 +37,8 @@ public class JobDataSource extends DataSource{
 			append("salary", job.salary).
 			append("general_terms", job.general_terms).
 			append("requirements", job.requirements).
-			append("contact", JSON.parse(job.contact.toString())).
-			append("certificate_of_33_disability", job.certificateOf33Disability);
+			append("certificate_of_33_disability", job.certificateOf33Disability).
+			append("contact", JSON.parse(job.contact.toString()));
 		
 		collection.insert(WriteConcern.SAFE, query);
 		
@@ -56,6 +58,30 @@ public class JobDataSource extends DataSource{
 		List<DBObject> all = collection.find().toArray();
 		mongoClient.close();
 		return all;
+	}
+	
+	/**
+	 * This method find a Company User by its email
+	 * @param email The email of the registered user
+	 * @return a DBObject that contains the user of the query
+	 */
+	public static Job getJobOffer(int id){
+		DBCollection collection = connectDB(Constants.MONGO_JOBS_COLLECTION);
+		BasicDBObject query = new BasicDBObject().append("job_id", id);
+		DBObject job = collection.findOne(query);
+		
+		if(job != null){
+			Job jobOffer = new Job();
+			String jobStr = job.toString();
+			
+			jobOffer = new Gson().fromJson(jobStr, Job.class);
+			
+			mongoClient.close();
+			return jobOffer;
+		}else{
+			mongoClient.close();
+			return null;
+		}
 	}
 	
 	/**
