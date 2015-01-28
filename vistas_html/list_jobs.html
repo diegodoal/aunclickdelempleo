@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<link href="css/style_ventana_emergente.css" rel='stylesheet' type='text/css'/>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script type='text/javascript' src='js/scripts.js'></script>
+    <meta charset="utf-8">
+   <title>A un click del empleo</title>
+</head>
+
+<body class="size_font">
+
+<!--NAV-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6"><a href="index.html"><img src="images/nav/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
+		</div>
+
+		<div class="col-md-2"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
+	    </div>
+
+		<div class="col-md-2"><a href="login_user.html"><img src="images/nav/ic_entrar_sin_fondo.png"></a>
+		</div>
+
+		<div class="col-md-2"><a href="login_company.html"><img src="images/nav/ic_soyempresa.png"></a>
+		</div>
+	</div>
+</div>
+
+<!--SEARCH-->
+<section class="container" id="back_search">
+
+	<div class="row">
+		<div class="col-md-6" id="search_text">
+		<h2>BUSCADOR:</h2>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-5 col-md-3 col-md-offset-1">
+	<form class="form-horizontal">
+		<div class="form-group">
+			<input type="text" class="form-control" id="word" placeholder="Palabra clave">
+		</div>
+	</form>	
+		</div>
+	<div class="col-xs-5 col-md-3 col-md-offset-1">
+	<form class="form-horizontal">	
+		<div class="form-group">
+			<select  class="form-control" id="sector" name="sector">
+					<option value="s0" disabled selected="">Sector</option>
+					<option value="s1">Administración de empresas</option>
+					<option value="s2">Administración pública</option>
+					<option value="s3">Atención a clientes</option>
+					<option value="s4">Calidad, producción e I+D</option>
+					<option value="s5">Comercial y Ventas</option>
+					<option value="s6">Compras, logística y almacen</option>
+					<option value="s7">Diseño y artes</option>
+					<option value="s8">Educación y formación</option>
+					<option value="s9">Finanzas y banca</option>
+					<option value="s10">Hostelería</option>
+					<option value="s11">Informática y telecomunicaciones</option>
+					<option value="s12">Ingenieros y técnicos</option>
+					<option value="s13">Inmobiliario y construcción</option>
+					<option value="s14">Legal</option>
+					<option value="s15">Marketing y comunicación</option>
+					<option value="s16">Profesiones, artes y oficios</option>
+					<option value="s17">Recursos Humanos</option>
+					<option value="s18">Sanidad y salud</option>
+					<option value="s19">Turismo y restauración</option>
+					<option value="s20">Ventas al detalle</option>
+					<option value="s21">Otros</option>
+				</select>
+		</div>	
+	</form>	
+	</div>
+</div>
+
+	<div class="row">
+		<div class="col-xs-5 col-md-3 col-md-offset-1">
+	<form class="form-horizontal">
+		<div class="form-group">
+			<select  class="form-control" id="province" name="province">
+					 <option value="s0" disabled selected="">Lugar</option>
+					 <option value='alava'>Álava</option>
+					 <option value='albacete'>Albacete</option>
+					 <option value='alicante'>Alicante/Alacant</option>
+					 <option value='almeria'>Almería</option>
+					 <option value='asturias'>Asturias</option>
+					 <option value='avila'>Ávila</option>
+					 <option value='badajoz'>Badajoz</option>
+					 <option value='barcelona'>Barcelona</option>
+					 <option value='burgos'>Burgos</option>
+					 <option value='caceres'>Cáceres</option>
+					 <option value='cadiz'>Cádiz</option>
+					 <option value='cantabria'>Cantabria</option>
+					 <option value='castellon'>Castellón/Castelló</option>
+					 <option value='ceuta'>Ceuta</option>
+					 <option value='ciudadreal'>Ciudad Real</option>
+					 <option value='cordoba'>Córdoba</option>
+					 <option value='cuenca'>Cuenca</option>
+					 <option value='girona'>Girona</option>
+					 <option value='laspalmas'>Las Palmas</option>
+					 <option value='granada'>Granada</option>
+					 <option value='guadalajara'>Guadalajara</option>
+					 <option value='guipuzcoa'>Guipúzcoa</option>
+					 <option value='huelva'>Huelva</option>
+					 <option value='huesca'>Huesca</option>
+					 <option value='illesbalears'>Illes Balears</option>
+					 <option value='jaen'>Jaén</option>
+					 <option value='acoruña'>A Coruña</option>
+					 <option value='larioja'>La Rioja</option>
+					 <option value='leon'>León</option>
+					 <option value='lleida'>Lleida</option>
+					 <option value='lugo'>Lugo</option>
+					 <option value='madrid'>Madrid</option>
+					 <option value='malaga'>Málaga</option>
+					 <option value='melilla'>Melilla</option>
+					 <option value='murcia'>Murcia</option>
+					 <option value='navarra'>Navarra</option>
+					 <option value='ourense'>Ourense</option>
+					 <option value='palencia'>Palencia</option>
+					 <option value='pontevedra'>Pontevedra</option>
+					 <option value='salamanca'>Salamanca</option>
+					 <option value='segovia'>Segovia</option>
+					 <option value='sevilla'>Sevilla</option>
+					 <option value='soria'>Soria</option>
+					 <option value='tarragona'>Tarragona</option>
+					 <option value='santacruztenerife'>Santa Cruz de Tenerife</option>
+					 <option value='teruel'>Teruel</option>
+					 <option value='toledo'>Toledo</option>
+					 <option value='valencia'>Valencia/Valéncia</option>
+					 <option value='valladolid'>Valladolid</option>
+					 <option value='vizcaya'>Vizcaya</option>
+					 <option value='zamora'>Zamora</option>
+					 <option value='zaragoza'>Zaragoza</option>
+			</select>		
+		</div>
+	</form>	
+		</div>
+
+	<div class="col-xs-5 col-md-3 col-md-offset-1">
+	<form class="form-horizontal">	
+		<div class="form-group">
+			<select  class="form-control" name="experience" id="experience">
+					<option value="s0" disabled selected="">Años de experiencia</option>
+					<option value="s1"> Prácticas</option>
+					<option value="s1"> Menos de un año</option>
+					<option value="s2"> 1-3 años</option>
+					<option value="s3"> 3-5 años</option>
+					<option value="s4"> +5 años</option>
+					<option value="s6"> +10 años</option>
+			</select>
+		</div>	
+	</form>	
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-xs-4 col-md-3 col-sm-2 col-md-offset-1">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<p class="form-control-static">Certificado de discapacidad (+33%)</p>
+			</div>
+		</form>
+	</div>
+
+	<div class="col-xs-4 col-md-3" id="radio_disability">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<label class="radio-inline"><input type="radio" name="optradio">Sí</label>
+				<label class="radio-inline"><input type="radio" name="optradio">No</label>
+			</div>
+		</form>
+	</div>
+
+	<div class="col-xs-4 col-md-4" id="search_button">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<button type="submit" class="btn-img" ><img  src="images/list/ic_entrar.png"></button>
+			</div>
+		</form>
+	</div>
+
+</div>
+</section>
+
+<!--OFFERS-->
+<article class="container" id="offers">
+
+	<div class="row">
+		<div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="date_offer">
+		<h4>Fecha</h4>
+		</div>
+		<div class="col-md-6 col-xs-7" id="description_offer">
+		<h4>Título</h4>
+		</div>
+		<div class="col-md-2 col-xs-2" id="location_offer">
+		<h4>Lugar</h4>
+		</div>
+	</div>
+</article>
+
+<!--OFERTA 1-->
+
+<article class="container" id="offer_item">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
+		<p class="form-control-static">20/01/15</p>
+		</div>
+		<div class="col-md-6 col-xs-7"id="offer_item_description">
+		<p class="form-control-static">Ayuda a la capacitación profesional en Networking 10006/1215</p>
+		</div>
+		<div class="col-md-2 col-xs-2" id="offer_item_location">
+		<p class="form-control-static">Madrid</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
+			<p class="form-control-static">Sector: Informática</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
+			<p class="form-control-static">Contrato prácticas</p>
+		</div>
+		<div class="col-md-1 col-xs-1">
+			<p class="form-control-static">|</p>
+		</div>
+		<div class="col-md-3"id="offer_item_time">
+			<p class="form-control-static">Media jornada</p>
+		</div>
+		<div class="col-md-1 col-xs-1">
+			<p class="form-control-static">|</p>
+		</div>
+		<div class="col-md-2"id="offer_item_salary">
+			<p class="form-control-static">350€/mes</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-offset-3 col-xs-offset-1 col-md-10 col-xs-10" id="more_info">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<img  src="images/list_courses/ic_masinformacion.png">
+			</div>
+		</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-2 col-xs-offset-1 col-md-10 col-xs-10">
+			<img src="images/list/ic_barrapuntos_horizontal.png">
+		</div>
+	</div>
+</article>
+<!--//OFERTA 1-->
+<!--OFERTA 2-->
+
+<article class="container" id="offer_item">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
+		<p class="form-control-static">20/01/15</p>
+		</div>
+		<div class="col-md-6 col-xs-7"id="offer_item_description">
+		<p class="form-control-static">Gestoría de Proyectos Informáticos 10006/660</p>
+		</div>
+		<div class="col-md-2 col-xs-2" id="offer_item_location">
+		<p class="form-control-static">Zaragoza</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
+			<p class="form-control-static">Sector: Ingeniería, fabricación, producción</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
+			<p class="form-control-static">Contrato prácticas</p>
+		</div>
+		<div class="col-md-1 col-xs-1">
+			<p class="form-control-static">|</p>
+		</div>
+		<div class="col-md-3"id="offer_item_time">
+			<p class="form-control-static">Media jornada</p>
+		</div>
+		<div class="col-md-1 col-xs-1">
+			<p class="form-control-static">|</p>
+		</div>
+		<div class="col-md-2"id="offer_item_salary">
+			<p class="form-control-static">500€/mes</p>
+		</div>
+	</div>
+		<div class="row">
+		<div class="col-md-offset-3 col-xs-offset-1 col-md-10 col-xs-10" id="more_info">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<img  src="images/list_courses/ic_masinformacion.png">
+			</div>
+		</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-2 col-xs-offset-1 col-md-10 col-xs-10">
+			<img src="images/list/ic_barrapuntos_horizontal.png">
+		</div>
+	</div>
+</article>
+<!--//OFERTA 2-->
+
+<!--OFERTA 3-->
+
+<article class="container" id="offer_item">
+	<div class="row">
+		<div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
+		<p class="form-control-static">19/01/15</p>
+		</div>
+		<div class="col-md-6 col-xs-7"id="offer_item_description">
+		<p class="form-control-static">Ayuda a la Capacitación Recursos Humanos 10006/627</p>
+		</div>
+		<div class="col-md-2 col-xs-2" id="offer_item_location">
+		<p class="form-control-static">Madrid</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
+			<p class="form-control-static">Sector: Recursos Humanos</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
+			<p class="form-control-static">Contrato temporal</p>
+		</div>
+		<div class="col-md-1 col-xs-1">
+			<p class="form-control-static">|</p>
+		</div>
+		<div class="col-md-3"id="offer_item_time">
+			<p class="form-control-static">Jornada completa</p>
+		</div>
+		<div class="col-md-1 col-xs-1">
+			<p class="form-control-static">|</p>
+		</div>
+		<div class="col-md-2"id="offer_item_salary">
+			<p class="form-control-static">950€/mes</p>
+		</div>
+	</div>
+		<div class="row">
+		<div class="col-md-offset-3 col-xs-offset-1 col-md-10 col-xs-10" id="more_info">
+		<form class="form-horizontal">
+			<div class="form-group">
+				<img  src="images/list_courses/ic_masinformacion.png">
+			</div>
+		</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-offset-2 col-xs-offset-1 col-md-10 col-xs-10">
+			<img src="images/list/ic_barrapuntos_horizontal.png">
+		</div>
+	</div>
+</article>
+<!--//OFERTA 3-->
+
+
+
+	<!-- POP UP WINDOW -->
+	<div id="accesibility_pop_up" class="mask_pop_up">
+		<div class="box_pop_up resize">
+			<a href="#close" title="Cerrar" class="close">X</a>
+
+			<h2>¿Qué desea adaptar?</h2>
+			<h3>Tamaño texto:</h3><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
+
+			<h3>Colores de texto y fondo</h3>
+			<h3>...</h3>
+		</div>
+	</div>
+
+</body>
+</html>
