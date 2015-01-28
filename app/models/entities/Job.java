@@ -1,19 +1,16 @@
 package models.entities;
 
-import play.data.validation.Constraints.MinLength;
 import play.data.validation.Constraints.Required;
 
 public class Job {
 
 	@Required()
-	@MinLength(4)
 	public String title;
 	
 	@Required()
 	public String sector;
 	
 	@Required()
-	@MinLength(4)
 	public String description;
 	
 	@Required()
@@ -31,7 +28,38 @@ public class Job {
 	@Required()
 	public double salary;
 	
-	public Job(String title, String sector, String description, String date, String location, String contract_type, String workday, double salary) {
+	@Required()
+	public String general_terms;
+	
+	@Required()
+	public String requirements;
+	
+	@Required()
+	public ContactProfile contact;
+	
+	public static class ContactProfile{
+		@Required()
+		public String name;
+		
+		@Required()
+		public String email;
+		
+		@Required()
+		public int phone_number;
+		
+		public ContactProfile(String name, String email, int phone_number){
+			this.name = name;
+			this.email = email;
+			this.phone_number = phone_number;
+		}
+		
+	}
+	
+	public Job() {}
+	
+	public Job(String title, String sector, String description, String date, String location, 
+			String contract_type, String workday, double salary, String general_terms, 
+			String requirements, ContactProfile contact) {
 		this.title = title;
 		this.sector = sector;
 		this.description = description;
@@ -40,5 +68,8 @@ public class Job {
 		this.contract_type = contract_type;
 		this.workday = workday;
 		this.salary = salary;
+		this.general_terms = general_terms;
+		this.requirements = requirements;
+		this.contact = contact;
 	}
 }
