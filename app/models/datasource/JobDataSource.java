@@ -35,7 +35,8 @@ public class JobDataSource extends DataSource{
 			append("salary", job.salary).
 			append("general_terms", job.general_terms).
 			append("requirements", job.requirements).
-			append("contact", JSON.parse(job.contact.toString()));
+			append("contact", JSON.parse(job.contact.toString())).
+			append("certificate_of_33_disability", job.certificateOf33Disability);
 		
 		collection.insert(WriteConcern.SAFE, query);
 		
@@ -64,9 +65,8 @@ public class JobDataSource extends DataSource{
 		for(int i=0; i<15; i++){
 			insertIntoJobsCollection(new Job("Title"+i, "Sector"+i,
 					"Description"+i,"Date"+i, "Location"+i, "Contract type"+i,
-					"Workday"+i,2000.0, "General Terms"+i,
-					"Requirements"+i, 
-					new Job.ContactProfile("Name"+i, "Email"+i+"@contact", 612345678+i)));
+					"Workday"+i,2000.0, "General Terms"+i, 
+					new Job.ContactProfile("Name"+i, "Email"+i+"@contact", 612345678+i), (Math.random()<0.5)));
 		}
 	}
 }

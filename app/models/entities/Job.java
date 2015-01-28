@@ -39,6 +39,9 @@ public class Job {
 	@Required()
 	public ContactProfile contact;
 	
+	@Required()
+	public boolean certificateOf33Disability;
+	
 	public static class ContactProfile{
 		@Required()
 		public String name;
@@ -65,7 +68,8 @@ public class Job {
 	
 	public Job(String title, String sector, String description, String date, String location, 
 			String contract_type, String workday, double salary, String general_terms, 
-			String requirements, ContactProfile contact) {
+			ContactProfile contact, boolean certificateOf33Disability) {
+		this.id = id+1;
 		this.title = title;
 		this.sector = sector;
 		this.description = description;
@@ -75,8 +79,10 @@ public class Job {
 		this.workday = workday;
 		this.salary = salary;
 		this.general_terms = general_terms;
-		this.requirements = requirements;
+		if(certificateOf33Disability){
+			this.requirements="Será necesario disponer de un Certificado de Discapacidad de al menos el 33%";
+		}
 		this.contact = contact;
-		this.id = id+1;
+		this.certificateOf33Disability = certificateOf33Disability;
 	}
 }

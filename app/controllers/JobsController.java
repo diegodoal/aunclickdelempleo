@@ -14,7 +14,7 @@ public class JobsController extends Controller{
 		List<DBObject> all = JobDataSource.getAllJobs();
 		String jobs = "";
 		for(int i=0; i<all.size(); i++){
-			jobs+=all.get(i)+"\n";
+			jobs+=all.get(i)+"\n\n";
 		}
 		return ok(jobs);
 	}
