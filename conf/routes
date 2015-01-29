@@ -37,3 +37,6 @@ GET		/course/findall								controllers.CoursesController.listCourses()
 
 # UTILS
 GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
+
+#GET		/api/1/company/getAll
+#/api/1/company/:id

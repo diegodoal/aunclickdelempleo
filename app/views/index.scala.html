@@ -1,48 +1,48 @@
-@main(menu){
-	
-}
-@menu ={
+@main(Html("")){
+	<!-- CORPORATIVE IMAGE AND MORE-->
+<section class="container-fluid size_font" id="banner">
+	<div class="row">
+		<div class="col-md-6 size_font" id="banner_text">
+			<p><b>Fundación Adecco,</b> con 14 oficinas, y a través de una red de empresas solidarias de todos los sectores de actividad en toda España y de la Administración, ayuda a las personas que lo tienen más difícil a encontrar un empleo adecuado a sus habilidades y expectativas. Cuenta, además, con las 400 oficinas especializadas de Adecco y su red de 15.000 empresas y clientes para cumplir con su misión.</p>
+		</div>
+	</div>
+</section>
 
+<!-- THREE BUTTONS TEXT-->
+<section class="container" id="three_buttons_text">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="size30 century_gothic gray_adecco">¿QUÉ ESTÁS BUSCANDO?</h1>
+			<h2 class="size20 arial gray_adecco">En <span class="red_adecco">Fundación Adecco</span> te ayudamos a encontrar lo que buscas.</h2>
+		</div>
+	</div>
 
-      <nav>
-      	<h1><a href="@routes.Application.index">Bienvenido</a></h1>
-        <ul>
-        	<li><a href="@routes.Application.index" class="current">Entra</a></li>
-			<li><a href="#">Soy una empresa </a></li>			
-        </ul>
-      </nav>
-      
-      <!-- CORPORATIVE IMAGE AND MORE-->
-	<section>
-		<img src="images/corporative.jpg" width=200>
-	</section>
+	<!--THREE BUTTONS-->
+	<article class="container" id="three_buttons">
+		<div class="row">
 
-	<!-- CHOOSING USER TYPE SECTION-->
-	<section>
-		<h2>¿Qué estás buscando?</h2>
-		<ul>
-			<li>
-				<a href="list.scala.html">
-					<div class="img_link" >
-						<h3>CURSOS</h3>
-					</div>
+			<div class="col-md-4">
+				<a href="@routes.CompanyUserController.listCompanyUsers()">
+					<h1 class="size30 century_gothic gray_adecco">FORMACIÓN</h1>
+					<img src="@routes.Assets.at("images/index/ic_courses.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_courses_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_courses.png")';">
 				</a>
-			</li>
-			<li>
-				<a href="list.scala.html">
-					<div class="img_link">
-						<h3>EMPLEO</h3>
-					</div>
-				</a>
-			</li>
+			</div>
 
-			<li>
-				<a href="list.scala.html">
-					<div class="img_link">
-						<h3>TODO</h3>
-					</div>
+			<div class="col-md-4">
+				<a href="list_jobs.html">
+					<h1 class="size30 century_gothic gray_adecco">EMPLEO</h1>
+					<img src="@routes.Assets.at("images/index/ic_jobs.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_jobs_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_jobs.png")';">
 				</a>
-			</li>
-		</ul>
-	</section>
+			</div>
+
+			<div class="col-md-4">
+				<a href="orientation.html">
+					<h1 class="size30 century_gothic gray_adecco">ORIENTACIÓN</h1>
+					<img src="@routes.Assets.at("images/index/ic_orientation.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_orientation_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_orientation.png")';">
+				</a>
+			</div>
+
+		</div>
+	</article>
+</section>	
 }

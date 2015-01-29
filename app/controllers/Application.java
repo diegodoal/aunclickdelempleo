@@ -6,7 +6,10 @@ import models.entities.CompanyUser;
 import models.entities.ParticularUser;
 import play.mvc.*;
 import utils.EmailUtil;
+import views.html.index;
+
 import java.util.Properties;
+
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -14,7 +17,7 @@ import javax.mail.Session;
 public class Application extends Controller {
 
 	public static Result index() {
-		return TODO;
+		return ok(index.render());
 	}
 
 	/* EMAIL
