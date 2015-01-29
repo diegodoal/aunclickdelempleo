@@ -107,7 +107,12 @@ h1 {
  	font-size: 3vmin;
 	color: red;
  }
- #offer_item_sector, #offer_item_date{
+ #offer_item_sector{
+ 	margin-top: -1.5em;
+ 	font-style: italic;
+ 	font-size: 120%;
+ }
+ #offer_item_date{
  	font-style: italic;
  	font-size: 120%;
  }
@@ -119,6 +124,62 @@ h1 {
  	font-size: 120%;
  }
 
+#offer_item_contract, #space, #offer_item_time, #offer_item_salary{
+	margin-top: -1.5em;
+}
+#space, #offer_item_time, #offer_item_salary{
+	margin-left: -2.5em;
+}
+
+
+#barra_puntos{
+margin-left: 4em;
+}
+
+
+/*DETAILS_COURSES*/
+#back_details_courses{
+	background: rgba(171, 158, 121, 0.2);
+	margin-top: 5%;
+	width: 80%;
+	border-radius: 2em;
+	padding-bottom: 4em;
+	padding-top: 4em;
+	padding-left: 5em;
+}
+#img_details_courses{
+	text-align: right;
+	margin-top: 1.5em;
+}
+
+#text_details_courses{
+	margin-left: 1em;
+}
+
+.red_adecco{
+	color:#ea2026;
+}
+.gray_adecco{
+	color:#706f6f;
+}
+.century_gothic{
+	font-family: 'Century Gothic';
+}
+.arial{
+	font-family: Arial;
+}
+.bold{
+	font-weight: bold;
+}
+.italic{
+	font-style: italic;
+}
+.size20{
+	font-size: 20pt;
+}
+.size14{
+	font-size: 14pt;
+}
  /*FOOTER*/
 
 footer {
