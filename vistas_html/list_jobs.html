@@ -21,7 +21,7 @@
 		<div class="col-md-2"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
 	    </div>
 
-		<div class="col-md-2"><a href="login_user.html"><img src="images/nav/ic_entrar_sin_fondo.png"></a>
+		<div class="col-md-2"><a href="login_user.html"><img src="images/nav/ic_entra.png"></a>
 		</div>
 
 		<div class="col-md-2"><a href="login_company.html"><img src="images/nav/ic_soyempresa.png"></a>
@@ -39,14 +39,14 @@
 	</div>
 
 	<div class="row">
-		<div class="col-xs-5 col-md-3 col-md-offset-1">
+		<div class="col-xs-5 col-md-4 col-md-offset-1">
 	<form class="form-horizontal">
 		<div class="form-group">
 			<input type="text" class="form-control" id="word" placeholder="Palabra clave">
 		</div>
 	</form>	
 		</div>
-	<div class="col-xs-5 col-md-3 col-md-offset-1">
+	<div class="col-xs-5 col-md-4 col-md-offset-1">
 	<form class="form-horizontal">	
 		<div class="form-group">
 			<select  class="form-control" id="sector" name="sector">
@@ -79,7 +79,7 @@
 </div>
 
 	<div class="row">
-		<div class="col-xs-5 col-md-3 col-md-offset-1">
+		<div class="col-xs-5 col-md-4 col-md-offset-1">
 	<form class="form-horizontal">
 		<div class="form-group">
 			<select  class="form-control" id="province" name="province">
@@ -141,7 +141,7 @@
 	</form>	
 		</div>
 
-	<div class="col-xs-5 col-md-3 col-md-offset-1">
+	<div class="col-xs-5 col-md-4 col-md-offset-1">
 	<form class="form-horizontal">	
 		<div class="form-group">
 			<select  class="form-control" name="experience" id="experience">
@@ -159,31 +159,57 @@
 </div>
 
 <div class="row">
+	<div class="row_disability">
+		<div class="col-xs-4 col-md-4 col-sm-2 col-md-offset-1">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<p class="form-control-static">Certificado de discapacidad (+33%)</p>
+				</div>
+			</form>
+		</div>
 
-	<div class="col-xs-4 col-md-3 col-sm-2 col-md-offset-1">
-		<form class="form-horizontal">
-			<div class="form-group">
-				<p class="form-control-static">Certificado de discapacidad (+33%)</p>
-			</div>
-		</form>
+		<div class="col-xs-4 col-md-1" id="radio_disability">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="radio-inline"><input type="radio" name="optradio">Sí</label>
+					<label class="radio-inline"><input type="radio" name="optradio">No</label>
+				</div>
+			</form>
+		</div>
 	</div>
+</div>
 
-	<div class="col-xs-4 col-md-3" id="radio_disability">
-		<form class="form-horizontal">
-			<div class="form-group">
-				<label class="radio-inline"><input type="radio" name="optradio">Sí</label>
-				<label class="radio-inline"><input type="radio" name="optradio">No</label>
-			</div>
-		</form>
-	</div>
 
-	<div class="col-xs-4 col-md-4" id="search_button">
-		<form class="form-horizontal">
-			<div class="form-group">
-				<button type="submit" class="btn-img" ><img  src="images/list/ic_entrar.png"></button>
-			</div>
-		</form>
+<div class="row">
+	<div class="row_online">
+		<div class="col-xs-4 col-md-2 col-sm-2 col-md-offset-1">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<p class="form-control-static">Trabajar desde casa</p>
+				</div>
+			</form>
+		</div>
+
+		<div class="col-xs-4 col-md-5" id="radio_disability">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="radio-inline"><input type="checkbox" name="online"></label>
+				</div>
+			</form>
+		</div>
+
+
+
+		<div class="col-xs-4 col-md-2 " id="search_button">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<button type="submit" class="btn-img" ><img  src="images/list/ic_entrar.png"></button>
+				</div>
+			</form>
+		</div>
 	</div>
+</div>	
+
 
 </div>
 </section>
@@ -242,17 +268,14 @@
 	</div>
 
 	<div class="row">
-		<div class="col-md-offset-3 col-xs-offset-1 col-md-10 col-xs-10" id="more_info">
-		<form class="form-horizontal">
-			<div class="form-group">
-				<img  src="images/list_courses/ic_masinformacion.png">
-			</div>
-		</form>
-		</div>
+		<div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
+			<a href="details_jobs.html"> <img  src="images/list_courses/ic_masinformacion.png"> </a>
+		</div>	
+		</div>	
 	</div>
 	<div class="row">
-		<div class="col-md-offset-2 col-xs-offset-1 col-md-10 col-xs-10">
-			<img src="images/list/ic_barrapuntos_horizontal.png">
+		<div class="col-md-10 col-xs-10" id="barra_puntos">
+			<img src="images/list_courses/ic_barralarga4pt.png">
 		</div>
 	</div>
 </article>
@@ -294,17 +317,14 @@
 		</div>
 	</div>
 		<div class="row">
-		<div class="col-md-offset-3 col-xs-offset-1 col-md-10 col-xs-10" id="more_info">
-		<form class="form-horizontal">
-			<div class="form-group">
-				<img  src="images/list_courses/ic_masinformacion.png">
-			</div>
-		</form>
-		</div>
+		<div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
+			<a href="details_jobs.html"> <img  src="images/list_courses/ic_masinformacion.png"> </a>
+		</div>	
+		</div>	
 	</div>
 	<div class="row">
-		<div class="col-md-offset-2 col-xs-offset-1 col-md-10 col-xs-10">
-			<img src="images/list/ic_barrapuntos_horizontal.png">
+		<div class="col-md-10 col-xs-10" id="barra_puntos">
+			<img src="images/list_courses/ic_barralarga4pt.png">
 		</div>
 	</div>
 </article>
@@ -346,18 +366,15 @@
 			<p class="form-control-static">950€/mes</p>
 		</div>
 	</div>
-		<div class="row">
-		<div class="col-md-offset-3 col-xs-offset-1 col-md-10 col-xs-10" id="more_info">
-		<form class="form-horizontal">
-			<div class="form-group">
-				<img  src="images/list_courses/ic_masinformacion.png">
-			</div>
-		</form>
-		</div>
+			<div class="row">
+		<div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
+			<a href="details_jobs.html"> <img  src="images/list_courses/ic_masinformacion.png"> </a>
+		</div>	
+		</div>	
 	</div>
 	<div class="row">
-		<div class="col-md-offset-2 col-xs-offset-1 col-md-10 col-xs-10">
-			<img src="images/list/ic_barrapuntos_horizontal.png">
+		<div class="col-md-10 col-xs-10" id="barra_puntos">
+			<img src="images/list_courses/ic_barralarga4pt.png">
 		</div>
 	</div>
 </article>
