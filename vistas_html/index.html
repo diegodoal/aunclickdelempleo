@@ -11,99 +11,93 @@
 	<title>A un click del empleo</title>
 </head>
 
-<body class="size_font">
+<body>
 
-	<!--NAV-->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6"><a href="index.html"><img src="images/nav/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
-			</div>
+<!--NAV-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6"><a href="index.html"><img src="images/nav/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
+		</div>
 
-			<div class="col-md-2"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
-			</div>
+		<div class="col-md-2"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
+		</div>
 
-			<div class="col-md-2"><a href="login_user.html"><img src="images/nav/ic_entrar_sin_fondo.png"></a>
-			</div>
+		<div class="col-md-2"><a href="login_user.html"><img src="images/nav/ic_entra.png"></a>
+		</div>
 
-			<div class="col-md-2"><a href="login_company.html"><img src="images/nav/ic_soyempresa.png"></a>
-			</div>
+		<div class="col-md-2"><a href="login_company.html"><img src="images/nav/ic_soyempresa.png"></a>
+		</div>
+	</div>
+</div>
+
+<!-- CORPORATIVE IMAGE AND MORE-->
+<section class="container-fluid size_font" id="banner">
+	<div class="row">
+		<div class="col-md-6 size_font" id="banner_text">
+			<p><b>Fundación Adecco,</b> con 14 oficinas, y a través de una red de empresas solidarias de todos los sectores de actividad en toda España y de la Administración, ayuda a las personas que lo tienen más difícil a encontrar un empleo adecuado a sus habilidades y expectativas. Cuenta, además, con las 400 oficinas especializadas de Adecco y su red de 15.000 empresas y clientes para cumplir con su misión.</p>
+		</div>
+	</div>
+</section>
+
+<!-- THREE BUTTONS TEXT-->
+<section class="container" id="three_buttons_text">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="size30 century_gothic gray_adecco">¿QUÉ ESTÁS BUSCANDO?</h1>
+			<h2 class="size20 arial gray_adecco">En <span class="red_adecco">Fundación Adecco</span> te ayudamos a encontrar lo que buscas.</h2>
 		</div>
 	</div>
 
-	<!-- CORPORATIVE IMAGE AND MORE-->
-	<section class="container-fluid" id="banner">
-		<div class="row" id="banner_text">
-			<div class="col-md-6">
-			</div>
-			<div class="col-md-6">
-				<p><b>Fundación Adecco,</b> con 14 oficinas, y a través de una red de empresas solidarias de todos los sectores de actividad en toda España y de la Administración, ayuda a las personas que lo tienen más difícil a encontrar un empleo adecuado a sus habilidades y expectativas. Cuenta, además, con las 400 oficinas especializadas de Adecco y su red de 15.000 empresas y clientes para cumplir con su misión.</p>
-			</div>
-		</div>	
-	</section>
-
-	<!-- THREE BUTTONS TEXT-->
-	<section class="container" id="three_buttons_text">
+	<!--THREE BUTTONS-->
+	<article class="container" id="three_buttons">
 		<div class="row">
-			<div class="col-md-12">
-				<h1>¿QUÉ ESTÁS BUSCANDO?</h1>
-				<h2>En <span style="color: red">Fundación Adecco</span> te ayudamos a encontrar lo que buscas.</h2>	
+
+			<div class="col-md-4">
+				<a href="list_courses.html">
+					<h1 class="size30 century_gothic gray_adecco">FORMACIÓN</h1>
+					<img src="images/index/ic_courses.png" onmouseover="this.src='images/index/ic_courses_dark.png';" onmouseout="this.src='images/index/ic_courses.png';">
+				</a>
 			</div>
+
+			<div class="col-md-4">
+				<a href="list_jobs.html">
+					<h1 class="size30 century_gothic gray_adecco">EMPLEO</h1>
+					<img src="images/index/ic_jobs.png" onmouseover="this.src='images/index/ic_jobs_dark.png';" onmouseout="this.src='images/index/ic_jobs.png';">
+				</a>
+			</div>
+
+			<div class="col-md-4">
+				<a href="orientation.html">
+					<h1 class="size30 century_gothic gray_adecco">ORIENTACIÓN</h1>
+					<img src="images/index/ic_orientation.png" onmouseover="this.src='images/index/ic_orientation_dark.png';" onmouseout="this.src='images/index/ic_orientation.png';">
+				</a>
+			</div>
+
 		</div>
+	</article>
+</section>
 
-		<!--THREE BUTTONS-->
-		<article class="container" id="three_buttons">
-			<div class="row">
+<footer class="container-fluid">
+	<div class="container"><br>
+		<p>Derechos reservados @2015</p>
+	</div>
+</footer>
 
-				<div class="col-md-4 " id="item1">
-					<a href="">
-						<h2>CURSOS</h2>
-						<img src="images/index/ic_courses.png" onmouseover="this.src='images/index/ic_courses_dark.png';" onmouseout="this.src='images/index/ic_courses.png';">
-					</a>	
-				</div>
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up" class="mask_pop_up">
+	<div class="box_pop_up resize">
+		<a href="#close" title="Cerrar" class="close">X</a>
 
-				<div class="col-md-4" id="item2">
-					<a href="#">
-						<h2>TRABAJO</h2>
-						<img src="images/index/ic_jobs.png" onmouseover="this.src='images/index/ic_jobs_dark.png';" onmouseout="this.src='images/index/ic_jobs.png';">
-					</a>
-				</div>
+		<h2>¿Qué desea adaptar?</h2>
+		<h3>Tamaño texto:</h3><br>
+		<a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+		<a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+		<a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
 
-				<div class="col-md-4" id="item3">
-					<a href="#">
-						<h2>TODO</h2>
-						<img src="images/index/ic_all.png" onmouseover="this.src='images/index/ic_all_dark.png';" onmouseout="this.src='images/index/ic_all.png';">
-					</a>
-				</div>
+		<h3>Colores de texto y fondo</h3>
+		<h3>...</h3>
+	</div>
+</div>
 
-			</div>
-		</article>	
-
-		<footer class="container-fluid">
-			<div class="container"><br>
-				<p>Derechos reservados @2015</p>
-			</div>
-		</footer>
-
-
-		<!-- POP UP WINDOW -->
-		<div id="accesibility_pop_up" class="mask_pop_up">
-			<div class="box_pop_up resize">
-				<a href="#close" title="Cerrar" class="close">X</a>
-
-				<h2>¿Qué desea adaptar?</h2>
-				<h3>Tamaño texto:</h3><br>
-				<a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
-				<a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
-				<a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
-
-				<h3>Colores de texto y fondo</h3>
-				<h3>...</h3>
-			</div>
-		</div>
-
-
-
-
-
-	</body>
-	</html>
+</body>
+</html>
