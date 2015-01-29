@@ -40,3 +40,12 @@ GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 
 #GET		/api/1/company/getAll
 #/api/1/company/:id
+
+
+GET		/joblist									controllers.ListController.blank()
+
+
+# FINAL ROUTES
+
+GET     /particular/login                           controllers.LoginParticularUserController.blank()
+GET     /company/login                              controllers.LoginCompanyUserController.blank()

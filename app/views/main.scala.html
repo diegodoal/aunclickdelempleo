@@ -18,22 +18,39 @@
 	<!--NAV-->
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-6"><a href="#"><img src="@routes.Assets.at("images/nav/corporative.jpg")" class="img-responsive" alt="Responsive image"></a>
+			<div class="col-md-6"><a href="@routes.Application.index()"><img src="@routes.Assets.at("images/nav/corporative.jpg")" class="img-responsive" alt="Responsive image"></a>
 			</div>
 
-			<div class="col-md-2"><a href="#"><img src="@routes.Assets.at("images/nav/ic_adaptabilidad2.png")"></a>
+			<div class="col-md-2"><a href="#accesibility_pop_up"><img src="@routes.Assets.at("images/nav/ic_adaptabilidad2.png")"></a>
 			</div>
 
-			<div class="col-md-2"><a href="#"><img src="@routes.Assets.at("images/nav/ic_entra.png")"></a>
+			<div class="col-md-2"><a href="@routes.LoginParticularUserController.blank()"><img src="@routes.Assets.at("images/nav/ic_entra.png")"></a>
 			</div>
 
-			<div class="col-md-2"><a href="#"><img src="@routes.Assets.at("images/nav/ic_soyempresa.png")"></a>
+			<div class="col-md-2"><a href="@routes.LoginCompanyUserController.blank()"><img src="@routes.Assets.at("images/nav/ic_soyempresa.png")"></a>
 			</div>
 		</div>
 	</div>
 
 	<section class="content">@content</section>
 
+    <!-- POP UP WINDOW -->
+    <div id="accesibility_pop_up" class="mask_pop_up">
+        <div class="box_pop_up resize">
+            <a href="#close" title="Cerrar" class="close">X</a>
+
+            <h2>¿Qué desea adaptar?</h2>
+            <h3>Tamaño texto:</h3><br>
+            <a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+            <a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+            <a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
+
+            <h3>Colores de texto y fondo</h3>
+            <h3>...</h3>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
 	<footer class="container-fluid">
 		<div class="container"><br>
 			<p>Derechos reservados @@2015</p>
