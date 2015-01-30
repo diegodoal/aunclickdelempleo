@@ -34,4 +34,10 @@ public class CoursesController extends Controller{
 			CourseDataSource.initializeCoursesDB();
 			return ok("Colección de Course Offers inicializada correctamente");
 		}
+
+
+        public static Result blank(){
+        return ok(views.html.courseslist.courseslist.render());
+    }
+
 }

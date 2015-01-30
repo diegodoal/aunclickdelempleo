@@ -1,4 +1,5 @@
 @main(Html("")){
+
 <!--SEARCH-->
 <section class="container" id="back_search">
 
@@ -115,13 +116,9 @@
             <form class="form-horizontal">
                 <div class="form-group">
                     <select  class="form-control" name="experience" id="experience">
-                        <option value="s0" disabled selected="">Años de experiencia</option>
-                        <option value="s1"> Prácticas</option>
-                        <option value="s1"> Menos de un año</option>
-                        <option value="s2"> 1-3 años</option>
-                        <option value="s3"> 3-5 años</option>
-                        <option value="s4"> +5 años</option>
-                        <option value="s6"> +10 años</option>
+                        <option value="s0" disabled selected="">Ordenar por</option>
+                        <option value="s1"> Fecha de publicación más reciente</option>
+                        <option value="s2"> Fecha límite de inscripción más reciente</option>
                     </select>
                 </div>
             </form>
@@ -129,57 +126,29 @@
     </div>
 
     <div class="row">
-        <div class="row_disability">
-            <div class="col-xs-4 col-md-4 col-sm-2 col-md-offset-1">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <p class="form-control-static">Certificado de discapacidad (+33%)</p>
-                    </div>
-                </form>
-            </div>
-
-            <div class="col-xs-4 col-md-1" id="radio_disability">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label class="radio-inline"><input type="radio" name="optradio">Sí</label>
-                        <label class="radio-inline"><input type="radio" name="optradio">No</label>
-                    </div>
-                </form>
-            </div>
+        <div class="col-xs-4 col-md-2 col-sm-2 col-md-offset-1">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <p class="form-control-static">Realizar online</p>
+                </div>
+            </form>
         </div>
-    </div>
 
-
-    <div class="row">
-        <div class="row_online">
-            <div class="col-xs-4 col-md-2 col-sm-2 col-md-offset-1">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <p class="form-control-static">Trabajar desde casa</p>
-                    </div>
-                </form>
-            </div>
-
-            <div class="col-xs-4 col-md-5" id="radio_disability">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label class="radio-inline"><input type="checkbox" name="online"></label>
-                    </div>
-                </form>
-            </div>
-
-
-
-            <div class="col-xs-4 col-md-2 " id="search_button">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <button type="submit" class="btn-img" ><img  src="@routes.Assets.at("images/list/ic_entrar.png")"></button>
-                    </div>
-                </form>
-            </div>
+        <div class="col-xs-4 col-md-4" id="radio_disability">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="radio-inline"><input type="checkbox" name="online"></label>
+                </div>
+            </form>
         </div>
-    </div>
 
+        <div class="col-xs-4 col-md-4" id="search_button">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <button type="submit" class="btn-img" ><img  src="@routes.Assets.at("images/list_courses/ic_buscar.png")"></button>
+                </div>
+            </form>
+        </div>
 
     </div>
 </section>
@@ -189,7 +158,7 @@
 
     <div class="row">
         <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="date_offer">
-            <h4>Fecha</h4>
+            <h4>Inscripción hasta</h4>
         </div>
         <div class="col-md-6 col-xs-7" id="description_offer">
             <h4>Título</h4>
@@ -208,7 +177,7 @@
             <p class="form-control-static">20/01/15</p>
         </div>
         <div class="col-md-6 col-xs-7"id="offer_item_description">
-            <p class="form-control-static">Ayuda a la capacitación profesional en Networking 10006/1215</p>
+            <p class="form-control-static">Formación Apoyo Administrativo</p>
         </div>
         <div class="col-md-2 col-xs-2" id="offer_item_location">
             <p class="form-control-static">Madrid</p>
@@ -221,25 +190,25 @@
     </div>
     <div class="row">
         <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
-            <p class="form-control-static">Contrato prácticas</p>
+            <p class="form-control-static">150h</p>
         </div>
-        <div class="col-md-1 col-xs-1">
+        <div class="col-md-1 col-xs-1" id="space">
             <p class="form-control-static">|</p>
         </div>
         <div class="col-md-3"id="offer_item_time">
-            <p class="form-control-static">Media jornada</p>
+            <p class="form-control-static">Inicio: 25/01/15. Fin: 08/02/15</p>
         </div>
-        <div class="col-md-1 col-xs-1">
+        <div class="col-md-1 col-xs-1" id="space" >
             <p class="form-control-static">|</p>
         </div>
         <div class="col-md-2"id="offer_item_salary">
-            <p class="form-control-static">350€/mes</p>
+            <p class="form-control-static">Gratuito</p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="details_jobs.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+            <a href="details_courses.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
         </div>
     </div>
     </div>
@@ -255,10 +224,10 @@
 <article class="container" id="offer_item">
     <div class="row">
         <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
-            <p class="form-control-static">20/01/15</p>
+            <p class="form-control-static">24/01/15</p>
         </div>
         <div class="col-md-6 col-xs-7"id="offer_item_description">
-            <p class="form-control-static">Gestoría de Proyectos Informáticos 10006/660</p>
+            <p class="form-control-static">Curso de Gestor/a de Proyectos Informáticos</p>
         </div>
         <div class="col-md-2 col-xs-2" id="offer_item_location">
             <p class="form-control-static">Zaragoza</p>
@@ -271,24 +240,24 @@
     </div>
     <div class="row">
         <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
-            <p class="form-control-static">Contrato prácticas</p>
+            <p class="form-control-static">3h</p>
         </div>
-        <div class="col-md-1 col-xs-1">
+        <div class="col-md-1 col-xs-1"id="space">
             <p class="form-control-static">|</p>
         </div>
         <div class="col-md-3"id="offer_item_time">
-            <p class="form-control-static">Media jornada</p>
+            <p class="form-control-static">Inicio: 27/01/15. Fin: 27/01/15</p>
         </div>
-        <div class="col-md-1 col-xs-1">
+        <div class="col-md-1 col-xs-1"id="space">
             <p class="form-control-static">|</p>
         </div>
         <div class="col-md-2"id="offer_item_salary">
-            <p class="form-control-static">500€/mes</p>
+            <p class="form-control-static">Gratuito</p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="details_jobs.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+            <a href="details_courses.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
         </div>
     </div>
     </div>
@@ -305,13 +274,13 @@
 <article class="container" id="offer_item">
     <div class="row">
         <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
-            <p class="form-control-static">19/01/15</p>
+            <p class="form-control-static">28/01/15</p>
         </div>
         <div class="col-md-6 col-xs-7"id="offer_item_description">
-            <p class="form-control-static">Ayuda a la Capacitación Recursos Humanos 10006/627</p>
+            <p class="form-control-static">Ayuda a la Capacitación Recursos Humanos</p>
         </div>
         <div class="col-md-2 col-xs-2" id="offer_item_location">
-            <p class="form-control-static">Madrid</p>
+            <p class="form-control-static">Online</p>
         </div>
     </div>
     <div class="row">
@@ -321,24 +290,24 @@
     </div>
     <div class="row">
         <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
-            <p class="form-control-static">Contrato temporal</p>
+            <p class="form-control-static">25h</p>
         </div>
-        <div class="col-md-1 col-xs-1">
+        <div class="col-md-1 col-xs-1"id="space">
             <p class="form-control-static">|</p>
         </div>
         <div class="col-md-3"id="offer_item_time">
-            <p class="form-control-static">Jornada completa</p>
+            <p class="form-control-static">Inicio: 03/02/15. Fin: 08/02/15</p>
         </div>
-        <div class="col-md-1 col-xs-1">
+        <div class="col-md-1 col-xs-1"id="space">
             <p class="form-control-static">|</p>
         </div>
         <div class="col-md-2"id="offer_item_salary">
-            <p class="form-control-static">950€/mes</p>
+            <p class="form-control-static">Gratuito</p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="details_jobs.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+            <a href="details_courses.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
         </div>
     </div>
     </div>
@@ -349,8 +318,6 @@
     </div>
 </article>
 <!--//OFERTA 3-->
-
-
 
 <!-- POP UP WINDOW -->
 <div id="accesibility_pop_up" class="mask_pop_up">
@@ -367,7 +334,5 @@
         <h3>...</h3>
     </div>
 </div>
-	
+
 }
-
-

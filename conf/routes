@@ -43,6 +43,8 @@ GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 
 
 GET		/joblist									controllers.ListController.blank()
+GET     /course                                     controllers.CoursesController.blank()
+
 
 
 # FINAL ROUTES

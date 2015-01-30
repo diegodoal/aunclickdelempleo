@@ -8,5 +8,7 @@ public class ListController extends Controller{
 	public static Result blank(){
 		return ok(views.html.jobslist.jobslist.render());
 	}
+
+
 	
 }
