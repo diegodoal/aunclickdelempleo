@@ -19,7 +19,7 @@ public class Application extends Controller {
 
 	public static Result index() {
         User user = new User("victor.gzarco@gmail.com", "123456789");
-		return ok(index.render(user));
+		return ok(index.render());
 	}
 
 	/* EMAIL
