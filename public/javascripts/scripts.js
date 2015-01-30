@@ -53,7 +53,7 @@ function zoom_font(action) {
 		inc = 10; 
 
 		if(action == "reset") {
-		obj[i].style.fontSize = "100%";
+		obj[i].style.fontSize = "107%";
 		}
 		if(action == "increase" && ((current + inc) <= max)){
 		val = current + inc;
