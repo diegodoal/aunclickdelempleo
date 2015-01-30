@@ -1,4 +1,5 @@
-@main(Html("")){
+@(user: models.entities.User)
+@main(user){
 	<!-- CORPORATIVE IMAGE AND MORE-->
 <section class="container-fluid size_font" id="banner">
 	<div class="row">
@@ -22,14 +23,14 @@
 		<div class="row">
 
 			<div class="col-md-4">
-				<a href="@routes.CompanyUserController.listCompanyUsers()">
+				<a href="@routes.CoursesController.blank()">
 					<h1 class="size30 century_gothic gray_adecco">FORMACIÓN</h1>
 					<img src="@routes.Assets.at("images/index/ic_courses.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_courses_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_courses.png")';">
 				</a>
 			</div>
 
 			<div class="col-md-4">
-				<a href="list_jobs.html">
+				<a href="@routes.ListController.blank()">
 					<h1 class="size30 century_gothic gray_adecco">EMPLEO</h1>
 					<img src="@routes.Assets.at("images/index/ic_jobs.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_jobs_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_jobs.png")';">
 				</a>

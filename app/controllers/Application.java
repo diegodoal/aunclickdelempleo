@@ -4,6 +4,7 @@ import models.datasource.CompanyUserDataSource;
 import models.datasource.ParticularUserDataSource;
 import models.entities.CompanyUser;
 import models.entities.ParticularUser;
+import models.entities.User;
 import play.mvc.*;
 import utils.EmailUtil;
 import views.html.index;
@@ -17,7 +18,8 @@ import javax.mail.Session;
 public class Application extends Controller {
 
 	public static Result index() {
-		return ok(index.render());
+        User user = new User("victor.gzarco@gmail.com", "123456789");
+		return ok(index.render(user));
 	}
 
 	/* EMAIL
