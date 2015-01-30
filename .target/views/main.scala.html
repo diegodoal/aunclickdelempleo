@@ -1,4 +1,4 @@
-@(content: Html)
+@(nav: String = "")(content: Html)
 
 <!DOCTYPE html>
 <html lang="es">
@@ -29,8 +29,13 @@
                 <div class="col-md-2"><a href="@routes.LoginParticularUserController.blank()"><img src="@routes.Assets.at("images/nav/ic_entra.png")"></a>
                 </div>
 
-                <div class="col-md-2"><a href="@routes.LoginCompanyUserController.blank()"><img src="@routes.Assets.at("images/nav/ic_soyempresa.png")"></a>
-                </div>
+                @if(nav == "company"){
+                    <div class="col-md-2"><a href="@routes.LoginParticularUserController.blank()"><img src="@routes.Assets.at("images/nav/ic_soyparticular.png")"></a>
+                    </div>
+                }else{
+                    <div class="col-md-2"><a href="@routes.LoginCompanyUserController.blank()"><img src="@routes.Assets.at("images/nav/ic_soyempresa.png")"></a>
+                    </div>
+                }
             }else{
             <div class="col-md-2"><a href="#">@session.get("name")</a>
             </div>

@@ -18,7 +18,7 @@ GET		/company/verify/:email/:key					controllers.CompanyUserController.verifyCom
 GET		/company/sendvalidation/:email				controllers.Application.sendCompanyValidationEmail(email : String)
 
 # PARTICULAR
-GET		/particular/new/:email/:password			controllers.ParticularUserController.newParticularUser(email : String, password : String)
+GET		/particular/new/:name/:email/:password			controllers.ParticularUserController.newParticularUser(name : String, email : String, password : String)
 GET		/particular/findall							controllers.ParticularUserController.listParticularUsers()
 GET		/particular/find/:email						controllers.ParticularUserController.findParticularUser(email : String)
 GET		/particular/initfakedb						controllers.ParticularUserController.initializeParticularUserDB()
@@ -53,3 +53,4 @@ GET     /particular/login                           controllers.LoginParticularU
 GET     /company/login                              controllers.LoginCompanyUserController.blank()
 
 GET     /logout                                     controllers.Application.logout()
+POST    /particular/login                           controllers.LoginParticularUserController.submitLogin()

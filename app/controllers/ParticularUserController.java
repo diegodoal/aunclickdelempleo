@@ -10,13 +10,13 @@ import play.mvc.Result;
 public class ParticularUserController extends Controller{
 
 	// PARTICULAR USERS
-	public static Result newParticularUser(String email, String password){
+	public static Result newParticularUser(String name, String email, String password){
 		ParticularUser query = ParticularUserDataSource.getParticularUser(email);
 		if(query != null){
 			return badRequest("Ya existe un usuario con ese email registrado, inténtelo con otro...");
 		}
 		
-		ParticularUser particularUser = new ParticularUser(email, password);
+		ParticularUser particularUser = new ParticularUser(name, email, password);
 		ParticularUserDataSource.insertIntoParticularUser(particularUser);
 		return redirect("/particular/sendvalidation/"+email);
 	}
