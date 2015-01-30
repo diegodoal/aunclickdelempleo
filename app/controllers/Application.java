@@ -22,6 +22,11 @@ public class Application extends Controller {
 		return ok(index.render());
 	}
 
+    public static Result logout(){
+        session().clear();
+        return ok(index.render());
+    }
+
 	/* EMAIL
 	 * Outgoing Mail (SMTP) Server
 	 * requires TLS or SSL: smtp.gmail.com (use authentication)

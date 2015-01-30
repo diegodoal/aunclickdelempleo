@@ -51,3 +51,5 @@ GET     /course                                     controllers.CoursesControlle
 
 GET     /particular/login                           controllers.LoginParticularUserController.blank()
 GET     /company/login                              controllers.LoginCompanyUserController.blank()
+
+GET     /logout                                     controllers.Application.logout()
