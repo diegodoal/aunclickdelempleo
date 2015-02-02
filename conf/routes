@@ -49,14 +49,15 @@ GET     /jobdetails                                 controllers.JobsDetailsContr
 
 
 # FINAL ROUTES
-GET     /company/login                              controllers.LoginCompanyUserController.blank()
-
 GET     /logout                                     controllers.Application.logout()
 
 # PARTICULAR USER LOGIN
 GET     /particular/                                controllers.LoginParticularUserController.blank()
 POST    /particular/login                           controllers.LoginParticularUserController.submitLogin()
 POST    /particular/signup                          controllers.LoginParticularUserController.signUpLogin()
+
+# COMPANY USER LOGIN
+GET     /company/                                   controllers.LoginCompanyUserController.blank()
 
 # COURSES
 GET     /course                                     controllers.CoursesController.blank()
