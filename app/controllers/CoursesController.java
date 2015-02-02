@@ -41,8 +41,10 @@ public class CoursesController extends Controller{
         return ok(views.html.courseslist.courseslist.render(courses));
     }
 
-    public static Result courseDetails(int id){
-        Course course = CourseDataSource.getCourseOffer(id);
+    public static Result courseDetails(String id){
+
+
+        Course course = CourseDataSource.getCourseOffer(Integer.parseInt(id));
         if(course == null){
             return badRequest("Error, el curso indicado no existe");
         }

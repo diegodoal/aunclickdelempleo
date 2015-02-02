@@ -60,4 +60,4 @@ POST    /particular/signup                          controllers.LoginParticularU
 
 # COURSES
 GET     /course                                     controllers.CoursesController.blank()
-GET     /course/details/:id                         controllers.CoursesController.courseDetails(id : Integer)
+GET     /course/details/:id                         controllers.CoursesController.courseDetails(id : String)
