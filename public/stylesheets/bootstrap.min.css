@@ -36,10 +36,6 @@
 	padding-top: 0.8em;
 }
 
-.button-nav-im-company button:active{
-    border: none;
-}
-
 .button-nav-login button{
 	background: #FFFFFF;
 	border: none;
@@ -47,6 +43,7 @@
 	font: sans-serif;
 	text-decoration: none;
 	cursor: pointer;
+	outline: 0px;
 	font-size: 1.4em;
 }
 
@@ -62,6 +59,7 @@
 	height: 2.2em;
 	box-shadow: 2px 2px 5px #999;
 	font-size: 1.3em;
+	outline: 0px;
 }
 
  /*BANNER*/
