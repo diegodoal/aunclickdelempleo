@@ -29,7 +29,6 @@ public class ParticularUserDataSource extends DataSource{
         append("surnames", particularUser.surnames).
 		append("email", particularUser.email).
 		append("password", particularUser.password).
-		append("verifyPassword", particularUser.verifyPassword).
 		append("emailVerificationKey", particularUser.emailVerificationKey);
 		
 		collection.insert(WriteConcern.SAFE, query);

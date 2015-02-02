@@ -28,14 +28,14 @@ public class LoginParticularUserController extends Controller {
         if(user != null && bindedForm.get("password").equals(user.password)) {
             session("email", user.email);
             session("name", user.name);
-            return ok(index.render());
+            return redirect("/");
         }
 
         CompanyUser companyUser = CompanyUserDataSource.getCompanyUser(bindedForm.get("email"));
         if(companyUser != null && bindedForm.get("password").equals(companyUser.password)) {
             session("email", companyUser.email);
             session("name", "Company name FAKE");
-            return ok(index.render());
+            return redirect("/");
         }
 
         return unauthorized(views.html.login_particular_user.login.render());
@@ -43,22 +43,22 @@ public class LoginParticularUserController extends Controller {
     
     // NO FUNCIONA BIEN
     public static Result signUpLogin() {
-    	DynamicForm filledForm = form().bindFromRequest();
+        DynamicForm filledForm = form().bindFromRequest();
 
-    	// Check repeated password
-    	if(!filledForm.field("password").valueOr("").equals(filledForm.field("verifyPassword").value())) {
-    		filledForm.reject("verifyPassword", "La contraseña no coincide.");
-    	}
-        
-    	if(filledForm.hasErrors()) {
-            return badRequest(views.html.login_particular_user.login.render());
-        } else {
-            // Insert new user in the database
-            ParticularUser userCreated = ParticularUserDataSource.insertIntoParticularUser(filledForm.get());
-            return ok(views.html.login_particular_user.complete_user_profile_1.render(userCreated)); // MIRAR POR QUÉ NO DEJA USAR ESA VISTA
+        ParticularUser userCreated = ParticularUserDataSource.getParticularUser(filledForm.get("register_email"));
+        if (userCreated != null){
+            return badRequest("Usuario con ese email ya registrado");
         }
-    	
-    	return unauthorized(views.html.login_particular_user.login.render());
+
+        if(!filledForm.get("register_password").equals(filledForm.get("register_repeat_password"))) {
+            return badRequest("Las contraseñas no coinciden");
+        }
+
+            userCreated = new ParticularUser(filledForm.get("register_name"), filledForm.get("register_surnames"),
+                    filledForm.get("register_email"), filledForm.get("register_password"));
+            ParticularUserDataSource.insertIntoParticularUser(userCreated);
+
+        return redirect("/particular/findall");
     }
     
 }

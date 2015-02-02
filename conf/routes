@@ -49,10 +49,11 @@ GET     /course                                     controllers.CoursesControlle
 
 
 # FINAL ROUTES
-
-GET     /particular/login                           controllers.LoginParticularUserController.blank()
 GET     /company/login                              controllers.LoginCompanyUserController.blank()
 
 GET     /logout                                     controllers.Application.logout()
+
+# PARTICULAR USER LOGIN
+GET     /particular/                                controllers.LoginParticularUserController.blank()
 POST    /particular/login                           controllers.LoginParticularUserController.submitLogin()
-POST    /particular/login                           controllers.LoginParticularUserController.signUpLogin()
+POST    /particular/signup                          controllers.LoginParticularUserController.signUpLogin()
