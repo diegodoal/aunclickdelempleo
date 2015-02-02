@@ -10,6 +10,9 @@ import play.libs.Json;
 public class ParticularUser {
 
 	// Step 1
+    @Required()
+    public String name;
+
 	@Required()
 	@Email()
 	public String email;
@@ -24,8 +27,9 @@ public class ParticularUser {
 	
 	public ParticularUser() {}
 	
-	public ParticularUser(String email, String password) {
-		this.email = email;
+	public ParticularUser(String name, String email, String password) {
+		this.name = name;
+        this.email = email;
 		this.password = password;
 		this.emailVerificationKey = UUID.randomUUID().toString();
 	}

@@ -23,6 +23,7 @@ public class ParticularUserDataSource extends DataSource{
 		
 		// Create the query
 		BasicDBObject query = new BasicDBObject().
+        append("name", particularUser.name).
 		append("email", particularUser.email).
 		append("password", particularUser.password).
 		append("emailVerificationKey", particularUser.emailVerificationKey);
@@ -95,7 +96,7 @@ public class ParticularUserDataSource extends DataSource{
 	 */
 	public static void initializeParticularUsersDB(){
 		for(int i=0; i<15; i++){
-			insertIntoParticularUser(new ParticularUser("email"+i+"@particular", "password"+i));
+			insertIntoParticularUser(new ParticularUser("User"+i, "email"+i+"@particular", "password"+i));
 		}
 	}
 	
