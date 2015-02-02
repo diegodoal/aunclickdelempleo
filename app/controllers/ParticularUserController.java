@@ -33,7 +33,7 @@ public class ParticularUserController extends Controller{
 	public static Result findParticularUser(String email){
 		ParticularUser query = ParticularUserDataSource.getParticularUser(email);
 		if(query==null)
-			return badRequest("No existe el usuario con email: "+email);
+			return badRequest("No existe el usuario con email: " + email);
 		else
 			return ok(query.showUserInfo());
 	}

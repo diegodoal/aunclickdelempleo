@@ -1,6 +1,8 @@
 package models.datasource;
 
 import java.util.List;
+
+import play.data.DynamicForm.Dynamic;
 import utils.Constants;
 import models.entities.ParticularUser;
 
@@ -24,8 +26,10 @@ public class ParticularUserDataSource extends DataSource{
 		// Create the query
 		BasicDBObject query = new BasicDBObject().
         append("name", particularUser.name).
+        append("surnames", particularUser.surnames).
 		append("email", particularUser.email).
 		append("password", particularUser.password).
+		append("verifyPassword", particularUser.verifyPassword).
 		append("emailVerificationKey", particularUser.emailVerificationKey);
 		
 		collection.insert(WriteConcern.SAFE, query);
@@ -99,5 +103,4 @@ public class ParticularUserDataSource extends DataSource{
 			insertIntoParticularUser(new ParticularUser("User"+i, "email"+i+"@particular", "password"+i));
 		}
 	}
-	
 }
