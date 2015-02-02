@@ -5,7 +5,7 @@ import play.mvc.Result;
 
 
 public class JobsDetailsController extends Controller {
-    public static Result func(){
+    public static Result blank(){
         return ok(views.html.jobslist.jobslist.render());
     }
 }
