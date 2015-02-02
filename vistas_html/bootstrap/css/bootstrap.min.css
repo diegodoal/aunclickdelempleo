@@ -156,15 +156,22 @@ margin-left: 4em;
 #text_details_courses{
 	margin-left: 1em;
 }
-
+ /*COMPLETE_USER_PROFILE*/
+ 
 .red_adecco{
 	color:#ea2026;
 }
 .gray_adecco{
 	color:#706f6f;
 }
+.brown_adecco{
+	color:#ab9e79;
+}
 .century_gothic{
 	font-family: 'Century Gothic';
+}
+.center{
+	text-align: center;
 }
 .arial{
 	font-family: Arial;
@@ -175,15 +182,76 @@ margin-left: 4em;
 .italic{
 	font-style: italic;
 }
-.size30{
-	font-size: 30pt;
+
+.size14{
+	font-size: 14pt;
+}
+.size18{
+	font-size: 18pt;
 }
 .size20{
 	font-size: 20pt;
 }
-.size14{
-	font-size: 14pt;
+.size22{
+	font-size: 22pt;
 }
+.size25{
+	font-size: 25pt;
+}
+.size30{
+	font-size: 30pt;
+}
+.size35{
+	font-size: 35pt;
+}
+.size50{
+	font-size: 50pt;
+}
+h2{
+	font-size: 30pt;
+}
+#text_user_profile_2{
+	text-align: center;
+	margin-bottom: 2em;
+
+}
+input[type="checkbox"] {
+   transform:scale(1.5,1.5);
+   -ms-transform:scale(1.5,1.5); /* IE 9 */
+   -moz-transform:scale(1.5,1.5); /* Firefox */
+   -webkit-transform:scale(1.5,1.5); /* Safari and Chrome */
+   -o-transform:scale(1.5,1.5 ); /* Opera */
+}
+input[type="radio"] {
+   transform:scale(1.5,1.5);
+   -ms-transform:scale(1.5,1.5); /* IE 9 */
+   -moz-transform:scale(1.5,1.5); /* Firefox */
+   -webkit-transform:scale(1.5,1.5); /* Safari and Chrome */
+   -o-transform:scale(1.5,1.5 ); /* Opera */
+}
+ #level_studies, #company, #office,#sector, #experience{
+ 	margin-left: 1em;
+
+ }
+
+ #job_experience_group_4{
+ 	text-align: right;
+ 	margin-right: 5em;
+ }
+ #add_button_user{
+ 	margin-left:60em; 
+ }
+ #next_button_user{
+ 	margin-left: 60em;
+ 	margin-top: 1em;
+ }
+.add_container{
+	margin-bottom: 4em;
+}
+
+
+
+
  /*FOOTER*/
 footer {
 	
@@ -202,3 +270,5 @@ footer {
 .row_online{
 
 }
+
+
