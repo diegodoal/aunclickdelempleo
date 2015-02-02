@@ -36,10 +36,17 @@ public class CoursesController extends Controller{
 		}
 
 
-        public static Result blank(){
-            List<Course> courses = CourseDataSource.getCourses();
-
+    public static Result blank(){
+        List<Course> courses = CourseDataSource.getCourses();
         return ok(views.html.courseslist.courseslist.render(courses));
+    }
+
+    public static Result courseDetails(int id){
+        Course course = CourseDataSource.getCourseOffer(id);
+        if(course == null){
+            return badRequest("Error, el curso indicado no existe");
+        }
+        return ok(views.html.courseslist.coursesdetails.render(course));
     }
 
 }
