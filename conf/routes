@@ -54,3 +54,4 @@ GET     /company/login                              controllers.LoginCompanyUser
 
 GET     /logout                                     controllers.Application.logout()
 POST    /particular/login                           controllers.LoginParticularUserController.submitLogin()
+POST    /particular/login                           controllers.LoginParticularUserController.signUpLogin()

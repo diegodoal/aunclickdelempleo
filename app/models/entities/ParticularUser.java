@@ -13,6 +13,9 @@ public class ParticularUser {
     @Required()
     public String name;
 
+    @Required()
+    public String surnames;
+    
 	@Required()
 	@Email()
 	public String email;
@@ -21,11 +24,25 @@ public class ParticularUser {
 	@MinLength(4)
 	public String password;
 	
+	@Required()
+	@MinLength(4)
+	public String verifyPassword;
+	
 	public String emailVerificationKey;
 
 	// Step 2
+	public ParticularUser() {
+		
+	}
 	
-	public ParticularUser() {}
+	// Para el signUplogin: Añadido por Mikel
+	public ParticularUser(String name, String surnames, String email, String password, String verifyPassword) {
+		this.name  = name;
+		this.surnames = surnames;
+		this.email = email;
+		this.password = password;
+		this.verifyPassword = verifyPassword;
+	}
 	
 	public ParticularUser(String name, String email, String password) {
 		this.name = name;
