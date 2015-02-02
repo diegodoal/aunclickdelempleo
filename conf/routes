@@ -43,6 +43,7 @@ GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 
 
 GET		/joblist									controllers.ListController.blank()
+GET     /jobdetails                                 controllers.JobsDetailsController.blank()
 GET     /course                                     controllers.CoursesController.blank()
 
 
