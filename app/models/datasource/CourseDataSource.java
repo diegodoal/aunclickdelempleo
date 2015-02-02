@@ -1,5 +1,6 @@
 package models.datasource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import models.entities.Course;
@@ -31,6 +32,7 @@ public class CourseDataSource extends DataSource{
 				append("course_id", course.id).
 				append("title", course.title).
 				append("sector", course.sector).
+                append("registrationLimit", course.registrationLimit).
 				append("duration", JSON.parse(course.duration.toString())).
 				append("location", course.location).
 				append("description", course.description).
@@ -59,6 +61,16 @@ public class CourseDataSource extends DataSource{
 		mongoClient.close();
 		return all;
 	}
+
+    public static List<Course> getCourses(){
+        List<DBObject> dblist = getAllCourses();
+
+        List<Course> coursesList = new ArrayList<Course>();
+        for(int i=0; i<dblist.size(); i++){
+            coursesList.add(new Gson().fromJson(dblist.get(i).toString(), Course.class));
+        }
+        return coursesList;
+    }
 
 	/**
 	 * This method finds a Course Offer by its id
@@ -89,8 +101,8 @@ public class CourseDataSource extends DataSource{
 	 */
 	public static void initializeCoursesDB(){
 		for(int i=0; i<15; i++){
-			insertIntoCoursesCollection(new Course("Title"+i, "Sector"+i, 
-					new Duration("Length: "+i+"hours", "Schedule: Mondays and Fridays", "Start_Date: "+i, "End_Date: "+i*2),
+			insertIntoCoursesCollection(new Course("Title"+i, "Sector"+i, "22/01/201"+i,
+					new Duration(10+i+"h", "Schedule: Mondays and Fridays", i+"/01/2015", i+"/10/2015"),
 					"Location"+i, "Description"+i, "General_terms"+i, "Requirements"+i, 200*i, new ContactProfile("Name"+i, "email"+i+"@contact", 612345678+i)));
 		}
 	}

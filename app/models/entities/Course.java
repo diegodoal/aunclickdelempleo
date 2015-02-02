@@ -13,6 +13,9 @@ public class Course {
 	
 	@Required()
 	public String sector;
+
+    @Required()
+    public String registrationLimit;
 	
 	@Required()
 	public Duration duration;
@@ -37,11 +40,12 @@ public class Course {
 	
 	public Course() {}
 	
-	public Course(String title, String sector, Duration duration, String location, 
+	public Course(String title, String sector, String registrationLimit, Duration duration, String location,
 			String description, String general_terms, String requirements, double price, ContactProfile contact){
 		this.id = id+1;
 		this.title = title;
 		this.sector = sector;
+        this.registrationLimit = registrationLimit;
 		this.duration = duration;
 		this.location = location;
 		this.description = description;

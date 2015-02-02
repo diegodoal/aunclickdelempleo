@@ -37,7 +37,9 @@ public class CoursesController extends Controller{
 
 
         public static Result blank(){
-        return ok(views.html.courseslist.courseslist.render());
+            List<Course> courses = CourseDataSource.getCourses();
+
+        return ok(views.html.courseslist.courseslist.render(courses));
     }
 
 }

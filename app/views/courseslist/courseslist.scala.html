@@ -1,3 +1,4 @@
+@(courses: List[models.entities.Course])
 @main(){
 
 <!--SEARCH-->
@@ -170,154 +171,57 @@
 </article>
 
 <!--OFERTA 1-->
-
 <article class="container" id="offer_item">
-    <div class="row">
-        <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
-            <p class="form-control-static">20/01/15</p>
+    @for(index <- 0 until courses.size){
+        <div class="row">
+            <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
+                <p class="form-control-static">@courses(index).getRegistrationLimit()</p>
+            </div>
+            <div class="col-md-6 col-xs-7"id="offer_item_description">
+                <p class="form-control-static">@courses(index).getTitle()</p>
+            </div>
+            <div class="col-md-2 col-xs-2" id="offer_item_location">
+                <p class="form-control-static">@courses(index).getLocation()</p>
+            </div>
         </div>
-        <div class="col-md-6 col-xs-7"id="offer_item_description">
-            <p class="form-control-static">Formación Apoyo Administrativo</p>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
+                <p class="form-control-static">Sector: @courses(index).getSector()</p>
+            </div>
         </div>
-        <div class="col-md-2 col-xs-2" id="offer_item_location">
-            <p class="form-control-static">Madrid</p>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
+                <p class="form-control-static">@courses(index).getDuration().getLength()</p>
+            </div>
+            <div class="col-md-1 col-xs-1" id="space">
+                <p class="form-control-static">|</p>
+            </div>
+            <div class="col-md-3"id="offer_item_time">
+                <p class="form-control-static">Inicio: @courses(index).getDuration().getStart_date(). Fin: @courses(index).getDuration().getEnd_date()</p>
+            </div>
+            <div class="col-md-1 col-xs-1" id="space" >
+                <p class="form-control-static">|</p>
+            </div>
+            <div class="col-md-2"id="offer_item_salary">
+                <p class="form-control-static">@courses(index).getPrice()</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
-            <p class="form-control-static">Sector: Informática</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
-            <p class="form-control-static">150h</p>
-        </div>
-        <div class="col-md-1 col-xs-1" id="space">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-3"id="offer_item_time">
-            <p class="form-control-static">Inicio: 25/01/15. Fin: 08/02/15</p>
-        </div>
-        <div class="col-md-1 col-xs-1" id="space" >
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-2"id="offer_item_salary">
-            <p class="form-control-static">Gratuito</p>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="details_courses.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
+                <a href="details_courses.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+            </div>
         </div>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10 col-xs-10" id="barra_puntos">
-            <img src="@routes.Assets.at("images/list_courses/ic_barralarga4pt.png")">
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-10 col-xs-10" id="barra_puntos">
+                <img src="@routes.Assets.at("images/list_courses/ic_barralarga4pt.png")">
+            </div>
+        </div>
+    }
 </article>
 <!--//OFERTA 1-->
-<!--OFERTA 2-->
 
-<article class="container" id="offer_item">
-    <div class="row">
-        <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
-            <p class="form-control-static">24/01/15</p>
-        </div>
-        <div class="col-md-6 col-xs-7"id="offer_item_description">
-            <p class="form-control-static">Curso de Gestor/a de Proyectos Informáticos</p>
-        </div>
-        <div class="col-md-2 col-xs-2" id="offer_item_location">
-            <p class="form-control-static">Zaragoza</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
-            <p class="form-control-static">Sector: Ingeniería, fabricación, producción</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
-            <p class="form-control-static">3h</p>
-        </div>
-        <div class="col-md-1 col-xs-1"id="space">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-3"id="offer_item_time">
-            <p class="form-control-static">Inicio: 27/01/15. Fin: 27/01/15</p>
-        </div>
-        <div class="col-md-1 col-xs-1"id="space">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-2"id="offer_item_salary">
-            <p class="form-control-static">Gratuito</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="details_courses.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
-        </div>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10 col-xs-10" id="barra_puntos">
-            <img src="@routes.Assets.at("images/list_courses/ic_barralarga4pt.png")">
-        </div>
-    </div>
-</article>
-<!--//OFERTA 2-->
-
-<!--OFERTA 3-->
-
-<article class="container" id="offer_item">
-    <div class="row">
-        <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
-            <p class="form-control-static">28/01/15</p>
-        </div>
-        <div class="col-md-6 col-xs-7"id="offer_item_description">
-            <p class="form-control-static">Ayuda a la Capacitación Recursos Humanos</p>
-        </div>
-        <div class="col-md-2 col-xs-2" id="offer_item_location">
-            <p class="form-control-static">Online</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
-            <p class="form-control-static">Sector: Recursos Humanos</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
-            <p class="form-control-static">25h</p>
-        </div>
-        <div class="col-md-1 col-xs-1"id="space">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-3"id="offer_item_time">
-            <p class="form-control-static">Inicio: 03/02/15. Fin: 08/02/15</p>
-        </div>
-        <div class="col-md-1 col-xs-1"id="space">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-2"id="offer_item_salary">
-            <p class="form-control-static">Gratuito</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="details_courses.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
-        </div>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10 col-xs-10" id="barra_puntos">
-            <img src="@routes.Assets.at("images/list_courses/ic_barralarga4pt.png")">
-        </div>
-    </div>
-</article>
-<!--//OFERTA 3-->
 
 <!-- POP UP WINDOW -->
 <div id="accesibility_pop_up" class="mask_pop_up">
