@@ -72,6 +72,36 @@ public class CourseDataSource extends DataSource{
         return coursesList;
     }
 
+    public static List<Course> getCoursesByFilter(String keywords, String sector, String location, boolean online){
+        DBCollection collection = connectDB(Constants.MONGO_COURSES_COLLECTION);
+        BasicDBObject query = new BasicDBObject();
+        if(keywords != null){
+            query.append("title", keywords);
+        }
+        if(sector != null){
+            query.append("sector", sector);
+        }
+
+        if(location != null){
+            query.append("location", location);
+        }
+
+        if(online == true){
+            query.append("online", true);
+        }
+
+        List<DBObject> dblist = collection.find(query).toArray();
+        return dbObjectsListToCourseList(dblist);
+    }
+
+
+    private static List<Course> dbObjectsListToCourseList(List<DBObject> dblist){
+        List<Course> coursesList = new ArrayList<Course>();
+        for(int i=0; i<dblist.size(); i++){
+            coursesList.add(new Gson().fromJson(dblist.get(i).toString(), Course.class));
+        }
+        return coursesList;
+    }
 	/**
 	 * This method finds a Course Offer by its id
 	 * @param id The course_id of the registered Course Offer
@@ -101,7 +131,7 @@ public class CourseDataSource extends DataSource{
 	 */
 	public static void initializeCoursesDB(){
 		for(int i=0; i<15; i++){
-			insertIntoCoursesCollection(new Course("Title"+i, "Sector"+i, "22/01/201"+i,
+			insertIntoCoursesCollection(new Course("Title"+i, "s"+i, "22/01/201"+i,
 					new Duration(10+i+"h", "Schedule: Mondays and Fridays", i+"/01/2015", i+"/10/2015"),
 					"Location"+i, "Description"+i, "General_terms"+i, "Requirements"+i, 200*i, new ContactProfile("Name"+i, "email"+i+"@contact", 612345678+i)));
 		}

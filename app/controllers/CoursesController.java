@@ -7,8 +7,12 @@ import models.entities.Course;
 
 import com.mongodb.DBObject;
 
+import play.data.DynamicForm;
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
+
+import static play.data.Form.form;
 
 public class CoursesController extends Controller{
 
@@ -42,13 +46,18 @@ public class CoursesController extends Controller{
     }
 
     public static Result courseDetails(String id){
-
-
         Course course = CourseDataSource.getCourseOffer(Integer.parseInt(id));
         if(course == null){
             return badRequest("Error, el curso indicado no existe");
         }
         return ok(views.html.courseslist.coursesdetails.render(course));
+    }
+
+    public static Result blankFiltered(){
+        DynamicForm filterForm = form().bindFromRequest();
+
+        return ok(views.html.courseslist.courseslist.render(CourseDataSource.getCoursesByFilter(filterForm.get("keyword"), filterForm.get("sector"), null, false)));
+
     }
 
 }
