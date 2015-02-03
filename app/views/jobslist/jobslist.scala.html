@@ -204,168 +204,52 @@
 <!--OFERTA 1-->
 
 <article class="container" id="offer_item">
-    <div class="row">
-        <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
-            <p class="form-control-static">20/01/15</p>
+    @for(index <- 0 until jobs.size){
+        <div class="row">
+            <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
+                <p class="form-control-static">@jobs(index).getDate()</p>
+            </div>
+            <div class="col-md-6 col-xs-7"id="offer_item_description">
+                <p class="form-control-static">@jobs(index).getTitle()</p>
+            </div>
+            <div class="col-md-2 col-xs-2" id="offer_item_location">
+                <p class="form-control-static">@jobs(index).getLocation()</p>
+            </div>
         </div>
-        <div class="col-md-6 col-xs-7"id="offer_item_description">
-            <p class="form-control-static">Ayuda a la capacitación profesional en Networking 10006/1215</p>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
+                <p class="form-control-static">Sector: @jobs(index).getSector()</p>
+            </div>
         </div>
-        <div class="col-md-2 col-xs-2" id="offer_item_location">
-            <p class="form-control-static">Madrid</p>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
+                <p class="form-control-static">@jobs(index).getContract_type()</p>
+            </div>
+            <div class="col-md-1 col-xs-1">
+                <p class="form-control-static">|</p>
+            </div>
+            <div class="col-md-3"id="offer_item_time">
+                <p class="form-control-static">@jobs(index).getWorkday()</p>
+            </div>
+            <div class="col-md-1 col-xs-1">
+                <p class="form-control-static">|</p>
+            </div>
+            <div class="col-md-2"id="offer_item_salary">
+                <p class="form-control-static">@jobs(index).getSalary() €/mes</p>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
-            <p class="form-control-static">Sector: Informática</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
-            <p class="form-control-static">Contrato prácticas</p>
-        </div>
-        <div class="col-md-1 col-xs-1">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-3"id="offer_item_time">
-            <p class="form-control-static">Media jornada</p>
-        </div>
-        <div class="col-md-1 col-xs-1">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-2"id="offer_item_salary">
-            <p class="form-control-static">350€/mes</p>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="@routes.JobsController.()"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+        <div class="row">
+            <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
+                <a href="@routes.JobsController.()"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+            </div>
         </div>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10 col-xs-10" id="barra_puntos">
-            <img src="@routes.Assets.at("images/list_courses/ic_barralarga4pt.png")">
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-10 col-xs-10" id="barra_puntos">
+                <img src="@routes.Assets.at("images/list_courses/ic_barralarga4pt.png")">
+            </div>
+        </div>
+    }
 </article>
-<!--//OFERTA 1-->
-<!--OFERTA 2-->
-
-<article class="container" id="offer_item">
-    <div class="row">
-        <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
-            <p class="form-control-static">20/01/15</p>
-        </div>
-        <div class="col-md-6 col-xs-7"id="offer_item_description">
-            <p class="form-control-static">Gestoría de Proyectos Informáticos 10006/660</p>
-        </div>
-        <div class="col-md-2 col-xs-2" id="offer_item_location">
-            <p class="form-control-static">Zaragoza</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
-            <p class="form-control-static">Sector: Ingeniería, fabricación, producción</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
-            <p class="form-control-static">Contrato prácticas</p>
-        </div>
-        <div class="col-md-1 col-xs-1">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-3"id="offer_item_time">
-            <p class="form-control-static">Media jornada</p>
-        </div>
-        <div class="col-md-1 col-xs-1">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-2"id="offer_item_salary">
-            <p class="form-control-static">500€/mes</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="@routes.JobsController.()"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
-        </div>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10 col-xs-10" id="barra_puntos">
-            <img src="@routes.Assets.at("images/list_courses/ic_barralarga4pt.png")">
-        </div>
-    </div>
-</article>
-<!--//OFERTA 2-->
-
-<!--OFERTA 3-->
-
-<article class="container" id="offer_item">
-    <div class="row">
-        <div class="col-md-offset-1 col-md-2 col-xs-2 col-xs-offset-1" id="offer_item_date">
-            <p class="form-control-static">19/01/15</p>
-        </div>
-        <div class="col-md-6 col-xs-7"id="offer_item_description">
-            <p class="form-control-static">Ayuda a la Capacitación Recursos Humanos 10006/627</p>
-        </div>
-        <div class="col-md-2 col-xs-2" id="offer_item_location">
-            <p class="form-control-static">Madrid</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-5  col-xs-offset-3 col-xs-5" id="offer_item_sector">
-            <p class="form-control-static">Sector: Recursos Humanos</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="offer_item_contract">
-            <p class="form-control-static">Contrato temporal</p>
-        </div>
-        <div class="col-md-1 col-xs-1">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-3"id="offer_item_time">
-            <p class="form-control-static">Jornada completa</p>
-        </div>
-        <div class="col-md-1 col-xs-1">
-            <p class="form-control-static">|</p>
-        </div>
-        <div class="col-md-2"id="offer_item_salary">
-            <p class="form-control-static">950€/mes</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="@routes.JobsController.()"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
-        </div>
-    </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10 col-xs-10" id="barra_puntos">
-            <img src="@routes.Assets.at("images/list_courses/ic_barralarga4pt.png")">
-        </div>
-    </div>
-</article>
-<!--//OFERTA 3-->
-
-
-
-<!-- POP UP WINDOW -->
-<div id="accesibility_pop_up" class="mask_pop_up">
-    <div class="box_pop_up resize">
-        <a href="#close" title="Cerrar" class="close">X</a>
-
-        <h2>¿Qué desea adaptar?</h2>
-        <h3>Tamaño texto:</h3><br>
-        <a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
-        <a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
-        <a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
-
-        <h3>Colores de texto y fondo</h3>
-        <h3>...</h3>
-    </div>
-</div>
 }

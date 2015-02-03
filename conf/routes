@@ -42,8 +42,6 @@ GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 #/api/1/company/:id
 
 
-GET		/joblist									controllers.JobsController.blank()
-GET     /jobdetails/details/:id                      controllers.JobsController.jobDetails(id : String)
 
 
 
@@ -63,3 +61,7 @@ GET     /company/                                   controllers.LoginCompanyUser
 GET     /course                                     controllers.CoursesController.blank()
 GET     /course/details/:id                         controllers.CoursesController.courseDetails(id : String)
 POST    /course                                     controllers.CoursesController.blankFiltered()
+
+# JOBS
+GET     /job                                        controllers.JobsController.blank()
+GET     /job/details/:id                            controllers.JobsController.jobDetails(id : String)
