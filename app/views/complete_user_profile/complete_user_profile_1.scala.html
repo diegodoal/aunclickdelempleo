@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <img src="images/complete_user_profile_1/ic_paso1.png">
+            <img src="@routes.Assets.at("images/complete_user_profile_1/ic_paso1.png")">
         </div>
     </div>
 </section>
@@ -156,7 +156,7 @@
     </div>
     <div class="row">
         <div class="col-md-6" id="add_button_user">
-            <button type="submit" class="btn-img" id="job_experience_group_5"><img  src="images/complete_user_profile_1/ic_add.png"></button>
+            <button type="submit" class="btn-img" id="job_experience_group_5"><img  src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")"></button>
         </div>
     </div>
 </article>
@@ -216,26 +216,9 @@
     </div>
     <div class="row">
         <div class="col-md-6" id="next_button_user">
-            <a href="complete_user_profile_2.html"><button type="submit" class="btn-img" id="job_experience_group_5"><img  src="images/complete_user_profile_1/ic_next.png"></button></a>
+            <a href="complete_user_profile_2.html"><button type="submit" class="btn-img" id="job_experience_group_5"><img  src="@routes.Assets.at("images/complete_user_profile_1/ic_next.png")"></button></a>
         </div>
     </div>
 </article>
-
-<!-- POP UP WINDOW -->
-<div id="accesibility_pop_up" class="mask_pop_up">
-    <div class="box_pop_up resize">
-        <a href="#close" title="Cerrar" class="close">X</a>
-
-        <h2>¿Qué desea adaptar?</h2>
-        <h3>Tamaño texto:</h3><br>
-        <a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
-        <a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
-        <a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
-
-        <h3>Colores de texto y fondo</h3>
-        <h3>...</h3>
-    </div>
-</div>
-
 
 }
