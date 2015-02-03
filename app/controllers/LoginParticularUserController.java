@@ -40,8 +40,8 @@ public class LoginParticularUserController extends Controller {
 
         return unauthorized(views.html.login_particular_user.login.render());
     }
-    
-    // NO FUNCIONA BIEN
+
+
     public static Result signUpLogin() {
         DynamicForm filledForm = form().bindFromRequest();
 
@@ -54,11 +54,13 @@ public class LoginParticularUserController extends Controller {
             return badRequest("Las contraseñas no coinciden");
         }
 
-            userCreated = new ParticularUser(filledForm.get("register_name"), filledForm.get("register_surnames"),
-                    filledForm.get("register_email"), filledForm.get("register_password"));
-            ParticularUserDataSource.insertIntoParticularUser(userCreated);
+        userCreated = new ParticularUser(filledForm.get("register_name"), filledForm.get("register_surnames"),
+                filledForm.get("register_email"), filledForm.get("register_password"));
+        ParticularUserDataSource.insertIntoParticularUser(userCreated);
 
-        return redirect("/particular/findall");
+        return ok(views.html.complete_user_profile.complete_user_profile_1.render());
     }
+
+    
     
 }
