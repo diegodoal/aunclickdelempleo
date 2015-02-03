@@ -17,27 +17,27 @@ import static play.data.Form.form;
 public class CoursesController extends Controller{
 
 	// JOB OFFERS
-		public static Result listCourses(){
-			List<DBObject> all = CourseDataSource.getAllCourses();
-			String courses = "";
-			for(int i=0; i<all.size(); i++){
-				courses+=all.get(i)+"\n\n";
-			}
-			return ok(courses);
-		}
-		
-		public static Result findCourse(int id){
-			Course query = CourseDataSource.getCourseOffer(id);
-			if(query==null)
-				return badRequest("No existe la oferta de curso con id: "+id);
-			else
-				return ok(query.showCourseOfferInfo());
-		}
-		
-		public static Result initializeCoursesDB(){
-			CourseDataSource.initializeCoursesDB();
-			return ok("Colección de Course Offers inicializada correctamente");
-		}
+        public static Result listCourses(){
+            List<DBObject> all = CourseDataSource.getAllCourses();
+            String courses = "";
+            for(int i=0; i<all.size(); i++){
+                courses+=all.get(i)+"\n\n";
+            }
+            return ok(courses);
+        }
+
+        public static Result findCourse(int id){
+            Course query = CourseDataSource.getCourseOffer(id);
+            if(query==null)
+                return badRequest("No existe la oferta de curso con id: "+id);
+            else
+                return ok(query.showCourseOfferInfo());
+        }
+
+        public static Result initializeCoursesDB(){
+            CourseDataSource.initializeCoursesDB();
+            return ok("Colección de Course Offers inicializada correctamente");
+        }
 
 
     public static Result blank(){
@@ -56,7 +56,7 @@ public class CoursesController extends Controller{
     public static Result blankFiltered(){
         DynamicForm filterForm = form().bindFromRequest();
 
-        return ok(views.html.courseslist.courseslist.render(CourseDataSource.getCoursesByFilter(filterForm.get("keyword"), filterForm.get("sector"), null, false)));
+        return ok(views.html.courseslist.courseslist.render(CourseDataSource.getCoursesByFilter("", filterForm.get("sector"), null, filterForm.get("online"))));
 
     }
 
