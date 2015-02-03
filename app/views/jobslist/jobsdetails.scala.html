@@ -5,12 +5,12 @@
     <div class="row">
         <div class="col-md-8" class="text_details_courses">
             <h2 class="red_adecco century_gothic">DETALLES DE LA OFERTA:</h2><br>
-            <p class="arial gray_adecco size20 bold">Gestor/a de Proyectos Farmaceuticos 10006/660</p>
-            <p><span class="red_adecco arial italic size14">Sector:</span><span class="arial gray_adecco size14">I+D</span></p>
-            <p><span class="red_adecco arial italic size14">Tipo de contrato:</span><span class="arial gray_adecco size14"> Prácticas.</span></p>
-            <p><span class="red_adecco arial italic size14">Tipo de jornada:</span><span class="arial gray_adecco size14"> Media jornada</span></p>
-            <p><span class="red_adecco arial italic size14">Salario:</span><span class="arial gray_adecco size14"> 350€/mes</span></p>
-            <p><span class="red_adecco arial italic size14">Lugar:</span><span class="arial gray_adecco size14"> Polígono La Planilla, Zaragoza.</span></p>
+            <p class="arial gray_adecco size20 bold">@job.getTitle()</p>
+            <p><span class="red_adecco arial italic size14">Sector: </span><span class="arial gray_adecco size14">@job.getSector()</span></p>
+            <p><span class="red_adecco arial italic size14">Tipo de contrato: </span><span class="arial gray_adecco size14">@job.getContract_type()</span></p>
+            <p><span class="red_adecco arial italic size14">Tipo de jornada: </span><span class="arial gray_adecco size14">@job.getWorkday()</span></p>
+            <p><span class="red_adecco arial italic size14">Salario: </span><span class="arial gray_adecco size14">@job.getSalary() €/mes</span></p>
+            <p><span class="red_adecco arial italic size14">Lugar: </span><span class="arial gray_adecco size14">@job.getLocation()</span></p>
         </div>
         <div class="col-md-3" id="img_details_courses">
             <img src="@routes.Assets.at("images/details_courses/ic_recuadro.png")">
@@ -19,28 +19,25 @@
 
     <div class="row">
         <div class="col-md-11"class="text_details_courses">
-            <p><span class="red_adecco arial italic size14">Descripción:</span><span class="arial gray_adecco size14"> Importante empresa multinacional del sector farmaceutico, selecciona una persona con perfil en farmacia, con el siguiente objetivo:
-			El objetivo de la beca es adquirir las habilidades para desempeñar el trabajo en un departamento de Marketing farmacéutico, dando soporte en concreto al área de respiratorio.
-			Algunas de las funciones que se llevarían a cabo son:<br />
-                &bull;Diseño del plan estratégico de la marca.<br />
-                &bull;Desarrollo e implementación de las acciones incluidas en el plan de marketing.<br />
-                &bull;Elaboración y gestión de materiales promocionales para la Red de Ventas.<br />
-                &bull;Análisis de la evolución del mercado en función de los distintos canales y productos.<br />
-                &bull;Seguimiento del presupuesto promocional asignado.<br />
-                &bull;Contacto con red de ventas y líderes de opinión. </span></p>
+            <p><span class="red_adecco arial italic size14">Descripción: </span><span class="arial gray_adecco size14"> @job.getDescription()</span></p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-11"class="text_details_courses">
-            <p><span class="red_adecco arial italic size14">Condiciones generales:</span><span class="arial gray_adecco size14">
-                Licenciado/a en Ciencias de la Salud (Farmacia, otras). Nivel B2 de inglés.
+            <p><span class="red_adecco arial italic size14">Condiciones generales: </span><span class="arial gray_adecco size14"> @job.getGeneral_terms()
             </span>
             </p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-11"class="text_details_courses">
-            <p><span class="red_adecco arial italic size14">Requisitos:</span><span class="arial gray_adecco size14"> <b>Será necesario disponer de un Certificado de Discapacidad de al menos el 33%. </b></span></p>
+            <p><span class="red_adecco arial italic size14">Requisitos: </span>
+                <span class="arial gray_adecco size14">
+                @if(job.getCertificateOf33Disability()){
+                <b>Será necesario disponer de un Certificado de Discapacidad de al menos el 33%.</b>
+                }
+                    @job.getRequirements()
+                </span></p>
         </div>
     </div>
     <div class="row">
@@ -56,22 +53,4 @@
         </div>
     </div>
 </section>
-
-<!-- POP UP WINDOW -->
-<div id="accesibility_pop_up" class="mask_pop_up">
-    <div class="box_pop_up resize">
-        <a href="#close" title="Cerrar" class="close">X</a>
-
-        <h2>¿Qué desea adaptar?</h2>
-        <h3>Tamaño texto:</h3><br>
-        <a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
-        <a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
-        <a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
-
-        <h3>Colores de texto y fondo</h3>
-        <h3>...</h3>
-    </div>
-</div>
-
-
 }

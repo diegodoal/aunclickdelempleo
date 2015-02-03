@@ -39,14 +39,11 @@ public class JobsController extends Controller{
     }
 
     public static Result jobDetails(String id){
-
         Job job = JobDataSource.getJobOffer(Integer.parseInt(id));
 
         if (job == null){
-
             return badRequest("Error, la oferta indicada ya no está disponible");
         }
-
         return ok(views.html.jobslist.jobsdetails.render(job));
     }
 	

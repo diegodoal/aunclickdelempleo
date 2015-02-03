@@ -66,6 +66,19 @@ public class JobDataSource extends DataSource{
 		return all;
 	}
 
+    /**
+     * Converts a DBObject List to a Job List
+     * @param dblist The DBObject list
+     * @return A Job List
+     */
+    public static List<Job> dbObjectsListToJobList(List<DBObject> dblist){
+        List<Job> jobsList = new ArrayList<Job>();
+        for(int i=0; i<dblist.size(); i++){
+            jobsList.add(new Gson().fromJson(dblist.get(i).toString(), Job.class));
+        }
+
+        return jobsList;
+    }
 
     public static List<Job> getJobs(){
         List<DBObject> dblist = getAllJobs();
