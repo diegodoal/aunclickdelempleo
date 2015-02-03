@@ -63,16 +63,14 @@ public class CourseDataSource extends DataSource{
 		return all;
 	}
 
-    public static List<Course> getCourses(){
-        List<DBObject> dblist = getAllCourses();
-
-        List<Course> coursesList = new ArrayList<Course>();
-        for(int i=0; i<dblist.size(); i++){
-            coursesList.add(new Gson().fromJson(dblist.get(i).toString(), Course.class));
-        }
-        return coursesList;
-    }
-
+    /**
+     * This method filters a Courses List by some parameters
+     * @param keywords
+     * @param sector
+     * @param location
+     * @param online
+     * @return A Course List with all the filtered objects
+     */
     public static List<Course> getCoursesByFilter(String keywords, String sector, String location, String online){
         DBCollection collection = connectDB(Constants.MONGO_COURSES_COLLECTION);
         BasicDBObject query = new BasicDBObject();
@@ -100,8 +98,12 @@ public class CourseDataSource extends DataSource{
         return queryResult;
     }
 
-
-    private static List<Course> dbObjectsListToCourseList(List<DBObject> dblist){
+    /**
+     * Converts a DBObject List to a Course List
+     * @param dblist The DBObject list
+     * @return A Course List
+     */
+    public static List<Course> dbObjectsListToCourseList(List<DBObject> dblist){
         List<Course> coursesList = new ArrayList<Course>();
         for(int i=0; i<dblist.size(); i++){
             coursesList.add(new Gson().fromJson(dblist.get(i).toString(), Course.class));
@@ -110,6 +112,12 @@ public class CourseDataSource extends DataSource{
         return coursesList;
     }
 
+    /**
+     * This method filters a Courses List by the keyword in params
+     * @param firstList The list with all the objects to filter
+     * @param keyword The keyword for filter the list
+     * @return A List with all the objects that contains in its Title/Description the keyword
+     */
     private static List<Course> filterByKeyword(List<Course> firstList, String keyword){
         List<Course> filteredList = new ArrayList<Course>();
         Course auxCourse = null;

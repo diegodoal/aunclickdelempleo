@@ -41,7 +41,7 @@ public class CoursesController extends Controller{
 
 
     public static Result blank(){
-        List<Course> courses = CourseDataSource.getCourses();
+        List<Course> courses = CourseDataSource.dbObjectsListToCourseList(CourseDataSource.getAllCourses());
         return ok(views.html.courseslist.courseslist.render(courses));
     }
 
