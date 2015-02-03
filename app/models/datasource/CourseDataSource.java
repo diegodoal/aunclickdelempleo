@@ -39,6 +39,7 @@ public class CourseDataSource extends DataSource{
 				append("general_terms", course.general_terms).
 				append("requirements", course.requirements).
 				append("price", course.price).
+                append("online", course.online).
 				append("contact", JSON.parse(course.contact.toString()));
 
 
@@ -62,16 +63,72 @@ public class CourseDataSource extends DataSource{
 		return all;
 	}
 
-    public static List<Course> getCourses(){
-        List<DBObject> dblist = getAllCourses();
+    /**
+     * This method filters a Courses List by some parameters
+     * @param keywords
+     * @param sector
+     * @param location
+     * @param online
+     * @return A Course List with all the filtered objects
+     */
+    public static List<Course> getCoursesByFilter(String keywords, String sector, String location, String online){
+        DBCollection collection = connectDB(Constants.MONGO_COURSES_COLLECTION);
+        BasicDBObject query = new BasicDBObject();
 
+        if(sector != null){
+            query.append("sector", sector);
+        }
+
+        if(location != null){
+            query.append("location", location);
+        }
+
+        if(online != null){
+            query.append("online", true);
+        }
+
+        List<DBObject> dblist = collection.find(query).toArray();
+
+        List<Course> queryResult = dbObjectsListToCourseList(dblist);
+
+        if(!keywords.trim().equals("")){
+            return filterByKeyword(queryResult, keywords);
+        }
+
+        return queryResult;
+    }
+
+    /**
+     * Converts a DBObject List to a Course List
+     * @param dblist The DBObject list
+     * @return A Course List
+     */
+    public static List<Course> dbObjectsListToCourseList(List<DBObject> dblist){
         List<Course> coursesList = new ArrayList<Course>();
         for(int i=0; i<dblist.size(); i++){
             coursesList.add(new Gson().fromJson(dblist.get(i).toString(), Course.class));
         }
+
         return coursesList;
     }
 
+    /**
+     * This method filters a Courses List by the keyword in params
+     * @param firstList The list with all the objects to filter
+     * @param keyword The keyword for filter the list
+     * @return A List with all the objects that contains in its Title/Description the keyword
+     */
+    private static List<Course> filterByKeyword(List<Course> firstList, String keyword){
+        List<Course> filteredList = new ArrayList<Course>();
+        Course auxCourse = null;
+        for(int i=0; i<firstList.size(); i++){
+            auxCourse = firstList.get(i);
+            if(auxCourse.title.toLowerCase().contains(keyword.toLowerCase()) || auxCourse.description.toLowerCase().contains(keyword.toLowerCase())){
+                filteredList.add(auxCourse);
+            }
+        }
+        return filteredList;
+    }
 	/**
 	 * This method finds a Course Offer by its id
 	 * @param id The course_id of the registered Course Offer
@@ -101,9 +158,9 @@ public class CourseDataSource extends DataSource{
 	 */
 	public static void initializeCoursesDB(){
 		for(int i=0; i<15; i++){
-			insertIntoCoursesCollection(new Course("Title"+i, "Sector"+i, "22/01/201"+i,
+			insertIntoCoursesCollection(new Course("Title"+i, "s"+i, "22/01/201"+i,
 					new Duration(10+i+"h", "Schedule: Mondays and Fridays", i+"/01/2015", i+"/10/2015"),
-					"Location"+i, "Description"+i, "General_terms"+i, "Requirements"+i, 200*i, new ContactProfile("Name"+i, "email"+i+"@contact", 612345678+i)));
+					"Location"+i, "Description"+i, "General_terms"+i, "Requirements"+i, 200*i, true, new ContactProfile("Name"+i, "email"+i+"@contact", 612345678+i)));
 		}
 	}
 

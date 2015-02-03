@@ -62,3 +62,4 @@ GET     /company/                                   controllers.LoginCompanyUser
 # COURSES
 GET     /course                                     controllers.CoursesController.blank()
 GET     /course/details/:id                         controllers.CoursesController.courseDetails(id : String)
+POST    /course                                     controllers.CoursesController.blankFiltered()

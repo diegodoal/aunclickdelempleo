@@ -36,13 +36,16 @@ public class Course {
     public double price;
 
     @Required()
+    public boolean online;
+
+    @Required()
     public ContactProfile contact;
 
     public Course() {
     }
 
     public Course(String title, String sector, String registrationLimit, Duration duration, String location,
-                  String description, String general_terms, String requirements, double price, ContactProfile contact) {
+                  String description, String general_terms, String requirements, double price, boolean online, ContactProfile contact) {
         this.id = id + 1;
         this.title = title;
         this.sector = sector;
@@ -53,6 +56,7 @@ public class Course {
         this.general_terms = general_terms;
         this.requirements = requirements;
         this.price = price;
+        this.online = online;
         this.contact = contact;
     }
 
