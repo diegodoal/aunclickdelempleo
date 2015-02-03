@@ -3,7 +3,7 @@
 <!--DETAILS_COURSES-->
 <section class="container" id="back_details_courses">
     <div class="row">
-        <div class="col-md-8" id="text_details_courses">
+        <div class="col-md-8" class="text_details_courses">
             <h2 class="red_adecco century_gothic">DETALLES DEL CURSO:</h2><br>
             <p class="arial gray_adecco size20 bold">@course.getTitle()</p>
             <p><span class="red_adecco arial italic size14">Sector: </span><span class="arial gray_adecco size14">@course.getSector()</span></p>
@@ -17,32 +17,32 @@
     </div>
 
     <div class="row">
-        <div class="col-md-11"id="text_details_courses">
+        <div class="col-md-11"class="text_details_courses">
             <p><span class="red_adecco arial italic size14">Descripción: </span><span class="arial gray_adecco size14">@course.getDescription().</span></p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-11"id="text_details_courses">
+        <div class="col-md-11"class="text_details_courses">
             <p><span class="red_adecco arial italic size14">Condiciones generales: </span><span class="arial gray_adecco size14">@course.getGeneral_terms().</span></p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-11"id="text_details_courses">
+        <div class="col-md-11"class="text_details_courses">
             <p><span class="red_adecco arial italic size14">Requisitos: </span><span class="arial gray_adecco size14">@course.getRequirements().</span></p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-11"id="text_details_courses">
+        <div class="col-md-11"class="text_details_courses">
             <p><span class="red_adecco arial italic size14">Precio: </span><span class="arial gray_adecco size14">@course.getPrice() €</span></p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-11"id="text_details_courses">
+        <div class="col-md-11"class="text_details_courses">
             <p><span class="red_adecco arial italic size14">Contacto: </span><span class="arial gray_adecco size14">@course.getContact().getName().</span><span class="arial gray_adecco size14 bold"> Email:</span><span class="arial gray_adecco size14"> @course.getContact().getEmail(),</span><span class="arial gray_adecco size14 bold"> Teléfono:</span><span class="arial gray_adecco size14"> @course.getContact().getPhone_number().</span></p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-9" id="text_details_courses">
+        <div class="col-md-9" class="text_details_courses">
             <a href="@routes.CoursesController.blank()"><button type="submit" class="btn-img" ><img  src="@routes.Assets.at("images/details_courses/ic_volver.png")"></button></a>
         </div>
         <div class="col-md-2">

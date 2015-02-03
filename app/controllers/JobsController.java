@@ -32,5 +32,22 @@ public class JobsController extends Controller{
 		JobDataSource.initializeJobsDB();
 		return ok("Colección de Job Offers inicializada correctamente");
 	}
+
+    public static Result blank(){
+        List<Job> jobs = JobDataSource.getJobs();
+        return ok(views.html.jobslist.jobslist.render(jobs));
+    }
+
+    public static Result jobDetails(String id){
+
+        Job job = JobDataSource.getJobOffer(Integer.parseInt(id));
+
+        if (job == null){
+
+            return badRequest("Error, la oferta indicada ya no está disponible");
+        }
+
+        return ok(views.html.jobslist.jobsdetails.render(job));
+    }
 	
 }

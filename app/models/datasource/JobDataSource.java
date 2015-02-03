@@ -1,15 +1,21 @@
 package models.datasource;
 
 import java.util.List;
+import java.util.ArrayList;
+
+
+import models.entities.Course;
+import models.entities.Job;
+import models.entities.Job.ContactProfile;
+import models.entities.Job.*;
+import utils.Constants;
 
 import com.google.gson.Gson;
-import com.mongodb.util.JSON;
-import models.entities.Job;
-import utils.Constants;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.WriteConcern;
+import com.mongodb.util.JSON;
 
 public class JobDataSource extends DataSource{
 
@@ -59,6 +65,16 @@ public class JobDataSource extends DataSource{
 		mongoClient.close();
 		return all;
 	}
+
+
+    public static List<Job> getJobs(){
+        List<DBObject> dblist = getAllJobs();
+        List<Job> jobsList = new ArrayList<Job>();
+        for(int i=0; i<dblist.size(); i++){
+            jobsList.add(new Gson().fromJson(dblist.get(i).toString(), Job.class));
+        }
+        return jobsList;
+    }
 	
 	/**
 	 * This method finds a Job Offer by its id
