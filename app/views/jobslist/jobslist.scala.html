@@ -1,4 +1,4 @@
-@(jobdetail: List[models.entities.Job])
+@(jobs: List[models.entities.Job])
 @main(){
 <!--SEARCH-->
 <section class="container" id="back_search">
@@ -240,7 +240,7 @@
 
     <div class="row">
         <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="@routes.JobsController.(String id)"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+            <a href="@routes.JobsController.()"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
         </div>
     </div>
     </div>
@@ -289,7 +289,7 @@
     </div>
     <div class="row">
         <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="details_jobs.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+            <a href="@routes.JobsController.()"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
         </div>
     </div>
     </div>
@@ -339,7 +339,7 @@
     </div>
     <div class="row">
         <div class="col-md-offset-3 col-md-1  col-xs-offset-3 col-xs-2" id="more_info">
-            <a href="details_jobs.html"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
+            <a href="@routes.JobsController.()"> <img  src="@routes.Assets.at("images/list_courses/ic_masinformacion.png")"> </a>
         </div>
     </div>
     </div>
