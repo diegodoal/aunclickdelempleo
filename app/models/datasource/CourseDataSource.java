@@ -76,9 +76,7 @@ public class CourseDataSource extends DataSource{
     public static List<Course> getCoursesByFilter(String keywords, String sector, String location, String online){
         DBCollection collection = connectDB(Constants.MONGO_COURSES_COLLECTION);
         BasicDBObject query = new BasicDBObject();
-        if(!keywords.trim().equals("")){
-            query.append("title", keywords);
-        }
+
         if(sector != null){
             query.append("sector", sector);
         }
@@ -92,7 +90,14 @@ public class CourseDataSource extends DataSource{
         }
 
         List<DBObject> dblist = collection.find(query).toArray();
-        return dbObjectsListToCourseList(dblist);
+
+        List<Course> queryResult = dbObjectsListToCourseList(dblist);
+
+        if(!keywords.trim().equals("")){
+            return filterByKeyword(queryResult, keywords);
+        }
+
+        return queryResult;
     }
 
 
@@ -103,6 +108,18 @@ public class CourseDataSource extends DataSource{
         }
 
         return coursesList;
+    }
+
+    private static List<Course> filterByKeyword(List<Course> firstList, String keyword){
+        List<Course> filteredList = new ArrayList<Course>();
+        Course auxCourse = null;
+        for(int i=0; i<firstList.size(); i++){
+            auxCourse = firstList.get(i);
+            if(auxCourse.title.toLowerCase().contains(keyword.toLowerCase()) || auxCourse.description.toLowerCase().contains(keyword.toLowerCase())){
+                filteredList.add(auxCourse);
+            }
+        }
+        return filteredList;
     }
 	/**
 	 * This method finds a Course Offer by its id

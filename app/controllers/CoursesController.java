@@ -56,7 +56,7 @@ public class CoursesController extends Controller{
     public static Result blankFiltered(){
         DynamicForm filterForm = form().bindFromRequest();
 
-        return ok(views.html.courseslist.courseslist.render(CourseDataSource.getCoursesByFilter("", filterForm.get("sector"), null, filterForm.get("online"))));
+        return ok(views.html.courseslist.courseslist.render(CourseDataSource.getCoursesByFilter(filterForm.get("keyword"), filterForm.get("sector"), filterForm.get("province"), filterForm.get("online"))));
 
     }
 
