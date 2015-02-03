@@ -42,7 +42,7 @@ GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 #/api/1/company/:id
 
 
-GET		/joblist									controllers.ListController.blank()
+GET		/joblist									controllers.JobsController.blank()
 GET     /jobdetails/details/:id                      controllers.JobsController.jobDetails(id : String)
 
 
