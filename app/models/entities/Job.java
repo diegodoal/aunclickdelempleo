@@ -18,9 +18,12 @@ public class Job {
 	
 	@Required()
 	public String date;
-	
-	@Required()
-	public String location;
+
+    @Required()
+    public String address;
+
+    @Required()
+    public String province;
 	
 	@Required()
 	public String contract_type;
@@ -39,6 +42,12 @@ public class Job {
 	
 	@Required()
 	public String requirements;
+
+    @Required()
+    public String experience;
+
+    @Required()
+    public boolean fromHome;
 	
 	@Required()
 	public ContactProfile contact;
@@ -104,45 +113,30 @@ public class Job {
         this.date = date;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public String getProvince() {
+        return province;
     }
 
     public String getContract_type() {
         return contract_type;
     }
 
-    public void setContract_type(String contract_type) {
-        this.contract_type = contract_type;
-    }
-
     public String getWorkday() {
         return workday;
-    }
-
-    public void setWorkday(String workday) {
-        this.workday = workday;
     }
 
     public double getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-
     public String getGeneral_terms() {
         return general_terms;
     }
 
-    public void setGeneral_terms(String general_terms) {
-        this.general_terms = general_terms;
-    }
 
     public boolean getCertificateOf33Disability() {
         return certificateOf33Disability;
@@ -160,6 +154,14 @@ public class Job {
         this.requirements = requirements;
     }
 
+    public String getExperience() {
+        return experience;
+    }
+
+    public boolean getFromHome(){
+        return fromHome;
+    }
+
     public ContactProfile getContact() {
         return contact;
     }
@@ -170,19 +172,22 @@ public class Job {
 
     public Job() {}
 	
-	public Job(String title, String sector, String description, String date, String location, 
-			String contract_type, String workday, double salary, String general_terms, 
+	public Job(String title, String sector, String description, String date, String address, String province,
+			String contract_type, String workday, double salary, String general_terms, String experience, boolean fromHome,
 			ContactProfile contact, boolean certificateOf33Disability) {
 		this.id = id+1;
 		this.title = title;
 		this.sector = sector;
 		this.description = description;
 		this.date = date;
-		this.location = location;
+		this.address = address;
+        this.province = province;
 		this.contract_type = contract_type;
 		this.workday = workday;
 		this.salary = salary;
 		this.general_terms = general_terms;
+        this.experience = experience;
+        this.fromHome = fromHome;
 		this.certificateOf33Disability = certificateOf33Disability;
 		if(this.certificateOf33Disability == true){
 			this.requirements="Será necesario disponer de un Certificado de Discapacidad de al menos el 33%";

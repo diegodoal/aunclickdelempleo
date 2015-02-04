@@ -10,7 +10,7 @@
             <p><span class="red_adecco arial italic size14">Tipo de contrato: </span><span class="arial gray_adecco size14">@job.getContract_type()</span></p>
             <p><span class="red_adecco arial italic size14">Tipo de jornada: </span><span class="arial gray_adecco size14">@job.getWorkday()</span></p>
             <p><span class="red_adecco arial italic size14">Salario: </span><span class="arial gray_adecco size14">@job.getSalary() €/mes</span></p>
-            <p><span class="red_adecco arial italic size14">Lugar: </span><span class="arial gray_adecco size14">@job.getLocation()</span></p>
+            <p><span class="red_adecco arial italic size14">Lugar: </span><span class="arial gray_adecco size14">@job.getAddress(), @job.getProvince()</span></p>
         </div>
         <div class="col-md-3" id="img_details_courses">
             <img src="@routes.Assets.at("images/details_courses/ic_recuadro.png")">

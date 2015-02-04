@@ -68,11 +68,11 @@ public class CourseDataSource extends DataSource{
      * This method filters a Courses List by some parameters
      * @param keywords
      * @param sector
-     * @param location
+     * @param province
      * @param online
      * @return A Course List with all the filtered objects
      */
-    public static List<Course> getCoursesByFilter(String keywords, String sector, String location, String online){
+    public static List<Course> getCoursesByFilter(String keywords, String sector, String province, String online){
         DBCollection collection = connectDB(Constants.MONGO_COURSES_COLLECTION);
         BasicDBObject query = new BasicDBObject();
 
@@ -80,8 +80,8 @@ public class CourseDataSource extends DataSource{
             query.append("sector", sector);
         }
 
-        if(location != null){
-            query.append("location", location);
+        if(province != null){
+            query.append("province", province);
         }
 
         if(online != null){
@@ -109,7 +109,6 @@ public class CourseDataSource extends DataSource{
         for(int i=0; i<dblist.size(); i++){
             coursesList.add(new Gson().fromJson(dblist.get(i).toString(), Course.class));
         }
-
         return coursesList;
     }
 
@@ -130,6 +129,7 @@ public class CourseDataSource extends DataSource{
         }
         return filteredList;
     }
+
 	/**
 	 * This method finds a Course Offer by its id
 	 * @param id The course_id of the registered Course Offer

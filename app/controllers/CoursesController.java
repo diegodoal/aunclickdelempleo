@@ -16,7 +16,7 @@ import static play.data.Form.form;
 
 public class CoursesController extends Controller{
 
-	// JOB OFFERS
+	// COURSE OFFERS
         public static Result listCourses(){
             List<DBObject> all = CourseDataSource.getAllCourses();
             String courses = "";

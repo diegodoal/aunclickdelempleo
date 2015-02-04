@@ -65,3 +65,4 @@ POST    /course                                     controllers.CoursesControlle
 # JOBS
 GET     /job                                        controllers.JobsController.blank()
 GET     /job/details/:id                            controllers.JobsController.jobDetails(id : String)
+POST    /job                                        controllers.JobsController.blankFiltered()
