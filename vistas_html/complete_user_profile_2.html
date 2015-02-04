@@ -10,6 +10,11 @@
 	<script type='text/javascript' src='js/script2.js'></script>
 	<script type='text/javascript' src='js/script3.js'></script>
 	<script type='text/javascript' src='js/script4.js'></script>
+	<script type='text/javascript' src='js/script5.js'></script>
+	<script type='text/javascript' src='js/script6.js'></script>
+	<script type='text/javascript' src='js/script7.js'></script>
+	</script>
+
     <meta charset="utf-8">
    <title>A un click del empleo</title>
 </head>
@@ -46,7 +51,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
+		<div class="col-md-12 ic_paso2">
 			<img src="images/complete_user_profile_2/ic_paso2.png">
 		</div>
 	</div>
@@ -55,25 +60,21 @@
 <article class="container">
 <div class="add_container">
 	<div class="row">
-		<div class="col-md-12 ">
-		<p class="brown_adecco arial size12">Los campos marcados con * son obligatorios.</p>
-		</div>
-	</div>
-	<div class="row">
 		<div class="col-md-12 arial gray_adecco size22 bold">
-			<p>Curriculum Vitae*</p>
+			<p>Curriculum Vitae</p>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 arial size18">
+		<div class="col-md-12 gray_adecco arial size18">
 			<p>Adjunta tu Curriculum Vitae. (máx. 1MB).</p>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12">
-			<button type="submit" class="btn-img" id="job_experience_group_5"><img  src="images/complete_user_profile_2/ic_examinar.png"</button>
+			<div class=" col-md-2  arial size16 custom-input-file">
+			<input type="file" size="1" class="input-file" />
+    		EXAMINAR
+    		</div>
 		</div>
-	</div>
 </div>
 <!--CARTA DE PRESENTACIÓN-->
 <div class="add_container">	
@@ -83,15 +84,19 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 arial size18">
+		<div class="col-md-6 gray_adecco arial size18 carta">
 			<p>Adjunta tu Carta de presentación. (máx. 1MB).</p>
+		</div>
+		<div class="col-md-6 gray_adecco arial size18">
+			<input type="checkbox" value="carta"> No quiero adjuntar Carta de presentación.
 		</div>
 	</div>
 		<div class="row">
-		<div class="col-md-12">
-			<button type="submit" class="btn-img" id="job_experience_group_5"><img  src="images/complete_user_profile_2/ic_examinar.png"</button>
+			<div class=" col-md-2  arial size16 custom-input-file carta">
+			<input type="file" size="1" class="input-file" />
+    		EXAMINAR
+    		</div>
 		</div>
-	</div>
 </div>	
 <!--PORTFOLIO-->
 <div class="add_container">
@@ -101,21 +106,25 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 arial size18">
+		<div class="col-md-6 gray_adecco arial size18 portfolio">
 			<p>Adjunta tu Portfolio. (máx. 50MB).</p>
+		</div>
+		<div class="col-md-6 gray_adecco arial size18">
+			<input type="checkbox" value="portfolio"> No quiero adjuntar Portfolio.
 		</div>
 	</div>
 		<div class="row">
-		<div class="col-md-12">
-			<button type="submit" class="btn-img" id="job_experience_group_5"><img  src="images/complete_user_profile_2/ic_examinar.png"</button>
+			<div class=" col-md-2  arial size16 custom-input-file portfolio">
+			<input type="file" size="1" class="input-file"/>
+    		EXAMINAR
+    		</div>
 		</div>
-	</div>
 </div>	
 <div class="row">
-	<div class="col-md-6" id="finish_button_user">
-		<a href="complete_user_profile_3.html"><button type="submit" class="btn-img" id="job_experience_group_5"><img  src="images/complete_user_profile_2/ic_finalizar.png"</button></a>
-	</div>
-</div>
+			<div class="col-md-2  arial size16 button_finish">
+    		<a href="complete_user_profile_3.html">FINALIZAR</a>
+    		</div>
+		</div>
 </article>
 
 	<!-- POP UP WINDOW -->
@@ -133,6 +142,5 @@
 			<h3>...</h3>
 		</div>
 	</div>
-
 </body>
 </html>
