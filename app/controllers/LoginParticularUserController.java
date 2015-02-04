@@ -61,6 +61,8 @@ public class LoginParticularUserController extends Controller {
         return ok(views.html.complete_user_profile.complete_user_profile_1.render());
     }
 
+
+
     
     
 }
