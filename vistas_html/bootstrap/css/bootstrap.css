@@ -2508,6 +2508,7 @@ select.input-sm,
 select.form-group-sm .form-control {
   height: 30px;
   line-height: 30px;
+
 }
 textarea.input-sm,
 textarea.form-group-sm .form-control,
@@ -2729,6 +2730,7 @@ select[multiple].form-group-lg .form-control {
 .form-horizontal .form-group {
   margin-right: -15px;
   margin-left: -15px;
+  
 }
 @media (min-width: 768px) {
   .form-horizontal .control-label {
