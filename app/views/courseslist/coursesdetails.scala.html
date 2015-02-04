@@ -7,9 +7,9 @@
             <h2 class="red_adecco century_gothic">DETALLES DEL CURSO:</h2><br>
             <p class="arial gray_adecco size20 bold">@course.getTitle()</p>
             <p><span class="red_adecco arial italic size14">Sector: </span><span class="arial gray_adecco size14">@course.getSector()</span></p>
-            <p><span class="red_adecco arial italic size14">Duración: </span><span class="arial gray_adecco size14"> Curso de @course.getDuration().getLength(). @course.getDuration().getSchedule()</span></p>
+            <p><span class="red_adecco arial italic size14">Duración: </span><span class="arial gray_adecco size14"> Curso de @course.getDuration().getLength()h. @course.getDuration().getSchedule()</span></p>
             <p><span class="gray_adecco size14 arial">Inicio: @course.getDuration().getStart_date()  -  Fin: @course.getDuration().getEnd_date()</span></p>
-            <p><span class="red_adecco arial italic size14">Lugar: </span><span class="arial gray_adecco size14">@course.getLocation()</span></p>
+            <p><span class="red_adecco arial italic size14">Lugar: </span><span class="arial gray_adecco size14">@course.getAddress(), @course.getProvince()</span></p>
         </div>
         <div class="col-md-3" id="img_details_courses">
             <img src="@routes.Assets.at("images/details_courses/ic_recuadro.png")">
@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-md-11"class="text_details_courses">
-            <p><span class="red_adecco arial italic size14">Descripción: </span><span class="arial gray_adecco size14">@course.getDescription().</span></p>
+            <p><span class="red_adecco arial italic size14">Descripción: </span><span class="arial gray_adecco size14">@course.getDescription()</span></p>
         </div>
     </div>
     <div class="row">
@@ -33,12 +33,16 @@
     </div>
     <div class="row">
         <div class="col-md-11"class="text_details_courses">
-            <p><span class="red_adecco arial italic size14">Precio: </span><span class="arial gray_adecco size14">@course.getPrice() €</span></p>
+            <p><span class="red_adecco arial italic size14">Precio: </span><span class="arial gray_adecco size14">@course.getPrice()
+                @if(course.getPrice!="Gratuito"){
+                €
+                }
+                </span></p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-11"class="text_details_courses">
-            <p><span class="red_adecco arial italic size14">Contacto: </span><span class="arial gray_adecco size14">@course.getContact().getName().</span><span class="arial gray_adecco size14 bold"> Email:</span><span class="arial gray_adecco size14"> @course.getContact().getEmail(),</span><span class="arial gray_adecco size14 bold"> Teléfono:</span><span class="arial gray_adecco size14"> @course.getContact().getPhone_number().</span></p>
+            <p><span class="red_adecco arial italic size14">Contacto: </span><span class="arial gray_adecco size14">@course.getContact().getName().</span><span class="arial gray_adecco size14 bold"> Email:</span><span class="arial gray_adecco size14"> @course.getContact().getEmail() </span><span class="arial gray_adecco size14 bold"> Teléfono:</span><span class="arial gray_adecco size14"> @course.getContact().getPhone_number().</span></p>
         </div>
     </div>
     <div class="row">

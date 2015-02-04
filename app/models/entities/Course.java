@@ -21,7 +21,10 @@ public class Course {
     public Duration duration;
 
     @Required()
-    public String location;
+    public String address;
+
+    @Required()
+    public String province;
 
     @Required()
     public String description;
@@ -33,7 +36,7 @@ public class Course {
     public String requirements;
 
     @Required()
-    public double price;
+    public String price;
 
     @Required()
     public boolean online;
@@ -44,14 +47,15 @@ public class Course {
     public Course() {
     }
 
-    public Course(String title, String sector, String registrationLimit, Duration duration, String location,
-                  String description, String general_terms, String requirements, double price, boolean online, ContactProfile contact) {
+    public Course(String title, String sector, String registrationLimit, Duration duration, String address, String province,
+                  String description, String general_terms, String requirements, String price, boolean online, ContactProfile contact) {
         this.id = id + 1;
         this.title = title;
         this.sector = sector;
         this.registrationLimit = registrationLimit;
         this.duration = duration;
-        this.location = location;
+        this.address = address;
+        this.province = province;
         this.description = description;
         this.general_terms = general_terms;
         this.requirements = requirements;
@@ -66,7 +70,7 @@ public class Course {
 
     public static class Duration {
         @Required()
-        public String length;
+        public int length;
 
         @Required()
         public String schedule;
@@ -77,14 +81,14 @@ public class Course {
         @Required()
         public String end_date;
 
-        public Duration(String length, String schedule, String start_date, String end_date) {
+        public Duration(int length, String schedule, String start_date, String end_date) {
             this.length = length;
             this.schedule = schedule;
             this.start_date = start_date;
             this.end_date = end_date;
         }
 
-        public String getLength() {
+        public int getLength() {
             return length;
         }
 
@@ -158,8 +162,12 @@ public class Course {
         return duration;
     }
 
-    public String getLocation() {
-        return location;
+    public String getAddress() {
+        return address;
+    }
+
+    public String getProvince(){
+        return province;
     }
 
     public String getDescription() {
@@ -174,7 +182,7 @@ public class Course {
         return requirements;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
