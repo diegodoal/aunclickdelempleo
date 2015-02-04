@@ -34,7 +34,8 @@ public class CourseDataSource extends DataSource{
 				append("sector", course.sector).
                 append("registrationLimit", course.registrationLimit).
 				append("duration", JSON.parse(course.duration.toString())).
-				append("location", course.location).
+				append("address", course.address).
+                append("province", course.province).
 				append("description", course.description).
 				append("general_terms", course.general_terms).
 				append("requirements", course.requirements).
@@ -157,10 +158,19 @@ public class CourseDataSource extends DataSource{
 	 * This method creates a fake DB with some company users
 	 */
 	public static void initializeCoursesDB(){
-		for(int i=0; i<15; i++){
+        insertIntoCoursesCollection(new Course("Ayuda a la capacitación de Recursos Humanos", "Recursos humanos", "01/02/2015",
+                new Duration(25, "Lunes y miércoles de 15.30 a 17.30h", "02/02/2015", "15/02/2015"),
+                "Centro cívico los enlaces", "Zaragoza", "Fundación Adecco y el Colegio de Economistas de Aragón, ofrecen curso de formación con el objetivo de capacitar a los alumnos a través de conocimientos específicos, para que puedan desarrollar trabajos de apoyo administrativo/a básico en oficinas o despachos." +
+                "Formación se compone de una parte teórica y una parte práctica."
+                + "Los módulos que se impartirán en la parte teórica serán: Atención al Cliente, Ofimática Básica, relaciones con la Administración y tareas administrativas básicas. La parte práctica se desarrollará en "
+                + "oficinas y despachos.", "Asistencia presencial al menos al 90% del curso para obtener el certificado "
+                + "de realización.", "Conocimientos básicos de ofimática", "Gratuito", false, new ContactProfile("Cristina González", "cristina.grodriguez@adecco.com", 976791580)));
+
+
+        for(int i=0; i<15; i++){
 			insertIntoCoursesCollection(new Course("Title"+i, "s"+i, "22/01/201"+i,
-					new Duration(10+i+"h", "Schedule: Mondays and Fridays", i+"/01/2015", i+"/10/2015"),
-					"Location"+i, "Description"+i, "General_terms"+i, "Requirements"+i, 200*i, true, new ContactProfile("Name"+i, "email"+i+"@contact", 612345678+i)));
+					new Duration(10+i, "Schedule: Mondays and Fridays", i+"/01/2015", i+"/10/2015"),
+					"Address"+i, "Province"+i, "Description"+i, "General_terms"+i, "Requirements"+i, ""+200*i, true, new ContactProfile("Name"+i, "email"+i+"@contact", 612345678+i)));
 		}
 	}
 
