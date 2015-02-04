@@ -252,11 +252,11 @@ input[type="radio"] {
 	margin-bottom: 4em;
 }
 /*COMPLETE_USER_PROFILE_2*/
-.ic_paso2 img{
-	min-width: 50em;
-
+.ic_paso2{
+	max-width: 100%;
+	height:auto;
 }
-.button_finish a{
+.button_finish a:link, a:hover, a:active, a:visited, a{
 	text-decoration: none;
 	color:white;
 }
