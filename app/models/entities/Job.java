@@ -63,8 +63,112 @@ public class Job {
             return "{\"name\":\""+this.name+"\",\"email\":\""+this.email+"\",\"phone_number\":\""+this.phone_number+"\"}";
         }
 	}
-	
-	public Job() {}
+
+    public static int getId() {
+        return id;
+    }
+
+    public static void setId(int id) {
+        Job.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getSector() {
+        return sector;
+    }
+
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getContract_type() {
+        return contract_type;
+    }
+
+    public void setContract_type(String contract_type) {
+        this.contract_type = contract_type;
+    }
+
+    public String getWorkday() {
+        return workday;
+    }
+
+    public void setWorkday(String workday) {
+        this.workday = workday;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String getGeneral_terms() {
+        return general_terms;
+    }
+
+    public void setGeneral_terms(String general_terms) {
+        this.general_terms = general_terms;
+    }
+
+    public boolean getCertificateOf33Disability() {
+        return certificateOf33Disability;
+    }
+
+    public void setCertificateOf33Disability(boolean certificateOf33Disability) {
+        this.certificateOf33Disability = certificateOf33Disability;
+    }
+
+    public String getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(String requirements) {
+        this.requirements = requirements;
+    }
+
+    public ContactProfile getContact() {
+        return contact;
+    }
+
+    public void setContact(ContactProfile contact) {
+        this.contact = contact;
+    }
+
+    public Job() {}
 	
 	public Job(String title, String sector, String description, String date, String location, 
 			String contract_type, String workday, double salary, String general_terms, 
