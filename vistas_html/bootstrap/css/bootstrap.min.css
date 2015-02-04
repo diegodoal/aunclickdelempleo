@@ -220,6 +220,9 @@ margin-left: 4em;
 .size14{
 	font-size: 14pt;
 }
+.size16{
+	font-size: 16pt;
+}
 .size18{
 	font-size: 18pt;
 }
@@ -282,8 +285,50 @@ input[type="radio"] {
 .add_container{
 	margin-bottom: 4em;
 }
+/*COMPLETE_USER_PROFILE_2*/
+.ic_paso2{
+	max-width: 100%;
+	height:auto;
+}
+.button_finish a:link, a:hover, a:active, a:visited, a{
+	text-decoration: none;
+	color:white;
+}
+.button_finish{
+	float:right;
+	color: white;
+	background-color: #ab9e79;
+	border-radius: 0.5em;
+	text-align: center;
+	margin-left: 15px;
+	margin-bottom: 2em;
+	cursor: pointer;
+}
 
-
+/*INPUT FILE*/
+.custom-input-file {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background-color: #ea2026;
+    border-radius: 0.5em;
+    color: white;
+    text-align: center;
+    margin-left: 15px;
+}
+.custom-input-file .input-file {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-size: 10000px;
+    border: 10000px solid transparent;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    right: -1000px;
+    top: -1000px;
+    cursor: pointer;
+}
 
 
  /*FOOTER*/
