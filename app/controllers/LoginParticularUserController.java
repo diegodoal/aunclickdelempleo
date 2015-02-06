@@ -62,6 +62,15 @@ public class LoginParticularUserController extends Controller {
     }
 
 
+    public static Result pass(){
+        return ok(views.html.complete_user_profile.complete_user_profile_2.render());
+    }
+
+    public static Result pass1(){
+        return ok(views.html.complete_user_profile.complete_user_profile_3.render());
+    }
+
+
 
     
     
