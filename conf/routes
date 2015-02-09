@@ -54,8 +54,8 @@ GET     /particular/                                controllers.LoginParticularU
 POST    /particular/login                           controllers.LoginParticularUserController.submitLogin()
 POST    /particular/signup                          controllers.LoginParticularUserController.signUpLogin()
 
-GET     /particular/signup/paso2                    controllers.LoginParticularUserController.pass()
-GET     /particular/signup/paso3                    controllers.LoginParticularUserController.pass1()
+GET     /particular/signup/step2                    controllers.LoginParticularUserController.step2()
+GET     /particular/signup/step3                    controllers.LoginParticularUserController.step3()
 
 # COMPANY USER LOGIN
 GET     /company/                                   controllers.LoginCompanyUserController.blank()

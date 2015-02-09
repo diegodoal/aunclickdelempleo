@@ -9,7 +9,8 @@ import play.data.DynamicForm;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.index;
+import views.html.*;
+import views.html.complete_user_profile.*;
 import static play.data.Form.form;
 
 /**
@@ -18,10 +19,11 @@ import static play.data.Form.form;
 public class LoginParticularUserController extends Controller {
 
     public static Result blank() {
-        return ok(views.html.login_particular_user.login.render());
+        return ok(views.html.login_particular_user.login.render(null));
     }
 
     public static Result submitLogin() {
+    	String error_msg = null; // Para saber en la vista del login cuando hay error
         DynamicForm bindedForm = form().bindFromRequest();
 
         ParticularUser user = ParticularUserDataSource.getParticularUser(bindedForm.get("email"));
@@ -37,10 +39,11 @@ public class LoginParticularUserController extends Controller {
             session("name", "Company name FAKE");
             return redirect("/");
         }
-
-        return unauthorized(views.html.login_particular_user.login.render());
+        
+        error_msg = "Usuario o contraseña no es correcta";
+        
+        return unauthorized(views.html.login_particular_user.login.render(error_msg));
     }
-
 
     public static Result signUpLogin() {
         DynamicForm filledForm = form().bindFromRequest();
@@ -62,11 +65,11 @@ public class LoginParticularUserController extends Controller {
     }
 
 
-    public static Result pass(){
+    public static Result step2(){
         return ok(views.html.complete_user_profile.complete_user_profile_2.render());
     }
 
-    public static Result pass1(){
+    public static Result step3(){
         return ok(views.html.complete_user_profile.complete_user_profile_3.render());
     }
 
