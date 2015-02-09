@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<link href="css/style_ventana_emergente.css" rel='stylesheet' type='text/css'/>
+
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+
+	<script type='text/javascript' src='js/scripts.js'></script>
+	<meta charset="utf-8">
+	<title>A un click del empleo</title>
+</head>
+
+<body>
+
+<!--NAV-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6"><a href="index.html"><img src="images/nav/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
+		</div>
+
+		<div class="col-md-2"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
+		</div>
+
+		<div class="col-md-2 button-nav-login"><a href="login_user.html"><button type="button">ENTRA</button></a>
+		</div>
+
+		<div class="col-md-2 button-nav-im-company"><a href="login_company.html"><button type="button">SOY UNA EMPRESA</button></a>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<section class="container-fluid size_font" >
+	
+</section>
+
+<!-- Map Guide-->
+<section class="container" id="three_buttons_text">
+	<div class="row">
+
+		<script>
+			function initialize() {
+			  var mapProp = {
+			    center:new google.maps.LatLng(51.508742,-0.120850),
+			    zoom:5,
+			    mapTypeId:google.maps.MapTypeId.ROADMAP
+			  };
+			  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+		
+		<div class="col-md-12"  id="googleMap" style="width:500px;height:380px;">
+			
+		</div>
+	</div>
+
+
+	<article >
+		
+	</article>
+</section>
+
+<footer class="container-fluid">
+	<div class="container"><br>
+		<p>Derechos reservados @2015</p>
+	</div>
+</footer>
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up" class="mask_pop_up">
+	<div class="box_pop_up resize">
+		<a href="#close" title="Cerrar" class="close">X</a>
+
+		<h2>¿Qué desea adaptar?</h2>
+		<h3>Tamaño texto:</h3><br>
+		<a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+		<a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+		<a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
+
+		<h3>Colores de texto y fondo</h3>
+		<h3>...</h3>
+	</div>
+</div>
+
+</body>
+</html>
