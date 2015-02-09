@@ -53,20 +53,11 @@ public class JobsController extends Controller{
     public static Result blankFiltered(){
         DynamicForm filterForm = form().bindFromRequest();
 
-        System.out.println("Online: "+filterForm.get("online")+"\nDisabilityYes: "
-        +"\nDisabilityRadio: "+filterForm.get("disabilityRadio")+
-        "\nSector: "+filterForm.get("sector")+
-        "\nProvince: "+filterForm.get("province")+
-        "\nExperience: "+filterForm.get("experience")+
-        "\nKeywords: "+filterForm.get("keywords"));
+        List<Job> filteredList = JobDataSource.getJobsByFilter(filterForm.get("keywords"),
+                filterForm.get("sector"), filterForm.get("province"), filterForm.get("experience"), filterForm.get("disabilityRadio"), filterForm.get("fromHome"));
 
+        return ok(views.html.jobslist.jobslist.render(filteredList));
 
-        System.out.println(JobDataSource.getJobsByFilter(filterForm.get("keywords"),
-                filterForm.get("sector"), filterForm.get("province"), filterForm.get("experience"),
-                filterForm.get("disabilityRadio"), filterForm.get("online")).toString());
-        return ok(JobDataSource.getJobsByFilter(filterForm.get("keywords"),
-                filterForm.get("sector"), filterForm.get("province"), filterForm.get("experience"),
-                filterForm.get("disabilityRadio"), filterForm.get("online")).toString());
     }
 	
 }

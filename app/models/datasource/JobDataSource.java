@@ -71,7 +71,7 @@ public class JobDataSource extends DataSource{
      */
     public static List<Job> getJobsByFilter(String keywords, String sector, String province, String experience,
                                             String disabilityRadio, String online){
-        DBCollection collection = connectDB(Constants.MONGO_COURSES_COLLECTION);
+        DBCollection collection = connectDB(Constants.MONGO_JOBS_COLLECTION);
         BasicDBObject query = new BasicDBObject();
 
         if(sector != null){
@@ -89,13 +89,13 @@ public class JobDataSource extends DataSource{
         if(disabilityRadio != null){
             if(disabilityRadio.equals("true")){
                 query.append("certificateOf33Disability", true);
-            }else if(disabilityRadio.equals("false")){
+            }else{
                 query.append("certificateOf33Disability", false);
             }
         }
 
         if(online != null){
-            query.append("online", true);
+            query.append("fromHome", true);
         }
 
         List<DBObject> dblist = collection.find(query).toArray();
@@ -170,8 +170,8 @@ public class JobDataSource extends DataSource{
 	public static void initializeJobsDB(){
 		for(int i=0; i<15; i++){
 			insertIntoJobsCollection(new Job("Title"+i, "Sector"+i,
-					"Description"+i,"Date"+i, "Address"+i, "Province"+i, "Contract type"+i,
-					"Workday"+i,2000.0, "General Terms"+i, "3-5 años", false,
+					"Description"+i,"Date"+i, "Address"+i, "Badajoz", "Contract type"+i,
+					"Workday"+i,2000.0, "General Terms"+i, "+5 años", true,
 					new Job.ContactProfile("Name"+i, "Email"+i+"@contact", 612345678+i), (Math.random()<0.5)));
 		}
 	}
