@@ -1,0 +1,10 @@
+ $(document).ready(function(){
+        $('input[type="checkbox"]').click(function(){
+            if($(this).attr("value")=="carta"){
+                $(".carta").toggle();
+            }
+            if($(this).attr("value")=="portfolio"){
+            	$(".portfolio").toggle();
+        }
+        });
+    });
