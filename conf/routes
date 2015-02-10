@@ -60,6 +60,7 @@ GET     /particular/signup/step3                    controllers.LoginParticularU
 # COMPANY USER LOGIN
 GET     /company                                    controllers.LoginCompanyUserController.blank()
 POST    /company/login                              controllers.LoginCompanyUserController.submitLogin()
+POST    /company/signup                             controllers.LoginCompanyUserController.submitSignUp()
 
 # COURSES
 GET     /course                                     controllers.CoursesController.blank()

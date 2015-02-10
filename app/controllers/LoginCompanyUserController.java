@@ -16,7 +16,7 @@ import static play.data.Form.form;
 public class LoginCompanyUserController extends Controller {
 
     public static Result blank(){
-        return ok(views.html.login_company_user.login.render(null));
+        return ok(views.html.login_company_user.login.render(null, null));
     }
 
     public static Result submitLogin(){
@@ -43,7 +43,30 @@ public class LoginCompanyUserController extends Controller {
 
         error_login_msg = "Email o contraseña incorrecta";
 
-        return badRequest(views.html.login_company_user.login.render(error_login_msg));
+        return badRequest(views.html.login_company_user.login.render(error_login_msg, null));
+    }
+
+    public static Result submitSignUp(){
+        String error_signup_msg = null;
+
+        DynamicForm filledForm = form().bindFromRequest();
+
+        CompanyUser companyUser = CompanyUserDataSource.getCompanyUser(filledForm.get("email"));
+
+        if(companyUser != null){
+            error_signup_msg = "Usuario con ese email ya registrado";
+            return badRequest(views.html.login_company_user.login.render(null, error_signup_msg));
+        }
+
+        if(!filledForm.get("password").equals(filledForm.get("repeat_password"))) {
+            error_signup_msg = "Las contraseñas no coinciden";
+            return badRequest(views.html.login_particular_user.login.render(null, error_signup_msg));
+        }
+
+        companyUser = new CompanyUser(filledForm.get("name"), filledForm.get("email"), filledForm.get("password"));
+        CompanyUserDataSource.insertIntoCompanyUser(companyUser);
+
+        return redirect("/");
     }
 
 }
