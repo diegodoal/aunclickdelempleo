@@ -23,8 +23,6 @@ public class LoginCompanyUserController extends Controller {
         String error_login_msg = null;
         DynamicForm filledForm = form().bindFromRequest();
 
-        System.out.println("####### FORM\n EMAIL: "+filledForm.get("email")+"\n PASSWORD: "+filledForm.get("password"));
-
         //Check if Company User exists in db
         CompanyUser companyUser = CompanyUserDataSource.getCompanyUser(filledForm.get("email"));
         if(companyUser != null && companyUser.password.equals(filledForm.get("password"))){
