@@ -38,7 +38,7 @@ public class LoginParticularUserController extends Controller {
         CompanyUser companyUser = CompanyUserDataSource.getCompanyUser(bindedForm.get("email"));
         if(companyUser != null && bindedForm.get("password").equals(companyUser.password)) {
             session("email", companyUser.email);
-            session("name", "Company name FAKE");
+            session("name", companyUser.name);
             return redirect("/");
         }
         
@@ -51,7 +51,9 @@ public class LoginParticularUserController extends Controller {
         DynamicForm filledForm = form().bindFromRequest();
 
         ParticularUser userCreated = ParticularUserDataSource.getParticularUser(filledForm.get("register_email"));
-        if (userCreated != null){
+        CompanyUser companyUser = CompanyUserDataSource.getCompanyUser(filledForm.get("register_email"));
+
+        if (userCreated != null || companyUser != null){
         	error_signup_msg = "Usuario con ese email ya registrado";
             return badRequest(views.html.login_particular_user.login.render(null, error_signup_msg));
         }
@@ -64,6 +66,9 @@ public class LoginParticularUserController extends Controller {
         userCreated = new ParticularUser(filledForm.get("register_name"), filledForm.get("register_surnames"),
                 filledForm.get("register_email"), filledForm.get("register_password"));
         ParticularUserDataSource.insertIntoParticularUser(userCreated);
+
+        session("email", userCreated.email);
+        session("name", userCreated.name);
 
         return ok(views.html.complete_user_profile.complete_user_profile_1.render());
     }

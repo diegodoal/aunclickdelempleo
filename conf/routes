@@ -50,7 +50,7 @@ GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 GET     /logout                                     controllers.Application.logout()
 
 # PARTICULAR USER LOGIN
-GET     /particular/                                controllers.LoginParticularUserController.blank()
+GET     /particular                                 controllers.LoginParticularUserController.blank()
 POST    /particular/login                           controllers.LoginParticularUserController.submitLogin()
 POST    /particular/signup                          controllers.LoginParticularUserController.signUpLogin()
 
@@ -58,7 +58,9 @@ GET     /particular/signup/step2                    controllers.LoginParticularU
 GET     /particular/signup/step3                    controllers.LoginParticularUserController.step3()
 
 # COMPANY USER LOGIN
-GET     /company/                                   controllers.LoginCompanyUserController.blank()
+GET     /company                                    controllers.LoginCompanyUserController.blank()
+POST    /company/login                              controllers.LoginCompanyUserController.submitLogin()
+POST    /company/signup                             controllers.LoginCompanyUserController.submitSignUp()
 
 # COURSES
 GET     /course                                     controllers.CoursesController.blank()

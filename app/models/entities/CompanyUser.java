@@ -9,6 +9,9 @@ import play.libs.Json;
 
 public class CompanyUser {
 
+    @Required()
+    public String name;
+
 	@Required()
 	@Email()
 	public String email;
@@ -21,8 +24,9 @@ public class CompanyUser {
 	
 	public CompanyUser() {}
 	
-	public CompanyUser(String email, String password) {
-		this.email = email;
+	public CompanyUser(String name, String email, String password) {
+		this.name = name;
+        this.email = email;
 		this.password = password;
 		this.emailVerificationKey = UUID.randomUUID().toString();
 	}

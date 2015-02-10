@@ -18,7 +18,7 @@ public class CompanyUserController extends Controller {
 			return badRequest("Ya existe un usuario con ese email registrado, inténtelo con otro...");
 		}
 
-		CompanyUser companyUser = new CompanyUser(email, password);
+		CompanyUser companyUser = new CompanyUser("Name", email, password);
 		CompanyUserDataSource.insertIntoCompanyUser(companyUser);
 		return redirect("/company/sendvalidation/"+email);
 	}

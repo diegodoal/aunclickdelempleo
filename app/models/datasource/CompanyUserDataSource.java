@@ -24,6 +24,7 @@ public class CompanyUserDataSource extends DataSource{
 		
 		// Create the query
 		BasicDBObject query = new BasicDBObject().
+        append("name", companyUser.name).
 		append("email", companyUser.email).
 		append("password", companyUser.password).
 		append("emailVerificationKey", companyUser.emailVerificationKey);
@@ -76,7 +77,7 @@ public class CompanyUserDataSource extends DataSource{
 	
 	/**
 	 * Method to update the emailVerificationKey when email is verified
-	 * @param email String with the username to update
+	 * @param username String with the username to update
 	 */
 	public static void updateEmailVerificationKey(String username){
 		DBCollection collection = connectDB(Constants.MONGO_COMPANY_USERS_COLLECTION);
@@ -96,7 +97,7 @@ public class CompanyUserDataSource extends DataSource{
 	 */
 	public static void initializeCompanyUsersDB(){
 		for(int i=0; i<15; i++){
-			insertIntoCompanyUser(new CompanyUser("email"+i+"@company", "password"+i));
+			insertIntoCompanyUser(new CompanyUser("Name"+i, "email"+i+"@company", "password"+i));
 		}
 	}
 }
