@@ -1,4 +1,4 @@
-@(error_msg: String)
+@(error_login_msg: String, error_signup_msg: String)
 
 @main(){
 <!-- ADVANTAGES -->
@@ -59,16 +59,10 @@
                         });
                     </script>-->
                     
-                     @if(error_msg != null) {
-                     	<!-- POP UP WINDOW -->
-					    <div class="mask_pop_up_error">
-					        <div class="box_pop_up_error resize_error">
-					            <a href="#close_error" title="Cerrar" class="close_error">X</a>
-					
-					            <h3>@error_msg</h3>
-           
-      						 </div>
-   						</div>
+                     @if(error_login_msg != null) {
+                     	<div class="col-md-offset-2 col-md-10">
+                     		<div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_login_msg</div>
+                     	</div>
                      }
                 </div>
             </form>
@@ -138,6 +132,12 @@
                             $("#formCreateUser").submit();
                         });
                     </script>-->
+                    
+                     @if(error_signup_msg != null) {
+                     	<div class="col-md-offset-1 col-md-11">
+                     		<div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_signup_msg</div>
+                     	</div>
+                     }         
                 </div>
             </form>
         </div>
