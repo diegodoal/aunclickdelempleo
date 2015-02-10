@@ -51,7 +51,9 @@ public class LoginParticularUserController extends Controller {
         DynamicForm filledForm = form().bindFromRequest();
 
         ParticularUser userCreated = ParticularUserDataSource.getParticularUser(filledForm.get("register_email"));
-        if (userCreated != null){
+        CompanyUser companyUser = CompanyUserDataSource.getCompanyUser(filledForm.get("register_email"));
+
+        if (userCreated != null || companyUser != null){
         	error_signup_msg = "Usuario con ese email ya registrado";
             return badRequest(views.html.login_particular_user.login.render(null, error_signup_msg));
         }
