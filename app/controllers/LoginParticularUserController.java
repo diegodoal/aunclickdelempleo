@@ -40,7 +40,7 @@ public class LoginParticularUserController extends Controller {
             return redirect("/");
         }
         
-        error_msg = "Usuario o contraseña no es correcta";
+        error_msg = "Email o contraseña incorrecta";
         
         return unauthorized(views.html.login_particular_user.login.render(error_msg));
     }

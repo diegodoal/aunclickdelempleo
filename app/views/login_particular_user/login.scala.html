@@ -60,15 +60,9 @@
                     </script>-->
                     
                      @if(error_msg != null) {
-                     	<!-- POP UP WINDOW -->
-					    <div class="mask_pop_up_error">
-					        <div class="box_pop_up_error resize_error">
-					            <a href="#close_error" title="Cerrar" class="close_error">X</a>
-					
-					            <h3>@error_msg</h3>
-           
-      						 </div>
-   						</div>
+                     	<div class="col-md-offset-3 col-md-12">
+                     		<div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_msg</div>
+                     	</div>
                      }
                 </div>
             </form>
@@ -137,7 +131,7 @@
                         $("#createUser").click(function(){
                             $("#formCreateUser").submit();
                         });
-                    </script>-->
+                    </script>-->         
                 </div>
             </form>
         </div>
