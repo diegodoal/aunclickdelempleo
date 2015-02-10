@@ -65,6 +65,9 @@ public class LoginParticularUserController extends Controller {
                 filledForm.get("register_email"), filledForm.get("register_password"));
         ParticularUserDataSource.insertIntoParticularUser(userCreated);
 
+        session("email", userCreated.email);
+        session("name", userCreated.name);
+
         return ok(views.html.complete_user_profile.complete_user_profile_1.render());
     }
 
