@@ -14,16 +14,18 @@ import views.html.complete_user_profile.*;
 import static play.data.Form.form;
 
 /**
- * Created by Victor on 29/01/2015.
+ * Created by Unknown on 29/01/2015.
  */
 public class LoginParticularUserController extends Controller {
 
     public static Result blank() {
-        return ok(views.html.login_particular_user.login.render(null));
+    	/* Primer parámetro es para error_login_msg
+    	 * Segundo parámetro es para error_signup_msg */
+        return ok(views.html.login_particular_user.login.render(null, null)); 
     }
 
     public static Result submitLogin() {
-    	String error_msg = null; // Para saber en la vista del login cuando hay error
+    	String error_login_msg = null; // Para saber en la vista del login cuando hay error
         DynamicForm bindedForm = form().bindFromRequest();
 
         ParticularUser user = ParticularUserDataSource.getParticularUser(bindedForm.get("email"));
@@ -40,21 +42,23 @@ public class LoginParticularUserController extends Controller {
             return redirect("/");
         }
         
-        error_msg = "Email o contraseña incorrecta";
-        
-        return unauthorized(views.html.login_particular_user.login.render(error_msg));
+        error_login_msg = "Email o contraseña incorrecta";
+        return badRequest(views.html.login_particular_user.login.render(error_login_msg, null));
     }
 
     public static Result signUpLogin() {
+    	String error_signup_msg = null;
         DynamicForm filledForm = form().bindFromRequest();
 
         ParticularUser userCreated = ParticularUserDataSource.getParticularUser(filledForm.get("register_email"));
         if (userCreated != null){
-            return badRequest("Usuario con ese email ya registrado");
+        	error_signup_msg = "Usuario con ese email ya registrado";
+            return badRequest(views.html.login_particular_user.login.render(null, error_signup_msg));
         }
 
         if(!filledForm.get("register_password").equals(filledForm.get("register_repeat_password"))) {
-            return badRequest("Las contraseñas no coinciden");
+        	error_signup_msg = "Las contraseñas no coinciden";
+            return badRequest(views.html.login_particular_user.login.render(null, error_signup_msg));
         }
 
         userCreated = new ParticularUser(filledForm.get("register_name"), filledForm.get("register_surnames"),
