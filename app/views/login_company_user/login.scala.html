@@ -1,3 +1,4 @@
+@(error_login_msg: String)
 @main(nav = "company"){
 <!-- ADVANTAGES -->
 <section class="container" id="company_advantages">
@@ -21,16 +22,16 @@
         <div class="col-md-5">
             <h1 class="col-md-offset-4">ACCEDE</h1><br>
 
-            <form class="form-horizontal" role="form" action="#" autocomplete="on" method="post">
+            <form class="form-horizontal" role="form" action="@routes.LoginCompanyUserController.submitLogin()" autocomplete="on" method="post">
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-6">
-                        <input type="email" class="form-control" id="access_email" required="required" placeholder="Correo electrónico">
+                        <input type="email" class="form-control" name='email' id="access_email" required="required" placeholder="Correo electrónico">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-6">
-                        <input type="password" class="form-control" id="access_password" required="required" placeholder="Contraseña">
+                        <input type="password" class="form-control" name='password' id="access_password" required="required" placeholder="Contraseña">
                     </div>
                 </div>
 
@@ -38,6 +39,12 @@
                     <div class="col-md-offset-5 col-md-7">
                         <button type="submit" class="btn-img"><img id="access_part" src="@routes.Assets.at("images/login_company/ic_entrar.png")"></button>
                     </div>
+
+                    @if(error_login_msg != null) {
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_login_msg</div>
+                    </div>
+                    }
                 </div>
             </form>
         </div>

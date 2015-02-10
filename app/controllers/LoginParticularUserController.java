@@ -38,7 +38,7 @@ public class LoginParticularUserController extends Controller {
         CompanyUser companyUser = CompanyUserDataSource.getCompanyUser(bindedForm.get("email"));
         if(companyUser != null && bindedForm.get("password").equals(companyUser.password)) {
             session("email", companyUser.email);
-            session("name", "Company name FAKE");
+            session("name", companyUser.name);
             return redirect("/");
         }
         
