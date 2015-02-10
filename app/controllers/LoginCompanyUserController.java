@@ -66,6 +66,9 @@ public class LoginCompanyUserController extends Controller {
         companyUser = new CompanyUser(filledForm.get("name"), filledForm.get("email"), filledForm.get("password"));
         CompanyUserDataSource.insertIntoCompanyUser(companyUser);
 
+        session("email", companyUser.email);
+        session("name", companyUser.name);
+
         return redirect("/");
     }
 
