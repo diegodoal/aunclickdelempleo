@@ -59,7 +59,7 @@ public class LoginCompanyUserController extends Controller {
 
         if(!filledForm.get("password").equals(filledForm.get("repeat_password"))) {
             error_signup_msg = "Las contraseñas no coinciden";
-            return badRequest(views.html.login_particular_user.login.render(null, error_signup_msg));
+            return badRequest(views.html.login_company_user.login.render(null, error_signup_msg));
         }
 
         companyUser = new CompanyUser(filledForm.get("name"), filledForm.get("email"), filledForm.get("password"));
