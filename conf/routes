@@ -43,9 +43,6 @@ GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 
 
 
-
-
-
 # FINAL ROUTES
 GET     /logout                                     controllers.Application.logout()
 
@@ -71,3 +68,6 @@ POST    /course                                     controllers.CoursesControlle
 GET     /job                                        controllers.JobsController.blank()
 GET     /job/details/:id                            controllers.JobsController.jobDetails(id : String)
 POST    /job                                        controllers.JobsController.blankFiltered()
+
+# ORIENTATION
+GET     /orientation                                controllers.OrientationController.blank()
