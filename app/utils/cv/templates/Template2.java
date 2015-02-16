@@ -83,7 +83,7 @@ public class Template2 {
 
         LineSeparator lineSeparator = new LineSeparator(1, 100, BaseColor.LIGHT_GRAY, Element.ALIGN_CENTER, -2);
         document.add(lineSeparator);
-        
+
     }
 
     private void addObjetive(String objetive) throws DocumentException {
