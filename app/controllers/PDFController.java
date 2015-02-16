@@ -59,7 +59,7 @@ public class PDFController {
 
 
         try {
-            TemplatesController.createPdf(TemplatesController.Template.Template1, "public/pdf/template1.pdf",
+            TemplatesController.createPdf(TemplatesController.Template.Template2, "public/pdf/template1.pdf",
                     new PersonalInformation("victor", "Garcia Zarco", new Date(1994 - 1900, 4, 20), "Calle falsa, 123", "victor.gzarco@gmail.com", 666777888),
                     "Adquirir experencia laboral sin que esto suponga una dificultad en el estudio de la carrera universitaria, además de poder aplicar los conocimientos estudiados hasta el momento en un ámbito de trabajo relacionado con las salidas profesionales que aporta el estudio de Grado.",
                     experienceList,

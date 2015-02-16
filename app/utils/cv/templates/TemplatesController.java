@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Victor on 16/02/2015.
  */
 public class TemplatesController {
-    public enum Template {Template1};
+    public enum Template {Template1, Template2};
 
     public static void createPdf(Template template, String filePath, PersonalInformation personalInformation, String objetive,
                           List<WorkExperience> experienceList,
@@ -26,6 +26,10 @@ public class TemplatesController {
                 template1.createPdf(filePath, personalInformation, objetive, experienceList, educationList, aditionalEducationList,
                         languageList, skills, projectList, otherInformation);
                 break;
+            case Template2:
+                Template2 template2 = new Template2();
+                template2.createPdf(filePath, personalInformation, objetive, experienceList, educationList, aditionalEducationList,
+                        languageList, skills, projectList, otherInformation);
         }
 
     }
