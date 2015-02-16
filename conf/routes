@@ -71,3 +71,5 @@ POST    /job                                        controllers.JobsController.b
 
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()
+
+GET     /pdf                                        controllers.PDFController.fakeCV()
