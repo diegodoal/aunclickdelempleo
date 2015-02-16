@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import utils.cv.*;
+import utils.cv.templates.TemplatesController;
 
 import static play.mvc.Results.redirect;
 
@@ -56,10 +57,10 @@ public class PDFController {
             otherInformation.addSocialNetwork("SocialNetwork"+i, "User"+i);
         }
 
-        Template1 template1 = new Template1();
+
         try {
-            template1.createPdf("public/pdf/template1.pdf",
-                    new PersonalInformation("victor", "Garcia Zarco", new Date(1994-1900, 4, 20), "Calle falsa, 123", "victor.gzarco@gmail.com", 666777888),
+            TemplatesController.createPdf(TemplatesController.Template.Template1, "public/pdf/template1.pdf",
+                    new PersonalInformation("victor", "Garcia Zarco", new Date(1994 - 1900, 4, 20), "Calle falsa, 123", "victor.gzarco@gmail.com", 666777888),
                     "Adquirir experencia laboral sin que esto suponga una dificultad en el estudio de la carrera universitaria, además de poder aplicar los conocimientos estudiados hasta el momento en un ámbito de trabajo relacionado con las salidas profesionales que aporta el estudio de Grado.",
                     experienceList,
                     educationList,
