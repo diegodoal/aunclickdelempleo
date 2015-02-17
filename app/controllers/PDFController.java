@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import utils.cv.*;
+import utils.cv.templates.Template2;
 import utils.cv.templates.TemplatesController;
 
 import static play.mvc.Results.redirect;
@@ -20,7 +21,7 @@ import static play.mvc.Results.redirect;
  */
 public class PDFController {
 
-    public static Result fakeCV(){
+    public static Result fakeCV(String template){
         OtherInformation otherInformation = new OtherInformation("personal.website.com");
         List<WorkExperience> experienceList = new ArrayList<WorkExperience>();
         List<Education> educationList = new ArrayList<Education>();
@@ -59,7 +60,14 @@ public class PDFController {
 
 
         try {
-            TemplatesController.createPdf(TemplatesController.Template.Template2, "public/pdf/template1.pdf",
+            TemplatesController.Template custom_template;
+
+            if(template.equals("t1")){
+                custom_template = TemplatesController.Template.Template1;
+            }else{
+                custom_template = TemplatesController.Template.Template2;
+            }
+            TemplatesController.createPdf(custom_template, "public/pdf/template1.pdf",
                     new PersonalInformation("victor", "Garcia Zarco", new Date(1994 - 1900, 4, 20), "Española", "Calle falsa, 123", "victor.gzarco@gmail.com", 666777888),
                     "Adquirir experencia laboral sin que esto suponga una dificultad en el estudio de la carrera universitaria, además de poder aplicar los conocimientos estudiados hasta el momento en un ámbito de trabajo relacionado con las salidas profesionales que aporta el estudio de Grado.",
                     experienceList,
