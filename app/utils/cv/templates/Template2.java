@@ -84,7 +84,6 @@ public class Template2 {
         LineSeparator lineSeparator = new LineSeparator(1, 100, BaseColor.LIGHT_GRAY, Element.ALIGN_CENTER, -2);
         document.add(lineSeparator);
 
-
         PdfPTable table;
         PdfPCell cell;
 
@@ -241,37 +240,19 @@ public class Template2 {
         PdfPTable table;
         PdfPCell cell;
 
-        table = new PdfPTable(new float[]{2,7});
-        table.setWidthPercentage(100);
-        table.setSpacingBefore(5);
+        paragraph = new Paragraph("Objetivos", FontFactory.getFont(Constants.T2_FONT_STYLE, Constants.T2_FONT_SIZE_TITLE_2, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+        paragraph.setSpacingAfter(0);
+        document.add(paragraph);
 
-        //First column
-        cell = new PdfPCell();
-        cell.setBorder(PdfPCell.RIGHT);
+        LineSeparator lineSeparator = new LineSeparator(1, 100, BaseColor.LIGHT_GRAY, Element.ALIGN_CENTER, -2);
+        document.add(lineSeparator);
 
+        Font font = FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY);
+        paragraph = new Paragraph(objetive, font);
 
-        Font font = FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
-        paragraph = new Paragraph("OBJETIVO", font);
-        paragraph.setAlignment(Paragraph.ALIGN_RIGHT);
-        cell.setPaddingRight(10);
-        cell.setBorder(PdfPCell.RIGHT);
-
-        cell.addElement(paragraph);
-        table.addCell(cell);
-
-        //Second column
-        cell = new PdfPCell();
-        cell.setPaddingLeft(10);
-        cell.setPaddingTop(0);
-        cell.setBorder(PdfPCell.NO_BORDER);
-
-        paragraph = new Paragraph(objetive);
-        paragraph.setFont(FontFactory.getFont("Calibri", Font.DEFAULTSIZE));
-        cell.addElement(paragraph);
-
-        table.addCell(cell);
-
-        document.add(table);
+        document.add(paragraph);
+        document.add(Chunk.NEWLINE);
+        
     }
 
     private void addWorkExperience(List<WorkExperience> experienceList) throws DocumentException {
