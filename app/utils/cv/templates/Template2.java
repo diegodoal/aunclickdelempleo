@@ -513,49 +513,51 @@ public class Template2 {
     }
 
     private void addProjects(List<Project> projectList) throws DocumentException {
-        Paragraph paragraph;
-        PdfPCell cell;
-        PdfPTable table;
+        if(!projectList.isEmpty()){
+            Paragraph paragraph;
+            PdfPTable table;
+            PdfPCell cell;
 
-        for(int i=0; i<projectList.size(); i++){
-            table = new PdfPTable(new float[]{2,7});
-            table.setWidthPercentage(100);
-            table.setSpacingBefore(5);
+            paragraph = new Paragraph("Proyectos", FontFactory.getFont(Constants.T2_FONT_STYLE, Constants.T2_FONT_SIZE_TITLE_2, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            paragraph.setSpacingAfter(0);
+            document.add(paragraph);
 
-            //First column
-            cell = new PdfPCell();
-            cell.setBorder(PdfPCell.RIGHT);
-            if(i==0) {
-                Font font = FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
-                paragraph = new Paragraph("PROYECTOS", font);
-                cell.setBorder(PdfPCell.RIGHT);
-            }else{
-                paragraph = new Paragraph("");
+            LineSeparator lineSeparator = new LineSeparator(1, 100, BaseColor.LIGHT_GRAY, Element.ALIGN_CENTER, -2);
+            document.add(lineSeparator);
+
+            for (int i = 0; i < projectList.size(); i++) {
+                table = new PdfPTable(new float[]{6, 2});
+
+                Font bold_font = FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Font.BOLD, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY);
+                Font normal_font = FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY);
+
+                table.setWidthPercentage(100);
+                table.setSpacingBefore(5);
+
+
+                cell = new PdfPCell();
+                paragraph = new Paragraph(projectList.get(i).getName(), bold_font);
+                cell.addElement(paragraph);
+                cell.setBorder(PdfPCell.NO_BORDER);
+                cell.setPaddingRight(10);
+                table.addCell(cell);
+
+                cell = new PdfPCell();
+                paragraph = new Paragraph(projectList.get(i).getStartDate() + " - " + projectList.get(i).getEndDate(), normal_font);
+                cell.setBorder(PdfPCell.NO_BORDER);
+                cell.setRowspan(2);
+                cell.addElement(paragraph);
+                table.addCell(cell);
+
+                cell = new PdfPCell();
+                paragraph = new Paragraph(projectList.get(i).getDescription(), normal_font);
+                cell.addElement(paragraph);
+                cell.setBorder(PdfPCell.NO_BORDER);
+                cell.setPaddingRight(10);
+                table.addCell(cell);
+
+                document.add(table);
             }
-            paragraph.setAlignment(Paragraph.ALIGN_RIGHT);
-            cell.setPaddingRight(10);
-            cell.addElement(paragraph);
-            table.addCell(cell);
-
-            //Second column
-            cell = new PdfPCell();
-            cell.setPaddingLeft(10);
-            cell.setPaddingTop(0);
-            cell.setBorder(PdfPCell.NO_BORDER);
-
-            paragraph = new Paragraph(projectList.get(i).getName().toUpperCase());
-            paragraph.setFont(FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD));
-            cell.addElement(paragraph);
-
-            Font font = FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD, BaseColor.GRAY);
-            paragraph = new Paragraph(projectList.get(i).getStartDate() +" - " + projectList.get(i).getEndDate(), font);
-            cell.addElement(paragraph);
-
-            paragraph = new Paragraph(projectList.get(i).getDescription());
-            cell.addElement(paragraph);
-
-            table.addCell(cell);
-            document.add(table);
         }
     }
 

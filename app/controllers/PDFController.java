@@ -50,7 +50,7 @@ public class PDFController {
         }
 
         for(int i=0; i<4; i++){
-            projectList.add(new Project("Project"+i, "Description"+i, new Date(2009+i-1900, 1+i, 0), null));
+            projectList.add(new Project("Project"+i, "Esta es la descripción del proyecto. Esta es la descripción del proyecto. Esta es la descripción del proyecto. Esta es la descripción del proyecto. Esta es la descripción del proyecto. Esta es la descripción del proyecto. "+i, new Date(2009+i-1900, 1+i, 0), null));
         }
 
         for (int i=0; i<3; i++){
