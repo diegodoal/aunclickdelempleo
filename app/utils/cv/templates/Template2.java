@@ -84,6 +84,156 @@ public class Template2 {
         LineSeparator lineSeparator = new LineSeparator(1, 100, BaseColor.LIGHT_GRAY, Element.ALIGN_CENTER, -2);
         document.add(lineSeparator);
 
+
+        PdfPTable table;
+        PdfPCell cell;
+
+        table = new PdfPTable(new float[]{2,2});
+        table.setWidthPercentage(100);
+        table.setSpacingBefore(5);
+
+        /* FIRST ROW */
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            PdfPTable sub_table = new PdfPTable(new float[]{2, 2});
+            sub_table.setWidthPercentage(100);
+            cell.addElement(sub_table);
+
+            //Fist column of first column
+            PdfPCell sub_cell = new PdfPCell();
+            paragraph = new Paragraph("Fecha de nacimento:", FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Font.BOLD, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+
+            //Second column of first column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph(personalInformation.getBirthDate(), FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+            table.addCell(cell);
+            cell.addElement(sub_table);
+
+            //Second column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            sub_table = new PdfPTable(new float[]{2, 4});
+            sub_table.setWidthPercentage(90);
+            cell.addElement(sub_table);
+
+            //Fist column of second column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph("Teléfono:", FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Font.BOLD, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+
+            //Second column of second column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph(""+personalInformation.getPhoneNumber(), FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+            table.addCell(cell);
+            cell.addElement(sub_table);
+
+        /* SECOND ROW */
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            sub_table = new PdfPTable(new float[]{2, 2});
+            sub_table.setWidthPercentage(100);
+            cell.addElement(sub_table);
+
+            //Fist column of first column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph("Nacionalidad:", FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Font.BOLD, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+
+            //Second column of first column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph(personalInformation.getNationality(), FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+            table.addCell(cell);
+            cell.addElement(sub_table);
+
+            //Second column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            sub_table = new PdfPTable(new float[]{2, 4});
+            sub_table.setWidthPercentage(90);
+            cell.addElement(sub_table);
+
+            //Fist column of second column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph("Email:", FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Font.BOLD, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+
+            //Second column of second column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph(personalInformation.getEmail(), FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+            table.addCell(cell);
+            cell.addElement(sub_table);
+
+        /* THIRD ROW */
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            sub_table = new PdfPTable(new float[]{2, 2});
+            sub_table.setWidthPercentage(100);
+            cell.addElement(sub_table);
+
+            //Fist column of first column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph("Dirección:", FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Font.BOLD, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+
+            //Second column of first column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph(personalInformation.getAddress(), FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+            table.addCell(cell);
+            cell.addElement(sub_table);
+
+            //Second column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            sub_table = new PdfPTable(new float[]{2, 4});
+            sub_table.setWidthPercentage(90);
+            cell.addElement(sub_table);
+
+            //Fist column of second column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph("", FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Font.BOLD, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+
+            //Second column of second column
+            sub_cell = new PdfPCell();
+            paragraph = new Paragraph("", FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            sub_cell.setBorder(PdfPCell.NO_BORDER);
+            sub_cell.addElement(paragraph);
+            sub_table.addCell(sub_cell);
+            table.addCell(cell);
+            cell.addElement(sub_table);
+
+        document.add(table);
     }
 
     private void addObjetive(String objetive) throws DocumentException {

@@ -11,6 +11,7 @@ public class PersonalInformation {
     private String name;
     private String surname;
     private String birthDate;
+    private String nationality;
     private String address;
     private String email;
     private int phoneNumber;
@@ -22,6 +23,16 @@ public class PersonalInformation {
         this.name = name;
         this.surname = surname;
         this.birthDate = dateFormatter.format(birthDate);
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public PersonalInformation(String name, String surname, Date birthDate, String nationality, String address, String email, int phoneNumber){
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = dateFormatter.format(birthDate);
+        this.nationality = nationality;
         this.address = address;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -49,5 +60,9 @@ public class PersonalInformation {
 
     public String getBirthDate() {
         return birthDate;
+    }
+
+    public String getNationality() {
+        return nationality;
     }
 }
