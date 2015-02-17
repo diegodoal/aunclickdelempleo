@@ -6459,6 +6459,11 @@ button.close {
 	outline: 0px;
 }
 
+.navbar-icons{
+    margin-left: 0.5em;
+    margin-top: 2.9em;
+}
+
 /*BANNER*/
 #banner{
   margin-top:-1.2em;
@@ -6797,11 +6802,11 @@ footer {
   float: right;
   color: #FFFFFF;
   margin-top: 5em;
-  background: #AB9E79;
+  background-color: #AB9E79;
   width: 25%;
   padding-bottom: 1.2em;
-  padding-top: 1.2em;
   padding-left: 1.2em;
+  border-style: hidden;
 }
 
 #img_numbers_bar, #text_numbers_bar{
@@ -6826,6 +6831,23 @@ footer {
 
 #space_4{
   margin-top: 3.7em;
+}
+
+.circle{
+  display: inline-block;
+  margin-right: 1.5em;
+  width: 2em;
+  height: 1em;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+  border-top-left-radius: 0em;
+  border-top-right-radius: 0em;
+  background:-webkit-radial-gradient(center,white 0%,white 100%);
+  background:-moz-radial-gradient(center,white 0%,white 100%);
+  background:-ms-radial-gradient(center,white 0%,white 100%);
+  background:-o-radial-gradient(center,white 0%,white 100%);
+  background:radial-gradient(center,white 0%,white 100%);
 }
 
 .advices_height{
