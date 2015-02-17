@@ -252,57 +252,66 @@ public class Template2 {
 
         document.add(paragraph);
         document.add(Chunk.NEWLINE);
-        
+
     }
 
     private void addWorkExperience(List<WorkExperience> experienceList) throws DocumentException {
         Paragraph paragraph;
-        PdfPCell cell;
         PdfPTable table;
+        PdfPCell cell;
 
-        for(int i=0; i<experienceList.size(); i++){
-            table = new PdfPTable(new float[]{2,7});
+        paragraph = new Paragraph("Experiencia", FontFactory.getFont(Constants.T2_FONT_STYLE, Constants.T2_FONT_SIZE_TITLE_2, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+        paragraph.setSpacingAfter(0);
+        document.add(paragraph);
+
+        LineSeparator lineSeparator = new LineSeparator(1, 100, BaseColor.LIGHT_GRAY, Element.ALIGN_CENTER, -2);
+        document.add(lineSeparator);
+
+        for (int i = 0; i < experienceList.size(); i++) {
+            table = new PdfPTable(new float[]{2, 4, 2});
+
+            Font bold_font = FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Font.BOLD, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY);
+            Font normal_font = FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY);
+
             table.setWidthPercentage(100);
             table.setSpacingBefore(5);
 
-            //First column
             cell = new PdfPCell();
-            cell.setBorder(PdfPCell.RIGHT);
-            if(i==0) {
-                Font font = FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
-                paragraph = new Paragraph("EXPERIENCIA", font);
-                cell.setBorder(PdfPCell.RIGHT);
-            }else{
-                paragraph = new Paragraph("");
-            }
+            paragraph = new Paragraph(experienceList.get(i).getCompany(), normal_font);
             paragraph.setAlignment(Paragraph.ALIGN_RIGHT);
-            cell.setPaddingRight(10);
             cell.addElement(paragraph);
-            table.addCell(cell);
-
-            //Second column
-            cell = new PdfPCell();
-            cell.setPaddingLeft(10);
-            cell.setPaddingTop(0);
             cell.setBorder(PdfPCell.NO_BORDER);
-
-            paragraph = new Paragraph(experienceList.get(i).getTitle().toUpperCase() + " - " +experienceList.get(i).getCompany().toUpperCase());
-            paragraph.setFont(FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD));
-            cell.addElement(paragraph);
-
-            Font font = FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD, BaseColor.GRAY);
-            paragraph = new Paragraph(experienceList.get(i).getStartDate().toUpperCase() + " - " + experienceList.get(i).getEndDate().toUpperCase(), font);
-            cell.addElement(paragraph);
-
-            paragraph = new Paragraph(experienceList.get(i).getDescription());
-            cell.addElement(paragraph);
-
+            cell.setPaddingRight(10);
+            cell.setRowspan(2);
             table.addCell(cell);
+
+            cell = new PdfPCell();
+            paragraph = new Paragraph(experienceList.get(i).getTitle(), bold_font);
+            cell.addElement(paragraph);
+            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setPaddingRight(10);
+            table.addCell(cell);
+
+            cell = new PdfPCell();
+            paragraph = new Paragraph(experienceList.get(i).getStartDate() + " - " + experienceList.get(i).getEndDate(), normal_font);
+            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setRowspan(2);
+            cell.addElement(paragraph);
+            table.addCell(cell);
+
+            cell = new PdfPCell();
+            paragraph = new Paragraph(experienceList.get(i).getDescription(), normal_font);
+            cell.addElement(paragraph);
+            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setPaddingRight(10);
+            table.addCell(cell);
+
             document.add(table);
         }
     }
 
     private void addEducation(List<Education> educationList) throws DocumentException {
+
         Paragraph paragraph;
         PdfPCell cell;
         PdfPTable table;

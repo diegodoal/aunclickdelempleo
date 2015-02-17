@@ -38,7 +38,7 @@ public class PDFController {
         }
 
         for(int i=0; i<5; i++){
-            experienceList.add(new WorkExperience("Talentum"+i, "Telefonica", i+1, 2009+i-1900, i+1, 2010+i, "LAB con Fundación Adecco "));
+            experienceList.add(new WorkExperience("Talentum"+i, "Telefonica", i+1, 2009+i, i+1, 2010+i, "LAB con Fundación Adecco "));
         }
 
         for(int i=0; i<10; i++){
