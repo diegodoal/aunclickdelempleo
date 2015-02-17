@@ -474,41 +474,23 @@ public class Template2 {
     }
 
     private void addSkills(List<String> skillsList) throws DocumentException {
-        Paragraph paragraph;
-        PdfPCell cell;
-        PdfPTable table;
+        if(!skillsList.isEmpty()){
+            Paragraph paragraph;
+            PdfPTable table;
+            PdfPCell cell;
 
-        for(int i=0; i<skillsList.size(); i++){
-            table = new PdfPTable(new float[]{2,7});
-            table.setWidthPercentage(100);
-            table.setSpacingBefore(5);
+            paragraph = new Paragraph("Habilidades", FontFactory.getFont(Constants.T2_FONT_STYLE, Constants.T2_FONT_SIZE_TITLE_2, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            paragraph.setSpacingAfter(0);
+            document.add(paragraph);
 
-            //First column
-            cell = new PdfPCell();
-            cell.setBorder(PdfPCell.RIGHT);
-            if(i==0) {
-                Font font = FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
-                paragraph = new Paragraph("HABILIDADES", font);
-                cell.setBorder(PdfPCell.RIGHT);
-            }else{
-                paragraph = new Paragraph("");
+            LineSeparator lineSeparator = new LineSeparator(1, 100, BaseColor.LIGHT_GRAY, Element.ALIGN_CENTER, -2);
+            document.add(lineSeparator);
+
+            for (int i = 0; i < skillsList.size(); i++) {
+                Font normal_font = FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY);
+                paragraph = new Paragraph(" \t "+skillsList.get(i).toString(), normal_font);
+                document.add(paragraph);
             }
-            paragraph.setAlignment(Paragraph.ALIGN_RIGHT);
-            cell.setPaddingRight(10);
-            cell.addElement(paragraph);
-            table.addCell(cell);
-
-            //Second column
-            cell = new PdfPCell();
-            cell.setPaddingLeft(10);
-            cell.setPaddingTop(0);
-            cell.setBorder(PdfPCell.NO_BORDER);
-
-            paragraph = new Paragraph(skillsList.get(i).toString());
-            cell.addElement(paragraph);
-
-            table.addCell(cell);
-            document.add(table);
         }
     }
 
