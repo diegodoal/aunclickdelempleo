@@ -562,54 +562,64 @@ public class Template2 {
     }
 
     private void addOtherInformation(OtherInformation otherInformation) throws DocumentException {
-        Paragraph paragraph;
-        PdfPCell cell;
-        PdfPTable table;
-        boolean firstTime = true;
+        if(!otherInformation.getPersonalWebSite().trim().isEmpty() || !otherInformation.getSocialNetworksList().isEmpty()) {
+            Paragraph paragraph;
+            PdfPTable table;
+            PdfPCell cell;
 
-        for(int i=0; i<otherInformation.getSocialNetworksList().size(); i++){
-            table = new PdfPTable(new float[]{2,7});
-            table.setWidthPercentage(100);
-            table.setSpacingBefore(5);
+            paragraph = new Paragraph("Información Adicional", FontFactory.getFont(Constants.T2_FONT_STYLE, Constants.T2_FONT_SIZE_TITLE_2, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY));
+            paragraph.setSpacingAfter(0);
+            document.add(paragraph);
 
-            //First column
-            cell = new PdfPCell();
-            cell.setBorder(PdfPCell.RIGHT);
-            if(firstTime == true) {
-                Font font = FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
-                paragraph = new Paragraph("INFORMACIÓN ADICIONAL", font);
-                cell.setBorder(PdfPCell.RIGHT);
-            }else{
-                paragraph = new Paragraph("");
-            }
-            paragraph.setAlignment(Paragraph.ALIGN_RIGHT);
-            cell.setPaddingRight(10);
-            cell.addElement(paragraph);
-            table.addCell(cell);
+            LineSeparator lineSeparator = new LineSeparator(1, 100, BaseColor.LIGHT_GRAY, Element.ALIGN_CENTER, -2);
+            document.add(lineSeparator);
 
-            //Second column
-            cell = new PdfPCell();
-            cell.setPaddingLeft(10);
-            cell.setPaddingTop(0);
-            cell.setBorder(PdfPCell.NO_BORDER);
+            Font bold_font = FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Font.BOLD, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY);
+            Font normal_font = FontFactory.getFont(Constants.T2_FONT_STYLE, Font.DEFAULTSIZE, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY);
 
-            if(firstTime == true){
-                Font font = FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD);
-                paragraph = new Paragraph(otherInformation.getPersonalWebSite(), font);
+            if(!otherInformation.getPersonalWebSite().trim().isEmpty()) {
+                table = new PdfPTable(new float[]{2, 7});
+                table.setWidthPercentage(100);
+                table.setSpacingBefore(5);
+                cell = new PdfPCell();
+                paragraph = new Paragraph("Página web: ", bold_font);
                 cell.addElement(paragraph);
+                cell.setBorder(PdfPCell.NO_BORDER);
+                cell.setPaddingRight(10);
                 table.addCell(cell);
-                i--;
-                firstTime = false;
-            }else {
-                Font font = FontFactory.getFont("Calibri", Font.DEFAULTSIZE, Font.BOLD);
-                paragraph = new Paragraph(otherInformation.getSocialNetworksList().get(i).getNetwork()
-                        + " - " + otherInformation.getSocialNetworksList().get(i).getUser(), font);
-                cell.addElement(paragraph);
 
+                cell = new PdfPCell();
+                paragraph = new Paragraph(otherInformation.getPersonalWebSite(), normal_font);
+                cell.addElement(paragraph);
+                cell.setBorder(PdfPCell.NO_BORDER);
+                cell.setPaddingRight(10);
                 table.addCell(cell);
             }
-            document.add(table);
+
+            if(!otherInformation.getSocialNetworksList().isEmpty()) {
+                for (int i = 0; i < otherInformation.getSocialNetworksList().size(); i++) {
+                    table = new PdfPTable(new float[]{3, 7});
+                    table.setWidthPercentage(100);
+                    table.setSpacingBefore(5);
+
+
+                    cell = new PdfPCell();
+                    paragraph = new Paragraph(otherInformation.getSocialNetworksList().get(i).getNetwork(), bold_font);
+                    cell.addElement(paragraph);
+                    cell.setBorder(PdfPCell.NO_BORDER);
+                    cell.setPaddingRight(10);
+                    table.addCell(cell);
+
+                    cell = new PdfPCell();
+                    paragraph = new Paragraph(otherInformation.getSocialNetworksList().get(i).getUser(), normal_font);
+                    cell.addElement(paragraph);
+                    cell.setBorder(PdfPCell.NO_BORDER);
+                    cell.setPaddingRight(10);
+                    table.addCell(cell);
+
+                    document.add(table);
+                }
+            }
         }
     }
-
 }
