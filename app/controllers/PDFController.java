@@ -15,13 +15,12 @@ import utils.cv.templates.TemplatesController;
 
 import static play.mvc.Results.redirect;
 
-
 /**
  * Created by Victor on 16/02/2015.
  */
 public class PDFController {
 
-    public static Result fakeCV(String template){
+    public static Result fakeCV(String template) {
         OtherInformation otherInformation = new OtherInformation("personal.website.com");
         List<WorkExperience> experienceList = new ArrayList<WorkExperience>();
         List<Education> educationList = new ArrayList<Education>();
