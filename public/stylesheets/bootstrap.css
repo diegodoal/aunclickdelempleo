@@ -6898,3 +6898,18 @@ label{
   font-style: none;
   color: red;
 }
+
+
+.orientation-points p label a:hover {
+     color: red;
+     text-decoration: underline;
+ }
+.orientation-points p label a:active {
+      color: red;
+      text-decoration: underline;
+ }
+
+.orientation-points p label a:visited {
+     color: #ab9e79 ;
+     text-decoration: none;
+ }
