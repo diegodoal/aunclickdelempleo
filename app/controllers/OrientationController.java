@@ -8,4 +8,8 @@ public class OrientationController extends Controller {
 	public static Result blank() {
         return ok(views.html.orientation.orientation.render());
     }
+
+    public static Result skills() {
+        return ok(views.html.orientation.skills.render());
+    }
 }

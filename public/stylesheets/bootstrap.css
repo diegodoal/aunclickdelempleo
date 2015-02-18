@@ -6818,6 +6818,24 @@ footer {
   background-size: 100% 20em;
 }
 
+#op3{
+  margin-left:-1.7em;
+}
+
+#opciones_1{
+  margin: 1.2em;
+}
+
+#opciones_2{
+  margin: 1.2em;
+  margin-left: 0.8em;
+
+}
+#opciones_3{
+  margin: 1.2em;
+  margin-left: 1.9em;
+}
+
 #back_advices{
   margin-top: 5em;
   float: right;
