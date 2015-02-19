@@ -12,4 +12,8 @@ public class OrientationController extends Controller {
     public static Result skills() {
         return ok(views.html.orientation.skills.render());
     }
+
+    public static Result personal() { return ok(views.html.orientation.personal.render()); }
+
+    public static Result professional() { return ok(views.html.orientation.professional.render()); }
 }
