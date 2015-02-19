@@ -13,6 +13,7 @@ public class OrientationController extends Controller {
         return ok(views.html.orientation.skills.render());
     }
 
+
     public static Result currentSituation(){
         return ok(views.html.orientation.currentSituation.render());
     }
@@ -27,7 +28,8 @@ public class OrientationController extends Controller {
     }
 
 
+    public static Result personal() { return ok(views.html.orientation.personal.render()); }
 
-
+    public static Result professional() { return ok(views.html.orientation.professional.render()); }
 
 }

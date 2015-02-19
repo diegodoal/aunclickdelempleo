@@ -6,8 +6,8 @@
     });
 });
 
-/* This script is used to select at most 3 options in "Intereses Profesionales:" */
-var num_options = 3;
+/* This script is used to select at most 5 options in "Intereses Profesionales:" */
+var num_options = 5;
 var numcheckbox = Array ();
 numcheckbox["profession"] = 0;
 function enable_cb(t) {

@@ -74,8 +74,9 @@ GET     /orientation                                controllers.OrientationContr
 GET     /orientation/skills							controllers.OrientationController.skills()
 GET     /orientation/currentSituation 				controllers.OrientationController.currentSituation()
 GET     /orientation/interestIdentification         controllers.OrientationController.interestIdentification()
-
 GET     /orientation/deadline                       controllers.OrientationController.deadline()
+GET     /orientation/personal						controllers.OrientationController.personal()
+GET     /orientation/professional					controllers.OrientationController.professional()
 
 # Use: /pdf/t1   or     /pdf/t2
 GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
