@@ -12,4 +12,22 @@ public class OrientationController extends Controller {
     public static Result skills() {
         return ok(views.html.orientation.skills.render());
     }
+
+    public static Result currentSituation(){
+        return ok(views.html.orientation.currentSituation.render());
+    }
+
+    public static Result interestIdentification(){
+        return ok(views.html.orientation.interestIdentification.render());
+    }
+
+
+    public static Result deadline(){
+        return ok(views.html.orientation.deadline.render());
+    }
+
+
+
+
+
 }

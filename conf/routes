@@ -71,7 +71,11 @@ POST    /job                                        controllers.JobsController.b
 
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()
-GET     /orientatiom/skills							controllers.OrientationController.skills()
+GET     /orientation/skills							controllers.OrientationController.skills()
+GET     /orientation/currentSituation 				controllers.OrientationController.currentSituation()
+GET     /orientation/interestIdentification         controllers.OrientationController.interestIdentification()
+
+GET     /orientation/deadline                       controllers.OrientationController.deadline()
 
 # Use: /pdf/t1   or     /pdf/t2
 GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
