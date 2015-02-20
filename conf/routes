@@ -71,12 +71,35 @@ POST    /job                                        controllers.JobsController.b
 
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()
+
+#PUNTO PARTIDA
 GET     /orientation/skills							controllers.OrientationController.skills()
-GET     /orientation/currentSituation 				controllers.OrientationController.currentSituation()
-GET     /orientation/interestIdentification         controllers.OrientationController.interestIdentification()
-GET     /orientation/deadline                       controllers.OrientationController.deadline()
+GET     /orientation/currentsituation 				controllers.OrientationController.currentsituation()
+GET     /orientation/interestidentification         controllers.OrientationController.interestidentification()
+
 GET     /orientation/personal						controllers.OrientationController.personal()
 GET     /orientation/professional					controllers.OrientationController.professional()
+
+#PLANIFICATE
+
+GET     /orientation/deadline                       controllers.OrientationController.deadline()
+GET     /orientation/photo                          controllers.OrientationController.photo()
+
+#PREPARATE
+GET     /orientation/learntools                     controllers.OrientationController.learntools()
+GET     /orientation/gettools                       controllers.OrientationController.gettools()
+GET     /orientation/reputation                     controllers.OrientationController.reputation()
+GET     /orientation/networking                     controllers.OrientationController.networking()
+
+#PROCESO SELECCION
+
+GET     /orientation/tinterview                     controllers.OrientationController.tinterview()
+GET     /orientation/pinterview                     controllers.OrientationController.pinterview()
+GET     /orientation/actinterview                   controllers.OrientationController.actinterview()
+GET     /orientation/level                          controllers.OrientationController.level()
+GET     /orientation/specialization                 controllers.OrientationController.specialization()
+GET     /orientation/bestdeals                      controllers.OrientationController.bestdeals()
+
 
 # Use: /pdf/t1   or     /pdf/t2
 GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
