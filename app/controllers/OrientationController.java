@@ -19,11 +19,11 @@ public class OrientationController extends Controller {
 
 
     public static Result currentsituation(){
-        return ok(views.html.orientation.currentsituation.render());
+        return ok(views.html.orientation.currentSituation.render());
     }
 
     public static Result interestidentification(){
-        return ok(views.html.orientation.interestidentification.render());
+        return ok(views.html.orientation.interestIdentification.render());
     }
 
     public static Result personal() { return ok(views.html.orientation.personal.render()); }
