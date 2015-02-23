@@ -6,130 +6,93 @@
         <h2 class="red_adecco century_gothic">Hazte una fotografía</h2>
         <div class="brown_adecco arial size14">
 
-            <!-- MODAL GUIDE FOR PHOTO CHOOSING -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                Como elegir una buena fotografía
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Como elegir una buena fotografía</h4>
-                        </div>
-                        <div class="modal-body">
-                            <h2>Cuida los detalles</h2>
-                            <p style="color: black;">Elegir la vestimenta correcta, el color que te favorezca, el peinado y poner mucha importancia en los detalles del arreglo personal, puede potencializar tu imagen. Una buena foto de curriculum no va a ser una razón por la que te seleccionen, aunque sí puede ayudarte. Lo que está claro es que una mala imagen puede ser un motivo por el que te descarten.
-                                Elige colores lisos y neutros, oscuros o claros, los dos son factibles pero eso marcará también tu personalidad en la imagen. Lleva ropa atemporal, ni demasiado de verano ni de demasiado abrigo.  No muestres marcas que puedan encasillarte.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- MODAL GUIDE FOR PHOTO CHOOSING -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Como elegir una buena fotografía
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Como elegir una buena fotografía</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <h2>Cuida los detalles</h2>
+                                    <p style="color: black;">Elegir la vestimenta correcta, el color que te favorezca, el peinado y poner mucha importancia en los detalles del arreglo personal, puede potencializar tu imagen. Una buena foto de curriculum no va a ser una razón por la que te seleccionen, aunque sí puede ayudarte. Lo que está claro es que una mala imagen puede ser un motivo por el que te descarten.
+                                        Elige colores lisos y neutros, oscuros o claros, los dos son factibles pero eso marcará también tu personalidad en la imagen. Lleva ropa atemporal, ni demasiado de verano ni de demasiado abrigo.  No muestres marcas que puedan encasillarte.</p>
 
-                            <h2>Sé natural</h2>
-                            <p style="color: black;">Una simple pose puede decir más que mil palabras. Sonreir suaviza la expresión de tu rostro y crea confianza. Utiliza la postura que te sea más cómoda pero trata de ser profesional.
-                                ¿Sonreir o no sonreir? Lo importante es que te sientas tu mismo pero sin forzar el gesto de tu cara.
-                                Si por más que intentas no logras una fotografía que te represente, quizá sea tiempo de considerar invertir en un servicio profesional para obtener mejores resultados.
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- END OF MODAL GUIDE -->
-
-            <!-- UPLOAD YOUR PHOTO -->
-            <p>Sube tu foto</p>
-            <input type="file" accept="image/*" id="input-file" onchange="javascript:alert('hola');">
-            <canvas id="canvas" ></canvas>
-
-            <script>
-                $(function(){
-                    $('#input-file').change(function(e) {
-                        var file = e.target.files[0],
-                            imageType = /image.*/;
-                            if (!file.type.match(imageType))
-            return;
-
-        var reader = new FileReader();
-        reader.onload = fileOnload;
-        reader.readAsDataURL(file);
-    });
-
-    function fileOnload(e) {
-        var $img = $('<img>', { src: e.target.result });
-        var canvas = $('#canvas')[0];
-        var context = canvas.getContext('2d');
-
-        $img.load(function() {
-            context.drawImage(this, 0, 0);
-        });
-    }
-});
-            </script>
-
-
-
-
-            <!-- MODAL GUIDE FOR PHOTO CHOOSING -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" onclick="takePhotoModal()">
-                Como elegir una buena fotografía
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Como elegir una buena fotografía</h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="text-center">
-                                <video class="text-center" id="video"></video>
-                                <canvas id="canvas2"></canvas>
+                                    <h2>Sé natural</h2>
+                                    <p style="color: black;">Una simple pose puede decir más que mil palabras. Sonreir suaviza la expresión de tu rostro y crea confianza. Utiliza la postura que te sea más cómoda pero trata de ser profesional.
+                                        ¿Sonreir o no sonreir? Lo importante es que te sientas tu mismo pero sin forzar el gesto de tu cara.
+                                        Si por más que intentas no logras una fotografía que te represente, quizá sea tiempo de considerar invertir en un servicio profesional para obtener mejores resultados.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn" id="startbutton" >Hacer foto</button>
-                            <button type="button" id="acceptbutton" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                    </div>
+                    <!-- END OF MODAL GUIDE -->
+
+                    <!-- UPLOAD YOUR PHOTO -->
+                    <p>Sube tu foto</p>
+                    <input type="file" accept="image/*" id="input">
+                </div>
+
+                <div class="col-md-6">
+                    <!-- MODAL GUIDE FOR PHOTO TAKING -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" onclick="takePhotoModal()">
+                        Hacer una foto
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel2">Como elegir una buena fotografía</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="text-center">
+                                        <video class="text-center" id="video"></video>
+                                        <canvas id="canvas2"></canvas>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn" id="startbutton" >Hacer foto</button>
+                                    <button type="button" id="acceptbutton" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <!-- END OF MODAL PHOTO TAKE -->
                 </div>
             </div>
-            <!-- END OF MODAL GUIDE -->
 
-
-
-
-    </div></br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="row">
-            <div class="col-md-2 col-xs-5 col-sm-3 arial size16 button_finish">
-                <a href="@routes.OrientationController.blank()">FINALIZAR</a>
-            </div>
+            <canvas id="canvas" ></canvas>
         </div>
+    </div>
+
+    </br>
+
+
+    <div class="row">
+        <div class="col-md-2 col-xs-5 col-sm-3 arial size16 button_finish">
+            <a href="@routes.OrientationController.blank()">FINALIZAR</a>
+        </div>
+    </div>
+
+    <!-- Script for handling upload photos-->
+    <script>
+        window.onload = function() {
+            uploadPhoto();
+        };
+    </script>
 </section>
 
 }
