@@ -10,6 +10,8 @@
 var num_options = 5;
 var numcheckbox = Array ();
 numcheckbox["profession"] = 0;
+numcheckbox["personal"] = 0;
+
 function enable_cb(t) {
     checkboxes = document.getElementsByName(t.name);
     if (t.checked) {

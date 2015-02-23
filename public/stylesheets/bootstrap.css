@@ -2068,8 +2068,9 @@ th {
 }
 .table {
   width: 100%;
-  max-width: 100%;
+  max-width: 90%;
   margin-bottom: 20px;
+  margin:auto;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,
@@ -6685,6 +6686,11 @@ input[type=checkbox]:checked + label:before{
   color: #88c64b;
 
 }
+input[type=checkbox]:disabled + label:before{
+  content:' ';
+  border: #fff;
+
+}
 input[type="radio"] {
    transform:scale(1.5,1.5);
    -ms-transform:scale(1.5,1.5); /* IE 9 */
@@ -6908,7 +6914,7 @@ footer {
      text-decoration: underline;
  }
 
-/*FORMATO TABLA HABLIDADES*/
+/*FORMATO TABLA HABILIDADES*/
 
 table td:first-child{
   text-align: center;
@@ -6925,7 +6931,7 @@ text-align: left;
 table {
 
   border-radius: 2em;
-  min-width: 50em;
+  min-width: 65em;
   font-family: Arial;
   background: rgba(171, 158, 121, 0.2);
 }
@@ -6965,7 +6971,7 @@ input[type="radio"] + label span {
     display:inline-block;
     width:2em;
     height:2em;
-    margin:-1px 4px 0 0;
+    margin-left: 0.5em;
     vertical-align:middle;
     cursor:pointer;
     -moz-border-radius:  50%;
@@ -7014,5 +7020,12 @@ input[type="radio"]:checked + label span {
   padding-bottom: 3em;
   padding-top: 2em;
 
+
+ }
+
+ pre{
+  font-family: Arial;
+  background:none;
+  border: none;
 
  }
