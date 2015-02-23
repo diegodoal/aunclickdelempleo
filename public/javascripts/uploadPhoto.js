@@ -7,8 +7,7 @@ function handleFiles(e) {
     var img = new Image;
     img.src = URL.createObjectURL(e.target.files[0]);
     img.onload = function() {
-        ctx.drawImage(img, 20,20);
-        alert('the image is drawn');
+        ctx.drawImage(img, 0,0, 200, 200);
     }
 }
 }
@@ -79,4 +78,8 @@ var data = canvas.toDataURL('image/png');
 photo.setAttribute('src', data);
 ev.preventDefault();
 }, false);
+}
+
+
+function sendPhoto(){
 }
