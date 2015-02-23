@@ -6669,7 +6669,7 @@ input[type="checkbox"] {
 
 .orientation-points label:before{
   content:' ';
-  background: transparent;
+  background: white;
   border: 4px solid #94877a;
   border-radius: 0.2em;
   display: inline-block;
@@ -6722,6 +6722,7 @@ input[type="radio"] {
   color:white;
 }
 .button_finish{
+
   float:right;
   color: white;
   background-color: #ab9e79;
@@ -6853,15 +6854,15 @@ footer {
 }
 
 #space_2{
-  margin-top: 2.9em;
+  margin-top: 5em;
 }
 
 #space_3{
-  margin-top: -0.3em;
+  margin-top: 2.3em;
 }
 
 #space_4{
-  margin-top: 1.3em;
+  margin-top: 3.9em;
 }
 
 .circle{
@@ -6889,19 +6890,22 @@ footer {
   margin-top: 0.05em;
 }
 
-
+.orientation-points p label a {
+  color: #ab9e79;
+  text-decoration: underline;
+}
 .orientation-points p label a:hover {
-     color: red;
+     color: #ab9e79;
      text-decoration: underline;
  }
 .orientation-points p label a:active {
-      color: red;
+      color: #ab9e79;
       text-decoration: underline;
  }
 
 .orientation-points p label a:visited {
-     color: #ab9e79 ;
-     text-decoration: none;
+     color: #730696;
+     text-decoration: underline;
  }
 
 /*FORMATO TABLA HABLIDADES*/
@@ -7001,4 +7005,14 @@ input[type="radio"]:checked + label span {
   -o-transition:background-color 0.1s linear;
   -moz-transition:background-color 0.1s linear;
   transition:background-color 0.1s linear;
+ }
+
+ /*BACKGROUND*/
+ .back{
+  background: rgba(171, 158, 121, 0.2);
+  border-radius: 3em;
+  padding-bottom: 3em;
+  padding-top: 2em;
+
+
  }
