@@ -1,7 +1,12 @@
 package controllers;
+import java.net.MalformedURLException;
 import java.util.List;
+import java.util.UUID;
+
+import models.S3File;
 import models.datasource.JobDataSource;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 
 public class OrientationController extends Controller {
@@ -33,7 +38,33 @@ public class OrientationController extends Controller {
     /*Planificate*/
     public static Result deadline(){return ok(views.html.orientation.deadline.render());}
 
-    public static Result photo() { return ok(views.html.orientation.photo.render()); }
+    public static Result photo() { return ok(views.html.orientation.photo.render(null)); }
+
+    public static Result uploadPhoto() {
+        Http.MultipartFormData body = request().body().asMultipartFormData();
+        Http.MultipartFormData.FilePart uploadFilePart = body.getFile("upload");
+        if (uploadFilePart != null) {
+            S3File s3File = new S3File();
+
+            String s = uploadFilePart.getFilename();
+            if(s.contains("."))
+                s3File.name = UUID.randomUUID().toString() + s.substring(s.lastIndexOf('.')) ;
+            else
+                s3File.name = UUID.randomUUID().toString();
+
+            s3File.file = uploadFilePart.getFile();
+            s3File.save();
+
+            try {
+                return ok(views.html.orientation.photo.render("Foto subida correctamente: "+s3File.getUrl().toString()));
+            } catch (MalformedURLException e) {
+                return ok("uploaded video but can not get url");
+            }
+        }
+        else {
+            return badRequest("File upload error");
+        }
+    }
 
 
     /*Preparate*/

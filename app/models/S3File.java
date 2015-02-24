@@ -53,7 +53,6 @@ public class S3File{
         }
         else {
             S3Plugin.amazonS3.deleteObject(bucket, getActualFileName());
-            this.id=null;
             this.file=null;
         }
     }

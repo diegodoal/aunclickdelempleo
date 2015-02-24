@@ -1,3 +1,4 @@
+@(upload_ok: String)
 @main(){
 <section class="container">
     <div class="row">
@@ -81,10 +82,14 @@
     </br>
 
 
-    <form method="post" enctype="multipart/form-data" action="@routes.VideoController.postVideo()">
+    <form method="post" enctype="multipart/form-data" action="@routes.OrientationController.uploadPhoto()">
         <input type="file" name='upload' id="upload">
         <input type="submit">
     </form>
+
+    @if(upload_ok != null){
+        <p style="color:red;">@upload_ok</p>
+    }
 
     <div class="row">
         <div class="col-md-2 col-xs-5 col-sm-3 arial size16 button_finish">
