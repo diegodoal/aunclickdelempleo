@@ -103,3 +103,5 @@ GET     /orientation/bestdeals                      controllers.OrientationContr
 
 # Use: /pdf/t1   or     /pdf/t2
 GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
+
+POST    /orientation/photo                          controllers.VideoController.postVideo()

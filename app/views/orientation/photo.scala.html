@@ -81,11 +81,17 @@
     </br>
 
 
+    <form method="post" enctype="multipart/form-data" action="@routes.VideoController.postVideo()">
+        <input type="file" name='upload' id="upload">
+        <input type="submit">
+    </form>
+
     <div class="row">
         <div class="col-md-2 col-xs-5 col-sm-3 arial size16 button_finish">
             <a href="@routes.OrientationController.blank()">FINALIZAR</a>
         </div>
     </div>
+
 
     <!-- Script for handling upload photos-->
     <script>
