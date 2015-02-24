@@ -16,9 +16,6 @@ import java.util.UUID;
 
 public class S3File{
 
-
-    public UUID id;
-
     private String bucket;
 
     public String name;
@@ -30,7 +27,7 @@ public class S3File{
     }
 
     private String getActualFileName() {
-        return id + "/" + name;
+        return name;
     }
 
 
@@ -41,8 +38,6 @@ public class S3File{
         }
         else {
             this.bucket = S3Plugin.s3Bucket;
-
-            this .id = UUID.randomUUID();
 
             PutObjectRequest putObjectRequest = new PutObjectRequest(bucket, getActualFileName(), file);
             putObjectRequest.withCannedAcl(CannedAccessControlList.PublicRead); // public for all
