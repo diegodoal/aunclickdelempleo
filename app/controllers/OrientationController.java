@@ -55,6 +55,8 @@ public class OrientationController extends Controller {
 
     public static Result actinterview() { return ok(views.html.orientation.actinterview.render()); }
 
+    public static Result questionsinterview() { return ok(views.html.orientation.questionsinterview.render()); }
+
     public static Result level() { return ok(views.html.orientation.level.render()); }
 
     public static Result specialization() { return ok(views.html.orientation.specialization.render()); }
