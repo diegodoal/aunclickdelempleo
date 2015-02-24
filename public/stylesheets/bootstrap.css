@@ -2068,7 +2068,7 @@ th {
 }
 .table {
   width: 100%;
-  max-width: 85%;
+  max-width: 90%;
   margin-bottom: 20px;
   margin:auto;
 }
@@ -6623,9 +6623,7 @@ margin-left: 4em;
 .italic{
   font-style: italic;
 }
-.size12{
-  font-size: 12pt;
-}
+
 .size14{
   font-size: 14pt;
 }
@@ -6690,7 +6688,8 @@ input[type=checkbox]:checked + label:before{
 }
 input[type=checkbox]:disabled + label:before{
   content:' ';
-  border: #fff;
+  border: transparent;
+  background: transparent;
 
 }
 input[type="radio"] {
@@ -6730,8 +6729,6 @@ input[type="radio"] {
   color:white;
 }
 .button_finish{
-
-  
   color: white;
   background-color: #ab9e79;
   border-radius: 0.5em;
@@ -6857,19 +6854,19 @@ footer {
   margin-top: -0.1em;
 }
 #space_1{
-  margin-top: 1.4em;
+  margin-top: 1.15em;
 }
 
 #space_2{
-  margin-top: 5em;
+  margin-top: 5.25em;
 }
 
 #space_3{
-  margin-top: 2.3em;
+  margin-top: 2.35em;
 }
 
 #space_4{
-  margin-top: 3.9em;
+  margin-top: 3.85em;
 }
 
 .circle{
@@ -6955,7 +6952,6 @@ table td:not(:last-child), table th:not(:last-child) {
 .custom-radio-group{
  text-align: center;
  vertical-align: middle;
- margin-left: -0.5em;
 }
 
 
