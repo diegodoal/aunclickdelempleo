@@ -101,7 +101,3 @@ photo.setAttribute('src', data);
 ev.preventDefault();
 }, false);
 }
-
-
-function sendPhoto(){
-}

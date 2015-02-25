@@ -25,6 +25,7 @@ function takePhoto(){
       canvasMain   = document.querySelector('#mainCanvas'),
       takePhotoButton  = document.querySelector('#takePhotoButton'),
       acceptPhotoButton = document.querySelector('#acceptPhotoButton'),
+      finishButton = document.querySelector('#finish_btn'),
       width = CANVAS_WIDTH,
       height = 0;
 
@@ -81,4 +82,20 @@ function takePhoto(){
         }, false
     );
 
+    finishButton.addEventListener('click', function(ev){
+    var dataurl = canvasMain.toDataURL('image/png');
+
+    $.ajax({
+      type: "POST",
+      url: "/orientation/photo",
+      data: {
+         imgBase64: dataurl
+      }
+    }).done(function(o) {
+      alert("Foto subida correctamente!");
+      window.location.assign("/orientation")
+    });
+
+    ev.preventDefault();
+    }, false);
 }

@@ -84,7 +84,7 @@ GET     /orientation/professional					controllers.OrientationController.professi
 
 GET     /orientation/deadline                       controllers.OrientationController.deadline()
 GET     /orientation/photo                          controllers.OrientationController.photo()
-GET     /orientation/photo/2                        controllers.OrientationController.myphoto()
+POST    /orientation/photo                          controllers.OrientationController.uploadPhoto()
 
 #PREPARATE
 GET     /orientation/learntools                     controllers.OrientationController.learntools()
@@ -104,6 +104,3 @@ GET     /orientation/bestdeals                      controllers.OrientationContr
 
 # Use: /pdf/t1   or     /pdf/t2
 GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
-
-POST    /orientation/photo                          controllers.OrientationController.uploadPhoto()
-POST    /orientation/photo/2                         controllers.OrientationController.requestString()

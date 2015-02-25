@@ -50,34 +50,7 @@ public class OrientationController extends Controller {
     public static Result myphoto() { return ok(views.html.orientation.myphoto.render(null)); }
 
     public static Result uploadPhoto() {
-        Http.MultipartFormData body = request().body().asMultipartFormData();
-        Http.MultipartFormData.FilePart uploadFilePart = body.getFile("upload");
-        if (uploadFilePart != null) {
-            S3File s3File = new S3File();
-
-            String s = uploadFilePart.getFilename();
-            if(s.contains("."))
-                s3File.name = UUID.randomUUID().toString() + s.substring(s.lastIndexOf('.')) ;
-            else
-                s3File.name = UUID.randomUUID().toString();
-
-            s3File.file = uploadFilePart.getFile();
-            s3File.save();
-
-            try {
-                return ok(views.html.orientation.myphoto.render("Foto subida correctamente: " + s3File.getUrl().toString()));
-            } catch (MalformedURLException e) {
-                return ok("uploaded video but can not get url");
-            }
-        }
-        else {
-            return badRequest("File upload error");
-        }
-    }
-
-    public static Result requestString() {
         Http.RequestBody body = request().body();
-        Map<String, String[]> content = body.asFormUrlEncoded();
 
         String base64 = body.asFormUrlEncoded().get("imgBase64")[0].toString();
         File temp = null;
@@ -88,7 +61,6 @@ public class OrientationController extends Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Logger.error("#########"+temp.getPath());
         base64 = base64.substring(base64.indexOf(",")+1);
         byte[] data = Base64.decodeBase64(base64);
 
@@ -111,7 +83,7 @@ public class OrientationController extends Controller {
         s3File.file = temp;
         s3File.save();
 
-        return ok(base64);
+        return ok(views.html.orientation.orientation.render());
     }
 
     /*END STASH*/
