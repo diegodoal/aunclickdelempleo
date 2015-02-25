@@ -14,7 +14,7 @@
             <br>
 
             <span class="brown_adecco arial size14">Sube tu foto</span>
-            <input type="file" accept="image/*" id="upload_your_photo">
+            <input type="file" accept="image/*" id="upload_photo" onchange="drawOnChange()">
 
             <br>
             <br>
@@ -89,5 +89,11 @@
     </div>
 </div>
 <!-- END OF PHOTO-TAKING MODAL -->
+
+<script>
+    window.onload = function() {
+        drawFromInput();
+    };
+</script>
 
 }
