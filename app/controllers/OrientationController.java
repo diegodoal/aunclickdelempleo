@@ -46,9 +46,6 @@ public class OrientationController extends Controller {
         return ok(views.html.orientation.photo.render());
     }
 
-    /* STASH */
-    public static Result myphoto() { return ok(views.html.orientation.myphoto.render(null)); }
-
     public static Result uploadPhoto() {
         Http.RequestBody body = request().body();
 
@@ -86,7 +83,6 @@ public class OrientationController extends Controller {
         return ok(views.html.orientation.orientation.render());
     }
 
-    /*END STASH*/
 
     /*Preparate*/
 
