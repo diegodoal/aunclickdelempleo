@@ -1,13 +1,11 @@
 package controllers;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.util.*;
 
 import models.S3File;
 import org.apache.commons.codec.binary.Base64;
+import play.Logger;
 import play.data.DynamicForm;
 
 import static play.data.Form.form;
@@ -77,15 +75,36 @@ public class OrientationController extends Controller {
         Map<String, String[]> content = body.asFormUrlEncoded();
 
         String base64 = body.asFormUrlEncoded().get("imgBase64")[0].toString();
+        File temp = null;
+        try {
+            temp = File.createTempFile("prefix", ".png");
+
+            temp.deleteOnExit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Logger.error("#########"+temp.getPath());
         base64 = base64.substring(base64.indexOf(",")+1);
         byte[] data = Base64.decodeBase64(base64);
-        try (OutputStream stream = new FileOutputStream("public/pdf/img.png")) {
+
+        try (OutputStream stream = new FileOutputStream(temp.getPath())) {
             stream.write(data);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        S3File s3File = new S3File();
+
+        String s = temp.getName();
+        if(s.contains("."))
+            s3File.name = UUID.randomUUID().toString() + s.substring(s.lastIndexOf('.')) ;
+        else
+            s3File.name = UUID.randomUUID().toString();
+
+        s3File.file = temp;
+        s3File.save();
 
         return ok(base64);
     }
