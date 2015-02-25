@@ -81,7 +81,15 @@
 
     </br>
 
+    <button type="button" id="sendpostbutton" class="btn btn-primary" action="dopost()">SEND POST BASE64</button>
 
+
+    </br>
+
+
+
+
+    <!-- AMAZON S3 UPLOAD FILE -->
     <form method="post" enctype="multipart/form-data" action="@routes.OrientationController.uploadPhoto()">
         <input type="file" name='upload' id="upload">
         <input type="submit">

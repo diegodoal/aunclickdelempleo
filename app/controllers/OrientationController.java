@@ -1,10 +1,16 @@
 package controllers;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import models.S3File;
-import models.datasource.JobDataSource;
+import org.apache.commons.codec.binary.Base64;
+import play.data.DynamicForm;
+
+import static play.data.Form.form;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -56,7 +62,7 @@ public class OrientationController extends Controller {
             s3File.save();
 
             try {
-                return ok(views.html.orientation.photo.render("Foto subida correctamente: "+s3File.getUrl().toString()));
+                return ok(views.html.orientation.photo.render("Foto subida correctamente: " + s3File.getUrl().toString()));
             } catch (MalformedURLException e) {
                 return ok("uploaded video but can not get url");
             }
@@ -64,6 +70,24 @@ public class OrientationController extends Controller {
         else {
             return badRequest("File upload error");
         }
+    }
+
+    public static Result requestString() {
+        Http.RequestBody body = request().body();
+        Map<String, String[]> content = body.asFormUrlEncoded();
+
+        String base64 = body.asFormUrlEncoded().get("imgBase64")[0].toString();
+        base64 = base64.substring(base64.indexOf(",")+1);
+        byte[] data = Base64.decodeBase64(base64);
+        try (OutputStream stream = new FileOutputStream("public/pdf/img.png")) {
+            stream.write(data);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return ok(base64);
     }
 
 

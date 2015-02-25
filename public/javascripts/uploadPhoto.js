@@ -21,6 +21,7 @@ var streaming = false,
   photo        = document.querySelector('#photo'),
   startbutton  = document.querySelector('#startbutton'),
   acceptbutton = document.querySelector('#acceptbutton'),
+  sendpostbutton = document.querySelector('#sendpostbutton'),
   width = 200,
   height = 0;
 
@@ -69,6 +70,27 @@ photo.setAttribute('src', data);
 startbutton.disabled = true;
 ev.preventDefault();
 }, false);
+
+sendpostbutton.addEventListener('click', function(ev){
+var dataurl = canvas.toDataURL('image/png');
+
+$.ajax({
+  type: "POST",
+  url: "/orientation/photo/2",
+  data: {
+     imgBase64: dataurl
+  }
+}).done(function(o) {
+  alert("done");
+  // If you want the file to be visible in the browser
+  // - please modify the callback in javascript. All you
+  // need is to return the url to the file, you just saved
+  // and than put the image in your browser.
+});
+
+ev.preventDefault();
+}, false);
+
 
 acceptbutton.addEventListener('click', function(ev){
 canvasmain.width = width;
