@@ -42,7 +42,12 @@ public class OrientationController extends Controller {
     /*Planificate*/
     public static Result deadline(){return ok(views.html.orientation.deadline.render());}
 
-    public static Result photo() { return ok(views.html.orientation.photo.render(null)); }
+    public static Result photo() {
+        return ok(views.html.orientation.photo.render());
+    }
+
+    /* STASH */
+    public static Result myphoto() { return ok(views.html.orientation.myphoto.render(null)); }
 
     public static Result uploadPhoto() {
         Http.MultipartFormData body = request().body().asMultipartFormData();
@@ -60,7 +65,7 @@ public class OrientationController extends Controller {
             s3File.save();
 
             try {
-                return ok(views.html.orientation.photo.render("Foto subida correctamente: " + s3File.getUrl().toString()));
+                return ok(views.html.orientation.myphoto.render("Foto subida correctamente: " + s3File.getUrl().toString()));
             } catch (MalformedURLException e) {
                 return ok("uploaded video but can not get url");
             }
@@ -109,6 +114,7 @@ public class OrientationController extends Controller {
         return ok(base64);
     }
 
+    /*END STASH*/
 
     /*Preparate*/
 
