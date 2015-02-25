@@ -1,5 +1,6 @@
 var CANVAS_WIDTH = 200;
 var CANVAS_HEIGHT = 200;
+var ACCEPTED_WEB_CAM_ACCESS = false;
 
 function drawFromInput(){
     var input = document.getElementById('upload_photo');
@@ -27,26 +28,32 @@ function takePhoto(){
       width = CANVAS_WIDTH,
       height = 0;
 
-  navigator.getMedia = ( navigator.getUserMedia ||
-                     navigator.webkitGetUserMedia ||
-                     navigator.mozGetUserMedia ||
-                     navigator.msGetUserMedia);
+      canvasModal.getContext('2d').clearRect(0, 0, canvasModal.width, canvasModal.height);
 
-  navigator.getMedia(
-    {video: true, audio: false},
-    function(stream) {
-        if (navigator.mozGetUserMedia) {
-            video.mozSrcObject = stream;
-        } else {
-            var vendorURL = window.URL || window.webkitURL;
-            video.src = vendorURL ? vendorURL.createObjectURL(stream) : stream;
+  if(ACCEPTED_WEB_CAM_ACCESS == false){
+      navigator.getMedia = ( navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.msGetUserMedia);
+
+
+      navigator.getMedia(
+        {video: true, audio: false},
+        function(stream) {
+            if (navigator.mozGetUserMedia) {
+                video.mozSrcObject = stream;
+            } else {
+                var vendorURL = window.URL || window.webkitURL;
+                video.src = vendorURL ? vendorURL.createObjectURL(stream) : stream;
+            }
+            video.play();
+            ACCEPTED_WEB_CAM_ACCESS = true;
+        },
+        function(err) {
+            console.log("An error occured! " + err);
         }
-        video.play();
-    },
-    function(err) {
-        console.log("An error occured! " + err);
-    }
-  );
+      );
+  }
 
   video.addEventListener('canplay', function(ev){
       if (!streaming) {
@@ -66,5 +73,12 @@ function takePhoto(){
       }, false
   );
 
+  acceptPhotoButton.addEventListener('click', function(ev){
+        canvasMain.width = CANVAS_WIDTH;
+        canvasMain.height = CANVAS_HEIGHT;
+        canvasMain.getContext('2d').drawImage(canvasModal, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        ev.preventDefault();
+        }, false
+    );
 
 }
