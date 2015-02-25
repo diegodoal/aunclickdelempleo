@@ -12,131 +12,132 @@
     </div>
 </article>
 
-<section class="container back panel-group" id="accordion" style="margin-auto;">
+<section class="panel-group container back " id="accordion" role="tablist" aria-multiselectable="true" style="margin-auto;">
 
-            <!--Paricipantes-->
-            <p class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;;">Según el número de participantes distinguimos:</p>
-            <div class="panel panel-default row panel-group-background">
-                  <div class="panel-heading col-md-12 col-sm-12 col-xs-12">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista individual  <img  src="@routes.Assets.at("images/orientation/ic_leermas.png")"> </u></a>
-                  </div>
-                  <div id="collapse1" class="panel-collapse collapse in collapse_background_color">
-                    <div class="panel-body" style="margin-top:4.3em;">
-                        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;">
-                        La entrevista de trabajo individual es la más habitual de todas. Se lleva a cabo entre la persona que busca el empleo y un representante de la empresa que ofrece el puesto, normalmente un miembro del departamento de recursos humanos.</p>
-                        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;">
-                        No existe un patrón ni un modelo a seguir. El orden y los temas que se aborden dependen únicamente de la voluntad del entrevistador. Sin embargo, el carácter confidencial de este tipo de entrevista permite alcanzar una profundidad mayor en las cuestiones.
-                        </p>
-                    </div>
-                  </div>
-            </div>
+  <p class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;;">Según el número de participantes distinguimos:</p>
+  <div class="panel panel-default panel-group-background">
+    <div class="panel-heading" role="tab" id="headingOne">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"  class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista individual<img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"><img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermenos.png")"></u></a>
+         
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in collapse_background_color" role="tabpanel" aria-labelledby="heading1">
+      <div class="panel-body">
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;">
+         La entrevista de trabajo individual es la más habitual de todas. Se lleva a cabo entre la persona que busca el empleo y un representante de la empresa que ofrece el puesto, normalmente un miembro del departamento de recursos humanos.</p>
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;">
+        No existe un patrón ni un modelo a seguir. El orden y los temas que se aborden dependen únicamente de la voluntad del entrevistador. Sin embargo, el carácter confidencial de este tipo de entrevista permite alcanzar una profundidad mayor en las cuestiones.
+        </p>
+      </div>
+    </div>
+  </div>
 
-            <div class="panel panel-default row panel-group-background">
-                  <div class="panel-heading col-md-12 col-sm-12 col-xs-12">
-                    
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista de panel  <img  src="@routes.Assets.at("images/orientation/ic_leermas.png")"> </u></a>
-                    
-                  </div>
-                  <div id="collapse2" class="panel-collapse collapse collapse_background_color">
-                    <div class="panel-body" style="margin-top:4.3em;">
-                        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
-                        Este tipo de entrevista de trabajo es bastante similar a la entrevista individual. Sin embargo, en este caso intervienen varios entrevistadores, en lugar de sólo uno. Normalmente forman parte del departamento de Recursos Humanos de la empresa.
-                        </p>
+  <div class="panel panel-default panel-group-background">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2"  class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista de panel<img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"><img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermenos.png")"></u></a>
+    </div>
+    <div id="collapse2" class="panel-collapse collapse collapse_background_color" role="tabpanel" aria-labelledby="heading2">
+      <div class="panel-body" >
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
+            Este tipo de entrevista de trabajo es bastante similar a la entrevista individual. Sin embargo, en este caso intervienen varios entrevistadores, en lugar de sólo uno. Normalmente forman parte del departamento de Recursos Humanos de la empresa.
+        </p>
            
-                        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;">
-                        No existe un orden prestablecido ni unas temáticas determinadas, éstas dependen íntegramente de los entrevistadores. Se puede alcanzar una gran profundidad en el diálogo, siempre que se supere la más que probable intimidación inicial que supone enfrentarse a varios entrevistadores a la vez.
-                        </p>
-                    </div>
-                  </div>
-            </div>
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;">
+            No existe un orden prestablecido ni unas temáticas determinadas, éstas dependen íntegramente de los entrevistadores. Se puede alcanzar una gran profundidad en el diálogo, siempre que se supere la más que probable intimidación inicial que supone enfrentarse a varios entrevistadores a la vez.
+        </p>
+      </div>
+    </div>
+  </div>
 
-            <div class="panel panel-default row panel-group-background">
-                  <div class="panel-heading col-md-12 col-sm-12 col-xs-12">
-                    
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista de grupo  <img  src="@routes.Assets.at("images/orientation/ic_leermas.png")"> </u></a>
-                    
-                  </div>
-                  <div id="collapse3" class="panel-collapse collapse collapse_background_color">
-                    <div class="panel-body" style="margin-top:4.3em;">
-                        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
+
+
+
+  <div class="panel panel-default panel-group-background">
+    <div class="panel-heading" role="tab" id="headingThree">
+      
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class=" collapsed century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista de grupo<img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"><img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermenos.png")"></u></a>
+      
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse collapse_background_color" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
+        La entrevista de grupo es, como su propio nombre indica, aquella en la que participan un grupo de personas, en lugar de una sola. Es muy similar a la entrevista de panel, aunque en este caso el aspirante es entrevistado sucesivamente por diferentes personas que pertenecen a distintas áreas.
+        </p>
+                       
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;">
+        En este tipo de entrevista es bastante frecuente que haya un psicólogo de empresa.Cada entrevistador evaluará al candidato según sus propios criterios y, una vez concluidas las entrevistas, se unificarán criterios y se tomará una decisión en común sobre la idoniedad del candidato.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  </section>
+
+
+  <section class="panel-group container back " id="accordion" role="tablist" aria-multiselectable="true" style="margin-auto;">
+  <p class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;;">Según el procedimiento de la entrevista </p>
+  <div class="panel panel-default panel-group-background">
+    <div class="panel-heading" role="tab" id="heading4">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4"  class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista estructurada<img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"><img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermenos.png")"></u></a>
+         
+    </div>
+    <div id="collapse4" class="panel-collapse collapse  collapse_background_color" role="tabpanel" aria-labelledby="heading4">
+      <div class="panel-body">
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
                         La entrevista de grupo es, como su propio nombre indica, aquella en la que participan un grupo de personas, en lugar de una sola. Es muy similar a la entrevista de panel, aunque en este caso el aspirante es entrevistado sucesivamente por diferentes personas que pertenecen a distintas áreas.
                         </p>
                        
                         <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;">
                         En este tipo de entrevista es bastante frecuente que haya un psicólogo de empresa.Cada entrevistador evaluará al candidato según sus propios criterios y, una vez concluidas las entrevistas, se unificarán criterios y se tomará una decisión en común sobre la idoniedad del candidato.
                         </p>
-                    </div>
-                  </div>
-            </div>
-</section>
-<section class="container back panel-group" id="accordion" style="margin-auto;">
+      </div>
+    </div>
+  </div>
 
-            <!--Entrevista-->
-
-            <p class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;;">Según el procedimiento de la entrevista distinguimos:</p>
-
-            <div class="panel panel-default row panel-group-background">
-                  <div class="panel-heading col-md-12 col-sm-12 col-xs-12">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista estructurada  <img  src="@routes.Assets.at("images/orientation/ic_leermas.png")"> </u></a>
-                  </div>
-                  <div id="collapse4" class="panel-collapse collapse collapse_background_color">
-                    <div class="panel-body" style="margin-top:4.3em;">
-                        
-                       <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
-                        La entrevista de grupo es, como su propio nombre indica, aquella en la que participan un grupo de personas, en lugar de una sola. Es muy similar a la entrevista de panel, aunque en este caso el aspirante es entrevistado sucesivamente por diferentes personas que pertenecen a distintas áreas.
-                        </p>
-                       
-                        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;">
-                        En este tipo de entrevista es bastante frecuente que haya un psicólogo de empresa.Cada entrevistador evaluará al candidato según sus propios criterios y, una vez concluidas las entrevistas, se unificarán criterios y se tomará una decisión en común sobre la idoniedad del candidato.
-                        </p>
-
-                    </div>
-                  </div>
-            </div>
-
-            <div class="panel panel-default row panel-group-background">
-                  <div class="panel-heading col-md-12 col-sm-12 col-xs-12">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista no estructurada  <img  src="@routes.Assets.at("images/orientation/ic_leermas.png")"> </u></a>
-                  </div>
-                  <div id="collapse5" class="panel-collapse collapse collapse_background_color">
-                    <div class="panel-body" style="margin-top:4.3em;">
-                        
-                       <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
+  <div class="panel panel-default panel-group-background">
+    <div class="panel-heading" role="tab" id="heading5">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5"  class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista no estructurada<img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"><img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermenos.png")"></u></a>
+    </div>
+    <div id="collapse5" class="panel-collapse collapse collapse_background_color" role="tabpanel" aria-labelledby="heading5">
+      <div class="panel-body" >
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
                         La entrevista no estructurada o libre es aquella en la que se trabaja con preguntas abiertas, sin un orden preestablecido, adquiriendo características de conversación. Esta técnica consiste en realizar preguntas de acuerdo a las respuestas que vayan surgiendo durante la entrevista.Así, a diferencia de la entrevista estructurada, en este tipo de reunión el entrevistador solo tiene una idea aproximada de lo que se va a preguntar y va improvisando las cuestiones dependiendo del tipo y las características de las respuestas. Además, el énfasis se pone más en el análisis de las impresiones que en el de los hechos.</p>
                         <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;"> El principal inconveniente de este tipo de entrevista de trabajo es que, al no tener un listado de temas y cuestiones, se puede pasar por alto áreas de aptitud, conocimiento o experiencia del solicitante, obviando preguntas importantes del tema a tratar. Cuando esto ocurre la empresa no resulta beneficiada, porque se pierde información que puede ser de interés. Además, no hay posibilidad de revisar la exactitud de las conclusiones del entrevistador.
                         Con todo, este tipo es, sin duda, el que más gusta a los entrevistadores, a causa de la libertad que le deja.</p>
+      </div>
+    </div>
+  </div>
 
-                    </div>
-                  </div>
-            </div>
 
-
-        <div class="panel panel-default row panel-group-background">
-                  <div class="panel-heading col-md-12 col-sm-12 col-xs-12">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse6" class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista mixta  <img  src="@routes.Assets.at("images/orientation/ic_leermas.png")"> </u></a>
-                  </div>
-                  <div id="collapse6" class="panel-collapse collapse collapse_background_color">
-                    <div class="panel-body" style="margin-top:4.3em;">
-                        
-                       <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
+  <div class="panel panel-default panel-group-background">
+    <div class="panel-heading" role="tab" id="heading6">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6"  class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista mixta<img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"><img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermenos.png")"></u></a>
+    </div>
+    <div id="collapse6" class="panel-collapse collapse collapse_background_color" role="tabpanel" aria-labelledby="heading6">
+      <div class="panel-body" >
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
+                        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
                        
                         La entrevista mixta o semiestructurada es aquella en la que, como su propio nombre indica, el entrevistador despliega una estrategia mixta, alternando preguntas estructuradas y con preguntas espontáneas.
                         Esto forma es más completa ya que, mientras que la parte preparada permite comparar entre los diferentes candidatos, la parte libre permite profundizar en las características especificas del candidato. Por ello, permite una mayor libertad y flexibilidad en la obtención de información.
 
                        </p>
+      </div>
+    </div>
+  </div>
 
-                    </div>
-                  </div>
-        </div>
 
-        <div class="panel panel-default row panel-group-background">
-                  <div class="panel-heading col-md-12 col-sm-12 col-xs-12">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse7" class=" century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista de provocación de tensión  <img  src="@routes.Assets.at("images/orientation/ic_leermas.png")"> </u></a>
-                  </div>
-                  <div id="collapse7" class="panel-collapse collapse collapse_background_color">
-                    <div class="panel-body" style="margin-top:4.3em;">
-                        
-                       <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
+
+
+
+  <div class="panel panel-default panel-group-background">
+    <div class="panel-heading" role="tab" id="heading7">
+      
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="false" aria-controls="collapse7" class="collapsed century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left:1em;"><u>Entrevista de provocación de tensión<img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"><img style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermenos.png")"></u></a>
+      
+    </div>
+    <div id="collapse7" class="panel-collapse collapse collapse_background_color" role="tabpanel" aria-labelledby="heading7">
+      <div class="panel-body">
+        <p  class="size14 gray_adecco arial steps_height" style="margin-left:2em;margin-top:1em;"> 
                        
                         La entrevista de tensión o de provocación de tensión es aquella en la que se emplean modos y actitudes que tienen como objetivo provocar tensión en el candidato.
                         Se utiliza fundamentalmente en las entrevistas para cubrir aquellos puestos que deben desempeñarse en condiciones de gran tensión. En estos casos, el entrevistador necesita saber como reacciona el solicitante al elemento presión. Personas con poco control emocional suelen perder el control por lo que se pueden detectar los engaños preguntando minuciosamente al candidato.
@@ -159,19 +160,11 @@
                         Normalmente, no se debe usar al comienzo de la entrevista porque este proceder imposibilita la comparación entre el comportamiento normal del candidato y el que se produce bajo tensión. Tampoco debe usarse al final de la entrevista porque es recomendable dar al candidato la oportunidad de recobrarse de la tensión antes de su terminación.
                         No existe ningún método que a priori genere tensión en todos los candidatos. Uno puede dejar frío y relajado a un tipo de persona, mientras que usando otro se le puede causar una respuesta emocional.
                         </p>
-
-                    </div>
-                  </div>
-        </div>       
-    
-  
+      </div>
+    </div>
+  </div>
 
 </section>
-
-
-
-    
-
 
 
 
