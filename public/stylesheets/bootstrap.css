@@ -7028,3 +7028,7 @@ input[type="radio"]:checked + label span {
   border: none;
 
  }
+
+ .collapse_background_color{
+    background: rgba(171, 158, 121, 0.2);
+ }
