@@ -4,7 +4,6 @@ import com.itextpdf.text.DocumentException;
 import play.mvc.Result;
 import utils.cv.Project;
 import utils.cv.templates.Template1;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +11,6 @@ import java.util.List;
 import utils.cv.*;
 import utils.cv.templates.Template2;
 import utils.cv.templates.TemplatesController;
-
 import static play.mvc.Results.redirect;
 
 /**

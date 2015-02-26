@@ -4,13 +4,9 @@ import models.datasource.CompanyUserDataSource;
 import models.datasource.ParticularUserDataSource;
 import models.entities.CompanyUser;
 import models.entities.ParticularUser;
-import models.entities.User;
 import play.data.DynamicForm;
-import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.*;
-import views.html.complete_user_profile.*;
 import static play.data.Form.form;
 
 /**

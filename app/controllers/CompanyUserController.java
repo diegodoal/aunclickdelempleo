@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.List;
-
 import models.datasource.CompanyUserDataSource;
 import models.entities.CompanyUser;
 import play.mvc.Controller;

@@ -4,13 +4,9 @@ import models.datasource.CompanyUserDataSource;
 import models.datasource.ParticularUserDataSource;
 import models.entities.CompanyUser;
 import models.entities.ParticularUser;
-import models.entities.User;
 import play.mvc.*;
 import utils.EmailUtil;
-import views.html.index;
-
 import java.util.Properties;
-
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -18,12 +14,12 @@ import javax.mail.Session;
 public class Application extends Controller {
 
 	public static Result index() {
-        return ok(index.render());
+        return ok(views.html.index.render());
 	}
 
     public static Result logout(){
         session().clear();
-        return ok(index.render());
+        return ok(views.html.index.render());
     }
 
 	/* EMAIL
