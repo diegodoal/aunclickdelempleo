@@ -84,6 +84,7 @@ GET     /orientation/professional					controllers.OrientationController.professi
 
 GET     /orientation/deadline                       controllers.OrientationController.deadline()
 GET     /orientation/photo                          controllers.OrientationController.photo()
+POST    /orientation/photo                          controllers.OrientationController.uploadPhoto()
 
 #PREPARATE
 GET     /orientation/learntools                     controllers.OrientationController.learntools()

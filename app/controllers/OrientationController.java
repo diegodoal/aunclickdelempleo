@@ -1,7 +1,16 @@
 package controllers;
-import java.util.List;
-import models.datasource.JobDataSource;
+import java.io.*;
+import java.net.MalformedURLException;
+import java.util.*;
+
+import models.S3File;
+import org.apache.commons.codec.binary.Base64;
+import play.Logger;
+import play.data.DynamicForm;
+
+import static play.data.Form.form;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 
 public class OrientationController extends Controller {
@@ -33,7 +42,46 @@ public class OrientationController extends Controller {
     /*Planificate*/
     public static Result deadline(){return ok(views.html.orientation.deadline.render());}
 
-    public static Result photo() { return ok(views.html.orientation.photo.render()); }
+    public static Result photo() {
+        return ok(views.html.orientation.photo.render());
+    }
+
+    public static Result uploadPhoto() {
+        Http.RequestBody body = request().body();
+
+        String base64 = body.asFormUrlEncoded().get("imgBase64")[0].toString();
+        File temp = null;
+        try {
+            temp = File.createTempFile("prefix", ".png");
+
+            temp.deleteOnExit();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        base64 = base64.substring(base64.indexOf(",")+1);
+        byte[] data = Base64.decodeBase64(base64);
+
+        try (OutputStream stream = new FileOutputStream(temp.getPath())) {
+            stream.write(data);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        S3File s3File = new S3File();
+
+        String s = temp.getName();
+        if(s.contains("."))
+            s3File.name = UUID.randomUUID().toString() + s.substring(s.lastIndexOf('.')) ;
+        else
+            s3File.name = UUID.randomUUID().toString();
+
+        s3File.file = temp;
+        s3File.save();
+
+        return ok(views.html.orientation.orientation.render());
+    }
 
 
     /*Preparate*/
