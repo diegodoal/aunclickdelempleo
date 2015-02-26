@@ -89,6 +89,8 @@ function finishPhoto(){
     var canvasMain = document.querySelector('#mainCanvas');
     var dataurl = canvasMain.toDataURL('image/png');
 
+    $('#photoUploadingModal').modal('show');
+
     $.ajax({
           type: "POST",
           url: "/orientation/photo",
@@ -96,7 +98,9 @@ function finishPhoto(){
              imgBase64: dataurl
           }
         }).done(function(o) {
-          alert("Foto subida correctamente!");
+          document.getElementById("photoUploadingText").innerHTML = ("Foto subida con éxito");
+          alert("fin");
+          //$('#photoUploadingModal').modal('hide');
           window.location.assign("/orientation")
         });
 }
