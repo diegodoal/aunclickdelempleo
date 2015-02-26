@@ -99,7 +99,6 @@ function finishPhoto(){
           }
         }).done(function(o) {
           document.getElementById("photoUploadingText").innerHTML = ("Foto subida con éxito");
-          alert("fin");
           //$('#photoUploadingModal').modal('hide');
           window.location.assign("/orientation")
         });
