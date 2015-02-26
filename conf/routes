@@ -25,16 +25,6 @@ GET		/particular/initfakedb						controllers.ParticularUserController.initialize
 GET		/particular/verify/:email/:key				controllers.ParticularUserController.verifyParticularUser(email : String, key : String)
 GET		/particular/sendvalidation/:email			controllers.Application.sendParticularValidationEmail(email : String)
 
-# JOBS
-GET		/job/initfakedb								controllers.JobsController.initializeJobsDB()
-GET		/job/find/:id								controllers.JobsController.findJob(id : Integer)
-GET		/job/findall								controllers.JobsController.listJobs()
-
-# COURSES
-GET		/course/initfakedb							controllers.CoursesController.initializeCoursesDB()
-GET		/course/find/:id							controllers.CoursesController.findCourse(id : Integer)
-GET		/course/findall								controllers.CoursesController.listCourses()
-
 # UTILS
 GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 
@@ -58,16 +48,6 @@ GET     /particular/signup/step3                    controllers.LoginParticularU
 GET     /company                                    controllers.LoginCompanyUserController.blank()
 POST    /company/login                              controllers.LoginCompanyUserController.submitLogin()
 POST    /company/signup                             controllers.LoginCompanyUserController.submitSignUp()
-
-# COURSES
-GET     /course                                     controllers.CoursesController.blank()
-GET     /course/details/:id                         controllers.CoursesController.courseDetails(id : String)
-POST    /course                                     controllers.CoursesController.blankFiltered()
-
-# JOBS
-GET     /job                                        controllers.JobsController.blank()
-GET     /job/details/:id                            controllers.JobsController.jobDetails(id : String)
-POST    /job                                        controllers.JobsController.blankFiltered()
 
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()

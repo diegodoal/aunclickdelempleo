@@ -7,7 +7,6 @@ import models.entities.ParticularUser;
 import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
-
 import static play.data.Form.form;
 
 /**

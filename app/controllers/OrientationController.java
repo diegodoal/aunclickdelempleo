@@ -1,14 +1,9 @@
 package controllers;
-import java.io.*;
-import java.net.MalformedURLException;
-import java.util.*;
 
+import java.io.*;
+import java.util.*;
 import models.S3File;
 import org.apache.commons.codec.binary.Base64;
-import play.Logger;
-import play.data.DynamicForm;
-
-import static play.data.Form.form;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;

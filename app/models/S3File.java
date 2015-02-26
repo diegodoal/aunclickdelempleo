@@ -1,6 +1,5 @@
 package models;
 
-
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import play.Logger;
@@ -8,7 +7,6 @@ import plugins.S3Plugin;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.UUID;
 
 /**
  * Created by anquegi on 10/06/14.
