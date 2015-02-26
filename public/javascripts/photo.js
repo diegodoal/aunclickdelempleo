@@ -82,20 +82,21 @@ function takePhoto(){
         }, false
     );
 
-    finishButton.addEventListener('click', function(ev){
+
+}
+
+function finishPhoto(){
+    var canvasMain = document.querySelector('#mainCanvas');
     var dataurl = canvasMain.toDataURL('image/png');
 
     $.ajax({
-      type: "POST",
-      url: "/orientation/photo",
-      data: {
-         imgBase64: dataurl
-      }
-    }).done(function(o) {
-      alert("Foto subida correctamente!");
-      window.location.assign("/orientation")
-    });
-
-    ev.preventDefault();
-    }, false);
+          type: "POST",
+          url: "/orientation/photo",
+          data: {
+             imgBase64: dataurl
+          }
+        }).done(function(o) {
+          alert("Foto subida correctamente!");
+          window.location.assign("/orientation")
+        });
 }
