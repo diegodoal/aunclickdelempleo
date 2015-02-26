@@ -18,8 +18,7 @@ import javax.mail.Session;
 public class Application extends Controller {
 
 	public static Result index() {
-        User user = new User("victor.gzarco@gmail.com", "123456789");
-		return ok(index.render());
+        return ok(index.render());
 	}
 
     public static Result logout(){
