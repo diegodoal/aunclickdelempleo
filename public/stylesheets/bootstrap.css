@@ -920,8 +920,8 @@ a {
 }
 a:hover,
 a:focus {
-  color: #23527c;
-  text-decoration: underline;
+  color:#706f6f;
+  text-decoration: none;
 }
 a:focus {
   outline: thin dotted;
@@ -7029,7 +7029,7 @@ input[type="radio"]:checked + label span {
  }
 
  /*BACKGROUND*/
- .back{
+ .back {
   background: rgba(171, 158, 121, 0.2);
   border-radius: 3em;
   padding-bottom: 3em;
@@ -7038,17 +7038,23 @@ input[type="radio"]:checked + label span {
 
  }
 
- pre{
+ pre {
   font-family: Arial;
   background:none;
   border: none;
 
  }
 
- .collapse_background_color{
+/*QUESTIONS INTERVIEW*/
+ .collapse_background_color {
     background: rgba(171, 158, 121, 0.2);
  }
 
-.panel-group-background{
-  border-style: hidden;
+.panel-group-background {
+  border: 0em hidden #000000;
 }
+
+a.format:hover, a.format:focus {
+   color: #white;
+   text-decoration: none;
+ }
