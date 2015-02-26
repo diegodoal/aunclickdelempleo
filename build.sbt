@@ -15,9 +15,8 @@ libraryDependencies ++= Seq(
   "org.mongodb" %% "casbah" % "2.6.4",
   "com.google.code.gson" % "gson" % "2.3.1",
   "com.sun.mail" % "javax.mail" % "1.5.2",
-  "com.itextpdf" % "itextpdf" % "5.5.4",
-  "com.amazonaws" % "aws-java-sdk" % "1.7.12",
-  "com.wordnik" % "swagger-annotations" % "1.5.2-M1"
+  "com.itextpdf" % "itextpdf" % "5.5.5",
+  "com.amazonaws" % "aws-java-sdk" % "1.7.12"
 )   
 
 playJavaSettings
