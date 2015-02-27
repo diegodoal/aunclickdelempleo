@@ -1,0 +1,75 @@
+.drag-drop-input{
+	border-style: dashed;
+	border-color: #8d8379;
+	padding: 3em;
+	margin: 3em;
+	margin-left: 0;
+}
+
+.padding-left-column{
+	padding-left: 2em;
+}
+/* MODAL PHOTO-TAKING*/
+.custom-modal{
+	background-color: white;
+	padding: 3em;
+}
+
+.canvas-container{
+	padding: 2em;
+}
+
+.custom-canvas-background{
+	background-color: #eceae3;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+}
+
+/* BUTTONS */
+.button-brown-1{
+	color: #ab9e79;
+ 	background: #eceae3;
+ 	padding: 0.5em;
+ 	border: solid #ab9e79 2px;
+ 	text-decoration: none;
+}
+
+.button-accept{
+	color: #ffffff;
+ 	background: #3ab54a;
+ 	text-decoration: none;
+ 	padding: 0.5em;
+  	border: solid #3ab54a 2px;
+  	font-weight: bold;
+}
+
+.button-cancel{
+	color: #ffffff;
+ 	background: #ee1d23;
+ 	text-decoration: none;
+ 	padding: 0.5em;
+  	border: solid #ee1d23 2px;
+  	font-weight: bold;
+}
+
+.button-modal{
+	width: 80%;
+}
+
+.button-finish-1{
+	-webkit-border-radius: 10;
+  	-moz-border-radius: 10;
+  	border-radius: 10px;
+  	color: #ffffff;
+  	background: #ab9e79;
+  	border: solid #ab9e79 2px;
+  	text-decoration: none;
+  	padding-right: 2em;
+  	padding-left: 2em;
+  	font-size: 18px;
+}
+
+.right{
+	float: right;
+}

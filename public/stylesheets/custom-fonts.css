@@ -1,0 +1,30 @@
+.title{
+    font-family: 'Century Gothic';
+	font-size: 30px;
+	font-style: normal;
+	color: #EA2026;
+}
+
+.sub-title{
+	font-family: Arial;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: bold;
+	color: #8d8379;
+	padding-top: 0;
+	margin-top: 0;
+}
+
+.text-brown{
+	font-family: Arial;
+	font-size: 14px;
+	font-style: normal;
+	color: #ab9e79;
+}
+
+.text-dark-brown{
+	font-family: Arial;
+	font-size: 14px;
+	font-style: normal;
+	color: #8d8379;
+}
