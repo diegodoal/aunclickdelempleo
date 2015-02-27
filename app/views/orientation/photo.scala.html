@@ -1,26 +1,50 @@
 @main(){
 <section class="container">
     <div class="row">
-        <h2 class="red_adecco century_gothic">Hazte una foto</h2>
-
+        <h2 class="title">Hazte una foto</h2>
     </div>
 
     <div class="row">
         <div class="col-md-6">
-            <span class="brown_adecco arial size14">Como elegir una buena fotografía</span>
-            <button data-toggle="modal" data-target="#guideModal">Ver mas</button>
+            <h2 class="sub-title">Cuida los detalles</h2>
+            <p class="text-brown">Elegir la vestimenta correcta, el color que te favorezca, el peinado y poner mucha importancia en los detalles del arreglo personal, puede potencializar tu imagen.</p>
+            <p class="text-brown">Una buena foto de curriculum no va a ser una razón por la que te seleccionen, aunque sí puede ayudarte. Lo que está claro es que una mala imagen puede ser un motivo por el que te descarten.</p>
+            <p class="text-brown">Vístete con colores lisos y neutros, oscuros o claros, los dos son adecuados pero eso marcará también tu personalidad en la imagen. Lleva ropa atemporal, ni demasiado de verano ni de demasiado abrigo. No muestres marcas que puedan encasillarte.</p>
+        </div>
 
-            <br>
-            <br>
+        <div class="col-md-6">
+            <h2 class="sub-title">Sé natural</h2>
+            <p class="text-brown">Una simple pose puede decir más que mil palabras. Sonreir suaviza la expresión de tu rostro y crea confianza.</p>
+            <p class="text-brown">Utiliza la postura que te sea más cómoda pero trata de ser profesional.
+                <br>¿Sonreir o no sonreir? Lo importante es que te sientas tu mismo pero sin forzar el gesto de tu cara.</p>
+            <p class="text-brown">Si por más que intentas no logras una fotografía que te represente, quizá sea tiempo de considerar invertir en un servicio profesional para obtener mejores resultados.</p>
+        </div>
+    </div>
 
-            <span class="brown_adecco arial size14">Sube tu foto</span>
-            <input type="file" accept="image/*" id="upload_photo" >
+    <div class="row">
+        <br><br>
+        <p class="text-dark-brown">Actividad: Elige o hazte una fotografía adecuada para tu búsqueda de empleo. Tienes dos opciones:</p>
+        <div class="col-md-6">
+            <h2 class="sub-title">Subir una foto de tu ordenador</h2>
+            <div class="center drag-drop-input">
+                <h2 class="sub-title">Arrastre los archivos aquí</h2>
+                <p class="text-dark-brown">- o bien -</p>
+                <input type="file" accept="image/*" id="upload_photo" >
 
-            <br>
-            <br>
+            </div>
+        </div>
 
-            <span class="brown_adecco arial size14">Hazte una foto</span>
-            <button data-toggle="modal" data-target="#photoTakingModal" onclick="takePhoto()">Asistente</button>
+        <div class="col-md-6">
+            <h2 class="sub-title">Hazte una fotografía</h2>
+            <p class="text-brown">Si quieres hacerte una fotografía aquí lo que necesitas es una WebCam.</p>
+            <div class="center">
+                <button data-toggle="modal" data-target="#photoTakingModal" onclick="takePhoto()">Hacer fotografía ahora</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
 
         </div>
 
