@@ -38,7 +38,7 @@
             <h2 class="sub-title">Hazte una fotografía</h2>
             <p class="text-brown">Si quieres hacerte una fotografía aquí lo que necesitas es una WebCam.</p>
             <div class="center">
-                <button data-toggle="modal" data-target="#photoTakingModal" onclick="takePhoto()">Hacer fotografía ahora</button>
+                <button class="button-brown-1" data-toggle="modal" data-target="#photoTakingModal" onclick="takePhoto()">Hacer fotografía ahora</button>
             </div>
         </div>
     </div>
@@ -75,7 +75,7 @@
                         <video id="video"></video>
                     </div>
                     <div class="row">
-                        <button class="btn btn-primary" id="takePhotoButton">Hacer fotografía ahora</button>
+                        <button class="button-brown-1 button-modal" id="takePhotoButton">Hacer fotografía ahora</button>
                     </div>
                 </div>
 
@@ -84,10 +84,10 @@
                         <canvas id="canvasModal"></canvas>
                     </div>
                     <div class="row">
-                        <button type="button" id="acceptPhotoButton" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                        <button type="button" id="acceptPhotoButton" class="button-accept button-modal" data-dismiss="modal">ACEPTAR</button>
                     </div>
                     <div class="row">
-                        <button type="button" id="cancelPhotoButton" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button type="button" id="cancelPhotoButton" class="button-cancel button-modal" data-dismiss="modal">CANCELAR</button>
                     </div>
                 </div>
             </div>
