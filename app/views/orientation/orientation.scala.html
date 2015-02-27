@@ -15,87 +15,95 @@
         </div>
 
         <div class="col-md-7 col-sm-8 col-xs-9 century_gothic" id="text_numbers_bar">
-            <p class="size25 red_adecco century_gothic" id="space_0">Punto de partida</p>
+            <!-- Punto 1 -->
+            <p class="size25 red_adecco century_gothic" id="space_1">Conocete a ti mismo</p>
             <p>
-                <input type="checkbox" id="check1" name="step" onclick="return false">
-                <label for="check1" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.currentsituation()">Debes conocer tu situación actual</a></label>
+                <input type="checkbox" id="check1">
+                <label for="check1" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.currentsituation()">Conoce tu situación actual</a></label>
             </p>
             <p>
-                <input type="checkbox" id="check2" name="step" onclick="return false">
-                <label for="check2" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.skills()">Reconocer tus habilidades</a></label>
+                <input type="checkbox" id="check2">
+                <label for="check2" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.skills()">Conoce tus habilidades</a></label>
             </p>
             <p>
-                <input type="checkbox" id="check3" name="step" onclick="return false">
-                <label for="check3" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.interestidentification()">Identificar tus intereses</a></label>
+                <input type="checkbox" id="check3">
+                <label for="check3" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.interestidentification()">Identifica tus intereses</a></label>
             </p>
-
             <p>
-                <input type="checkbox" id="check4" name="step" onclick="return false">
+                <input type="checkbox" id="check4">
                 <label for="check4" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.personal()">Características personales</a></label>
             </p>
-
             <p>
-                <input type="checkbox" id="check5" name="step" onclick="return false">
+                <input type="checkbox" id="check5">
                 <label for="check5" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.professional()">Valores profesionales</a></label>
             </p>
-
-            <p class="size25 red_adecco century_gothic" id="space_1">Planifícate</p>
             <p>
-                <input type="checkbox" id="check6" name="step" onclick="return false">
-                <label for="check6" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.deadline()">Pon fecha límite a cada una de las fases</a></label>
-            </p>
-            <p>
-                <input type="checkbox" id="check7" name="step" onclick="return false">
-                <label for="check7" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.photo()">Hazte una fotografía</a></label>
-            </p>
-            <p class="size25 red_adecco century_gothic" id="space_2">Prepárate</p>
-            <p>
-                <input type="checkbox" id="check8" name="step" onclick="return false">
-                <label for="check8" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.learntools()">Conocer que herramientas vas a necesitar</a></label>
-            </p>
-            <p>
-                <input type="checkbox" id="check9" name="step" onclick="return false">
-                <label for="check9" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.gettools()">Obtener tus herramientas personalizadas</a></label>
-            </p>
-            <p>
-                <input type="checkbox" id="check10" name="step" onclick="return false">
-                <label for="check10" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.reputation()">Tu reputación en las redes sociales</a></label>
-            </p>
-            <p>
-                <input type="checkbox" id="check11" name="step" onclick="return false">
-                <label for="check11" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.networking()">Tu red de contactos</a></label>
+                <input type="checkbox" id="check6">
+                <label for="check6" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.photo()">Hazte una foto</a></label>
             </p>
 
+            <!-- Punto 2 -->
+            <p class="size25 red_adecco century_gothic" id="space_2">Prepárate para buscar empleo</p>
+            <p>
+                <input type="checkbox" id="check7">
+                <label for="check7" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.channels()">Formas de buscar empleo</a></label>
+            </p>
+            <p>
+                <input type="checkbox" id="check8">
+                <label for="check8" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.learntools()">Documentos necesarios para la búsqueda de empleo</a></label>
+            </p>
+            <p>
+                <input type="checkbox" id="check9">
+                <label for="check9" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.gettools()">Genera tus documentos personalizados</a></label>
+            </p>
+
+            <!-- Punto 3 -->
             <p class="size25 red_adecco century_gothic" id="space_3">Proceso de selección</p>
             <p>
-                <input type="checkbox" id="check12" name="step" onclick="return false">
-                <label for="check12" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.tinterview()">Tipos de entrevista</a></label>
+                <input type="checkbox" id="check10">
+                <label for="check10" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.tinterview()">Tipos de entrevista</a></label>
             </p>
             <p>
-                <input type="checkbox" id="check13" name="step" onclick="return false">
-                <label for="check13" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.pinterview()">Cómo preparar una entrevista</a></label>
+                <input type="checkbox" id="check11">
+                <label for="check11" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.pinterview()">Cómo preparar una entrevista</a></label>
             </p>
             <p>
-                <input type="checkbox" id="check14" name="step" onclick="return false">
-                <label for="check14" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.actinterview()">Cómo actúar en una entrevista</a></label>
+                <input type="checkbox" id="check12">
+                <label for="check12" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.actinterview()">Cómo actuar en una entrevista</a></label>
             </p>
             <p>
-                <input type="checkbox" id="check15" name="step" onclick="return false">
-                <label for="check15" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.questionsinterview()">Posibles preguntas en una entrevista</a></label>
+                <input type="checkbox" id="check13">
+                <label for="check13" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.questionsinterview()">Posibles preguntas en una entrevista</a></label>
             </p>
 
-            <p class="size25 red_adecco century_gothic" id="space_4">Progresa profesionalmente</p>
+            <!-- Punto 4 -->
+            <p class="size25 red_adecco century_gothic" id="space_4">Planifícate</p>
             <p>
-                <input type="checkbox" id="check16" name="step" onclick="return false">
-                <label for="check16" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.level()">Mejora tu nivel de idiomas</a></label>
+                <input type="checkbox" id="check14">
+                <label for="check14" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.deadline()">Próximas entrevistas</a></label>
             </p>
             <p>
-                <input type="checkbox" id="check17" name="step" onclick="return false">
-                <label for="check17" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.specialization()">Realiza cursos que te especialicen</a></label>
+                <input type="checkbox" id="check15">
+                <label for="check15" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.travel()">Cómo llegar al lugar de la entrevista</a></label>
+            </p>
+
+            <!-- Punto 5 -->
+            <p class="size25 red_adecco century_gothic" id="space_5">Mejora profesionalmente</p>
+            <p>
+                <input type="checkbox" id="check16">
+                <label for="check16" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.specialization()">Realiza cursos para especializarte</a></label>
             </p>
             <p>
-                <input type="checkbox" id="check18" name="step" onclick="return false">
-                <label for="check18" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.bestdeals()">Búsqueda de nuevas y mejores ofertas</a></label>
+                <input type="checkbox" id="check17">
+                <label for="check17" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.bestdeals()">Busca nuevas y mejores ofertas</a></label>
+            </p>
+            <p>
+                <input type="checkbox" id="check18">
+                <label for="check18" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.level()">Mejora tu nivel de idiomas</a></label>
+            </p>
+            <p>
+                <input type="checkbox" id="check19">
+                <label for="check19" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.reputation()">Reputación en las redes sociales</a></label>
             </p>
         </div>
 
