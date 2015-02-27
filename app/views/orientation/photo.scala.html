@@ -61,51 +61,35 @@
 </section>
 
 <!-- MODALS -->
-<!-- GUIDE MODAL -->
-<div class="modal fade" id="guideModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title" id="myModalLabel">Como elegir una buena fotografía</h3>
-            </div>
-            <div class="modal-body">
-                <h4>Cuida los detalles</h4>
-                <p style="color: black;">Elegir la vestimenta correcta, el color que te favorezca, el peinado y poner mucha importancia en los detalles del arreglo personal, puede potencializar tu imagen. Una buena foto de curriculum no va a ser una razón por la que te seleccionen, aunque sí puede ayudarte. Lo que está claro es que una mala imagen puede ser un motivo por el que te descarten.
-                    Elige colores lisos y neutros, oscuros o claros, los dos son factibles pero eso marcará también tu personalidad en la imagen. Lleva ropa atemporal, ni demasiado de verano ni de demasiado abrigo.  No muestres marcas que puedan encasillarte.</p>
-
-                <h4>Sé natural</h4>
-                <p style="color: black;">Una simple pose puede decir más que mil palabras. Sonreir suaviza la expresión de tu rostro y crea confianza. Utiliza la postura que te sea más cómoda pero trata de ser profesional.
-                    ¿Sonreir o no sonreir? Lo importante es que te sientas tu mismo pero sin forzar el gesto de tu cara.
-                    Si por más que intentas no logras una fotografía que te represente, quizá sea tiempo de considerar invertir en un servicio profesional para obtener mejores resultados.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- END OF GUIDE MODAL -->
 
 <!-- PHOTO-TAKING MODAL -->
 <div class="modal fade" id="photoTakingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title" id="myModalLabel2">Hazte una fotografía</h3>
-            </div>
-            <div class="modal-body">
-                <div class="text-center">
-                    <video id="video"></video>
-                    <canvas id="canvasModal"></canvas>
+    <div class="modal-dialog custom-modal">
+
+        <div>
+            <h2 class="sub-title">Hazte una fotografía</h2>
+            <p class="text-brown">Si quieres hacerte una fotografía aquí lo que necesitas es una WebCam y permitir la utilización de ésta.</p>
+            <div class="row">
+                <div class="col-md-6 center">
+                    <div class="canvas-container">
+                        <video id="video"></video>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-primary" id="takePhotoButton">Hacer fotografía ahora</button>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" id="takePhotoButton" style="float:left;">Hacer foto</button>
-                <button type="button" id="acceptPhotoButton" class="btn btn-success" data-dismiss="modal">Aceptar</button>
-                <button type="button" id="cancelPhotoButton" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+
+                <div class="col-md-6 center">
+                    <div class="canvas-container custom-canvas-background">
+                        <canvas id="canvasModal"></canvas>
+                    </div>
+                    <div class="row">
+                        <button type="button" id="acceptPhotoButton" class="btn btn-success" data-dismiss="modal">Aceptar</button>
+                    </div>
+                    <div class="row">
+                        <button type="button" id="cancelPhotoButton" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

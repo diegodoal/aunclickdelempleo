@@ -2,3 +2,20 @@
 	border-style: dashed;
 	border-color: #8d8379;
 }
+
+.custom-modal{
+	background-color: white;
+	padding: 3em;
+}
+
+.canvas-container{
+	padding: 2em;
+}
+
+.custom-canvas-background{
+	background-color: #eceae3;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	
+}
