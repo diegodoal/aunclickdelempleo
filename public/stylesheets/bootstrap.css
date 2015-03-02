@@ -7037,9 +7037,13 @@ input[type="radio"]:checked + label span {
   border-radius: 3em;
   padding-bottom: 3em;
   padding-top: 2em;
-
-
+  padding: 2em;
  }
+
+.back li p{
+margin-left:1em;
+}
+
 
  pre {
   font-family: Arial;
