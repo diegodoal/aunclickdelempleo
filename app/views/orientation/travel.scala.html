@@ -1,42 +1,89 @@
 @main(){
+<article class="container">
+    <div class="row">
+        <h2 class="red_adecco century_gothic">Cómo llegar al lugar de la entrevista</h2>
+        <div class="brown_adecco arial size14">
+            <p>Es muy importante que tengas pensado como vas a ir el dia de la entrevista hasta el lugar en el que se te ha citado. Para ello, te facilitamos un mapa, en el cual puedes introducir el origen y el destino.</p>
+            <p>Además puedes ver el tiempo estimado que vas ha tardar en los diferentes medios de transporte y la ruta que debes seguir para llegar hasta el lugar de destino.</p>
+        </div><br><br>
+        <div class="size16 gray_adecco arial">
+            <p>Actividad: Desde este mapa, puedes introducir tu dirección y el destino del lugar de la entrevista y elegir el medio de transporte en el cual vas a ir.</p>
+        </div>
+    </div><br>
+</article> 
+
+
+
+<section class="container back" style="margin: auto;">
+    <div class="row" style="display:table;">
+        <div id="div_mapa" class="col-md-8 col-sm-8 col-xs-8" style="display:table-cell; float:none;"></div>
+
+        <div id="infor" class="col-md-4 col-sm-4 col-xs-4" style="display:table-cell; float:none;">
+
+            <div class="row">    
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <p class="century_gothic size22 bold gray_adecco">Tipo de trayecto:</p>
+                  <select id="selectMode" name="selectMode" class="form-control">
+                  <option value="DRIVING">En coche</option>
+                  <option value="WALKING">A pie</option>
+                  <option value="TRANSIT">En transporte público</option>
+                  </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="century_gothic size22 bold gray_adecco">Desde:</p>
+                    <form id="formulario" name="formulario">
+                        <input type="text" class="form-control" id="calle1" name="calle1"  placeholder="Calle"/>
+                        <input type="text" class="form-control" id="localidad1" name="localidad1"  placeholder="Localidad"/>
+                        <input type="text" class="form-control" id="provincia1" name="provincia1"  placeholder="Provincia"/>
+                        <input type="text" id="pais1" class="form-control" name="pais1"  placeholder="Pais" />
+                    </form>    
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="century_gothic size22 bold gray_adecco">Hasta:</p>
+                    <form id="formulario_hasta">
+                        <input type="text" class="form-control" id="calle2" name="calle2"  placeholder="Calle"/>
+                        <input type="text" class="form-control" id="localidad2" name="localidad2"  placeholder="Localidad"/>
+                        <input type="text" class="form-control" id="provincia2" name="provincia2"  placeholder="Provincia"/>
+                        <input type="text" id="pais2" class="form-control" name="pais2" placeholder="Pais"/>
+                    </form>    
+                </div>
+            </div>
+
+            <div class="row" hidden>
+                <div class="col-md-12 col-sm-12 col-xs-12" style="background-color:yellow;">
+                      <h4>Desde:</h4>
+                      <input type="text" class="form-control" disabled id="start" name="start"/></br>
+                      <h4>Hasta:</h4>
+                      <input type="text" class="form-control" disabled id="end" name="end"/></br>
+                </div> 
+            </div>
+
+            <div class="row">
+                 <div class="col-md-10 col-xs-10 col-sm-10 arial size16 button_finish col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                     <div onclick="concatenar()">Calcular Ruta</div>
+                </div>
+                
+            </div>
+
+        </div>        
+    </div>
+    <div class="row">
+        <div  class="col-md-12 col-sm-12 col-xs-12">
+            <p class="century_gothic size22 bold gray_adecco" data-toggle="collapse" data-target="#ruta" style="cursor: pointer;"><u>Mostrar ruta<u></p>
+        </div>
+        <div id="ruta" class="collapse" style="margin-left:2em;"></div>
+    </div>
+</section>  
+
+
 <section class="container">
     <div class="row">
-
-
-        <h2 class="red_adecco century_gothic">Ventana para ir a la entrevista de trabajo</h2>
-        <div class="brown_adecco arial size14">
-            <p>texto</p>
-
-        </div></br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="row">
-            <div class="col-md-2 col-xs-5 col-sm-3 arial size16 button_finish">
-                <a href="@routes.OrientationController.blank()">FINALIZAR</a>
-            </div>
+        <div class="col-md-2 col-xs-2 col-sm-2 arial size16 button_finish col-md-offset-10 col-sm-offset-10 col-xs-offset-10">
+            <a href="@routes.OrientationController.blank()">FINALIZAR</a>
         </div>
-</section>
-
+     </div>
+</section>  
 }
