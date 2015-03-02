@@ -15,6 +15,7 @@ function initialize(){
   streetViewControl: true,
   overviewMapControl: true,
    zoom: 13,
+    scrollwheel: false,
    center: new google.maps.LatLng(40.4266552,-3.6794646),
    mapTypeId: google.maps.MapTypeId.ROADMAP
   };
