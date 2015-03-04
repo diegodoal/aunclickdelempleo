@@ -1,5 +1,5 @@
-var CANVAS_WIDTH = 200;
-var CANVAS_HEIGHT = 200;
+var CANVAS_WIDTH = 137;
+var CANVAS_HEIGHT = 162;
 var ACCEPTED_WEB_CAM_ACCESS = false;
 
 function drawFromInput(){
@@ -9,11 +9,11 @@ function drawFromInput(){
     var ctx = canvas.getContext('2d');
 
     function handleFiles(e) {
-        ctx.clearRect ( 0 , 0 , canvas.width, canvas.height);
+        ctx.clearRect (0, 0, 137, 162);
         var img = new Image;
         img.src = URL.createObjectURL(e.target.files[0]);
         img.onload = function() {
-            ctx.drawImage(img, 0,0, CANVAS_WIDTH, CANVAS_HEIGHT);
+            ctx.drawImage(img, 0, 0, 137, 162);
         }
     }
 }
@@ -26,10 +26,10 @@ function takePhoto(){
       takePhotoButton  = document.querySelector('#takePhotoButton'),
       acceptPhotoButton = document.querySelector('#acceptPhotoButton'),
       finishButton = document.querySelector('#finish_btn'),
-      width = CANVAS_WIDTH,
-      height = 0;
+      width = 137,
+      height = 162;
 
-      canvasModal.getContext('2d').clearRect(0, 0, canvasModal.width, canvasModal.height);
+      canvasModal.getContext('2d').clearRect(0, 0, 137, 162);
 
   if(ACCEPTED_WEB_CAM_ACCESS == false){
       navigator.getMedia = ( navigator.getUserMedia ||
@@ -59,25 +59,25 @@ function takePhoto(){
   video.addEventListener('canplay', function(ev){
       if (!streaming) {
       CANVAS_HEIGHT = video.videoHeight / (video.videoWidth/CANVAS_WIDTH);
-      video.setAttribute('width', CANVAS_WIDTH);
-      video.setAttribute('height', CANVAS_HEIGHT);
+      video.setAttribute('width', 200);
+      video.setAttribute('height', 200);
       streaming = true;
       }
       }, false
   );
 
   takePhotoButton.addEventListener('click', function(ev){
-      canvasModal.width = CANVAS_WIDTH;
-      canvasModal.height = CANVAS_HEIGHT;
-      canvasModal.getContext('2d').drawImage(video, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      canvasModal.width = 137;
+      canvasModal.height = 162;
+      canvasModal.getContext('2d').drawImage(video, 0, 0, 137, 162);
       ev.preventDefault();
       }, false
   );
 
   acceptPhotoButton.addEventListener('click', function(ev){
-        canvasMain.width = CANVAS_WIDTH;
-        canvasMain.height = CANVAS_HEIGHT;
-        canvasMain.getContext('2d').drawImage(canvasModal, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+        canvasMain.width = 137;
+        canvasMain.height = 162;
+        canvasMain.getContext('2d').drawImage(canvasModal, 0, 0, 137, 162);
         ev.preventDefault();
         }, false
     );
@@ -117,7 +117,7 @@ function dragPhoto() {
     // Image for loading    
     img.addEventListener("load", function () {
         clearCanvas();
-        context.drawImage(img, 0, 0, 200, 200);
+        context.drawImage(img, 0, 0, 137, 162);
     }, false);
 
 
