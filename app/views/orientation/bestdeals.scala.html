@@ -1,39 +1,46 @@
 @main(){
-<section class="container">
+<article class="container">
     <div class="row">
         <h2 class="red_adecco century_gothic">Busca nuevas y mejores ofertas</h2>
         <div class="brown_adecco arial size14">
-            <p>texto</p>
+            <p>Es importante que revises de manera habitual los diferentes sitios de busqueda de empleo.</p>
+            <p>Estar informado de nuevas ofertas te permitirá encontrar mejores puestos de trabajo.</p>
+            <p>Puedes volver a consultar el punto 2, el apartado "Formas de buscar empleo".</p>
+            <p>No olvides tener el curriculum siempre actualizado. Recuerda que debes hacerlo en la web  y en formato papel.</p>
+        </div><br><br>
+        <div class="size16 gray_adecco arial">
+            <p>Actividad: Revisa de manera habitual los diferentes sitios de busqueda de empleo y manten actualizado siempre tu curriculum.</p>
+        </div>
+    </div><br>
+</article> 
 
-        </div></br>
+<section class="container back" style="margin: auto;">
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center; margin-bottom:2em;">
+            <a href="http://ofertas.adecco.es/candidato/ofertas/Ofertas.aspx?Accesible=false"><img src="@routes.Assets.at("images/orientation/ic_adecco.png")"></a>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center; margin-bottom:2em;">
+            <a href="https://ofertas.fundacionadecco.es/candidato/ofertas/ofertas.aspx"><img src="@routes.Assets.at("images/orientation/ic_fundacionadecco.png")"></a>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center; margin-bottom:2em;">
+            <a href="http://www.infoempleo.com/"><img src="@routes.Assets.at("images/orientation/ic_infoempleo.png")"></a>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center; margin-bottom:2em;">
+            <a href="https://www.google.es/"><img src="@routes.Assets.at("images/orientation/ic_otros.png")"></a>
+        </div>
     </div>
 
 
+</section>  
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="row">
-            <div class="col-md-2 col-xs-5 col-sm-3 arial size16 button_finish">
-                <a href="@routes.OrientationController.blank()">FINALIZAR</a>
-            </div>
+<section class="container">
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
         </div>
-</section>
-
+    </div>
+</section>  
 }
