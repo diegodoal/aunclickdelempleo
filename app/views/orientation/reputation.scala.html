@@ -14,10 +14,15 @@
     </div><br>
 </article>
 
-<section class="container">
-    <div class="back">
-            <p class="century_gothic size22 bold gray_adecco">Consejos</p>
-            <div class="arial size14 gray_adecco">
+<section class="panel-group container back" id="accordion1" style="margin-auto;">
+     
+          <!-- Collapse 1 -->
+    <div class="panel panel-default panel-group-background">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Consejos<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse collapse_background_color">
+            <div class="panel-body arial size14 gray_adecco">
                 <ul>
                     <li>Actualización de los perfiles: <p class="arial size12 gray_adecco">Se ha de renovar al menos una vez por semana y deben crearse perfiles adecuados para cada una de las redes sociales, eliminando las cuentas que no se usen.</p></li>
                     <li>Tener un blog personal: <p class="arial size12 gray_adecco">Tener un blog personal, actualizarlo, agradecer y responder a los comentarios de la gente. Compartir las actualizaciones a través de las redes sociales, así como comentar en otros blogs que se hable del mismo tema.</p></li>
@@ -31,8 +36,12 @@
                     <li>Público o privado: <p class="arial size12 gray_adecco">Diferenciar entre lo público y lo privado, teniendo en cuenta la delgada línea que hay entre esos dos conceptos en el mundo de internet.</p></li>
                 </ul>
             </div>
+        </div>
     </div>
 
+</section>
+
+<section class="container">
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
@@ -40,6 +49,18 @@
         </div>
     </div>
 </section>
+
+<script>
+    $('.panel-heading a').click(function() {
+    if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
+    }else{
+
+        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
+    }
+ });
+</script>
 
 
 }

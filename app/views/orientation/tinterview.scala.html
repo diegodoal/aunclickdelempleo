@@ -35,7 +35,7 @@
     <!-- Collapse 2 -->
     <div class="panel panel-default panel-group-background">
         <div class="panel-heading panel-heading-1">
-            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse2" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista de panel<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista de panel<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse2" class="panel-collapse collapse collapse_background_color">
             <div class="panel-body">
@@ -52,7 +52,7 @@
     <!-- Collapse 3 -->
     <div class="panel panel-default panel-group-background">
         <div class="panel-heading panel-heading-1">
-            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse3" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista de grupo<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+            <a data-toggle="collapse" data-parent="#accordion3" href="#collapse3" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista de grupo<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse3" class="panel-collapse collapse collapse_background_color">
             <div class="panel-body">
@@ -73,7 +73,7 @@
     <!-- Collapse 4 -->
     <div class="panel panel-default panel-group-background">
         <div class="panel-heading panel-heading-1">
-            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse4" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista estructurada<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+            <a data-toggle="collapse" data-parent="#accordion4" href="#collapse4" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista estructurada<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse4" class="panel-collapse collapse collapse_background_color">
             <div class="panel-body">
@@ -89,7 +89,7 @@
     <!-- Collapse 5 -->
     <div class="panel panel-default panel-group-background">
         <div class="panel-heading panel-heading-1">
-            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse5" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista no estructurada<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+            <a data-toggle="collapse" data-parent="#accordion5" href="#collapse5" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista no estructurada<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse5" class="panel-collapse collapse collapse_background_color">
             <div class="panel-body">
@@ -106,7 +106,7 @@
     <!-- Collapse 6 -->
     <div class="panel panel-default panel-group-background">
         <div class="panel-heading panel-heading-1">
-            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse6" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista mixta<img class="ic_more_info" style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+            <a data-toggle="collapse" data-parent="#accordion6" href="#collapse6" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista mixta<img class="ic_more_info" style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse6" class="panel-collapse collapse collapse_background_color">
             <div class="panel-body">
@@ -123,7 +123,7 @@
     <!-- Collapse 7 -->
     <div class="panel panel-default panel-group-background">
         <div class="panel-heading panel-heading-1">
-            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse7" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista de provocación de tensión<img class="ic_more_info" style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+            <a data-toggle="collapse" data-parent="#accordion7" href="#collapse7" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista de provocación de tensión<img class="ic_more_info" style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse7" class="panel-collapse collapse collapse_background_color">
             <div class="panel-body">
@@ -161,13 +161,13 @@
 </section>
 
 <script>
-    $('.panel-heading-1 a').click(function() {
-    if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermenos.png")'){
-        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
+    $('.panel-heading a').click(function() {
+    if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
     }else{
 
-        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
+        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
     }
  });
 </script>

@@ -12,11 +12,18 @@
     </div><br>
 </article>
 
-<section class="container">
-    <div class="back">
-        <p class="century_gothic size22 bold gray_adecco">Durante la entrevista</p>
-        <div class="arial size14 gray_adecco">
-            <ul>
+
+
+<section class="panel-group container back" id="accordion1" style="margin-auto;">
+     
+          <!-- Collapse 1 -->
+    <div class="panel panel-default panel-group-background">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Durante la entrevista<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse collapse_background_color">
+            <div class="panel-body arial size14 gray_adecco">
+             <ul>
                 <li>Saluda al entrevistador con una fórmula convencional: Buenas tardes Sr. Ruiz.</li>
                 <li>Siéntate derecho/a, ni al borde de la silla (inseguridad), ni repantingado/a (falta de respeto).</li>
                 <li>No seas el/la primero/a en extender la mano.</li>
@@ -53,26 +60,52 @@
                 <li>No critiques a pasados empresarios.</li>
                 <li>Haz preguntas, sobre las posibilidades de promoción, la empresa o el puesto de trabajo.</li>
                 <li>Expresa tu agradecimiento.</li>
-            </ul>
+             </ul>
+            </div>
         </div>
     </div>
-</section><br>
 
-<section class="container">
-    <div class="back">
-        <p class="century_gothic size22 bold gray_adecco">Después de la entrevista</p>
-        <div class="arial size14 gray_adecco">
-            <ul>
+
+          <!-- Collapse 1 -->
+    <div class="panel panel-default panel-group-background">
+        
+
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Después de la entrevista<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        </div>
+
+        <div id="collapse2" class="panel-collapse collapse collapse_background_color">
+            <div class="panel-body arial size14 gray_adecco">
+             <ul>
                 <li>Analiza los resultados, anota tus puntos fuertes y débiles, etcétera. Esto puede servirte para una segunda entrevista o para próximas entrevistas en otras empresas.</li>
-            </ul>
+             </ul>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-2 col-xs-5 col-sm-3 arial size16 button_finish col-md-offset-10">
-            <a href="@routes.OrientationController.blank()">FINALIZAR</a>
-        </div>
-    </div>
 
 </section>
+
+
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('.panel-heading a').click(function() {
+    if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
+    }else{
+
+        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
+    }
+ });
+</script>
 }
