@@ -20,22 +20,31 @@
 
         <div id="infor" class="col-md-4 col-sm-4 col-xs-4" style="display:table-cell; float:none;">
 
-            <div class="row">    
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <p class="century_gothic size22 bold gray_adecco">Tipo de trayecto:</p>
-                  <select id="selectMode" name="selectMode" class="form-control">
-                  <option value="DRIVING">En coche</option>
-                  <option value="WALKING">A pie</option>
-                  <option value="TRANSIT">En transporte público</option>
-                  </select>
+             <div class="row">    
+                <div class="col-md-12 col-sm-12 col-xs-12 radio_travel_custom">
+                    <p class="century_gothic size22 bold gray_adecco">Cómo ir:</p>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <input type="radio" id="radio1" class="radio_DRIVING" name="selectMode" value="DRIVING" onclick="concatenar()" checked>
+                        <label for="radio1"><span></span></label>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <input type="radio" id="radio2" class="radio_TRANSIT" name="selectMode" onclick="concatenar()" value="TRANSIT">
+                        <label for="radio2"><span></span></label>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                        <input type="radio" id="radio3" class="radio_WALKING" name="selectMode" onclick="concatenar()" value="WALKING">
+                        <label for="radio3"><span></span></label>   
+                    </div>
+                        
+                      
+                          
                 </div>
-            </div>
-
-            <div class="row">
+            </div>   
+        <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-6">
                     <p class="century_gothic size22 bold gray_adecco">Desde:</p>
                     <form id="formulario" name="formulario">
-                        <input type="text" class="form-control" id="calle1" name="calle1"  placeholder="Calle"/>
+                        <input type="text" class="form-control" id="calle1" name="calle1"  placeholder="Calle" value="Madrid"/>
                         <input type="text" class="form-control" id="localidad1" name="localidad1"  placeholder="Localidad"/>
                         <input type="text" class="form-control" id="provincia1" name="provincia1"  placeholder="Provincia"/>
                         <input type="text" id="pais1" class="form-control" name="pais1"  placeholder="Pais" />
@@ -44,7 +53,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-6">
                     <p class="century_gothic size22 bold gray_adecco">Hasta:</p>
                     <form id="formulario_hasta">
-                        <input type="text" class="form-control" id="calle2" name="calle2"  placeholder="Calle"/>
+                        <input type="text" class="form-control" id="calle2" name="calle2"  placeholder="Calle" value="Bailen"/>
                         <input type="text" class="form-control" id="localidad2" name="localidad2"  placeholder="Localidad"/>
                         <input type="text" class="form-control" id="provincia2" name="provincia2"  placeholder="Provincia"/>
                         <input type="text" id="pais2" class="form-control" name="pais2" placeholder="Pais"/>
@@ -63,7 +72,7 @@
 
             <div class="row">
                  <div class="col-md-10 col-xs-10 col-sm-10 arial size16 button_finish col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
-                     <div onclick="concatenar()">Calcular Ruta</div>
+                     <div onclick="concatenar()">Mostrar Ruta</div>
                 </div>
                 
             </div>
@@ -71,19 +80,17 @@
         </div>        
     </div>
     <div class="row">
-        <div  class="col-md-12 col-sm-12 col-xs-12">
-            <p class="century_gothic size22 bold gray_adecco" data-toggle="collapse" data-target="#ruta" style="cursor: pointer;"><u>Mostrar ruta<u></p>
-        </div>
-        <div id="ruta" class="collapse" style="margin-left:2em;"></div>
+        <div id="ruta"  class="col-md-12 col-sm-12 col-xs-12" style="margin-left:2em;"></div>
     </div>
 </section>  
 
 
 <section class="container">
     <div class="row">
-        <div class="col-md-2 col-xs-2 col-sm-2 arial size16 button_finish col-md-offset-10 col-sm-offset-10 col-xs-offset-10">
-            <a href="@routes.OrientationController.blank()">FINALIZAR</a>
+        <div class="col-md-8"></div>
+        <div class="col-md-4 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
         </div>
-     </div>
-</section>  
+    </div>
+</section>
 }

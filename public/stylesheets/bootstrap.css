@@ -6980,16 +6980,16 @@ table td:not(:last-child), table th:not(:last-child) {
  margin-left: -0.5em;
 }
 
-input[type=radio]{
+.custom-radio-group input[type=radio]{
      display: none;
 }
 
-input[type=radio]:checked{
+.custom-radio-group input[type=radio]:checked{
 
      background-color:green;
 }
 
-input[type="radio"] + label span {
+.custom-radio-group input[type="radio"] + label span {
     display:inline-block;
     width:2em;
     height:2em;
@@ -7000,35 +7000,34 @@ input[type="radio"] + label span {
     border-radius:  50%;
 }
 
-input[type="radio"] + label span {
+.custom-radio-group input[type="radio"] + label span {
 
      background-color:white;
 }
 
-input[type="radio"]:checked.radio-normal + label span{
+.custom-radio-group input[type="radio"]:checked.radio-normal + label span{
      background-color:#fcea10;
 }
-input[type="radio"].radio-normal + label span{
+.custom-radio-group input[type="radio"].radio-normal + label span{
        border: 0.35em solid #fcea10;
 }
 
 
-input[type="radio"]:checked.radio-good + label span{
+.custom-radio-group input[type="radio"]:checked.radio-good + label span{
  background-color: #3aaa35;
 }
-input[type="radio"].radio-good + label span{
+.custom-radio-group input[type="radio"].radio-good + label span{
 border: 0.35em solid #3aaa35;
 }
 
-input[type="radio"]:checked.radio-excellent + label span{
+.custom-radio-group input[type="radio"]:checked.radio-excellent + label span{
      background-color:#951b81;
 }
-input[type="radio"].radio-excellent + label span{
-     border: 0.35em solid #951b81;
+.custom-radio-group      border: 0.35em solid #951b81;
 }
 
-input[type="radio"] + label span,
-input[type="radio"]:checked + label span {
+.custom-radio-group input[type="radio"] + label span,
+.custom-radio-group input[type="radio"]:checked + label span {
   -webkit-transition:background-color 0.1s linear;
   -o-transition:background-color 0.1s linear;
   -moz-transition:background-color 0.1s linear;
@@ -7083,4 +7082,44 @@ a.format:hover, a.format:focus {
     float:none;
     border: 3px solid #000;
     border-radius: 5px;
+}
+
+/*MAPS*/
+.radio_travel_custom input[type=radio]{
+  display: none;
+}
+
+.radio_travel_custom input[type=radio] + label span {
+  display: inline-block;
+  width: 4.3em;
+  height: 2.9em;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: transparent; 
+}
+.radio_travel_custom input[type=radio].radio_DRIVING + label span {
+  background-image: url("../images/orientation/ic_car.png");
+  background-repeat: no-repeat;
+}
+.radio_travel_custom input[type=radio]:checked.radio_DRIVING + label span {
+  background-image: url("../images/orientation/ic_cargreen.png");
+  background-repeat: no-repeat;
+
+}
+.radio_travel_custom input[type=radio].radio_TRANSIT + label span {
+  background-image: url("../images/orientation/ic_bus.png");
+  background-repeat: no-repeat;
+}
+.radio_travel_custom input[type=radio]:checked.radio_TRANSIT + label span {
+  background-image: url("../images/orientation/ic_busgreen.png");
+  background-repeat: no-repeat;
+} 
+
+.radio_travel_custom input[type=radio].radio_WALKING + label span {
+ background-image: url("../images/orientation/ic_walk.png");
+ background-repeat: no-repeat;
+}
+.radio_travel_custom input[type=radio]:checked.radio_WALKING + label span {
+  background-image: url("../images/orientation/ic_walkgreen.png");
+  background-repeat: no-repeat;
 }
