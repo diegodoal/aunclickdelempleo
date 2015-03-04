@@ -12,13 +12,13 @@
     </div>
 </article>
 
-<section class="panel-group container back" id="accordion1" style="margin-auto;">
+<section class="panel-group container back" id="accordion" style="margin-auto;">
     <p class="century_gothic gray_adecco size22 bold panel-title steps_height" style="margin-left:1em;">Según el número de participantes distinguimos:</p>
 
     <!-- Collapse 1 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading panel-heading-1">
-            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse1" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista individual<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista individual<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse1" class="panel-collapse collapse collapse_background_color">
             <div class="panel-body">
@@ -34,8 +34,8 @@
 
     <!-- Collapse 2 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading panel-heading-1">
-            <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista de panel<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="century_gothic gray_adecco size22 advices_height panel-title" style="margin-left:1em;">Entrevista de panel<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse2" class="panel-collapse collapse collapse_background_color">
             <div class="panel-body">
@@ -161,13 +161,13 @@
 </section>
 
 <script>
-    $('.panel-heading a').click(function() {
-    if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
+     $('.panel-heading a').click(function() {
+    if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermenos.png")'){
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
     }else{
 
-        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
+        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
     }
  });
 </script>
