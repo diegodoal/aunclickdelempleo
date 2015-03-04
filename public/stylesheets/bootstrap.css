@@ -6915,6 +6915,10 @@ footer {
   margin-top: 0.05em;
 }
 
+.channels_height{
+  margin-top: 1em;
+}
+
 .orientation-points p label a {
   color: #ab9e79;
   text-decoration: underline;
@@ -7058,10 +7062,25 @@ margin-left:1em;
  }
 
 .panel-group-background {
-  border: 0em hidden #000000;
+    border: 0em hidden #000000;
 }
 
 a.format:hover, a.format:focus {
    color: #white;
    text-decoration: none;
  }
+
+.ic_more_info {
+    margin-right:1em;
+    margin-top:0.3em;
+    float:right;
+}
+
+/* CHANNELS TO SEARCH JOB */
+.table_style{
+    text-align:center;
+    display:table-cell;
+    float:none;
+    border: 3px solid #000;
+    border-radius: 5px;
+}
