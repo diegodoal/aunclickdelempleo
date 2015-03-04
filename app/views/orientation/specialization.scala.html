@@ -14,29 +14,49 @@
     </div><br>
 </article>
 
-<section class="container">
-    <div class="back">
-        <p class="century_gothic size22 bold gray_adecco">Realizar cursos te permitirá:</p>
-        <div class="arial size14 gray_adecco">
-            <ul>
+<section class="panel-group container back" id="accordion1" style="margin-auto;">
+     
+          <!-- Collapse 1 -->
+    <div class="panel panel-default panel-group-background">
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Antes de la entrevista<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse collapse_background_color">
+            <div class="panel-body arial size14 gray_adecco">
+              <ul>
                 <li>Ser mejor competidor:<p class="arial size12 gray_adecco" >La empleabilidad pasa necesariamente por la formación. Eso supone mejorar uno mismo, y hacerlo también respecto a la competencia a la que nos enfrentamos para poder en la medida de lo posible mantener nuestro trabajo por convertirnos en un valor seguro para nuestra empresa, o en caso de estar en desempleo , ser el mejor candidato para un puesto de trabajo.
                     Sucede además, que lo que aprendas gracias la formación, ese saber hacer, el conocimiento y la experiencia que adquieras no sólo no te lo pueden arrebatar, además es lo más valioso que tienes. </p></li>
                 <li>Ampliar currículum:<p class="arial size12 gray_adecco">Tanto si te planteas especializarte, aprender idiomas, cambiar de oficio o simplemente por ampliar curriculum, realizar cursos siempre es una buena opción.</p></li>
                 <li>Invertir en tu futuro:<p class="arial size12 gray_adecco">Aunque la creencia más extendida es que la formación “cuesta” y que a veces es cara, sin embargo deberíamos pensar en ella como una forma de invertir que además, no necesita demasiado tiempo para ver sus frutos.
                     Todos, o casi todos, los puestos de trabajo tienen requisitos no solo de experiencia, también de formación, así que intenta hacer un ejercicio, piensa en qué cursos has hecho y cuáles te abrieron realmente puertas para conseguir alguno de los puestos que has desempeñado, seguramente haya alguno a los que no los encuentres una utilidad directa tan clara, pero siempre hay algún curso-llave que hizo que se abriera alguna puerta.</p></li>
                 <li>Renovarte:<p class="arial size12 gray_adecco">Formarse es una necesidad permanente. La formación se queda obsoleta en unos 2 o 3 años así que para continuar en el mercado laboral no queda más remedio que embarcarse de lleno en la aventura de la formación continua.</p></li>
-            </ul>
+             </ul>
+            </div>
         </div>
     </div>
 
+</section>
+
+<section class="container">
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
             <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
         </div>
     </div>
-
 </section>
+
+<script>
+    $('.panel-heading a').click(function() {
+    if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
+    }else{
+
+        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
+        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
+    }
+ });
+</script>
 
 
 

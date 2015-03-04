@@ -7023,7 +7023,8 @@ border: 0.35em solid #3aaa35;
 .custom-radio-group input[type="radio"]:checked.radio-excellent + label span{
      background-color:#951b81;
 }
-.custom-radio-group      border: 0.35em solid #951b81;
+.custom-radio-group input[type="radio"].radio-excellent + label span{
+     border: 0.35em solid #951b81;
 }
 
 .custom-radio-group input[type="radio"] + label span,
@@ -7052,7 +7053,6 @@ margin-left:1em;
   font-family: Arial;
   background:none;
   border: none;
-
  }
 
 /*QUESTIONS INTERVIEW*/
@@ -7073,15 +7073,6 @@ a.format:hover, a.format:focus {
     margin-right:1em;
     margin-top:0.3em;
     float:right;
-}
-
-/* CHANNELS TO SEARCH JOB */
-.table_style{
-    text-align:center;
-    display:table-cell;
-    float:none;
-    border: 3px solid #000;
-    border-radius: 5px;
 }
 
 /*MAPS*/
@@ -7122,4 +7113,65 @@ a.format:hover, a.format:focus {
 .radio_travel_custom input[type=radio]:checked.radio_WALKING + label span {
   background-image: url("../images/orientation/ic_walkgreen.png");
   background-repeat: no-repeat;
+}
+
+/* CHANNELS TO SEARCH JOB */
+.top_center_table_style, .top_left_table_style, .top_right_table_style,
+.inside_center_table_style, .inside_left_table_style, .inside_right_table_style,
+.bottom_center_table_style, .bottom_left_table_style, .bottom_right_table_style {
+    text-align: justify;
+    display:table-cell;
+    float:none;
+    border: 3px solid #ab9e79;
+}
+
+.top_center_table_style {
+    text-align: center;
+    border-bottom: none;
+}
+
+.top_left_table_style {
+    text-align: center;
+    border-top-left-radius: 1.5em;
+    border-right: none;
+    border-bottom: none;
+}
+
+.top_right_table_style {
+    text-align: center;
+    border-top-right-radius: 1.5em;
+    border-left: none;
+    border-bottom: none;
+}
+
+.inside_center_table_style {
+    border-bottom: none;
+}
+
+.inside_left_table_style {
+    border-right: none;
+    border-bottom: none;
+}
+
+.inside_right_table_style {
+    border-left: none;
+    border-bottom: none;
+}
+
+.bottom_left_table_style {
+    border-bottom-left-radius: 1.5em;
+    border-right: none;
+}
+
+.bottom_right_table_style {
+    border-bottom-right-radius: 1.5em;
+    border-left: none;
+}
+
+.display_table {
+    display:table;
+}
+
+.row_top_margin {
+    margin-top: 0px;
 }
