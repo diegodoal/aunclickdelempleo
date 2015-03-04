@@ -15,10 +15,10 @@
 
     <!-- Collapse 1 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="format century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Personalidad<img class="read-more-img" style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermenos.png")" ></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Personalidad<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
-        <div id="collapse1" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color in">
+        <div id="collapse1" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
                 <p style="margin-left:-1em;">En este apartado se muestra un listado preguntas relativas a aspectos de tu personalidad.</p>
                 <li>Háblame de ti mismo.</li>
@@ -45,8 +45,8 @@
 
     <!-- Collapse 2 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Formación<img class="read-more-img" style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")" ></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Formación<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse2" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -68,8 +68,8 @@
 
     <!-- Collapse 3 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Trabajos anteriores<img class="read-more-img" style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")" ></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Trabajos anteriores<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse3" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -92,8 +92,8 @@
 
     <!-- Collapse 4 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Empleo<img class="read-more-img" style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")" ></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Empleo<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse4" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -126,8 +126,8 @@
 
     <!-- Collapse 5 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Vida privada<img class="read-more-img" style="margin-left:0.5em;margin-top:0.3em;" src="@routes.Assets.at("images/orientation/ic_leermas.png")" ></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Vida privada<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse5" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -147,7 +147,7 @@
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
+            <button class="button-finish-1" onclick="location.href='@routes.OrientationController.blank()';">FINALIZAR</button>
         </div>
     </div>
 </section>
@@ -158,7 +158,7 @@
         $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
     }else{
 
-        $('.read-more-img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
+        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
         $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
     }
  });
