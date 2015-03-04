@@ -25,9 +25,15 @@ function initialize(){
 
   
  function calcRoute(){
+  var selectMode = "ninguno";
+  var porNombre=document.getElementsByName("selectMode");
+  for(var i=0;i<porNombre.length;i++){
+     if(porNombre[i].checked)
+      selectMode=porNombre[i].value;
+  }
   var start = document.getElementById('start').value;
   var end = document.getElementById('end').value;
-  var selectMode = document.getElementById('selectMode').value;
+  /*var selectMode = document.getElementById('selectMode').value;*/
   //AÑADIMOS RUTA
   var request = {  
   origin: start,
