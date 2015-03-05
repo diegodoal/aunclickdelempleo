@@ -9,15 +9,10 @@
 
     <div class="input-speech">
       <input type="text" id="surname_form" placeholder="Apellido">
-      <button class="btn btn-primary">Recognize</button>
+      <button id="start2" class="btn btn-primary">Recognize</button>
     </div>
 
-<script type="text/javascript">
-  $('.input-speech button').click(function() {
-    $(this).parent().children('input').val("id");
-  });
 
-</script>
 
     <script type="text/javascript">
       // Test browser support
@@ -30,14 +25,16 @@
         document.getElementById('start-speech-btn').setAttribute('class', 'hidden');
       }else{
         var recognizer = new window.SpeechRecognition();
-        var input_name = document.getElementById('name_form');
+        var input_name;
 
         recognizer.continuous = false;
         recognizer.lang = 'es-ES';
         recognizer.interimResults = false; //Constantly refreshes text while recognition is active
 
-        var start_btn = document.getElementById('start-speech-btn');
-        start_btn.addEventListener('click', function(){
+        $('.input-speech button').click(function() {
+          //alert($(this).attr('id'));
+          input_name = $(this).parent().children('input');
+          //alert(input_name.val());
           try{
             recognizer.start();
           }catch(ex){
@@ -49,9 +46,7 @@
           input_name.value = '';
           for(var i = event.resultIndex; i < event.results.length; i++) {
             if(event.results[i].isFinal) {
-              input_name.value = event.results[i][0].transcript;
-            }else{
-              input_name.value += event.results[i][0].transcript;
+              input_name.val(event.results[i][0].transcript);
             }
           }
         };
