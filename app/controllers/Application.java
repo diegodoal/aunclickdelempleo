@@ -136,6 +136,6 @@ public class Application extends Controller {
 	}
 
     public static Result speech(){
-        return ok(views.html.speech.render());
+        return ok(views.html.stash.speech.render());
     }
 }
