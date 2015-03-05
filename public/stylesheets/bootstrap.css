@@ -7069,7 +7069,7 @@ a.format:hover, a.format:focus {
    text-decoration: none;
  }
 
-.ic_more_info {
+#ic_more_info1, #ic_more_info2, #ic_more_info3, #ic_more_info4, #ic_more_info5, #ic_more_info6, #ic_more_info7 {
     margin-right:1em;
     margin-top:0.3em;
     float:right;
