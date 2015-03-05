@@ -1,26 +1,6 @@
 @main(){
 
-<h1>Web Speech API</h1>
-    <h2>Transcription</h2>
-    <textarea id="transcription" readonly="readonly"></textarea>
- 
-
-    <input type="text" id="name_form_old" placeholder="Nombre">
-    <span>Results:</span>
-    <label><input type="radio" name="recognition-type" value="final" checked="checked" /> Final only</label>
-    <label><input type="radio" name="recognition-type" value="interim" /> Interim</label>
- 
-    <h3>Log</h3>
-    <div id="log"></div>
- 
-    <div class="buttons-wrapper">
-      <button id="button-play-ws" class="button-demo">Play demo</button>
-      <button id="button-stop-ws" class="button-demo">Stop demo</button>
-      <button id="clear-all" class="button-demo">Clear all</button>
-    </div>
-    <span id="ws-unsupported" class="hidden">API not supported</span>
- 
-
+<h1>Speech Recognition</h1>
 
 
     <input type="text" id="name_form" placeholder="Nombre">
@@ -42,7 +22,7 @@
 
         recognizer.continuous = false;
         recognizer.lang = 'es-ES';
-        recognizer.interimResults = true; //Constantly refreshes text while recognition is active
+        recognizer.interimResults = false; //Constantly refreshes text while recognition is active
 
         var start_btn = document.getElementById('start-speech-btn');
         start_btn.addEventListener('click', function(){
@@ -68,73 +48,6 @@
           alert("Error en reconocimiento. OnError: "+event.message);
         };
          
-      }
-    </script>
-
-
-
-
-    <script>
-      // Test browser support
-      window.SpeechRecognition = window.SpeechRecognition       ||
-                                 window.webkitSpeechRecognition ||
-                                 null;
- 
-      if (window.SpeechRecognition === null) {
-        document.getElementById('ws-unsupported').classList.remove('hidden');
-        document.getElementById('button-play-ws').setAttribute('class', 'hidden');
-        document.getElementById('button-stop-ws').setAttribute('class', 'hidden');
-      } else {
-        var recognizer = new window.SpeechRecognition();
-        var transcription = document.getElementById('transcription');
-        var log = document.getElementById('log');
- 
-        // Recogniser doesn't stop listening even if the user pauses
-        recognizer.continuous = false;
-        recognizer.lang = 'es-ES';
- 
-        // Start recognising
-        recognizer.onresult = function(event) {
-          transcription.textContent = '';
- 
-          for (var i = event.resultIndex; i < event.results.length; i++) {
-            if (event.results[i].isFinal) {
-              var trans = event.results[i][0].transcript;
-              alert(trans);
-              transcription.textContent = trans;
-              document.getElementById('name_form').value = trans;
-            } else {
-              transcription.textContent += event.results[i][0].transcript;
-            }
-          }
-        };
- 
-        // Listen for errors
-        recognizer.onerror = function(event) {
-          log.innerHTML = 'Recognition error: ' + event.message + '<br />' + log.innerHTML;
-        };
- 
-        document.getElementById('button-play-ws').addEventListener('click', function() {
-          // Set if we need interim results
-          recognizer.interimResults = document.querySelector('input[name="recognition-type"][value="interim"]').checked;
- 
-          try {
-            recognizer.start();
-            log.innerHTML = 'Recognition started' + '<br />' + log.innerHTML;
-          } catch(ex) {
-            log.innerHTML = 'Recognition error: ' + ex.message + '<br />' + log.innerHTML;
-          }
-        });
- 
-        document.getElementById('button-stop-ws').addEventListener('click', function() {
-          recognizer.stop();
-          log.innerHTML = 'Recognition stopped' + '<br />' + log.innerHTML;
-        });
- 
-        document.getElementById('clear-all').addEventListener('click', function() {
-          transcription.textContent = '';
-          log.textContent = '';
-        });
       }
     </script>
 }
