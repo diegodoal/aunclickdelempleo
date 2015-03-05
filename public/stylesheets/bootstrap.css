@@ -6921,20 +6921,20 @@ footer {
 
 .orientation-points p label a {
   color: #ab9e79;
-  text-decoration: underline;
+
 }
 .orientation-points p label a:hover {
      color: #ab9e79;
-     text-decoration: underline;
+
  }
 .orientation-points p label a:active {
       color: #ab9e79;
-      text-decoration: underline;
+
  }
 
 .orientation-points p label a:visited {
-     color: #730696;
-     text-decoration: underline;
+     color: #ab9e79;
+     
  }
 
 /*FORMATO TABLA HABILIDADES*/
