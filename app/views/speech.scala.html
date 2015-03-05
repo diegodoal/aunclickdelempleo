@@ -2,10 +2,22 @@
 
 <h1>Speech Recognition</h1>
 
+    <div class="input-speech">
+      <input type="text" id="name_form" placeholder="Nombre">
+      <button id="start-speech-btn" class="btn btn-primary">Recognize</button>
+    </div>
 
-    <input type="text" id="name_form" placeholder="Nombre">
-    <button id="start-speech-btn" class="btn btn-primary">Recognize</button>
+    <div class="input-speech">
+      <input type="text" id="surname_form" placeholder="Apellido">
+      <button class="btn btn-primary">Recognize</button>
+    </div>
 
+<script type="text/javascript">
+  $('.input-speech button').click(function() {
+    $(this).parent().children('input').val("id");
+  });
+
+</script>
 
     <script type="text/javascript">
       // Test browser support
