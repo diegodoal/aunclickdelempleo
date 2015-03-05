@@ -12,7 +12,7 @@ public class ProfessionalValues {
     public ProfessionalValues(List<ProfessionalValue> professionalValuesList){
         this.professionalValuesList = professionalValuesList;
     }
-    
+
     public class ProfessionalValue{
         //Valuation must be one of: "Si, No, No se"
         public String name;
