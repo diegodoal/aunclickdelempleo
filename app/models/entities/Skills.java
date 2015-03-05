@@ -15,7 +15,7 @@ public class Skills {
 
     public class Skill{
 
-        // Level must be on of: "Normal, Bien, Excelente"
+        // Level must be one of: "Normal, Bien, Excelente"
         public String name;
         public String level;
 
