@@ -11,36 +11,25 @@
     </div><br>
 </article>
 
-<section class="panel-group container back" id="accordion1" style="margin-auto;">
-     
-          <!-- Collapse 1 -->
-    <div class="panel panel-default panel-group-background">
-        <div class="panel-heading">
-            <a data-toggle="collapse" data-parent="#accordion1" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Antes de la entrevista<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
-        </div>
-        <div id="collapse1" class="panel-collapse collapse collapse_background_color">
+<section class="container">
+    <div class="back">
+        <p class="century_gothic size22 bold gray_adecco">Antes de la entrevista</p>
             <div class="panel-body arial size14 gray_adecco">
                 <ul>
-                <li>Conoce todo lo que puedas de la empresa.</li>
-                <li>Estudia tus aptitudes, tu experiencia y tu formación.</li>
-                <li>Lleva el currículum y conócelo perfectamente, ya que se basarán en él.</li>
-                <li>Hazte una relación de tus puntos débiles y prepara argumentos para defenderlos.</li>
-                <li>Si te citan por escrito, lo correcto es que llames para confirmar tu asistencia.</li>
-                <li>No acudas con gafas oscuras.</li>
-                <li>Comprueba tu apariencia (evita ropa llamativa; bien vestido/a, limpio/a y afeitado).</li>
-                <li>Ve solo/a.</li>
-                <li>Llega pronto (5 minutos antes).</li>
-                <li>Prepara la entrevista, el seleccionador va a hacerlo también.</li>
-            </ul>
+                    <li>Conoce todo lo que puedas de la empresa.</li>
+                    <li>Estudia tus aptitudes, tu experiencia y tu formación.</li>
+                    <li>Lleva el currículum y conócelo perfectamente, ya que se basarán en él.</li>
+                    <li>Hazte una relación de tus puntos débiles y prepara argumentos para defenderlos.</li>
+                    <li>Si te citan por escrito, lo correcto es que llames para confirmar tu asistencia.</li>
+                    <li>No acudas con gafas oscuras.</li>
+                    <li>Comprueba tu apariencia (evita ropa llamativa; bien vestido/a, limpio/a y afeitado).</li>
+                    <li>Ve solo/a.</li>
+                    <li>Llega pronto (5 minutos antes).</li>
+                    <li>Prepara la entrevista, el seleccionador va a hacerlo también.</li>
+                 </ul>
             </div>
-        </div>
     </div>
-    
-
-
 </section>
-
-
 
 <section class="container">
     <div class="row">
@@ -50,16 +39,4 @@
         </div>
     </div>
 </section>
-
-<script>
-    $('.panel-heading a').click(function() {
-    if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-    }else{
-
-        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-    }
- });
-</script>
 }
