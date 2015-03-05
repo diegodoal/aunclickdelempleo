@@ -54,20 +54,26 @@
 
         <div class="row">
             <div class="col-md-6">
+                <h2 class="sub-title">Esta es tu foto:</h2>
+                <div class="canvas-container custom-canvas-background" style="margin-right:2.5em;">
+                <div class="center">
+                    <img class="center hidden" src="@routes.Assets.at("images/orientation/photo/ic_profile.png")">
+                    <canvas id="mainCanvas" width="137" height="162" style="background-color: white;"></canvas>
+                </div>
 
+                </div>
             </div>
 
             <div class="col-md-6">
-                <canvas id="mainCanvas"></canvas>
+                <div class="row">
+                    <button type="button" class="button-accept" onclick="finishPhoto()">GUARDAR</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="button-cancel" onclick="cleanCanvas()">CANCELAR</button>
+                </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-8"></div>
-            <div class="col-md-4 center">
-                <button class="button-finish-1" onclick="finishPhoto()">FINALIZAR</button>
-            </div>
-        </div>
     </section>
 
     <!-- MODALS -->
@@ -82,7 +88,7 @@
                 <div class="row">
                     <div class="col-md-6 center">
                         <div class="canvas-container">
-                            <video id="video"></video>
+                            <video id="video" width="400" height="400"></video>
                         </div>
                         <div class="row">
                             <button class="button-brown-1 button-modal" id="takePhotoButton">Hacer fotografía ahora</button>
@@ -122,9 +128,18 @@
 
     <script>
     window.onload = function() {
+        cleanCanvas();
         drawFromInput();
         dragPhoto();
     };
+
+    function cleanCanvas(){
+        var canvas = document.getElementById('mainCanvas');
+        var ctx = canvas.getContext('2d');
+        var image = new Image();
+        image.src = '@routes.Assets.at("images/orientation/photo/ic_profile.png")';
+        ctx.drawImage(image, 0, 0, 137, 162);
+    }
     </script>
 
 }

@@ -64,6 +64,7 @@
 	padding: 0.5em;
 	border: solid #3ab54a 2px;
 	font-weight: bold;
+	width: 15em;
 }
 
 .button-cancel{
@@ -73,6 +74,7 @@
 	padding: 0.5em;
 	border: solid #ee1d23 2px;
 	font-weight: bold;
+	width: 15em;
 }
 
 .button-modal{
