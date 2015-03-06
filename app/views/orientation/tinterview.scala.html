@@ -161,12 +161,8 @@
 </section>
 
 <script type="text/javascript">
-    $('.panel-heading a').click(function() {
-        if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermenos.png")'){
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-        }else{
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        }
-    });
+    window.onload = function(){
+        autoChangeIcon();
+    };
 </script>
 }
