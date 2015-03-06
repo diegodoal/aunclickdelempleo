@@ -6,7 +6,7 @@ function loadRecognition(){
 
       //If not supported, hide button
       if(window.SpeechRecognition === null) {
-        document.getElementById('start-speech-btn').setAttribute('class', 'hidden');
+        $('.input-mic-container img').attr('class', 'hidden');
       }else{
         var recognizer = new window.SpeechRecognition();
         var input_name;
@@ -15,14 +15,14 @@ function loadRecognition(){
         recognizer.lang = 'es-ES';
         recognizer.interimResults = false; //Constantly refreshes text while recognition is active
 
-        $('.input-speech img').click(function() {
+        $('.input-mic-container img').click(function() {
           //alert($(this).attr('id'));
           input_name = $(this).parent().children('input');
           //alert(input_name.val());
           try{
             recognizer.start();
           }catch(ex){
-            alert("Error en el reconocimiento de voz: "+ex.value);
+            alert("Error al iniciar el reconocimiento de voz");
           }
         });
 
@@ -36,7 +36,7 @@ function loadRecognition(){
         };
 
         recognizer.onerror = function(event) {
-          alert("Error en reconocimiento. OnError: "+event.message);
+          alert("Error en el reconocimiento de voz. Inténtelo de nuevo.);
         };
       }
 }
