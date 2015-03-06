@@ -18,9 +18,11 @@ function loadRecognition(){
         $('.input-mic-container img').click(function() {
           //alert($(this).attr('id'));
           input_name = $(this).parent().children('input');
+
           //alert(input_name.val());
           try{
             recognizer.start();
+            $(this).parent().children('img').attr('src', '/assets/images/speech/dynamic-mic.gif');
           }catch(ex){
             alert("Error al iniciar el reconocimiento de voz");
           }
@@ -33,10 +35,12 @@ function loadRecognition(){
               input_name.val(event.results[i][0].transcript);
             }
           }
+
+          $(input_name).parent().children('img').attr('src', '/assets/images/speech/static-mic.png');
         };
 
         recognizer.onerror = function(event) {
-          alert("Error en el reconocimiento de voz. Inténtelo de nuevo.);
+          alert("Error en el reconocimiento de voz. Inténtelo de nuevo.");
         };
       }
 }
