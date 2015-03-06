@@ -98,3 +98,23 @@
 .right{
 	float: right;
 }
+
+/* CUSTOM INPUT-FORM WITH MICROPHONE ICON */
+.input-mic-container{
+    position: relative;
+}
+
+.input-mic-container input[type="text"]{
+    width: 100%;
+    padding-right: 2.5em;
+}
+
+.input-mic-container img{
+    right:1em;
+    top: 0.1em;
+    position: absolute;
+}
+
+.input-mic-container img:hover{
+    cursor: pointer;
+}
