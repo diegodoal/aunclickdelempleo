@@ -70,7 +70,7 @@
 
         <!-- Barra -->
         <div class="col-md-2">
-            <div class="col-md-offset-6 hidden-sm">
+            <div class="col-md-offset-6 hidden-sm hidden-xs">
                 <img src="@routes.Assets.at("images/login_user/ic_barrapuntos5.png")">
             </div>
         </div>
@@ -80,15 +80,17 @@
             <h1 class="col-md-offset-2 size30 century_gothic gray_adecco">CREA TU PERFIL</h1><br>
 
             <form class="form-horizontal" role="form" action="@routes.LoginParticularUserController.signUpLogin()" method="post">
-                <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6">
-                        <input type="text" name='register_name' class="form-control" id="register_name" required="required" placeholder="Nombre">
+                <div class="form-group form-inline">
+                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                            <input type="text" name='register_name' class="form-control" id="register_name"  required="required" placeholder="Nombre">
+                            <img class="img-btn" id="start2" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6">
+                    <div class="col-md-offset-3 col-md-6 input-mic-container">
                         <input type="text" name='register_surnames' class="form-control" id="register_surnames" required="required" placeholder="Apellidos">
+                        <img class="img-btn" id="start2" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
 

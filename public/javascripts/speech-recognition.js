@@ -15,7 +15,7 @@ function loadRecognition(){
         recognizer.lang = 'es-ES';
         recognizer.interimResults = false; //Constantly refreshes text while recognition is active
 
-        $('.input-speech button').click(function() {
+        $('.input-speech img').click(function() {
           //alert($(this).attr('id'));
           input_name = $(this).parent().children('input');
           //alert(input_name.val());
