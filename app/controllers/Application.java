@@ -134,8 +134,4 @@ public class Application extends Controller {
 		EmailUtil.sendEmail(session, toEmail,"Confirmación de cuenta creada en www.aunclickdelempleo.com", message);
 		return ok("Se ha enviado un email a: " + toEmail+" .Por favor, revise su correo");
 	}
-
-    public static Result speech(){
-        return ok(views.html.stash.speech.render());
-    }
 }
