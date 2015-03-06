@@ -84,7 +84,3 @@ GET     /orientation/reputation                     controllers.OrientationContr
 
 # Use: /pdf/t1   or     /pdf/t2
 GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
-
-
-# OTHERS
-GET     /api/speech                                 controllers.Application.speech()

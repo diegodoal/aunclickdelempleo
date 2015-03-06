@@ -16,30 +16,31 @@ function loadRecognition(){
         recognizer.interimResults = false; //Constantly refreshes text while recognition is active
 
         $('.input-mic-container img').click(function() {
-          //alert($(this).attr('id'));
           input_name = $(this).parent().children('input');
-
-          //alert(input_name.val());
           try{
             recognizer.start();
             $(this).parent().children('img').attr('src', '/assets/images/speech/dynamic-mic.gif');
           }catch(ex){
+            $(input_name).parent().children('img').attr('src', '/assets/images/speech/static-mic.png');
             alert("Error al iniciar el reconocimiento de voz");
           }
         });
 
+        recognizer.onend = function(){
+            $(input_name).parent().children('img').attr('src', '/assets/images/speech/static-mic.png');
+        }
         recognizer.onresult = function(event){
+          $(input_name).parent().children('img').attr('src', '/assets/images/speech/static-mic.png');
           input_name.value = '';
           for(var i = event.resultIndex; i < event.results.length; i++) {
             if(event.results[i].isFinal) {
               input_name.val(event.results[i][0].transcript);
             }
           }
-
-          $(input_name).parent().children('img').attr('src', '/assets/images/speech/static-mic.png');
         };
 
         recognizer.onerror = function(event) {
+          $(input_name).parent().children('img').attr('src', '/assets/images/speech/static-mic.png');
           alert("Error en el reconocimiento de voz. Inténtelo de nuevo.");
         };
       }

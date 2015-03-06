@@ -120,11 +120,13 @@
        <p class="century_gothic gray_adecco size22 bold advices_height" style="margin-left:1em;">¿Cuál es tu experiencia profesional?</p> <br>
    </div>
     <div class="row" style="margin-left:-2em;">
-        <div class="col-md-3  col-sm-2 col-md-offset-1">
+        <div class="col-md-3  col-md-offset-1 input-mic-container">
             <input type="text" class="form-control" id="company" placeholder="Empresa">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
-        <div class="col-md-3  col-sm-5 col-md-offset-3">
+        <div class="col-md-3 col-md-offset-3 input-mic-container">
             <input type="text" class="form-control" id="office" placeholder="Puesto">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
     <div class="row" style="margin-left:-2em;">
@@ -153,6 +155,12 @@
         </div>
      </div>
 </section>
+
+<script type="text/javascript">
+      window.onload = function() {
+        loadRecognition();
+    };
+</script>
 }
 
 
