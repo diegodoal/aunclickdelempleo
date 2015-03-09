@@ -52,7 +52,18 @@ public class UserDataSource extends DataSource {
             mongoClient.close();
             return null;
         }
+    }
 
+    public static void updateUserData(String email, String key, String newValue){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        BasicDBObject query = new BasicDBObject().append("email", email);
+        DBObject user = collection.findOne(query);
 
-       }
+        if(user != null){
+            BasicDBObject updateQuery = new BasicDBObject().append("$set", new BasicDBObject().append(key, newValue));
+            collection.update(query, updateQuery);
+        }
+
+        mongoClient.close();
+    }
 }
