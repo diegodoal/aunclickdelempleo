@@ -15,8 +15,8 @@
 
     <!-- Collapse 1 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading" id="panel_heading1">
-            <a data-toggle="collapse" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Personalidad<img id="ic_more_info1" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Personalidad<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse1" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -45,8 +45,8 @@
 
     <!-- Collapse 2 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading" id="panel_heading2">
-            <a data-toggle="collapse" href="#collapse2" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Formación<img id="ic_more_info2" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse2" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Formación<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse2" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -68,8 +68,8 @@
 
     <!-- Collapse 3 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading" id="panel_heading3">
-            <a data-toggle="collapse" href="#collapse3" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Trabajos anteriores<img id="ic_more_info3" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse3" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Trabajos anteriores<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse3" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -92,8 +92,8 @@
 
     <!-- Collapse 4 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading" id="panel_heading4">
-            <a data-toggle="collapse" href="#collapse4" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Empleo<img id="ic_more_info4" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse4" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Empleo<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse4" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -126,8 +126,8 @@
 
     <!-- Collapse 5 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading" id="panel_heading5">
-            <a data-toggle="collapse" href="#collapse5" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Vida privada<img id="ic_more_info5" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse5" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Vida privada<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse5" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -152,55 +152,9 @@
     </div>
 </section>
 
-<script>
-    /* Collapse 1 */
-    $('#panel_heading1 a').click(function() {
-        if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        }else{
-            $('#ic_more_info1').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-        }
-    });
-
-    /* Collapse 2 */
-    $('#panel_heading2 a').click(function() {
-        if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        }else{
-            $('#ic_more_info2').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-        }
-    });
-
-    /* Collapse 3 */
-    $('#panel_heading3 a').click(function() {
-        if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        }else{
-            $('#ic_more_info3').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-        }
-    });
-
-    /* Collapse 4 */
-    $('#panel_heading4 a').click(function() {
-        if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        }else{
-            $('#ic_more_info4').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-        }
-    });
-
-    /* Collapse 5 */
-    $('#panel_heading5 a').click(function() {
-        if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        }else{
-            $('#ic_more_info5').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-        }
-    });
+<script type="text/javascript">
+    window.onload = function(){
+        autoChangeIcon();
+    };
 </script>
 }
