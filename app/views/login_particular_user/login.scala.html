@@ -4,13 +4,13 @@
 <!-- ADVANTAGES -->
 <section class="container" id="user_advantages">
     <div class="row">
-        <div class="col-xs-4 col-md-4" id="user_hands">
+        <div class="col-md-12 col-md-4" id="user_hands">
             <img src="@routes.Assets.at("images/login_user/ic_manos.png")">
         </div>
-        <div class="col-xs-4 col-md-4" id="user_puzzle">
+        <div class="hidden-xs hidden-sm col-md-4" id="user_puzzle">
             <img src="@routes.Assets.at("images/login_user/ic_puzzle.png")">
         </div>
-        <div class="col-xs-4 col-md-4" id="user_clock">
+        <div class="hidden-xs hidden-sm col-md-4" id="user_clock">
             <img src="@routes.Assets.at("images/login_user/ic_reloj.png")">
         </div>
     </div>
@@ -20,7 +20,7 @@
 <article class="container">
     <div class="row">
         <!-- ACCESS -->
-        <div class="col-md-5">
+        <div class="col-md-5 col-xs-12">
             <h1 class="col-md-offset-4 size30 century_gothic gray_adecco">ACCEDE</h1><br>
 
             <form class="form-horizontal" role="form" action="@routes.LoginParticularUserController.submitLogin()" autocomplete="on" method="post">
@@ -37,15 +37,8 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-5 col-md-7">
-                        <div class="checkbox checkbox_remember_enter">
-                            <label><input type="checkbox"> Recuérdame</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
                 	
-                	<div class="col-md-offset-6 col-md-4 button-enter">
+                	<div class="col-md-offset-6 col-md-4 button-create">
                         <button type="submit">ENTRAR</button>
                     </div>
                     
@@ -76,7 +69,7 @@
         </div>
 
         <!-- PARTICULAR REGISTER -->
-        <div class="col-md-5">
+        <div class="col-md-5 col-xs-12">
             <h1 class="col-md-offset-2 size30 century_gothic gray_adecco">CREA TU PERFIL</h1><br>
 
             <form class="form-horizontal" role="form" action="@routes.LoginParticularUserController.signUpLogin()" method="post">
@@ -109,14 +102,6 @@
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-6">
                         <input type="password" name='register_repeat_password' class="form-control" id="register_part_password_2" required="required" placeholder="Repetir contraseña">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-5 col-md-7">
-                        <div class="checkbox checkbox_remember_create">
-                            <label><input type="checkbox"> Recuérdame</label>
-                        </div>
                     </div>
                 </div>
 
