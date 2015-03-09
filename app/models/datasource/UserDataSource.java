@@ -1,5 +1,6 @@
 package models.datasource;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
@@ -8,6 +9,9 @@ import com.mongodb.WriteConcern;
 import com.mongodb.util.JSON;
 import models.entities.ParticularUser;
 import models.entities.User;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 /**
  * Created by Victor on 09/03/2015.
@@ -25,7 +29,7 @@ public class UserDataSource extends DataSource {
                 append("email", user.email).
                 append("password", user.password).
                 append("emailVerificationKey", user.emailVerificationKey).
-                append("orientationSteps", JSON.parse(user.listToStringWithJsonFormat()));
+                append("orientationSteps", new Gson().toJson(user.completedOrientationSteps));
         collection.insert(WriteConcern.SAFE, query);
 
         // Close connection
@@ -45,6 +49,9 @@ public class UserDataSource extends DataSource {
             String userStr = dbObject.toString();
 
             user = new Gson().fromJson(userStr, User.class);
+
+            Type collectionType = new TypeToken<List<User.OrientationStep>>(){}.getType();
+            user.completedOrientationSteps = new Gson().fromJson(dbObject.get("orientationSteps").toString(), collectionType);
 
             mongoClient.close();
             return user;
