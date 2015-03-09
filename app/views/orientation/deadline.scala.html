@@ -3,92 +3,71 @@
     <div class="row">
         <h2 class="red_adecco century_gothic">Planifica tus próximas entrevistas</h2>
         <div class="brown_adecco arial size14">
-            <p>Es muy importante tener una planificación de las entrevistas que tengas pendientes en el futuro.</p>
+            <p>Desde Fundación Adecco queremos ayudarte a planificar tus entrevistas para que consigas pasar con éxito éstas. La entrevista es uno de los puntos más importantes de la búsqueda de empleo por eso debes planificarla al detalle.</p>
+            <p>La empresa que te vaya a entrevistar te dirá cuando será la entrevista y tu debes ponerlo a continuación. Esto te ayudará a planificarte tanto a corto como a largo plazo gracias a los consejos y notificaciones que Fundación Adecco te enviará.</p>
         </div><br><br>
         <div class="arial size16 gray_adecco">
-            Actividad: Planifica las entrevistas que vayas a realizar para mandarte un aviso por correo electrónico que te recuerde la fecha en la que tienes la entrevista.
+            Actividad:Añade todas las entrevistas que tengas para que Fundación Adecco pueda mandarte consejos y notificaciones unos días antes.
         </div><br>
     </div>
 </article>
 
 <section class="panel-group container back" style="margin-auto;">
-    <div class="row">
+    <div class="row" style="margin-left:6em;">
         <div class="col-md-4">
             <form class="form-horizontal">
                 <div class="form-group" id="job_experience_group_1">
-                    <select  class="form-control" id="sector" name="sector">
-                        <option value="s0" disabled selected="">Sector</option>
-                        <option value="s1">Agricultura, Montes, Pesca, Mineria</option>
-                        <option value="s2">Arte, Cultura, Sociedad</option>
-                        <option value="s3">Atención al cliente</option>
-                        <option value="s4">Banca y Seguros</option>
-                        <option value="s5">Bioquímica, Farmacia, Experimental</option>
-                        <option value="s6">Calidad</option>
-                        <option value="s7">Comercial, Ventas</option>
-                        <option value="s8">Compras</option>
-                        <option value="s9">Comunicación, Medios, Periodismo</option>
-                        <option value="s10">Construcción, Arquitectura, Promoción e Inmobiliaria</option>
-                        <option value="s11">Consultoría</option>
-                        <option value="s12">Dirección, Gerencia</option>
-                        <option value="s13">Diseño, Creatividad</option>
-                        <option value="s14">Edición, Artes gráficas, Documentación, Traducción</option>
-                        <option value="s15">Educación Formación</option>
-                        <option value="s16">Finanzas, Contabilidad, Auditoría</option>
-                        <option value="s17">Hostelería, Turismo</option>
-                        <option value="s18">I+D</option>
-                        <option value="s19">Informática</option>
-                        <option value="s20">Ingeniería, Fabricación, Producción</option>
-                        <option value="s21">Internet</option>
-                        <option value="s22">Jurídico, Fiscal</option>
-                        <option value="s23">Limpieza especializada, Saneamiento y Servicios urbanos</option>
-                        <option value="s24">Logística, Planificación, Transporte</option>
-                        <option value="s25">Mantenimiento, Instalación, Reparación</option>
-                        <option value="s26">Marketing, Publicidad</option>
-                        <option value="s27">Medio ambiente</option>
-                        <option value="s28">Oficios</option>
-                        <option value="s29">Prevención de riesgos laborales</option>
-                        <option value="s30">Recursos humanos</option>
-                        <option value="s31">Sanidad y Salud</option>
-                        <option value="s32">Seguridad, Defensa</option>
-                        <option value="s33">Servicios generales</option>
-                        <option value="s34">Servicios sociales</option>
-                        <option value="s35">Telecomunicaciones</option>
-                        <option value="s36">Otros</option>
-                    </select>
+                   
+                  
+                  
+
+                  <input placeholder="Fecha" class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
                 </div>
             </form>
         </div>
 
         <div class="col-md-4 col-md-offset-2">
             <form class="form-horizontal">
-                <div class="form-group" id="job_experience_group_2">
-                    <input type="text" class="form-control" placeholder="Puesto" >
+                <div class="form-group" id="job_experience" >
+                  
+                  <input placeholder="Hora 00.00h" class="form-control" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" id="time"> 
+                  
+
                 </div>
             </form>
         </div>
     </div>
-<div class="row">
+<div class="row" style="margin-left:6em;">
         
         
         <div class="col-md-4">
             <form class="form-horizontal">
                 <div class="form-group" id="job_experience_group_3">
-                    <input type="date" class="form-control" placeholder="Fecha" >
+                <input type="text" class="form-control" placeholder="Empresa" >  
                 </div>
             </form>
         </div>
 
         <div class="col-md-4 col-md-offset-2">
             <form class="form-horizontal">
-                <div class="form-group" id="job_experience_group_4">
-                    <textarea name="comentarios" rows="10" cols="40"></textarea>
+                <div class="form-group" id="job_experience_group_3">
+                 <input type="text" class="form-control" placeholder="Dirección" >   
                 </div>
             </form>
         </div>
 
+</div>
+
+<div class="row" style="margin-left:13em;">
         
-
-
+ 
+        <div class="col-md-5 col-sm-8 col-xs-8 col-md-offset-8 col-sm-offset-8 col-xs-offset-8">
+            <form class="form-horizontal">
+                <div class="form-group" id="job_experience_group_3">
+                 <a href="#"><img  src="@routes.Assets.at("images/orientation/ic_newinterview.png")"> </a> 
+                </div>
+            </form>
+        </div>
 
 </div>
 
@@ -101,12 +80,13 @@
 
 
 
-<section class="container    ">
-    <div class="row" style="margin-auto;">
-        <div class="col-md-2 col-md-offset-10 col-xs-5 col-sm-3 arial size16 button_finish">
-            <a href="@routes.OrientationController.blank()">FINALIZAR</a>
+<section class="container">
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
         </div>
-     </div>
+    </div>
 </section>
 
 
