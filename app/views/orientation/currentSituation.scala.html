@@ -120,17 +120,17 @@
        <p class="century_gothic gray_adecco size22 bold advices_height" style="margin-left:1em;">¿Cuál es tu experiencia profesional?</p> <br>
    </div>
     <div class="row" style="margin-left:-2em;">
-        <div class="col-md-3  col-md-offset-1 input-mic-container">
+        <div class="col-md-3 col-sm-4 col-xs-4 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 input-mic-container">
             <input type="text" class="form-control" id="company" placeholder="Empresa">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
-        <div class="col-md-3 col-md-offset-3 input-mic-container">
+        <div class="col-md-3 col-sm-4 col-xs-4 col-md-offset-3 col-sm-offset-2 col-xs-offset-2 input-mic-container">
             <input type="text" class="form-control" id="office" placeholder="Puesto">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
     <div class="row" style="margin-left:-2em;">
-        <div class="col-md-3 col-md-offset-1">
+        <div class="col-md-3 col-sm-4 col-xs-4 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
             <select  class="form-control" name="experience" id="experience">
                         <option value="s0" disabled selected="">Años de experiencia</option>
                         <option value="s1"> Prácticas</option>
@@ -141,7 +141,7 @@
                         <option value="s6"> +10 años</option>
             </select>
         </div>
-        <div class="col-md-2" style=" margin-left:23em; ">
+        <div class="col-md-2 col-sm-2 col-xs-2 col-md-offset-4 col-sm-offset-3 col-xs-offset-3">
             <a href="#"> <img  src="@routes.Assets.at("images/orientation/ic_añadirexperiencia.png")"> </a>
         </div>
     </div>   
@@ -150,10 +150,11 @@
 
 <section class="container">
     <div class="row">
-        <div class="col-md-2 col-xs-5 col-sm-3 arial size16 button_finish col-md-offset-10">
-            <a href="@routes.OrientationController.blank()">FINALIZAR</a>
+        <div class="col-md-8"></div>
+        <div class="col-md-4 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
         </div>
-     </div>
+    </div>
 </section>
 
 <script type="text/javascript">
