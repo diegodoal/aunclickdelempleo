@@ -88,3 +88,4 @@ GET     /pdf/:template                              controllers.PDFController.fa
 # NEW LOGIN
 GET     /login                                      controllers.LoginController.blank()
 POST    /login                                      controllers.LoginController.submitLogin()
+POST    /signup                                     controllers.LoginController.submitSignUp()

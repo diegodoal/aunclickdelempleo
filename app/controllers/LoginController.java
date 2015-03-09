@@ -36,4 +36,30 @@ public class LoginController {
         error_login_msg = "Email o contraseña incorrecta";
         return badRequest(views.html.login_user.login.render(error_login_msg, null));
     }
+
+    public static Result submitSignUp(){
+        String error_signup_msg = null;
+        DynamicForm filledForm = form().bindFromRequest();
+
+        User userCreated = UserDataSource.getUserByEmail(filledForm.get("register_email"));
+
+        if (userCreated != null){
+            error_signup_msg = "Usuario con ese email ya registrado";
+            return badRequest(views.html.login_user.login.render(null, error_signup_msg));
+        }
+
+        if(!filledForm.get("register_password").equals(filledForm.get("register_repeat_password"))) {
+            error_signup_msg = "Las contraseñas no coinciden";
+            return badRequest(views.html.login_user.login.render(null, error_signup_msg));
+        }
+
+        userCreated = new User(filledForm.get("register_name"), filledForm.get("register_surnames"),
+                filledForm.get("register_email"), filledForm.get("register_password"));
+        UserDataSource.insertIntoUsersCollection(userCreated);
+
+        session("email", userCreated.email);
+        session("name", userCreated.name);
+
+        return redirect("/");
+    }
 }
