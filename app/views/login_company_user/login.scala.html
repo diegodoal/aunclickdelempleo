@@ -3,13 +3,13 @@
 <!-- ADVANTAGES -->
 <section class="container" id="company_advantages">
     <div class="row">
-        <div class="col-xs-4 col-md-4" id="company_clock">
+        <div class="col-md-12 col-md-4" id="company_clock">
             <img src="@routes.Assets.at("images/login_company/ic_reloj.png")">
         </div>
-        <div class="col-xs-4 col-md-4" id="company_coins">
+        <div class="hidden-xs hidden-sm col-md-4" id="company_coins">
             <img src="@routes.Assets.at("images/login_company/ic_monedas.png")">
         </div>
-        <div class="col-xs-4 col-md-4" id="company_people">
+        <div class="hidden-xs hidden-sm col-md-4" id="company_people">
             <img src="@routes.Assets.at("images/login_company/ic_personas.png")">
         </div>
     </div>
@@ -20,7 +20,7 @@
     <div class="row">
         <!-- ACCESS -->
         <div class="col-md-5">
-            <h1 class="col-md-offset-4">ACCEDE</h1><br>
+            <h1 class="col-md-offset-4 size30 century_gothic gray_adecco">ACCEDE</h1><br>
 
             <form class="form-horizontal" role="form" action="@routes.LoginCompanyUserController.submitLogin()" autocomplete="on" method="post">
                 <div class="form-group">
@@ -51,14 +51,14 @@
 
         <!-- Barra -->
         <div class="col-md-2">
-            <div class="col-md-offset-6 hidden-sm">
+            <div class="col-md-offset-6 hidden-sm hidden-xs">
                 <img src="@routes.Assets.at("images/login_company/ic_barrapuntos5.png")">
             </div>
         </div>
 
         <!-- COMPANY REGISTER -->
         <div class="col-md-5">
-            <h1 class="col-md-offset-2">CREA TU PERFIL</h1><br>
+            <h1 class="col-md-offset-2 size30 century_gothic gray_adecco">CREA TU PERFIL</h1><br>
 
             <form class="form-horizontal" role="form" action="@routes.LoginCompanyUserController.submitSignUp()" method="post">
                 <div class="form-group">
