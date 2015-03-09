@@ -16,8 +16,8 @@
 
     <!-- Collapse 1 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading" id="panel_heading1">
-            <a data-toggle="collapse" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Currículum Vitae<img id="ic_more_info1" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Currículum Vitae<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse1" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -39,8 +39,8 @@
 
     <!-- Collapse 2 -->
     <div class="panel panel-default panel-group-background">
-        <div class="panel-heading" id="panel_heading2">
-            <a data-toggle="collapse" href="#collapse2" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Carta de Presentación<img id="ic_more_info2" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse2" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Carta de Presentación<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
         </div>
         <div id="collapse2" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
             <ul class="panel-body" style="margin-left:2em;">
@@ -60,26 +60,10 @@
     </div>
 </section>
 
-<script>
-    /* Collapse 1 */
-    $('#panel_heading1 a').click(function() {
-        if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        }else{
-            $('#ic_more_info1').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-        }
-    });
-
-    /* Collapse 2 */
-    $('#panel_heading2 a').click(function() {
-        if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        }else{
-            $('#ic_more_info2').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-        }
-    });
+<script type="text/javascript">
+    window.onload = function(){
+        autoChangeIcon();
+    };
 </script>
 
 <section class="container">
