@@ -34,7 +34,6 @@ GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 
 
 # FINAL ROUTES
-GET     /logout                                     controllers.Application.logout()
 
 # PARTICULAR USER LOGIN
 GET     /particular                                 controllers.LoginParticularUserController.blank()
@@ -96,3 +95,9 @@ GET     /orientation/reputation                     controllers.OrientationContr
 
 # Use: /pdf/t1   or     /pdf/t2
 GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
+
+# NEW LOGIN
+GET     /login                                      controllers.LoginController.blank()
+GET     /logout                                     controllers.LoginController.logout()
+POST    /login                                      controllers.LoginController.submitLogin()
+POST    /signup                                     controllers.LoginController.submitSignUp()

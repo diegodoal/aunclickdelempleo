@@ -6,6 +6,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import scala.util.parsing.json.JSONArray;
 
 public class DataSource {
 	public static MongoClient mongoClient;
