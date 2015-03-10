@@ -3,6 +3,8 @@ package controllers;
 import java.io.*;
 import java.util.*;
 import models.S3File;
+import models.datasource.UserDataSource;
+import models.entities.User;
 import org.apache.commons.codec.binary.Base64;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -10,7 +12,8 @@ import play.mvc.Result;
 
 public class OrientationController extends Controller {
 	public static Result blank() {
-        return ok(views.html.orientation.orientation.render());
+        User user = UserDataSource.getUserByEmail(session().get("email"));
+        return ok(views.html.orientation.orientation.render(user));
     }
 
     /* PUNTO 1: CONOCETE A TI MISMO */
@@ -68,7 +71,8 @@ public class OrientationController extends Controller {
         s3File.file = temp;
         s3File.save();
 
-        return ok(views.html.orientation.orientation.render());
+        User user = UserDataSource.getUserByEmail(session().get("email"));
+        return ok(views.html.orientation.orientation.render(user));
     }
 
     /* PUNTO 2: PREPARATE PARA LA BUSQUEDA DE EMPLEO */

@@ -32,6 +32,9 @@ public class User {
         completedOrientationSteps = new CompletedOrientationSteps();
     }
 
+    public CompletedOrientationSteps getCompletedOrientationSteps() {
+        return completedOrientationSteps;
+    }
 
     public class CompletedOrientationSteps {
         public String currentSituation,
@@ -75,9 +78,13 @@ public class User {
             this.level = "false";
             this.reputation = "false";
         }
-        
+
         public String orientationStepsToJson(){
             return new Gson().toJson(this, CompletedOrientationSteps.class).toString();
+        }
+
+        public String getCurrentSituation() {
+            return currentSituation;
         }
     }
 }
