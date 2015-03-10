@@ -34,7 +34,6 @@ GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
 
 
 # FINAL ROUTES
-GET     /logout                                     controllers.Application.logout()
 
 # PARTICULAR USER LOGIN
 GET     /particular                                 controllers.LoginParticularUserController.blank()
@@ -87,5 +86,6 @@ GET     /pdf/:template                              controllers.PDFController.fa
 
 # NEW LOGIN
 GET     /login                                      controllers.LoginController.blank()
+GET     /logout                                     controllers.LoginController.logout()
 POST    /login                                      controllers.LoginController.submitLogin()
 POST    /signup                                     controllers.LoginController.submitSignUp()

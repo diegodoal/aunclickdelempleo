@@ -62,4 +62,9 @@ public class LoginController {
 
         return redirect("/");
     }
+
+    public static Result logout(){
+        session().clear();
+        return redirect("/");
+    }
 }
