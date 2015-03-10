@@ -44,6 +44,11 @@ POST    /particular/signup                          controllers.LoginParticularU
 GET     /particular/signup/step2                    controllers.LoginParticularUserController.step2()
 GET     /particular/signup/step3                    controllers.LoginParticularUserController.step3()
 
+
+
+
+
+
 # COMPANY USER LOGIN
 GET     /company                                    controllers.LoginCompanyUserController.blank()
 POST    /company/login                              controllers.LoginCompanyUserController.submitLogin()
@@ -65,6 +70,13 @@ POST    /orientation/photo                          controllers.OrientationContr
 GET     /orientation/channels                       controllers.OrientationController.channels()
 GET     /orientation/learntools                     controllers.OrientationController.learntools()
 GET     /orientation/gettools                       controllers.OrientationController.gettools()
+
+
+#Curriculum Vitae
+
+GET     /orientation/gettools/cv1                   controllers.LoginParticularUserController.cv1()
+GET     /orientation/gettools/cv2                   controllers.LoginParticularUserController.cv2()
+GET     /orientation/gettools/cv3                   controllers.LoginParticularUserController.cv3()
 
 # PUNTO 3: PROCESO DE SELECCION
 GET     /orientation/tinterview                     controllers.OrientationController.tinterview()
