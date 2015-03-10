@@ -29,7 +29,7 @@ public class UserDataSource extends DataSource {
                 append("email", user.email).
                 append("password", user.password).
                 append("emailVerificationKey", user.emailVerificationKey).
-                append("orientationSteps", new Gson().toJson(user.completedOrientationSteps));
+                append("orientationSteps", JSON.parse(user.completedOrientationSteps.orientationStepsToJson()));
         collection.insert(WriteConcern.SAFE, query);
 
         // Close connection
@@ -48,10 +48,11 @@ public class UserDataSource extends DataSource {
             User user = new User();
             String userStr = dbObject.toString();
 
+            //Get user object from JSON
             user = new Gson().fromJson(userStr, User.class);
 
-            Type collectionType = new TypeToken<List<User.OrientationStep>>(){}.getType();
-            user.completedOrientationSteps = new Gson().fromJson(dbObject.get("orientationSteps").toString(), collectionType);
+            //Add to USER the completedOrientationSteps object stored in JSON
+            user.completedOrientationSteps = new Gson().fromJson(dbObject.get("orientationSteps").toString(), User.CompletedOrientationSteps.class);
 
             mongoClient.close();
             return user;
@@ -70,7 +71,6 @@ public class UserDataSource extends DataSource {
             BasicDBObject updateQuery = new BasicDBObject().append("$set", new BasicDBObject().append(key, newValue));
             collection.update(query, updateQuery);
         }
-
         mongoClient.close();
     }
 }

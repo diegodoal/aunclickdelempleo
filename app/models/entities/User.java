@@ -1,6 +1,8 @@
 package models.entities;
 
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +19,7 @@ public class User {
     public String password;
     public String emailVerificationKey;
 
-    public List<OrientationStep> completedOrientationSteps;
+    public CompletedOrientationSteps completedOrientationSteps;
 
     public User(){}
 
@@ -27,50 +29,55 @@ public class User {
         this.email = email;
         this.password = password;
         this.emailVerificationKey = UUID.randomUUID().toString();
-        initializeCompletedOrientationSteps();
+        completedOrientationSteps = new CompletedOrientationSteps();
     }
 
 
-    public String listToStringWithJsonFormat(){
-        String result = "[";
-        for(int i=0; i<this.completedOrientationSteps.size(); i++){
-            result+="{\""+this.completedOrientationSteps.get(i).step.toString()+"\":\""+this.completedOrientationSteps.get(i).isCompleted+"\",";
+    public class CompletedOrientationSteps {
+        public String currentSituation,
+        skills,
+        interestIdentification,
+        personal,
+        professional,
+        photo,
+        channels,
+        learnTools,
+        getTools,
+        tInterview,
+        pInterview,
+        actInterview,
+        questionsInterview,
+        deadLine,
+        travel,
+        specialization,
+        bestDeals,
+        level,
+        reputation;
+
+        public CompletedOrientationSteps(){
+            this.currentSituation = "false";
+            this.skills = "false";
+            this.interestIdentification = "false";
+            this.personal = "false";
+            this.professional = "false";
+            this.photo = "false";
+            this.channels = "false";
+            this.learnTools = "false";
+            this.getTools = "false";
+            this.tInterview = "false";
+            this.pInterview = "false";
+            this.actInterview = "false";
+            this.questionsInterview = "false";
+            this.deadLine = "false";
+            this.travel = "false";
+            this.specialization = "false";
+            this.bestDeals = "false";
+            this.level = "false";
+            this.reputation = "false";
         }
-        result+="]";
-        return result;
-    }
-
-    private void initializeCompletedOrientationSteps(){
-        this.completedOrientationSteps = new ArrayList<OrientationStep>();
-        this.completedOrientationSteps.add(new OrientationStep("CurrentSituation", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Skills", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("InterestIdentification", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Personal", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Professional", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Photo", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Channels", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("LearnTools", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("GetTools", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("TInterview", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("PInterview", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("ActInterview", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("QuestionsInterview", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Personal", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("DeadLine", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Travel", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Specialization", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("BestDeals", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Level", "false"));
-        this.completedOrientationSteps.add(new OrientationStep("Reputation", "false"));
-    }
-
-    public class OrientationStep {
-        public String step;
-        public String isCompleted;
-
-        public OrientationStep(String step, String isCompleted){
-            this.step = step;
-            this.isCompleted = isCompleted;
+        
+        public String orientationStepsToJson(){
+            return new Gson().toJson(this, CompletedOrientationSteps.class).toString();
         }
     }
 }
