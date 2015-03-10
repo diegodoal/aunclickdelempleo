@@ -72,7 +72,7 @@
         <div class="col-md-5">
             <h1 class="col-md-offset-2 size30 century_gothic gray_adecco">CREA TU PERFIL</h1>
 
-            <h1 class="col-md-offset-2 font1">Puedes rellenar los siguientes campos con voz. <a class="font2" href="#" target="_blank">¿<ins>Cómo funciona</ins>?</a></h1><br>
+            <h1 class="col-md-offset-2 font1">Puedes rellenar los siguientes campos con voz. <a class="font2" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></h1><br>
 
             <form class="form-horizontal" role="form" action="@routes.LoginParticularUserController.signUpLogin()" method="post">
                 <div class="form-group form-inline">
@@ -132,6 +132,31 @@
         </div>
     </div>
 </article>
+
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?<h2>
+        <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+        <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+        <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+        <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <script type="text/javascript">
       window.onload = function() {
