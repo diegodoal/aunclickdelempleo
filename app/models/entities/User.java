@@ -86,5 +86,77 @@ public class User {
         public String getCurrentSituation() {
             return currentSituation;
         }
+
+        public String getSkills() {
+            return skills;
+        }
+
+        public String getInterestIdentification() {
+            return interestIdentification;
+        }
+
+        public String getProfessional() {
+            return professional;
+        }
+
+        public String getPersonal() {
+            return personal;
+        }
+
+        public String getPhoto() {
+            return photo;
+        }
+
+        public String getChannels() {
+            return channels;
+        }
+
+        public String getLearnTools() {
+            return learnTools;
+        }
+
+        public String getGetTools() {
+            return getTools;
+        }
+
+        public String getTInterview() {
+            return tInterview;
+        }
+
+        public String getPInterview() {
+            return pInterview;
+        }
+
+        public String getActInterview() {
+            return actInterview;
+        }
+
+        public String getQuestionsInterview() {
+            return questionsInterview;
+        }
+
+        public String getDeadLine() {
+            return deadLine;
+        }
+
+        public String getTravel() {
+            return travel;
+        }
+
+        public String getSpecialization() {
+            return specialization;
+        }
+
+        public String getBestDeals() {
+            return bestDeals;
+        }
+
+        public String getLevel() {
+            return level;
+        }
+
+        public String getReputation() {
+            return reputation;
+        }
     }
 }
