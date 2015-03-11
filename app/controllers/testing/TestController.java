@@ -76,14 +76,17 @@ public class TestController extends Controller {
     }
 
     public static Result testDataSourceUpdating() {
-        
-        UserDataSource.updateUserData("email2@gmail.com", "interests.0", "true");
 
-        UserDataSource.updateUserData("email2@gmail.com", "professionalValues.1.valuation", "Other value");
+        String email = "email1@gmail.com";
+        UserDataSource.updateUserData(email, "interests.0", "true");
 
-        UserDataSource.updateUserData("email2@gmail.com", "nextInterviews.1.address", "Alemania");
+        UserDataSource.updateUserData(email, "professionalValues.1.valuation", "Other value");
 
-        return ok(new Gson().toJson(UserDataSource.getUserByEmail("email2@gmail.com")));
+        UserDataSource.updateUserData(email, "nextInterviews.1.address", "Alemania");
+
+        UserDataSource.deleteUserData(email, "interests");
+
+        return ok(new Gson().toJson(UserDataSource.getUserByEmail(email)));
     }
 
 }

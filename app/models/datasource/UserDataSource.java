@@ -80,4 +80,16 @@ public class UserDataSource extends DataSource {
         }
         mongoClient.close();
     }
+
+    public static void deleteUserData(String email, String field){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        BasicDBObject query = new BasicDBObject().append("email", email);
+        DBObject user = collection.findOne(query);
+
+        if(user != null){
+            BasicDBObject updateQuery = new BasicDBObject().append("$unset", new BasicDBObject().append(field, ""));
+            collection.update(query, updateQuery);
+        }
+        mongoClient.close();
+    }
 }
