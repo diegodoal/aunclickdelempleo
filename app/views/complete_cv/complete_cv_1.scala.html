@@ -1,6 +1,6 @@
 @main(){
 
-<!--COMPLETE_USER_PROFILE_1-->
+<!--COMPLETE_CV_1-->
 <section class="container" id="text_user_profile_2">
     <div class="row">
         <div class="col-md-12 brown_adecco century_gothic">
@@ -21,58 +21,62 @@
 <!--Datos Personales-->
 
 <article class="container">
-    <div class="add_container">
+    
        
         <div class="row">
-                <div class="col-md-12 col-xs-12 col-sm-12 arial gray_adecco size22 bold">
+                <div class="col-md-12 arial gray_adecco size22 bold">
                     <p>Datos personales</p>
                 </div>
+        </div>
+
+        <div class="row">
         
         <form class="form-horizontal" role="form"  method="post">
-                <div class="form-group form-inline">
-                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                
+                <div class="form-group">
+                    <div class="col-md-4 col-xs-4 col-sm-4">
                             <input type="text" name='register_name' class="form-control" id="register_name"  required="required" placeholder="Nombre">
                             
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                    <div class="col-md-4 col-xs-4 col-sm-4">
                         <input type="text" name='register_surnames' class="form-control" id="register_surnames" required="required" placeholder="Apellidos">
                         
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                    <div class="col-md-4 col-xs-4 col-sm-4">
                         <input type="text" name='register_surnames' class="form-control" id="register_date" required="required" placeholder="Fecha de nacimiento">
                         
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                    <div class="col-md-4 col-xs-4 col-sm-4">
                         <input type="text" name='register_surnames' class="form-control" id="register_city" required="required" placeholder="Ciudad de residencia">
                         
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                    <div class="col-md-4 col-xs-4 col-sm-4">
                         <input type="text" name='register_surnames' class="form-control" id="register_dress" required="required" placeholder="Calle">
                         
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                    <div class="col-md-4 col-xs-4 col-sm-4">
                         <input type="text" name='register_surnames' class="form-control" id="register_number" required="required" placeholder="Numero">
                         
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                    <div class="col-md-4 col-xs-4 col-sm-4">
                         <input type="text" name='register_surnames' class="form-control" id="register_post" required="required" placeholder="Código postal">
                         
                     </div>
@@ -86,31 +90,35 @@
             
             
         
-    </div>
+    
     
     <!--Contacto-->
     <div class="add_container">
-         <div class="row">
+        <div class="row">
                 <div class="col-md-12 col-xs-12 col-sm-12 arial gray_adecco size22 bold">
                     <p>Datos de contacto</p>
                 </div>
+        </div>
+
+        <div class="row">
         
         <form class="form-horizontal" role="form"  method="post">
                
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6">
+                    <div class="col-md-4  col-xs-4 col-sm-4">
                         <input type="email" name='register_email' class="form-control" id="register_part_email" required="required" placeholder="Correo electrónico">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6">
+                    <div class="col-md-4  col-xs-4 col-sm-4">
                         <input type="password" name='register_password' class="form-control" id="register_part_telephone" required="required" placeholder="Telefono">
                     </div>
                 </div>
 
         </form>
         </div>
+        
        
 
 
@@ -118,10 +126,47 @@
     </div>
 
     <div class="add_container">
-        <div class="col-md-12 col-xs-12 col-sm-12 arial gray_adecco size22 bold">
-                <p>Carnet de conducir</p>
+        
+        <div class="row">
+                <div class="col-md-12 col-xs-12 col-sm-12 arial gray_adecco size22 bold">
+                    <p>Carnet de conducir</p>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-xs-12 col-sm-12 ">
+                <span class="gray_adecco arial size14"style="margin-right:1em">No tengo carnet</span><input type="checkbox" id="check_license" onclick="drivingLicenseSetHidden(this.checked)">
             </div>
+        </div>
+
+        <div class="row">
+        <div class="col-md-4 col-xs-4 col-sm-4">
+            <form class="form-horizontal">
+                <div class="form-group" id="driving_license_group">
+                    <select  class="form-control" id="driving_license" name="driving_license">
+                        <option value="0" disabled selected="">Tipo de permiso de conducir</option>
+                        <option value="1">A1</option>
+                        <option value="2">A</option>
+                        <option value="3">B</option>
+                        <option value="4">C1</option>
+                        <option value="5">C</option>
+                        <option value="6">D1</option>
+                        <option value="7">D</option>
+                        <option value="8">BE</option>
+                        <option value="9">C1E</option>
+                        <option value="10">Grado</option>
+                        <option value="11">CE</option>
+                        <option value="12">D1E</option>
+                        <option value="13">DE</option>
+                        <option value="14">btp</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        </div>
+        
+    
     </div>
+    
     
 </article>
 
@@ -132,6 +177,7 @@
             <a href="@routes.LoginParticularUserController.cv2()"><button type="submit" class="btn-img" id="job_experience_group_5"><img  src="@routes.Assets.at("images/complete_user_profile_1/ic_next.png")"></button></a>
         </div>
     </div>
+
 </article>
 
 }
