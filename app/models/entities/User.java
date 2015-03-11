@@ -2,6 +2,9 @@ package models.entities;
 
 
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -21,11 +24,12 @@ public class User {
     //Orientation steps
     public CurrentSituation currentSituation;
     public Skills skills;
-
+    public List<String> interests;
 
     public User(){
         this.currentSituation = new CurrentSituation();
         this.skills = new Skills();
+        this.interests = new ArrayList<>();
     }
 
     public User(String name,String surnames, String email, String password){
@@ -37,10 +41,15 @@ public class User {
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
         this.skills = new Skills();
+        this.interests = new ArrayList<>();
     }
 
     public CompletedOrientationSteps getCompletedOrientationSteps() {
         return completedOrientationSteps;
+    }
+
+    public void addInterest(String interest){
+        this.interests.add(interest);
     }
 
     public class CompletedOrientationSteps {
@@ -166,4 +175,5 @@ public class User {
             return reputation;
         }
     }
+
 }

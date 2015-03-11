@@ -50,6 +50,9 @@ public class TestController extends Controller {
         user.skills.addSkill("Hablar en público", "Bien");
         user.skills.addSkill("Picar código", "Muy bien");
 
+        //Interests
+        user.interests.add("Informática");
+        user.interests.add("Electrónica");
 
         return ok(new Gson().toJson(UserDataSource.insertIntoUsersCollection(user)).toString());
     }
