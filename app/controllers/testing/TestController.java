@@ -8,6 +8,8 @@ import models.entities.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import java.util.UUID;
+
 /**
  * Created by Victor on 11/03/2015.
  */
@@ -54,6 +56,9 @@ public class TestController extends Controller {
         user.personalCharacteristics.add("Trabajador");
         user.personalCharacteristics.add("Creativo");
         user.personalCharacteristics.add("Productivo");
+
+        //Photo
+        user.photo.id = UUID.randomUUID().toString();
 
         return ok(new Gson().toJson(UserDataSource.insertIntoUsersCollection(user)).toString());
     }

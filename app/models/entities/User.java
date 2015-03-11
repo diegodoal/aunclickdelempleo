@@ -30,6 +30,7 @@ public class User {
     public List<Skill> skills;
     public List<String> interests;
     public List<String> personalCharacteristics;
+    public Photo photo;
 
     public User(){
         this.emailVerificationKey = UUID.randomUUID().toString();
@@ -37,6 +38,7 @@ public class User {
         this.skills = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
+        this.photo = new Photo();
     }
 
     public User(String name,String surnames, String email, String password){
@@ -50,6 +52,7 @@ public class User {
         this.skills = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
+        this.photo = new Photo();
     }
 
     public CompletedOrientationSteps getCompletedOrientationSteps() {
