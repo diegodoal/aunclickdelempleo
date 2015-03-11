@@ -37,6 +37,8 @@ public class TestController extends Controller {
     public static Result testDataSourceToMongo1(){
         counter++;
         User user = new User("Name"+counter, "Surname"+counter, "email"+counter+"@gmail.com", "password"+counter);
+
+        //Current Situation
         user.currentSituation.addEducationLevel("Primaria");
         user.currentSituation.addEducationLevel("Secundaria");
         user.currentSituation.addEducationLevel("Grado");
@@ -44,7 +46,13 @@ public class TestController extends Controller {
         user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "5 años");
         user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "10 años");
 
+        //Skills
+        user.skills.addSkill("Hablar en público", "Bien");
+        user.skills.addSkill("Picar código", "Muy bien");
+
+
         return ok(new Gson().toJson(UserDataSource.insertIntoUsersCollection(user)).toString());
     }
+
 
 }

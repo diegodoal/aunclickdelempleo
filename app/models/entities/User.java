@@ -18,10 +18,14 @@ public class User {
 
     public CompletedOrientationSteps completedOrientationSteps;
 
+    //Orientation steps
     public CurrentSituation currentSituation;
+    public Skills skills;
+
 
     public User(){
         this.currentSituation = new CurrentSituation();
+        this.skills = new Skills();
     }
 
     public User(String name,String surnames, String email, String password){
@@ -30,8 +34,9 @@ public class User {
         this.email = email;
         this.password = password;
         this.emailVerificationKey = UUID.randomUUID().toString();
-        completedOrientationSteps = new CompletedOrientationSteps();
+        this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
+        this.skills = new Skills();
     }
 
     public CompletedOrientationSteps getCompletedOrientationSteps() {
