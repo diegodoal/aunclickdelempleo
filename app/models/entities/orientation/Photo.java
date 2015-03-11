@@ -1,4 +1,4 @@
-package models.entities;
+package models.entities.orientation;
 
 import com.google.gson.Gson;
 

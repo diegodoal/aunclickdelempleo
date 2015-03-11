@@ -4,6 +4,7 @@ package models.entities;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import models.entities.orientation.CurrentSituation;
+import models.entities.orientation.Photo;
 import models.entities.orientation.ProfessionalValue;
 import models.entities.orientation.Skill;
 
