@@ -1,5 +1,10 @@
 package models.entities;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,13 +13,51 @@ import java.util.List;
 public class CurrentSituation {
 
     public List<String> educationLevelList;
+
     public List<ProfessionalExperience> professionalExperienceList;
+
+    public CurrentSituation(){
+        this.educationLevelList = new ArrayList<>();
+        this.professionalExperienceList = new ArrayList<>();
+    }
 
     public CurrentSituation(List<String> educationLevelList, List<ProfessionalExperience> professionalExperienceList){
         this.educationLevelList = educationLevelList;
         this.professionalExperienceList = professionalExperienceList;
     }
 
+    public void addEducationLevel(String level){
+        this.educationLevelList.add(level);
+    }
+
+    public void addProfessionalExperience(String company, String job, String experienceYears){
+        this.professionalExperienceList.add(new ProfessionalExperience(company, job, experienceYears));
+    }
+
+
+
+    public String educationLevelListToJsonArray(){
+        Type listType = new TypeToken<List<String>>(){}.getType();
+        String result = new Gson().toJson(this.educationLevelList, listType);
+
+        return result;
+    }
+
+    public String professionalExperienceListToJsonArray(){
+        Type listType = new TypeToken<List<ProfessionalExperience>>(){}.getType();
+        String result = new Gson().toJson(this.professionalExperienceList, listType);
+
+        return result;
+    }
+
+    public String toJsonString(){
+        return new Gson().toJson(this).toString();
+    }
+
+
+    /**
+     * PROFESSIONAL EXPERIENCE CLASS
+     */
     public class ProfessionalExperience {
         public String company;
         public String job;
@@ -24,6 +67,10 @@ public class CurrentSituation {
             this.company = company;
             this.job = job;
             this.experienceYears = experienceYears;
+        }
+
+        public String toJsonInString(){
+            return new Gson().toJson(this).toString();
         }
     }
 }

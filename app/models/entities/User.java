@@ -2,9 +2,6 @@ package models.entities;
 
 
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -21,7 +18,11 @@ public class User {
 
     public CompletedOrientationSteps completedOrientationSteps;
 
-    public User(){}
+    public CurrentSituation currentSituation;
+
+    public User(){
+        this.currentSituation = new CurrentSituation();
+    }
 
     public User(String name,String surnames, String email, String password){
         this.name = name;
@@ -30,6 +31,7 @@ public class User {
         this.password = password;
         this.emailVerificationKey = UUID.randomUUID().toString();
         completedOrientationSteps = new CompletedOrientationSteps();
+        this.currentSituation = new CurrentSituation();
     }
 
     public CompletedOrientationSteps getCompletedOrientationSteps() {
