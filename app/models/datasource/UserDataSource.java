@@ -31,7 +31,9 @@ public class UserDataSource extends DataSource {
                 append("emailVerificationKey", user.emailVerificationKey).
                 append("orientationSteps", JSON.parse(user.completedOrientationSteps.orientationStepsToJson())).
                 append("currentSituation", JSON.parse(user.currentSituation.toJsonString())).
-                append("interests", user.interests);
+                append("skills", JSON.parse(user.skillstoJson())).
+                append("interests", user.interests).
+                append("personalCharacteristics", user.personalCharacteristics);
         collection.insert(WriteConcern.SAFE, query);
 
         // Close connection

@@ -1,8 +1,12 @@
 package models.entities;
 
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import models.entities.orientation.CurrentSituation;
+import models.entities.orientation.Skill;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -23,13 +27,16 @@ public class User {
 
     //Orientation steps
     public CurrentSituation currentSituation;
-    public Skills skills;
+    public List<Skill> skills;
     public List<String> interests;
+    public List<String> personalCharacteristics;
 
     public User(){
+        this.emailVerificationKey = UUID.randomUUID().toString();
         this.currentSituation = new CurrentSituation();
-        this.skills = new Skills();
+        this.skills = new ArrayList<>();
         this.interests = new ArrayList<>();
+        this.personalCharacteristics = new ArrayList<>();
     }
 
     public User(String name,String surnames, String email, String password){
@@ -40,17 +47,15 @@ public class User {
         this.emailVerificationKey = UUID.randomUUID().toString();
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
-        this.skills = new Skills();
+        this.skills = new ArrayList<>();
         this.interests = new ArrayList<>();
+        this.personalCharacteristics = new ArrayList<>();
     }
 
     public CompletedOrientationSteps getCompletedOrientationSteps() {
         return completedOrientationSteps;
     }
 
-    public void addInterest(String interest){
-        this.interests.add(interest);
-    }
 
     public class CompletedOrientationSteps {
         public String currentSituation,
@@ -174,6 +179,13 @@ public class User {
         public String getReputation() {
             return reputation;
         }
+    }
+
+    public String skillstoJson(){
+        Type listType = new TypeToken<List<Skill>>(){}.getType();
+        String result = new Gson().toJson(this.skills, listType);
+
+        return result;
     }
 
 }

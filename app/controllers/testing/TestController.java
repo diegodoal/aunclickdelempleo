@@ -1,16 +1,12 @@
 package controllers.testing;
 
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import models.datasource.UserDataSource;
-import models.entities.CurrentSituation;
+import models.entities.orientation.CurrentSituation;
+import models.entities.orientation.Skill;
 import models.entities.User;
 import play.mvc.Controller;
 import play.mvc.Result;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Victor on 11/03/2015.
@@ -47,12 +43,17 @@ public class TestController extends Controller {
         user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "10 años");
 
         //Skills
-        user.skills.addSkill("Hablar en público", "Bien");
-        user.skills.addSkill("Picar código", "Muy bien");
+        user.skills.add(new Skill("Hablar en público", "Bien"));
+        user.skills.add(new Skill("Picar código", "Muy bien"));
 
         //Interests
         user.interests.add("Informática");
         user.interests.add("Electrónica");
+
+        //Personal Characteristics
+        user.personalCharacteristics.add("Trabajador");
+        user.personalCharacteristics.add("Creativo");
+        user.personalCharacteristics.add("Productivo");
 
         return ok(new Gson().toJson(UserDataSource.insertIntoUsersCollection(user)).toString());
     }
