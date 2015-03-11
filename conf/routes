@@ -75,6 +75,7 @@ GET     /orientation/gettools                       controllers.OrientationContr
 # TESTING
 GET     /api/test/1                                 controllers.testing.TestController.testDataSource1()
 GET     /api/test/2                                 controllers.testing.TestController.testDataSourceToMongo1()
+GET     /api/test/3                                 controllers.testing.TestController.testDataSourceUpdating()
 
 
 #Curriculum Vitae

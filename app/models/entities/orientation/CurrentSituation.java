@@ -39,7 +39,7 @@ public class CurrentSituation {
         return new Gson().toJson(this).toString();
     }
 
-    
+
     /**
      * PROFESSIONAL EXPERIENCE CLASS
      */

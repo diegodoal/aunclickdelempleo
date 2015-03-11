@@ -10,6 +10,7 @@ import models.entities.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -67,11 +68,22 @@ public class TestController extends Controller {
         user.photo.id = UUID.randomUUID().toString();
 
         //Next Interviews
-        user.interviewScheduleList.add(new InterviewSchedule(null, null, "Telefonica", "Madrid International Lab"));
-        user.interviewScheduleList.add(new InterviewSchedule(null, null, "Apple", "Palo Alto"));
+        Date date = null;
+        user.interviewScheduleList.add(new InterviewSchedule(date, date, "Telefonica", "Madrid International Lab"));
+        user.interviewScheduleList.add(new InterviewSchedule(date, date, "Apple", "Palo Alto"));
 
         return ok(new Gson().toJson(UserDataSource.insertIntoUsersCollection(user)).toString());
     }
 
+    public static Result testDataSourceUpdating() {
+        
+        UserDataSource.updateUserData("email2@gmail.com", "interests.0", "true");
+
+        UserDataSource.updateUserData("email2@gmail.com", "professionalValues.1.valuation", "Other value");
+
+        UserDataSource.updateUserData("email2@gmail.com", "nextInterviews.1.address", "Alemania");
+
+        return ok(new Gson().toJson(UserDataSource.getUserByEmail("email2@gmail.com")));
+    }
 
 }
