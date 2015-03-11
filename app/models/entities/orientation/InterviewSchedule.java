@@ -1,4 +1,4 @@
-package models.entities;
+package models.entities.orientation;
 
 import java.util.Date;
 
