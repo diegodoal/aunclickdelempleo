@@ -13,8 +13,8 @@ import java.util.List;
 public class CurrentSituation {
 
     public List<String> educationLevelList;
-
     public List<ProfessionalExperience> professionalExperienceList;
+
 
     public CurrentSituation(){
         this.educationLevelList = new ArrayList<>();
@@ -26,6 +26,7 @@ public class CurrentSituation {
         this.professionalExperienceList = professionalExperienceList;
     }
 
+
     public void addEducationLevel(String level){
         this.educationLevelList.add(level);
     }
@@ -34,27 +35,11 @@ public class CurrentSituation {
         this.professionalExperienceList.add(new ProfessionalExperience(company, job, experienceYears));
     }
 
-
-
-    public String educationLevelListToJsonArray(){
-        Type listType = new TypeToken<List<String>>(){}.getType();
-        String result = new Gson().toJson(this.educationLevelList, listType);
-
-        return result;
-    }
-
-    public String professionalExperienceListToJsonArray(){
-        Type listType = new TypeToken<List<ProfessionalExperience>>(){}.getType();
-        String result = new Gson().toJson(this.professionalExperienceList, listType);
-
-        return result;
-    }
-
     public String toJsonString(){
         return new Gson().toJson(this).toString();
     }
 
-
+    
     /**
      * PROFESSIONAL EXPERIENCE CLASS
      */
