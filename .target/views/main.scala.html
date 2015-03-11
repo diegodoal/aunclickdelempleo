@@ -3,17 +3,25 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap.css")">
 	<link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap-theme.css")">
 	<link rel="stylesheet" type='text/css' href="@routes.Assets.at("stylesheets/style_ventana_emergente.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/custom-style.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/custom-fonts.css")">
 	<link rel="shortcut icon" type="image/jpg" href="@routes.Assets.at("images/adecco_logo.jpg")">
-	<script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type='text/javascript' src="@routes.Assets.at("javascripts/jquery-1.11.2.min.js")"></script>
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/script1.js")"></script>
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/script2.js")"></script>
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/script3.js")"></script>
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/script4.js")"></script>
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/script7.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/photo.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/speech-recognition.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/collapse-icon.js")"></script>
+     <script type='text/javascript' src="@routes.Assets.at("javascripts/maps_script.js")"></script>
+     <script type='text/javascript' src="@routes.Assets.at("javascripts/max3.js")"></script>
 	
 	<meta charset="utf-8">
 	<title>A un click del empleo</title>
@@ -31,10 +39,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="@routes.Application.index()"><img alt="Brand" src="@routes.Assets.at("images/nav/corporative-min.jpg")"></a>
-            <a class="navbar-brand navbar-icons" href="https://es-es.facebook.com/fundacionadecco"><img alt="Logo Facebook" src="@routes.Assets.at("images/nav/logo_facebook.png")"></a>
-            <a class="navbar-brand navbar-icons" href="https://twitter.com/fund_adecco"><img alt="Logo Twitter" src="@routes.Assets.at("images/nav/logo_twitter.png")"></a>
-            <a class="navbar-brand navbar-icons" href="https://es.linkedin.com/company/fundaci-n-adecco"><img alt="Logo Linkedin" src="@routes.Assets.at("images/nav/logo_linkedin.png")"></a>
+            <a class="navbar-brand" href="@routes.Application.index()"><img alt="Brand" src="@routes.Assets.at("images/nav/corporative-min.jpg")"></a>   
+            <a class="navbar-brand navbar-icons hidden-xs" href="https://es-es.facebook.com/fundacionadecco"><img alt="Logo Facebook" src="@routes.Assets.at("images/nav/logo_facebook.png")"></a>
+            <a class="navbar-brand navbar-icons hidden-xs" href="https://twitter.com/fund_adecco"><img alt="Logo Twitter" src="@routes.Assets.at("images/nav/logo_twitter.png")"></a>
+            <a class="navbar-brand navbar-icons hidden-xs" href="https://es.linkedin.com/company/fundaci-n-adecco"><img alt="Logo Linkedin" src="@routes.Assets.at("images/nav/logo_linkedin.png")"></a>
         </div>
 
         <!-- Agrupar los enlaces de navegación, los formularios y cualquier otro elemento que se pueda ocultar al minimizar la barra -->
@@ -42,15 +50,15 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="button-nav-login" id="accesibility"><a href="#accesibility_pop_up"><button type="button" class="btn btn-default navbar-btn"><img src="@routes.Assets.at("images/nav/ic_adaptabilidad2.png")"></button></a></li>
                 @if(session.get("email") == null){
-                    <li class="button-nav-login"><a href="@routes.LoginParticularUserController.blank()"><button type="button" class="btn btn-default navbar-btn">ENTRAR</button></a></li>
+                    <li class="button-nav-login"><a href="@routes.LoginController.blank()"><button type="button" class="btn btn-default navbar-btn">ENTRAR</button></a></li>
                     @if(nav == "company"){
-                        <li class="button-nav-im-company"><a href="@routes.LoginParticularUserController.blank()"><button type="button" class="btn btn-default navbar-btn">SOY PARTICULAR</button></a></li>
+                        <li class="button-nav-im-company"><a href="@routes.LoginController.blank()"><button type="button" class="btn btn-default navbar-btn">SOY PARTICULAR</button></a></li>
                     }else{
                         <li class="button-nav-im-company"><a href="@routes.LoginCompanyUserController.blank()"><button type="button" class="btn btn-default navbar-btn">SOY EMPRESA</button></a></li>
                     }
                 }else{
                     <li class="button-nav-login"><a href="#"><button type="button" class="btn btn-default navbar-btn">@session.get("name")</button></a></li>
-                    <li class="button-nav-im-company"><a href="@routes.Application.logout()"><button type="button" class="btn btn-default navbar-btn">SALIR</button></a></li>
+                    <li class="button-nav-im-company"><a href="@routes.LoginController.logout()"><button type="button" class="btn btn-default navbar-btn">SALIR</button></a></li>
                 }
             </ul>
         </div>
