@@ -7,13 +7,19 @@ import java.util.Date;
  */
 public class InterviewSchedule {
 
-    public String sector;
-    public String job;
     public Date date;
+    public Date hour;
+    public String company;
+    public String address;
 
-    public InterviewSchedule(String sector, String job, Date date){
-        this.sector = sector;
-        this.job = job;
+    public InterviewSchedule(){
+
+    }
+
+    public InterviewSchedule(Date date, Date hour, String company, String address){
         this.date = date;
+        this.hour = hour;
+        this.company = company;
+        this.address = address;
     }
 }

@@ -34,6 +34,7 @@ public class User {
     public List<String> personalCharacteristics;
     public List<ProfessionalValue> professionalValues;
     public Photo photo;
+    public List<InterviewSchedule> interviewScheduleList;
 
     public User(){
         this.emailVerificationKey = UUID.randomUUID().toString();
@@ -43,6 +44,7 @@ public class User {
         this.personalCharacteristics = new ArrayList<>();
         this.professionalValues = new ArrayList<>();
         this.photo = new Photo();
+        this.interviewScheduleList = new ArrayList<>();
     }
 
     public User(String name,String surnames, String email, String password){
@@ -58,6 +60,7 @@ public class User {
         this.personalCharacteristics = new ArrayList<>();
         this.professionalValues = new ArrayList<>();
         this.photo = new Photo();
+        this.interviewScheduleList = new ArrayList<>();
     }
 
     public CompletedOrientationSteps getCompletedOrientationSteps() {
@@ -203,4 +206,10 @@ public class User {
         return result;
     }
 
+    public String interviewScheduleListToJson(){
+        Type listType = new TypeToken<List<InterviewSchedule>>(){}.getType();
+        String result = new Gson().toJson(this.interviewScheduleList, listType);
+
+        return result;
+    }
 }

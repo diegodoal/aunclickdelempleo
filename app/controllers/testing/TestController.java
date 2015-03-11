@@ -2,6 +2,7 @@ package controllers.testing;
 
 import com.google.gson.Gson;
 import models.datasource.UserDataSource;
+import models.entities.InterviewSchedule;
 import models.entities.orientation.CurrentSituation;
 import models.entities.orientation.ProfessionalValue;
 import models.entities.orientation.Skill;
@@ -9,6 +10,7 @@ import models.entities.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -64,6 +66,10 @@ public class TestController extends Controller {
 
         //Photo
         user.photo.id = UUID.randomUUID().toString();
+
+        //Next Interviews
+        user.interviewScheduleList.add(new InterviewSchedule(null, null, "Telefonica", "Madrid International Lab"));
+        user.interviewScheduleList.add(new InterviewSchedule(null, null, "Apple", "Palo Alto"));
 
         return ok(new Gson().toJson(UserDataSource.insertIntoUsersCollection(user)).toString());
     }
