@@ -34,6 +34,7 @@ public class UserDataSource extends DataSource {
                 append("skills", JSON.parse(user.skillstoJson())).
                 append("interests", user.interests).
                 append("personalCharacteristics", user.personalCharacteristics).
+                append("professionalValues", JSON.parse(user.professionalValuesToJson())).
                 append("photo", JSON.parse(user.photo.toJsonString()));
         collection.insert(WriteConcern.SAFE, query);
 

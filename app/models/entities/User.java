@@ -4,6 +4,7 @@ package models.entities;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import models.entities.orientation.CurrentSituation;
+import models.entities.orientation.ProfessionalValue;
 import models.entities.orientation.Skill;
 
 import java.lang.reflect.Type;
@@ -30,6 +31,7 @@ public class User {
     public List<Skill> skills;
     public List<String> interests;
     public List<String> personalCharacteristics;
+    public List<ProfessionalValue> professionalValues;
     public Photo photo;
 
     public User(){
@@ -38,6 +40,7 @@ public class User {
         this.skills = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
+        this.professionalValues = new ArrayList<>();
         this.photo = new Photo();
     }
 
@@ -52,6 +55,7 @@ public class User {
         this.skills = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
+        this.professionalValues = new ArrayList<>();
         this.photo = new Photo();
     }
 
@@ -187,6 +191,13 @@ public class User {
     public String skillstoJson(){
         Type listType = new TypeToken<List<Skill>>(){}.getType();
         String result = new Gson().toJson(this.skills, listType);
+
+        return result;
+    }
+
+    public String professionalValuesToJson(){
+        Type listType = new TypeToken<List<ProfessionalValue>>(){}.getType();
+        String result = new Gson().toJson(this.professionalValues, listType);
 
         return result;
     }

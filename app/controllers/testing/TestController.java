@@ -3,6 +3,7 @@ package controllers.testing;
 import com.google.gson.Gson;
 import models.datasource.UserDataSource;
 import models.entities.orientation.CurrentSituation;
+import models.entities.orientation.ProfessionalValue;
 import models.entities.orientation.Skill;
 import models.entities.User;
 import play.mvc.Controller;
@@ -56,6 +57,10 @@ public class TestController extends Controller {
         user.personalCharacteristics.add("Trabajador");
         user.personalCharacteristics.add("Creativo");
         user.personalCharacteristics.add("Productivo");
+
+        //Professional Values
+        user.professionalValues.add(new ProfessionalValue("Responsabilidad y toma de decisiones", "Si"));
+        user.professionalValues.add(new ProfessionalValue("Reconocimiento de la lealtad a la empresa", "No sé"));
 
         //Photo
         user.photo.id = UUID.randomUUID().toString();
