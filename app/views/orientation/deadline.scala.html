@@ -76,8 +76,13 @@
 
 <script type="text/javascript">
     $('body').on( "click", ".add-other-btn-div a", function() {
-        $(this).parent().parent().parent().parent().parent().clone().appendTo('.main-div-sections');
-        $(this).children('img').attr('src', '@routes.Assets.at("images/speech/static-mic.png")');
+        //Adding new section
+        if($(this).children('img').attr('src') == '@routes.Assets.at("images/speech/static-mic.png")'){
+            $(this).parent().parent().parent().parent().parent().remove();
+        }else{
+            $(this).parent().parent().parent().parent().parent().clone().appendTo('.main-div-sections');
+            $(this).children('img').attr('src', '@routes.Assets.at("images/speech/static-mic.png")');
+        }
     }); 
 </script>
 
