@@ -29,7 +29,14 @@ public class UserDataSource extends DataSource {
                 append("email", user.email).
                 append("password", user.password).
                 append("emailVerificationKey", user.emailVerificationKey).
-                append("orientationSteps", JSON.parse(user.completedOrientationSteps.orientationStepsToJson()));
+                append("orientationSteps", JSON.parse(user.completedOrientationSteps.orientationStepsToJson())).
+                append("currentSituation", JSON.parse(user.currentSituation.toJsonString())).
+                append("skills", JSON.parse(user.skillstoJson())).
+                append("interests", user.interests).
+                append("personalCharacteristics", user.personalCharacteristics).
+                append("professionalValues", JSON.parse(user.professionalValuesToJson())).
+                append("photo", JSON.parse(user.photo.toJsonString())).
+                append("nextInterviews", JSON.parse(user.interviewScheduleListToJson()));
         collection.insert(WriteConcern.SAFE, query);
 
         // Close connection
@@ -69,6 +76,18 @@ public class UserDataSource extends DataSource {
 
         if(user != null){
             BasicDBObject updateQuery = new BasicDBObject().append("$set", new BasicDBObject().append(key, newValue));
+            collection.update(query, updateQuery);
+        }
+        mongoClient.close();
+    }
+
+    public static void deleteUserData(String email, String field){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        BasicDBObject query = new BasicDBObject().append("email", email);
+        DBObject user = collection.findOne(query);
+
+        if(user != null){
+            BasicDBObject updateQuery = new BasicDBObject().append("$unset", new BasicDBObject().append(field, ""));
             collection.update(query, updateQuery);
         }
         mongoClient.close();

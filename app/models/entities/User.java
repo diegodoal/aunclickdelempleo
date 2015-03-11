@@ -1,8 +1,11 @@
 package models.entities;
 
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import models.entities.orientation.*;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +24,25 @@ public class User {
 
     public CompletedOrientationSteps completedOrientationSteps;
 
-    public User(){}
+    //Orientation steps
+    public CurrentSituation currentSituation;
+    public List<Skill> skills;
+    public List<String> interests;
+    public List<String> personalCharacteristics;
+    public List<ProfessionalValue> professionalValues;
+    public Photo photo;
+    public List<InterviewSchedule> interviewScheduleList;
+
+    public User(){
+        this.emailVerificationKey = UUID.randomUUID().toString();
+        this.currentSituation = new CurrentSituation();
+        this.skills = new ArrayList<>();
+        this.interests = new ArrayList<>();
+        this.personalCharacteristics = new ArrayList<>();
+        this.professionalValues = new ArrayList<>();
+        this.photo = new Photo();
+        this.interviewScheduleList = new ArrayList<>();
+    }
 
     public User(String name,String surnames, String email, String password){
         this.name = name;
@@ -29,12 +50,20 @@ public class User {
         this.email = email;
         this.password = password;
         this.emailVerificationKey = UUID.randomUUID().toString();
-        completedOrientationSteps = new CompletedOrientationSteps();
+        this.completedOrientationSteps = new CompletedOrientationSteps();
+        this.currentSituation = new CurrentSituation();
+        this.skills = new ArrayList<>();
+        this.interests = new ArrayList<>();
+        this.personalCharacteristics = new ArrayList<>();
+        this.professionalValues = new ArrayList<>();
+        this.photo = new Photo();
+        this.interviewScheduleList = new ArrayList<>();
     }
 
     public CompletedOrientationSteps getCompletedOrientationSteps() {
         return completedOrientationSteps;
     }
+
 
     public class CompletedOrientationSteps {
         public String currentSituation,
@@ -158,5 +187,26 @@ public class User {
         public String getReputation() {
             return reputation;
         }
+    }
+
+    public String skillstoJson(){
+        Type listType = new TypeToken<List<Skill>>(){}.getType();
+        String result = new Gson().toJson(this.skills, listType);
+
+        return result;
+    }
+
+    public String professionalValuesToJson(){
+        Type listType = new TypeToken<List<ProfessionalValue>>(){}.getType();
+        String result = new Gson().toJson(this.professionalValues, listType);
+
+        return result;
+    }
+
+    public String interviewScheduleListToJson(){
+        Type listType = new TypeToken<List<InterviewSchedule>>(){}.getType();
+        String result = new Gson().toJson(this.interviewScheduleList, listType);
+
+        return result;
     }
 }
