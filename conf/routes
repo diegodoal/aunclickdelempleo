@@ -71,6 +71,12 @@ GET     /orientation/learntools                     controllers.OrientationContr
 GET     /orientation/gettools                       controllers.OrientationController.gettools()
 
 
+
+# TESTING
+GET     /api/test/1                                 controllers.testing.TestController.testDataSource1()
+GET     /api/test/2                                 controllers.testing.TestController.testDataSourceToMongo1()
+
+
 #Curriculum Vitae
 
 GET     /orientation/gettools/cv1                   controllers.LoginParticularUserController.cv1()
