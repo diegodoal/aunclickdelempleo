@@ -25,7 +25,7 @@ public class EmailActor extends UntypedActor {
         /**
          * Recives the days before the interview
          */
-        List<EmailChecker.UserInterview> usersToNotify = emailChecker.getUsersWithNextInterviews(3);
+        List<EmailChecker.UserInterview> usersToNotify = emailChecker.getUsersWithNextInterviews(1);
 
         String result = "\n";
 

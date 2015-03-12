@@ -118,7 +118,7 @@ public class TestController extends Controller {
     }
 
     public static Result initFakeUsersDB(){
-        for(int counter=0; counter<15; counter++){
+        for(int counter=0; counter<500; counter++){
             User user = new User("Name"+counter, "Surname"+counter, "email"+counter+"@gmail.com", "password"+counter);
 
             //Current Situation
@@ -152,9 +152,11 @@ public class TestController extends Controller {
             //Next Interviews
             Date date = null;
             int randomDay = new Random().nextInt((30-1)+1)+1;
-            user.interviewScheduleList.add(new InterviewSchedule(randomDay+"-03-2015 20:45", "Telefonica", "Madrid International Lab"));
+            int randomMonth = new Random().nextInt((12-1)+1)+1;
+            user.interviewScheduleList.add(new InterviewSchedule(randomDay+"-"+randomMonth+"-2015 20:45", "Telefonica", "Madrid International Lab"));
             randomDay = new Random().nextInt((30-1)+1)+1;
-            user.interviewScheduleList.add(new InterviewSchedule(randomDay+"-03-2015 17:45", "Apple", "Palo Alto"));
+            randomMonth = new Random().nextInt((12-1)+1)+1;
+            user.interviewScheduleList.add(new InterviewSchedule(randomDay+"-"+randomMonth+"-2015 17:45", "Apple", "Palo Alto"));
 
             UserDataSource.insertIntoUsersCollection(user);
         }
