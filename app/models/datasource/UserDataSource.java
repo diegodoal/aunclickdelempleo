@@ -11,6 +11,7 @@ import models.entities.ParticularUser;
 import models.entities.User;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,6 +68,21 @@ public class UserDataSource extends DataSource {
             mongoClient.close();
             return null;
         }
+    }
+
+    public static List<User> getAllUsers(){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        List<DBObject> all = collection.find().toArray();
+        List<User> resultList = new ArrayList<>();
+        User auxUser;
+
+        for(int i=0; i<all.size(); i++){
+            resultList.add(getUserByEmail(all.get(i).get("email").toString()));
+        }
+
+        mongoClient.close();
+
+        return resultList;
     }
 
     public static void updateUserData(String email, String key, String newValue){

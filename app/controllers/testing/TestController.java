@@ -9,8 +9,10 @@ import models.entities.orientation.Skill;
 import models.entities.User;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.EmailChecker;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -69,8 +71,8 @@ public class TestController extends Controller {
 
         //Next Interviews
         Date date = null;
-        user.interviewScheduleList.add(new InterviewSchedule(date, date, "Telefonica", "Madrid International Lab"));
-        user.interviewScheduleList.add(new InterviewSchedule(date, date, "Apple", "Palo Alto"));
+        user.interviewScheduleList.add(new InterviewSchedule("15-03-2015 13:45", "Telefonica", "Madrid International Lab"));
+        user.interviewScheduleList.add(new InterviewSchedule("14-03-2015 17:45", "Apple", "Palo Alto"));
 
         return ok(new Gson().toJson(UserDataSource.insertIntoUsersCollection(user)).toString());
     }
@@ -87,6 +89,15 @@ public class TestController extends Controller {
         UserDataSource.deleteUserData(email, "interests");
 
         return ok(new Gson().toJson(UserDataSource.getUserByEmail(email)));
+    }
+
+
+    public static Result testNextInterviews() {
+        EmailChecker emailChecker = new EmailChecker();
+
+        List<EmailChecker.UserInterview> usersToNotify = emailChecker.getUsersWithNextInterviews();
+
+        return ok(""+usersToNotify.size());
     }
 
 }

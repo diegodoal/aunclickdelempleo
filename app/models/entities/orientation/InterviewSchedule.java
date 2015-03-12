@@ -1,5 +1,7 @@
 package models.entities.orientation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -8,7 +10,6 @@ import java.util.Date;
 public class InterviewSchedule {
 
     public Date date;
-    public Date hour;
     public String company;
     public String address;
 
@@ -16,9 +17,13 @@ public class InterviewSchedule {
 
     }
 
-    public InterviewSchedule(Date date, Date hour, String company, String address){
-        this.date = date;
-        this.hour = hour;
+    public InterviewSchedule(String date, String company, String address){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+        try {
+            this.date = dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         this.company = company;
         this.address = address;
     }
