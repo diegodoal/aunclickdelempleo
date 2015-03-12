@@ -3,9 +3,6 @@ package utils;
 import models.datasource.UserDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
-import play.Logger;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,8 +13,6 @@ import java.util.concurrent.TimeUnit;
  * Created by Victor on 12/03/2015.
  */
 public class EmailChecker {
-
-    public SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
 
     public List<UserInterview> getUsersWithNextInterviews(int daysBefore){
         List<User> allUsers = UserDataSource.getAllUsers();
@@ -47,15 +42,12 @@ public class EmailChecker {
             long diff = TimeUnit.DAYS.convert((interviewDate.getTime() - currentDate.getTime()), TimeUnit.MILLISECONDS);
 
             if(diff <= daysBefore && diff>0){
-                Logger.error(interviewDate.getTime() + " [DIF: " + diff + " days]");
                 userInterview = new UserInterview(allInterviews.get(i), user.email, user.name);
                 interviewsToNotify.add(userInterview);
             }
         }
         return interviewsToNotify;
     }
-
-
 
     public class UserInterview {
         public InterviewSchedule interviewSchedule;
