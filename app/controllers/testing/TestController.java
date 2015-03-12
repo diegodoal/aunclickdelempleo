@@ -11,8 +11,11 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import utils.EmailChecker;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -71,8 +74,8 @@ public class TestController extends Controller {
 
         //Next Interviews
         Date date = null;
-        user.interviewScheduleList.add(new InterviewSchedule("15-03-2015 13:45", "Telefonica", "Madrid International Lab"));
-        user.interviewScheduleList.add(new InterviewSchedule("14-03-2015 17:45", "Apple", "Palo Alto"));
+        user.interviewScheduleList.add(new InterviewSchedule("18-03-2015 20:45", "Telefonica", "Madrid International Lab"));
+        user.interviewScheduleList.add(new InterviewSchedule("13-03-2015 17:45", "Apple", "Palo Alto"));
 
         return ok(new Gson().toJson(UserDataSource.insertIntoUsersCollection(user)).toString());
     }
@@ -91,13 +94,70 @@ public class TestController extends Controller {
         return ok(new Gson().toJson(UserDataSource.getUserByEmail(email)));
     }
 
-
     public static Result testNextInterviews() {
         EmailChecker emailChecker = new EmailChecker();
 
-        List<EmailChecker.UserInterview> usersToNotify = emailChecker.getUsersWithNextInterviews();
+        /**
+         * Recives the days before the interview
+         */
+        List<EmailChecker.UserInterview> usersToNotify = emailChecker.getUsersWithNextInterviews(1);
 
-        return ok(""+usersToNotify.size());
+        String result = "";
+
+        for(int i=0; i<usersToNotify.size(); i++){
+            result+= usersToNotify.get(i).email + " : "+usersToNotify.get(i).interviewSchedule.date.toString() +"\n";
+        }
+
+        return ok(result);
     }
 
+    public static Result printUserInterviews(){
+        User user = UserDataSource.getUserByEmail("email1@gmail.com");
+
+        return ok(user.interviewScheduleListToJson());
+    }
+
+    public static Result initFakeUsersDB(){
+        for(int counter=0; counter<15; counter++){
+            User user = new User("Name"+counter, "Surname"+counter, "email"+counter+"@gmail.com", "password"+counter);
+
+            //Current Situation
+            user.currentSituation.addEducationLevel("Primaria");
+            user.currentSituation.addEducationLevel("Secundaria");
+            user.currentSituation.addEducationLevel("Grado");
+
+            user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "5 años");
+            user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "10 años");
+
+            //Skills
+            user.skills.add(new Skill("Hablar en público", "Bien"));
+            user.skills.add(new Skill("Picar código", "Muy bien"));
+
+            //Interests
+            user.interests.add("Informática");
+            user.interests.add("Electrónica");
+
+            //Personal Characteristics
+            user.personalCharacteristics.add("Trabajador");
+            user.personalCharacteristics.add("Creativo");
+            user.personalCharacteristics.add("Productivo");
+
+            //Professional Values
+            user.professionalValues.add(new ProfessionalValue("Responsabilidad y toma de decisiones", "Si"));
+            user.professionalValues.add(new ProfessionalValue("Reconocimiento de la lealtad a la empresa", "No sé"));
+
+            //Photo
+            user.photo.id = UUID.randomUUID().toString();
+
+            //Next Interviews
+            Date date = null;
+            int randomDay = new Random().nextInt((30-1)+1)+1;
+            user.interviewScheduleList.add(new InterviewSchedule(randomDay+"-03-2015 20:45", "Telefonica", "Madrid International Lab"));
+            randomDay = new Random().nextInt((30-1)+1)+1;
+            user.interviewScheduleList.add(new InterviewSchedule(randomDay+"-03-2015 17:45", "Apple", "Palo Alto"));
+
+            UserDataSource.insertIntoUsersCollection(user);
+        }
+        return ok("Initialized fake mongoCollection");
+    }
 }

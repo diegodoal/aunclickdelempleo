@@ -18,7 +18,7 @@ public class InterviewSchedule {
     }
 
     public InterviewSchedule(String date, String company, String address){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         try {
             this.date = dateFormat.parse(date);
         } catch (ParseException e) {

@@ -3,6 +3,7 @@ package utils;
 import models.datasource.UserDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
+import play.Logger;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,13 +19,13 @@ public class EmailChecker {
 
     public SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm");
 
-    public List<UserInterview> getUsersWithNextInterviews(){
+    public List<UserInterview> getUsersWithNextInterviews(int daysBefore){
         List<User> allUsers = UserDataSource.getAllUsers();
         List<UserInterview> usersToNotify = new ArrayList<>();
 
         List<UserInterview> auxList;
         for(int i=0; i<allUsers.size(); i++){
-            auxList = checkForUpcomingDates(allUsers.get(i));
+            auxList = checkForUpcomingDates(allUsers.get(i), daysBefore);
             if(!auxList.isEmpty())
                 usersToNotify.addAll(auxList);
         }
@@ -32,7 +33,7 @@ public class EmailChecker {
         return usersToNotify;
     }
 
-    private List<UserInterview> checkForUpcomingDates(User user){
+    private List<UserInterview> checkForUpcomingDates(User user, int daysBefore){
         List<InterviewSchedule> allInterviews = user.interviewScheduleList;
         List<UserInterview> interviewsToNotify = new ArrayList<>();
         if(allInterviews.isEmpty())
@@ -43,9 +44,10 @@ public class EmailChecker {
 
         for(int i=0; i<allInterviews.size(); i++){
             interviewDate = allInterviews.get(i).date;
-            long diff = TimeUnit.DAYS.convert((currentDate.getTime() - interviewDate.getTime()), TimeUnit.MILLISECONDS);
+            long diff = TimeUnit.DAYS.convert((interviewDate.getTime() - currentDate.getTime()), TimeUnit.MILLISECONDS);
 
-            if(diff <= 1){
+            if(diff <= daysBefore && diff>0){
+                Logger.error(interviewDate.getTime() + " [DIF: " + diff + " days]");
                 userInterview = new UserInterview(allInterviews.get(i), user.email, user.name);
                 interviewsToNotify.add(userInterview);
             }

@@ -9,6 +9,7 @@ import com.mongodb.WriteConcern;
 import com.mongodb.util.JSON;
 import models.entities.ParticularUser;
 import models.entities.User;
+import models.entities.orientation.InterviewSchedule;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -61,6 +62,8 @@ public class UserDataSource extends DataSource {
 
             //Add to USER the completedOrientationSteps object stored in JSON
             user.completedOrientationSteps = new Gson().fromJson(dbObject.get("orientationSteps").toString(), User.CompletedOrientationSteps.class);
+            // Deserialize ArrayList of InterviewSchedule Objects
+            user.interviewScheduleList = new Gson().fromJson(dbObject.get("nextInterviews").toString(), new TypeToken<List<InterviewSchedule>>(){}.getType());
 
             mongoClient.close();
             return user;
@@ -76,7 +79,7 @@ public class UserDataSource extends DataSource {
         List<User> resultList = new ArrayList<>();
         User auxUser;
 
-        for(int i=0; i<all.size(); i++){
+        for (int i = 0; i < all.size(); i++){
             resultList.add(getUserByEmail(all.get(i).get("email").toString()));
         }
 
