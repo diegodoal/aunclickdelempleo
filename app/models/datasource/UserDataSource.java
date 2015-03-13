@@ -9,7 +9,9 @@ import com.mongodb.WriteConcern;
 import com.mongodb.util.JSON;
 import models.entities.ParticularUser;
 import models.entities.User;
+import models.entities.orientation.CurrentSituation;
 import models.entities.orientation.InterviewSchedule;
+import models.entities.orientation.Skill;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -60,10 +62,17 @@ public class UserDataSource extends DataSource {
             //Get user object from JSON
             user = new Gson().fromJson(userStr, User.class);
 
+            // Deserialize Current Situation object
+            user.currentSituation = new Gson().fromJson(dbObject.get("currentSituation").toString(), CurrentSituation.class);
+
+            // Deserialize ArrayList of Skills
+            user.skills = new Gson().fromJson(dbObject.get("skills").toString(), new TypeToken<List<Skill>>(){}.getType());
+
             //Add to USER the completedOrientationSteps object stored in JSON
             user.completedOrientationSteps = new Gson().fromJson(dbObject.get("orientationSteps").toString(), User.CompletedOrientationSteps.class);
             // Deserialize ArrayList of InterviewSchedule Objects
             user.interviewScheduleList = new Gson().fromJson(dbObject.get("nextInterviews").toString(), new TypeToken<List<InterviewSchedule>>(){}.getType());
+
 
             mongoClient.close();
             return user;
@@ -109,6 +118,12 @@ public class UserDataSource extends DataSource {
             BasicDBObject updateQuery = new BasicDBObject().append("$unset", new BasicDBObject().append(field, ""));
             collection.update(query, updateQuery);
         }
+        mongoClient.close();
+    }
+
+    public static void dropUserCollection(){
+        DBCollection myCollection = connectDB("mongo.usersCollection");
+        myCollection.drop();
         mongoClient.close();
     }
 }
