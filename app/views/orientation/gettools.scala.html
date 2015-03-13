@@ -19,12 +19,17 @@
                     <p>A continuación podrás obtener tu Curriculum Vitae personalizado para posteriormente editarlo y enviarlo adaptado a cada puesto de trabajo que vayas a solicitar.</p>
         </div></br>
         </div>
+        
+        
+
+        
+    </div>
+
+    <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-
-            <a href="@routes.LoginParticularUserController.cv1()"> <img  src="@routes.Assets.at("images/orientation/ic_create.png")"> </a>
+            <button class="button-create-1" onclick="location.href= '@routes.LoginParticularUserController.cv1()';">CREAR</button>
         </div>
-        
     </div>
 
     <div class="row">
@@ -34,9 +39,19 @@
                 <p>La carta de presentación es uno de los documentos que se suelen utilizar en el proceso de búsqueda de empleo. Es un escrito en el que se señala nuestra disposición a trabajar en una empresa. La carta de presentación pretende atraer la atención del responsable de selección de personal de manera que nos tenga en consideración como candidato a cubrir un puesto de trabajo. El objetivo de la carta de presentación<br>es doble: por un lado, pretende aumentar el interés de quien va a recibir tu candidatura, de manera que lea tu Curriculum Vitae con la atención que merece y por otro lado ponga en relieve los datos específicos de tu Curriculum Vitae, que hacen de tí la persona idónea para ese puesto.</p>
             </div>
             </div>
+            <!--
             <div class="col-md-8"></div>
             <div class="col-md-4 center">
                 <a href="#"> <img  src="@routes.Assets.at("images/orientation/ic_create.png")"> </a>
+            </div> -->
+
+            
+
+    </div>
+    <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4 center">
+                <button class="button-create-1" onclick="location.href= '#';">CREAR</button>
             </div>
     </div>
 
@@ -51,9 +66,13 @@
             
             </div>
 
+            
+    </div>
+
+    <div class="row">
             <div class="col-md-8"></div>
             <div class="col-md-4 center">
-                <a href="#"> <img  src="@routes.Assets.at("images/orientation/ic_create.png")"> </a>
+                <button class="button-create-1" onclick="location.href= '#';">CREAR</button>
             </div>
     </div>
 </section><br>
@@ -61,7 +80,7 @@
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
+            <button class="button-finish-1" onclick="location.href='@routes.OrientationController.blank()';">FINALIZAR</button>
         </div>
     </div>
 </section>
