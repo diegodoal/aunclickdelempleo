@@ -10,9 +10,6 @@ import models.entities.User;
 import play.mvc.Controller;
 import play.mvc.Result;
 import utils.EmailChecker;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -73,7 +70,6 @@ public class TestController extends Controller {
         user.photo.id = UUID.randomUUID().toString();
 
         //Next Interviews
-        Date date = null;
         user.interviewScheduleList.add(new InterviewSchedule("18-03-2015 20:45", "Telefonica", "Madrid International Lab"));
         user.interviewScheduleList.add(new InterviewSchedule("13-03-2015 17:45", "Apple", "Palo Alto"));
 
