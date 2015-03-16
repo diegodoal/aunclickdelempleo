@@ -20,6 +20,8 @@
 </section>
 
 
+
+
 <article class="container">
 
 <!--Datos Personales-->
@@ -35,51 +37,57 @@
   <form class="form-horizontal" role="form">
   <div class="form-group">
     
-    <div class="col-lg-4">
+    <div class="col-lg-4 input-mic-container">
       <input type="text" class="form-control" id="name"placeholder="Nombre">
+      <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
     </div>
   </div>
 
   <div class="form-group">
     
-    <div class="col-lg-4">
+    <div class="col-lg-4 input-mic-container">
       <input type="text" class="form-control" id="surname"placeholder="Apellidos">
+      <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
     </div>
   </div>
 
   <div class="form-group">
     
-    <div class="col-lg-4">
+    <div class="col-lg-4 input-mic-container">
       <input type="text" class="form-control" id="date"placeholder="Fecha de nacimiento">
+      <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
     </div>
   </div>
 
   <div class="form-group">
     
-    <div class="col-lg-4">
+    <div class="col-lg-4 input-mic-container">
       <input type="text" class="form-control" id="register_city"placeholder="Ciudad de residencia">
+      <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
     </div>
   </div>
 
   <div class="form-group">
     
-    <div class="col-lg-4">
+    <div class="col-lg-4 input-mic-container">
       <input type="text" class="form-control" id="dress"placeholder="Calle">
+      <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
     </div>
   </div>
 
   <div class="form-group">
     
-    <div class="col-lg-4">
+    <div class="col-lg-4 input-mic-container">
       <input type="text" class="form-control" id="number"placeholder="Número">
+      <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
     </div>
   </div>
 
   <div class="form-group">
     
-    <div class="col-lg-4">
-      <input type="post" class="form-control" id="post"
-             placeholder="Código postal">
+    <div class="col-lg-4 input-mic-container">
+      <input type="post" class="form-control" id="post" placeholder="Código postal">
+      <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
     </div>
   </div>  
 </form>
@@ -102,9 +110,9 @@
 
   <div class="form-group">
     
-    <div class="col-lg-4">
-      <input type="text" class="form-control" id="telephone"
-             placeholder="Telefono de contacto">
+    <div class="col-lg-4 input-mic-container">
+      <input type="text" class="form-control" id="telephone"placeholder="Telefono de contacto">
+      <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
     </div>
   </div>  
 </form>
@@ -160,5 +168,11 @@
         </div>
         </div>
 </article>
+
+<script type="text/javascript">
+      window.onload = function() {
+        loadRecognition();
+    };
+</script>
 
 }

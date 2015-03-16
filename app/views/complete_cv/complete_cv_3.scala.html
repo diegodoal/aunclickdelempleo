@@ -1,25 +1,25 @@
 @main(){
 
 <!--COMPLETE_CV_3-->
-<section class="container marg" id="text_user_profile_2">
+<section class="container" id="text_user_profile_2">
     <div class="row">
         <div class="col-md-12 brown_adecco century_gothic">
             <h2>COMPLETA TU PERFIL</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 brown_adecco century_gothic size22">
+        <div class="col-md-12 brown_adecco century_gothic size20">
             <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <img src="@routes.Assets.at("images/complete_user_profile_3/ic_paso3.png")">
+        <div class="col-md-12 col-xs-12 col-sm-12 ic_paso2">
+            <img src="@routes.Assets.at("images/complete_user_profile_3/ic_paso3.png")" class="ic_paso2">
         </div>
     </div>
 </section>
 
-<article class="container marg">
+<article class="container marg hidden-print">
 
 
 <!--Cursos-->    
@@ -33,25 +33,28 @@
             <div class="row">
 
             <div class="col-md-4">
-                    <form class="form-horizontal">
-                        <div class="form-group" id="namecourse">
+                    <form class="form-horizontal ">
+                        <div class="form-group input-mic-container" id="namecourse">
                             <input type="text" class="form-control" id="namecourse" placeholder="Nombre del curso" >
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </form>
             </div>
 
             <div class="col-md-4 col-md-offset-2">
                     <form class="form-horizontal">
-                        <div class="form-group" id="imparted">
+                        <div class="form-group input-mic-container" id="imparted">
                             <input type="text" class="form-control" id="imparted" placeholder="Impartido por..." >
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </form>
             </div>
 
             <div class="col-md-4">
                     <form class="form-horizontal">
-                        <div class="form-group" id="numhours">
+                        <div class="form-group input-mic-container" id="numhours">
                             <input type="text" class="form-control" id="imparted" placeholder="Número de horas" >
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </form>
             </div>
@@ -93,8 +96,9 @@
             <div class="row">
             <div class="col-md-4">
                     <form class="form-horizontal">
-                        <div class="form-group" id="job_experience_group">
+                        <div class="form-group input-mic-container" id="job_experience_group">
                             <input type="text" class="form-control" id="language" placeholder="Idioma" >
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </form>
             </div>
@@ -152,8 +156,9 @@
             <div class="row">
                 <div class="col-md-4">
                         <form class="form-horizontal">
-                            <div class="form-group" id="job_experience_group">
+                            <div class="form-group input-mic-container " id="job_experience_group">
                                 <input type="text" class="form-control" id="programs" placeholder="Programas informáticos" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                             </div>
                         </form>
                 </div>
@@ -204,6 +209,12 @@
         </div>
     </div>
 </article>
+
+<script type="text/javascript">
+      window.onload = function() {
+        loadRecognition();
+    };
+</script>
     
 
 }
