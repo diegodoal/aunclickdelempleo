@@ -76,6 +76,10 @@ GET     /orientation/gettools                       controllers.OrientationContr
 GET     /api/test/1                                 controllers.testing.TestController.testDataSource1()
 GET     /api/test/2                                 controllers.testing.TestController.testDataSourceToMongo1()
 GET     /api/test/3                                 controllers.testing.TestController.testDataSourceUpdating()
+POST    /api/test/4                                 controllers.TestFormController.dateForm()
+GET     /api/test/5                                 controllers.testing.TestController.testNextInterviews()
+GET     /api/test/6                                 controllers.testing.TestController.printUserInterviews()
+GET     /api/test/fake                              controllers.testing.TestController.initFakeUsersDB()
 
 
 #Curriculum Vitae
