@@ -129,4 +129,12 @@ public class UpdateUserFieldTest {
             assertEquals("Interest"+i, UserDataSource.getUserByEmail(email).interests.get(i));
         }
     }
+
+    @Test
+    public void testUpdate_personalCharacteristics(){
+        for(int i=0; i<UserDataSource.getUserByEmail(email).personalCharacteristics.size(); i++){
+            UserDataSource.updateUserData(email, Constants.USER_PERSONAL_CHARACTERISTICS_LIST+"."+i, "Characteristic"+i);
+            assertEquals("Characteristic"+i, UserDataSource.getUserByEmail(email).personalCharacteristics.get(i));
+        }
+    }
 }
