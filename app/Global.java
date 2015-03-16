@@ -16,8 +16,8 @@ public class Global extends GlobalSettings {
         ActorRef emailActor = Akka.system().actorOf(new Props(EmailActor.class));
 
         Cancellable hello = Akka.system().scheduler().schedule(
-                Duration.create(0, TimeUnit.MILLISECONDS), //Initial delay 0 milliseconds
-                Duration.create(5, TimeUnit.MINUTES),     //Frequency 5 minutes
+                Duration.create(5, TimeUnit.SECONDS), //Initial delay 0 milliseconds
+                Duration.create(30, TimeUnit.SECONDS),     //Frequency 5 minutes
                 emailActor,
                 "sendEmails",
                 Akka.system().dispatcher(), null);

@@ -74,4 +74,5 @@ public final class Constants {
         public final static String NEXT_INTERVIEW_DATE = "date";
         public final static String NEXT_INTERVIEW_COMPANY = "company";
         public final static String NEXT_INTERVIEW_ADDRESS = "address";
+        public final static String NEXT_INTERVIEW_NOTIFIED = "notified";
 }

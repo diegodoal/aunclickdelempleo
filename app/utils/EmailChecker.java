@@ -3,6 +3,8 @@ package utils;
 import models.datasource.UserDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
+import play.Logger;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,12 +40,15 @@ public class EmailChecker {
         Date currentDate = new Date();
 
         for(int i=0; i<allInterviews.size(); i++){
-            interviewDate = Other.stringToDate(allInterviews.get(i).date);
-            long diff = TimeUnit.DAYS.convert((interviewDate.getTime() - currentDate.getTime()), TimeUnit.MILLISECONDS);
+            if(allInterviews.get(i).notified.equals("false")) {
+                interviewDate = Other.stringToDate(allInterviews.get(i).date);
+                long diff = TimeUnit.DAYS.convert((interviewDate.getTime() - currentDate.getTime()), TimeUnit.MILLISECONDS);
 
-            if(diff <= daysBefore && diff>0){
-                userInterview = new UserInterview(allInterviews.get(i), user.email, user.name);
-                interviewsToNotify.add(userInterview);
+                if (diff <= daysBefore && diff > 0) {
+                    userInterview = new UserInterview(allInterviews.get(i), user.email, user.name);
+                    UserDataSource.updateUserData(user.email, Constants.USER_NEXT_INTERVIEWS_LIST + "." + i + "." + Constants.NEXT_INTERVIEW_NOTIFIED, "true");
+                    interviewsToNotify.add(userInterview);
+                }
             }
         }
         return interviewsToNotify;
