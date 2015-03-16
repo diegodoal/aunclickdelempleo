@@ -147,4 +147,10 @@ public class UpdateUserFieldTest {
             assertEquals("Valuation"+i, UserDataSource.getUserByEmail(email).professionalValues.get(i).valuation);
         }
     }
+
+    @Test
+    public void testUpdate_photoId(){
+        UserDataSource.updateUserData(email, Constants.USER_PHOTO_ID, "New ID");
+        assertEquals("New ID", UserDataSource.getUserByEmail(email).photo.id);
+    }
 }
