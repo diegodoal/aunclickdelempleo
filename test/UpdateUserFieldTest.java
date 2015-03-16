@@ -4,6 +4,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import utils.Constants;
+import utils.Other;
 
 import static org.junit.Assert.assertEquals;
 
@@ -152,5 +153,19 @@ public class UpdateUserFieldTest {
     public void testUpdate_photoId(){
         UserDataSource.updateUserData(email, Constants.USER_PHOTO_ID, "New ID");
         assertEquals("New ID", UserDataSource.getUserByEmail(email).photo.id);
+    }
+
+    @Test
+    public void testUpdate_nextInterviews(){
+        String fakeDate = "01-01-1990 22:10";
+        for(int i=0; i<UserDataSource.getUserByEmail(email).interviewScheduleList.size(); i++){
+            UserDataSource.updateUserData(email, Constants.USER_NEXT_INTERVIEWS_LIST+"."+i+"."+Constants.NEXT_INTERVIEW_DATE, fakeDate);
+            UserDataSource.updateUserData(email, Constants.USER_NEXT_INTERVIEWS_LIST+"."+i+"."+Constants.NEXT_INTERVIEW_COMPANY, "Company"+i);
+            UserDataSource.updateUserData(email, Constants.USER_NEXT_INTERVIEWS_LIST+"."+i+"."+Constants.NEXT_INTERVIEW_ADDRESS, "Address"+i);
+
+            assertEquals(fakeDate, UserDataSource.getUserByEmail(email).interviewScheduleList.get(i).date);
+            assertEquals("Company"+i, UserDataSource.getUserByEmail(email).interviewScheduleList.get(i).company);
+            assertEquals("Address"+i, UserDataSource.getUserByEmail(email).interviewScheduleList.get(i).address);
+        }
     }
 }

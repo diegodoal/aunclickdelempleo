@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class InterviewSchedule {
 
-    public Date date;
+    public String date;
     public String company;
     public String address;
 
@@ -18,13 +18,10 @@ public class InterviewSchedule {
     }
 
     public InterviewSchedule(String date, String company, String address){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        try {
-            this.date = dateFormat.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+        this.date = date;
         this.company = company;
         this.address = address;
     }
+
 }

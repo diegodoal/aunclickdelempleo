@@ -71,4 +71,7 @@ public final class Constants {
     public final static String USER_PHOTO_ID = "photo.id";
 
     public final static String USER_NEXT_INTERVIEWS_LIST = "nextInterviews";
+        public final static String NEXT_INTERVIEW_DATE = "date";
+        public final static String NEXT_INTERVIEW_COMPANY = "company";
+        public final static String NEXT_INTERVIEW_ADDRESS = "address";
 }

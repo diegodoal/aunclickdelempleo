@@ -38,7 +38,7 @@ public class EmailChecker {
         Date currentDate = new Date();
 
         for(int i=0; i<allInterviews.size(); i++){
-            interviewDate = allInterviews.get(i).date;
+            interviewDate = Other.stringToDate(allInterviews.get(i).date);
             long diff = TimeUnit.DAYS.convert((interviewDate.getTime() - currentDate.getTime()), TimeUnit.MILLISECONDS);
 
             if(diff <= daysBefore && diff>0){
