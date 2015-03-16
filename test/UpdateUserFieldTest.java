@@ -121,4 +121,12 @@ public class UpdateUserFieldTest {
             assertEquals("SkillLevel" + i, UserDataSource.getUserByEmail(email).skills.get(i).level);
         }
     }
+
+    @Test
+    public void testUpdate_interests(){
+        for(int i=0; i<UserDataSource.getUserByEmail(email).interests.size(); i++){
+            UserDataSource.updateUserData(email, Constants.USER_INTERESTS_LIST+"."+i, "Interest"+i);
+            assertEquals("Interest"+i, UserDataSource.getUserByEmail(email).interests.get(i));
+        }
+    }
 }
