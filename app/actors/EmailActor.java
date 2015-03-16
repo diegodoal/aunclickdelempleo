@@ -15,8 +15,7 @@ public class EmailActor extends UntypedActor {
 
     @Override
     public void onReceive(Object message) throws Exception {
-        Logger.info("["+new Date().toString()+"]");
-        Logger.info(getNextInterviewsAndSendEmail());
+        Logger.info("["+new Date().toString()+"]\n"+getNextInterviewsAndSendEmail());
     }
 
     private String getNextInterviewsAndSendEmail(){
