@@ -15,34 +15,34 @@
     <section class="panel-group container back new-input-container center" style="margin-auto;">
         <form class="form-horizontal" autocomplete="on" method="post">
             <div class="form-group form-inline" id="job_experience_group_1">
-                <div class="col-md-6 prueba10">
+                <div class="col-md-6">
                     <input placeholder="Fecha" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
                 </div>
-                <div class="col-md-6 prueba10">
+                <div class="col-md-6">
                     <input placeholder="Hora" class="form-control" style="width: 100%;" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" id="time">
                 </div>
             </div>
 
             <div class="form-group form-inline" id="job_experience_group_3">
-                <div class="col-md-6 prueba10">
-                    <div class="input-mic-container" style="">
+                <div class="col-md-6">
+                    <div class="input-mic-container">
                         <input type="text" class="form-control" placeholder="Empresa" >
                         <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
-                <div class="col-md-6 prueba10">
-                    <div class="input-mic-container" style="">
+                <div class="col-md-6">
+                    <div class="input-mic-container">
                         <input type="text" class="form-control" placeholder="Dirección" />
                         <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
             </div>
 
-            <div class="row custom-row-3" id="prueba-row">
+            <div class="row">
                  <div class="col-md-1 right">
-                     <div class="input-mic-container">
+                     <div class="">
                          <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                            <a><img  src="@routes.Assets.at("images/orientation/ic_newinterview.png")"> </a>
+                            <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
                          </div>
                      </div>
                  </div>
@@ -55,24 +55,31 @@
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <button class="button-finish-1 cursor:pointer" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
         </div>
     </div>
 </section>
 
 
 <script type="text/javascript">
-    $('body').on( "click", ".add-other-btn-div a", function() {
+    $('body').on( "click", ".add-new", function() {
+        
         //Adding new section
-        if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_trash2.png")'){
+        if($(this).attr('src') == '@routes.Assets.at("images/orientation/ic_trash2.png")'){
             $(this).parent().parent().parent().parent().parent().parent().remove();
         }else{
             $(this).parent().parent().parent().parent().parent().parent().clone().appendTo('.main-div-sections');
-            $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_trash2.png")');
-         
+            $(this).attr('src', '@routes.Assets.at("images/orientation/ic_trash2.png")');
         }
+
+        loadRecognition();
     });
 </script>
 
+<script type="text/javascript">
+      window.onload = function() {
+        loadRecognition();
+    };
+</script>
 
 }
