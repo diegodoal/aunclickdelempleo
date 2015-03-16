@@ -50,7 +50,7 @@ public class InsertUserIntoMongoDBTest {
     }
 
     @Test
-    public void checkCurrentSituation_educationLevel1(){
+    public void checkCurrentSituation_educationLevel(){
         assertEquals(user.currentSituation.educationLevelList.size(), UserDataSource.getUserByEmail(email).currentSituation.educationLevelList.size());
 
         for(int i=0; i<user.currentSituation.educationLevelList.size(); i++){

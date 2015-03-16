@@ -89,4 +89,26 @@ public class UpdateUserFieldTest {
         assertEquals(String.valueOf(true), UserDataSource.getUserByEmail(email).completedOrientationSteps.reputation);
 
     }
+
+    @Test
+    public void testUpdate_currentSituation_educationLevel(){
+        for(int i=0; i<user.currentSituation.educationLevelList.size(); i++){
+            UserDataSource.updateUserData(email, Constants.USER_CURRENT_SITUATION_EDUACTION_LEVEL_LIST+"."+i, "Education"+i);
+
+            assertEquals("Education"+i, UserDataSource.getUserByEmail(email).currentSituation.educationLevelList.get(i));
+        }
+    }
+
+    @Test
+    public void testUpdate_currentSituation_professionalExperience(){
+        for(int i=0; i<UserDataSource.getUserByEmail(email).currentSituation.professionalExperienceList.size(); i++){
+            UserDataSource.updateUserData(email, Constants.USER_CURRENT_SITUATION_PROFESSIONAL_EXPERIENCE_LIST+"."+i+"."+Constants.PROFESSIONAL_EXPERIENCE_COMPANY, "Company"+i);
+            UserDataSource.updateUserData(email, Constants.USER_CURRENT_SITUATION_PROFESSIONAL_EXPERIENCE_LIST+"."+i+"."+Constants.PROFESSIONAL_EXPERIENCE_JOB, "Job"+i);
+            UserDataSource.updateUserData(email, Constants.USER_CURRENT_SITUATION_PROFESSIONAL_EXPERIENCE_LIST+"."+i+"."+Constants.PROFESSIONAL_EXPERIENCE_EXPERIENCE_YEARS, i+" years");
+
+            assertEquals("Company"+i, UserDataSource.getUserByEmail(email).currentSituation.professionalExperienceList.get(i).company);
+            assertEquals("Job"+i, UserDataSource.getUserByEmail(email).currentSituation.professionalExperienceList.get(i).job);
+            assertEquals(i+" years", UserDataSource.getUserByEmail(email).currentSituation.professionalExperienceList.get(i).experienceYears);
+        }
+    }
 }

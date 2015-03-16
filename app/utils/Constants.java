@@ -50,11 +50,18 @@ public final class Constants {
 
     public final static String USER_CURRENT_SITUATION = "currentSituation";
     public final static String USER_CURRENT_SITUATION_EDUACTION_LEVEL_LIST = "currentSituation.educationLevelList";
+
     public final static String USER_CURRENT_SITUATION_PROFESSIONAL_EXPERIENCE_LIST = "currentSituation.professionalExperienceList";
+        public final static String PROFESSIONAL_EXPERIENCE_COMPANY = "company";
+        public final static String PROFESSIONAL_EXPERIENCE_JOB = "job";
+        public final static String PROFESSIONAL_EXPERIENCE_EXPERIENCE_YEARS = "experienceYears";
+
     public final static String USER_SKILLS_LIST = "skills";
     public final static String USER_INTERESTS_LIST = "interests";
     public final static String USER_PERSONAL_CHARACTERISTICS_LIST = "personalCharacteristics";
+
     public final static String USER_PROFESSIONAL_VALUES_LIST = "professionalValues";
+
 
     public final static String USER_PHOTO = "photo";
     public final static String USER_PHOTO_ID = "photo.id";
