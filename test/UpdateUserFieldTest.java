@@ -137,4 +137,14 @@ public class UpdateUserFieldTest {
             assertEquals("Characteristic"+i, UserDataSource.getUserByEmail(email).personalCharacteristics.get(i));
         }
     }
+
+    @Test
+    public void testUpdate_professionalValues(){
+        for(int i=0; i<UserDataSource.getUserByEmail(email).professionalValues.size(); i++){
+            UserDataSource.updateUserData(email, Constants.USER_PROFESSIONAL_VALUES_LIST+"."+i+"."+Constants.PROFESSIONAL_VALUES_NAME, "ProfessionalValue"+i);
+            UserDataSource.updateUserData(email, Constants.USER_PROFESSIONAL_VALUES_LIST+"."+i+"."+Constants.PROFESSIONAL_VALUES_VALUATION, "Valuation"+i);
+            assertEquals("ProfessionalValue"+i, UserDataSource.getUserByEmail(email).professionalValues.get(i).name);
+            assertEquals("Valuation"+i, UserDataSource.getUserByEmail(email).professionalValues.get(i).valuation);
+        }
+    }
 }

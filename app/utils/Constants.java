@@ -63,6 +63,8 @@ public final class Constants {
     public final static String USER_PERSONAL_CHARACTERISTICS_LIST = "personalCharacteristics";
 
     public final static String USER_PROFESSIONAL_VALUES_LIST = "professionalValues";
+        public final static String PROFESSIONAL_VALUES_NAME = "name";
+        public final static String PROFESSIONAL_VALUES_VALUATION = "valuation";
 
 
     public final static String USER_PHOTO = "photo";
