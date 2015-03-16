@@ -57,6 +57,8 @@ public final class Constants {
         public final static String PROFESSIONAL_EXPERIENCE_EXPERIENCE_YEARS = "experienceYears";
 
     public final static String USER_SKILLS_LIST = "skills";
+        public final static String SKILL_NAME = "name";
+        public final static String SKILL_LEVEL = "level";
     public final static String USER_INTERESTS_LIST = "interests";
     public final static String USER_PERSONAL_CHARACTERISTICS_LIST = "personalCharacteristics";
 

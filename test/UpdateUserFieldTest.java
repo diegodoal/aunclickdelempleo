@@ -92,7 +92,7 @@ public class UpdateUserFieldTest {
 
     @Test
     public void testUpdate_currentSituation_educationLevel(){
-        for(int i=0; i<user.currentSituation.educationLevelList.size(); i++){
+        for(int i=0; i<UserDataSource.getUserByEmail(email).currentSituation.educationLevelList.size(); i++){
             UserDataSource.updateUserData(email, Constants.USER_CURRENT_SITUATION_EDUACTION_LEVEL_LIST+"."+i, "Education"+i);
 
             assertEquals("Education"+i, UserDataSource.getUserByEmail(email).currentSituation.educationLevelList.get(i));
@@ -109,6 +109,16 @@ public class UpdateUserFieldTest {
             assertEquals("Company"+i, UserDataSource.getUserByEmail(email).currentSituation.professionalExperienceList.get(i).company);
             assertEquals("Job"+i, UserDataSource.getUserByEmail(email).currentSituation.professionalExperienceList.get(i).job);
             assertEquals(i+" years", UserDataSource.getUserByEmail(email).currentSituation.professionalExperienceList.get(i).experienceYears);
+        }
+    }
+
+    @Test
+    public void testUpdate_skills(){
+        for(int i=0; i<UserDataSource.getUserByEmail(email).skills.size(); i++){
+            UserDataSource.updateUserData(email, Constants.USER_SKILLS_LIST+"."+i+"."+Constants.SKILL_NAME, "SkillName"+i);
+            UserDataSource.updateUserData(email, Constants.USER_SKILLS_LIST+"."+i+"."+Constants.SKILL_LEVEL, "SkillLevel"+i);
+            assertEquals("SkillName" + i, UserDataSource.getUserByEmail(email).skills.get(i).name);
+            assertEquals("SkillLevel" + i, UserDataSource.getUserByEmail(email).skills.get(i).level);
         }
     }
 }
