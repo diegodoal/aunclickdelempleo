@@ -18,4 +18,46 @@ public final class Constants {
     public final static float T2_FONT_SIZE_TITLE_2 = 14.5f;
     public final static float T2_FONT_SIZE_TEXT = 10;
     public final static String T2_FONT_STYLE = "Arial";
+
+
+    //USER COLLECTION FIELDS
+    public final static String USER_NAME = "name";
+    public final static String USER_SURNAMES = "surnames";
+    public final static String USER_EMAIL = "email";
+    public final static String USER_PASSWORD = "password";
+    public final static String USER_EMAIL_VERIFICATION_KEY = "emailVerificationKey";
+
+    public final static String USER_ORIENTATION_STEPS = "orientationSteps";
+    public final static String USER_ORIENTATION_STEPS_CURRENT_SITUATION = "orientationSteps.currentSituation";
+    public final static String USER_ORIENTATION_STEPS_SKILLS = "orientationSteps.skills";
+    public final static String USER_ORIENTATION_STEPS_INTEREST_IDENTIFICATION = "orientationSteps.interestIdentification";
+    public final static String USER_ORIENTATION_STEPS_PERSONAL = "orientationSteps.personal";
+    public final static String USER_ORIENTATION_STEPS_PROFESSIONAL = "orientationSteps.professional";
+    public final static String USER_ORIENTATION_STEPS_PHOTO = "orientationSteps.photo";
+    public final static String USER_ORIENTATION_STEPS_CHANNELS = "orientationSteps.channels";
+    public final static String USER_ORIENTATION_STEPS_LEARN_TOOLS = "orientationSteps.learnTools";
+    public final static String USER_ORIENTATION_STEPS_GET_TOOLS = "orientationSteps.getTools";
+    public final static String USER_ORIENTATION_STEPS_T_INTERVIEW = "orientationSteps.tInterview";
+    public final static String USER_ORIENTATION_STEPS_P_INTERVIEW = "orientationSteps.pInterview";
+    public final static String USER_ORIENTATION_STEPS_ACT_INTERVIEW = "orientationSteps.actInterview";
+    public final static String USER_ORIENTATION_STEPS_QUESTIONS_INTERVIEW = "orientationSteps.questionsInterview";
+    public final static String USER_ORIENTATION_STEPS_DEADLINE = "orientationSteps.deadLine";
+    public final static String USER_ORIENTATION_STEPS_TRAVEL = "orientationSteps.travel";
+    public final static String USER_ORIENTATION_STEPS_SPECIALIZATION = "orientationSteps.specialization";
+    public final static String USER_ORIENTATION_STEPS_BEST_DEALS = "orientationSteps.bestDeals";
+    public final static String USER_ORIENTATION_STEPS_LEVEL = "orientationSteps.level";
+    public final static String USER_ORIENTATION_STEPS_REPUTATION = "orientationSteps.reputation";
+
+    public final static String USER_CURRENT_SITUATION = "currentSituation";
+    public final static String USER_CURRENT_SITUATION_EDUACTION_LEVEL_LIST = "currentSituation.educationLevelList";
+    public final static String USER_CURRENT_SITUATION_PROFESSIONAL_EXPERIENCE_LIST = "currentSituation.professionalExperienceList";
+    public final static String USER_SKILLS_LIST = "skills";
+    public final static String USER_INTERESTS_LIST = "interests";
+    public final static String USER_PERSONAL_CHARACTERISTICS_LIST = "personalCharacteristics";
+    public final static String USER_PROFESSIONAL_VALUES_LIST = "professionalValues";
+
+    public final static String USER_PHOTO = "photo";
+    public final static String USER_PHOTO_ID = "photo.id";
+
+    public final static String USER_NEXT_INTERVIEWS_LIST = "nextInterviews";
 }

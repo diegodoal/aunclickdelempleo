@@ -1,12 +1,8 @@
 import models.datasource.UserDataSource;
 import models.entities.User;
-import models.entities.orientation.InterviewSchedule;
-import models.entities.orientation.ProfessionalValue;
-import models.entities.orientation.Skill;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import java.util.UUID;
 import static org.junit.Assert.assertEquals;
 
 
@@ -124,4 +120,6 @@ public class InsertUserIntoMongoDBTest {
             assertEquals(user.interviewScheduleList.get(i).company, UserDataSource.getUserByEmail(email).interviewScheduleList.get(i).company);
         }
     }
+
+
 }

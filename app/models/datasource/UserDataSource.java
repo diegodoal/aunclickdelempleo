@@ -12,6 +12,7 @@ import models.entities.User;
 import models.entities.orientation.CurrentSituation;
 import models.entities.orientation.InterviewSchedule;
 import models.entities.orientation.Skill;
+import utils.Constants;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -28,19 +29,19 @@ public class UserDataSource extends DataSource {
 
         // Create the query
         BasicDBObject query = new BasicDBObject().
-                append("name", user.name).
-                append("surnames", user.surnames).
-                append("email", user.email).
-                append("password", user.password).
-                append("emailVerificationKey", user.emailVerificationKey).
-                append("orientationSteps", JSON.parse(user.completedOrientationSteps.orientationStepsToJson())).
-                append("currentSituation", JSON.parse(user.currentSituation.toJsonString())).
-                append("skills", JSON.parse(user.skillstoJson())).
-                append("interests", user.interests).
-                append("personalCharacteristics", user.personalCharacteristics).
-                append("professionalValues", JSON.parse(user.professionalValuesToJson())).
-                append("photo", JSON.parse(user.photo.toJsonString())).
-                append("nextInterviews", JSON.parse(user.interviewScheduleListToJson()));
+                append(Constants.USER_NAME, user.name).
+                append(Constants.USER_SURNAMES, user.surnames).
+                append(Constants.USER_EMAIL, user.email).
+                append(Constants.USER_PASSWORD, user.password).
+                append(Constants.USER_EMAIL_VERIFICATION_KEY, user.emailVerificationKey).
+                append(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson())).
+                append(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString())).
+                append(Constants.USER_SKILLS_LIST, JSON.parse(user.skillstoJson())).
+                append(Constants.USER_INTERESTS_LIST, user.interests).
+                append(Constants.USER_PERSONAL_CHARACTERISTICS_LIST, user.personalCharacteristics).
+                append(Constants.USER_PROFESSIONAL_VALUES_LIST, JSON.parse(user.professionalValuesToJson())).
+                append(Constants.USER_PHOTO, JSON.parse(user.photo.toJsonString())).
+                append(Constants.USER_NEXT_INTERVIEWS_LIST, JSON.parse(user.interviewScheduleListToJson()));
         collection.insert(WriteConcern.SAFE, query);
 
         // Close connection
@@ -63,15 +64,15 @@ public class UserDataSource extends DataSource {
             user = new Gson().fromJson(userStr, User.class);
 
             // Deserialize Current Situation object
-            user.currentSituation = new Gson().fromJson(dbObject.get("currentSituation").toString(), CurrentSituation.class);
+            user.currentSituation = new Gson().fromJson(dbObject.get(Constants.USER_CURRENT_SITUATION).toString(), CurrentSituation.class);
 
             // Deserialize ArrayList of Skills
-            user.skills = new Gson().fromJson(dbObject.get("skills").toString(), new TypeToken<List<Skill>>(){}.getType());
+            user.skills = new Gson().fromJson(dbObject.get(Constants.USER_SKILLS_LIST).toString(), new TypeToken<List<Skill>>(){}.getType());
 
             //Add to USER the completedOrientationSteps object stored in JSON
-            user.completedOrientationSteps = new Gson().fromJson(dbObject.get("orientationSteps").toString(), User.CompletedOrientationSteps.class);
+            user.completedOrientationSteps = new Gson().fromJson(dbObject.get(Constants.USER_ORIENTATION_STEPS).toString(), User.CompletedOrientationSteps.class);
             // Deserialize ArrayList of InterviewSchedule Objects
-            user.interviewScheduleList = new Gson().fromJson(dbObject.get("nextInterviews").toString(), new TypeToken<List<InterviewSchedule>>(){}.getType());
+            user.interviewScheduleList = new Gson().fromJson(dbObject.get(Constants.USER_NEXT_INTERVIEWS_LIST).toString(), new TypeToken<List<InterviewSchedule>>(){}.getType());
 
 
             mongoClient.close();

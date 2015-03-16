@@ -3,6 +3,8 @@ import models.entities.User;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import utils.Constants;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -25,16 +27,16 @@ public class UpdateUserFieldTest {
     }
 
     @Test
-    public static void checkUpdate_personalInformation(){
+    public void checkUpdate_personalInformation(){
         String fakeName = "fakeName";
         String fakeSurnames = "fakeSurnames";
         String fakeEmail = "fakeEmail";
         String fakePassword = "fakePassword";
 
-        UserDataSource.updateUserData(email, "name", fakeName);
-        UserDataSource.updateUserData(email, "surnames", fakeSurnames);
-        UserDataSource.updateUserData(email, "email", fakeEmail);
-        UserDataSource.updateUserData(email, "password", fakePassword);
+        UserDataSource.updateUserData(email, Constants.USER_NAME, fakeName);
+        UserDataSource.updateUserData(email, Constants.USER_SURNAMES, fakeSurnames);
+        UserDataSource.updateUserData(email, Constants.USER_PASSWORD, fakePassword);
+        UserDataSource.updateUserData(email, Constants.USER_EMAIL, fakeEmail);
 
         email = fakeEmail;
 
