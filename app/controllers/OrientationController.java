@@ -31,8 +31,13 @@ public class OrientationController extends Controller {
         return redirect("/orientation");
     }
 
-    public static Result interestidentification(){
+    public static Result interestIdentification(){
         return ok(views.html.orientation.interestIdentification.render());
+    }
+
+    public static Result submitInterestIdentification(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_INTEREST_IDENTIFICATION, String.valueOf(true));
+        return redirect("/orientation");
     }
 
     public static Result personal() { return ok(views.html.orientation.personal.render()); }
