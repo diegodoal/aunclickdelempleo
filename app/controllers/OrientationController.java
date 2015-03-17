@@ -49,6 +49,11 @@ public class OrientationController extends Controller {
 
     public static Result professional() { return ok(views.html.orientation.professional.render()); }
 
+    public static Result submitProfessional(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_PROFESSIONAL, String.valueOf(true));
+        return redirect("/orientation");
+    }
+
     public static Result photo() {
         return ok(views.html.orientation.photo.render());
     }
