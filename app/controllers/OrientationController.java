@@ -84,16 +84,19 @@ public class OrientationController extends Controller {
         S3File s3File = new S3File();
 
         String s = temp.getName();
+        String photo_id;
         if(s.contains("."))
-            s3File.name = UUID.randomUUID().toString() + s.substring(s.lastIndexOf('.')) ;
+            photo_id = UUID.randomUUID().toString() + s.substring(s.lastIndexOf('.')) ;
         else
-            s3File.name = UUID.randomUUID().toString();
+            photo_id = UUID.randomUUID().toString();
 
+        s3File.name = photo_id;
         s3File.file = temp;
         s3File.save();
 
-        User user = UserDataSource.getUserByEmail(session().get("email"));
-        return ok(views.html.orientation.orientation.render(user));
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_PHOTO, String.valueOf(true));
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_PHOTO_ID, photo_id);
+        return redirect("/orientation");
     }
 
     /* PUNTO 2: PREPARATE PARA LA BUSQUEDA DE EMPLEO */
