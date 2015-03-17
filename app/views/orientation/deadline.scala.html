@@ -60,15 +60,17 @@
     </div>
 </section>
 
-
 <script type="text/javascript">
     $('body').on( "click", ".add-new", function() {
-        
-        //Adding new section
+        //Removing new section
         if($(this).attr('src') == '@routes.Assets.at("images/orientation/ic_trash2.png")'){
             $(this).parent().parent().parent().parent().parent().parent().remove();
-        }else{
-            $(this).parent().parent().parent().parent().parent().parent().clone().appendTo('.main-div-sections');
+        }else{ //Adding new section
+            var clone = $(this).parent().parent().parent().parent().parent().parent().clone();
+            clone.find('.form-control').each(function(){
+                $(this).val('');
+            });
+            clone.appendTo('.main-div-sections');
             $(this).attr('src', '@routes.Assets.at("images/orientation/ic_trash2.png")');
         }
 
