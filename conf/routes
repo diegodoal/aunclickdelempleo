@@ -71,7 +71,9 @@ GET     /orientation/questionsinterview/submit      controllers.OrientationContr
 
 # PUNTO 4: PLANIFICATE
 GET     /orientation/deadline                       controllers.OrientationController.deadline()
+GET     /orientation/deadline/submit                controllers.OrientationController.submitDeadLine()
 GET     /orientation/travel                         controllers.OrientationController.travel()
+GET     /orientation/travel/submit                  controllers.OrientationController.submitTravel()
 
 # PUNTO 5: MEJORA PROFESIONALMENTE
 GET     /orientation/specialization                 controllers.OrientationController.specialization()

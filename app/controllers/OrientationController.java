@@ -153,7 +153,17 @@ public class OrientationController extends Controller {
     /* PUNTO 4: PLANIFICATE */
     public static Result deadline(){return ok(views.html.orientation.deadline.render());}
 
+    public static Result submitDeadLine(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_DEADLINE, String.valueOf(true));
+        return redirect("/orientation");
+    }
+
     public static Result travel(){return ok(views.html.orientation.travel.render());}
+
+    public static Result submitTravel(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_TRAVEL, String.valueOf(true));
+        return redirect("/orientation");
+    }
 
     /* PUNTO 5: MEJORA PROFESIONALMENTE */
     public static Result specialization() { return ok(views.html.orientation.specialization.render()); }
