@@ -124,11 +124,31 @@ public class OrientationController extends Controller {
     /* PUNTO 3: PROCESO DE SELECCION */
     public static Result tinterview() { return ok(views.html.orientation.tinterview.render()); }
 
+    public static Result submitTinterview(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_T_INTERVIEW, String.valueOf(true));
+        return redirect("/orientation");
+    }
+
     public static Result pinterview() { return ok(views.html.orientation.pinterview.render()); }
+
+    public static Result submitPinterview(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_P_INTERVIEW, String.valueOf(true));
+        return redirect("/orientation");
+    }
 
     public static Result actinterview() { return ok(views.html.orientation.actinterview.render()); }
 
+    public static Result submitActInterview(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_ACT_INTERVIEW, String.valueOf(true));
+        return redirect("/orientation");
+    }
+
     public static Result questionsinterview() { return ok(views.html.orientation.questionsinterview.render()); }
+
+    public static Result submitQuestionsInterview(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_QUESTIONS_INTERVIEW, String.valueOf(true));
+        return redirect("/orientation");
+    }
 
     /* PUNTO 4: PLANIFICATE */
     public static Result deadline(){return ok(views.html.orientation.deadline.render());}

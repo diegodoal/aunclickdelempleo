@@ -61,9 +61,13 @@ GET     /orientation/gettools/cv3                   controllers.StashController.
 
 # PUNTO 3: PROCESO DE SELECCION
 GET     /orientation/tinterview                     controllers.OrientationController.tinterview()
+GET     /orientation/tinterview/submit              controllers.OrientationController.submitTinterview()
 GET     /orientation/pinterview                     controllers.OrientationController.pinterview()
+GET     /orientation/pinterview/submit              controllers.OrientationController.submitPinterview()
 GET     /orientation/actinterview                   controllers.OrientationController.actinterview()
+GET     /orientation/actinterview/submit            controllers.OrientationController.submitActInterview()
 GET     /orientation/questionsinterview             controllers.OrientationController.questionsinterview()
+GET     /orientation/questionsinterview/submit      controllers.OrientationController.submitQuestionsInterview()
 
 # PUNTO 4: PLANIFICATE
 GET     /orientation/deadline                       controllers.OrientationController.deadline()
