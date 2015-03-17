@@ -38,24 +38,10 @@
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.blank()';">FINALIZAR</button>
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitLevel()';">FINALIZAR</button>
         </div>
     </div>
 </section>
-
-<script>
-    $('.panel-heading a').click(function() {
-    if($(this).children('img').attr('src') == '@routes.Assets.at("images/orientation/ic_leermas.png")'){
-        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-    }else{
-
-        $('.ic_more_info').attr('src', '@routes.Assets.at("images/orientation/ic_leermenos.png")');
-        $(this).children('img').attr('src', '@routes.Assets.at("images/orientation/ic_leermas.png")');
-    }
- });
-</script>
-
-
 }
 
 

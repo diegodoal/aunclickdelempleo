@@ -41,7 +41,7 @@
                 }else{
                     <input type="checkbox" id="check3" onclick="return false">
                 }
-                <label for="check3" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.interestidentification()">Identifica tus intereses</a></label>
+                <label for="check3" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.interestIdentification()">Identifica tus intereses</a></label>
             </p>
             <p>
                 @if(user != null && user.getCompletedOrientationSteps().getPersonal() == "true"){
@@ -84,7 +84,7 @@
                 }else{
                 <input type="checkbox" id="check8" onclick="return false">
                 }
-                <label for="check8" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.learntools()">Documentos necesarios para la búsqueda de empleo</a></label>
+                <label for="check8" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.learnTools()">Documentos necesarios para la búsqueda de empleo</a></label>
             </p>
             <p>
                 @if(user != null && user.getCompletedOrientationSteps().getGetTools() == "true"){
@@ -92,7 +92,7 @@
                 }else{
                 <input type="checkbox" id="check9" onclick="return false">
                 }
-                <p id="documents"><label for="check9" class="size14 brown_adecco arial steps_height" ><a href="@routes.OrientationController.gettools()">Genera tus documentos personalizados</a></label></p>
+                <label for="check9" class="size14 brown_adecco arial steps_height" ><a href="@routes.OrientationController.getTools()">Genera tus documentos personalizados</a></label>
             </p>
 
             <!-- Punto 3 -->

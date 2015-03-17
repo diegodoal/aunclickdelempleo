@@ -104,6 +104,12 @@ function finishPhoto(){
         });
 }
 
+function downloadPhoto(){
+    var link = document.getElementById('mainCanvas').toDataURL();
+    link.download = 'photo.png';
+    window.location.href = link;
+}
+
 function dragPhoto() {
     var canvas = document.querySelector('#mainCanvas'),
         container = document.getElementById("drag-drop-input"),
