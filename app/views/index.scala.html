@@ -12,8 +12,8 @@
 <section class="container" id="three_buttons_text">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="size30 century_gothic gray_adecco">¿QUÉ ESTÁS BUSCANDO?</h1>
-            <h2 class="size20 arial gray_adecco">En <span class="red_adecco">Fundación Adecco</span> te ayudamos a encontrar lo que buscas.</h2>
+            <h1 class="size30 century_gothic brown_adecco">¿QUÉ NECESITAS?</h1>
+            <h2 class="size20 arial brown_adecco">En <span class="red_adecco">Fundación Adecco</span> te ayudamos a encontrarlo.</h2>
         </div>
     </div>
 
@@ -21,17 +21,24 @@
     <article class="container" id="three_buttons">
         <div class="row">
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <a href="#">
-                    <h1 class="size30 century_gothic gray_adecco">GENERAR DOCUMENTOS</h1>
+                    <h1 class="size20 century_gothic brown_adecco">PLANIFICACIÓN</h1>
+                    <img src="@routes.Assets.at("images/index/ic_planificacion.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_planificacion_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_planificacion.png")';">
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="@routes.PDFController.fakeCV("t1")">
+                    <h1 class="size20 century_gothic brown_adecco">GENERA TUS DOCUMENTOS</h1>
                     <img src="@routes.Assets.at("images/index/ic_cv.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_cv_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_cv.png")';">
                 </a>
             </div>
 
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <a href="@routes.OrientationController.blank()">
-                    <h1 class="size30 century_gothic gray_adecco">ORIENTACIÓN</h1>
+                    <h1 class="size20 century_gothic brown_adecco">ORIENTACIÓN</h1>
                     <img src="@routes.Assets.at("images/index/ic_orientation.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_orientation_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_orientation.png")';">
                 </a>
             </div>
