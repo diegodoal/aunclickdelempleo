@@ -22,6 +22,11 @@ public class OrientationController extends Controller {
         return ok(views.html.orientation.currentSituation.render());
     }
 
+    public static Result submitCurrentSituation(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_CURRENT_SITUATION, String.valueOf(true));
+        return redirect("/orientation");
+    }
+
     public static Result skills() {
         return ok(views.html.orientation.skills.render());
     }
