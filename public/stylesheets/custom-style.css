@@ -95,6 +95,21 @@
 	outline: 0px;
 }
 
+.button-create-1{
+	-webkit-border-radius: 10;
+	-moz-border-radius: 10;
+	border-radius: 10px;
+	color: #ffffff;
+	background: #EA2026;
+	border: solid #EA2026 2px;
+	text-decoration: none;
+	padding-right: 2em;
+	padding-left: 2em;
+	font-size: 18px;
+	outline: 0px;
+
+}
+
 .right{
 	float: right;
 }
@@ -121,14 +136,8 @@
 
 
 /* BUTTON CURSOR POINTER */
-
 .button-cursor-pointer{
  cursor: pointer;
  float: right;
 }
 
-.prueba10{
-padding-left: 5em;
-padding-right: 5em;
-
-}

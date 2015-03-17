@@ -13,163 +13,146 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <img src="@routes.Assets.at("images/complete_user_profile_1/ic_paso1.png")">
+        <div class="col-md-12 col-xs-12 col-sm-12 ic_paso2">
+            <img src="@routes.Assets.at("images/complete_user_profile_1/ic_paso1.png")" class="ic_paso2">
         </div>
     </div>
 </section>
 
-
 <article class="container">
-<div class="row">
+
 <!--Datos Personales-->
-    <div class="row">
-        <div class="row">
-            <div class="row">
-                <div class="col-md-12 arial gray_adecco size18 bold">
-                <p>Datos personales</p>
-                </div>
-            </div>
 
-           
-            <form class="form-horizontal" role="form"  method="post">
-                    <div class="form-group">
-                        <div class="col-md-4 col-xs-4 col-sm-4">
-                                <input type="text" name='register_name' class="form-control" id="register_name"  required="required" placeholder="Nombre">
-                                
-                        </div>
-                    </div>
+  <div class="row">
+    <div class="col-md-12 arial gray_adecco size18 bold">
+        <p>Datos personales</p>
+    </div>
+  </div>
 
-                    <div class="form-group">
-                        <div class="col-md-4 col-xs-4 col-sm-4">
-                            <input type="text" name='register_surnames' class="form-control" id="register_surnames" required="required" placeholder="Apellidos">
-                            
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-4 col-xs-4 col-sm-4">
-                            <input type="text" name="register_date" class="form-control" id="register_date" required="required" placeholder="Fecha de nacimiento">
-                            
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-4 col-xs-4 col-sm-4">
-                            <input type="text" name="register_city" class="form-control" id="register_city" required="required" placeholder="Ciudad de residencia">
-                            
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-4 col-xs-4 col-sm-4">
-                            <input type="text" name="register_dress" class="form-control" id="register_dress" required="required" placeholder="Calle">
-                            
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-4 col-xs-4 col-sm-4">
-                            <input type="text" name="register_number" class="form-control" id="register_number" required="required" placeholder="Numero">
-                            
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-4 col-xs-4 col-sm-4">
-                            <input type="text" name="register_post" class="form-control" id="register_post" required="required" placeholder="Código postal">
-                            
-                        </div>
-                    </div>
-
-            </form>
-            
-        </div>
-            
-            
-<!--Contacto-->
-        <div class="row">
-        
-            <div class="row">
-                <div class="col-md-12 arial gray_adecco size18 bold">
-                        <p>Datos de contacto</p>
-                </div>
-            </div>
-
-            
-        
-            <form class="form-horizontal" role="form"  method="post">
-               
-                <div class="form-group">
-                    <div class="col-md-4  col-xs-4 col-sm-4">
-                        <input type="email" name="register_email" class="form-control" id="register_part_email" required="required" placeholder="Correo electrónico">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-4  col-xs-4 col-sm-4">
-                        
-
-                         <input type="text" name="register_telephone" pattern="[0-9]{9}" class="form-control" id="register_part_telephone" required="required" placeholder="Telefono de contacto">
-                    </div>
-                </div>
-            </form>
-            
-       
-        </div>
-
-<!--Carnet-->
-        <div class="row">
-            <div class="row">
-                <div class="col-md-12 arial gray_adecco size18 bold">
-                    <p>Carnet de conducir</p>
-                </div>
-            </div>
-            <div class="row orientation-points">
-                <div class="col-md-12">
-                    
-
-                    <input type="checkbox" id="check_license" name="license" onclick="enable_cb2(this)">
-                    <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <form class="form-horizontal" role="form"  method="post">
-                    <div class="form-group" >
-                        <select  class="form-control" id="driving_license" name="driving_license">
-                            <option value="0" disabled selected="">Tipo de permiso de conducir</option>
-                            <option value="1">A1</option>
-                            <option value="2">A</option>
-                            <option value="3">B</option>
-                            <option value="4">C1</option>
-                            <option value="5">C</option>
-                            <option value="6">D1</option>
-                            <option value="7">D</option>
-                            <option value="8">BE</option>
-                            <option value="9">C1E</option>
-                            <option value="10">Grado</option>
-                            <option value="11">CE</option>
-                            <option value="12">D1E</option>
-                            <option value="13">DE</option>
-                            <option value="14">btp</option>
-                        </select>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-    
-        <div class="row">
-        <div class="col-md-6" id="next_button_user">
-            <a href="@routes.LoginParticularUserController.cv2()"><button type="submit" class="btn-img" id="job_experience_group_5"><img  src="@routes.Assets.at("images/complete_user_profile_1/ic_next.png")"></button></a>
-        </div>
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+        <div class="col-lg-4 input-mic-container">
+            <input type="text" class="form-control" id="name" placeholder="Nombre">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
-</div>
+    <div class="form-group">
+        <div class="col-lg-4 input-mic-container">
+            <input type="text" class="form-control" id="surname"placeholder="Apellidos">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
 
+    <div class="form-group">
+        <div class="col-lg-4 input-mic-container">
+            <input type="text" class="form-control" id="date"placeholder="Fecha de nacimiento">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-4 input-mic-container">
+            <input type="text" class="form-control" id="register_city"placeholder="Ciudad de residencia">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-4 input-mic-container">
+            <input type="text" class="form-control" id="dress"placeholder="Calle">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-4 input-mic-container">
+            <input type="text" class="form-control" id="number"placeholder="Número">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-4 input-mic-container">
+            <input type="post" class="form-control" id="post" placeholder="Código postal">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+  </form>
+
+    <!--Contacto-->
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            <p>Datos de contacto</p>
+        </div>
+    </div>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-lg-4">
+                <input type="email" class="form-control" id="email_3"placeholder="Correo electrónico">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-4 input-mic-container">
+            <input type="text" class="form-control" id="telephone"placeholder="Telefono de contacto">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+    </form>
+
+    <!--Carnet-->
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+        <p>Carnet de conducir</p>
+        </div>
+    </div>
+
+    <form class="form-horizontal" role="form">
+      <div class="form-group orientation-points">
+        <div class="col-lg-4">
+          <input type="checkbox" id="check_license" name="license" onclick="enable_cb2(this)">
+          <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-4">
+          <select  class="form-control" id="driving_license" name="driving_license">
+              <option value="0" disabled selected="">Tipo de permiso de conducir</option>
+              <option value="1">A1</option>
+              <option value="2">A</option>
+              <option value="3">B</option>
+              <option value="4">C1</option>
+              <option value="5">C</option>
+              <option value="6">D1</option>
+              <option value="7">D</option>
+              <option value="8">BE</option>
+              <option value="9">C1E</option>
+              <option value="10">CE</option>
+              <option value="11">D1E</option>
+              <option value="12">DE</option>
+              <option value="13">btp</option>
+          </select>
+        </div>
+      </div>
+    </form>
 </article>
+<article class="container">
+        <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.LoginParticularUserController.cv2()';">Siguiente</button>
+        </div>
+        </div>
+</article>
+
+
+<script type="text/javascript">
+      window.onload = function() {
+        loadRecognition();
+    };
+</script>
 
 }

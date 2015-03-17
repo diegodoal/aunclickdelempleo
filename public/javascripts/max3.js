@@ -9,7 +9,7 @@
 /* This script is used to select at most 3 options in "Intereses Profesionales:" */
 var num_options = 3;
 var numcheckbox = Array ();
-numcheckbox["profession"] = 0;
+numcheckbox["interest"] = 0;
 numcheckbox["personal"] = 0;
 
 function enable_cb1(t) {
