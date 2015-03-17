@@ -9,6 +9,7 @@ import org.apache.commons.codec.binary.Base64;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import utils.Constants;
 
 public class OrientationController extends Controller {
 	public static Result blank() {
@@ -23,6 +24,11 @@ public class OrientationController extends Controller {
 
     public static Result skills() {
         return ok(views.html.orientation.skills.render());
+    }
+
+    public static Result submitSkills(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_SKILLS, String.valueOf(true));
+        return redirect("/orientation");
     }
 
     public static Result interestidentification(){
