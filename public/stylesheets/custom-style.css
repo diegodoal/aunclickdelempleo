@@ -118,3 +118,17 @@
 .input-mic-container img:hover{
     cursor: pointer;
 }
+
+
+/* BUTTON CURSOR POINTER */
+
+.button-cursor-pointer{
+ cursor: pointer;
+ float: right;
+}
+
+.prueba10{
+padding-left: 5em;
+padding-right: 5em;
+
+}
