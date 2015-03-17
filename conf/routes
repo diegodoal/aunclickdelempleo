@@ -77,6 +77,10 @@ GET     /orientation/travel/submit                  controllers.OrientationContr
 
 # PUNTO 5: MEJORA PROFESIONALMENTE
 GET     /orientation/specialization                 controllers.OrientationController.specialization()
+GET     /orientation/specialization/submit          controllers.OrientationController.submitSpecialization()
 GET     /orientation/bestdeals                      controllers.OrientationController.bestdeals()
+GET     /orientation/bestdeals/submit               controllers.OrientationController.submitBestDeals()
 GET     /orientation/level                          controllers.OrientationController.level()
+GET     /orientation/level/submit                   controllers.OrientationController.submitLevel()
 GET     /orientation/reputation                     controllers.OrientationController.reputation()
+GET     /orientation/reputation/submit              controllers.OrientationController.submitReputation()

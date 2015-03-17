@@ -168,9 +168,29 @@ public class OrientationController extends Controller {
     /* PUNTO 5: MEJORA PROFESIONALMENTE */
     public static Result specialization() { return ok(views.html.orientation.specialization.render()); }
 
+    public static Result submitSpecialization(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_SPECIALIZATION, String.valueOf(true));
+        return redirect("/orientation");
+    }
+
     public static Result bestdeals() { return ok(views.html.orientation.bestdeals.render()); }
+
+    public static Result submitBestDeals(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_BEST_DEALS, String.valueOf(true));
+        return redirect("/orientation");
+    }
 
     public static Result level() { return ok(views.html.orientation.level.render()); }
 
+    public static Result submitLevel(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_LEVEL, String.valueOf(true));
+        return redirect("/orientation");
+    }
+
     public static Result reputation() { return ok(views.html.orientation.reputation.render()); }
+
+    public static Result submitReputation(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_REPUTATION, String.valueOf(true));
+        return redirect("/orientation");
+    }
 }
