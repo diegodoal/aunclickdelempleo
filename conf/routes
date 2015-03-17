@@ -32,8 +32,11 @@ POST    /orientation/photo                          controllers.OrientationContr
 
 # PUNTO 2: PREPARATE PARA LA BUSQUEDA DE EMPLEO
 GET     /orientation/channels                       controllers.OrientationController.channels()
-GET     /orientation/learntools                     controllers.OrientationController.learntools()
-GET     /orientation/gettools                       controllers.OrientationController.gettools()
+GET     /orientation/channels/submit                controllers.OrientationController.submitChannels()
+GET     /orientation/learntools                     controllers.OrientationController.learnTools()
+GET     /orientation/learntools/submit              controllers.OrientationController.submitLearnTools()
+GET     /orientation/gettools                       controllers.OrientationController.getTools()
+GET     /orientation/gettools/submit                controllers.OrientationController.submitGetTools()
 
 
 # TESTING

@@ -102,9 +102,24 @@ public class OrientationController extends Controller {
     /* PUNTO 2: PREPARATE PARA LA BUSQUEDA DE EMPLEO */
     public static Result channels(){return ok(views.html.orientation.channels.render());}
 
-    public static Result learntools() { return ok(views.html.orientation.learntools.render()); }
+    public static Result submitChannels(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_CHANNELS, String.valueOf(true));
+        return redirect("/orientation");
+    }
 
-    public static Result gettools() { return ok(views.html.orientation.gettools.render()); }
+    public static Result learnTools() { return ok(views.html.orientation.learntools.render()); }
+
+    public static Result submitLearnTools(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_LEARN_TOOLS, String.valueOf(true));
+        return redirect("/orientation");
+    }
+
+    public static Result getTools() { return ok(views.html.orientation.gettools.render()); }
+
+    public static Result submitGetTools(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_GET_TOOLS, String.valueOf(true));
+        return redirect("/orientation");
+    }
 
     /* PUNTO 3: PROCESO DE SELECCION */
     public static Result tinterview() { return ok(views.html.orientation.tinterview.render()); }
