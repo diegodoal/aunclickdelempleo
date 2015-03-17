@@ -42,6 +42,11 @@ public class OrientationController extends Controller {
 
     public static Result personal() { return ok(views.html.orientation.personal.render()); }
 
+    public static Result submitPersonal(){
+        UserDataSource.updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_PERSONAL, String.valueOf(true));
+        return redirect("/orientation");
+    }
+
     public static Result professional() { return ok(views.html.orientation.professional.render()); }
 
     public static Result photo() {
