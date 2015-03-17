@@ -53,14 +53,9 @@
                 <li class="button-nav-login" id="accesibility"><a href="#accesibility_pop_up"><button type="button" class="btn btn-default navbar-btn"><img src="@routes.Assets.at("images/nav/ic_adaptabilidad2.png")"></button></a></li>
                 @if(session.get("email") == null){
                     <li class="button-nav-login"><a href="@routes.LoginController.blank()"><button type="button" class="btn btn-default navbar-btn">ENTRAR</button></a></li>
-                    @if(nav == "company"){
-                        <li class="button-nav-im-company"><a href="@routes.LoginController.blank()"><button type="button" class="btn btn-default navbar-btn">SOY PARTICULAR</button></a></li>
-                    }else{
-                        <li class="button-nav-im-company"><a href="@routes.LoginCompanyUserController.blank()"><button type="button" class="btn btn-default navbar-btn">SOY EMPRESA</button></a></li>
-                    }
                 }else{
-                    <li class="button-nav-login"><a href="#"><button type="button" class="btn btn-default navbar-btn">@session.get("name")</button></a></li>
-                    <li class="button-nav-im-company"><a href="@routes.LoginController.logout()"><button type="button" class="btn btn-default navbar-btn">SALIR</button></a></li>
+                    <li class="button-nav-login"><a href="@routes.Application.index()"><button type="button" class="btn btn-default navbar-btn"><b>@session.get("name").toUpperCase()</b></button></a></li>
+                    <li class="button-nav-login"><a href="@routes.LoginController.logout()"><button type="button" class="btn btn-default navbar-btn">SALIR</button></a></li>
                 }
             </ul>
         </div>

@@ -7,14 +7,12 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.WriteConcern;
 import com.mongodb.util.JSON;
-import models.entities.ParticularUser;
 import models.entities.User;
 import models.entities.orientation.CurrentSituation;
 import models.entities.orientation.InterviewSchedule;
 import models.entities.orientation.Skill;
 import utils.Constants;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
