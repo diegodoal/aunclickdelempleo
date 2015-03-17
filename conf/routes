@@ -8,50 +8,11 @@ GET     /                           controllers.Application.index()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
-
-# COMPANY
-GET		/company/new/:email/:password				controllers.CompanyUserController.newCompanyUser(email : String, password : String)
-GET		/company/findall							controllers.CompanyUserController.listCompanyUsers()
-GET		/company/find/:email						controllers.CompanyUserController.findCompanyUser(email : String)
-GET		/company/initfakedb							controllers.CompanyUserController.initializeCompanyUserDB()
-GET		/company/verify/:email/:key					controllers.CompanyUserController.verifyCompanyUser(email : String, key : String)
-GET		/company/sendvalidation/:email				controllers.Application.sendCompanyValidationEmail(email : String)
-
-# PARTICULAR
-GET		/particular/new/:name/:email/:password			controllers.ParticularUserController.newParticularUser(name : String, email : String, password : String)
-GET		/particular/findall							controllers.ParticularUserController.listParticularUsers()
-GET		/particular/find/:email						controllers.ParticularUserController.findParticularUser(email : String)
-GET		/particular/initfakedb						controllers.ParticularUserController.initializeParticularUserDB()
-GET		/particular/verify/:email/:key				controllers.ParticularUserController.verifyParticularUser(email : String, key : String)
-GET		/particular/sendvalidation/:email			controllers.Application.sendParticularValidationEmail(email : String)
-
-# UTILS
-GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
-
-#GET		/api/1/company/getAll
-#/api/1/company/:id
-
-
-
-# FINAL ROUTES
-
-# PARTICULAR USER LOGIN
-GET     /particular                                 controllers.LoginParticularUserController.blank()
-POST    /particular/login                           controllers.LoginParticularUserController.submitLogin()
-POST    /particular/signup                          controllers.LoginParticularUserController.signUpLogin()
-
-GET     /particular/signup/step2                    controllers.LoginParticularUserController.step2()
-GET     /particular/signup/step3                    controllers.LoginParticularUserController.step3()
-
-
-
-
-
-
-# COMPANY USER LOGIN
-GET     /company                                    controllers.LoginCompanyUserController.blank()
-POST    /company/login                              controllers.LoginCompanyUserController.submitLogin()
-POST    /company/signup                             controllers.LoginCompanyUserController.submitSignUp()
+# LOGIN
+GET     /login                                      controllers.LoginController.blank()
+GET     /logout                                     controllers.LoginController.logout()
+POST    /login                                      controllers.LoginController.submitLogin()
+POST    /signup                                     controllers.LoginController.submitSignUp()
 
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()
@@ -71,7 +32,6 @@ GET     /orientation/learntools                     controllers.OrientationContr
 GET     /orientation/gettools                       controllers.OrientationController.gettools()
 
 
-
 # TESTING
 GET     /api/test/1                                 controllers.testing.TestController.testDataSource1()
 GET     /api/test/2                                 controllers.testing.TestController.testDataSourceToMongo1()
@@ -81,12 +41,16 @@ GET     /api/test/5                                 controllers.testing.TestCont
 GET     /api/test/6                                 controllers.testing.TestController.printUserInterviews()
 GET     /api/test/fake                              controllers.testing.TestController.initFakeUsersDB()
 
+GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
+
+# Use: /pdf/t1   or     /pdf/t2
+GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
+
 
 #Curriculum Vitae
-
-GET     /orientation/gettools/cv1                   controllers.LoginParticularUserController.cv1()
-GET     /orientation/gettools/cv2                   controllers.LoginParticularUserController.cv2()
-GET     /orientation/gettools/cv3                   controllers.LoginParticularUserController.cv3()
+GET     /orientation/gettools/cv1                   controllers.StashController.cv1()
+GET     /orientation/gettools/cv2                   controllers.StashController.cv2()
+GET     /orientation/gettools/cv3                   controllers.StashController.cv3()
 
 # PUNTO 3: PROCESO DE SELECCION
 GET     /orientation/tinterview                     controllers.OrientationController.tinterview()
@@ -103,12 +67,3 @@ GET     /orientation/specialization                 controllers.OrientationContr
 GET     /orientation/bestdeals                      controllers.OrientationController.bestdeals()
 GET     /orientation/level                          controllers.OrientationController.level()
 GET     /orientation/reputation                     controllers.OrientationController.reputation()
-
-# Use: /pdf/t1   or     /pdf/t2
-GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
-
-# NEW LOGIN
-GET     /login                                      controllers.LoginController.blank()
-GET     /logout                                     controllers.LoginController.logout()
-POST    /login                                      controllers.LoginController.submitLogin()
-POST    /signup                                     controllers.LoginController.submitSignUp()
