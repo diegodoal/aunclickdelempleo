@@ -17,7 +17,7 @@ public class Global extends GlobalSettings {
 
         Cancellable hello = Akka.system().scheduler().schedule(
                 Duration.create(5, TimeUnit.SECONDS), //Initial delay 0 milliseconds
-                Duration.create(30, TimeUnit.SECONDS),     //Frequency 5 minutes
+                Duration.create(30, TimeUnit.MINUTES),     //Frequency 5 minutes
                 emailActor,
                 "sendEmails",
                 Akka.system().dispatcher(), null);

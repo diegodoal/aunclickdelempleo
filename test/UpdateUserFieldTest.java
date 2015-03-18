@@ -1,5 +1,7 @@
+import models.datasource.DataSource;
 import models.datasource.UserDataSource;
 import models.entities.User;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -25,6 +27,12 @@ public class UpdateUserFieldTest {
     @AfterClass
     public static void tearDownAfterClass(){
         UserDataSource.dropUserCollection();
+        assertEquals(DataSource.mongoClient.getConnector().isOpen(), false);
+    }
+
+    @After
+    public void connectionMongoDB(){
+        assertEquals(DataSource.mongoClient.getConnector().isOpen(), false);
     }
 
     @Test
