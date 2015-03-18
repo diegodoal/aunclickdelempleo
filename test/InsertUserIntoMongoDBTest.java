@@ -1,5 +1,8 @@
+import com.mongodb.MongoClient;
+import models.datasource.DataSource;
 import models.datasource.UserDataSource;
 import models.entities.User;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -22,6 +25,12 @@ public class InsertUserIntoMongoDBTest {
     @AfterClass
     public static void tearDownAfterClass(){
         UserDataSource.dropUserCollection();
+        assertEquals(DataSource.mongoClient.getConnector().isOpen(), false);
+    }
+
+    @After
+    public void connectionMongoDB(){
+        assertEquals(DataSource.mongoClient.getConnector().isOpen(), false);
     }
 
     @Test
