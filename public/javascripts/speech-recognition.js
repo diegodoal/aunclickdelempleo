@@ -34,7 +34,7 @@ function loadRecognition(){
           input_name.value = '';
           for(var i = event.resultIndex; i < event.results.length; i++) {
             if(event.results[i].isFinal) {
-              input_name.val(event.results[i][0].transcript);
+              input_name.val(event.results[i][0].transcript.capitalizeFirstLetter());
             }
           }
         };
@@ -44,4 +44,9 @@ function loadRecognition(){
           alert("Error en el reconocimiento de voz. Inténtelo de nuevo.");
         };
       }
+}
+
+//Capitalize first letter of a String
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
 }
