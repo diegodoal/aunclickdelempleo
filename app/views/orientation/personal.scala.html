@@ -13,7 +13,7 @@
 </section>
 
 <section class="container orientation-points">
-    <div class="row back">
+    <div class="row back checkbox-group">
         <div class="col-md-offset-1 col-md-3">
             <p>
                 <input type="checkbox" id="check1" name="personal" onclick="enable_cb(this)">
@@ -127,4 +127,11 @@
         </div>
     </div>
 </section>
+
+
+<script type="text/javascript">
+    window.onload = function(){
+        limitCheckboxes(2);
+    };
+</script>
 }

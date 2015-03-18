@@ -12,7 +12,7 @@ var numcheckbox = Array ();
 numcheckbox["profession"] = 0;
 numcheckbox["personal"] = 0;
 
-function enable_cb(t) {
+function enable_asdfadsfcb(t) {
     checkboxes = document.getElementsByName(t.name);
     if (t.checked) {
         if (numcheckbox[t.name] >= num_options-1) {
