@@ -25,6 +25,7 @@ public class InsertUserIntoMongoDBTest {
     @AfterClass
     public static void tearDownAfterClass(){
         UserDataSource.dropUserCollection();
+        assertEquals(DataSource.mongoClient.getConnector().isOpen(), false);
     }
 
     @After
