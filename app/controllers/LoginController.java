@@ -1,10 +1,9 @@
 package controllers;
 
-import models.datasource.UserDataSource;
+import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.data.DynamicForm;
 import play.mvc.Result;
-
 import static play.data.Form.form;
 import static play.mvc.Controller.session;
 import static play.mvc.Results.badRequest;
@@ -25,7 +24,7 @@ public class LoginController {
         String error_login_msg = null; //Contains the msg if there's a login error
         DynamicForm bindedForm = form().bindFromRequest();
 
-        User user = UserDataSource.getUserByEmail(bindedForm.get("email"));
+        User user = SingletonDataSource.getInstance().getUserByEmail(bindedForm.get("email"));
 
         if(user != null && bindedForm.get("password").equals(user.password)) {
             session("email", user.email);
@@ -41,7 +40,7 @@ public class LoginController {
         String error_signup_msg = null;
         DynamicForm filledForm = form().bindFromRequest();
 
-        User userCreated = UserDataSource.getUserByEmail(filledForm.get("register_email"));
+        User userCreated = SingletonDataSource.getInstance().getUserByEmail(filledForm.get("register_email"));
 
         if (userCreated != null){
             error_signup_msg = "Usuario con ese email ya registrado";
@@ -55,7 +54,7 @@ public class LoginController {
 
         userCreated = new User(filledForm.get("register_name"), filledForm.get("register_surnames"),
                 filledForm.get("register_email"), filledForm.get("register_password"));
-        UserDataSource.insertIntoUsersCollection(userCreated);
+        SingletonDataSource.getInstance().insertIntoUsersCollection(userCreated);
 
         session("email", userCreated.email);
         session("name", userCreated.name);

@@ -1,12 +1,8 @@
 package utils;
 
 import models.datasource.SingletonDataSource;
-import models.datasource.UserDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
-import play.Logger;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
