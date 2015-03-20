@@ -15,7 +15,7 @@ import java.util.UUID;
 /**
  * Created by Victor on 16/03/2015.
  */
-public class Other {
+public class Utils {
 
     public static String formatDateToCustomPattern(Date date){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");

@@ -1,5 +1,4 @@
 import com.google.gson.Gson;
-import models.datasource.DataSource;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import org.junit.After;
