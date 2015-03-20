@@ -3,110 +3,111 @@
 <!--COMPLETE_CV_3-->
 <section class="container" id="text_user_profile_2">
     <div class="row">
-        <div class="col-md-12 brown_adecco century_gothic">
+        <div class="col-md-12  brown_adecco century_gothic">
             <h2>COMPLETA TU PERFIL</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 brown_adecco century_gothic size20">
+        <div class="col-md-12 brown_adecco century_gothic size22">
             <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 col-xs-12 col-sm-12 ic_paso2">
+        <div class="col-md-12 ic_paso2">
             <img src="@routes.Assets.at("images/complete_user_profile_3/ic_paso3.png")" class="ic_paso2">
         </div>
     </div>
 </section>
 
-<article class="container marg hidden-print">
-
-
+<section class="container">
 <!--Cursos-->    
-    
-            <div class="row">
-                <div class="col-md-12 arial gray_adecco size18 bold">
-                    <p>Cursos</p>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            <p>Cursos</p>
+        </div>
+    </div>
 
-            <div class="row">
-
-            <div class="col-md-4">
-                    <form class="form-horizontal ">
-                        <div class="form-group input-mic-container" id="namecourse">
+    <div class="main-div-sections">
+        <div class="row">
+            <form class="form-horizontal" autocomplete="on" method="post">
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        <div class="input-mic-container">
                             <input type="text" class="form-control" id="namecourse" placeholder="Nombre del curso" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
-                    </form>
-            </div>
+                    </div>
 
-            <div class="col-md-4 col-md-offset-2">
-                    <form class="form-horizontal">
-                        <div class="form-group input-mic-container" id="imparted">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                        <div class="input-mic-container">
                             <input type="text" class="form-control" id="imparted" placeholder="Impartido por..." >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
-                    </form>
-            </div>
+                    </div>
+                </div>
 
-            <div class="col-md-4">
-                    <form class="form-horizontal">
-                        <div class="form-group input-mic-container" id="numhours">
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5 ">
+                        <div class="input-mic-container">
                             <input type="text" class="form-control" id="imparted" placeholder="Número de horas" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            
                         </div>
-                    </form>
-            </div>
-
-            <div class="col-md-4 col-md-offset-2">
-                    <div class="row brown_adecco arial size11">
-                    <p>Debes añadir cada uno de los cursos que hayas realizado.</p> 
+                        
                     </div>
-            </div>
-            </div>
-    
 
-    
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-2 center">
-                    <button type="submit" class="btn-img" id="job_experience_group_5"><img  src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")"></button>
+                    <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-5 col-sm-5 col-xs-5">
+                        <div class="">
+                        <div class="form-group add-other-btn-div button-cursor-pointer brown_adecco arial size14">
+                                <p>Debes añadir cada uno de los cursos que hayas realizado.</p> 
+                        </div>
+                        </div>
+                    </div>
+                    
                 </div>
-            </div>
-    
-    
 
-    
-    
-</article>
-
-
-<article class="container marg">
-
-
-<!--Cursos-->    
-    
-            <div class="row">
-                <div class="col-md-12 arial gray_adecco size18 bold">
-                    <p>Idiomas</p>
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                     <!--div añadido extra porque sino el boton añadir no va-->   
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                        <div class="">
+                        <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                <img class="add-new" src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")">
+                        </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
+        </div>
+    </div>
+</section>
 
-            <div class="row">
-            <div class="col-md-4">
-                    <form class="form-horizontal">
-                        <div class="form-group input-mic-container" id="job_experience_group">
+
+<section class="container">
+
+
+<!--Idiomas--> 
+
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            <p>Idiomas</p>
+        </div>
+    </div>
+
+    <div class="main-div-sections">
+        <div class="row">
+            <form class="form-horizontal" autocomplete="on" method="post">
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        <div class="input-mic-container">
                             <input type="text" class="form-control" id="language" placeholder="Idioma" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
-                    </form>
-            </div>
+                    </div>
 
-            <div class="col-md-4 col-md-offset-2">
-                    <form class="form-horizontal">
-                <div class="form-group" id="level">
-                    <select  class="form-control" id="level" name="level">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                        <select  class="form-control" id="level" name="level">
                         <option value="d0" disabled selected="">Nivel</option>
                         <option value="d1">A1</option>
                         <option value="d2">A2</option>
@@ -116,103 +117,113 @@
                         <option value="d6">C2</option>
                         <option value="d7">Otros</option>
                     </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        
+                    </div>
+
+                    <div class="col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-md-5 col-sm-5 col-xs-5">
+                        <div class="">
+                        <div class="form-group add-other-btn-div button-cursor-pointer brown_adecco arial size14">
+                                <p>Debes añadir cada uno de los cursos que hayas realizado.</p> 
+                        </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                     <!--div añadido extra porque sino el boton añadir no va-->   
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                        <div class="">
+                        <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                <img class="add-new" src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")">
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </form>
-            </div>
-            </div>
+        </div>
+    </div>
+</section>
 
-            
-            <div class="col-md-6"></div>
-            <div class="col-md-4">
-                    <div class="row brown_adecco arial size11">
-                        <p>Debes añadir cada uno de los cursos que hayas realizado.</p> 
-                    </div>
-            </div>
-            
+<section class="container">
 
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            <p>Programas informáticos</p>
+        </div>
+    </div>
 
-            
-
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-2 center">
-                    <button type="submit" class="btn-img" id="job_experience_group_5"><img  src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")"></button>
-                </div>
-            </div>
-  
-</article>
-
-<article class="container marg ">
-
-
-<!--Programas--> 
-    
-            <div class="row">
-                <div class="col-md-12 arial gray_adecco size18 bold">
-                    <p>Programas informáticos</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                        <form class="form-horizontal">
-                            <div class="form-group input-mic-container " id="job_experience_group">
-                                <input type="text" class="form-control" id="programs" placeholder="Programas informáticos" >
-                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                            </div>
-                        </form>
-                </div>
-
-            <div class="col-md-4 col-md-offset-2">
-                    <form class="form-horizontal">
-                        <div class="form-group" id="job_experience_group_2">
-                            <select  class="form-control" id="level" name="level">
-                                <option value="s0" disabled selected="">Nivel</option>
-                                <option value="s1">Basico</option>
-                                <option value="s2">Medio</option>
-                                <option value="s3">Avanzado</option>
-                            </select>
+    <div class="main-div-sections">
+        <div class="row">
+            <form class="form-horizontal" autocomplete="on" method="post">
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        <div class="input-mic-container">
+                            <input type="text" class="form-control" id="programs" placeholder="Programas informáticos" >
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
-                    </form>
-            </div>
-            </div>
-
-           
-            <div class="col-md-6"></div>
-            <div class="col-md-4">
-                    <div class="row brown_adecco arial size11">
-                        <p>Debes añadir cada uno de los cursos que hayas realizado.</p> 
                     </div>
-            </div>
-            
-
-
-            
-
-            <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-2 center">
-                    <button type="submit" class="btn-img" id="job_experience_group_5"><img  src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")"></button>
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                        <select  class="form-control" id="level" name="level">
+                            <option value="s0" disabled selected="">Nivel</option>
+                            <option value="s1">Basico</option>
+                            <option value="s2">Medio</option>
+                            <option value="s3">Avanzado</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-    
-            
 
-    
-    
-</article>
-<article class="container marg">
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                       
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        <div class="">
+                        <div class="form-group add-other-btn-div button-cursor-pointer brown_adecco arial size14">
+                                <p>Debes añadir cada uno de los cursos que hayas realizado.</p> 
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                     <!--div añadido extra porque sino el boton añadir no va-->   
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                        <div class="">
+                        <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                <img class="add-new" src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")">
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="container">
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
             <button class="button-finish-1" onclick="location.href=#">FINALIZAR</button>
         </div>
     </div>
-</article>
+</section>
 
 <script type="text/javascript">
       window.onload = function() {
         loadRecognition();
+        addNew();
     };
 </script>
     

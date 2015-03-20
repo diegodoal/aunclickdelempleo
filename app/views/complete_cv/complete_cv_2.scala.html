@@ -36,7 +36,7 @@
 	    
 	        <form class="form-horizontal">
 	            <div class="form-group" id="level_studies_group">
-                <div class="col-md-4 col-sm4-xs-4">
+                <div class="col-md-5 col-sm-5 col-xs-5">
 	                <select class="form-control" id="level_studies" name="level_studies">
 	                    <option value="0" disabled selected="">Nivel de estudios</option>
 	                    <option value="1">PCPI / Garantía social</option>
@@ -80,18 +80,17 @@
 	    </div>
 	</div>
         
-	<div id = "job_experience_group">
-        <div class="main-div-sections">
+    <div class="main-div-sections">
         <div class="row">
             <form class="form-horizontal" autocomplete="on" method="post">
                 <div class="form-group form-inline">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
                         <div class="input-mic-container">
                             <input type="text" class="form-control" placeholder="Empresa" id="company" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
                         <div class="input-mic-container">
                             <input type="text" class="form-control" placeholder="Puesto" id="office">
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
@@ -100,7 +99,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
                             <select  class="form-control" id="sector" name="sector">
                             <option value="s0" disabled selected="">Sector</option>
                             <option value="s1">Agricultura, Montes, Pesca, Mineria</option>
@@ -141,7 +140,7 @@
                             <option value="s36">Otros</option>
                         </select>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
                         
                             
                             <select  class="form-control" name="experience" id="experience">
@@ -158,12 +157,26 @@
 
                 </div>
 
+                <div class="form-group">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                       
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5">
+                        <div class="">
+                        <div class="form-group add-other-btn-div button-cursor-pointer brown_adecco arial size14">
+                                <p>Debes añadir cada uno de los cursos que hayas realizado.</p> 
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+
 
                 <div class="form-group">
-                    <div class="col-md-4 col-sm-4 col-xs-4">
+                    <div class="col-md-5 col-sm-5 col-xs-5">
                      <!--div añadido extra porque sino el boton añadir no va-->   
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
+                    <div class="col-md-5 col-sm-5 col-xs-5 col-xs-4 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
                         <div class="">
                         <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
                                 <img class="add-new" src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")">
@@ -172,7 +185,6 @@
                     </div>
                 </div>
             </form>
-        </div>
         </div>
 	</div>
 </section>
