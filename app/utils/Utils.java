@@ -1,6 +1,6 @@
 package utils;
 
-import models.datasource.UserDataSource;
+import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
 import models.entities.orientation.ProfessionalValue;
@@ -15,7 +15,7 @@ import java.util.UUID;
 /**
  * Created by Victor on 16/03/2015.
  */
-public class Other {
+public class Utils {
 
     public static String formatDateToCustomPattern(Date date){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
@@ -75,7 +75,7 @@ public class Other {
             randomMonth = new Random().nextInt((12 - 1) + 1) + 1;
             user.interviewScheduleList.add(new InterviewSchedule(randomDay + "-" + randomMonth + "-2015 17:45", "Apple", "Palo Alto"));
 
-            UserDataSource.insertIntoUsersCollection(user);
+            SingletonDataSource.getInstance().insertIntoUsersCollection(user);
         }
     }
 }

@@ -1,6 +1,6 @@
 package controllers;
 
-import models.datasource.UserDataSource;
+import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.mvc.*;
 import utils.EmailUtil;
@@ -79,7 +79,7 @@ public class Application extends Controller {
 		// Cambiar el mensaje del título del mail y el cuerpo del mensaje
 		String message = "Para activar tu cuenta, haz click en el siguiente enlace: http://localhost:9000/particular/verify";
 		
-		User query = UserDataSource.getUserByEmail(toEmail);
+		User query = SingletonDataSource.getInstance().getUserByEmail(toEmail);
 		if(query == null){
 			return badRequest("Error, no se ha podido encontrar el usuario");
 		}else if(query.emailVerificationKey == null){
