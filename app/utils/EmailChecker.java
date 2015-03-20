@@ -1,5 +1,6 @@
 package utils;
 
+import models.datasource.SingletonDataSource;
 import models.datasource.UserDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
@@ -17,7 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class EmailChecker {
 
     public List<UserInterview> getUsersWithNextInterviews(int daysBefore){
-        List<User> allUsers = UserDataSource.getAllUsers();
+        SingletonDataSource singletonDataSource = SingletonDataSource.getInstance();
+        List<User> allUsers = singletonDataSource.getAllUsers();
         List<UserInterview> usersToNotify = new ArrayList<>();
 
         List<UserInterview> auxList = new ArrayList<>();
@@ -35,6 +37,7 @@ public class EmailChecker {
     }
 
     private List<UserInterview> checkForUpcomingDates(User user, int daysBefore){
+        SingletonDataSource singletonDataSource = SingletonDataSource.getInstance();
         List<InterviewSchedule> allInterviews = user.interviewScheduleList;
         List<UserInterview> interviewsToNotify = new ArrayList<>();
         if(allInterviews.isEmpty())
@@ -50,7 +53,7 @@ public class EmailChecker {
 
                 if (diff <= daysBefore && diff > 0) {
                     userInterview = new UserInterview(allInterviews.get(i), user.email, user.name);
-                    UserDataSource.updateUserData(user.email, Constants.USER_NEXT_INTERVIEWS_LIST + "." + i + "." + Constants.NEXT_INTERVIEW_NOTIFIED, "true");
+                    singletonDataSource.updateUserData(user.email, Constants.USER_NEXT_INTERVIEWS_LIST + "." + i + "." + Constants.NEXT_INTERVIEW_NOTIFIED, "true");
                     interviewsToNotify.add(userInterview);
                 }
             }

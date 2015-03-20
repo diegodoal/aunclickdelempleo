@@ -1,6 +1,7 @@
+import com.google.gson.Gson;
 import com.mongodb.MongoClient;
 import models.datasource.DataSource;
-import models.datasource.UserDataSource;
+import models.datasource.SingletonDataSource;
 import models.entities.User;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -19,115 +20,121 @@ public class InsertUserIntoMongoDBTest {
     @BeforeClass
     public static void setUpBeforeClass(){
         user = UtilsTest.buildNewFakeUser();
-        UserDataSource.insertIntoUsersCollection(user);
+        SingletonDataSource.getInstance().insertIntoUsersCollection(user);
     }
 
     @AfterClass
     public static void tearDownAfterClass(){
-        UserDataSource.dropUserCollection();
-        assertEquals(DataSource.mongoClient.getConnector().isOpen(), false);
+        SingletonDataSource.getInstance().dropUserCollection();
+        assertEquals(SingletonDataSource.getInstance().mongoClient.getConnector().isOpen(), false);
     }
 
     @After
     public void connectionMongoDB(){
-        assertEquals(DataSource.mongoClient.getConnector().isOpen(), false);
+        assertEquals(SingletonDataSource.getInstance().mongoClient.getConnector().isOpen(), false);
     }
 
     @Test
     public void checkName(){
-        assertEquals(user.name, UserDataSource.getUserByEmail(email).name);
+        assertEquals(user.name, SingletonDataSource.getInstance().getUserByEmail(email).name);
     }
 
     @Test
     public void checkSurname(){
-        assertEquals(user.surnames, UserDataSource.getUserByEmail(email).surnames);
+        assertEquals(user.surnames, SingletonDataSource.getInstance().getUserByEmail(email).surnames);
     }
 
     @Test
     public void checkEmail(){
-        assertEquals(user.email, UserDataSource.getUserByEmail(email).email);
+        assertEquals(user.email, SingletonDataSource.getInstance().getUserByEmail(email).email);
     }
 
     @Test
     public void checkPassword(){
-        assertEquals(user.password, UserDataSource.getUserByEmail(email).password);
+        assertEquals(user.password, SingletonDataSource.getInstance().getUserByEmail(email).password);
     }
 
     @Test
     public void checkEmailVerificationKey(){
-        assertEquals(user.emailVerificationKey, UserDataSource.getUserByEmail(email).emailVerificationKey);
+        assertEquals(user.emailVerificationKey, SingletonDataSource.getInstance().getUserByEmail(email).emailVerificationKey);
     }
 
     @Test
     public void checkCurrentSituation_educationLevel(){
-        assertEquals(user.currentSituation.educationLevelList.size(), UserDataSource.getUserByEmail(email).currentSituation.educationLevelList.size());
+        assertEquals(user.currentSituation.educationLevelList.size(), SingletonDataSource.getInstance().getUserByEmail(email).currentSituation.educationLevelList.size());
 
         for(int i=0; i<user.currentSituation.educationLevelList.size(); i++){
-            assertEquals(user.currentSituation.educationLevelList.get(i), UserDataSource.getUserByEmail(email).currentSituation.educationLevelList.get(i));
+            assertEquals(user.currentSituation.educationLevelList.get(i), SingletonDataSource.getInstance().getUserByEmail(email).currentSituation.educationLevelList.get(i));
         }
     }
 
     @Test
     public void checkCurrentSituation_professionalExperience(){
-        assertEquals(user.currentSituation.professionalExperienceList.size(), UserDataSource.getUserByEmail(email).currentSituation.professionalExperienceList.size());
+        assertEquals(user.currentSituation.professionalExperienceList.size(), SingletonDataSource.getInstance().getUserByEmail(email).currentSituation.professionalExperienceList.size());
 
         for(int i=0; i<user.currentSituation.professionalExperienceList.size(); i++){
-            assertEquals(user.currentSituation.professionalExperienceList.get(i).toJsonInString(), UserDataSource.getUserByEmail(email).currentSituation.professionalExperienceList.get(i).toJsonInString());
+            assertEquals(user.currentSituation.professionalExperienceList.get(i).toJsonInString(), SingletonDataSource.getInstance().getUserByEmail(email).currentSituation.professionalExperienceList.get(i).toJsonInString());
         }
     }
 
     @Test
     public void checkSkills(){
-        assertEquals(user.skills.size(), UserDataSource.getUserByEmail(email).skills.size());
+        assertEquals(user.skills.size(), SingletonDataSource.getInstance().getUserByEmail(email).skills.size());
 
         for(int i=0; i<user.skills.size(); i++) {
-            assertEquals(user.skills.get(i).level, UserDataSource.getUserByEmail(email).skills.get(i).level);
-            assertEquals(user.skills.get(i).name, UserDataSource.getUserByEmail(email).skills.get(i).name);
+            assertEquals(user.skills.get(i).level, SingletonDataSource.getInstance().getUserByEmail(email).skills.get(i).level);
+            assertEquals(user.skills.get(i).name, SingletonDataSource.getInstance().getUserByEmail(email).skills.get(i).name);
         }
     }
 
     @Test
     public void checkInterests(){
-        assertEquals(user.interests.size(), UserDataSource.getUserByEmail(email).interests.size());
+        assertEquals(user.interests.size(), SingletonDataSource.getInstance().getUserByEmail(email).interests.size());
 
         for(int i=0; i<user.interests.size(); i++){
-            assertEquals(user.interests.get(i), UserDataSource.getUserByEmail(email).interests.get(i));
+            assertEquals(user.interests.get(i), SingletonDataSource.getInstance().getUserByEmail(email).interests.get(i));
         }
     }
 
     @Test
     public void checkPersonalCharacteristics(){
-        assertEquals(user.personalCharacteristics.size(), UserDataSource.getUserByEmail(email).personalCharacteristics.size());
+        assertEquals(user.personalCharacteristics.size(), SingletonDataSource.getInstance().getUserByEmail(email).personalCharacteristics.size());
 
         for(int i=0; i<user.personalCharacteristics.size(); i++){
-            assertEquals(user.personalCharacteristics.get(i), UserDataSource.getUserByEmail(email).personalCharacteristics.get(i));
+            assertEquals(user.personalCharacteristics.get(i), SingletonDataSource.getInstance().getUserByEmail(email).personalCharacteristics.get(i));
         }
     }
 
     @Test
     public void checkProfessionalValues(){
-        assertEquals(user.professionalValues.size(), UserDataSource.getUserByEmail(email).professionalValues.size());
+        assertEquals(user.professionalValues.size(), SingletonDataSource.getInstance().getUserByEmail(email).professionalValues.size());
 
         for(int i=0; i<user.professionalValues.size(); i++){
-            assertEquals(user.professionalValues.get(i).name, UserDataSource.getUserByEmail(email).professionalValues.get(i).name);
-            assertEquals(user.professionalValues.get(i).valuation, UserDataSource.getUserByEmail(email).professionalValues.get(i).valuation);
+            assertEquals(user.professionalValues.get(i).name, SingletonDataSource.getInstance().getUserByEmail(email).professionalValues.get(i).name);
+            assertEquals(user.professionalValues.get(i).valuation, SingletonDataSource.getInstance().getUserByEmail(email).professionalValues.get(i).valuation);
         }
     }
 
     @Test
     public void checkPhoto(){
-        assertEquals(user.photo.id, UserDataSource.getUserByEmail(email).photo.id);
+        assertEquals(user.photo.id, SingletonDataSource.getInstance().getUserByEmail(email).photo.id);
     }
 
     @Test
     public void checkInterviewSchedules(){
-        assertEquals(user.interviewScheduleList.size(), UserDataSource.getUserByEmail(email).interviewScheduleList.size());
+        assertEquals(user.interviewScheduleList.size(), SingletonDataSource.getInstance().getUserByEmail(email).interviewScheduleList.size());
 
         for(int i=0; i<user.interviewScheduleList.size(); i++){
-            assertEquals(user.interviewScheduleList.get(i).date, UserDataSource.getUserByEmail(email).interviewScheduleList.get(i).date);
-            assertEquals(user.interviewScheduleList.get(i).address, UserDataSource.getUserByEmail(email).interviewScheduleList.get(i).address);
-            assertEquals(user.interviewScheduleList.get(i).company, UserDataSource.getUserByEmail(email).interviewScheduleList.get(i).company);
+            assertEquals(user.interviewScheduleList.get(i).date, SingletonDataSource.getInstance().getUserByEmail(email).interviewScheduleList.get(i).date);
+            assertEquals(user.interviewScheduleList.get(i).address, SingletonDataSource.getInstance().getUserByEmail(email).interviewScheduleList.get(i).address);
+            assertEquals(user.interviewScheduleList.get(i).company, SingletonDataSource.getInstance().getUserByEmail(email).interviewScheduleList.get(i).company);
         }
+    }
+
+    @Test
+    public void checkAllUsers(){
+        assertEquals(SingletonDataSource.getInstance().getAllUsers().size(), 1);
+        assertEquals(new Gson().toJson(SingletonDataSource.getInstance().getAllUsers().get(0)), new Gson().toJson(user));
     }
 
 

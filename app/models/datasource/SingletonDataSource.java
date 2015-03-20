@@ -19,19 +19,20 @@ import java.util.List;
 /**
  * Created by Victor on 20/03/2015.
  */
-public class ObjectDataSource {
+public class SingletonDataSource {
 
-    private static ObjectDataSource INSTANCE = new ObjectDataSource();
-
-    private ObjectDataSource(){}
-
-    public static ObjectDataSource getInstance(){
+    /**
+     * Object field, contructor and method for Singleton Pattern
+     */
+    private static SingletonDataSource INSTANCE = new SingletonDataSource();
+    private SingletonDataSource(){}
+    public static SingletonDataSource getInstance(){
         return INSTANCE;
     }
 
 
     public static MongoClient mongoClient;
-    //public static DB db;
+    public static DB db = null;
     static Config config = ConfigFactory.load("db");
     static Config configSecurity = ConfigFactory.load("application");
 

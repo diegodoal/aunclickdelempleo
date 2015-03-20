@@ -1,11 +1,8 @@
-import com.mongodb.Mongo;
-import models.datasource.DataSource;
-import models.datasource.ObjectDataSource;
-import models.datasource.UserDataSource;
+import models.datasource.SingletonDataSource;
 import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import utils.EmailChecker;
-
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 /**
@@ -15,43 +12,30 @@ public class MongoDBClientTest {
 
     public static String email = UtilsTest.email;
 
-    @AfterClass
+    @BeforeClass
     public static void initTestData(){
         UtilsTest.buildNewFakeUser();
     }
 
-    @Test
-    public void getUserByEmailTest(){
-        UserDataSource.getUserByEmail("email");
-        assertFalse(DataSource.mongoClient.getConnector().isOpen());
+    @AfterClass
+    public static void dropDB(){
+        SingletonDataSource singletonDataSource = SingletonDataSource.getInstance();
+        singletonDataSource.dropUserCollection();
     }
 
     @Test
     public void getAllUsersTest(){
-        UserDataSource.getAllUsers();
-        assertFalse(DataSource.mongoClient.getConnector().isOpen());
+        SingletonDataSource singletonDataSource = SingletonDataSource.getInstance();
+        singletonDataSource.getAllUsers();
+        assertEquals(singletonDataSource.mongoClient.getConnector().isOpen(), false);
     }
 
     @Test
-    public void getNextInterviewsTest(){
-        EmailChecker emailChecker = new EmailChecker();
-        emailChecker.getUsersWithNextInterviews(1);
-        assertFalse(DataSource.mongoClient.getConnector().isOpen());
-    }
-
-    @Test
-    public void multiGetOneObjectTest(){
-        for(int i=0; i<1000; i++){
-            ObjectDataSource objectDataSource = ObjectDataSource.getInstance();
-            objectDataSource.getUserByEmail(email);
-        }
-    }
+    public void getUserByEmailTest(){
+        SingletonDataSource singletonDataSource = SingletonDataSource.getInstance();
+        singletonDataSource.getUserByEmail(email);
+        assertFalse(singletonDataSource.mongoClient.getConnector().isOpen());
 
 
-    @Test
-    public void multiGetAllTest(){
-        for(int i=0; i<10000; i++){
-            UserDataSource.getAllUsers();
-        }
     }
 }
