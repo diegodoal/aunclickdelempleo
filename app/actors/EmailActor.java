@@ -2,7 +2,6 @@ package actors;
 
 import akka.actor.UntypedActor;
 import models.datasource.ObjectDataSource;
-import models.datasource.UserDataSource;
 import play.Logger;
 import utils.EmailChecker;
 
@@ -17,7 +16,7 @@ public class EmailActor extends UntypedActor {
 
     @Override
     public void onReceive(Object message) throws Exception {
-        Logger.info("["+new Date().toString()+"]\n");
+        Logger.info("["+new Date().toString()+"]\n"+getUser());
     }
 
     private String getNextInterviewsAndSendEmail(){
@@ -41,9 +40,8 @@ public class EmailActor extends UntypedActor {
     }
 
     private String getUser(){
-        ObjectDataSource objectDataSource = new ObjectDataSource();
-        String result = objectDataSource.getAllUsers().toString();
-        objectDataSource.close();
+        ObjectDataSource objectDataSource = ObjectDataSource.getInstance();
+        String result = objectDataSource.getUserByEmail("victor@gmail.com").toString();
         return result;
     }
 }
