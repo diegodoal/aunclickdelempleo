@@ -20,14 +20,18 @@ public class EmailChecker {
         List<User> allUsers = UserDataSource.getAllUsers();
         List<UserInterview> usersToNotify = new ArrayList<>();
 
-        List<UserInterview> auxList;
+        List<UserInterview> auxList = new ArrayList<>();
         for(int i=0; i<allUsers.size(); i++){
             auxList = checkForUpcomingDates(allUsers.get(i), daysBefore);
             if(!auxList.isEmpty())
                 usersToNotify.addAll(auxList);
         }
 
-        return usersToNotify;
+        if(usersToNotify.isEmpty()){
+            return null;
+        }else{
+            return usersToNotify;
+        }
     }
 
     private List<UserInterview> checkForUpcomingDates(User user, int daysBefore){

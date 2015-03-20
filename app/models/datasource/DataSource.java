@@ -10,7 +10,7 @@ import scala.util.parsing.json.JSONArray;
 
 public class DataSource {
 	public static MongoClient mongoClient;
-	//public static DB db;
+	public static DB db = null;
 	static Config config = ConfigFactory.load("db");
 	static Config configSecurity = ConfigFactory.load("application");
 

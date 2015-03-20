@@ -85,7 +85,6 @@ public class UserDataSource extends DataSource {
         DBCollection collection = connectDB("mongo.usersCollection");
         List<DBObject> all = collection.find().toArray();
         List<User> resultList = new ArrayList<>();
-        User auxUser;
 
         for (int i = 0; i < all.size(); i++){
             resultList.add(getUserByEmail(all.get(i).get("email").toString()));
