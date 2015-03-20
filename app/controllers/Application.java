@@ -12,6 +12,11 @@ import javax.mail.Session;
 public class Application extends Controller {
 
 	public static Result index() {
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        if(user==null){
+            session().clear();
+        }
+
         return ok(views.html.index.render());
 	}
 
