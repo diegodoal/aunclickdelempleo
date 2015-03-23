@@ -1,6 +1,8 @@
 var CANVAS_WIDTH = 137;
 var CANVAS_HEIGHT = 162;
 var ACCEPTED_WEB_CAM_ACCESS = false;
+var ADDED_PHOTO = false;
+var MADE_PHOTO = false;
 
 function drawFromInput(){
     var input = document.getElementById('upload_photo');
@@ -14,6 +16,7 @@ function drawFromInput(){
         img.src = URL.createObjectURL(e.target.files[0]);
         img.onload = function() {
             ctx.drawImage(img, 0, 0, 137, 162);
+            ADDED_PHOTO = true;
         }
     }
 }
@@ -70,14 +73,18 @@ function takePhoto(){
       canvasModal.width = 137;
       canvasModal.height = 162;
       canvasModal.getContext('2d').drawImage(video, 0, 0, 137, 162);
+      MADE_PHOTO = true;
       ev.preventDefault();
       }, false
   );
 
   acceptPhotoButton.addEventListener('click', function(ev){
-        canvasMain.width = 137;
-        canvasMain.height = 162;
-        canvasMain.getContext('2d').drawImage(canvasModal, 0, 0, 137, 162);
+        if(MADE_PHOTO == true){
+            canvasMain.width = 137;
+            canvasMain.height = 162;
+            canvasMain.getContext('2d').drawImage(canvasModal, 0, 0, 137, 162);
+            ADDED_PHOTO = true;
+        }
         ev.preventDefault();
         }, false
     );
@@ -89,25 +96,34 @@ function finishPhoto(){
     var canvasMain = document.querySelector('#mainCanvas');
     var dataurl = canvasMain.toDataURL('image/png');
 
-    $('#photoUploadingModal').modal('show');
+    if(ADDED_PHOTO == false){
+    alert("Not uplodaded photo");
+        window.location.assign("/orientation");
+    }else{
+        alert("Uploaded photo");
+        $('#photoUploadingModal').modal('show');
 
-    $.ajax({
-          type: "POST",
-          url: "/orientation/photo",
-          data: {
-             imgBase64: dataurl
-          }
-        }).done(function(o) {
-          document.getElementById("photoUploadingText").innerHTML = ("Foto subida con éxito");
-          //$('#photoUploadingModal').modal('hide');
-          window.location.assign("/orientation")
-        });
+        $.ajax({
+              type: "POST",
+              url: "/orientation/photo",
+              data: {
+                 imgBase64: dataurl
+              }
+            }).done(function(o) {
+              document.getElementById("photoUploadingText").innerHTML = ("Foto subida con éxito");
+              //$('#photoUploadingModal').modal('hide');
+              window.location.assign("/orientation")
+            });
+    }
 }
 
 function downloadPhoto(){
-    var link = document.getElementById('mainCanvas').toDataURL();
-    link.download = 'photo.png';
-    window.location.href = link;
+    if(ADDED_PHOTO == true){
+        alert("Downloading...");
+        var link = document.getElementById('mainCanvas').toDataURL();
+        link.download = 'photo.png';
+        window.open(link);
+    }
 }
 
 function dragPhoto() {
@@ -149,3 +165,12 @@ function dragPhoto() {
         evt.preventDefault();
     }, false);   
 }
+
+function cleanCanvas(){
+        var canvas = document.getElementById('mainCanvas');
+        var ctx = canvas.getContext('2d');
+        var image = new Image();
+        image.src = '/assets/images/orientation/photo/ic_profile.png';
+        ctx.drawImage(image, 0, 0, 137, 162);
+        ADDED_PHOTO = false;
+    }
