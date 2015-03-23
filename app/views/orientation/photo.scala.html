@@ -139,14 +139,6 @@
         drawFromInput();
         dragPhoto();
     };
-
-    function cleanCanvas(){
-        var canvas = document.getElementById('mainCanvas');
-        var ctx = canvas.getContext('2d');
-        var image = new Image();
-        image.src = '@routes.Assets.at("images/orientation/photo/ic_profile.png")';
-        ctx.drawImage(image, 0, 0, 137, 162);
-    }
     </script>
 
 }
