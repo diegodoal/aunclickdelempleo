@@ -8,7 +8,7 @@
 
 /* This script is used to select at most 5 options in "Intereses Profesionales:" */
 function hide_studies(t) {
-    checkboxes = document.getElementsByName("study");
+    checkboxes = document.getElementsByClassName("study");
     if (t.checked) {
         for (i=0; i<checkboxes.length; i++) {
             if (checkboxes[i].checked == true) {
