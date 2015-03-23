@@ -97,10 +97,8 @@ function finishPhoto(){
     var dataurl = canvasMain.toDataURL('image/png');
 
     if(ADDED_PHOTO == false){
-    alert("Not uplodaded photo");
         window.location.assign("/orientation");
     }else{
-        alert("Uploaded photo");
         $('#photoUploadingModal').modal('show');
 
         $.ajax({
@@ -119,7 +117,6 @@ function finishPhoto(){
 
 function downloadPhoto(){
     if(ADDED_PHOTO == true){
-        alert("Downloading...");
         var link = document.getElementById('mainCanvas').toDataURL();
         link.download = 'photo.png';
         window.open(link);
