@@ -78,7 +78,7 @@
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
-  </form>
+  </form><br>
 
     <!--Contacto-->
     <div class="row">
@@ -100,7 +100,7 @@
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
             </div>
         </div>
-    </form>
+    </form><br>
 
     <!--Carnet-->
     <div class="row">
@@ -137,13 +137,41 @@
           </select>
         </div>
       </div>
+    </form><br>
+
+
+     <!--Certificado-->
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+        <p>Certificado de discapacidad</p>
+        </div>
+    </div>
+
+    <form class="form-horizontal" role="form">
+      <div class="form-group orientation-points">
+        <div class="col-lg-4">
+          <input type="checkbox" id="check_license" name="license" onclick="enable_cb2(this)">
+          <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-4">
+          <select  class="form-control" id="driving_certificate" name="driving_certificate">
+              <option value="0" disabled selected="">Tipo de certificado</option>
+              <option value="1">Menos del 33%</option>
+              <option value="2">Más del 33%</option>
+              <option value="3">Más del 66%</option>
+          </select>
+        </div>
+      </div>
     </form>
 </article>
 <article class="container">
         <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.StashController.cv2()';">Siguiente</button>
+            <button class="button-finish-1" onclick="location.href= '@routes.StashController.cv2()';">SIGUIENTE</button>
         </div>
         </div>
 </article>
