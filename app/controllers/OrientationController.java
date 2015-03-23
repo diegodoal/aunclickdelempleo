@@ -1,11 +1,18 @@
 package controllers;
 
+import static play.data.Form.form;
+
 import java.io.*;
 import java.util.*;
+
 import models.S3File;
 import models.datasource.SingletonDataSource;
+
 import models.entities.User;
+
 import org.apache.commons.codec.binary.Base64;
+
+import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -19,12 +26,22 @@ public class OrientationController extends Controller {
 
     /* PUNTO 1: CONOCETE A TI MISMO */
     public static Result currentsituation(){
-        return ok(views.html.orientation.currentSituation.render());
+    	String error_msg = "";
+        return ok(views.html.orientation.currentSituation.render(error_msg));
     }
 
     public static Result submitCurrentSituation(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_CURRENT_SITUATION, String.valueOf(true));
-        return redirect("/orientation");
+    	String error_msg = "";
+    	DynamicForm bindedForm = form().bindFromRequest();
+        String next_step = bindedForm.get("next_step");
+        if(next_step.equals("no")){
+        	error_msg = "*Por favor, selecciona tu nivel de estudios";
+        	return ok(views.html.orientation.currentSituation.render(error_msg));
+        }
+      
+	        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_CURRENT_SITUATION, String.valueOf(true));
+	        return redirect("/orientation");
+        
     }
 
     public static Result skills() {
