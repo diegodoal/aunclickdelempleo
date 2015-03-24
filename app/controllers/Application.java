@@ -4,6 +4,7 @@ import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.mvc.*;
 import utils.EmailUtil;
+import utils.Utils;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -13,7 +14,7 @@ public class Application extends Controller {
 
 	public static Result index() {
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        if(user==null){
+        if(user==null || !Utils.checkEqualTimestamps(session().get("timestamp"), user.connectionTimestamp)){
             session().clear();
         }
 
@@ -95,6 +96,6 @@ public class Application extends Controller {
 		
 		EmailUtil.sendEmail(session, toEmail,"Confirmación de cuenta creada en www.aunclickdelempleo.com", message);
 		return ok("Se ha enviado un email a: " + toEmail+" .Por favor, revise su correo");
-	}  
+	}
 
 }

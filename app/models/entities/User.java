@@ -4,9 +4,11 @@ package models.entities;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import models.entities.orientation.*;
+import utils.Utils;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +23,7 @@ public class User {
     public String email;
     public String password;
     public String emailVerificationKey;
+    public String connectionTimestamp;
 
     public CompletedOrientationSteps completedOrientationSteps;
 
@@ -35,6 +38,8 @@ public class User {
 
     public User(){
         this.emailVerificationKey = UUID.randomUUID().toString();
+        //Includes an "a" at the end for more security. Stored with custom format in DB and with standard format in session
+        this.connectionTimestamp = new Date().toString();
         this.currentSituation = new CurrentSituation();
         this.skills = new ArrayList<>();
         this.interests = new ArrayList<>();
@@ -50,6 +55,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.emailVerificationKey = UUID.randomUUID().toString();
+        this.connectionTimestamp = new Date().toString();
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
         this.skills = new ArrayList<>();

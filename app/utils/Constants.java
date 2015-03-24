@@ -26,6 +26,7 @@ public final class Constants {
     public final static String USER_EMAIL = "email";
     public final static String USER_PASSWORD = "password";
     public final static String USER_EMAIL_VERIFICATION_KEY = "emailVerificationKey";
+    public final static String USER_CONNECTION_TIMESTAMP = "connectionTimestamp";
 
     public final static String USER_ORIENTATION_STEPS = "orientationSteps";
     public final static String USER_ORIENTATION_STEPS_CURRENT_SITUATION = "orientationSteps.currentSituation";
