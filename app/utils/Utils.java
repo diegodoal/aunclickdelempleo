@@ -6,6 +6,8 @@ import models.entities.orientation.InterviewSchedule;
 import models.entities.orientation.ProfessionalValue;
 import models.entities.orientation.Skill;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,6 +34,22 @@ public class Utils {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public static String encryptWithSHA1(String input) {
+        MessageDigest mDigest = null;
+        try {
+            mDigest = MessageDigest.getInstance("SHA1");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        byte[] result = mDigest.digest(input.getBytes());
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < result.length; i++) {
+            sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
+        }
+
+        return sb.toString();
     }
 
     public static void initFakeDBCollection() {

@@ -11,6 +11,7 @@ import models.entities.orientation.CurrentSituation;
 import models.entities.orientation.InterviewSchedule;
 import models.entities.orientation.Skill;
 import utils.Constants;
+import utils.Utils;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class SingletonDataSource {
                 append(Constants.USER_NAME, user.name).
                 append(Constants.USER_SURNAMES, user.surnames).
                 append(Constants.USER_EMAIL, user.email).
-                append(Constants.USER_PASSWORD, user.password).
+                append(Constants.USER_PASSWORD, Utils.encryptWithSHA1(user.password)).
                 append(Constants.USER_EMAIL_VERIFICATION_KEY, user.emailVerificationKey).
                 append(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson())).
                 append(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString())).

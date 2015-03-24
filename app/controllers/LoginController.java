@@ -4,6 +4,8 @@ import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.data.DynamicForm;
 import play.mvc.Result;
+import utils.Utils;
+
 import static play.data.Form.form;
 import static play.mvc.Controller.session;
 import static play.mvc.Results.badRequest;
@@ -26,7 +28,7 @@ public class LoginController {
 
         User user = SingletonDataSource.getInstance().getUserByEmail(bindedForm.get("email"));
 
-        if(user != null && bindedForm.get("password").equals(user.password)) {
+        if(user != null && Utils.encryptWithSHA1(bindedForm.get("password")).equals(user.password)){
             session("email", user.email);
             session("name", user.name);
             return redirect("/");
