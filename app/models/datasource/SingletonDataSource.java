@@ -15,6 +15,7 @@ import utils.Utils;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -69,6 +70,7 @@ public class SingletonDataSource {
                 append(Constants.USER_EMAIL, user.email).
                 append(Constants.USER_PASSWORD, Utils.encryptWithSHA1(user.password)).
                 append(Constants.USER_EMAIL_VERIFICATION_KEY, user.emailVerificationKey).
+                append(Constants.USER_CONNECTION_TIMESTAMP, user.connectionTimestamp).
                 append(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson())).
                 append(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString())).
                 append(Constants.USER_SKILLS_LIST, JSON.parse(user.skillstoJson())).
@@ -160,6 +162,12 @@ public class SingletonDataSource {
         DBCollection myCollection = connectDB("mongo.usersCollection");
         myCollection.drop();
         mongoClient.close();
+    }
+
+    public static Date updateTimeStamp(String email){
+        Date date = new Date();
+        updateUserData(email, Constants.USER_CONNECTION_TIMESTAMP, date.toString());
+        return date;
     }
 
 }

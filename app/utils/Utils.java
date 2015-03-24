@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Victor on 16/03/2015.
@@ -50,6 +51,18 @@ public class Utils {
         }
 
         return sb.toString();
+    }
+
+    public static boolean checkEqualTimestamps(String userTimestamp, String sessionTimestamp){
+        if(userTimestamp == null || sessionTimestamp == null)
+            return false;
+        return userTimestamp.equals(sessionTimestamp);
+    }
+
+    public static long getDiffBetweenTwoDates(Date date1, Date date2){
+        long diff = TimeUnit.DAYS.convert((date2.getTime() - date1.getTime()), TimeUnit.MILLISECONDS);
+
+        return diff;
     }
 
     public static void initFakeDBCollection() {

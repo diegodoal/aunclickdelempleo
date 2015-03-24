@@ -31,6 +31,7 @@ public class LoginController {
         if(user != null && Utils.encryptWithSHA1(bindedForm.get("password")).equals(user.password)){
             session("email", user.email);
             session("name", user.name);
+            session("timestamp", SingletonDataSource.updateTimeStamp(user.email).toString());
             return redirect("/");
         }
 
@@ -60,6 +61,7 @@ public class LoginController {
 
         session("email", userCreated.email);
         session("name", userCreated.name);
+        session("timestamp", SingletonDataSource.updateTimeStamp(userCreated.email).toString());
 
         return redirect("/");
     }
