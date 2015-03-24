@@ -5,6 +5,8 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import utils.Utils;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -49,7 +51,7 @@ public class InsertUserIntoMongoDBTest {
 
     @Test
     public void checkPassword(){
-        assertEquals(user.password, SingletonDataSource.getInstance().getUserByEmail(email).password);
+        assertEquals(Utils.encryptWithSHA1(user.password), SingletonDataSource.getInstance().getUserByEmail(email).password);
     }
 
     @Test
@@ -132,6 +134,7 @@ public class InsertUserIntoMongoDBTest {
     @Test
     public void checkAllUsers(){
         assertEquals(SingletonDataSource.getInstance().getAllUsers().size(), 1);
+        user.password = Utils.encryptWithSHA1(user.password);
         assertEquals(new Gson().toJson(SingletonDataSource.getInstance().getAllUsers().get(0)), new Gson().toJson(user));
     }
 
