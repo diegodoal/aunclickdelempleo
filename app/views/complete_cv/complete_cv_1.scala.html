@@ -19,6 +19,7 @@
     </div>
 </section>
 
+<div class="container">
 <article class="container">
 
 <!--Datos Personales-->
@@ -27,80 +28,86 @@
     <div class="col-md-12 arial gray_adecco size18 bold">
         <p>Datos personales</p>
     </div>
-  </div>
+  </div><br>
 
   <form class="form-horizontal" role="form">
     <div class="form-group">
-        <div class="col-lg-4 input-mic-container">
-            <input type="text" class="form-control" id="name" placeholder="Nombre">
+        <div class="col-lg-5 input-mic-container">
+            
+            <input type="text" name='register_name' class="form-control" id="name"  required="required" placeholder="Nombre">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="surname" required="required" placeholder="Apellidos">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-lg-4 input-mic-container">
-            <input type="text" class="form-control" id="surname"placeholder="Apellidos">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="date" required="required"  placeholder="Fecha de nacimiento" >
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-lg-4 input-mic-container">
-            <input type="text" class="form-control" id="date"placeholder="Fecha de nacimiento">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="register_city" required="required"  placeholder="Ciudad de residencia">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-lg-4 input-mic-container">
-            <input type="text" class="form-control" id="register_city"placeholder="Ciudad de residencia">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="dress" required="required"  placeholder="Calle">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-lg-4 input-mic-container">
-            <input type="text" class="form-control" id="dress"placeholder="Calle">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="number" required="required"  placeholder="Número">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
-        <div class="col-lg-4 input-mic-container">
-            <input type="text" class="form-control" id="number"placeholder="Número">
-            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-lg-4 input-mic-container">
+        <div class="col-lg-5 input-mic-container">
             <input type="post" class="form-control" id="post" placeholder="Código postal">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
-  </form><br>
+  </form>
+</article>
+
+<article class="container">
 
     <!--Contacto-->
     <div class="row">
         <div class="col-md-12 arial gray_adecco size18 bold">
             <p>Datos de contacto</p>
         </div>
-    </div>
+    </div><br>
 
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <div class="col-lg-4">
-                <input type="email" class="form-control" id="email_3"placeholder="Correo electrónico">
+            <div class="col-lg-5">
+                <input type="email" name='email' class="form-control" id="access_email" required="required" placeholder="Correo electrónico">
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-lg-4 input-mic-container">
+            <div class="col-lg-5 input-mic-container">
             <input type="text" class="form-control" id="telephone"placeholder="Telefono de contacto">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
             </div>
         </div>
-    </form><br>
+    </form>
+</article> <article class="container">
 
     <!--Carnet-->
     <div class="row">
@@ -111,14 +118,15 @@
 
     <form class="form-horizontal" role="form">
       <div class="form-group orientation-points">
-        <div class="col-lg-4">
-          <input type="checkbox" id="check_license" name="license" onclick="enable_cb2(this)">
+        <div class="col-lg-5">
+
+          <input type="checkbox" id="check_license" onclick="licenseCertificateHidden(this.checked)">
           <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
         </div>
       </div>
 
-      <div class="form-group">
-        <div class="col-lg-4">
+      <div class="form-group" id="license_certificate_group">
+        <div class="col-lg-5">
           <select  class="form-control" id="driving_license" name="driving_license">
               <option value="0" disabled selected="">Tipo de permiso de conducir</option>
               <option value="1">A1</option>
@@ -137,7 +145,9 @@
           </select>
         </div>
       </div>
-    </form><br>
+    </form>
+
+</article>  <article class="container">
 
 
      <!--Certificado-->
@@ -149,14 +159,14 @@
 
     <form class="form-horizontal" role="form">
       <div class="form-group orientation-points">
-        <div class="col-lg-4">
-          <input type="checkbox" id="check_license" name="license" onclick="enable_cb2(this)">
-          <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
+        <div class="col-lg-5">
+          <input type="checkbox" id="check_certificate" name="certificate" onclick="enable_cb2(this)">
+          <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
         </div>
       </div>
 
       <div class="form-group">
-        <div class="col-lg-4">
+        <div class="col-lg-5">
           <select  class="form-control" id="driving_certificate" name="driving_certificate">
               <option value="0" disabled selected="">Tipo de certificado</option>
               <option value="1">Menos del 33%</option>
@@ -166,15 +176,16 @@
         </div>
       </div>
     </form>
-</article>
-<article class="container">
-        <div class="row">
+</article> <section class="container">
+    <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.StashController.cv2()';">SIGUIENTE</button>
+            <a href="@routes.StashController.cv2()" target="_blank"><button class="button-finish-1" >SIGUIENTE</button></a>
         </div>
-        </div>
-</article>
+    </div>
+</section>
+</div>
+
 
 
 <script type="text/javascript">
