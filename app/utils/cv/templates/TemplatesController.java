@@ -1,6 +1,7 @@
 package utils.cv.templates;
 
 import com.itextpdf.text.DocumentException;
+import utils.Files;
 import utils.cv.*;
 
 import java.io.FileNotFoundException;
@@ -12,7 +13,7 @@ import java.util.List;
 public class TemplatesController {
     public enum Template {Template1, Template2};
 
-    public static void createPdf(Template template, String filePath, PersonalInformation personalInformation, String objetive,
+    public static void createPdf(Template template, PersonalInformation personalInformation, String objetive,
                           List<WorkExperience> experienceList,
                           List<Education> educationList,
                           List<AditionalEducation> aditionalEducationList,
@@ -20,6 +21,7 @@ public class TemplatesController {
                           List<String> skills,
                           List<Project> projectList,
                           OtherInformation otherInformation) throws FileNotFoundException, DocumentException {
+        String filePath = Files.newPathForNewFile("assets", "pdf");
         switch (template){
             case Template1:
                 Template1 template1 = new Template1();

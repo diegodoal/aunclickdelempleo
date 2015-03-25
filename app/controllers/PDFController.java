@@ -2,6 +2,7 @@ package controllers;
 
 import com.itextpdf.text.DocumentException;
 import play.mvc.Result;
+import utils.Files;
 import utils.cv.Project;
 import utils.cv.templates.Template1;
 import java.io.FileNotFoundException;
@@ -17,6 +18,8 @@ import static play.mvc.Results.redirect;
  * Created by Victor on 16/02/2015.
  */
 public class PDFController {
+
+
 
     public static Result fakeCV(String template) {
         OtherInformation otherInformation = new OtherInformation("personal.website.com");
@@ -64,8 +67,8 @@ public class PDFController {
             }else{
                 custom_template = TemplatesController.Template.Template2;
             }
-            TemplatesController.createPdf(custom_template, "public/pdf/template1.pdf",
-                    new PersonalInformation("victor", "Garcia Zarco", new Date(1994 - 1900, 4, 20), "Española", "Calle falsa, 123", "victor.gzarco@gmail.com", 666777888),
+            TemplatesController.createPdf(custom_template,
+                    new PersonalInformation("Victor", "Garcia Zarco", new Date(1994 - 1900, 4, 20), "Española", "Calle falsa, 123", "victor.gzarco@gmail.com", 666777888),
                     "Adquirir experencia laboral sin que esto suponga una dificultad en el estudio de la carrera universitaria, además de poder aplicar los conocimientos estudiados hasta el momento en un ámbito de trabajo relacionado con las salidas profesionales que aporta el estudio de Grado.",
                     experienceList,
                     educationList,
