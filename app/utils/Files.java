@@ -1,6 +1,9 @@
 package utils;
 
+import org.h2.store.fs.FileUtils;
+
 import java.io.File;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -32,5 +35,35 @@ public class Files {
         }
     }
 
+
+    public static void deleteOldFolders(String mainFolder){
+        Date date = new Date();
+        String folderDate = new SimpleDateFormat("dd-MM-yyyy").format(date);
+
+        File[] subDirectories = new File(mainFolder).listFiles();
+
+        for(File file : subDirectories){
+            if(file.isDirectory() && isOlder(file.getName())){
+                FileUtils.deleteRecursive(file.getPath(), true);
+                file.delete();
+            }
+        }
+    }
+
+    public static boolean isOlder(String oldFolderName){
+        Date oldFolderDate = null;
+        try {
+            oldFolderDate = new SimpleDateFormat("dd-MM-yyyy").parse(oldFolderName);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if(Utils.getDiffBetweenTwoDates(oldFolderDate, new Date()) > 1){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 
 }

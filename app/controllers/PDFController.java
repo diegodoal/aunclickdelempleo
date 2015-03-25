@@ -19,8 +19,6 @@ import static play.mvc.Results.redirect;
  */
 public class PDFController {
 
-
-
     public static Result fakeCV(String template) {
         OtherInformation otherInformation = new OtherInformation("personal.website.com");
         List<WorkExperience> experienceList = new ArrayList<WorkExperience>();
