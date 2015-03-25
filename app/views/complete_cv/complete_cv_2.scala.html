@@ -75,15 +75,15 @@
 
     <div class="row orientation-points">
         <div class="col-lg-5  arial size14">
-            <input type="checkbox" id="check_experience" onclick=" levelExperiencesSetHidden(this.checked)">
+            <input type="checkbox" id="check_experience" onclick=" jobExperienceHidden(this.checked)">
             <label for="check_experience" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
         </div>
     </div><br>
         
     <div class="main-div-sections">
         
-            <form class="form-horizontal" autocomplete="on" method="post">
-                <div class="form-group form-inline">
+            <form class="form-horizontal" autocomplete="on" method="post" id="job_experience_group">
+                <div class="form-group form-inline" >
                     <div class="col-lg-5 ">
                         <div class="input-mic-container">
                             <input type="text" class="form-control" placeholder="Empresa" id="company" >
