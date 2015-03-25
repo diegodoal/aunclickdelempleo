@@ -9,6 +9,9 @@ import utils.Constants;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.List;
+import java.util.UUID;
+
+import utils.Files;
 import utils.cv.*;
 
 /**
@@ -18,7 +21,7 @@ public class Template1 {
 
     private Document document;
 
-    public void createPdf(String filePath, PersonalInformation personalInformation, String objetive,
+    public void createPdf(String path, PersonalInformation personalInformation, String objetive,
                           List<WorkExperience> experienceList,
                           List<Education> educationList,
                           List<AditionalEducation> aditionalEducationList,
@@ -27,7 +30,7 @@ public class Template1 {
                           List<Project> projectList,
                           OtherInformation otherInformation) throws FileNotFoundException, DocumentException {
         document = new Document(PageSize.A4);
-        PdfWriter.getInstance(document, new FileOutputStream(filePath));
+        PdfWriter.getInstance(document, new FileOutputStream(path));
 
         document.open();
 
