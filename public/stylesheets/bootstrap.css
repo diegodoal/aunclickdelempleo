@@ -6486,7 +6486,7 @@ button.close {
   margin-top:-1.2em;
   width: 100%;
   height: 20em;
-  background-image: url("../images/index/banner_login.jpg");
+  background-image: url("../images/orientation/portada-con-gente.png");
   background-repeat: no-repeat;
   background-size: 100% 20em;
 }
@@ -6836,7 +6836,7 @@ footer {
   margin-top:-1.2em;
   width: 100%;
   height: 20em;
-  background-image: url("../images/orientation/orientation_banner.png");
+  background-image: url("../images/orientation/portada-orientacion.png");
   background-repeat: no-repeat;
   background-size: 100% 20em;
 }

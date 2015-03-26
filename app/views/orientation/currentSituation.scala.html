@@ -1,6 +1,6 @@
 @(error_msg:String)
 @main(){
-<article class="container"
+<article class="container">
     <div class="row">
         <h2 class="red_adecco century_gothic">Conoce tu situación actual</h2>
         <div class="brown_adecco arial size14">
@@ -10,192 +10,186 @@
             <p>Actividad: Debes seleccionar cual es tu nivel de estudios y completar tu experiencia profesional si la tuvieras.</p>
         </div>
     </div><br>
-</article>        
-
-<section class="container back" style="margin: auto;">
- <div class="row">
-             <p class="century_gothic gray_adecco size22 bold" style="margin-left:1em;">¿Cuál es tu nivel de estudios?</p> <br>
-        	<div class="col-md-6 col-md-offset-1  col-xs-offset-1 col-sm-offset-1 col-sm-6 col-xs-6">
-        		@if(error_msg != ""){
-                <label class="size20 bold red_adecco">@error_msg</label>
-                }
-        	</div>
-        </div>
-    <div class="orientation-points">
-
-        <div class="row">
-            <div class="col-md-6 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-sm-6 col-xs-6">
-                <p>
-                    <input type="checkbox" id="check1" name="studies" onclick="hide_studies(this)" >
-                    <label for="check1" class="size14 gray_adecco arial steps_height">No tengo estudios. </label>
-                </p>
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-5">
-                <p>
-                    <input type="checkbox" id="check2" name="studies" class="study">
-                    <label for="check2" class="size14 gray_adecco arial steps_height">Grado. </label>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-sm-6 col-xs-6">
-                <p>
-                    <input type="checkbox" id="check3" name="studies" class="study">
-                    <label for="check3" class="size14 gray_adecco arial steps_height">PCPI / Garantía social. </label>
-                </p>
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-5">
-                <p>
-                    <input type="checkbox" id="check4" name="studies" class="study">
-                    <label for="check4" class="size14 gray_adecco arial steps_height">Licenciado / Arquitecto / Ingeniero. </label>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-sm-6 col-xs-6">
-                <p>
-                    <input type="checkbox" id="check5" name="studies" class="study">
-                    <label for="check5" class="size14 gray_adecco arial steps_height">Certificado de escolaridad / Graduado en ESO. </label>
-                </p>
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-5">
-                <p>
-                    <input type="checkbox" id="check6" name="studies" class="study">
-                    <label for="check6" class="size14 gray_adecco arial steps_height">Título propio / Carrera no homolagada. </label>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-sm-6 col-xs-6">
-                <p>
-                    <input type="checkbox" id="check7" name="studies" class="study">
-                    <label for="check7" class="size14 gray_adecco arial steps_height">BUP / Bachillerato / COU. </label>
-                </p>
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-5">
-                <p>
-                    <input type="checkbox" id="check8" name="studies" class="study">
-                    <label for="check8" class="size14 gray_adecco arial steps_height">Máster / Título propio de postgrado. </label>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-sm-6 col-xs-6">
-                <p>
-                    <input type="checkbox" id="check9" name="studies" class="study">
-                    <label for="check9" class="size14 gray_adecco arial steps_height">FP 1 / Técnico medio. </label>
-                </p>
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-5">
-                <p>
-                    <input type="checkbox" id="check10" name="studies" class="study">
-                    <label for="check10" class="size14 gray_adecco arial steps_height">Doctorado. </label>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-sm-6 col-xs-6">
-                <p>
-                    <input type="checkbox" id="check11" name="studies" class="study">
-                    <label for="check11" class="size14 gray_adecco arial steps_height">FP 2 / Técnico superior. </label>
-                </p>
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-5">
-                <p>
-                    <input type="checkbox" id="check12" name="studies" class="study">
-                    <label for="check12" class="size14 gray_adecco arial steps_height">Oposiciones. </label>
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-1  col-xs-offset-1 col-sm-offset-1 col-sm-6 col-xs-6">
-                <p>
-                    <input type="checkbox" id="check13" name="studies" class="study">
-                    <label for="check13" class="size14 gray_adecco arial steps_height">Diplomado / Arquitecto técnico / Ingeniero técnico. </label>
-                </p>
-            </div>
-            <div class="col-md-5 col-sm-5 col-xs-5">
-                <p>
-                    <input type="checkbox" id="check14" name="studies" class="study">
-                    <label for="check14" class="size14 gray_adecco arial steps_height">Otros Cursos. </label>
-                </p>
-            </div>
-        </div>
-    </div>
-   
-
-    <div class="row orientation-points">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-           <p class="century_gothic gray_adecco size22 bold advices_height" style="margin-left:1em;">¿Cuál es tu experiencia profesional?</p> <br>
-       </div>
-    </div>
-    
-
-<div class="panel-group new-input-container center" style="margin:auto;">
-		<form  class="form-horizontal" autocomplete="on" method="post" action="#" style="padding-left:2em; padding-right:2em;">
-		<div id="div_1" style="margin-bottom:5em;">
-			<div class="form-group form-inline">
-				<div class="col-md-6 col-sm-6 col-xs-6">
-					<div class="input-mic-container">
-	            		<input type="text" class="form-control" id="company1" placeholder="Empresa" >
-	            		<img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-	            	</div>
-				</div>
-				<div class="col-md-6 col-sm-6 col-xs-6">
-					<div class="input-mic-container">
-	            		<input type="text" class="form-control" id="job1" placeholder="Puesto">
-	            		<img  class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-					</div>
-				</div>
-			</div>
-			<div class="form-group form-inline">
-				<div class="col-md-6 col-sm-6 col-xs-6">
-	            	<select style="width:100%; margin-left:0;" class="form-control" name="select_experience" id="experience1">
-	                        <option value="">A�os de experiencia</option>
-	                        <option value="Pr�cticas"> Pr�cticas</option>
-	                        <option value="Menos de un a�o"> Menos de un a�o</option>
-	                        <option value="1-3 a�os"> 1-3 a�os</option>
-	                        <option value="3-5 a�os"> 3-5 a�os</option>
-	                        <option value="5-10 a�os"> 5-10 a�os</option>
-	                        <option value="+10 a�os"> +10 a�os</option>
-	                </select>
-                </div>
-           
-			
-				<div class="col-md-1 col-sm-1 col-xs-1 col-md-offset-3 col-sm-offset-3 col-offset-xs-3">
-					<img class="bt_plus" id="1" src="@routes.Assets.at("/images/orientation/ic_newinterview.png")">
-				</div>
-			</div>
-
-	 </div>
-		<!-- <button type="submit" class="boton">Save</button>   -->
-	 </form>
-</div>
-			
-
-
-
-
-
-</section>
-
-
-
-
+</article>
 
 <section class="container">
+    <div class="row orientation-points back checkbox-group">
+        <p class="century_gothic gray_adecco size22 bold" style="margin-left:1em;">¿Cuál es tu nivel de estudios?</p> <br>
+        <div class="col-md-6 col-md-offset-1  col-xs-offset-1 col-sm-offset-1 col-sm-6 col-xs-6">
+            @if(error_msg != ""){
+            <label class="size20 bold red_adecco">@error_msg</label>
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-1">
+                <p>
+                    <input type="checkbox" id="check1" name="studies" onclick="hide_studies(this)" >
+                    <label for="check1" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+                </p>
+            </div>
+
+            <div class="col-md-5">
+                <p>
+                    <input type="checkbox" id="check2" name="studies" class="study">
+                    <label for="check2" class="size14 gray_adecco arial steps_height">Grado </label>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-1">
+                <p>
+                    <input type="checkbox" id="check3" name="studies" class="study">
+                    <label for="check3" class="size14 gray_adecco arial steps_height">PCPI / Garantía social </label>
+                </p>
+            </div>
+
+            <div class="col-md-5">
+                <p>
+                    <input type="checkbox" id="check4" name="studies" class="study">
+                    <label for="check4" class="size14 gray_adecco arial steps_height">Licenciado / Arquitecto / Ingeniero </label>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-1">
+                <p>
+                    <input type="checkbox" id="check5" name="studies" class="study">
+                    <label for="check5" class="size14 gray_adecco arial steps_height">Certificado de escolaridad / Graduado en ESO </label>
+                </p>
+            </div>
+
+            <div class="col-md-5">
+                <p>
+                    <input type="checkbox" id="check6" name="studies" class="study">
+                    <label for="check6" class="size14 gray_adecco arial steps_height">Título propio / Carrera no homolagada </label>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-1">
+                <p>
+                    <input type="checkbox" id="check7" name="studies" class="study">
+                    <label for="check7" class="size14 gray_adecco arial steps_height">BUP / Bachillerato / COU </label>
+                </p>
+            </div>
+
+            <div class="col-md-5">
+                <p>
+                    <input type="checkbox" id="check8" name="studies" class="study">
+                    <label for="check8" class="size14 gray_adecco arial steps_height">Máster / Título propio de postgrado </label>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-1">
+                <p>
+                    <input type="checkbox" id="check9" name="studies" class="study">
+                    <label for="check9" class="size14 gray_adecco arial steps_height">FP 1 / Técnico medio </label>
+                </p>
+            </div>
+
+            <div class="col-md-5">
+                <p>
+                    <input type="checkbox" id="check10" name="studies" class="study">
+                    <label for="check10" class="size14 gray_adecco arial steps_height">Doctorado </label>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-1">
+                <p>
+                    <input type="checkbox" id="check11" name="studies" class="study">
+                    <label for="check11" class="size14 gray_adecco arial steps_height">FP 2 / Técnico superior </label>
+                </p>
+            </div>
+
+            <div class="col-md-5">
+                <p>
+                    <input type="checkbox" id="check12" name="studies" class="study">
+                    <label for="check12" class="size14 gray_adecco arial steps_height">Oposiciones</label>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-1">
+                <p>
+                    <input type="checkbox" id="check13" name="studies" class="study">
+                    <label for="check13" class="size14 gray_adecco arial steps_height">Diplomado / Arquitecto técnico / Ingeniero técnico </label>
+                </p>
+            </div>
+
+            <div class="col-md-5">
+                <p>
+                    <input type="checkbox" id="check14" name="studies" class="study">
+                    <label for="check14" class="size14 gray_adecco arial steps_height">Otros Cursos </label>
+                </p>
+            </div>
+        </div>
+        <div class="row orientation-points">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <p class="century_gothic gray_adecco size22 bold advices_height" style="margin-left:1em;">¿Cuál es tu experiencia profesional?</p> <br>
+            </div>
+        </div>
+
+        <div class="panel-group new-input-container center" style="margin:auto;">
+        <form  class="form-horizontal" autocomplete="on" method="post" action="#" style="padding-left:2em; padding-right:2em;">
+        <div id="div_1" style="margin-bottom:5em;">
+            <div class="form-group form-inline">
+                <div class="col-lg-6">
+                    <div class="input-mic-container">
+                        <input type="text" class="form-control" id="company1" placeholder="Empresa" >
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="input-mic-container">
+                        <input type="text" class="form-control" id="job1" placeholder="Puesto">
+                        <img  class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group form-inline">
+                <div class="col-lg-6">
+                    <select style="width:100%; margin-left:0;" class="form-control" name="select_experience" id="experience1">
+                            <option value="">Años de experiencia</option>
+                            <option value="Practicas"> Prácticas</option>
+                            <option value="Menos de un año"> Menos de un año</option>
+                            <option value="1-3 años"> 1-3 años</option>
+                            <option value="3-5 años"> 3-5 años</option>
+                            <option value="5-10 años"> 5-10 años</option>
+                            <option value="+10 años"> +10 años</option>
+                    </select>
+                </div>
+           
+            
+                <div class="col-lg-2 col-lg-offset-4">
+                    <img class="bt_plus" id="1" src="@routes.Assets.at("/images/orientation/ic_newinterview.png")">
+                </div>
+            </div>
+
+             </div>
+                <!-- <button type="submit" class="boton">Save</button>   -->
+             </form>
+        </div>
+
+        
+    </div>
+
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-        <form  role="form"  method="post">
-       		<input type="text" id="next_step" name="next_step" hidden>
-            <button type="submit" class="button-finish-1" id="finalizar" onclick="this.form.action = '@routes.OrientationController.submitCurrentSituation()'">FINALIZAR</button>
-        </form>    
-            
-            
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitInterestIdentification()';">FINALIZAR</button>
         </div>
     </div>
 </section>
+
 
 <script type="text/javascript">
       window.onload = function() {
