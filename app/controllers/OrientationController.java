@@ -7,8 +7,8 @@ import java.util.*;
 
 import models.S3File;
 import models.datasource.SingletonDataSource;
-
 import models.entities.User;
+import models.entities.orientation.CurrentSituation;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -32,16 +32,30 @@ public class OrientationController extends Controller {
 
     public static Result submitCurrentSituation(){
     	String error_msg = "";
-    	DynamicForm bindedForm = form().bindFromRequest();
-        String next_step = bindedForm.get("next_step");
+    	DynamicForm filledForm = form().bindFromRequest();
+        String next_step = filledForm.get("next_step");
         if(next_step.equals("no")){
         	error_msg = "*Por favor, selecciona tu nivel de estudios";
         	return ok(views.html.orientation.currentSituation.render(error_msg));
-        }
-      
+        } else {
+        	
+        	User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        		
+        	if (user != null) {
+        		
+        		user = new User(filledForm.get("company"), filledForm.get("job"), filledForm.get("select_experience"));
+            	
+        		//return badRequest("Contenido experiencia: Company: " + user.company + "Job: " + user.job + "Years experience: " + user.select_experience);
+        		
+                // Añadir a la lista la experiencia profesional del usuario
+        		user.currentSituation.addProfessionalExperience(user.company, user.job, user.select_experience);
+        		
+        		SingletonDataSource.getInstance().insertIntoCurrentSituationCollection(user);
+        	}
+        	
 	        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_CURRENT_SITUATION, String.valueOf(true));
 	        return redirect("/orientation");
-        
+        }
     }
 
     public static Result skills() {

@@ -87,6 +87,25 @@ public class SingletonDataSource {
         // Returns the new user
         return user;
     }
+    
+    // Añadido por Mikel. Faltan de añadir los de nivel de estudios
+    public static User insertIntoCurrentSituationCollection(User user){	
+    	DBCollection collection = connectDB("mongo.usersCollection");
+
+        // Create the query
+        BasicDBObject query = new BasicDBObject().
+                append(Constants.PROFESSIONAL_EXPERIENCE_COMPANY, user.company).
+                append(Constants.PROFESSIONAL_EXPERIENCE_JOB, user.job).
+                append(Constants.PROFESSIONAL_EXPERIENCE_EXPERIENCE_YEARS, user.select_experience);
+        collection.insert(WriteConcern.SAFE, query);
+
+        // Close connection
+        mongoClient.close();
+
+        // Returns the new user
+        return user;
+    	
+    }
 
     public static User getUserByEmail(String email){
         DBCollection collection = connectDB("mongo.usersCollection");

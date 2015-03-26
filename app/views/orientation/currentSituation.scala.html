@@ -1,6 +1,6 @@
 @(error_msg:String)
 @main(){
-<article class="container"
+<article class="container">
     <div class="row">
         <h2 class="red_adecco century_gothic">Conoce tu situación actual</h2>
         <div class="brown_adecco arial size14">
@@ -132,18 +132,18 @@
     
 
 <div class="panel-group new-input-container center" style="margin:auto;">
-		<form  class="form-horizontal" autocomplete="on" method="post" action="#" style="padding-left:2em; padding-right:2em;">
+		<form class="form-horizontal" autocomplete="on" method="post" action="#" style="padding-left:2em; padding-right:2em;">
 		<div id="div_1" style="margin-bottom:5em;">
 			<div class="form-group form-inline">
 				<div class="col-md-6 col-sm-6 col-xs-6">
 					<div class="input-mic-container">
-	            		<input type="text" class="form-control" id="company1" placeholder="Empresa" >
+	            		<input type="text" class="form-control" name="company" id="company1" placeholder="Empresa" >
 	            		<img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
 	            	</div>
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-6">
 					<div class="input-mic-container">
-	            		<input type="text" class="form-control" id="job1" placeholder="Puesto">
+	            		<input type="text" class="form-control" name="job" id="job1" placeholder="Puesto">
 	            		<img  class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
 					</div>
 				</div>
@@ -168,22 +168,20 @@
 			</div>
 
 	 </div>
-		<!-- <button type="submit" class="boton">Save</button>   -->
+	 
+	 <div class="form-group form-inline">
+	     <div class="col-md-8"></div>
+	     <div class="col-md-4 center">
+			 <input type="text" id="next_step" name="next_step" hidden>
+	         <button type="submit" class="button-finish-1" id="finalizar" onclick="this.form.action = '@routes.OrientationController.submitCurrentSituation()'">FINALIZAR</button>  
+	     </div>
+	 </div>
 	 </form>
 </div>
 			
-
-
-
-
-
 </section>
 
-
-
-
-
-<section class="container">
+<!-- <section class="container">
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
@@ -195,7 +193,7 @@
             
         </div>
     </div>
-</section>
+</section>-->
 
 <script type="text/javascript">
       window.onload = function() {
