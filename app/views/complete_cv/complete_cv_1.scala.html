@@ -14,13 +14,13 @@
     </div>
     <div class="row">
         <div class="col-md-12 col-xs-12 col-sm-12 ic_paso2">
-            <img src="@routes.Assets.at("images/complete_user_profile_1/ic_paso1.png")" class="ic_paso2">
+            <img src="@routes.Assets.at("images/complete_user_profile_1/ic_paso1.png")" class="ic_paso2" alt="Paso de Completar tu curriculum" title="Curriculum">
         </div>
     </div>
 </section>
 
 <div class="container">
-<article class="container">
+<section class="container">
 
 <!--Datos Personales-->
 
@@ -82,9 +82,9 @@
         </div>
     </div>
   </form>
-</article>
+</section>
 
-<article class="container">
+<section class="container">
 
     <!--Contacto-->
     <div class="row">
@@ -107,7 +107,8 @@
             </div>
         </div>
     </form>
-</article> <article class="container">
+</section>
+<section class="container">
 
     <!--Carnet-->
     <div class="row">
@@ -116,18 +117,18 @@
         </div>
     </div>
 
-    <form class="form-horizontal" role="form">
-      <div class="form-group orientation-points">
-        <div class="col-lg-5">
-
-          <input type="checkbox" id="check_license" onclick="licenseCertificateHidden(this.checked)">
-          <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
+    <div class="row orientation-points">
+        <div class="col-lg-5  arial size14">
+            <input type="checkbox" id="check_license" onclick=" licenseCertificateHidden(this.checked)">
+            <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
         </div>
-      </div>
+    </div><br>
 
-      <div class="form-group" id="license_certificate_group">
+    <form class="form-horizontal" autocomplete="on" method="post" id="license_group">
+
+      <div class="form-group" >
         <div class="col-lg-5">
-          <select  class="form-control" id="driving_license" name="driving_license">
+          <select  class="form-control" id="license_group" name="license_group">
               <option value="0" disabled selected="">Tipo de permiso de conducir</option>
               <option value="1">A1</option>
               <option value="2">A</option>
@@ -147,7 +148,9 @@
       </div>
     </form>
 
-</article>  <article class="container">
+</section>
+
+<section class="container">
 
 
      <!--Certificado-->
@@ -157,17 +160,17 @@
         </div>
     </div>
 
-    <form class="form-horizontal" role="form">
-      <div class="form-group orientation-points">
-        <div class="col-lg-5">
-          <input type="checkbox" id="check_certificate" name="certificate" onclick="enable_cb2(this)">
-          <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
+    <div class="row orientation-points">
+        <div class="col-lg-5  arial size14">
+            <input type="checkbox" id="check_certificate" onclick="disCertificateHidden(this.checked))">
+            <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
         </div>
-      </div>
+    </div><br>
 
+    <form class="form-horizontal" autocomplete="on" method="post" id="certificate_group">
       <div class="form-group">
         <div class="col-lg-5">
-          <select  class="form-control" id="driving_certificate" name="driving_certificate">
+          <select  class="form-control" id="certificate_group" name="certificate_group">
               <option value="0" disabled selected="">Tipo de certificado</option>
               <option value="1">Menos del 33%</option>
               <option value="2">Más del 33%</option>
@@ -176,11 +179,13 @@
         </div>
       </div>
     </form>
-</article> <section class="container">
+</section>
+
+<section class="container">
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <a href="@routes.StashController.cv2()" target="_blank"><button class="button-finish-1" >SIGUIENTE</button></a>
+           <button class="button-finish-1" onclick="location.href='@routes.StashController.cv2()';">SIGUIENTE</button>
         </div>
     </div>
 </section>
