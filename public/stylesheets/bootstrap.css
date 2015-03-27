@@ -6842,6 +6842,17 @@ footer {
 }
 
 
+/*Planning*/
+
+#planning_banner{
+  margin-top:-1.2em;
+  width: 100%;
+  height: 20em;
+  background-image: url("../images/orientation/Portada-planning.png");
+  background-repeat: no-repeat;
+  background-size: 100% 20em;
+}
+
 #opciones_1{
   margin: 1.2em;
 }
