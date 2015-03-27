@@ -1,10 +1,18 @@
 package controllers;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.mongodb.util.JSON;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
+import play.data.Form;
 import play.mvc.*;
 import utils.EmailUtil;
 import utils.Utils;
+
+import java.util.List;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
@@ -97,5 +105,6 @@ public class Application extends Controller {
 		EmailUtil.sendEmail(session, toEmail,"Confirmación de cuenta creada en www.aunclickdelempleo.com", message);
 		return ok("Se ha enviado un email a: " + toEmail+" .Por favor, revise su correo");
 	}
+
 
 }

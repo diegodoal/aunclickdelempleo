@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check1">
+                    <input type="checkbox" id="check1" value="Agricultura, Montes, Pesca, Mineria">
                     <label for="check1" class="size14 gray_adecco arial steps_height">Agricultura, Montes, Pesca, Mineria</label>
                 </p>
             </div>
@@ -312,7 +312,7 @@
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitInterestIdentification()';">FINALIZAR</button>
+            <button class="button-finish-1" onclick="sendCheckboxes()">FINALIZAR</button>
         </div>
     </div>
 </section>
@@ -321,5 +321,28 @@
     window.onload = function(){
         limitCheckboxes(5);
     };
+</script>
+
+<script>
+function sendCheckboxes(){
+    var checkboxArray = [];
+    var counter = 0;
+    $('input[type=checkbox]').each(function () {
+        if(this.checked){
+            checkboxArray[counter] = $(this).val();
+            counter++;
+        }
+    });
+
+    $.ajax({
+        type: 'post',
+        data: JSON.stringify(checkboxArray),
+        url: "/orientation/interestidentification",
+        contentType: 'application/json',
+        dataType: 'json'
+    }).done(function(o) {
+        window.location.assign("/orientation")
+    });
+}
 </script>
 }

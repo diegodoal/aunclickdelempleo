@@ -5,6 +5,9 @@ import static play.data.Form.form;
 import java.io.*;
 import java.util.*;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import models.S3File;
 import models.datasource.SingletonDataSource;
 
@@ -63,9 +66,15 @@ public class OrientationController extends Controller {
     }
 
     public static Result submitInterestIdentification(){
+        JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        List<String> interests = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {}.getType());
+
+        user.interests = interests;
         user.completedOrientationSteps.interestIdentification = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
+
         return redirect("/orientation");
     }
 
