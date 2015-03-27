@@ -170,4 +170,28 @@ public class SingletonDataSource {
         return date;
     }
 
+    public static void updateAllUserData(User user){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        BasicDBObject newDocument = new BasicDBObject();
+
+        newDocument.put(Constants.USER_NAME, user.name);
+        newDocument.put(Constants.USER_SURNAMES, user.surnames);
+        newDocument.put(Constants.USER_EMAIL, user.email);
+        newDocument.put(Constants.USER_PASSWORD, user.password);
+        newDocument.put(Constants.USER_EMAIL_VERIFICATION_KEY, user.emailVerificationKey);
+        newDocument.put(Constants.USER_CONNECTION_TIMESTAMP, user.connectionTimestamp);
+        newDocument.put(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson()));
+        newDocument.put(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString()));
+        newDocument.put(Constants.USER_SKILLS_LIST, JSON.parse(user.skillstoJson()));
+        newDocument.put(Constants.USER_INTERESTS_LIST, user.interests);
+        newDocument.put(Constants.USER_PERSONAL_CHARACTERISTICS_LIST, user.personalCharacteristics);
+        newDocument.put(Constants.USER_PROFESSIONAL_VALUES_LIST, JSON.parse(user.professionalValuesToJson()));
+        newDocument.put(Constants.USER_PHOTO, JSON.parse(user.photo.toJsonString()));
+        newDocument.put(Constants.USER_NEXT_INTERVIEWS_LIST, JSON.parse(user.interviewScheduleListToJson()));
+
+        collection.update(new BasicDBObject().append("email", user.email), newDocument);
+
+        mongoClient.close();
+    }
+
 }
