@@ -6,6 +6,8 @@ import play.data.DynamicForm;
 import play.mvc.Result;
 import utils.Utils;
 
+import java.util.Date;
+
 import static play.data.Form.form;
 import static play.mvc.Controller.session;
 import static play.mvc.Results.badRequest;
@@ -29,9 +31,13 @@ public class LoginController {
         User user = SingletonDataSource.getInstance().getUserByEmail(bindedForm.get("email"));
 
         if(user != null && Utils.encryptWithSHA1(bindedForm.get("password")).equals(user.password)){
+            user.connectionTimestamp = new Date().toString();
             session("email", user.email);
             session("name", user.name);
-            session("timestamp", SingletonDataSource.updateTimeStamp(user.email).toString());
+            session("timestamp", user.connectionTimestamp);
+
+            SingletonDataSource.getInstance().updateAllUserData(user);
+
             return redirect("/");
         }
 
@@ -59,9 +65,13 @@ public class LoginController {
                 filledForm.get("register_email"), filledForm.get("register_password"));
         SingletonDataSource.getInstance().insertIntoUsersCollection(userCreated);
 
+        userCreated.connectionTimestamp = new Date().toString();
+
         session("email", userCreated.email);
         session("name", userCreated.name);
-        session("timestamp", SingletonDataSource.updateTimeStamp(userCreated.email).toString());
+        session("timestamp", userCreated.connectionTimestamp);
+
+        SingletonDataSource.getInstance().updateAllUserData(userCreated);
 
         return redirect("/");
     }

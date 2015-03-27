@@ -134,40 +134,10 @@ public class SingletonDataSource {
         return resultList;
     }
 
-    public static void updateUserData(String email, String key, String newValue){
-        DBCollection collection = connectDB("mongo.usersCollection");
-        BasicDBObject query = new BasicDBObject().append("email", email);
-        DBObject user = collection.findOne(query);
-
-        if(user != null){
-            BasicDBObject updateQuery = new BasicDBObject().append("$set", new BasicDBObject().append(key, newValue));
-            collection.update(query, updateQuery);
-        }
-        mongoClient.close();
-    }
-
-    public static void deleteUserData(String email, String field){
-        DBCollection collection = connectDB("mongo.usersCollection");
-        BasicDBObject query = new BasicDBObject().append("email", email);
-        DBObject user = collection.findOne(query);
-
-        if(user != null){
-            BasicDBObject updateQuery = new BasicDBObject().append("$unset", new BasicDBObject().append(field, ""));
-            collection.update(query, updateQuery);
-        }
-        mongoClient.close();
-    }
-
     public static void dropUserCollection(){
         DBCollection myCollection = connectDB("mongo.usersCollection");
         myCollection.drop();
         mongoClient.close();
-    }
-
-    public static Date updateTimeStamp(String email){
-        Date date = new Date();
-        updateUserData(email, Constants.USER_CONNECTION_TIMESTAMP, date.toString());
-        return date;
     }
 
     public static void updateAllUserData(User user){
@@ -191,6 +161,20 @@ public class SingletonDataSource {
 
         collection.update(new BasicDBObject().append("email", user.email), newDocument);
 
+        mongoClient.close();
+    }
+
+    /* DO NOT USE. INSTEAD OF THIS METHOD, USE updateAllUserData()
+     */
+    public static void updateUserData(String email, String key, String newValue){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        BasicDBObject query = new BasicDBObject().append("email", email);
+        DBObject user = collection.findOne(query);
+
+        if(user != null){
+            BasicDBObject updateQuery = new BasicDBObject().append("$set", new BasicDBObject().append(key, newValue));
+            collection.update(query, updateQuery);
+        }
         mongoClient.close();
     }
 
