@@ -1,5 +1,6 @@
 @main(){
-
+<script type='text/javascript' src="@routes.Assets.at("javascripts/disableLicense.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/disableCertificate.js")"></script>
 <!--COMPLETE_CV_1-->
 <section class="container" id="text_user_profile_2">
     <div class="row">
@@ -83,8 +84,7 @@
     </div>
   </form>
 </section>
-
-<section class="container">
+ <section class="container">
 
     <!--Contacto-->
     <div class="row">
@@ -107,8 +107,7 @@
             </div>
         </div>
     </form>
-</section>
-<section class="container">
+</section> <section class="container">
 
     <!--Carnet-->
     <div class="row">
@@ -128,7 +127,7 @@
 
       <div class="form-group" >
         <div class="col-lg-5">
-          <select  class="form-control" id="license_group" name="license_group">
+          <select  class="form-control"  name="license_group">
               <option value="0" disabled selected="">Tipo de permiso de conducir</option>
               <option value="1">A1</option>
               <option value="2">A</option>
@@ -149,36 +148,35 @@
     </form>
 
 </section>
-
 <section class="container">
 
-
-     <!--Certificado-->
-    <div class="row">
-        <div class="col-md-12 arial gray_adecco size18 bold">
-        <p>Certificado de discapacidad</p>
+        <!--Certificado-->
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">
+                <p>Certificado de discapacidad</p>
+            </div>
         </div>
-    </div>
 
-    <div class="row orientation-points">
-        <div class="col-lg-5  arial size14">
-            <input type="checkbox" id="check_certificate" onclick="disCertificateHidden(this.checked))">
-            <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
-        </div>
-    </div><br>
+        <div class="row orientation-points">
+            <div class="col-lg-5  arial size14">
+                <input type="checkbox" id="check_certificate" onclick="disCertificateHidden(this.checked)">
+                <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
+            </div>
+        </div><br>
 
-    <form class="form-horizontal" autocomplete="on" method="post" id="certificate_group">
-      <div class="form-group">
-        <div class="col-lg-5">
-          <select  class="form-control" id="certificate_group" name="certificate_group">
-              <option value="0" disabled selected="">Tipo de certificado</option>
-              <option value="1">Menos del 33%</option>
-              <option value="2">Más del 33%</option>
-              <option value="3">Más del 66%</option>
-          </select>
-        </div>
-      </div>
-    </form>
+        <form class="form-horizontal" autocomplete="on" method="post" id="certificate_group">
+
+            <div class="form-group" >
+                <div class="col-lg-5">
+                    <select  class="form-control"  name="certificate_group">
+                        <option value="0" disabled selected="">Tipo de certificado</option>
+                        <option value="1">Menos del 33%</option>
+                        <option value="2">Más del 33%</option>
+                        <option value="3">Más del 66%</option>
+                    </select>
+                </div>
+            </div>
+        </form>
 </section>
 
 <section class="container">
