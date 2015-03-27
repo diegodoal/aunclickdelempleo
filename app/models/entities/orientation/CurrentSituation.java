@@ -14,13 +14,12 @@ public class CurrentSituation {
 
     public List<String> educationLevelList;
     public List<ProfessionalExperience> professionalExperienceList;
-
-
+    
     public CurrentSituation(){
         this.educationLevelList = new ArrayList<>();
         this.professionalExperienceList = new ArrayList<>();
     }
-
+    
     public CurrentSituation(List<String> educationLevelList, List<ProfessionalExperience> professionalExperienceList){
         this.educationLevelList = educationLevelList;
         this.professionalExperienceList = professionalExperienceList;

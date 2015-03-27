@@ -3,6 +3,7 @@ package models.entities;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+
 import models.entities.orientation.*;
 import utils.Utils;
 
@@ -35,6 +36,8 @@ public class User {
     public List<ProfessionalValue> professionalValues;
     public Photo photo;
     public List<InterviewSchedule> interviewScheduleList;
+    
+    
 
     public User(){
         this.emailVerificationKey = UUID.randomUUID().toString();
@@ -48,8 +51,10 @@ public class User {
         this.photo = new Photo();
         this.interviewScheduleList = new ArrayList<>();
     }
+    
+    
 
-    public User(String name,String surnames, String email, String password){
+    public User(String name, String surnames, String email, String password){
         this.name = name;
         this.surnames = surnames;
         this.email = email;

@@ -87,6 +87,7 @@ public class SingletonDataSource {
         // Returns the new user
         return user;
     }
+   
 
     public static User getUserByEmail(String email){
         DBCollection collection = connectDB("mongo.usersCollection");
