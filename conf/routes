@@ -76,3 +76,6 @@ GET     /orientation/level                          controllers.OrientationContr
 GET     /orientation/level/submit                   controllers.OrientationController.submitLevel()
 GET     /orientation/reputation                     controllers.OrientationController.reputation()
 GET     /orientation/reputation/submit              controllers.OrientationController.submitReputation()
+
+#Planning
+GET    /planning                                   controllers.PlanningController.plan()
