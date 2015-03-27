@@ -38,9 +38,12 @@ public class OrientationController extends Controller {
         	error_msg = "*Por favor, selecciona tu nivel de estudios";
         	return ok(views.html.orientation.currentSituation.render(error_msg));
         }
-      
-	        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_CURRENT_SITUATION, String.valueOf(true));
-	        return redirect("/orientation");
+
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.currentSituation = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
+
+        return redirect("/orientation");
         
     }
 
@@ -49,7 +52,9 @@ public class OrientationController extends Controller {
     }
 
     public static Result submitSkills(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_SKILLS, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.skills = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
@@ -58,21 +63,27 @@ public class OrientationController extends Controller {
     }
 
     public static Result submitInterestIdentification(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_INTEREST_IDENTIFICATION, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.interestIdentification = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result personal() { return ok(views.html.orientation.personal.render()); }
 
     public static Result submitPersonal(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_PERSONAL, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.personal = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result professional() { return ok(views.html.orientation.professional.render()); }
 
     public static Result submitProfessional(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_PROFESSIONAL, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.professional = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
@@ -116,8 +127,10 @@ public class OrientationController extends Controller {
         s3File.file = temp;
         s3File.save();
 
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_PHOTO, String.valueOf(true));
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_PHOTO_ID, photo_id);
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.photo.id = photo_id;
+        user.completedOrientationSteps.photo = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
@@ -125,21 +138,27 @@ public class OrientationController extends Controller {
     public static Result channels(){return ok(views.html.orientation.channels.render());}
 
     public static Result submitChannels(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_CHANNELS, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.channels = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result learnTools() { return ok(views.html.orientation.learntools.render()); }
 
     public static Result submitLearnTools(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_LEARN_TOOLS, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.learnTools = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result getTools() { return ok(views.html.orientation.gettools.render()); }
 
     public static Result submitGetTools(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_GET_TOOLS, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.getTools = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
@@ -147,28 +166,36 @@ public class OrientationController extends Controller {
     public static Result tinterview() { return ok(views.html.orientation.tinterview.render()); }
 
     public static Result submitTinterview(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_T_INTERVIEW, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.tInterview = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result pinterview() { return ok(views.html.orientation.pinterview.render()); }
 
     public static Result submitPinterview(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_P_INTERVIEW, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.pInterview = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result actinterview() { return ok(views.html.orientation.actinterview.render()); }
 
     public static Result submitActInterview(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_ACT_INTERVIEW, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.actInterview = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result questionsinterview() { return ok(views.html.orientation.questionsinterview.render()); }
 
     public static Result submitQuestionsInterview(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_QUESTIONS_INTERVIEW, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.questionsInterview = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
@@ -176,14 +203,18 @@ public class OrientationController extends Controller {
     public static Result deadline(){return ok(views.html.orientation.deadline.render());}
 
     public static Result submitDeadLine(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_DEADLINE, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.deadLine = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result travel(){return ok(views.html.orientation.travel.render());}
 
     public static Result submitTravel(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_TRAVEL, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.travel = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
@@ -191,28 +222,36 @@ public class OrientationController extends Controller {
     public static Result specialization() { return ok(views.html.orientation.specialization.render()); }
 
     public static Result submitSpecialization(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_SPECIALIZATION, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.specialization = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result bestdeals() { return ok(views.html.orientation.bestdeals.render()); }
 
     public static Result submitBestDeals(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_BEST_DEALS, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.bestDeals = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result level() { return ok(views.html.orientation.level.render()); }
 
     public static Result submitLevel(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_LEVEL, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.level = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
     public static Result reputation() { return ok(views.html.orientation.reputation.render()); }
 
     public static Result submitReputation(){
-        SingletonDataSource.getInstance().updateUserData(session().get("email"), Constants.USER_ORIENTATION_STEPS_REPUTATION, String.valueOf(true));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.reputation = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 }

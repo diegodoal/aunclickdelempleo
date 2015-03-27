@@ -134,6 +134,38 @@ public class SingletonDataSource {
         return resultList;
     }
 
+    public static void dropUserCollection(){
+        DBCollection myCollection = connectDB("mongo.usersCollection");
+        myCollection.drop();
+        mongoClient.close();
+    }
+
+    public static void updateAllUserData(User user){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        BasicDBObject newDocument = new BasicDBObject();
+
+        newDocument.put(Constants.USER_NAME, user.name);
+        newDocument.put(Constants.USER_SURNAMES, user.surnames);
+        newDocument.put(Constants.USER_EMAIL, user.email);
+        newDocument.put(Constants.USER_PASSWORD, user.password);
+        newDocument.put(Constants.USER_EMAIL_VERIFICATION_KEY, user.emailVerificationKey);
+        newDocument.put(Constants.USER_CONNECTION_TIMESTAMP, user.connectionTimestamp);
+        newDocument.put(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson()));
+        newDocument.put(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString()));
+        newDocument.put(Constants.USER_SKILLS_LIST, JSON.parse(user.skillstoJson()));
+        newDocument.put(Constants.USER_INTERESTS_LIST, user.interests);
+        newDocument.put(Constants.USER_PERSONAL_CHARACTERISTICS_LIST, user.personalCharacteristics);
+        newDocument.put(Constants.USER_PROFESSIONAL_VALUES_LIST, JSON.parse(user.professionalValuesToJson()));
+        newDocument.put(Constants.USER_PHOTO, JSON.parse(user.photo.toJsonString()));
+        newDocument.put(Constants.USER_NEXT_INTERVIEWS_LIST, JSON.parse(user.interviewScheduleListToJson()));
+
+        collection.update(new BasicDBObject().append("email", user.email), newDocument);
+
+        mongoClient.close();
+    }
+
+    /* DO NOT USE. INSTEAD OF THIS METHOD, USE updateAllUserData()
+     */
     public static void updateUserData(String email, String key, String newValue){
         DBCollection collection = connectDB("mongo.usersCollection");
         BasicDBObject query = new BasicDBObject().append("email", email);
@@ -144,30 +176,6 @@ public class SingletonDataSource {
             collection.update(query, updateQuery);
         }
         mongoClient.close();
-    }
-
-    public static void deleteUserData(String email, String field){
-        DBCollection collection = connectDB("mongo.usersCollection");
-        BasicDBObject query = new BasicDBObject().append("email", email);
-        DBObject user = collection.findOne(query);
-
-        if(user != null){
-            BasicDBObject updateQuery = new BasicDBObject().append("$unset", new BasicDBObject().append(field, ""));
-            collection.update(query, updateQuery);
-        }
-        mongoClient.close();
-    }
-
-    public static void dropUserCollection(){
-        DBCollection myCollection = connectDB("mongo.usersCollection");
-        myCollection.drop();
-        mongoClient.close();
-    }
-
-    public static Date updateTimeStamp(String email){
-        Date date = new Date();
-        updateUserData(email, Constants.USER_CONNECTION_TIMESTAMP, date.toString());
-        return date;
     }
 
 }
