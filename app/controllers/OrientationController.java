@@ -34,7 +34,8 @@ public class OrientationController extends Controller {
     }
 
     public static Result submitCurrentSituation(){
-    	String error_msg = "";
+    	/*
+        String error_msg = "";
     	DynamicForm bindedForm = form().bindFromRequest();
         String next_step = bindedForm.get("next_step");
         if(next_step.equals("no")){
@@ -43,6 +44,24 @@ public class OrientationController extends Controller {
         }
 
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        user.completedOrientationSteps.currentSituation = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
+
+        return redirect("/orientation");
+        */
+
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        //Get Professional Experience
+        String[][] interests = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {}.getType());
+
+        for(int i=0; i<interests.length; i++){
+            if(!interests[i][0].equals("") && !interests[i][1].equals("")){
+                user.currentSituation.addProfessionalExperience(interests[i][0], interests[i][1], interests[i][2]);
+            }
+        }
+
         user.completedOrientationSteps.currentSituation = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
 

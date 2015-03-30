@@ -19,7 +19,7 @@ GET     /orientation                                controllers.OrientationContr
 
 # PUNTO 1: CONOCETE A TI MISMO
 GET     /orientation/currentsituation 				controllers.OrientationController.currentsituation()
-POST    /orientation/currentsituation/submit        controllers.OrientationController.submitCurrentSituation()
+POST    /orientation/currentsituation               controllers.OrientationController.submitCurrentSituation()
 GET     /orientation/skills							controllers.OrientationController.skills()
 GET     /orientation/skills/submit                  controllers.OrientationController.submitSkills()
 GET     /orientation/interestidentification         controllers.OrientationController.interestIdentification()

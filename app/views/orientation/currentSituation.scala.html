@@ -170,7 +170,7 @@
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitCurrentSituation()';">FINALIZAR</button>
+            <button class="button-finish-1" onclick="sendForm()">FINALIZAR</button>
         </div>
     </div>
 </section>
@@ -180,5 +180,43 @@
         addNew();
         loadRecognition();
     };
+</script>
+
+<script>
+    function sendForm(){
+        //Checkboxes
+        var checkboxArray = [];
+        var counter = 0;
+        $('input[type=checkbox]').each(function () {
+            if(this.checked){
+                checkboxArray[counter] = $(this).val();
+                counter++;
+            }
+        });
+
+        //Professional experience
+        var experienceArray = [];
+        counter = 0;
+        $('.main-div-sections .form-horizontal').each(function(){
+            var auxExperience = [];
+            $(this).find('input').each(function(){
+                console.log($(this).val());
+                auxExperience[counter] = $(this).val();
+                counter++;
+            });
+            auxExperience[counter] = $(this).find('select option:selected').text();
+            counter = 0;
+            experienceArray.push(auxExperience);
+        });
+
+        $.ajax({
+        type: 'post',
+        data: JSON.stringify(experienceArray),
+        url: "/orientation/currentsituation",
+        contentType: 'application/json'
+    }).done(function(o) {
+        window.location.assign("/orientation");
+    });
+    }
 </script>
 }
