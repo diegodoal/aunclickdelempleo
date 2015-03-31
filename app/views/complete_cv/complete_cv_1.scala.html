@@ -35,50 +35,53 @@
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
             
-            <input type="text" name='register_name' class="form-control" id="name"  required="required" placeholder="Nombre">
+            <input type="text" name='register_name' class="form-control" id="name" value="Nombre" required="required" placeholder="Nombre">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+
+
+
             
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="surname" required="required" placeholder="Apellidos">
+            <input type="text" class="form-control" id="surname" value="Apellidos" required="required" placeholder="Apellidos">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="date" required="required"  placeholder="Fecha de nacimiento" >
+            <input type="text" class="form-control" id="date" required="required" value="Fecha de nacimiento" placeholder="Fecha de nacimiento" >
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="register_city" required="required"  placeholder="Ciudad de residencia">
+            <input type="text" class="form-control" id="register_city" value="Ciudad de residencia" required="required"  placeholder="Ciudad de residencia">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="dress" required="required"  placeholder="Calle">
+            <input type="text" class="form-control" id="dress" value="Calle" required="required"  placeholder="Calle">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="number" required="required"  placeholder="Número">
+            <input type="text" class="form-control" id="number" value="Numero" required="required"  placeholder="Número">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="post" class="form-control" id="post" placeholder="Código postal">
+            <input type="post" class="form-control" id="post" value="Codigo postal" placeholder="Código postal">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
@@ -96,13 +99,13 @@
     <form class="form-horizontal" role="form">
         <div class="form-group">
             <div class="col-lg-5">
-                <input type="email" name='email' class="form-control" id="access_email" required="required" placeholder="Correo electrónico">
+                <input type="email" name='email' class="form-control" id="access_email" value="Correo electronico" required="required" placeholder="Correo electrónico">
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="telephone"placeholder="Telefono de contacto">
+            <input type="text" class="form-control" id="telephone" value="Telefono de contacto" placeholder="Teléfono de contacto">
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
             </div>
         </div>
@@ -118,7 +121,7 @@
 
     <div class="row orientation-points">
         <div class="col-lg-5  arial size14">
-            <input type="checkbox" id="check_license" onclick=" licenseCertificateHidden(this.checked)">
+            <input type="checkbox" id="check_license" value="No tengo carnet" onclick=" licenseCertificateHidden(this.checked)">
             <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
         </div>
     </div><br>
@@ -159,7 +162,7 @@
 
         <div class="row orientation-points">
             <div class="col-lg-5  arial size14">
-                <input type="checkbox" id="check_certificate" onclick="disCertificateHidden(this.checked)">
+                <input type="checkbox" id="check_certificate" value="No tengo certificao"  onclick="disCertificateHidden(this.checked)">
                 <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
             </div>
         </div><br>
