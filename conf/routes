@@ -21,7 +21,7 @@ GET     /orientation                                controllers.OrientationContr
 GET     /orientation/currentsituation 				controllers.OrientationController.currentsituation()
 POST    /orientation/currentsituation               controllers.OrientationController.submitCurrentSituation()
 GET     /orientation/skills							controllers.OrientationController.skills()
-GET     /orientation/skills/submit                  controllers.OrientationController.submitSkills()
+POST    /orientation/skills          		        controllers.OrientationController.submitSkills()
 GET     /orientation/interestidentification         controllers.OrientationController.interestIdentification()
 POST    /orientation/interestidentification         controllers.OrientationController.submitInterestIdentification()
 GET     /orientation/personal						controllers.OrientationController.personal()
