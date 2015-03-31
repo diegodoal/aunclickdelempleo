@@ -141,3 +141,12 @@
  float: right;
 }
 
+
+
+/*IMG RESPONSIVE2*/
+ .img-responsive2{
+   display: block;
+   max-width: 100%;
+   height: auto;
+
+ }
