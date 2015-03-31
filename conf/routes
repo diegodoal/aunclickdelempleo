@@ -25,7 +25,7 @@ GET     /orientation/skills/submit                  controllers.OrientationContr
 GET     /orientation/interestidentification         controllers.OrientationController.interestIdentification()
 POST    /orientation/interestidentification         controllers.OrientationController.submitInterestIdentification()
 GET     /orientation/personal						controllers.OrientationController.personal()
-GET     /orientation/personal/submit                controllers.OrientationController.submitPersonal()
+POST    /orientation/personal		                controllers.OrientationController.submitPersonal()
 GET     /orientation/professional					controllers.OrientationController.professional()
 GET     /orientation/professional/submit            controllers.OrientationController.submitProfessional()
 GET     /orientation/photo                          controllers.OrientationController.photo()

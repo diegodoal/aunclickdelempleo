@@ -100,9 +100,15 @@ public class OrientationController extends Controller {
     public static Result personal() { return ok(views.html.orientation.personal.render()); }
 
     public static Result submitPersonal(){
-        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+    	JsonNode request = request().body().asJson();
+    	User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+    	
+    	List<String> personalCharacteristics = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {}.getType());
+    	
+    	user.personalCharacteristics = personalCharacteristics;
         user.completedOrientationSteps.personal = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
+        
         return redirect("/orientation");
     }
 
