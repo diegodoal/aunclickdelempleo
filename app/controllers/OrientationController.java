@@ -14,6 +14,7 @@ import models.entities.orientation.Skill;
 
 import org.apache.commons.codec.binary.Base64;
 
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -31,39 +32,27 @@ public class OrientationController extends Controller {
     }
 
     public static Result submitCurrentSituation(){
-    	/*
-        String error_msg = "";
-    	DynamicForm bindedForm = form().bindFromRequest();
-        String next_step = bindedForm.get("next_step");
-        if(next_step.equals("no")){
-        	error_msg = "*Por favor, selecciona tu nivel de estudios";
-        	return ok(views.html.orientation.currentSituation.render(error_msg));
-        }
-
-        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.currentSituation = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
-
-        return redirect("/orientation");
-        */
-
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
-        //Get Professional Experience
-        String[][] interests = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {}.getType());
 
-        for(int i=0; i<interests.length; i++){
-            if(!interests[i][0].equals("") && !interests[i][1].equals("")){
-                user.currentSituation.addProfessionalExperience(interests[i][0], interests[i][1], interests[i][2]);
+        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+        for(int i=0; i<result.length-1; i++){
+            if(!user.currentSituation.educationLevelList.contains(result[i])){
+                user.currentSituation.addEducationLevel(result[i]);
             }
+        }
+
+        String[][] experience = new Gson().fromJson(result[result.length-1].toString(), new TypeToken<String[][]>() {}.getType());
+        for(int i=0; i<experience.length; i++){
+            user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2]);
         }
 
         user.completedOrientationSteps.currentSituation = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
 
         return redirect("/orientation");
-        
+
     }
 
     public static Result skills() {
@@ -164,9 +153,11 @@ public class OrientationController extends Controller {
         s3File.save();
 
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.photo.id = photo_id;
-        user.completedOrientationSteps.photo = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user!= null){
+            user.photo.id = photo_id;
+            user.completedOrientationSteps.photo = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
