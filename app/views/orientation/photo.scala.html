@@ -1,0 +1,144 @@
+@main(){
+<section class="container">
+    <div class="row">
+        <h2 class="title">Hazte una foto</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="sub-title">Cuida los detalles</h2>
+            <p class="text-brown">Elegir la vestimenta correcta, el color que te favorezca, el peinado y poner mucha importancia en los detalles del arreglo personal, puede potencializar tu imagen.</p>
+            <p class="text-brown">Una buena foto de curriculum no va a ser una razón por la que te seleccionen, aunque sí puede ayudarte. Lo que está claro es que una mala imagen puede ser un motivo por el que te descarten.</p>
+            <p class="text-brown">Vístete con colores lisos y neutros, oscuros o claros, los dos son adecuados pero eso marcará también tu personalidad en la imagen. Lleva ropa atemporal, ni demasiado de verano ni de demasiado abrigo. No muestres marcas que puedan encasillarte.</p>
+        </div>
+
+        <div class="col-md-6">
+            <h2 class="sub-title">Sé natural</h2>
+            <p class="text-brown">Una simple pose puede decir más que mil palabras. Sonreir suaviza la expresión de tu rostro y crea confianza.</p>
+            <p class="text-brown">Utiliza la postura que te sea más cómoda pero trata de ser profesional.
+                <br>¿Sonreir o no sonreir? Lo importante es que te sientas tu mismo pero sin forzar el gesto de tu cara.</p>
+                <p class="text-brown">Si por más que intentas no logras una fotografía que te represente, quizá sea tiempo de considerar invertir en un servicio profesional para obtener mejores resultados.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <p class="text-dark-brown padding-left-column">Actividad: Elige o hazte una fotografía adecuada para tu búsqueda de empleo. Tienes dos opciones:</p>
+        </div>
+
+        <div class="row">
+            <br><br>
+
+            <div class="col-md-6">
+                <h2 class="sub-title">Sube una fotografía</h2>
+                <div class="center drag-drop-input center" id="drag-drop-input">
+                    <h2 class="sub-title hidden-xs">Arrastra los archivos aquí</h2>
+                    <p class="text-dark-brown hidden-xs">- o bien -</p>
+                    <div class="myfileupload-buttonbar">
+                        <label class="upload-file-button button-brown-1">
+                            <span >Selecciona archivos</span>
+                            <input id="upload_photo" type="file" name="files[]" />
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6 hidden-xs">
+                <h2 class="sub-title">Hazte una fotografía</h2>
+                <p class="text-brown">Si quieres hacerte una fotografía aquí lo que necesitas es una WebCam.</p>
+                <div class="center">
+                    <button class="button-brown-1" data-toggle="modal" data-target="#photoTakingModal" onclick="takePhoto()">Hacer fotografía ahora</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="sub-title">Esta es tu foto:</h2>
+                <div class="canvas-container custom-canvas-background" style="margin-right:2.5em;">
+                <div class="center">
+                    <img class="center hidden" src="@routes.Assets.at("images/orientation/photo/ic_profile.png")">
+                    <canvas id="mainCanvas" width="137" height="162" style="background-color: white;"></canvas>
+                </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-6" >
+                <div class="row">
+                    <button type="button" class="button-accept" onclick="downloadPhoto()">GUARDAR</button>
+                </div>
+                <div class="row">
+                    <button type="button" class="button-cancel" onclick="cleanCanvas()">CANCELAR</button>
+                </div>
+            </div>
+        </div>
+
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
+            <button class="button-finish-1" onclick="finishPhoto()">FINALIZAR</button>
+        </div>
+    </div>
+
+    </section>
+
+    <!-- MODALS -->
+
+    <!-- PHOTO-TAKING MODAL -->
+    <div class="modal fade" id="photoTakingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom-modal">
+
+            <div>
+                <h2 class="sub-title">Hazte una fotografía</h2>
+                <p class="text-brown">Si quieres hacerte una fotografía aquí lo que necesitas es una WebCam y permitir la utilización de ésta.</p>
+                <div class="row">
+                    <div class="col-md-6 center">
+                        <div class="canvas-container">
+                            <video id="video" width="400" height="400"></video>
+                        </div>
+                        <div class="row">
+                            <button class="button-brown-1 button-modal" id="takePhotoButton">Hacer fotografía ahora</button>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 center">
+                        <div class="canvas-container custom-canvas-background">
+                            <canvas id="canvasModal"></canvas>
+                        </div>
+                        <div class="row">
+                            <button type="button" id="acceptPhotoButton" class="button-accept button-modal" data-dismiss="modal">ACEPTAR</button>
+                        </div>
+                        <div class="row">
+                            <button type="button" id="cancelPhotoButton" class="button-cancel button-modal" data-dismiss="modal">CANCELAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF PHOTO-TAKING MODAL -->
+
+    <!-- UPLOADING PHOTO MODAL -->
+    <div class="modal fade" id="photoUploadingModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <p id="photoUploadingText">Subiendo foto...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF UPLOADING PHOTO MODAL -->
+
+    <script>
+    window.onload = function() {
+        cleanCanvas();
+        drawFromInput();
+        dragPhoto();
+    };
+    </script>
+
+}

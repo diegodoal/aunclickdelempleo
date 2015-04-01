@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>A un click del empleo</title>
+  <meta charset="utf-8">
+  <link href="css/style_nav.css"rel='stylesheet' type='text/css'/>
+</head>
+
+<body>
+  
+
+    <!-- MENU -->
+  <nav>
+    <a href="index.html"><img id="img_corporative" src="images/corporative.jpg"></a>
+    <ul>
+      <li><a href="#"><img src="images/ic_adaptabilidad2.png"></a></li>
+      <li>Nombre de la empresa</li>
+      <li><a href="index.html">Salir</a></li>
+    </ul>
+  </nav>
+
+  <!-- INBOX -->
+  <section>
+    <h3><a href="#">Mis mensajes</a></h3>
+  </section>
+
+  <!-- BUTTONS ADD NEW OFFERS-->
+  <div>
+    <input type="button" value="Añadir oferta de empleo">
+    <input type="button" value="Añadir curso">
+  </div>
+
+  <!-- OFFERS STATUS -->
+  <section>
+    <!-- STATUS HEADER -->
+    <div>
+      <h3>SITUACIÓN DE LAS OFERTAS</h3>
+      <!-- OFFER FILTER-->
+      <div>
+        Ordenar por: <select name="order_option">
+                <option value="more_recent">Más reciente</option>
+                <option value="abc">Alfabético</option>
+              </select>
+        <input type="search" name="search_text" placeholder="Buscar">
+        <input type="button" value="Buscar">
+      </div>
+    </div>
+
+    <!-- ITEM -->
+    <div>
+      <h4>Título de la oferta</h4>
+      <p>Número de candidatos: X</p>
+      <p>Fecha límite: dd/mm/yyyy</p>
+      <!-- EDIT OFFER BUTTONS-->
+      <div>
+        <input type="button" value="Editar">
+        <input type="button" value="Borrar">
+      </div>
+    </div>
+  </section>
+</body>
+</html>

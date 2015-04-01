@@ -1,0 +1,62 @@
+@main(){
+<article class="container">
+    <div class="row">
+        <h2 class="red_adecco century_gothic">Realiza cursos para especializarte</h2>
+        <div class="brown_adecco arial size14">
+            <p>Formarse es una actividad necesaria para realizar cualquier tipo de trabajo, la mejor manera de lograr el trabajo que deseas es tener una formación adecuada.</p>
+            <p>Se trata de una herramienta para hacer “que las cosas sucedan”.</p>
+
+
+        </div><br><br>
+        <div class="arial size16 gray_adecco">
+            Actividad: Lee detalladamente los consejos que te damos y revisa de manera habitual los diferentes sitios de busqueda de cursos.
+        </div>
+    </div><br>
+</article>
+
+<section class="container">
+    <div class="back">
+        <p class="century_gothic size22 bold gray_adecco">Realizar cursos te permitirá:</p>
+        <div class="arial size14 gray_adecco">
+            <ul>
+                <li>Ser mejor competidor:<p class="arial size12 gray_adecco" >La empleabilidad pasa necesariamente por la formación. Eso supone mejorar uno mismo, y hacerlo también respecto a la competencia a la que nos enfrentamos para poder en la medida de lo posible mantener nuestro trabajo por convertirnos en un valor seguro para nuestra empresa, o en caso de estar en desempleo , ser el mejor candidato para un puesto de trabajo.
+                    Sucede además, que lo que aprendas gracias la formación, ese saber hacer, el conocimiento y la experiencia que adquieras no sólo no te lo pueden arrebatar, además es lo más valioso que tienes. </p></li>
+                <li>Ampliar currículum:<p class="arial size12 gray_adecco">Tanto si te planteas especializarte, aprender idiomas, cambiar de oficio o simplemente por ampliar curriculum, realizar cursos siempre es una buena opción.</p></li>
+                <li>Invertir en tu futuro:<p class="arial size12 gray_adecco">Aunque la creencia más extendida es que la formación “cuesta” y que a veces es cara, sin embargo deberíamos pensar en ella como una forma de invertir que además, no necesita demasiado tiempo para ver sus frutos.
+                    Todos, o casi todos, los puestos de trabajo tienen requisitos no solo de experiencia, también de formación, así que intenta hacer un ejercicio, piensa en qué cursos has hecho y cuáles te abrieron realmente puertas para conseguir alguno de los puestos que has desempeñado, seguramente haya alguno a los que no los encuentres una utilidad directa tan clara, pero siempre hay algún curso-llave que hizo que se abriera alguna puerta.</p></li>
+                <li>Renovarte:<p class="arial size12 gray_adecco">Formarse es una necesidad permanente. La formación se queda obsoleta en unos 2 o 3 años así que para continuar en el mercado laboral no queda más remedio que embarcarse de lleno en la aventura de la formación continua.</p></li>
+             </ul>
+        </div>
+    </div>
+</section><br>
+
+<section class="container">
+    <div class="back">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center; margin-bottom:2em;">
+                <a href="http://ofertas.adecco.es/candidato/ofertas/Ofertas.aspx?Accesible=false" target="_blank"><img src="@routes.Assets.at("images/orientation/ic_adecco.png")"></a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center; margin-bottom:2em;">
+                <a href="https://ofertas.fundacionadecco.es/candidato/ofertas/ofertas.aspx" target="_blank"><img src="@routes.Assets.at("images/orientation/ic_fundacionadecco.png")"></a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center; margin-bottom:2em;">
+                <a href="http://www.infoempleo.com/" target="_blank"><img src="@routes.Assets.at("images/orientation/#ic_infoempleo.png")"></a>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12" style="text-align:center; margin-bottom:2em;">
+                <a href="https://www.google.es/" target="_blank"><img src="@routes.Assets.at("images/orientation/ic_otros.png")"></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitSpecialization()';">FINALIZAR</button>
+        </div>
+    </div>
+</section>
+}
+
+

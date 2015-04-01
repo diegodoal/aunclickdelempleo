@@ -1,0 +1,68 @@
+@main(){
+<article class="container">
+    <div class="row">
+        <h2 class="red_adecco century_gothic">Planifica tus próximas entrevistas</h2>
+        <div class="brown_adecco arial size14">
+            <p>Desde Fundación Adecco queremos ayudarte a planificar tus entrevistas para que consigas pasar con éxito éstas. La entrevista es uno de los puntos más importantes de la búsqueda de empleo por eso debes planificarla al detalle.</p>
+            <p>La empresa que te vaya a entrevistar te dirá cuando será la entrevista y tu debes ponerlo a continuación. Esto te ayudará a planificarte tanto a corto como a largo plazo gracias a los consejos y notificaciones que Fundación Adecco te enviará.</p>
+        </div><br><br>
+        <div class="arial size16 gray_adecco">
+            Actividad:Añade todas las entrevistas que tengas para que Fundación Adecco pueda mandarte consejos y notificaciones unos días antes.
+        </div><br>
+    </div>
+</article>
+<div class="main-div-sections">
+    <section class="panel-group container back new-input-container center" style="margin-auto;">
+        <form class="form-horizontal" autocomplete="on" method="post">
+            <div class="form-group form-inline" id="job_experience_group_1">
+                <div class="col-md-6">
+                    <input placeholder="Fecha" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+                </div>
+                <div class="col-md-6">
+                    <input placeholder="Hora" class="form-control" style="width: 100%;" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" id="time">
+                </div>
+            </div>
+
+            <div class="form-group form-inline" id="job_experience_group_3">
+                <div class="col-md-6">
+                    <div class="input-mic-container">
+                        <input type="text" class="form-control" id="Empresa" placeholder="Empresa" >
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-mic-container">
+                        <input type="text" class="form-control" id="Dirección" placeholder="Dirección" />
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                 <div class="col-md-1 right">
+                         <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                            <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                         </div>
+                 </div>
+             </div>
+        </form>
+    </section>
+</div>
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitDeadLine()';">FINALIZAR</button>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+      window.onload = function() {
+        addNew();
+        loadRecognition();
+    };
+</script>
+
+}

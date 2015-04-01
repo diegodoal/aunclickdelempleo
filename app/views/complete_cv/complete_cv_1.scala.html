@@ -1,0 +1,206 @@
+@main(){
+<script type='text/javascript' src="@routes.Assets.at("javascripts/disableLicense.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/disableCertificate.js")"></script>
+<div class="container">
+<!--COMPLETE_CV_1-->
+<section id="text_user_profile_2">
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic">
+            <h2>COMPLETA TU PERFIL</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic size20">
+            <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-sm-12 ic_paso2">
+            <img src="@routes.Assets.at("images/complete_user_profile_1/ic_paso1.png")" class="ic_paso2" alt="Paso de Completar tu curriculum" title="Curriculum">
+        </div>
+    </div>
+</section>
+
+
+<section>
+
+<!--Datos Personales-->
+
+  <div class="row">
+    <div class="col-md-12 arial gray_adecco size18 bold">
+        Datos personales
+    </div>
+  </div><br>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+        <div class="col-lg-5 input-mic-container">
+            
+            <input type="text" name='register_name' class="form-control" id="name" value="Nombre" required="required" placeholder="Nombre">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+
+
+
+            
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="surname" value="Apellidos" required="required" placeholder="Apellidos">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="date" required="required" value="Fecha de nacimiento" placeholder="Fecha de nacimiento" >
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="register_city" value="Ciudad de residencia" required="required"  placeholder="Ciudad de residencia">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="dress" value="Calle" required="required"  placeholder="Calle">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="number" value="Numero" required="required"  placeholder="Número">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 input-mic-container">
+            <input type="post" class="form-control" id="post" value="Codigo postal" placeholder="Código postal">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+  </form>
+</section>
+ <section>
+
+    <!--Contacto-->
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            Datos de contacto
+        </div>
+    </div><br>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-lg-5">
+                <input type="email" name='email' class="form-control" id="access_email" value="Correo electronico" required="required" placeholder="Correo electrónico">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+            <input type="text" class="form-control" id="telephone" value="Telefono de contacto" placeholder="Teléfono de contacto">
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+    </form>
+</section>
+
+<section>
+
+    <!--Carnet-->
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+        Carnet de conducir
+        </div>
+    </div>
+
+    <div class="row orientation-points">
+        <div class="col-lg-5  arial size14">
+            <input type="checkbox" id="check_license" value="No tengo carnet" onclick=" licenseCertificateHidden(this.checked)">
+            <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
+        </div>
+    </div><br>
+
+    <form class="form-horizontal" autocomplete="on" method="post" id="license_group">
+
+      <div class="form-group" >
+        <div class="col-lg-5">
+          <select  class="form-control"  name="license_group">
+              <option value="0" disabled selected="">Tipo de permiso de conducir</option>
+              <option value="1">A1</option>
+              <option value="2">A</option>
+              <option value="3">B</option>
+              <option value="4">C1</option>
+              <option value="5">C</option>
+              <option value="6">D1</option>
+              <option value="7">D</option>
+              <option value="8">BE</option>
+              <option value="9">C1E</option>
+              <option value="10">CE</option>
+              <option value="11">D1E</option>
+              <option value="12">DE</option>
+              <option value="13">btp</option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+</section>
+<section>
+
+        <!--Certificado-->
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">
+                Certificado de discapacidad
+            </div>
+        </div>
+
+        <div class="row orientation-points">
+            <div class="col-lg-5  arial size14">
+                <input type="checkbox" id="check_certificate" value="No tengo certificao"  onclick="disCertificateHidden(this.checked)">
+                <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
+            </div>
+        </div><br>
+
+        <form class="form-horizontal" autocomplete="on" method="post" id="certificate_group">
+
+            <div class="form-group" >
+                <div class="col-lg-5">
+                    <select  class="form-control"  name="certificate_group">
+                        <option value="0" disabled selected="">Tipo de certificado</option>
+                        <option value="1">Menos del 33%</option>
+                        <option value="2">Más del 33%</option>
+                        <option value="3">Más del 66%</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+</section>
+</div>
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
+           <button class="button-finish-1" onclick="location.href='@routes.StashController.cv2()';">SIGUIENTE</button>
+        </div>
+    </div>
+</section>
+
+
+
+<script type="text/javascript">
+      window.onload = function() {
+        loadRecognition();
+    };
+</script>
+
+}

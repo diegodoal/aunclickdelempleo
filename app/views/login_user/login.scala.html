@@ -1,0 +1,156 @@
+@(error_login_msg: String, error_signup_msg: String)
+
+@main(){
+<!-- ADVANTAGES -->
+<section class="container" id="user_advantages">
+    <div class="row">
+        <div class="col-md-12 col-md-4" id="user_hands">
+            <img src="@routes.Assets.at("images/login_user/ic_manos.png")">
+        </div>
+        <div class="hidden-xs hidden-sm col-md-4" id="user_puzzle">
+            <img src="@routes.Assets.at("images/login_user/ic_puzzle.png")">
+        </div>
+        <div class="hidden-xs hidden-sm col-md-4" id="user_clock">
+            <img src="@routes.Assets.at("images/login_user/ic_reloj.png")">
+        </div>
+    </div>
+</section>
+
+<!-- FORMS -->
+<article class="container">
+    <div class="row">
+        <!-- ACCESS -->
+        <div class="col-md-5">
+            <h1 class="col-md-offset-4 size30 century_gothic gray_adecco">ACCEDE</h1><br>
+
+            <form class="form-horizontal" role="form" action="@routes.LoginController.submitLogin()" autocomplete="on" method="post">
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6">
+                        <input type="email" name='email' class="form-control" id="access_email" required="required" placeholder="Correo electrónico">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6">
+                        <input type="password" name='password' class="form-control" id="access_password" required="required" placeholder="Contraseña">
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-offset-6 col-md-4 button-create">
+                        <button type="submit">ENTRAR</button>
+                    </div>
+
+                    <!-- FORMA DE ENRIQUE PERO NO FUNCIONA
+                    <div id="enterUser" class="col-md-offset-5 col-md-4 button-enter">
+                        ENTRAR
+                    </div>
+                    <script>
+                        $("#enterUser").click(function(){
+                            $("#formEnterUser").submit();
+                        });
+                    </script>-->
+
+                    @if(error_login_msg != null) {
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_login_msg</div>
+                    </div>
+                    }
+                </div>
+            </form>
+        </div>
+
+        <!-- Barra -->
+        <div class="col-md-2">
+            <div class="col-md-offset-6 hidden-sm hidden-xs">
+                <img src="@routes.Assets.at("images/login_user/ic_barrapuntos5.png")">
+            </div>
+        </div>
+
+        <!-- PARTICULAR REGISTER -->
+        <div class="col-md-5">
+            <h1 class="col-md-offset-2 size30 century_gothic gray_adecco">CREA TU PERFIL</h1>
+
+            <h1 class="col-md-offset-2 font1">Puedes rellenar los siguientes campos con voz. <a class="font2" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></h1><br>
+
+            <form class="form-horizontal" role="form" action="@routes.LoginController.submitSignUp()" method="post">
+                <div class="form-group form-inline">
+                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                        <input type="text" name='register_name' class="form-control" id="register_name"  required="required" placeholder="Nombre">
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6 input-mic-container">
+                        <input type="text" name='register_surnames' class="form-control" id="register_surnames" required="required" placeholder="Apellidos">
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6">
+                        <input type="email" name='register_email' class="form-control" id="register_part_email" required="required" placeholder="Correo electrónico">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6">
+                        <input type="password" name='register_password' class="form-control" id="register_part_password_1" required="required" placeholder="Contraseña">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6">
+                        <input type="password" name='register_repeat_password' class="form-control" id="register_part_password_2" required="required" placeholder="Repetir contraseña">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-6 col-md-4 button-create">
+                        <button type="submit">CREAR</button>
+                    </div>
+
+                    <!-- FORMA DE ENRIQUE PERO NO FUNCIONA
+                    <div id="createUser" class="col-md-offset-5 col-md-4 button-create">
+                        CREAR
+                    </div>
+                    <script>
+                        $("#createUser").click(function(){
+                            $("#formCreateUser").submit();
+                        });
+                    </script>-->
+
+                    @if(error_signup_msg != null) {
+                    <div class="col-md-offset-1 col-md-11">
+                        <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_signup_msg</div>
+                    </div>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</article>
+
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?<h2>
+            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+      window.onload = function() {
+        loadRecognition();
+    };
+</script>
+}

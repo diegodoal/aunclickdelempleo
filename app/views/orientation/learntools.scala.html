@@ -1,0 +1,74 @@
+@main(){
+
+<article class="container">
+    <div class="row">
+        <h2 class="red_adecco century_gothic">Documentos necesarios para la búsqueda de empleo</h2>
+        <div class="brown_adecco arial size14">
+            <p>Entre las herramientas que debes tener en cuenta a la hora de buscar empleo hemos destacado dos.</p>
+            <p>A continuación te damos una serie de recomendaciones sobre como tener un buen currículum y una buena carta de presentación.</p>
+        </div><br><br>
+        <div class="arial size16 gray_adecco">
+            Actividad: Lee detenidamente las recomendaciones que se plantean a continuación.
+        </div>
+    </div><br>
+</article>
+
+<section class="panel-group container back" id="accordion" style="margin-auto;">
+
+    <!-- Collapse 1 -->
+    <div class="panel panel-default panel-group-background">
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse1" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Currículum Vitae<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        </div>
+        <div id="collapse1" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
+            <ul class="panel-body" style="margin-left:2em;">
+                <p style="margin-left:-1em;">El “Currículum Vitae” o “currículum” es un resumen de datos personales, académicos y profesionales del aspirante a un puesto de trabajo. Es decir, un documento elaborado de lo que el aspirante ha hecho, cuándo y dónde.</p>
+                <p style="margin-left:-1em;">El entrevistador a partir de la carta de presentación, del currículum y de la entrevista, tratará de hacer un perfil y ver si el aspirante encaja en el puesto de trabajo que ofrece, de ahí la importancia de elaborar un buen currículum y dar una impresión positiva, favorable y convincente. </p>
+                <p style="margin-left:-1em;">El objetivo del currículo es conseguir una entrevista de trabajo, y una entrevista de trabajo tiene como propósito lograr “un empleo”.</p>
+                <p style="margin-left:-1em; "><b>“Sólo si se ha elaborado bien el currículo se accederá a la entrevista”.</b></p>
+                <p style="margin-left:-1em;">Recomendaciones para la elaboración del currículum. Hay que: </p>
+                <li>Adaptarlo a la oferta de trabajo a la que se opta, destacando las cualidades personales, formativas y experiencia laboral, de mayor relevancia y relacionadas con el puesto de trabajo concreto.</li>
+                <li>Estructurarlo y distribuirlo armónicamente en los diferentes apartados.</li>
+                <li>Redactarlo de forma clara, objetiva, ser sincero y preciso en la información y contenido que se aporte, procurando no exagerar ni mentir.</li>
+                <li>Ser positivo y no contar información que pueda perjudicar (problemas personales, fracaso profesional o educativo). Evitar frases negativas.</li>
+                <li>Hacerlo interesante, para que a los seleccionadores les seduzca hacer la entrevista.</li>
+                <li>Su extensión no debe ser mayor de cuatro páginas, salvo que pidan de forma expresa un currículo detallado.</li>
+                <li>Es conveniente incluir una fotografía reciente.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Collapse 2 -->
+    <div class="panel panel-default panel-group-background">
+        <div class="panel-heading">
+            <a data-toggle="collapse" href="#collapse2" class="century_gothic gray_adecco size22 bold advices_height panel-title" style="margin-left: 1em;">Carta de Presentación<img class="ic_more_info" src="@routes.Assets.at("images/orientation/ic_leermas.png")"></a>
+        </div>
+        <div id="collapse2" class="arial size14 gray_adecco panel-collapse collapse collapse_background_color">
+            <ul class="panel-body" style="margin-left:2em;">
+                <p style="margin-left:-1em;">Es una carta que se envía para contactar con aquellas empresas o lugares que pueden ofrecer oportunidades de empleo, es una “tarjeta de visita” que acompaña al currículum vitae. </p>
+                <p style="margin-left:-1em;">El objetivo de la carta de presentación es atraer la atención de la persona que la lea. Lograr una primera impresión sobre el historial que se presenta, es idóneo para cubrir el puesto que en esos momentos se ofrece, o posibles vacantes futuras.</p>
+                <p style="margin-left:-1em;">La forma en la que se redacta y presenta una carta tiene mucha importancia ya que a través de ésta se transmite información sobre la persona que la envía (si esa persona es ordenada, limpia, si sabe redactar, etc.). </p>
+                <p><b>Recomendaciones para la redacción:</b></p>
+                <li>La carta debe estar adaptada a las circunstancias concretas de la empresa; hay que personalizarla, dirigirla a una persona concreta (evitar destinatarios genéricos).</li>
+                <li>Redactar en primera persona y jamás tutear al lector o destinatario.</li>
+                <li>Ha de ser <b>corta y directa</b> (no debe pasar de una hoja), a la vez que cordial y respetuosa.</li>
+                <li><b>Clara y convincente</b>, la carta debe reflejar que el candidato que se presenta es la persona idónea para el puesto de trabajo que se ofrece, y que está preparado para desempeñar ese puesto concreto. </li>
+                <li>Evitar servilismos y frases negativas; no rogar; ni suplicar, ni contar lo difícil que están las cosas. Se ha de imaginar al destinatario como una persona, no como un cargo.</li>
+                <li>Hay que ser <b>positivo</b>, hablar de lo que se sabe hacer; de cómo se puede ser útil en la empresa.</li>
+                <li>No cometer faltas de ortografía.</li>
+            </ul>
+        </div>
+    </div>
+</section>  <script type="text/javascript">
+    window.onload = function(){
+        autoChangeIcon();
+    };
+</script>  <section class="container">
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitLearnTools()';">FINALIZAR</button>
+        </div>
+    </div>
+</section>
+}

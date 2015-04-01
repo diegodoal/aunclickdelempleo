@@ -1,0 +1,81 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+# LOGIN
+GET     /login                                      controllers.LoginController.blank()
+GET     /logout                                     controllers.LoginController.logout()
+POST    /login                                      controllers.LoginController.submitLogin()
+POST    /signup                                     controllers.LoginController.submitSignUp()
+
+# ORIENTATION
+GET     /orientation                                controllers.OrientationController.blank()
+
+# PUNTO 1: CONOCETE A TI MISMO
+GET     /orientation/currentsituation 				controllers.OrientationController.currentsituation()
+POST    /orientation/currentsituation/submit        controllers.OrientationController.submitCurrentSituation()
+GET     /orientation/skills							controllers.OrientationController.skills()
+GET     /orientation/skills/submit                  controllers.OrientationController.submitSkills()
+GET     /orientation/interestidentification         controllers.OrientationController.interestIdentification()
+POST    /orientation/interestidentification         controllers.OrientationController.submitInterestIdentification()
+GET     /orientation/personal						controllers.OrientationController.personal()
+GET     /orientation/personal/submit                controllers.OrientationController.submitPersonal()
+GET     /orientation/professional					controllers.OrientationController.professional()
+GET     /orientation/professional/submit            controllers.OrientationController.submitProfessional()
+GET     /orientation/photo                          controllers.OrientationController.photo()
+POST    /orientation/photo                          controllers.OrientationController.uploadPhoto()
+
+# PUNTO 2: PREPARATE PARA LA BUSQUEDA DE EMPLEO
+GET     /orientation/channels                       controllers.OrientationController.channels()
+GET     /orientation/channels/submit                controllers.OrientationController.submitChannels()
+GET     /orientation/learntools                     controllers.OrientationController.learnTools()
+GET     /orientation/learntools/submit              controllers.OrientationController.submitLearnTools()
+GET     /orientation/gettools                       controllers.OrientationController.getTools()
+GET     /orientation/gettools/submit                controllers.OrientationController.submitGetTools()
+
+
+GET 	/email/:toEmail								controllers.Application.sendEmail(toEmail : String)
+
+# Use: /pdf/t1   or     /pdf/t2
+GET     /pdf/:template                              controllers.PDFController.fakeCV(template : String)
+
+
+#Curriculum Vitae
+GET     /orientation/gettools/cv1                   controllers.StashController.cv1()
+GET     /orientation/gettools/cv2                   controllers.StashController.cv2()
+GET     /orientation/gettools/cv3                   controllers.StashController.cv3()
+
+# PUNTO 3: PROCESO DE SELECCION
+GET     /orientation/tinterview                     controllers.OrientationController.tinterview()
+GET     /orientation/tinterview/submit              controllers.OrientationController.submitTinterview()
+GET     /orientation/pinterview                     controllers.OrientationController.pinterview()
+GET     /orientation/pinterview/submit              controllers.OrientationController.submitPinterview()
+GET     /orientation/actinterview                   controllers.OrientationController.actinterview()
+GET     /orientation/actinterview/submit            controllers.OrientationController.submitActInterview()
+GET     /orientation/questionsinterview             controllers.OrientationController.questionsinterview()
+GET     /orientation/questionsinterview/submit      controllers.OrientationController.submitQuestionsInterview()
+
+# PUNTO 4: PLANIFICATE
+GET     /orientation/deadline                       controllers.OrientationController.deadline()
+GET     /orientation/deadline/submit                controllers.OrientationController.submitDeadLine()
+GET     /orientation/travel                         controllers.OrientationController.travel()
+GET     /orientation/travel/submit                  controllers.OrientationController.submitTravel()
+
+# PUNTO 5: MEJORA PROFESIONALMENTE
+GET     /orientation/specialization                 controllers.OrientationController.specialization()
+GET     /orientation/specialization/submit          controllers.OrientationController.submitSpecialization()
+GET     /orientation/bestdeals                      controllers.OrientationController.bestdeals()
+GET     /orientation/bestdeals/submit               controllers.OrientationController.submitBestDeals()
+GET     /orientation/level                          controllers.OrientationController.level()
+GET     /orientation/level/submit                   controllers.OrientationController.submitLevel()
+GET     /orientation/reputation                     controllers.OrientationController.reputation()
+GET     /orientation/reputation/submit              controllers.OrientationController.submitReputation()
+
+#Planning
+GET    /planning                                   controllers.PlanningController.plan()

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<link href="css/style_ventana_emergente.css" rel='stylesheet' type='text/css'/>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script type='text/javascript' src='js/scripts.js'></script>
+    <meta charset="utf-8">
+   <title>A un click del empleo</title>
+</head>
+
+<body class="size_font">
+
+<!--NAV-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6"><a href="index.html"><img src="images/nav/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
+		</div>
+
+		<div class="col-md-2"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
+	    </div>
+
+		<div class="col-md-2"><a href="login_user.html"><img src="images/nav/ic_entra.png"></a>
+		</div>
+
+		<div class="col-md-2"><a href="login_company.html"><img src="images/nav/ic_soyempresa.png"></a>
+		</div>
+	</div>
+</div>
+
+<!--DETAILS_COURSES-->
+<section class="container" id="back_details_courses">
+	<div class="row">
+		<div class="col-md-8" id="text_details_courses">
+		<h2 class="red_adecco century_gothic">DETALLES DEL CURSO:</h2><br>
+		<p class="arial gray_adecco size20 bold">Ayuda a la capacitación Recursos Humanos</p>	
+		<p><span class="red_adecco arial italic size14">Sector:</span><span class="arial gray_adecco size14"> Recursos humanos</span></p>
+		<p><span class="red_adecco arial italic size14">Duración:</span><span class="arial gray_adecco size14"> Curso de 25h. Lunes y miércoles de 15:30 a 17:30h.</span></p>	
+		<p><span class="gray_adecco size14 arial">Inicio: 02/02/2015 - Fin: 15/02/2015.</span></p>
+		<p><span class="red_adecco arial italic size14">Lugar:</span><span class="arial gray_adecco size14"> Centro Cívico Los Enlaces, Zaragoza.</span></p>	
+		</div>
+		<div class="col-md-3" id="img_details_courses">
+		<img src="images/details_courses/ic_recuadro.png">	
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-11"id="text_details_courses">
+			<p><span class="red_adecco arial italic size14">Descripción:</span><span class="arial gray_adecco size14"> Fundación Adecco y el Colegio de Economistas de Aragón, ofrecen curso de formación con el objetivo de capacitar a los alumnos a través de conocimientos específicos, para que puedan desarrollar trabajos de apoyo administrativo/a básico en oficinas o despachos.
+			La formación se compone de una parte teórica y una parte práctica.
+			Los módulos que se impartirán en la parte teórica serán: Atención al Cliente, Ofimática Básica, relaciones con la Administración y tareas administrativas básicas. La parte práctica se desarrollará en oficinas y despachos. </span></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-11"id="text_details_courses">
+			<p><span class="red_adecco arial italic size14">Condiciones generales:</span><span class="arial gray_adecco size14"> Asistencia presencial al menos al 90% del curso para obtener el certificado de realización. </span></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-11"id="text_details_courses">
+			<p><span class="red_adecco arial italic size14">Requisitos:</span><span class="arial gray_adecco size14"> Conocimientos básicos de ofimática. </span></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-11"id="text_details_courses">
+			<p><span class="red_adecco arial italic size14">Precio:</span><span class="arial gray_adecco size14"> Gratuito.</span></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-11"id="text_details_courses">
+			<p><span class="red_adecco arial italic size14">Contacto:</span><span class="arial gray_adecco size14"> Cristina González.</span><span class="arial gray_adecco size14 bold"> Email:</span><span class="arial gray_adecco size14"> cristina.grodriguez@adecco.com,</span><span class="arial gray_adecco size14 bold"> Teléfono:</span><span class="arial gray_adecco size14"> 976791580.</span></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9" id="text_details_courses">
+			<a href="list_courses.html"><button type="submit" class="btn-img" ><img  src="images/details_courses/ic_volver.png"></button></a>
+		</div>
+		<div class="col-md-2">
+			<a href="list_courses.html"><button type="submit" class="btn-img" ><img  src="images/details_courses/ic_solicitar.png"></button></a>
+		</div>
+	</div>
+</section>
+
+<!-- POP UP WINDOW -->
+	<div id="accesibility_pop_up" class="mask_pop_up">
+		<div class="box_pop_up resize">
+			<a href="#close" title="Cerrar" class="close">X</a>
+
+			<h2>¿Qué desea adaptar?</h2>
+			<h3>Tamaño texto:</h3><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
+
+			<h3>Colores de texto y fondo</h3>
+			<h3>...</h3>
+		</div>
+	</div>
+
+</body>
+</html>

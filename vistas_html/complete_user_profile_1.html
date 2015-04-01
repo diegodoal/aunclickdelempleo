@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+	<link href="css/style_ventana_emergente.css" rel='stylesheet' type='text/css'/>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+	<script type='text/javascript' src='js/script1.js'></script>
+	<script type='text/javascript' src='js/script2.js'></script>
+	<script type='text/javascript' src='js/script3.js'></script>
+	<script type='text/javascript' src='js/script4.js'></script>
+    <meta charset="utf-8">
+   <title>A un click del empleo</title>
+</head>
+
+<body class="size_font">
+
+<!--NAV-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6"><a href="index.html"><img src="images/nav/corporative.jpg" class="img-responsive" alt="Responsive image"></a>
+		</div>
+
+		<div class="col-md-2"><a href="#accesibility_pop_up"><img src="images/nav/ic_adaptabilidad2.png"></a>
+	    </div>
+
+		<div class="col-md-2"><a href="login_user.html"><img src="images/nav/ic_entra.png"></a>
+		</div>
+
+		<div class="col-md-2"><a href="login_company.html"><img src="images/nav/ic_soyempresa.png"></a>
+		</div>
+	</div>
+</div>
+
+<!--COMPLETE_USER_PROFILE_1-->
+<section class="container" id="text_user_profile_2">
+	<div class="row">
+		<div class="col-md-12 brown_adecco century_gothic">
+		<h2>COMPLETA TU PERFIL</h2>	
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 brown_adecco century_gothic size22">
+		<p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<img src="images/complete_user_profile_1/ic_paso1.png">
+		</div>
+	</div>
+</section>
+
+<article class="container">
+	<div class="row">
+		<div class="col-md-12 arial gray_adecco size22 bold">
+		<p>Nivel de estudios</p>	
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<span class="gray_adecco arial size18"style="margin-right:1em">No tengo estudios</span><input type="checkbox" id="check_studies" onclick="levelStudiesSetHidden(this.checked)"> 
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+		<form class="form-horizontal">
+		<div class="form-group" id="level_studies_group">
+			<select  class="form-control" id="level_studies" name="level_studies">
+				<option value="0" disabled selected="">Nivel de estudios</option>
+				<option value="1">PCPI / Garantía social</option>
+				<option value="2">Graduado escolar</option>
+				<option value="3">Certificado de escolaridad o de la ESO</option>
+				<option value="4">BUP, Bachillerato y COU</option>
+				<option value="5">Enseñanzas de régimen especial</option>
+				<option value="6">Graduado en ESO</option>
+				<option value="7">FP 1/ Técnico medio</option>
+				<option value="8">FP 2/ Técnico superior</option>
+				<option value="9">Diplomado, Ing. Técnico, Arquitecto técnico</option>
+				<option value="10">Grado</option>
+				<option value="11">Licenciado, Ingeniero, Arquitecto</option>
+				<option value="12">Título Propio/ Carrera no homologada</option>
+				<option value="13">Máster/ Título Propio de Postgrado</option>
+				<option value="14">Doctorado</option>
+				<option value="15">Otros cursos</option>
+				<option value="16">Oposiciones</option>
+			</select>		
+		</div>
+	</form>	
+		</div>
+	</div>
+</article>
+
+<article class="container">
+	<div class="row">
+		<div class="col-md-12 arial gray_adecco size22 bold">
+			<p>Experiencia laboral</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 arial size18">
+			<span class="gray_adecco arial size18"style="margin-right:1em">No tengo experiencia</span><input type="checkbox" onclick="hide_job_experience(this.checked)"> 
+		</div>
+	</div>
+
+	<div class="row">
+	<div class="col-md-4">
+	<form class="form-horizontal">
+		<div class="form-group" id="job_experience_group">
+				<input type="text" class="form-control" id="company" placeholder="Empresa" >
+		</div>
+	</form>	
+	</div>
+	<div class="col-md-4 col-md-offset-2">
+	<form class="form-horizontal">
+		<div class="form-group" id="job_experience_group_1">
+				<input type="text" class="form-control" id="office" placeholder="Puesto" >
+		</div>
+	</form>	
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-md-4">
+	<form class="form-horizontal">
+		<div class="form-group" id="job_experience_group_2">
+				<select  class="form-control1" id="sector" name="sector">
+					<option value="s0" disabled selected="">Sector</option>
+					<option value="s1">Agricultura, Montes, Pesca, Mineria</option>
+					<option value="s2">Arte, Cultura, Sociedad</option>
+					<option value="s3">Atención al cliente</option>
+					<option value="s4">Banca y Seguros</option>
+					<option value="s5">Bioquímica, Farmacia, Experimental</option>
+					<option value="s6">Calidad</option>
+					<option value="s7">Comercial, Ventas</option>
+					<option value="s8">Compras</option>
+					<option value="s9">Comunicación, Medios, Periodismo</option>
+					<option value="s10">Construcción, Arquitectura, Promoción e Inmobiliaria</option>
+					<option value="s11">Consultoría</option>
+					<option value="s12">Dirección, Gerencia</option>
+					<option value="s13">Diseño, Creatividad</option>
+					<option value="s14">Edición, Artes gráficas, Documentación, Traducción</option>
+					<option value="s15">Educación Formación</option>
+					<option value="s16">Finanzas, Contabilidad, Auditoría</option>
+					<option value="s17">Hostelería, Turismo</option>
+					<option value="s18">I+D</option>
+					<option value="s19">Informática</option>
+					<option value="s20">Ingeniería, Fabricación, Producción</option>
+					<option value="s21">Internet</option>
+					<option value="s22">Jurídico, Fiscal</option>
+					<option value="s23">Limpieza especializada, Saneamiento y Servicios urbanos</option>
+					<option value="s24">Logística, Planificación, Transporte</option>	
+					<option value="s25">Mantenimiento, Instalación, Reparación</option>
+					<option value="s26">Marketing, Publicidad</option>
+					<option value="s27">Medio ambiente</option>
+					<option value="s28">Oficios</option>
+					<option value="s29">Prevención de riesgos laborales</option>
+					<option value="s30">Recursos humanos</option>
+					<option value="s31">Sanidad y Salud</option>
+					<option value="s32">Seguridad, Defensa</option>
+					<option value="s33">Servicios generales</option>
+					<option value="s34">Servicios sociales</option>
+					<option value="s35">Telecomunicaciones</option>
+					<option value="s36">Otros</option>
+				</select>	
+		</div>
+	</form>	
+	</div>
+	<div class="col-md-4 col-md-offset-2">
+	<form class="form-horizontal">
+		<div class="form-group" id="job_experience_group_3">
+			<select  class="form-control" name="experience" id="experience">
+					<option value="s0" disabled selected="">Años de experiencia</option>
+					<option value="s1"> Prácticas</option>
+					<option value="s1"> Menos de un año</option>
+					<option value="s2"> 1-3 años</option>
+					<option value="s3"> 3-5 años</option>
+					<option value="s4"> +5 años</option>
+					<option value="s6"> +10 años</option>
+			</select>
+		</div>
+	</form>	
+	</div>
+	</div>
+	<div class="row">
+		<div class="col-md-11">
+		<p class="brown_adecco arial size12" id="job_experience_group_4">Debes añadir cada uno de los puestos que hayas tenido.</p>	
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6" id="add_button_user">
+		<button type="submit" class="btn-img" id="job_experience_group_5"><img  src="images/complete_user_profile_1/ic_add.png"></button>
+		</div>
+	</div>
+</article>
+<article class="container">
+	<div class="row">
+		<div class="col-md-12 arial gray_adecco size22 bold">
+		<p>Intereses profesionales</p>	
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 ">
+		<p class="brown_adecco arial size12">Seleccione como máximo 3.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-7 arial size18">
+			<input type="checkbox" name="profession" value="1"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Agricultura, Montes, Pesca, Mineria</span><br>
+			<input type="checkbox" name="profession" value="2"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Arte, Cultura, Sociedad</span><br>
+			<input type="checkbox" name="profession" value="3"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Atención al cliente</span><br>
+			<input type="checkbox" name="profession" value="4"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Banca y Seguros</span><br>
+			<input type="checkbox" name="profession" value="5"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Bioquímica, Farmacia, Experimental</span><br>
+			<input type="checkbox" name="profession" value="6"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Calidad</span><br>
+			<input type="checkbox" name="profession" value="7"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Comercial, Ventas</span><br>
+			<input type="checkbox" name="profession" value="8"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Compras</span><br>
+			<input type="checkbox" name="profession" value="9"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Comunicación, Medios, Periodismo</span><br>
+			<input type="checkbox" name="profession" value="10"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Construcción, Arquitectura, Promoción e Inmobiliaria</span><br>
+			<input type="checkbox" name="profession" value="11"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Consultoría</span><br>
+			<input type="checkbox" name="profession" value="12"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Dirección, Gerencia</span><br>
+			<input type="checkbox" name="profession" value="13"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Diseño, Creatividad</span><br>
+			<input type="checkbox" name="profession" value="14"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Edición, Artes gráficas, Documentación, Traducción</span><br>
+			<input type="checkbox" name="profession" value="15"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Educación, Formación</span><br>
+			<input type="checkbox" name="profession" value="16"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Finanzas, Contabilidad, Auditoría</span><br>
+			<input type="checkbox" name="profession" value="17"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Hostelería, Turismo</span><br>
+			<input type="checkbox" name="profession" value="18"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> I+D</span>
+		</div>
+	
+	<div class="col-md-5 arial size18">
+		<input type="checkbox" name="profession" value="19"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Informática</span><br>
+		<input type="checkbox" name="profession" value="20"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Ingeniería, Fabricación, Producción</span><br>
+		<input type="checkbox" name="profession" value="21"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Internet</span><br>
+		<input type="checkbox" name="profession" value="22"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Jurídico, Fiscal</span><br>
+		<input type="checkbox" name="profession" value="23"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Limpieza especializada, Saneamiento y Servicios urbanos</span><br>
+		<input type="checkbox" name="profession" value="24"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Logística, Planificación, Transporte</span><br>
+		<input type="checkbox" name="profession" value="25"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Mantenimiento, Instalación, Reparación</span><br>
+		<input type="checkbox" name="profession" value="26"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Marketing, Publicidad</span><br>
+		<input type="checkbox" name="profession" value="27"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Medio ambiente</span><br>
+		<input type="checkbox" name="profession" value="28"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Oficios</span><br>
+		<input type="checkbox" name="profession" value="29"  onclick="enable_cb(this)"><span style="margin-left: 1em"  class="gray_adecco arial size18"> Prevención de riesgos laborales</span><br>
+		<input type="checkbox" name="profession" value="30"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Recursos humanos</span><br>
+		<input type="checkbox" name="profession" value="31"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Sanidad y Salud</span><br>
+		<input type="checkbox" name="profession" value="32"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Seguridad y Defensa</span><br>
+		<input type="checkbox" name="profession" value="33"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Servicios generales</span><br>
+		<input type="checkbox" name="profession" value="34"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Servicios sociales</span><br>
+		<input type="checkbox" name="profession" value="35"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Telecomunicaciones</span><br>
+		<input type="checkbox" name="profession" value="36"  onclick="enable_cb(this)"><span style="margin-left: 1em" class="gray_adecco arial size18"> Otros</span><br>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6" id="next_button_user">
+		<a href="complete_user_profile_2.html"><button type="submit" class="btn-img" id="job_experience_group_5"><img  src="images/complete_user_profile_1/ic_next.png"></button></a>
+	</div>
+</div>
+</article>
+
+	<!-- POP UP WINDOW -->
+	<div id="accesibility_pop_up" class="mask_pop_up">
+		<div class="box_pop_up resize">
+			<a href="#close" title="Cerrar" class="close">X</a>
+
+			<h2>¿Qué desea adaptar?</h2>
+			<h3>Tamaño texto:</h3><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('increase')">Aumentar tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
+			<a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
+
+			<h3>Colores de texto y fondo</h3>
+			<h3>...</h3>
+		</div>
+	</div>
+
+</body>
+</html>
