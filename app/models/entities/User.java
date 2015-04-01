@@ -29,7 +29,7 @@ public class User {
 
     //Orientation steps
     public CurrentSituation currentSituation;
-    public List<Skill> skills;
+    public Skills skills;
     public List<String> interests;
     public List<String> personalCharacteristics;
     public List<ProfessionalValue> professionalValues;
@@ -41,7 +41,7 @@ public class User {
         //Includes an "a" at the end for more security. Stored with custom format in DB and with standard format in session
         this.connectionTimestamp = new Date().toString();
         this.currentSituation = new CurrentSituation();
-        this.skills = new ArrayList<>();
+        this.skills = new Skills();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
         this.professionalValues = new ArrayList<>();
@@ -58,7 +58,7 @@ public class User {
         this.connectionTimestamp = new Date().toString();
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
-        this.skills = new ArrayList<>();
+        this.skills = new Skills();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
         this.professionalValues = new ArrayList<>();
@@ -195,12 +195,7 @@ public class User {
         }
     }
 
-    public String skillstoJson(){
-        Type listType = new TypeToken<List<Skill>>(){}.getType();
-        String result = new Gson().toJson(this.skills, listType);
-
-        return result;
-    }
+  
 
     public String professionalValuesToJson(){
         Type listType = new TypeToken<List<ProfessionalValue>>(){}.getType();

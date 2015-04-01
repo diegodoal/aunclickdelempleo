@@ -4,7 +4,7 @@ import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
 import models.entities.orientation.ProfessionalValue;
-import models.entities.orientation.Skill;
+import models.entities.orientation.Skills;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -78,8 +78,8 @@ public class Utils {
             user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "10 años");
 
             //Skills
-            user.skills.add(new Skill("Hablar en público", "Bien"));
-            user.skills.add(new Skill("Picar código", "Muy bien"));
+            //user.skills.add(new Skill("Hablar en público", "Bien"));
+            //user.skills.add(new Skill("Picar código", "Muy bien"));
 
             //Interests
             user.interests.add("Informática");
