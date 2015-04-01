@@ -1,6 +1,6 @@
 @main() {
-
-<section class="container">
+<div class="container">
+<section>
         <h2 class="red_adecco century_gothic">Características personales</h2>
         <div class="brown_adecco arial size14">
             <p>Las empresas necesitan trabajadores productivos que contribuyan a crear un buen ambiente laboral y sean capaces de solucionar problemas.</p>
@@ -12,7 +12,7 @@
             </div><br>
 </section>
 
-<section class="container orientation-points">
+<section class="orientation-points">
     <div class="row back checkbox-group">
         <div class="col-md-offset-1 col-md-3">
             <p>
@@ -121,13 +121,13 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4 center">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
             <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitPersonal()';">FINALIZAR</button>
         </div>
     </div>
 </section>
-
+</div>
 
 <script type="text/javascript">
     window.onload = function(){

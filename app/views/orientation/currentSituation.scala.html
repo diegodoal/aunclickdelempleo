@@ -1,6 +1,7 @@
 @(error_msg:String)
 @main(){
-<article class="container">
+<div class="container">
+<section>
     <div class="row">
         <h2 class="red_adecco century_gothic">Conoce tu situación actual</h2>
         <div class="brown_adecco arial size14">
@@ -10,9 +11,9 @@
             <p>Actividad: Debes seleccionar cual es tu nivel de estudios y completar tu experiencia profesional si la tuvieras.</p>
         </div>
     </div><br>
-</article>
+</section>
 
-<section class="container">
+<section>
     <div class="row orientation-points back checkbox-group">
         <p class="century_gothic gray_adecco size22 bold" style="margin-left:1em;">¿Cuál es tu nivel de estudios?</p> <br>
         <div class="col-md-6 col-md-offset-1  col-xs-offset-1 col-sm-offset-1 col-sm-6 col-xs-6">
@@ -183,12 +184,13 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4 center">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
             <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitInterestIdentification()';">FINALIZAR</button>
         </div>
     </div>
 </section>
+</div>
 
 
 <script type="text/javascript">
