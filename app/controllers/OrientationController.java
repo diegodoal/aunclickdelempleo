@@ -1,25 +1,23 @@
 package controllers;
 
-import static play.data.Form.form;
-
 import java.io.*;
 import java.util.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import models.S3File;
 import models.datasource.SingletonDataSource;
-
 import models.entities.User;
+import models.entities.orientation.Skills;
 
 import org.apache.commons.codec.binary.Base64;
 
-import play.data.DynamicForm;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-import utils.Constants;
 
 public class OrientationController extends Controller {
 	public static Result blank() {
@@ -34,20 +32,27 @@ public class OrientationController extends Controller {
     }
 
     public static Result submitCurrentSituation(){
-    	String error_msg = "";
-    	DynamicForm bindedForm = form().bindFromRequest();
-        String next_step = bindedForm.get("next_step");
-        if(next_step.equals("no")){
-        	error_msg = "*Por favor, selecciona tu nivel de estudios";
-        	return ok(views.html.orientation.currentSituation.render(error_msg));
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+
+        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+        for(int i=0; i<result.length-1; i++){
+            if(!user.currentSituation.educationLevelList.contains(result[i])){
+                user.currentSituation.addEducationLevel(result[i]);
+            }
         }
 
-        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        String[][] experience = new Gson().fromJson(result[result.length-1].toString(), new TypeToken<String[][]>() {}.getType());
+        for(int i=0; i<experience.length; i++){
+            user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2]);
+        }
+
         user.completedOrientationSteps.currentSituation = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
 
         return redirect("/orientation");
-        
+
     }
 
     public static Result skills() {
@@ -55,7 +60,15 @@ public class OrientationController extends Controller {
     }
 
     public static Result submitSkills(){
-        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+    	JsonNode request = request().body().asJson();
+    	User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+    	
+    	  String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+          for(int i=0; i<result.length; i++){
+              if(!user.skills.skillsList.contains(result[i])){
+                  user.skills.addskills(result[i]);
+              }
+          }
         user.completedOrientationSteps.skills = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
@@ -81,9 +94,15 @@ public class OrientationController extends Controller {
     public static Result personal() { return ok(views.html.orientation.personal.render()); }
 
     public static Result submitPersonal(){
-        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+    	JsonNode request = request().body().asJson();
+    	User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+    	
+    	List<String> personalCharacteristics = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {}.getType());
+    	
+    	user.personalCharacteristics = personalCharacteristics;
         user.completedOrientationSteps.personal = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
+        
         return redirect("/orientation");
     }
 
@@ -137,9 +156,11 @@ public class OrientationController extends Controller {
         s3File.save();
 
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.photo.id = photo_id;
-        user.completedOrientationSteps.photo = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user!= null){
+            user.photo.id = photo_id;
+            user.completedOrientationSteps.photo = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
