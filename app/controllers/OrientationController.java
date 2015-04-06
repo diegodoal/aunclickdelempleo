@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import models.S3File;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
+import models.entities.orientation.ProfessionalValue;
 import models.entities.orientation.Skill;
 
 import org.apache.commons.codec.binary.Base64;
@@ -60,12 +61,17 @@ public class OrientationController extends Controller {
     }
 
     public static Result submitSkills(){
-    	JsonNode request = request().body().asJson();
-    	User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-    	
-    	List<Skill> skills = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {}.getType());
-    	
-    	user.skills = skills;
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        JsonNode request = request().body().asJson();
+
+        String[][] skills = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
+        }.getType());
+        for(int i=0; i<skills.length; i++){
+            user.skills.add(new Skill(skills[i][0], skills[i][1]));
+        }
+
+
         user.completedOrientationSteps.skills = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
