@@ -79,11 +79,11 @@ public class InsertUserIntoMongoDBTest {
 
     @Test
     public void checkSkills(){
-        assertEquals(user.skills.size(), SingletonDataSource.getInstance().getUserByEmail(email).skills.size());
+        assertEquals(user.skill.size(), SingletonDataSource.getInstance().getUserByEmail(email).skill.size());
 
-        for(int i=0; i<user.skills.size(); i++) {
-            assertEquals(user.skills.get(i).level, SingletonDataSource.getInstance().getUserByEmail(email).skills.get(i).level);
-            assertEquals(user.skills.get(i).name, SingletonDataSource.getInstance().getUserByEmail(email).skills.get(i).name);
+        for(int i=0; i<user.skill.size(); i++) {
+            assertEquals(user.skill.get(i).level, SingletonDataSource.getInstance().getUserByEmail(email).skill.get(i).level);
+            assertEquals(user.skill.get(i).name, SingletonDataSource.getInstance().getUserByEmail(email).skill.get(i).name);
         }
     }
 

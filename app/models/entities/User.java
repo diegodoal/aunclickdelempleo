@@ -4,7 +4,6 @@ package models.entities;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import models.entities.orientation.*;
-import utils.Utils;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class User {
 
     //Orientation steps
     public CurrentSituation currentSituation;
-    public Skills skills;
+    public List<Skill> skill;
     public List<String> interests;
     public List<String> personalCharacteristics;
     public List<ProfessionalValue> professionalValues;
@@ -41,7 +40,7 @@ public class User {
         //Includes an "a" at the end for more security. Stored with custom format in DB and with standard format in session
         this.connectionTimestamp = new Date().toString();
         this.currentSituation = new CurrentSituation();
-        this.skills = new Skills();
+        this.skill = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
         this.professionalValues = new ArrayList<>();
@@ -58,7 +57,7 @@ public class User {
         this.connectionTimestamp = new Date().toString();
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
-        this.skills = new Skills();
+        this.skill = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
         this.professionalValues = new ArrayList<>();
@@ -195,7 +194,10 @@ public class User {
         }
     }
 
-  
+    public String skillsToJson(){
+        Type listType = new TypeToken<List<Skill>>(){}.getType();
+        return new Gson().toJson(this.skill, listType);
+    }
 
     public String professionalValuesToJson(){
         Type listType = new TypeToken<List<ProfessionalValue>>(){}.getType();

@@ -4,7 +4,6 @@ import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
 import models.entities.orientation.ProfessionalValue;
-import models.entities.orientation.Skills;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

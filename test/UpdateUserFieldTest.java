@@ -121,11 +121,11 @@ public class UpdateUserFieldTest {
 
     @Test
     public void testUpdate_skills(){
-        for(int i=0; i<SingletonDataSource.getInstance().getUserByEmail(email).skills.size(); i++){
+        for(int i=0; i<SingletonDataSource.getInstance().getUserByEmail(email).skill.size(); i++){
             SingletonDataSource.getInstance().updateUserData(email, Constants.USER_SKILLS_LIST + "." + i + "." + Constants.SKILL_NAME, "SkillName" + i);
             SingletonDataSource.getInstance().updateUserData(email, Constants.USER_SKILLS_LIST + "." + i + "." + Constants.SKILL_LEVEL, "SkillLevel" + i);
-            assertEquals("SkillName" + i, SingletonDataSource.getInstance().getUserByEmail(email).skills.get(i).name);
-            assertEquals("SkillLevel" + i, SingletonDataSource.getInstance().getUserByEmail(email).skills.get(i).level);
+            assertEquals("SkillName" + i, SingletonDataSource.getInstance().getUserByEmail(email).skill.get(i).name);
+            assertEquals("SkillLevel" + i, SingletonDataSource.getInstance().getUserByEmail(email).skill.get(i).level);
         }
     }
 

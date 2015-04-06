@@ -10,12 +10,10 @@ import com.google.gson.reflect.TypeToken;
 import models.S3File;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
-import models.entities.orientation.ProfessionalValue;
 import models.entities.orientation.Skill;
 
 import org.apache.commons.codec.binary.Base64;
 
-import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -68,7 +66,7 @@ public class OrientationController extends Controller {
         String[][] skills = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
         }.getType());
         for(int i=0; i<skills.length; i++){
-            user.skills.add(new Skill(skills[i][0], skills[i][1]));
+            user.skill.add(new Skill(skills[i][0], skills[i][1]));
         }
 
 

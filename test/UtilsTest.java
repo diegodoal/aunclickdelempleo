@@ -23,8 +23,8 @@ public class UtilsTest {
         user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "10 años");
 
         //Skills
-        user.skills.add(new Skill("Hablar en público", "Bien"));
-        user.skills.add(new Skill("Picar código", "Muy bien"));
+        user.skill.add(new Skill("Hablar en público", "Bien"));
+        user.skill.add(new Skill("Picar código", "Muy bien"));
 
         //Interests
         user.interests.add("Informática");
