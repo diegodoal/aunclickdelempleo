@@ -57,7 +57,7 @@
     <div class="row">
         <div class="col-md-8"></div>
         <div class="col-md-4 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitDeadLine()';">FINALIZAR</button>
+            <button class="button-finish-1" onclick="sendDeadLine()">FINALIZAR</button>
         </div>
     </div>
 </section>
@@ -67,6 +67,31 @@
         addNew();
         loadRecognition();
     };
+</script>
+
+<script>
+    function sendDeadLine(){
+        var deadlineArray = [];
+        var counter = 0;
+        $('.main-div-sections .form-horizontal').each(function(){
+            var auxDeadline = [];
+            $(this).find('input').each(function(){
+                auxDeadline[counter] = $(this).val();
+                counter++;
+            });
+            counter = 0;
+            deadlineArray.push(auxDeadline);
+        });
+
+        $.ajax({
+            type: 'post',
+            data: JSON.stringify(deadlineArray),
+            url: "/orientation/deadline",
+            contentType: 'application/json'
+        }).done(function(o) {
+            window.location.assign("/orientation");
+        });
+    }
 </script>
 
 }
