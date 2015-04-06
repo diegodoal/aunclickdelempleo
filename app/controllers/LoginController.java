@@ -63,15 +63,13 @@ public class LoginController {
 
         userCreated = new User(filledForm.get("register_name"), filledForm.get("register_surnames"),
                 filledForm.get("register_email"), filledForm.get("register_password"));
-        SingletonDataSource.getInstance().insertIntoUsersCollection(userCreated);
 
         userCreated.connectionTimestamp = new Date().toString();
+        SingletonDataSource.getInstance().insertIntoUsersCollection(userCreated);
 
         session("email", userCreated.email);
         session("name", userCreated.name);
         session("timestamp", userCreated.connectionTimestamp);
-
-        SingletonDataSource.getInstance().updateAllUserData(userCreated);
 
         return redirect("/");
     }
