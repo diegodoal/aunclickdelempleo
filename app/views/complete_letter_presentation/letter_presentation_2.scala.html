@@ -1,0 +1,104 @@
+@main(){
+<section class="container" style="z-index:-1;" id="text_user_profile_2">
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic">
+            <h2>TU CARTA DE PRESENTACIÓN</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic size20">
+            <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-sm-12 ic_paso2">
+            <img src="@routes.Assets.at("images/complete_user_profile_2/ic_paso2.png")" class="ic_paso2" alt="Tu carta de presentacion" title="Carta de presentación">
+        </div>
+    </div>
+</section>
+
+<section class="container" style="z-index:-1;">
+
+    <!--Datos de Empresa-->
+
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            Datos de empresa para la que solicitas un puesto
+        </div>
+    </div><br>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+
+                <input type="text" name='register_name' class="form-control" id="name_company" value="Nombre de la Empresa" required="required" placeholder="Nombre de la empresa">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+
+
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" class="form-control" id="puesto" value="Puesto" required="required" placeholder="Puesto">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+    </form>
+
+</section><br>
+<section class="container">
+    <!--Documentos adjuntos-->
+
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            Documentos que adjunto a mi candidatura
+        </div>
+    </div><br>
+
+    <div class="row orientation-points">
+        <div class="col-lg-12 ">
+            <input type="checkbox" id="check_cv" value="Curriculm Vitae" onclick="curriculumVitaeSetHidden(this.checked)">
+            <label for="check_cv" class="size14 gray_adecco arial steps_height">Curriculum Vitae</label>
+        </div>
+    </div><br>
+
+    <div class="row orientation-points">
+        <div class="col-lg-12 ">
+            <input type="checkbox" id="check_pf" value="Portfolio" onclick="portFolioSetHidden(this.checked)">
+            <label for="check_pf" class="size14 gray_adecco arial steps_height">Portfolio</label>
+        </div>
+    </div><br>
+
+
+    <div class="row orientation-points">
+        <div class="col-lg-12 ">
+            <input type="checkbox" id="check_lr" value="letterPresentation" onclick="letterRecomendationSetHidden(this.checked)">
+            <label for="check_lr" class="size14 gray_adecco arial steps_height">Carta(s) de recomendación</label>
+        </div>
+    </div><br>
+
+
+    <div class="row orientation-points">
+        <div class="col-lg-12 ">
+            <input type="checkbox" id="check_certificates" value="Certificados" onclick="certificateSetHidden(this.checked)">
+            <label for="check_certificates" class="size14 gray_adecco arial steps_height">Certificado(s)</label>
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.StashController.lp3()';">SIGUIENTE</button>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    window.onload = function(){
+        loadRecognition();
+    };
+</script>
+}

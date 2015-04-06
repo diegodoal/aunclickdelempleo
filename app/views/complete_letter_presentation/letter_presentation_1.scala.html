@@ -1,0 +1,266 @@
+@main(){
+<section class="container" style="z-index:-1;" id="text_user_profile_2">
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic">
+            <h2>TU CARTA DE PRESENTACIÓN</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic size20">
+            <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-sm-12 ic_paso2">
+            <img src="@routes.Assets.at("images/complete_user_profile_1/ic_paso1.png")" class="ic_paso2" alt="Tu carta de presentacion" title="Carta de presentación">
+        </div>
+    </div>
+</section>
+
+<section class="container" style="z-index:-1;">
+
+    <!--Datos Personales-->
+
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            Datos personales
+        </div>
+    </div><br>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+
+                <input type="text" name='register_name' class="form-control" id="name" value="Nombre" required="required" placeholder="Nombre">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+
+
+
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" class="form-control" id="surname" value="Apellidos" required="required" placeholder="Apellidos">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" class="form-control" id="date" required="required" value="Fecha de nacimiento" placeholder="Fecha de nacimiento" >
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" class="form-control" id="register_city" value="Ciudad de residencia" required="required"  placeholder="Ciudad de residencia">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" class="form-control" id="dress" value="Calle" required="required"  placeholder="Calle">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" class="form-control" id="number" value="Numero" required="required"  placeholder="Número">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="post" class="form-control" id="post" value="Código postal" placeholder="Código postal">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+    </form>
+</section>
+<section class="container" style="z-index:-1;">
+
+    <!--Contacto-->
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            Datos de contacto
+        </div>
+    </div><br>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-lg-5">
+                <input type="email" name='email' class="form-control" id="access_email" value="Correo electrónico" required="required" placeholder="Correo electrónico">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" class="form-control" id="telephone" value="Teléfono de contacto" placeholder="Teléfono de contacto">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+    </form>
+</section>
+
+<section class="container" style="z-index:-1;">
+    <!-- Experiencia Académica -->
+
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">Experiencia académica</div>
+    </div>
+
+    <div class="row orientation-points">
+        <div class="col-lg-12 ">
+            <input type="checkbox" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
+            <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+        </div>
+    </div><br>
+
+    <form class="form-horizontal" autocomplete="on" method="post">
+        <div class="form-group form-inline" id="level_studies_group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" class="form-control" placeholder="Título" id="titulo" value="Título" required="requerided">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 input-mic-container">
+                <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="Lugar de estudio" required="requerided">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+    </form>
+
+</section>
+
+<section class=" container orientation-points">
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">Elije 3 caraterísticas que te definan</div>
+    </div>
+    <div class="row back checkbox-group">
+        <div class="col-md-offset-1 col-md-3">
+            <p>
+                <input type="checkbox" id="check1" value="Trabajador">
+                <label for="check1" class="size14 gray_adecco arial steps_height">Trabajador</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check2" value="Ambicioso">
+                <label for="check2" class="size14 gray_adecco arial steps_height">Ambicioso</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check3" value="Extrovertido">
+                <label for="check3" class="size14 gray_adecco arial steps_height">Extrovertido</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check4" value="Hablador">
+                <label for="check4" class="size14 gray_adecco arial steps_height">Hablador</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check5" value="Comprensivo">
+                <label for="check5" class="size14 gray_adecco arial steps_height">Comprensivo</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check6" value="Idealista">
+                <label for="check6" class="size14 gray_adecco arial steps_height">Idealista</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check7" value="Tranquilo">
+                <label for="check7" class="size14 gray_adecco arial steps_height">Tranquilo</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check8" value="Cuidadoso">
+                <label for="check8" class="size14 gray_adecco arial steps_height">Cuidadoso</label>
+            </p>
+        </div>
+
+        <div class="col-md-offset-1 col-md-3">
+            <p>
+                <input type="checkbox" id="check9" value="Creativo">
+                <label for="check9" class="size14 gray_adecco arial steps_height">Creativo</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check10" value="Digno de confianza">
+                <label for="check10" class="size14 gray_adecco arial steps_height">Digno de confianza</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check11" value="Entusiasta">
+                <label for="check11" class="size14 gray_adecco arial steps_height">Entusiasta</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check12" value="Responsable">
+                <label for="check12" class="size14 gray_adecco arial steps_height">Responsable</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check13" value="Honesto">
+                <label for="check13" class="size14 gray_adecco arial steps_height">Honesto</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check14" value="Productivo">
+                <label for="check14" class="size14 gray_adecco arial steps_height">Productivo</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check15" value="Amable">
+                <label for="check15" class="size14 gray_adecco arial steps_height">Amable</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check16" value="Reflexivo">
+                <label for="check16" class="size14 gray_adecco arial steps_height">Reflexivo</label>
+            </p>
+        </div>
+
+        <div class="col-md-offset-1 col-md-3">
+            <p>
+                <input type="checkbox" id="check17" value="Formal">
+                <label for="check17" class="size14 gray_adecco arial steps_height">Formal</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check18" value="Optimista">
+                <label for="check18" class="size14 gray_adecco arial steps_height">Optimista</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check19" value="Flexible">
+                <label for="check19" class="size14 gray_adecco arial steps_height">Flexible</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check20" value="Racional">
+                <label for="check20" class="size14 gray_adecco arial steps_height">Racional</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check21" value="Dispuesto a aprender">
+                <label for="check21" class="size14 gray_adecco arial steps_height">Dispuesto a aprender</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check22" value="Observador">
+                <label for="check22" class="size14 gray_adecco arial steps_height">Observador</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check23" value="Educador">
+                <label for="check23" class="size14 gray_adecco arial steps_height">Educado</label>
+            </p>
+            <p>
+                <input type="checkbox" id="check24" value="Competitivo">
+                <label for="check24" class="size14 gray_adecco arial steps_height">Competitivo</label>
+            </p>
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
+            <button class="button-finish-1" onclick="location.href= '@routes.StashController.lp2()';">SIGUIENTE</button>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    window.onload = function(){
+        limitCheckboxes(3);
+        loadRecognition();
+    };
+</script>
+
+}

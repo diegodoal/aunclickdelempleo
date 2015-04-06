@@ -23,4 +23,10 @@ public class StashController {
     public static Result cv2(){return ok(views.html.complete_cv.complete_cv_2.render());}
 
     public static Result cv3(){return ok(views.html.complete_cv.complete_cv_3.render());}
+
+    public static Result lp1(){return ok(views.html.complete_letter_presentation.letter_presentation_1.render());}
+
+    public static Result lp2(){return ok(views.html.complete_letter_presentation.letter_presentation_2.render());}
+
+    public static Result lp3(){return ok(views.html.complete_letter_presentation.letter_presentation_3.render());}
 }
