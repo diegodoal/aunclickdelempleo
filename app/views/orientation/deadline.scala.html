@@ -26,13 +26,13 @@
             <div class="form-group form-inline" id="job_experience_group_3">
                 <div class="col-md-6">
                     <div class="input-mic-container">
-                        <input type="text" class="form-control" placeholder="Empresa" >
+                        <input type="text" class="form-control" id="Empresa" placeholder="Empresa" >
                         <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-mic-container">
-                        <input type="text" class="form-control" placeholder="Dirección" />
+                        <input type="text" class="form-control" id="Dirección" placeholder="Dirección" />
                         <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
@@ -51,8 +51,8 @@
 
 <section class="container">
     <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4 center">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
             <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitDeadLine()';">FINALIZAR</button>
         </div>
     </div>

@@ -1,7 +1,6 @@
 @main(){
-
 <div class="container">
- <section class="container">
+ <section>
     <div class="row">
         <div class="col-md-12">
             <h2 class="red_adecco century_gothic">Genera tus documentos personalizados</h2>
@@ -23,8 +22,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4 center">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
             <button class="button-create-1" onclick="location.href= '@routes.StashController.cv1()';">CREAR</button>
         </div>
     </div>
@@ -44,9 +43,9 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4 center">
-            <button class="button-create-1" onclick="location.href= '#';">CREAR</button>
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
+            <button class="button-create-1" onclick="location.href= '@routes.StashController.lp1()';">CREAR</button>
         </div>
     </div>
 
@@ -60,19 +59,19 @@
     </div>
 
     <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4 center">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
             <button class="button-create-1" onclick="location.href= '#';">CREAR</button>
         </div>
     </div>
 </section><br>
+</div>
 <section class="container">
     <div class="row">
-        <div class="col-md-8"></div>
-        <div class="col-md-4 center">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
             <button class="button-finish-1" onclick="location.href='@routes.OrientationController.submitGetTools()';">FINALIZAR</button>
         </div>
     </div>
 </section>
-</div>
 }
