@@ -10,6 +10,8 @@ import com.google.gson.reflect.TypeToken;
 import models.S3File;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
+import models.entities.orientation.InterviewSchedule;
+import models.entities.orientation.ProfessionalValue;
 import models.entities.orientation.Skills;
 
 import org.apache.commons.codec.binary.Base64;
@@ -18,6 +20,7 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import utils.Utils;
 
 public class OrientationController extends Controller {
 	public static Result blank() {
@@ -62,7 +65,7 @@ public class OrientationController extends Controller {
     public static Result submitSkills(){
     	JsonNode request = request().body().asJson();
     	User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-    	
+
     	  String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
           for(int i=0; i<result.length; i++){
               if(!user.skills.skillsList.contains(result[i])){
@@ -110,6 +113,16 @@ public class OrientationController extends Controller {
 
     public static Result submitProfessional(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        JsonNode request = request().body().asJson();
+
+        String[][] professionalValues = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
+        }.getType());
+        for(int i=0; i<professionalValues.length; i++){
+            user.professionalValues.add(new ProfessionalValue(professionalValues[i][0], professionalValues[i][1]));
+        }
+
+
         user.completedOrientationSteps.professional = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
@@ -233,7 +246,15 @@ public class OrientationController extends Controller {
     public static Result deadline(){return ok(views.html.orientation.deadline.render());}
 
     public static Result submitDeadLine(){
+        JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+
+        String[][] deadline = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {}.getType());
+        for(int i=0; i<deadline.length; i++){
+            user.interviewScheduleList.add(new InterviewSchedule(deadline[i][0] + " " + deadline[i][1], deadline[i][2], deadline[i][3]));
+        }
+
         user.completedOrientationSteps.deadLine = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");

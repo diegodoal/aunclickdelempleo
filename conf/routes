@@ -27,7 +27,7 @@ POST    /orientation/interestidentification         controllers.OrientationContr
 GET     /orientation/personal						controllers.OrientationController.personal()
 POST    /orientation/personal		                controllers.OrientationController.submitPersonal()
 GET     /orientation/professional					controllers.OrientationController.professional()
-GET     /orientation/professional/submit            controllers.OrientationController.submitProfessional()
+POST    /orientation/professional                   controllers.OrientationController.submitProfessional()
 GET     /orientation/photo                          controllers.OrientationController.photo()
 POST    /orientation/photo                          controllers.OrientationController.uploadPhoto()
 
@@ -69,7 +69,7 @@ GET     /orientation/questionsinterview/submit      controllers.OrientationContr
 
 # PUNTO 4: PLANIFICATE
 GET     /orientation/deadline                       controllers.OrientationController.deadline()
-GET     /orientation/deadline/submit                controllers.OrientationController.submitDeadLine()
+POST    /orientation/deadline                       controllers.OrientationController.submitDeadLine()
 GET     /orientation/travel                         controllers.OrientationController.travel()
 GET     /orientation/travel/submit                  controllers.OrientationController.submitTravel()
 

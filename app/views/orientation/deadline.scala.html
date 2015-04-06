@@ -11,8 +11,10 @@
         </div><br>
     </div>
 </article>
-<div class="main-div-sections">
-    <section class="panel-group container back new-input-container center" style="margin-auto;">
+
+<section class="container back" style="margin:auto;">
+    <div class="main-div-sections">
+    <div class="panel-group new-input-container center" style="margin-auto;">
         <form class="form-horizontal" autocomplete="on" method="post">
             <div class="form-group form-inline" id="job_experience_group_1">
                 <div class="col-md-6">
@@ -26,13 +28,13 @@
             <div class="form-group form-inline" id="job_experience_group_3">
                 <div class="col-md-6">
                     <div class="input-mic-container">
-                        <input type="text" class="form-control" id="Empresa" placeholder="Empresa" >
+                        <input type="text" class="form-control" placeholder="Empresa" >
                         <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-mic-container">
-                        <input type="text" class="form-control" id="Dirección" placeholder="Dirección" />
+                        <input type="text" class="form-control" placeholder="Dirección" />
                         <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
@@ -46,14 +48,16 @@
                  </div>
              </div>
         </form>
-    </section>
-</div>
+    </div>
+    </div>
+</section>
+
 
 <section class="container">
     <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitDeadLine()';">FINALIZAR</button>
+        <div class="col-md-8"></div>
+        <div class="col-md-4 center">
+            <button class="button-finish-1" onclick="sendDeadLine()">FINALIZAR</button>
         </div>
     </div>
 </section>
@@ -63,6 +67,31 @@
         addNew();
         loadRecognition();
     };
+</script>
+
+<script>
+    function sendDeadLine(){
+        var deadlineArray = [];
+        var counter = 0;
+        $('.main-div-sections .form-horizontal').each(function(){
+            var auxDeadline = [];
+            $(this).find('input').each(function(){
+                auxDeadline[counter] = $(this).val();
+                counter++;
+            });
+            counter = 0;
+            deadlineArray.push(auxDeadline);
+        });
+
+        $.ajax({
+            type: 'post',
+            data: JSON.stringify(deadlineArray),
+            url: "/orientation/deadline",
+            contentType: 'application/json'
+        }).done(function(o) {
+            window.location.assign("/orientation");
+        });
+    }
 </script>
 
 }
