@@ -567,7 +567,6 @@ function sendSkills(){
     $('input[type=radio]').each(function () {
         if(this.checked){
             var auxArray = [];
-            console.log($(this).val() + $(this).closest('.radio').attr('value'));
             auxArray[0] = $(this).closest('.radio').attr('value');
             auxArray[1] = $(this).val();
             radioArray.push(auxArray);
