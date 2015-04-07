@@ -8,9 +8,14 @@ import models.entities.User;
 import play.data.DynamicForm;
 import play.mvc.Http;
 import play.mvc.Result;
+import utils.EmailUtil;
 import utils.Utils;
 
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import java.util.Date;
+import java.util.Properties;
 import java.util.UUID;
 
 import static play.data.Form.form;
@@ -88,20 +93,21 @@ public class LoginController {
     public static Result sendRestoreEmail(){
         JsonNode request = request().body().asJson();
 
-
         String email = new Gson().fromJson(request.toString(), new TypeToken<String>() {}.getType());
 
         User user = SingletonDataSource.getInstance().getUserByEmail(email);
 
         if (user == null){
-            String error_mail = "No existe ningún usuario registrado con ese email";
-            return badRequest(views.html.login_user.login.render(error_mail, null));
+            return badRequest(views.html.login_user.login.render(null, null));
         }
 
         user.restorePasswordToken = UUID.randomUUID().toString();
         user.restorePasswordTimestamp = new Date().toString();
 
         SingletonDataSource.getInstance().updateAllUserData(user);
+        String subject = "Restablecer contraseña en \"A un click del empleo\"";
+        String message = "Para restablecer su contraseña, pulse en el siguiente enlace: http://localhost:9000/restore/"+user.email+"/"+user.restorePasswordToken;
+        EmailUtil.emailMaker(email, subject, message);
 
         return redirect("/login");
     }
