@@ -1,14 +1,20 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.data.DynamicForm;
+import play.mvc.Http;
 import play.mvc.Result;
 import utils.Utils;
 
 import java.util.Date;
+import java.util.UUID;
 
 import static play.data.Form.form;
+import static play.mvc.Controller.request;
 import static play.mvc.Controller.session;
 import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
@@ -77,5 +83,26 @@ public class LoginController {
     public static Result logout(){
         session().clear();
         return redirect("/");
+    }
+
+    public static Result sendRestoreEmail(){
+        JsonNode request = request().body().asJson();
+
+
+        String email = new Gson().fromJson(request.toString(), new TypeToken<String>() {}.getType());
+
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        if (user == null){
+            String error_mail = "No existe ningún usuario registrado con ese email";
+            return badRequest(views.html.login_user.login.render(error_mail, null));
+        }
+
+        user.restorePasswordToken = UUID.randomUUID().toString();
+        user.restorePasswordTimestamp = new Date().toString();
+
+        SingletonDataSource.getInstance().updateAllUserData(user);
+
+        return redirect("/login");
     }
 }

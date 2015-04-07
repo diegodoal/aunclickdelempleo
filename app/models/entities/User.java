@@ -24,6 +24,9 @@ public class User {
     public String emailVerificationKey;
     public String connectionTimestamp;
 
+    public String restorePasswordToken;
+    public String restorePasswordTimestamp;
+
     public CompletedOrientationSteps completedOrientationSteps;
 
     //Orientation steps
@@ -37,8 +40,9 @@ public class User {
 
     public User(){
         this.emailVerificationKey = UUID.randomUUID().toString();
-        //Includes an "a" at the end for more security. Stored with custom format in DB and with standard format in session
         this.connectionTimestamp = new Date().toString();
+        this.restorePasswordToken = null;
+        this.restorePasswordTimestamp = null;
         this.currentSituation = new CurrentSituation();
         this.skill = new ArrayList<>();
         this.interests = new ArrayList<>();
@@ -55,6 +59,8 @@ public class User {
         this.password = password;
         this.emailVerificationKey = UUID.randomUUID().toString();
         this.connectionTimestamp = new Date().toString();
+        this.restorePasswordToken = null;
+        this.restorePasswordTimestamp = null;
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
         this.skill = new ArrayList<>();

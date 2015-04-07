@@ -13,6 +13,7 @@ GET     /login                                      controllers.LoginController.
 GET     /logout                                     controllers.LoginController.logout()
 POST    /login                                      controllers.LoginController.submitLogin()
 POST    /signup                                     controllers.LoginController.submitSignUp()
+POST    /login/restore                             controllers.LoginController.sendRestoreEmail()
 
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()
