@@ -197,6 +197,7 @@
             $('#restore_success').show();
         },
         error: function(){
+            $('#sendingEmailModal').modal('hide');
             $('#restore_success').hide();
             $('#restore_error').show();
         }
