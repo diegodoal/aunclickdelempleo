@@ -147,6 +147,19 @@
     </div>
 </article>
 
+<!-- SENDING EMAIL MODAL -->
+<div class="modal fade" id="sendingEmailModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <p id="sendingEmailText">Enviando email...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END OF SENDING EMAIL MODAL -->
 
 <!-- POP UP WINDOW -->
 <div id="accesibility_pop_up2" class="mask_pop_up">
@@ -171,6 +184,7 @@
 <script>
     function sendRestoreEmail(){
     var email = $('#access_email').val();
+    $('#sendingEmailModal').modal('show');
 
     $.ajax({
         type: 'post',
@@ -178,6 +192,7 @@
         url: "/login/restore",
         contentType: 'application/json',
         success: function(){
+            $('#sendingEmailModal').modal('hide');
             $('#restore_error').hide();
             $('#restore_success').show();
         },
