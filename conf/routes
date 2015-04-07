@@ -13,7 +13,9 @@ GET     /login                                      controllers.LoginController.
 GET     /logout                                     controllers.LoginController.logout()
 POST    /login                                      controllers.LoginController.submitLogin()
 POST    /signup                                     controllers.LoginController.submitSignUp()
-POST    /login/restore                             controllers.LoginController.sendRestoreEmail()
+POST    /login/restore                              controllers.LoginController.sendRestoreEmail()
+GET     /restore/:email/:token                      controllers.LoginController.restore(email : String, token : String)
+POST    /restore                                    controllers.LoginController.restorePassword()
 
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()
