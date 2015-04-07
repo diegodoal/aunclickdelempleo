@@ -37,6 +37,12 @@
                 </div>
 
                 <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6">
+                        <span class="font1">Si has olvidado tu contraseña, <a class="font2" href="javascript: sendRestoreEmail()">pulsa aquí.</a></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
 
                     <div class="col-md-offset-6 col-md-4 button-create">
                         <button type="submit">ENTRAR</button>
@@ -52,11 +58,19 @@
                         });
                     </script>-->
 
-                    @if(error_login_msg != null) {
                     <div class="col-md-offset-2 col-md-10">
-                        <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_login_msg</div>
+                        @if(error_login_msg != null) {
+                            <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_login_msg</div>
+                        }
+                        <div id="restore_success" hidden>
+                            <br>
+                            <div class="alert alert-success" role="alert">Por favor, revista tu correo electrónico.</div>
+                        </div>
+                        <div id="restore_error" hidden>
+                            <br>
+                            <div class="alert alert-danger" role="alert">No existe ningún usuario registrado con este email.</div>
+                        </div>
                     </div>
-                    }
                 </div>
             </form>
         </div>
@@ -133,6 +147,19 @@
     </div>
 </article>
 
+<!-- SENDING EMAIL MODAL -->
+<div class="modal fade" id="sendingEmailModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <p id="sendingEmailText">Enviando email...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END OF SENDING EMAIL MODAL -->
 
 <!-- POP UP WINDOW -->
 <div id="accesibility_pop_up2" class="mask_pop_up">
@@ -152,5 +179,31 @@
       window.onload = function() {
         loadRecognition();
     };
+</script>
+
+<script>
+    function sendRestoreEmail(){
+    var email = $('#access_email').val();
+    $('#sendingEmailModal').modal('show');
+
+    $.ajax({
+        type: 'post',
+        data: JSON.stringify(email),
+        url: "/login/restore",
+        contentType: 'application/json',
+        success: function(){
+            $('#sendingEmailModal').modal('hide');
+            $('#restore_error').hide();
+            $('#restore_success').show();
+        },
+        error: function(){
+            $('#restore_success').hide();
+            $('#restore_error').show();
+        }
+    });
+
+
+
+    }
 </script>
 }
