@@ -6841,6 +6841,15 @@ footer {
   background-size: 100% 20em;
 }
 
+/*Gettools*/
+#gettools_banner{
+  margin-top:-1.2em;
+  width: 100%;
+  height: 20em;
+  background-image: url("../images/orientation/portada-generar.png");
+  background-repeat: no-repeat;
+  background-size: 100% 20em;
+}
 
 /*Planning*/
 
@@ -6852,7 +6861,6 @@ footer {
   background-repeat: no-repeat;
   background-size: 100% 20em;
 }
-
 #opciones_1{
   margin: 1.2em;
 }
