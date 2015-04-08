@@ -1,0 +1,69 @@
+@(user : models.entities.User)
+
+@main(){
+
+<section class="container">
+    <h3><b>Información Personal</b></h3>
+    <p>@user.name @user.surnames</p>
+    <p>@user.email</p>
+
+    <h3><b>Situación Actual</b></h3>
+    <h4>Nivel de educación</h4>
+    <ul>
+    	@for(education <- user.currentSituation.educationLevelList) {
+ 		 <li>@education</li>
+		}
+    </ul>
+
+    <h4>Experiencia profesional</h4>
+    <ul>
+    	@for(professional <- user.currentSituation.professionalExperienceList) {
+    				<li>Empresa: @professional.company</li>
+    				<li>Puesto: @professional.job</li>
+    				<li>Años de experiencia: @professional.experienceYears</li>
+    		<br>
+	    }
+    </ul>
+
+    <h3><b>Habilidades</b></h3>
+    <ul>
+    	@for(skill <- user.skill) {
+    		<li>@skill.name | <b>Nivel:</b> @skill.level</li>
+    	}
+    </ul>
+
+    <h3><b>Intereses</b></h3>
+    <ul>
+    	@for(interest <- user.interests) {
+    		<li>@interest</li>
+    	}
+    </ul>
+
+    <h3><b>Características personales</b></h3>
+    <ul>
+    	@for(characteristic <- user.personalCharacteristics) {
+    		<li>@characteristic</li>
+    	}
+    </ul>
+
+    <h3><b>Valores profesionales</b></h3>
+    <ul>
+    	@for(values <- user.professionalValues) {
+    		@if(values.valuation == "Si"){
+    			<li>@values.name</li>
+    		}
+    	}
+    </ul>
+
+    <h3><b>Próximas entrevistas</b></h3>
+    <ul>
+    	@for(interview <- user.interviewScheduleList) {
+    		<li>Fecha: @interview.date</li>
+    		<li>Empresa: @interview.company</li>
+    		<li>Dirección: @interview.address</li>
+    		<br>
+    	}
+    </ul>
+</section>
+
+}

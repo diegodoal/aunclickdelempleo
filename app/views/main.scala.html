@@ -58,7 +58,7 @@
                 @if(session.get("email") == null){
                     <li class="button-nav-login"><a href="@routes.LoginController.blank()" accesskey="I"  tabindex="6"><button type="button" class="btn btn-default navbar-btn">ENTRAR</button></a></li>
                 }else{
-                    <li class="button-nav-login"><a href="@routes.Application.index()"><button type="button" class="btn btn-default navbar-btn"><b>@session.get("name").toUpperCase()</b></button></a></li>
+                    <li class="button-nav-login"><a href="@routes.ProfileController.blank()"><button type="button" class="btn btn-default navbar-btn"><b>@session.get("name").toUpperCase()</b></button></a></li>
                     <li class="button-nav-login"><a href="@routes.LoginController.logout()" accesskey="S"  tabindex="7"><button type="button" class="btn btn-default navbar-btn">SALIR</button></a></li>
                 }
             </ul>
