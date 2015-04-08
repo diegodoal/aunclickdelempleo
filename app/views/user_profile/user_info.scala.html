@@ -18,9 +18,9 @@
     <h4>Experiencia profesional</h4>
     <ul>
     	@for(professional <- user.currentSituation.professionalExperienceList) {
-    				<li>Empresa: @professional.company</li>
-    				<li>Puesto: @professional.job</li>
-    				<li>Años de experiencia: @professional.experienceYears</li>
+    				<li><b>Empresa:</b> @professional.company</li>
+    				<li><b>Puesto:</b> @professional.job</li>
+    				<li><b>Años de experiencia:</b> @professional.experienceYears</li>
     		<br>
 	    }
     </ul>
@@ -58,9 +58,9 @@
     <h3><b>Próximas entrevistas</b></h3>
     <ul>
     	@for(interview <- user.interviewScheduleList) {
-    		<li>Fecha: @interview.date</li>
-    		<li>Empresa: @interview.company</li>
-    		<li>Dirección: @interview.address</li>
+    		<li><b>Fecha:</b> @interview.date</li>
+    		<li><b>Empresa:</b> @interview.company</li>
+    		<li><b>Dirección:</b> @interview.address</li>
     		<br>
     	}
     </ul>
