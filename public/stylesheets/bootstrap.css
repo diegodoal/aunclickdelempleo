@@ -6814,12 +6814,27 @@ input[type="radio"] {
 }
  /*FOOTER*/
 footer {
-  
+
    position:relative;
    bottom:0;
    width:100%;
-   height:50px;            /* Altura del footer */
-   margin: 0 auto;
+   height:100px;            /* Altura del footer */
+   background-color:#ea2026;
+   margin-top:4em;
+}
+
+.politic{
+   color:white;
+   background-color:;
+   margin-top:3em;
+   padding-left:10%;
+}
+
+.adeccofooter{
+   color:white;
+   background-color:;
+   margin-top:1.5em;
+   padding-left:20%;
 }
 
 .row_disability{
