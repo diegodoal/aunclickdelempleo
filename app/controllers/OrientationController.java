@@ -70,10 +70,15 @@ public class OrientationController extends Controller {
         if(user != null) {
             String[][] skills = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
             }.getType());
-            for (int i = 0; i < skills.length; i++) {
-                user.skill.add(new Skill(skills[i][0], skills[i][1]));
+            if(user.skill.isEmpty()){
+                for (int i = 0; i < skills.length; i++) {
+                    user.skill.add(i, new Skill(skills[i][0], skills[i][1]));
+                }
+            }else{
+                for (int i=0; i<skills.length; i++){
+                    user.skill.get(i).level = skills[i][1];
+                }
             }
-
             user.completedOrientationSteps.skills = String.valueOf(true);
             SingletonDataSource.getInstance().updateAllUserData(user);
         }
