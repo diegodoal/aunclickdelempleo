@@ -1,3 +1,5 @@
+@(user: models.entities.User)
+
 @main(){
 <article class="container">
     <div class="row">
@@ -14,6 +16,46 @@
 
 <section class="container back" style="margin:auto;">
     <div class="main-div-sections">
+    
+        
+        @if(user != null){
+            @for(interview <- user.interviewScheduleList){
+            <form class="form-horizontal" autocomplete="on" method="post">
+                <div class="form-group form-inline" id="job_experience_group_1">
+                    <div class="col-md-6">
+                        <input placeholder="Fecha" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" value="@interview.getInterviewDate()">
+                    </div>
+                    <div class="col-md-6">
+                        <input placeholder="Hora" class="form-control" style="width: 100%;" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" id="time" value="@interview.getInterviewTime()">
+                    </div>
+                </div>
+
+                <div class="form-group form-inline" id="job_experience_group_3">
+                    <div class="col-md-6">
+                        <div class="input-mic-container">
+                            <input type="text" class="form-control" placeholder="Empresa" value="@interview.company">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-mic-container">
+                            <input type="text" class="form-control" placeholder="Dirección" value="@interview.address" />
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                     <div class="col-md-1 right">
+                             <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                <img class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                             </div>
+                     </div>
+                </div>
+            </form>
+            }
+        }
+
     <div class="panel-group new-input-container center" style="margin-auto;">
         <form class="form-horizontal" autocomplete="on" method="post">
             <div class="form-group form-inline" id="job_experience_group_1">

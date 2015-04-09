@@ -242,7 +242,10 @@ public class OrientationController extends Controller {
     }
 
     /* PUNTO 4: PLANIFICATE */
-    public static Result deadline(){return ok(views.html.orientation.deadline.render());}
+    public static Result deadline(){
+        User user = SingletonDataSource.getUserByEmail(session().get("email"));
+        return ok(views.html.orientation.deadline.render(user));
+    }
 
     public static Result submitDeadLine(){
         JsonNode request = request().body().asJson();

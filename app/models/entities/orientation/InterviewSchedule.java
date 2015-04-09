@@ -25,4 +25,12 @@ public class InterviewSchedule {
         this.notified = "false";
     }
 
+    public String getInterviewDate(){
+        return date.substring(0, 10);
+    }
+
+    public String getInterviewTime(){
+        return date.substring(11, 16);
+    }
+
 }
