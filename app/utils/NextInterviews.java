@@ -24,7 +24,9 @@ public class NextInterviews {
             for(int j=0; j<users.get(i).interviewScheduleList.size(); j++){
                 if(users.get(i).interviewScheduleList.get(j).notified.equals(String.valueOf(false)) && isNextInterview(users.get(i).interviewScheduleList.get(j))){
                     nextInterviews.add(new UserInterview(users.get(i).interviewScheduleList.get(j), users.get(i).email, users.get(i).name));
+                    users.get(i).interviewScheduleList.get(j).notified = String.valueOf(true);
                 }
+                SingletonDataSource.getInstance().updateAllUserData(users.get(i));
             }
         }
 
