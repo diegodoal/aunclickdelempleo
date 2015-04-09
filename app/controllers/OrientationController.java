@@ -253,8 +253,9 @@ public class OrientationController extends Controller {
 
         String[][] result = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {}.getType());
         for(int i=0; i<result.length; i++){
-            if(!user.interviewScheduleList.contains(result[i])){
-                user.interviewScheduleList.add(new InterviewSchedule(result[i][0] + " " + result[i][1], result[i][2], result[i][3]));
+            InterviewSchedule auxInterviewSchedule = new InterviewSchedule(result[i][0] + " " + result[i][1], result[i][2], result[i][3]);
+            if(!user.interviewScheduleList.contains(auxInterviewSchedule)){
+                user.interviewScheduleList.add(auxInterviewSchedule);
             }
         }
 
