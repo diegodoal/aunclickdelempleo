@@ -117,12 +117,19 @@
         var counter = 0;
         $('.main-div-sections .form-horizontal').each(function(){
             var auxDeadline = [];
+            var valid = true;
             $(this).find('input').each(function(){
-                auxDeadline[counter] = $(this).val();
+                if(valid == true && $(this).val() != ''){
+                    auxDeadline[counter] = $(this).val();
+                }else{
+                    valid = false;
+                }
                 counter++;
             });
             counter = 0;
-            deadlineArray.push(auxDeadline);
+            if(valid==true){
+                deadlineArray.push(auxDeadline);
+            }
         });
 
         $.ajax({
