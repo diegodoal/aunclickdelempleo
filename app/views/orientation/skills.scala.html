@@ -1,3 +1,5 @@
+@(user: models.entities.User)
+
 @main() {
 
 <section class="container">
@@ -10,6 +12,7 @@
     <div class="gray_adecco size16 arial">
         <p>Actividad: A continuación se muestra una lista de habilidades, sé sincero y valora cada una de ella según te desenvuelvas: normal, bien o excelente.</p>
     </div><br>
+    <div class="alert alert-danger" hidden id="radiosError" role="alert">Por favor, completa todo el formulario.</div><br>
         <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -34,21 +37,29 @@
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                   
-                                    <input class="radio-normal" type="radio" id="radio-normal_1" name="group_1" value="Normal"><label for="radio-normal_1"><span></span></label>
-
-                                </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(0).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_1" name="group_1" value="Normal" checked><label for="radio-normal_1"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_1" name="group_1" value="Normal"><label for="radio-normal_1"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-good" type="radio" id="radio-good_1" name="group_1" value="Bien"><label for="radio-good_1"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(0).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_1" name="group_1" value="Bien" checked><label for="radio-good_1"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_1" name="group_1" value="Bien"><label for="radio-good_1"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_1" name="group_1" value="Excelente"><label for="radio-excellent_1"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(0).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_1" name="group_1" value="Excelente" checked><label for="radio-excellent_1"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_1" name="group_1" value="Excelente"><label for="radio-excellent_1"><span></span></label>
+                                    }
                                 </div>
 
 
@@ -71,22 +82,31 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                   
-                                    <input class="radio-normal" type="radio" id="radio-normal_2" name="group_2" value="Normal"><label for="radio-normal_2"><span></span></label>
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(1).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_2" name="group_2" value="Normal" checked><label for="radio-normal_2"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_2" name="group_2" value="Normal"><label for="radio-normal_2"><span></span></label>
+                                    }
+                                    
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(1).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_2" name="group_2" value="Bien" checked><label for="radio-good_2"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_2" name="group_2" value="Bien"><label for="radio-good_2"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                    <input class="radio-good" type="radio" id="radio-good_2" name="group_2" value="Bien"><label for="radio-good_2"><span></span></label>
-
-                                </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_2" name="group_2" value="Excelente"><label for="radio-excellent_2"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(1).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_2" name="group_2" value="Excelente" checked><label for="radio-excellent_2"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_2" name="group_2" value="Excelente"><label for="radio-excellent_2"><span></span></label>
+                                    }
                                 </div>
 
 
@@ -105,25 +125,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(2).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_3" name="group_3" value="Normal" checked><label for="radio-normal_3"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_3" name="group_3" value="Normal"><label for="radio-normal_3"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_3" name="group_3" value="Normal"><label for="radio-normal_3"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(2).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_3" name="group_3" value="Bien" checked><label for="radio-good_3"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_3" name="group_3" value="Bien"><label for="radio-good_3"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                    <input class="radio-good" type="radio" id="radio-good_3" name="group_3" value="Bien"><label for="radio-good_3"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(2).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_3" name="group_3" value="Excelente" checked><label for="radio-excellent_3"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_3" name="group_3" value="Excelente"><label for="radio-excellent_3"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_3" name="group_3" value="Excelente"><label for="radio-excellent_3"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -135,29 +162,36 @@
                         <p>- Soy capaz de considerar los diferentes pasos y decidir  qué instrumentos utilizar para crear un objeto.</p>
                     </p></td>
                    <td>
-                        <div class="radio" value="Habilidades t�cnicas">
+                        <div class="radio" value="Habilidades técnicas">
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(3).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_4" name="group_4" value="Normal" checked><label for="radio-normal_4"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_4" name="group_4" value="Normal"><label for="radio-normal_4"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_4" name="group_4" value="Normal"><label for="radio-normal_4"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(3).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_4" name="group_4" value="Bien" checked><label for="radio-good_4"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_4" name="group_4" value="Bien"><label for="radio-good_4"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                   
-                                    <input class="radio-good" type="radio" id="radio-good_4" name="group_4" value="Bien"><label for="radio-good_4"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(3).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_4" name="group_4" value="Excelente" checked><label for="radio-excellent_4"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_4" name="group_4" value="Excelente"><label for="radio-excellent_4"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_4" name="group_4" value="Excelente"><label for="radio-excellent_4"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -175,25 +209,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(4).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_5" name="group_5" value="Normal" checked><label for="radio-normal_5"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_5" name="group_5" value="Normal"><label for="radio-normal_5"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_5" name="group_5" value="Normal"><label for="radio-normal_5"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(4).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_5" name="group_5" value="Bien" checked><label for="radio-good_5"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_5" name="group_5" value="Bien"><label for="radio-good_5"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                    <input class="radio-good" type="radio" id="radio-good_5" name="group_5" value="Bien"><label for="radio-good_5"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(4).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_5" name="group_5" value="Excelente" checked><label for="radio-excellent_5"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_5" name="group_5" value="Excelente"><label for="radio-excellent_5"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_5" name="group_5" value="Excelente"><label for="radio-excellent_5"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -210,25 +251,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(5).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_6" name="group_6" value="Normal" checked><label for="radio-normal_6"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_6" name="group_6" value="Normal"><label for="radio-normal_6"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_6" name="group_6" value="Normal"><label for="radio-normal_6"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(5).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_6" name="group_6" value="Bien" checked><label for="radio-good_6"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_6" name="group_6" value="Bien"><label for="radio-good_6"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                    <input class="radio-good" type="radio" id="radio-good_6" name="group_6" value="Bien"><label for="radio-good_6"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(5).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_6" name="group_6" value="Excelente" checked><label for="radio-excellent_6"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_6" name="group_6" value="Excelente"><label for="radio-excellent_6"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_6" name="group_6" value="Excelente"><label for="radio-excellent_6"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -248,25 +296,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(6).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_7" name="group_7" value="Normal" checked><label for="radio-normal_7"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_7" name="group_7" value="Normal"><label for="radio-normal_7"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_7" name="group_7" value="Normal"><label for="radio-normal_7"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(6).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_7" name="group_7" value="Bien" checked><label for="radio-good_7"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_7" name="group_7" value="Bien"><label for="radio-good_7"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                    <input class="radio-good" type="radio" id="radio-good_7" name="group_7" value="Bien"><label for="radio-good_7"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(6).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_7" name="group_7" value="Excelente" checked><label for="radio-excellent_7"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_7" name="group_7" value="Excelente"><label for="radio-excellent_7"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_7" name="group_7" value="Excelente"><label for="radio-excellent_7"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -287,25 +342,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                  
-                                    <input class="radio-normal" type="radio" id="radio-normal_8" name="group_8" value="Normal"><label for="radio-normal_8"><span></span></label>
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(7).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_8" name="group_8" value="Normal" checked><label for="radio-normal_8"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_8" name="group_8" value="Normal"><label for="radio-normal_8"><span></span></label>
+                                    }
+                                    
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(7).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_8" name="group_8" value="Bien" checked><label for="radio-good_8"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_8" name="group_8" value="Bien"><label for="radio-good_8"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                               
-                                    <input class="radio-good" type="radio" id="radio-good_8" name="group_8" value="Bien"><label for="radio-good_8"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(7).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_8" name="group_8" value="Excelente" checked><label for="radio-excellent_8"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_8" name="group_8" value="Excelente"><label for="radio-excellent_8"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                  
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_8" name="group_8" value="Excelente"><label for="radio-excellent_8"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -325,25 +387,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(8).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_9" name="group_9" value="Normal" checked><label for="radio-normal_9"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_9" name="group_9" value="Normal"><label for="radio-normal_9"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_9" name="group_9" value="Normal"><label for="radio-normal_9"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(8).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_9" name="group_9" value="Bien" checked><label for="radio-good_9"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_9" name="group_9" value="Bien"><label for="radio-good_9"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                    <input class="radio-good" type="radio" id="radio-good_9" name="group_9" value="Bien"><label for="radio-good_9"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(8).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_9" name="group_9" value="Excelente" checked><label for="radio-excellent_9"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_9" name="group_9" value="Excelente"><label for="radio-excellent_9"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_9" name="group_9" value="Excelente"><label for="radio-excellent_9"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -363,25 +432,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(9).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_10" name="group_10" value="Normal" checked><label for="radio-normal_10"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_10" name="group_10" value="Normal"><label for="radio-normal_10"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_10" name="group_10" value="Normal"><label for="radio-normal_10"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(9).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_10" name="group_10" value="Bien" checked><label for="radio-good_10"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_10" name="group_10" value="Bien"><label for="radio-good_10"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                    <input class="radio-good" type="radio" id="radio-good_10" name="group_10" value="Bien"><label for="radio-good_10"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(9).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_10" name="group_10" value="Excelente" checked><label for="radio-excellent_10"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_10" name="group_10" value="Excelente"><label for="radio-excellent_10"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                   
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_10" name="group_10" value="Excelente"><label for="radio-excellent_10"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -403,25 +479,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(10).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_11" name="group_11" value="Normal" checked><label for="radio-normal_11"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_11" name="group_11" value="Normal"><label for="radio-normal_11"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_11" name="group_11" value="Normal"><label for="radio-normal_11"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(10).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_11" name="group_11" value="Bien" checked><label for="radio-good_11"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_11" name="group_11" value="Bien"><label for="radio-good_11"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                   
-                                    <input class="radio-good" type="radio" id="radio-good_11" name="group_11" value="Bien"><label for="radio-good_11"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(10).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_11" name="group_11" value="Excelente" checked><label for="radio-excellent_11"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_11" name="group_11" value="Excelente"><label for="radio-excellent_11"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                   
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_11" name="group_11" value="Excelente"><label for="radio-excellent_11"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -442,25 +525,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(11).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_12" name="group_12" value="Normal" checked><label for="radio-normal_12"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_12" name="group_12" value="Normal"><label for="radio-normal_12"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_12" name="group_12" value="Normal"><label for="radio-normal_12"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(11).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_12" name="group_12" value="Bien" checked><label for="radio-good_12"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_12" name="group_12" value="Bien"><label for="radio-good_12"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                   
-                                    <input class="radio-good" type="radio" id="radio-good_12" name="group_12" value="Bien"><label for="radio-good_12"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(11).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_12" name="group_12" value="Excelente" checked><label for="radio-excellent_12"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_12" name="group_12" value="Excelente"><label for="radio-excellent_12"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_12" name="group_12" value="Excelente"><label for="radio-excellent_12"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -480,25 +570,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                   
-                                    <input class="radio-normal" type="radio" id="radio-normal_13" name="group_13" value="Normal"><label for="radio-normal_13"><span></span></label>
-
-                                </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                   
-                                    <input class="radio-good" type="radio" id="radio-good_13" name="group_13" value="Bien"><label for="radio-good_13"><span></span></label>
-
-                                </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(12).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_13" name="group_13" value="Normal" checked><label for="radio-normal_13"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_13" name="group_13" value="Normal"><label for="radio-normal_13"><span></span></label>
+                                    }
                                     
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_13" name="group_13" value="Excelente"><label for="radio-excellent_13"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(12).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_13" name="group_2" value="Bien" checked><label for="radio-good_13"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_13" name="group_2" value="Bien"><label for="radio-good_13"><span></span></label>
+                                    }
 
                                 </div>
 
-
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(12).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_13" name="group_13" value="Excelente" checked><label for="radio-excellent_13"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_13" name="group_13" value="Excelente"><label for="radio-excellent_13"><span></span></label>
+                                    }
+                                </div>
                             </label>
                           </div>  
                     </td>
@@ -519,25 +616,32 @@
 
                             <label>
                                 <pre style="font-weight:bold; text-align:center;" class="size12 gray_adecco">   Normal        Bien       Excelente</pre>
+
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(13).level == "Normal"){
+                                        <input class="radio-normal" type="radio" id="radio-normal_14" name="group_14" value="Normal" checked><label for="radio-normal_14"><span></span></label>
+                                    }else{
+                                        <input class="radio-normal" type="radio" id="radio-normal_14" name="group_14" value="Normal"><label for="radio-normal_14"><span></span></label>
+                                    }
                                     
-                                    <input class="radio-normal" type="radio" id="radio-normal_14" name="group_14" value="Normal"><label for="radio-normal_14"><span></span></label>
+                                </div>
+
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(13).level == "Bien"){
+                                        <input class="radio-good" type="radio" id="radio-good_14" name="group_14" value="Bien" checked><label for="radio-good_14"><span></span></label>
+                                    }else{
+                                        <input class="radio-good" type="radio" id="radio-good_14" name="group_14" value="Bien"><label for="radio-good_14"><span></span></label>
+                                    }
 
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                    <input class="radio-good" type="radio" id="radio-good_14" name="group_14" value="Bien"><label for="radio-good_14"><span></span></label>
-
+                                    @if(user != null && user.skill.size() != 0 && user.skill.get(13).level == "Excelente"){
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_14" name="group_14" value="Excelente" checked><label for="radio-excellent_14"><span></span></label>
+                                    }else{
+                                        <input class="radio-excellent" type="radio" id="radio-excellent_14" name="group_14" value="Excelente"><label for="radio-excellent_14"><span></span></label>
+                                    }
                                 </div>
-
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    
-                                     <input class="radio-excellent" type="radio" id="radio-excellent_14" name="group_14" value="Excelente"><label for="radio-excellent_14"><span></span></label>
-
-                                </div>
-
-
                             </label>
                           </div>  
                     </td>
@@ -564,6 +668,7 @@ function sendSkills(){
     var radioArray = [];
 
     var counter = 0;
+    var num_checked = 0;
     $('input[type=radio]').each(function () {
         if(this.checked){
             var auxArray = [];
@@ -571,16 +676,24 @@ function sendSkills(){
             auxArray[1] = $(this).val();
             radioArray.push(auxArray);
             counter++;
+            num_checked++;
         }
     });
-    $.ajax({
-        type: 'post',
-        data: JSON.stringify(radioArray),
-        url: "/orientation/skills",
-        contentType: 'application/json'
-    }).done(function(o) {
-        window.location.assign("/orientation");
-    });
+
+    var totalRadios = $('.radio').length;
+    if(num_checked != totalRadios){
+        $('#radiosError').show();
+        window.scrollTo(0,0);
+    }else{
+        $.ajax({
+            type: 'post',
+            data: JSON.stringify(radioArray),
+            url: "/orientation/skills",
+            contentType: 'application/json'
+        }).done(function(o) {
+            window.location.assign("/orientation");
+        });
+    }
 }
 </script>
 

@@ -36,28 +36,30 @@ public class OrientationController extends Controller {
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
-
-        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
-        for(int i=0; i<result.length-1; i++){
-            if(!user.currentSituation.educationLevelList.contains(result[i])){
-                user.currentSituation.addEducationLevel(result[i]);
+        if(user != null) {
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+            for (int i = 0; i < result.length - 1; i++) {
+                if (!user.currentSituation.educationLevelList.contains(result[i])) {
+                    user.currentSituation.addEducationLevel(result[i]);
+                }
             }
+
+            String[][] experience = new Gson().fromJson(result[result.length - 1].toString(), new TypeToken<String[][]>() {
+            }.getType());
+            for (int i = 0; i < experience.length; i++) {
+                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2]);
+            }
+
+            user.completedOrientationSteps.currentSituation = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
         }
-
-        String[][] experience = new Gson().fromJson(result[result.length-1].toString(), new TypeToken<String[][]>() {}.getType());
-        for(int i=0; i<experience.length; i++){
-            user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2]);
-        }
-
-        user.completedOrientationSteps.currentSituation = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
-
         return redirect("/orientation");
 
     }
 
     public static Result skills() {
-        return ok(views.html.orientation.skills.render());
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.orientation.skills.render(user));
     }
 
     public static Result submitSkills(){
@@ -65,15 +67,21 @@ public class OrientationController extends Controller {
 
         JsonNode request = request().body().asJson();
 
-        String[][] skills = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
-        }.getType());
-        for(int i=0; i<skills.length; i++){
-            user.skill.add(new Skill(skills[i][0], skills[i][1]));
+        if(user != null) {
+            String[][] skills = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
+            }.getType());
+            if(user.skill.isEmpty()){
+                for (int i = 0; i < skills.length; i++) {
+                    user.skill.add(i, new Skill(skills[i][0], skills[i][1]));
+                }
+            }else{
+                for (int i=0; i<skills.length; i++){
+                    user.skill.get(i).level = skills[i][1];
+                }
+            }
+            user.completedOrientationSteps.skills = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
         }
-
-
-        user.completedOrientationSteps.skills = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
@@ -85,12 +93,14 @@ public class OrientationController extends Controller {
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
-        List<String> interests = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {}.getType());
+        if(user != null) {
+            List<String> interests = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {
+            }.getType());
 
-        user.interests = interests;
-        user.completedOrientationSteps.interestIdentification = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
-
+            user.interests = interests;
+            user.completedOrientationSteps.interestIdentification = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -99,13 +109,15 @@ public class OrientationController extends Controller {
     public static Result submitPersonal(){
     	JsonNode request = request().body().asJson();
     	User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-    	
-    	List<String> personalCharacteristics = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {}.getType());
-    	
-    	user.personalCharacteristics = personalCharacteristics;
-        user.completedOrientationSteps.personal = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
-        
+
+        if(user != null) {
+            List<String> personalCharacteristics = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {
+            }.getType());
+
+            user.personalCharacteristics = personalCharacteristics;
+            user.completedOrientationSteps.personal = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -116,14 +128,17 @@ public class OrientationController extends Controller {
 
         JsonNode request = request().body().asJson();
 
-        String[][] professionalValues = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {}.getType());
+        if(user != null) {
+            String[][] professionalValues = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
+            }.getType());
 
-        for(int i=0; i<professionalValues.length; i++){
-            user.professionalValues.add(new ProfessionalValue(professionalValues[i][0], professionalValues[i][1]));
+            for (int i = 0; i < professionalValues.length; i++) {
+                user.professionalValues.add(new ProfessionalValue(professionalValues[i][0], professionalValues[i][1]));
+            }
+
+            user.completedOrientationSteps.professional = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
         }
-
-        user.completedOrientationSteps.professional = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
         return redirect("/orientation");
     }
 
@@ -181,8 +196,10 @@ public class OrientationController extends Controller {
 
     public static Result submitChannels(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.channels = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null) {
+            user.completedOrientationSteps.channels = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -190,8 +207,10 @@ public class OrientationController extends Controller {
 
     public static Result submitLearnTools(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.learnTools = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null) {
+            user.completedOrientationSteps.learnTools = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -199,8 +218,10 @@ public class OrientationController extends Controller {
 
     public static Result submitGetTools(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.getTools = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null) {
+            user.completedOrientationSteps.getTools = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -209,8 +230,10 @@ public class OrientationController extends Controller {
 
     public static Result submitTinterview(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.tInterview = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null){
+            user.completedOrientationSteps.tInterview = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -218,8 +241,10 @@ public class OrientationController extends Controller {
 
     public static Result submitPinterview(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.pInterview = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null){
+            user.completedOrientationSteps.pInterview = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -227,8 +252,10 @@ public class OrientationController extends Controller {
 
     public static Result submitActInterview(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.actInterview = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null){
+            user.completedOrientationSteps.actInterview = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -236,27 +263,35 @@ public class OrientationController extends Controller {
 
     public static Result submitQuestionsInterview(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.questionsInterview = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null){
+            user.completedOrientationSteps.questionsInterview = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
     /* PUNTO 4: PLANIFICATE */
-    public static Result deadline(){return ok(views.html.orientation.deadline.render());}
+    public static Result deadline(){
+        User user = SingletonDataSource.getUserByEmail(session().get("email"));
+        return ok(views.html.orientation.deadline.render(user));
+    }
 
     public static Result submitDeadLine(){
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
-        String[][] result = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {}.getType());
-        for(int i=0; i<result.length; i++){
-            if(!user.interviewScheduleList.contains(result[i])){
-                user.interviewScheduleList.add(new InterviewSchedule(result[i][0] + " " + result[i][1], result[i][2], result[i][3]));
+        if(user != null){
+            String[][] result = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {}.getType());
+            for(int i=0; i<result.length; i++){
+                InterviewSchedule auxInterviewSchedule = new InterviewSchedule(result[i][0] + " " + result[i][1], result[i][2], result[i][3]);
+                if(!user.interviewScheduleList.contains(auxInterviewSchedule)){
+                    user.interviewScheduleList.add(auxInterviewSchedule);
+                }
             }
-        }
 
-        user.completedOrientationSteps.deadLine = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+            user.completedOrientationSteps.deadLine = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
 
         return redirect("/orientation");
     }
@@ -265,8 +300,10 @@ public class OrientationController extends Controller {
 
     public static Result submitTravel(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.travel = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null){
+            user.completedOrientationSteps.travel = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -275,8 +312,10 @@ public class OrientationController extends Controller {
 
     public static Result submitSpecialization(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.specialization = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null) {
+            user.completedOrientationSteps.specialization = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -284,8 +323,10 @@ public class OrientationController extends Controller {
 
     public static Result submitBestDeals(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.bestDeals = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null){
+            user.completedOrientationSteps.bestDeals = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -293,8 +334,10 @@ public class OrientationController extends Controller {
 
     public static Result submitLevel(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.level = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null){
+            user.completedOrientationSteps.level = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 
@@ -302,8 +345,10 @@ public class OrientationController extends Controller {
 
     public static Result submitReputation(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        user.completedOrientationSteps.reputation = String.valueOf(true);
-        SingletonDataSource.getInstance().updateAllUserData(user);
+        if(user != null){
+            user.completedOrientationSteps.reputation = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
         return redirect("/orientation");
     }
 }
