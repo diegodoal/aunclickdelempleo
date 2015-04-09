@@ -1,0 +1,109 @@
+@(error_login_msg: String)
+
+@main(){
+<!-- ADVANTAGES -->
+<section class="container" id="user_advantages">
+    <div class="row">
+        <div class="col-md-12 col-md-4" id="user_hands">
+            <img src="@routes.Assets.at("images/login_user/ic_ventaja1.png")">
+        </div>
+        <div class="hidden-xs hidden-sm col-md-4" id="user_puzzle">
+            <img src="@routes.Assets.at("images/login_user/ic_ventaja2.png")">
+        </div>
+        <div class="hidden-xs hidden-sm col-md-4" id="user_clock">
+            <img src="@routes.Assets.at("images/login_user/ic_ventaja3.png")">
+        </div>
+    </div>
+</section>
+
+<!-- FORMS -->
+<article class="container">
+    <div class="row">
+        <!-- ACCESS -->
+        <div class="center">
+
+            <div id="restore_success" hidden>
+                <br>
+                <p style="font-family: Arial; font-size: 42px; font-style: italic; color: #ab9e79;">¡Revisa tu bandeja de entrada!</p>
+                <p class="text-brown">Te hemos enviado un correo donde podrás obtener tu nueva contraseña. Mira también la carpeta de Spam.</p>
+            </div>
+
+            <div class="col-md-offset-3 col-md-6">
+                @if(error_login_msg != null) {
+                <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_login_msg</div>
+                }
+                <div id="restore_error" hidden>
+                    <br>
+                    <div class="alert alert-danger" role="alert">No existe ningún usuario registrado con este email.</div>
+                </div>
+                <h1 class="size30 century_gothic gray_adecco">RESTABLECER CONTRASEÑA</h1><br>
+            </div>
+
+
+
+            <form class="form-horizontal" role="form" action="javascript:sendRestoreEmail()" autocomplete="on">
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6">
+                        <input type="email" name='email' class="form-control" id="access_email" required="required" placeholder="Correo electrónico">
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="button-create">
+                        <button type="submit">ENTRAR</button>
+                    </div>
+
+                    <div class="">
+                        @if(error_login_msg != null) {
+                        <div id="restore_success">
+                            <br>
+                            <div class="alert alert-danger" role="alert">@error_login_msg</div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</article>
+
+
+<!-- SENDING EMAIL MODAL -->
+<div class="modal fade" id="sendingEmailModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <p id="sendingEmailText">Enviando email...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END OF SENDING EMAIL MODAL -->
+
+<script>
+    function sendRestoreEmail(){
+    var email = $('#access_email').val();
+    $('#sendingEmailModal').modal('show');
+
+    $.ajax({
+        type: 'post',
+        data: JSON.stringify(email),
+        url: "/forgotten",
+        contentType: 'application/json',
+        success: function(){
+            $('#sendingEmailModal').modal('hide');
+            $('#restore_error').hide();
+            $('#restore_success').show();
+        },
+        error: function(){
+            $('#sendingEmailModal').modal('hide');
+            $('#restore_success').hide();
+            $('#restore_error').show();
+        }
+    });
+    }
+</script>
+}
