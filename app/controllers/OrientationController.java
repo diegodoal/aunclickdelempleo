@@ -58,7 +58,8 @@ public class OrientationController extends Controller {
     }
 
     public static Result skills() {
-        return ok(views.html.orientation.skills.render());
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.orientation.skills.render(user));
     }
 
     public static Result submitSkills(){
