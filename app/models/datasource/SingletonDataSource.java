@@ -121,6 +121,40 @@ public class SingletonDataSource {
         }
     }
 
+    public static List<User> findAll(){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        DBCursor cursor = collection.find();
+        List<User> users = new ArrayList<>();
+        try {
+            while(cursor.hasNext()) {
+                User user = new User();
+                String userStr = cursor.next().toString();
+
+                //Get user object from JSON
+                user = new Gson().fromJson(userStr, User.class);
+
+                // Deserialize Current Situation object
+                user.currentSituation = new Gson().fromJson(cursor.curr().get(Constants.USER_CURRENT_SITUATION).toString(), CurrentSituation.class);
+
+                // Deserialize ArrayList of Skills
+                user.skill = new Gson().fromJson(cursor.curr().get(Constants.USER_SKILLS_LIST).toString(), new TypeToken<List<Skill>>(){}.getType());
+
+                //Add to USER the completedOrientationSteps object stored in JSON
+                user.completedOrientationSteps = new Gson().fromJson(cursor.curr().get(Constants.USER_ORIENTATION_STEPS).toString(), User.CompletedOrientationSteps.class);
+                // Deserialize ArrayList of InterviewSchedule Objects
+                user.interviewScheduleList = new Gson().fromJson(cursor.curr().get(Constants.USER_NEXT_INTERVIEWS_LIST).toString(), new TypeToken<List<InterviewSchedule>>(){}.getType());
+
+                users.add(user);
+            }
+        } finally {
+            cursor.close();
+        }
+
+        mongoClient.close();
+
+        return users;
+    }
+
     public static List<User> getAllUsers(){
         DBCollection collection = connectDB("mongo.usersCollection");
         List<DBObject> all = collection.find().toArray();
