@@ -160,4 +160,12 @@ public class LoginController {
 
         return redirect("/");
     }
+
+    public static Result forgottenPasswordBlank(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        if(user != null){
+            return redirect("/");
+        }
+        return ok(views.html.login_user.forgotten.render(null));
+    }
 }
