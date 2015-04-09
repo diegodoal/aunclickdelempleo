@@ -10,6 +10,7 @@
     <div class="gray_adecco size16 arial">
         <p>Actividad: A continuación se muestra una lista de habilidades, sé sincero y valora cada una de ella según te desenvuelvas: normal, bien o excelente.</p>
     </div><br>
+    <div class="alert alert-danger" hidden id="radiosError" role="alert">Por favor, completa todo el formulario.</div><br>
         <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -564,6 +565,7 @@ function sendSkills(){
     var radioArray = [];
 
     var counter = 0;
+    var num_checked = 0;
     $('input[type=radio]').each(function () {
         if(this.checked){
             var auxArray = [];
@@ -571,16 +573,24 @@ function sendSkills(){
             auxArray[1] = $(this).val();
             radioArray.push(auxArray);
             counter++;
+            num_checked++;
         }
     });
-    $.ajax({
-        type: 'post',
-        data: JSON.stringify(radioArray),
-        url: "/orientation/skills",
-        contentType: 'application/json'
-    }).done(function(o) {
-        window.location.assign("/orientation");
-    });
+
+    var totalRadios = $('.radio').length;
+    if(num_checked != totalRadios){
+        $('#radiosError').show();
+        window.scrollTo(0,0);
+    }else{
+        $.ajax({
+            type: 'post',
+            data: JSON.stringify(radioArray),
+            url: "/orientation/skills",
+            contentType: 'application/json'
+        }).done(function(o) {
+            window.location.assign("/orientation");
+        });
+    }
 }
 </script>
 
