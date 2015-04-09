@@ -1,9 +1,11 @@
 package actors;
 
 import akka.actor.UntypedActor;
-import models.datasource.SingletonDataSource;
 import play.Logger;
 import utils.EmailChecker;
+import utils.EmailUtil;
+import utils.NextInterviews;
+import utils.UserInterview;
 
 import java.util.Date;
 import java.util.List;
@@ -16,23 +18,18 @@ public class EmailActor extends UntypedActor {
 
     @Override
     public void onReceive(Object message) throws Exception {
-        Logger.info("["+new Date().toString()+"]\n");
+        List<UserInterview> nextInterviews = NextInterviews.getAllInterviews();
+        Logger.info("[Sending "+nextInterviews.size()+" emails with next interviews at: "+new Date().toString()+"]\n");
+        sendEmails(nextInterviews);
     }
 
-    private String getNextInterviewsAndSendEmail(){
-        EmailChecker emailChecker = new EmailChecker();
-
-        //Recives the days before the interview
-        List<EmailChecker.UserInterview> usersToNotify = emailChecker.getUsersWithNextInterviews(1);
-
-        if(usersToNotify == null)
-            return "No users to notify";
-
-        String result = "\n";
-        for(int i=0; i<usersToNotify.size(); i++){
-            result+= "{"+usersToNotify.get(i).name + " - "+usersToNotify.get(i).email + " : "+usersToNotify.get(i).interviewSchedule.date.toString() +"}\n";
+    private void sendEmails(List<UserInterview> nextInterviews){
+        for(int i=0; i<nextInterviews.size(); i++){
+            EmailUtil.emailMaker(nextInterviews.get(i).email, "Aviso de próxima entrevista", "Hola "+nextInterviews.get(i).name+", te recordamos que tienes " +
+                    "una entrevista programada. Los datos son: \n" +
+                    "Empresa: "+nextInterviews.get(i).interviewSchedule.company+"\n" +
+                    "Dirección: "+nextInterviews.get(i).interviewSchedule.address+"\n" +
+                    "Fecha: "+nextInterviews.get(i).interviewSchedule.date);
         }
-        return result;
     }
-
 }
