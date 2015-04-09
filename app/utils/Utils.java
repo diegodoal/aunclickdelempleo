@@ -59,6 +59,12 @@ public class Utils {
         return userTimestamp.equals(sessionTimestamp);
     }
 
+    /**
+     *
+     * @param date1
+     * @param date2
+     * @return Difference between Date2 and Date1
+     */
     public static long getDiffBetweenTwoDates(Date date1, Date date2){
         long diff = TimeUnit.DAYS.convert((date2.getTime() - date1.getTime()), TimeUnit.MILLISECONDS);
 
