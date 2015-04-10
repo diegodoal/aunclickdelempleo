@@ -27,6 +27,18 @@ public class User {
     public String restorePasswordToken;
     public String restorePasswordTimestamp;
 
+    //CV and Presentation Letter
+    public String birthDate;
+    public String residenceCity;
+    public String residenceAddress;
+    public String residenceNumber;
+    public String residenceZipCode;
+
+    public String phoneNumber;
+
+    public String studyTitle;
+    public String studyLocation;
+
     public CompletedOrientationSteps completedOrientationSteps;
 
     //Orientation steps
@@ -43,6 +55,17 @@ public class User {
         this.connectionTimestamp = new Date().toString();
         this.restorePasswordToken = null;
         this.restorePasswordTimestamp = null;
+
+        this.birthDate = null;
+        this.residenceCity = null;
+        this.residenceAddress = null;
+        this.residenceNumber = null;
+        this.residenceZipCode = null;
+        this.phoneNumber = null;
+
+        this.studyTitle = null;
+        this.studyLocation = null;
+
         this.currentSituation = new CurrentSituation();
         this.skill = new ArrayList<>();
         this.interests = new ArrayList<>();
@@ -61,6 +84,17 @@ public class User {
         this.connectionTimestamp = new Date().toString();
         this.restorePasswordToken = null;
         this.restorePasswordTimestamp = null;
+
+        this.birthDate = null;
+        this.residenceCity = null;
+        this.residenceAddress = null;
+        this.residenceNumber = null;
+        this.residenceZipCode = null;
+        this.phoneNumber = null;
+
+        this.studyTitle = null;
+        this.studyLocation = null;
+
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
         this.skill = new ArrayList<>();

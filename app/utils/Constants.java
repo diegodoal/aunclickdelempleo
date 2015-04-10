@@ -31,6 +31,16 @@ public final class Constants {
     public final static String USER_RESTORE_PASSWORD_TOKEN = "restorePasswordToken";
     public final static String USER_RESTORE_PASSWORD_TIMESTAMP = "restorePasswordTimestamp";
 
+    public final static String USER_BIRTH_DATE = "birthDate";
+    public final static String USER_RESIDENCE_CITY = "residenceCity";
+    public final static String USER_RESIDENCE_ADDRESS = "residenceAddress";
+    public final static String USER_RESIDENCE_NUMBER = "residenceNumber";
+    public final static String USER_RESIDENCE_ZIP_CODE = "residenceZipCode";
+    public final static String USER_PHONE_NUMBER = "phoneNumber";
+
+    public final static String USER_STUDY_TITLE = "studyTitle";
+    public final static String USER_STUDY_LOCATION = "studyLocation";
+
     public final static String USER_ORIENTATION_STEPS = "orientationSteps";
     public final static String USER_ORIENTATION_STEPS_CURRENT_SITUATION = "orientationSteps.currentSituation";
     public final static String USER_ORIENTATION_STEPS_SKILLS = "orientationSteps.skills";

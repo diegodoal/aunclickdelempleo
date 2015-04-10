@@ -63,6 +63,7 @@ GET     /orientation/gettools/cv3                   controllers.GenerateDocument
 #Carta de Presentacion
 
 GET     /orientation/gettools/lp1                   controllers.GenerateDocumentsController.lp1()
+POST    /orientation/gettools/lp1                   controllers.GenerateDocumentsController.submitLp1()
 GET     /orientation/gettools/lp2                   controllers.GenerateDocumentsController.lp2()
 GET     /orientation/gettools/lp3                   controllers.GenerateDocumentsController.lp3()
 
