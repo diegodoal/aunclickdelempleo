@@ -72,6 +72,14 @@ public class SingletonDataSource {
                 append(Constants.USER_CONNECTION_TIMESTAMP, user.connectionTimestamp).
                 append(Constants.USER_RESTORE_PASSWORD_TOKEN, user.restorePasswordToken).
                 append(Constants.USER_RESTORE_PASSWORD_TIMESTAMP, user.restorePasswordTimestamp).
+                append(Constants.USER_BIRTH_DATE, user.birthDate).
+                append(Constants.USER_RESIDENCE_CITY, user.residenceCity).
+                append(Constants.USER_RESIDENCE_ADDRESS, user.residenceAddress).
+                append(Constants.USER_RESIDENCE_NUMBER, user.residenceNumber).
+                append(Constants.USER_RESIDENCE_ZIP_CODE, user.residenceZipCode).
+                append(Constants.USER_PHONE_NUMBER, user.phoneNumber).
+                append(Constants.USER_STUDY_TITLE, user.studyTitle).
+                append(Constants.USER_STUDY_LOCATION, user.studyLocation).
                 append(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson())).
                 append(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString())).
                 append(Constants.USER_SKILLS_LIST, JSON.parse(user.skillsToJson())).
@@ -187,6 +195,14 @@ public class SingletonDataSource {
         newDocument.put(Constants.USER_CONNECTION_TIMESTAMP, user.connectionTimestamp);
         newDocument.put(Constants.USER_RESTORE_PASSWORD_TOKEN, user.restorePasswordToken);
         newDocument.put(Constants.USER_RESTORE_PASSWORD_TIMESTAMP, user.restorePasswordTimestamp);
+        newDocument.put(Constants.USER_BIRTH_DATE, user.birthDate);
+        newDocument.put(Constants.USER_RESIDENCE_CITY, user.residenceCity);
+        newDocument.put(Constants.USER_RESIDENCE_ADDRESS, user.residenceAddress);
+        newDocument.put(Constants.USER_RESIDENCE_NUMBER, user.residenceNumber);
+        newDocument.put(Constants.USER_RESIDENCE_ZIP_CODE, user.residenceZipCode);
+        newDocument.put(Constants.USER_PHONE_NUMBER, user.phoneNumber);
+        newDocument.put(Constants.USER_STUDY_TITLE, user.studyTitle);
+        newDocument.put(Constants.USER_STUDY_LOCATION, user.studyLocation);
         newDocument.put(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson()));
         newDocument.put(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString()));
         newDocument.put(Constants.USER_SKILLS_LIST, JSON.parse(user.skillsToJson()));

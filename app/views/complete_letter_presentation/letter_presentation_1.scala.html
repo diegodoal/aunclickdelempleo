@@ -1,3 +1,5 @@
+@(user: models.entities.User)
+
 @main(){
 <section class="container" style="z-index:-1;" id="text_user_profile_2">
     <div class="row">
@@ -16,249 +18,598 @@
         </div>
     </div>
 </section>
+@if(user != null){
+<div class="main-form-container">
+    <section class="container" style="z-index:-1;">
 
-<section class="container" style="z-index:-1;">
+        <!--Datos Personales-->
 
-    <!--Datos Personales-->
-
-    <div class="row">
-        <div class="col-md-12 arial gray_adecco size18 bold">
-            Datos personales
-        </div>
-    </div><br>
-    <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
-
-
-
-
-    <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <div class="col-lg-5 input-mic-container">
-
-                <input type="text" name='register_name' class="form-control" id="name" value="" required="required" placeholder="Nombre">
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-
-
-
-
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">
+                Datos personales
             </div>
-        </div>
+        </div><br>
+        <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
 
-        <div class="form-group">
-            <div class="col-lg-5 input-mic-container">
-                <input type="text" class="form-control" id="surname" value="" required="required" placeholder="Apellidos">
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" name='register_name' class="form-control" id="name" value="@user.name" required="required" placeholder="Nombre">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-lg-5 input-mic-container">
-                <input type="text" class="form-control" id="date" required="required" value="" placeholder="Fecha de nacimiento" >
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" id="surname" value="@user.surnames" required="required" placeholder="Apellidos">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-lg-5 input-mic-container">
-                <input type="text" class="form-control" id="register_city" value="" required="required"  placeholder="Ciudad de residencia">
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    @if(user.birthDate != null){
+                        <input type="text" class="form-control" id="date" required="required" value="@user.birthDate" placeholder="Fecha de nacimiento">
+                    }else{
+                        <input type="text" class="form-control" id="date" required="required" value="" placeholder="Fecha de nacimiento">
+                    }
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-lg-5 input-mic-container">
-                <input type="text" class="form-control" id="dress" value="" required="required"  placeholder="Calle">
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    @if(user.residenceCity != null){
+                        <input type="text" class="form-control" id="register_city" value="@user.residenceCity" required="required"  placeholder="Ciudad de residencia">
+                    }else{
+                        <input type="text" class="form-control" id="register_city" value="" required="required"  placeholder="Ciudad de residencia">
+                    }
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-lg-5 input-mic-container">
-                <input type="text" class="form-control" id="number" value="" placeholder="Número">
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    @if(user.residenceAddress != null){
+                        <input type="text" class="form-control" id="address" value="@user.residenceAddress" required="required"  placeholder="Calle">
+                    }else{
+                        <input type="text" class="form-control" id="address" value="" required="required"  placeholder="Calle">
+                    }
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-lg-5 input-mic-container">
-                <input type="post" class="form-control" id="post" value="" placeholder="Código postal">
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    @if(user.residenceNumber != null){
+                        <input type="text" class="form-control" id="number" value="@user.residenceNumber" placeholder="Número">
+                    }else{
+                        <input type="text" class="form-control" id="number" value="" placeholder="Número">
+                    }
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
             </div>
-        </div>
-    </form>
-</section>
-<section class="container" style="z-index:-1;">
 
-    <!--Contacto-->
-    <div class="row">
-        <div class="col-md-12 arial gray_adecco size18 bold">
-            Datos de contacto
-        </div>
-    </div><br>
-
-    <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <div class="col-lg-5">
-                <input type="email" name='email' class="form-control" id="access_email" value="" required="required" placeholder="Correo electrónico">
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    @if(user.residenceZipCode != null){
+                        <input type="post" class="form-control" id="post" value="@user.residenceZipCode" placeholder="Código postal">
+                    }else{
+                        <input type="post" class="form-control" id="post" value="" placeholder="Código postal">
+                    }
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
             </div>
-        </div>
+        </form>
+    </section>
+    <section class="container" style="z-index:-1;">
 
-        <div class="form-group">
-            <div class="col-lg-5 input-mic-container">
-                <input type="text" class="form-control" id="telephone" value="" placeholder="Teléfono de contacto">
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        <!--Contacto-->
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">
+                Datos de contacto
             </div>
-        </div>
-    </form>
-</section>
+        </div><br>
 
-<section class="container" style="z-index:-1;">
-    <!-- Experiencia Académica -->
-
-    <div class="row">
-        <div class="col-md-12 arial gray_adecco size18 bold">Experiencia académica</div>
-    </div>
-
-    <div class="row orientation-points">
-        <div class="col-lg-12 ">
-            <input type="checkbox" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
-            <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
-        </div>
-    </div><br>
-
-    <form class="form-horizontal" autocomplete="on" method="post">
-        <div class="form-group form-inline" id="level_studies_group">
-            <div class="col-lg-5 input-mic-container">
-                <input type="text" class="form-control" placeholder="Título" id="titulo" value="" required="requerided">
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-5">
+                    <input type="email" name='email' class="form-control" id="access_email" value="@user.email" required="required" placeholder="Correo electrónico">
+                </div>
             </div>
-            <div class="col-lg-5 col-lg-offset-2 input-mic-container">
-                <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="requerided">
-                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" id="telephone" value="@user.phoneNumber" placeholder="Teléfono de contacto">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
             </div>
+        </form>
+    </section>
+</div>
+    <section class="container academic-experience" style="z-index:-1;">
+        <!-- Experiencia Académica -->
+
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">Experiencia académica</div>
         </div>
-    </form>
 
-</section>
+        <div class="row orientation-points">
+            <div class="col-lg-12 ">
+                <input type="checkbox" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
+                <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+            </div>
+        </div><br>
 
-<section class=" container orientation-points">
-    <div class="row">
-        <div class="col-md-12 arial gray_adecco size18 bold">Elije 3 caraterísticas que te definan</div>
-    </div>
-    <div class="row back checkbox-group">
-        <div class="col-md-offset-1 col-md-3">
-            <p>
-                <input type="checkbox" id="check1" value="Trabajador">
+        <form class="form-horizontal" autocomplete="on" method="post">
+            <div class="form-group form-inline" id="level_studies_group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" placeholder="Título" id="titulo" value="@user.studyTitle" required="requerided">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 input-mic-container">
+                    <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="@user.studyLocation" required="requerided">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+        </form>
+    </section>
+
+    <section class=" container orientation-points">
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">Elije 3 caraterísticas que te definan</div>
+        </div>
+        <div class="row back checkbox-group">
+            <div class="col-md-offset-1 col-md-3">
+                <p>
+                @if(user != null && user.personalCharacteristics.contains("Trabajador")){
+                    <input type="checkbox" id="check1" checked value="Trabajador">
+                }else{
+                    <input type="checkbox" id="check1" value="Trabajador">
+                }
                 <label for="check1" class="size14 gray_adecco arial steps_height">Trabajador</label>
             </p>
             <p>
-                <input type="checkbox" id="check2" value="Ambicioso">
+                @if(user != null && user.personalCharacteristics.contains("Ambicioso")){
+                    <input type="checkbox" id="check2" checked value="Ambicioso">
+                }else{
+                    <input type="checkbox" id="check2" value="Ambicioso">
+                }
                 <label for="check2" class="size14 gray_adecco arial steps_height">Ambicioso</label>
             </p>
             <p>
-                <input type="checkbox" id="check3" value="Extrovertido">
+                @if(user != null && user.personalCharacteristics.contains("Extrovertido")){
+                    <input type="checkbox" id="check3" checked value="Extrovertido">
+                }else{
+                    <input type="checkbox" id="check3" value="Extrovertido">
+                }
                 <label for="check3" class="size14 gray_adecco arial steps_height">Extrovertido</label>
             </p>
             <p>
-                <input type="checkbox" id="check4" value="Hablador">
+                @if(user != null && user.personalCharacteristics.contains("Hablador")){
+                    <input type="checkbox" id="check4" checked value="Hablador">
+                }else{
+                    <input type="checkbox" id="check4" value="Hablador">
+                }
                 <label for="check4" class="size14 gray_adecco arial steps_height">Hablador</label>
             </p>
             <p>
-                <input type="checkbox" id="check5" value="Comprensivo">
+                @if(user != null && user.personalCharacteristics.contains("Comprensivo")){
+                    <input type="checkbox" id="check5" checked value="Comprensivo">
+                }else{
+                    <input type="checkbox" id="check5" value="Comprensivo">
+                }
                 <label for="check5" class="size14 gray_adecco arial steps_height">Comprensivo</label>
             </p>
             <p>
-                <input type="checkbox" id="check6" value="Idealista">
+                @if(user != null && user.personalCharacteristics.contains("Idealista")){
+                    <input type="checkbox" id="check6" checked value="Idealista">
+                }else{
+                    <input type="checkbox" id="check6" value="Idealista">
+                }
                 <label for="check6" class="size14 gray_adecco arial steps_height">Idealista</label>
             </p>
             <p>
-                <input type="checkbox" id="check7" value="Tranquilo">
+                @if(user != null && user.personalCharacteristics.contains("Tranquilo")){
+                    <input type="checkbox" id="check7" checked value="Tranquilo">
+                }else{
+                    <input type="checkbox" id="check7" value="Tranquilo">
+                }
                 <label for="check7" class="size14 gray_adecco arial steps_height">Tranquilo</label>
             </p>
             <p>
-                <input type="checkbox" id="check8" value="Cuidadoso">
+                @if(user != null && user.personalCharacteristics.contains("Cuidadoso")){
+                    <input type="checkbox" id="check8" value="Cuidadoso">
+                }else{
+                    <input type="checkbox" id="check8" value="Cuidadoso">
+                }
                 <label for="check8" class="size14 gray_adecco arial steps_height">Cuidadoso</label>
             </p>
-        </div>
+            </div>
 
-        <div class="col-md-offset-1 col-md-3">
-            <p>
-                <input type="checkbox" id="check9" value="Creativo">
+            <div class="col-md-offset-1 col-md-3">
+                <p>
+                @if(user != null && user.personalCharacteristics.contains("Creativo")){
+                    <input type="checkbox" id="check9" checked value="Creativo">
+                }else{
+                    <input type="checkbox" id="check9" value="Creativo">
+                }
                 <label for="check9" class="size14 gray_adecco arial steps_height">Creativo</label>
             </p>
             <p>
-                <input type="checkbox" id="check10" value="Digno de confianza">
+                @if(user != null && user.personalCharacteristics.contains("Digno de confianza")){
+                    <input type="checkbox" id="check10" checked value="Digno de confianza">
+                }else{
+                    <input type="checkbox" id="check10" value="Digno de confianza">
+                }
                 <label for="check10" class="size14 gray_adecco arial steps_height">Digno de confianza</label>
             </p>
             <p>
-                <input type="checkbox" id="check11" value="Entusiasta">
+                @if(user != null && user.personalCharacteristics.contains("Entusiasta")){
+                    <input type="checkbox" id="check11" checked value="Entusiasta">
+                }else{
+                    <input type="checkbox" id="check11" value="Entusiasta">
+                }
                 <label for="check11" class="size14 gray_adecco arial steps_height">Entusiasta</label>
             </p>
             <p>
-                <input type="checkbox" id="check12" value="Responsable">
+                @if(user != null && user.personalCharacteristics.contains("Responsable")){
+                    <input type="checkbox" id="check12" checked value="Responsable">
+                }else{
+                    <input type="checkbox" id="check12" value="Responsable">
+                }
                 <label for="check12" class="size14 gray_adecco arial steps_height">Responsable</label>
             </p>
             <p>
-                <input type="checkbox" id="check13" value="Honesto">
+                @if(user != null && user.personalCharacteristics.contains("Honesto")){
+                    <input type="checkbox" id="check13" value="Honesto">
+                }else{
+                    <input type="checkbox" id="check13" value="Honesto">
+                }
                 <label for="check13" class="size14 gray_adecco arial steps_height">Honesto</label>
             </p>
             <p>
-                <input type="checkbox" id="check14" value="Productivo">
+                @if(user != null && user.personalCharacteristics.contains("Productivo")){
+                    <input type="checkbox" id="check14" checked value="Productivo">
+                }else{
+                    <input type="checkbox" id="check14" value="Productivo">
+                }
                 <label for="check14" class="size14 gray_adecco arial steps_height">Productivo</label>
             </p>
             <p>
-                <input type="checkbox" id="check15" value="Amable">
+                @if(user != null && user.personalCharacteristics.contains("Amable")){
+                    <input type="checkbox" id="check15" checked value="Amable">
+                }else{
+                    <input type="checkbox" id="check15" value="Amable">
+                }
                 <label for="check15" class="size14 gray_adecco arial steps_height">Amable</label>
             </p>
             <p>
-                <input type="checkbox" id="check16" value="Reflexivo">
+                @if(user != null && user.personalCharacteristics.contains("Reflexivo")){
+                    <input type="checkbox" id="check16" checked value="Reflexivo">
+                }else{
+                    <input type="checkbox" id="check16" value="Reflexivo">
+                }
                 <label for="check16" class="size14 gray_adecco arial steps_height">Reflexivo</label>
             </p>
-        </div>
+            </div>
 
-        <div class="col-md-offset-1 col-md-3">
-            <p>
-                <input type="checkbox" id="check17" value="Formal">
+            <div class="col-md-offset-1 col-md-3">
+                <p>
+                @if(user != null && user.personalCharacteristics.contains("Formal")){
+                    <input type="checkbox" id="check17" checked value="Formal">
+                }else{
+                    <input type="checkbox" id="check17" value="Formal">
+                }
+
                 <label for="check17" class="size14 gray_adecco arial steps_height">Formal</label>
             </p>
             <p>
-                <input type="checkbox" id="check18" value="Optimista">
+                @if(user != null && user.personalCharacteristics.contains("Optimista")){
+                    <input type="checkbox" id="check18" checked value="Optimista">
+                }else{
+                    <input type="checkbox" id="check18" value="Optimista">
+                }
                 <label for="check18" class="size14 gray_adecco arial steps_height">Optimista</label>
             </p>
             <p>
-                <input type="checkbox" id="check19" value="Flexible">
+                @if(user != null && user.personalCharacteristics.contains("Flexible")){
+                    <input type="checkbox" id="check19" checked value="Flexible">
+                }else{
+                    <input type="checkbox" id="check19" value="Flexible">
+                }
                 <label for="check19" class="size14 gray_adecco arial steps_height">Flexible</label>
             </p>
             <p>
-                <input type="checkbox" id="check20" value="Racional">
+                @if(user != null && user.personalCharacteristics.contains("Racional")){
+                    <input type="checkbox" id="check20" checked value="Racional">
+                }else{
+                    <input type="checkbox" id="check20" value="Racional">
+                }
                 <label for="check20" class="size14 gray_adecco arial steps_height">Racional</label>
             </p>
             <p>
-                <input type="checkbox" id="check21" value="Dispuesto a aprender">
+                @if(user != null && user.personalCharacteristics.contains("Dispuesto a aprender")){
+                    <input type="checkbox" id="check21" checked value="Dispuesto a aprender">
+                }else{
+                    <input type="checkbox" id="check21" value="Dispuesto a aprender">
+                }
                 <label for="check21" class="size14 gray_adecco arial steps_height">Dispuesto a aprender</label>
             </p>
             <p>
-                <input type="checkbox" id="check22" value="Observador">
+                @if(user != null && user.personalCharacteristics.contains("Observador")){
+                    <input type="checkbox" id="check22" checked value="Observador">
+                }else{
+                    <input type="checkbox" id="check22" value="Observador">
+                }
                 <label for="check22" class="size14 gray_adecco arial steps_height">Observador</label>
             </p>
             <p>
-                <input type="checkbox" id="check23" value="Educador">
+                @if(user != null && user.personalCharacteristics.contains("Educado")){
+                    <input type="checkbox" id="check23" checked value="Educado">
+                }else{
+                    <input type="checkbox" id="check23" value="Educado">
+                }
                 <label for="check23" class="size14 gray_adecco arial steps_height">Educado</label>
             </p>
             <p>
-                <input type="checkbox" id="check24" value="Competitivo">
+                @if(user != null && user.personalCharacteristics.contains("Competitivo")){
+                    <input type="checkbox" id="check24" checked value="Competitivo">
+                }else{
+                    <input type="checkbox" id="check24" value="Competitivo">
+                }
                 <label for="check24" class="size14 gray_adecco arial steps_height">Competitivo</label>
             </p>
-        </div>
-    </div><br>
+            </div>
+        </div><br>
 
-    <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.StashController.lp2()';">SIGUIENTE</button>
+        <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2 center">
+                <button class="button-finish-1" onclick="sendForm()">SIGUIENTE</button>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}else{
+<div class="main-form-container">
+    <section class="container" style="z-index:-1;">
+
+        <!--Datos Personales-->
+
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">
+                Datos personales
+            </div>
+        </div><br>
+        <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
+
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" name='register_name' class="form-control" id="name" value="" required="required" placeholder="Nombre">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" id="surname" value="" required="required" placeholder="Apellidos">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" id="date" required="required" value="" placeholder="Fecha de nacimiento" >
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" id="register_city" value="" required="required"  placeholder="Ciudad de residencia">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" id="dress" value="" required="required"  placeholder="Calle">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" id="number" value="" placeholder="Número">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="post" class="form-control" id="post" value="" placeholder="Código postal">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+        </form>
+    </section>
+    <section class="container" style="z-index:-1;">
+
+        <!--Contacto-->
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">
+                Datos de contacto
+            </div>
+        </div><br>
+
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-lg-5">
+                    <input type="email" name='email' class="form-control" id="access_email" value="" required="required" placeholder="Correo electrónico">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" id="telephone" value="" placeholder="Teléfono de contacto">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+    <section class="container" style="z-index:-1;">
+        <!-- Experiencia Académica -->
+
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">Experiencia académica</div>
+        </div>
+
+        <div class="row orientation-points">
+            <div class="col-lg-12 ">
+                <input type="checkbox" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
+                <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+            </div>
+        </div><br>
+
+        <form class="form-horizontal" autocomplete="on" method="post">
+            <div class="form-group form-inline" id="level_studies_group">
+                <div class="col-lg-5 input-mic-container">
+                    <input type="text" class="form-control" placeholder="Título" id="titulo" value="" required="requerided">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+                <div class="col-lg-5 col-lg-offset-2 input-mic-container">
+                    <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="requerided">
+                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                </div>
+            </div>
+        </form>
+
+    </section>
+
+    <section class=" container orientation-points">
+        <div class="row">
+            <div class="col-md-12 arial gray_adecco size18 bold">Elije 3 caraterísticas que te definan</div>
+        </div>
+        <div class="row back checkbox-group">
+            <div class="col-md-offset-1 col-md-3">
+                <p>
+                    <input type="checkbox" id="check1" value="Trabajador">
+                    <label for="check1" class="size14 gray_adecco arial steps_height">Trabajador</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check2" value="Ambicioso">
+                    <label for="check2" class="size14 gray_adecco arial steps_height">Ambicioso</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check3" value="Extrovertido">
+                    <label for="check3" class="size14 gray_adecco arial steps_height">Extrovertido</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check4" value="Hablador">
+                    <label for="check4" class="size14 gray_adecco arial steps_height">Hablador</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check5" value="Comprensivo">
+                    <label for="check5" class="size14 gray_adecco arial steps_height">Comprensivo</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check6" value="Idealista">
+                    <label for="check6" class="size14 gray_adecco arial steps_height">Idealista</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check7" value="Tranquilo">
+                    <label for="check7" class="size14 gray_adecco arial steps_height">Tranquilo</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check8" value="Cuidadoso">
+                    <label for="check8" class="size14 gray_adecco arial steps_height">Cuidadoso</label>
+                </p>
+            </div>
+
+            <div class="col-md-offset-1 col-md-3">
+                <p>
+                    <input type="checkbox" id="check9" value="Creativo">
+                    <label for="check9" class="size14 gray_adecco arial steps_height">Creativo</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check10" value="Digno de confianza">
+                    <label for="check10" class="size14 gray_adecco arial steps_height">Digno de confianza</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check11" value="Entusiasta">
+                    <label for="check11" class="size14 gray_adecco arial steps_height">Entusiasta</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check12" value="Responsable">
+                    <label for="check12" class="size14 gray_adecco arial steps_height">Responsable</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check13" value="Honesto">
+                    <label for="check13" class="size14 gray_adecco arial steps_height">Honesto</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check14" value="Productivo">
+                    <label for="check14" class="size14 gray_adecco arial steps_height">Productivo</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check15" value="Amable">
+                    <label for="check15" class="size14 gray_adecco arial steps_height">Amable</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check16" value="Reflexivo">
+                    <label for="check16" class="size14 gray_adecco arial steps_height">Reflexivo</label>
+                </p>
+            </div>
+
+            <div class="col-md-offset-1 col-md-3">
+                <p>
+                    <input type="checkbox" id="check17" value="Formal">
+                    <label for="check17" class="size14 gray_adecco arial steps_height">Formal</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check18" value="Optimista">
+                    <label for="check18" class="size14 gray_adecco arial steps_height">Optimista</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check19" value="Flexible">
+                    <label for="check19" class="size14 gray_adecco arial steps_height">Flexible</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check20" value="Racional">
+                    <label for="check20" class="size14 gray_adecco arial steps_height">Racional</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check21" value="Dispuesto a aprender">
+                    <label for="check21" class="size14 gray_adecco arial steps_height">Dispuesto a aprender</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check22" value="Observador">
+                    <label for="check22" class="size14 gray_adecco arial steps_height">Observador</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check23" value="Educador">
+                    <label for="check23" class="size14 gray_adecco arial steps_height">Educado</label>
+                </p>
+                <p>
+                    <input type="checkbox" id="check24" value="Competitivo">
+                    <label for="check24" class="size14 gray_adecco arial steps_height">Competitivo</label>
+                </p>
+            </div>
+        </div><br>
+
+        <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2 center">
+                <button class="button-finish-1" onclick="location.href= '@routes.GenerateDocumentsController.lp2()';">SIGUIENTE</button>
+            </div>
+        </div>
+    </section>
+}
+
 
 <!-- POP UP WINDOW -->
 <div id="accesibility_pop_up2" class="mask_pop_up">
@@ -281,4 +632,48 @@
     };
 </script>
 
+<script type="text/javascript">
+    function sendForm(){
+        var result = [];
+        var counter = 0;
+        //Adding Personal Information
+        $('.main-form-container input').each(function(){
+            result[counter] = $(this).val();
+            counter++;
+        });
+
+        //Adding Academic Experience
+        if($('#check_study').is(':checked')){
+            result[counter] = "";
+            counter++;
+        }else{
+            var auxArray = [];
+            auxArray[0] = $('#level_studies_group #titulo').val();
+            auxArray[1] = $('#level_studies_group #placeStudy').val();
+            result.push(JSON.stringify(auxArray));
+        }
+
+        //Adding Characteristics
+        var auxCheckboxes = [];
+        counter = 0;
+        $('.checkbox-group input[type=checkbox]').each(function () {
+            if(this.checked){
+                auxCheckboxes[counter] = $(this).val();
+                counter++;
+            }
+        });
+
+        result.push(JSON.stringify(auxCheckboxes));
+
+        $.ajax({
+            type: 'post',
+            data: JSON.stringify(result),
+            url: "/orientation/gettools/lp1",
+            contentType: 'application/json'
+        }).done(function(o) {
+            window.location.assign("/orientation/gettools/lp2");
+        });
+    }
+</script>
+    
 }
