@@ -125,7 +125,10 @@ public class OrientationController extends Controller {
         return redirect("/orientation");
     }
 
-    public static Result personal() { return ok(views.html.orientation.personal.render()); }
+    public static Result personal() {
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.orientation.personal.render(user));
+    }
 
     public static Result submitPersonal(){
     	JsonNode request = request().body().asJson();
