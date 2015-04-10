@@ -26,7 +26,9 @@
         <div class="col-md-12 arial gray_adecco size18 bold">
             <p>Cursos</p>
         </div>
-    </div>
+    </div><br>
+    <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
+
 
     <div class="main-div-sections">
         
@@ -41,7 +43,7 @@
 
                     <div class="col-lg-5 col-lg-offset-2">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control" id="imparted" value="Impartido" placeholder="Impartido por..." >
+                            <input type="text" class="form-control" id="imparted" value="" placeholder="Impartido por..." >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </div>
@@ -50,7 +52,7 @@
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control" id="numHour" value="Número de horas" placeholder="Número de horas" >
+                            <input type="text" class="form-control" id="numHour" value="" placeholder="Número de horas" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                             
                         </div>
@@ -81,7 +83,7 @@
                 </div>
             </form>
         
-    </div>
+    </div><br>
 </section>
 
 
@@ -102,7 +104,7 @@
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control" id="language" value="Idioma" placeholder="Idioma" >
+                            <input type="text" class="form-control" id="language" value="" placeholder="Idioma" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </div>
@@ -150,7 +152,7 @@
                 </div>
             </form>
         
-    </div>
+    </div><br>
 </section>
 
 <section>
@@ -165,7 +167,7 @@
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control" id="programs" value="Programas informáticos" placeholder="Programas informáticos" >
+                            <input type="text" class="form-control" id="programs" value="" placeholder="Programas informáticos" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </div>
@@ -218,6 +220,21 @@
         </div>
     </div>
 </section>
+
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?<h2>
+            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
 
 
 <script type="text/javascript">
