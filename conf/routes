@@ -56,15 +56,15 @@ GET     /pdf/:template                              controllers.PDFController.fa
 
 
 #Curriculum Vitae
-GET     /orientation/gettools/cv1                   controllers.StashController.cv1()
-GET     /orientation/gettools/cv2                   controllers.StashController.cv2()
-GET     /orientation/gettools/cv3                   controllers.StashController.cv3()
+GET     /orientation/gettools/cv1                   controllers.GenerateDocumentsController.cv1()
+GET     /orientation/gettools/cv2                   controllers.GenerateDocumentsController.cv2()
+GET     /orientation/gettools/cv3                   controllers.GenerateDocumentsController.cv3()
 
 #Carta de Presentacion
 
-GET     /orientation/gettools/lp1                   controllers.StashController.lp1()
-GET     /orientation/gettools/lp2                   controllers.StashController.lp2()
-GET     /orientation/gettools/lp3                   controllers.StashController.lp3()
+GET     /orientation/gettools/lp1                   controllers.GenerateDocumentsController.lp1()
+GET     /orientation/gettools/lp2                   controllers.GenerateDocumentsController.lp2()
+GET     /orientation/gettools/lp3                   controllers.GenerateDocumentsController.lp3()
 
 # PUNTO 3: PROCESO DE SELECCION
 GET     /orientation/tinterview                     controllers.OrientationController.tinterview()

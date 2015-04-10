@@ -7,7 +7,7 @@ import static play.mvc.Results.ok;
 /**
  * Created by Victor on 17/03/2015.
  */
-public class StashController {
+public class GenerateDocumentsController {
 
 
     public static Result step2(){
