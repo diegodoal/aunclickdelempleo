@@ -106,7 +106,8 @@ public class OrientationController extends Controller {
     }
 
     public static Result interestIdentification(){
-        return ok(views.html.orientation.interestIdentification.render());
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.orientation.interestIdentification.render(user));
     }
 
     public static Result submitInterestIdentification(){

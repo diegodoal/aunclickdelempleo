@@ -23,3 +23,4 @@ function limitCheckboxes(max){
         }
     });
 }
+
