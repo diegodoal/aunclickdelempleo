@@ -31,6 +31,7 @@
         Datos personales
     </div>
   </div><br>
+  <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
 
   <form class="form-horizontal" role="form">
     <div class="form-group">
@@ -195,7 +196,19 @@
     </div>
 </section>
 
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
 
+        <h2 text-align="center">¿Cómo funciona?<h2>
+            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
 
 <script type="text/javascript">
       window.onload = function() {
