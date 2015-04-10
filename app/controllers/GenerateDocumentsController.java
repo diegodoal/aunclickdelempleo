@@ -47,8 +47,8 @@ public class GenerateDocumentsController {
         if(user != null){
             String[] personalInformation = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
 
-            user.name = personalInformation[0];
-            user.surnames = personalInformation[1];
+            //user.name = personalInformation[0];
+            //user.surnames = personalInformation[1];
             user.birthDate = personalInformation[2];
             user.residenceCity = personalInformation[3];
             user.residenceAddress = personalInformation[4];
