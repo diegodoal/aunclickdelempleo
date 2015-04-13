@@ -3,10 +3,18 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.itextpdf.text.DocumentException;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.Skill;
 import play.mvc.Result;
+import utils.Files;
+import utils.cv.templates.PresentationLetterTemplate;
+import utils.cv.templates.TemplatesController;
+import utils.pdf.PresentationLetter;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import static play.mvc.Controller.session;
 import static play.mvc.Http.Context.Implicit.request;
@@ -84,12 +92,6 @@ public class GenerateDocumentsController {
 
         String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
 
-        System.out.println(result[0].toString());
-        System.out.println(result[1].toString());
-        System.out.println(result[2].toString());
-        System.out.println(result[3].toString());
-        System.out.println(result[4].toString());
-        System.out.println(result[5].toString());
         session("lp2_company_name", result[0].toString());
         session("lp2_job_name", result[1].toString());
         session("lp2_attach_cv", result[2].toString());
@@ -126,5 +128,37 @@ public class GenerateDocumentsController {
             SingletonDataSource.getInstance().updateAllUserData(user);
         }
         return redirect("/orientation");
+    }
+
+    public static Result previewLP(){
+        String route = Files.newPathForNewFile("public/pdf", "pdf");
+
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        PresentationLetter template = new PresentationLetter();
+        List<String> attachments = new ArrayList<>();
+
+        if(session().get("lp2_attach_cv").equals("true")){
+            attachments.add("Curriculum Vitae");
+        }
+        if(session().get("lp2_attach_portfolio").equals("true")){
+            attachments.add("Portfolio");
+        }
+        if(session().get("lp2_attach_lr").equals("true")){
+            attachments.add("Carta de recomendación");
+        }
+        if(session().get("lp2_attach_certificates").equals("true")){
+            attachments.add("Certificados");
+        }
+
+
+        try {
+            template.createPdf(route, user.name, user.surnames, user.studyTitle, user.studyLocation, session().get("lp2_company_name"), session().get("lp2_job_name"), attachments, user.personalCharacteristics, user.skill, user.email, user.phoneNumber);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+
+        return redirect(routes.Assets.at(route.substring(7)));
     }
 }

@@ -69,6 +69,8 @@ POST    /orientation/gettools/lp2                   controllers.GenerateDocument
 GET     /orientation/gettools/lp3                   controllers.GenerateDocumentsController.lp3()
 POST    /orientation/gettools/lp3                   controllers.GenerateDocumentsController.submitLp3()
 
+GET     /orientation/gettools/lp/preview            controllers.GenerateDocumentsController.previewLP()
+
 # PUNTO 3: PROCESO DE SELECCION
 GET     /orientation/tinterview                     controllers.OrientationController.tinterview()
 GET     /orientation/tinterview/submit              controllers.OrientationController.submitTinterview()
