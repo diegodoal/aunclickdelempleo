@@ -7213,3 +7213,20 @@ a.format:hover, a.format:focus {
 .row_top_margin {
     margin-top: 0px;
 }
+
+
+.custom-progress{
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.custom-progress::-webkit-progress-bar{
+    background-color: brown_adecco;
+    border-radius: 20px;
+}
+
+.custom-progress::-webkit-progress-value{
+    background: #422918;
+    border-radius: 20px;
+
+}

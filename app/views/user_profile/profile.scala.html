@@ -2,7 +2,7 @@
 
 @main(){
 <article class="container">
-    <div class="row">
+
         <h2 class="red_adecco century_gothic">Tu perfil</h2>
         <div class="brown_adecco arial size18">
             <p><b>Datos personales</b></p>
@@ -46,45 +46,81 @@
                 </div>
             </form>
         </div>
+</article>
+
+<article class="container">
+    <div class="brown_adecco arial size18">
+        <p><b>Tu orientación</b></p>
     </div>
+
+    <p class="arial size10 brown_adecco">El proceso de búsqueda de empleo es largo pero debes pasar todos los pasos para obtener éxito en tu trabajo.</p>
+    <p class="arial size10 brown_adecco">A continuación podrás ver como es tu situación, para mejorarla tan solo tienes que ir realizando el resto de actividades: <a class="font3" href="@routes.OrientationController.blank()"><ins>Aquí.</ins></a></p>
+    <p class="arial size12 brown_adecco"><b>Puedes ver toda la información que hayas completado: </b><a class="font3" href="@routes.ProfileController.textPlainInfo()"><ins>Aquí.</ins></a></p><br>
+
+    <div class="row">
+        <div class="col-md-2 center">
+            <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_orientation.png")">
+        </div>
+        <div class="col-md-10" >
+            <progress class="custom-progress" value="22" max="100" style="width:100%; vertical-align: middle;"></progress>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="text-left" style="margin:0;">0%</h3>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-center" style="margin:0;">50%</h3>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-right" style="margin:0;">100%</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</article>
+
+
+
+<article class="container">
+
+    <div class="brown_adecco arial size18">
+        <p><b>Tu planificación</b></p>
+    </div>
+
+    <p class="arial size10 brown_adecco">En este apartado encontrarás las próximas entrevistas de trabajo que has programado. Es importante que estés preparado desde unos días antes.</p>
+    <p class="arial size10 brown_adecco">Solo aparecerán las entrevistas que hayas programado tu mismo:</p>
+
+    <div class="row">
+    <div class="col-md-2  center">
+        <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_planificacion.png")">
+    </div>
+    <div class="col-md-10">
+
+    </div>
+
+    </div>
+    <br>
 </article>
 
 <article class="container">
-    <div class="row">
-        <div class="brown_adecco arial size18">
-            <p><b>Tu orientación</b></p>
-        </div>
-        <div>
-            <p class="arial size10 brown_adecco">El proceso de búsqueda de empleo es largo pero debes pasar todos los pasos para obtener éxito en tu trabajo.</p>
-            <p class="arial size10 brown_adecco">A continuación podrás ver como es tu situación, para mejorarla tan solo tienes que ir realizando el resto de actividades: <a class="font3" href="@routes.OrientationController.blank()"><ins>Aquí.</ins></a></p>
-            <p class="arial size12 brown_adecco"><b>Puedes ver toda la información que hayas completado: </b><a class="font3" href="@routes.ProfileController.textPlainInfo()"><ins>Aquí.</ins></a></p><br>
-        </div>
-    </div><br>
-</article>
 
+    <div class="brown_adecco arial size18">
+        <p><b>Tus documentos</b></p>
+    </div>
 
-<article class="container">
-    <div class="row">
-        <div class="brown_adecco arial size18">
-            <p><b>Tu planificación</b></p>
-        </div>
-        <div>
-            <p class="arial size10 brown_adecco">En este apartado encontrarás las próximas entrevistas de trabajo que has programado. Es importante que estés preparado desde unos días antes.</p>
-            <p class="arial size10 brown_adecco">Solo aparecerán las entrevistas que hayas programado tu mismo:</p>
-        </div>
-    </div><br>
-</article>
+    <p class="arial size10 brown_adecco">Aquí tienes todos los documentos que has generado en un mismo apartado.</p>
+    <p class="arial size10 brown_adecco">Puedes editarlos, descargarlos o eliminarlos. Todos los cambios que realices se quedarán duardados aquí:</p>
 
-<article class="container">
     <div class="row">
-        <div class="brown_adecco arial size18">
-            <p><b>Tus documentos</b></p>
+        <div class="col-md-2  center">
+            <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_cv.png")">
         </div>
-        <div>
-            <p class="arial size10 brown_adecco">Aquí tienes todos los documentos que has generado en un mismo apartado.</p>
-            <p class="arial size10 brown_adecco">Puedes editarlos, descargarlos o eliminarlos. Todos los cambios que realices se quedarán duardados aquí:</p>
+        <div class="col-md-10">
+
         </div>
-    </div><br>
+
+    </div>
+    <br>
 </article>
 
 
