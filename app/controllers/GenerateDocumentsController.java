@@ -6,11 +6,9 @@ import com.google.gson.reflect.TypeToken;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.mvc.Result;
-
 import java.util.List;
-
+import static play.mvc.Controller.session;
 import static play.mvc.Http.Context.Implicit.request;
-import static play.mvc.Http.Context.Implicit.session;
 import static play.mvc.Results.ok;
 import static play.mvc.Results.redirect;
 
@@ -42,7 +40,6 @@ public class GenerateDocumentsController {
     public static Result submitLp1(){
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-
 
         if(user != null){
             String[] personalInformation = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
@@ -77,7 +74,30 @@ public class GenerateDocumentsController {
         return redirect("/orientation/gettools/lp2");
     }
 
-    public static Result lp2(){return ok(views.html.complete_letter_presentation.letter_presentation_2.render());}
+    public static Result lp2(){
+        return ok(views.html.complete_letter_presentation.letter_presentation_2.render());
+    }
+
+    public static Result submitLp2(){
+        JsonNode request = request().body().asJson();
+
+        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+
+        System.out.println(result[0].toString());
+        System.out.println(result[1].toString());
+        System.out.println(result[2].toString());
+        System.out.println(result[3].toString());
+        System.out.println(result[4].toString());
+        System.out.println(result[5].toString());
+        session("lp2_company_name", result[0].toString());
+        session("lp2_job_name", result[1].toString());
+        session("lp2_attach_cv", result[2].toString());
+        session("lp2_attach_portfolio", result[3]);
+        session("lp2_attach_lr", result[4]);
+        session("lp2_attach_certificates", result[5]);
+
+        return ok();
+    }
 
     public static Result lp3(){return ok(views.html.complete_letter_presentation.letter_presentation_3.render());}
 }
