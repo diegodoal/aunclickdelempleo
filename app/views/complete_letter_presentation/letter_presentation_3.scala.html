@@ -1,4 +1,4 @@
-@(user: models.entities.User)
+@(user: models.entities.User, error: String)
 
 @main(){
 <section class="container" style="z-index:-1;" id="text_user_profile_2">
@@ -20,6 +20,9 @@
 </section>
 <section class="container" style="z-index:-1;">
 
+    @if(error != null){
+        <div class="alert alert-danger" role="alert">@error<span> <a href="@routes.GenerateDocumentsController.lp2()">Pulse aquí</a> para completarlo.</span></div>
+        }
     <!--Datos de Empresa-->
 
     <div class="row">

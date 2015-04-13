@@ -9,15 +9,13 @@ import models.entities.User;
 import models.entities.orientation.Skill;
 import play.mvc.Result;
 import utils.Files;
-import utils.cv.templates.PresentationLetterTemplate;
-import utils.cv.templates.TemplatesController;
 import utils.pdf.PresentationLetter;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import static play.mvc.Controller.session;
 import static play.mvc.Http.Context.Implicit.request;
+import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
 import static play.mvc.Results.redirect;
 
@@ -104,7 +102,7 @@ public class GenerateDocumentsController {
 
     public static Result lp3(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-        return ok(views.html.complete_letter_presentation.letter_presentation_3.render(user));
+        return ok(views.html.complete_letter_presentation.letter_presentation_3.render(user, null));
     }
 
     public static Result submitLp3(){
@@ -131,9 +129,16 @@ public class GenerateDocumentsController {
     }
 
     public static Result previewLP(){
-        String route = Files.newPathForNewFile("public/pdf", "pdf");
-
+        String error = "Por favor, complete el paso 2 antes de continuar.";
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(session().get("lp2_attach_cv") == null || session().get("lp2_attach_portfolio") == null ||
+                session().get("lp2_attach_lr") == null || session().get("lp2_attach_certificates") == null ||
+                session().get("lp2_company_name") == null || session().get("lp2_job_name") == null){
+            return badRequest(views.html.complete_letter_presentation.letter_presentation_3.render(user, error));
+        }
+
+        String route = Files.newPathForNewFile("public/pdf", "pdf");
         PresentationLetter template = new PresentationLetter();
         List<String> attachments = new ArrayList<>();
 
@@ -158,6 +163,13 @@ public class GenerateDocumentsController {
         } catch (DocumentException e) {
             e.printStackTrace();
         }
+
+        session().remove("lp2_company_name");
+        session().remove("lp2_job_name");
+        session().remove("lp2_attach_cv");
+        session().remove("lp2_attach_portfolio");
+        session().remove("lp2_attach_lr");
+        session().remove("lp2_attach_certificates");
 
         return redirect(routes.Assets.at(route.substring(7)));
     }
