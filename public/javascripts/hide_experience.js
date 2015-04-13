@@ -5,8 +5,10 @@ function ExperienceHidden(value)
     {
         // disable
         document.getElementById("experience_group").hidden = true;
+
     }else {
         // enable
         document.getElementById("experience_group").hidden = false;
+
     }
 }
