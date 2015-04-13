@@ -33,19 +33,14 @@
     <form class="form-horizontal" role="form">
         <div class="form-group">
             <div class="col-lg-5 input-mic-container">
-
                 <input type="text" name='register_name' class="form-control" id="name_company" value="" required="required" placeholder="Nombre de la empresa">
                 <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-
-
-
-
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-lg-5 input-mic-container">
-                <input type="text" class="form-control" id="puesto" value="" required="required" placeholder="Puesto">
+                <input type="text" class="form-control" id="job_name" value="" required="required" placeholder="Puesto">
                 <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
             </div>
         </div>
@@ -94,7 +89,7 @@
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.GenerateDocumentsController.lp3()';">SIGUIENTE</button>
+            <button class="button-finish-1" onclick="sendForm()">SIGUIENTE</button>
         </div>
     </div>
 </section>
@@ -116,5 +111,26 @@
     window.onload = function(){
         loadRecognition();
     };
+</script>
+
+<script>
+function sendForm(){
+    var result = [];
+    result[0] = $('#name_company').val();
+    result[1] = $('#job_name').val();
+    result[2] = $('#check_cv').is(':checked');
+    result[3] = $('#check_pf').is(':checked');
+    result[4] = $('#check_lr').is(':checked');
+    result[5] = $('#check_certificates').is(':checked');
+
+    $.ajax({
+            type: 'post',
+            data: JSON.stringify(result),
+            url: "/orientation/gettools/lp2",
+            contentType: 'application/json'
+        }).done(function(o) {
+            window.location.assign("/orientation/gettools/lp3");
+        });
+}
 </script>
 }

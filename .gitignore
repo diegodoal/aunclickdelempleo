@@ -196,3 +196,4 @@ project/plugins/project/
 .scala_dependencies
 .worksheet
 assets/
+public/pdf/
