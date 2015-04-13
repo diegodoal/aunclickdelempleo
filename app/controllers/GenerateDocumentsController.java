@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
+import models.entities.orientation.Skill;
 import play.mvc.Result;
 import java.util.List;
 import static play.mvc.Controller.session;
@@ -99,5 +100,31 @@ public class GenerateDocumentsController {
         return ok();
     }
 
-    public static Result lp3(){return ok(views.html.complete_letter_presentation.letter_presentation_3.render());}
+    public static Result lp3(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.complete_letter_presentation.letter_presentation_3.render(user));
+    }
+
+    public static Result submitLp3(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        JsonNode request = request().body().asJson();
+
+        if(user != null) {
+            String[][] skills = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
+            }.getType());
+            if(user.skill.isEmpty()){
+                for (int i = 0; i < skills.length; i++) {
+                    user.skill.add(i, new Skill(skills[i][0], skills[i][1]));
+                }
+            }else{
+                for (int i=0; i<skills.length; i++){
+                    user.skill.get(i).level = skills[i][1];
+                }
+            }
+            user.completedOrientationSteps.skills = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/orientation");
+    }
 }
