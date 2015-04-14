@@ -38,6 +38,13 @@ $('.main-div-sections .form-horizontal').each(function(){
             }
        // alert("Contador" +counter);
         loadRecognition();
-        
+        var check = document.getElementById("check_exp_cb");
+        if(check != null){
+          if(counter == 0){
+            check.hidden = false;
+          }else{
+            check.hidden = true;
+          }
+        }
     });
 }
