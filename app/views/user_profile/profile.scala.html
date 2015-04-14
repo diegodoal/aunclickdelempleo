@@ -62,7 +62,7 @@
             <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_orientation.png")">
         </div>
         <div class="col-md-10" >
-            <progress class="custom-progress" value="22" max="100" style="width:100%; vertical-align: middle;"></progress>
+            <progress class="custom-progress" value="@user.getCompletedOrientationPercentage()" max="100" style="width:100%; vertical-align: middle;"></progress>
             <div class="row">
                 <div class="col-md-4">
                     <h3 class="text-left" style="margin:0;">0%</h3>
