@@ -16,6 +16,7 @@ import models.entities.orientation.Skill;
 
 import org.apache.commons.codec.binary.Base64;
 
+import play.Logger;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -29,18 +30,29 @@ public class OrientationController extends Controller {
 
     /* PUNTO 1: CONOCETE A TI MISMO */
     public static Result currentsituation(){
-    	String error_msg = "";
-        return ok(views.html.orientation.currentSituation.render(error_msg));
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.orientation.currentSituation.render(user));
     }
 
     public static Result submitCurrentSituation(){
+
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
 
         String[] studies = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
         for(int i=0; i<studies.length-1; i++){
-            if(!user.currentSituation.educationLevelList.contains(studies[i])){
+            if(studies[i].contains("No tengo estudios")){
+                Logger.info("Entra el if de no tengo estudios");
+                user.currentSituation.clearEducationLevel();
+                user.currentSituation.addEducationLevel(studies[i]);
+            }
+            else if (!studies[i].contains("No tengo estudios") && !user.currentSituation.educationLevelList.contains(studies[i])) {
+                Logger.info("Entra el if de  No Contiene no tengo estudios");
+                if (user.currentSituation.educationLevelList.contains("No tengo estudios")){
+                    Logger.info("La lista de la base de datos contiene no tengo estudios");
+                    user.currentSituation.educationLevelList.remove("No tengo estudios");
+                }
                 user.currentSituation.addEducationLevel(studies[i]);
             }
         }
@@ -63,7 +75,17 @@ public class OrientationController extends Controller {
 
         String[] studies = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
         for(int i=0; i<studies.length-1; i++){
-            if(!user.currentSituation.educationLevelList.contains(studies[i])){
+            if(studies[i].contains("No tengo estudios")){
+                //Logger.info("Entra el if de no tengo estudios");
+                user.currentSituation.clearEducationLevel();
+                user.currentSituation.addEducationLevel(studies[i]);
+            }
+            else if (!studies[i].contains("No tengo estudios") && !user.currentSituation.educationLevelList.contains(studies[i])) {
+                //Logger.info("Entra el if de  No Contiene no tengo estudios");
+                if (user.currentSituation.educationLevelList.contains("No tengo estudios")){
+                   // Logger.info("La lista de la base de datos contiene no tengo estudios");
+                    user.currentSituation.educationLevelList.remove("No tengo estudios");
+                }
                 user.currentSituation.addEducationLevel(studies[i]);
             }
         }

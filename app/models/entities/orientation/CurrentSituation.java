@@ -27,9 +27,10 @@ public class CurrentSituation {
     }
 
 
-    public void addEducationLevel(String level){
-        this.educationLevelList.add(level);
-    }
+    public void addEducationLevel(String level){this.educationLevelList.add(level);}
+
+    public void clearEducationLevel(){this.educationLevelList.clear();}
+
 
     public void addProfessionalExperience(String company, String job, String experienceYears){
         this.professionalExperienceList.add(new ProfessionalExperience(company, job, experienceYears));
