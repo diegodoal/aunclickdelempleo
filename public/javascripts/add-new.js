@@ -38,11 +38,6 @@ $('.main-div-sections .form-horizontal').each(function(){
             }
        // alert("Contador" +counter);
         loadRecognition();
-        if(counter == 0){
-        document.getElementById("check_exp_cb").hidden = false;
-        }
-        else{
-        document.getElementById("check_exp_cb").hidden = true;
-        }
+        
     });
 }
