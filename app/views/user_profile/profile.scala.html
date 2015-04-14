@@ -95,41 +95,31 @@
             <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_planificacion.png")">
         </div>
         <div class="col-md-10">
-            <div class="row">
-                <div class="col-md-4">
 
-                    @for(interview <- user.interviewScheduleList) {
-                    <h4 class="text-left" style="margin:0;">Fecha: @interview.date</h4>
-                    <h4 class="text-left" style="margin:0;">Empresa: @interview.company</h4>
-                    <h4 class="text-left" style="margin:0;">Dirección: @interview.address</h4>
-                    <br>
-                    }
-                </div>
-                <div class="col-md-8">
-                    <br><br>
-                    <a class="font3" href="@routes.OrientationController.travel()"><ins>Como llegar</ins></a>
-                </div>
-            </div>
-
-            <div class="col-md-5" id="points-line2">
-                <img src="@routes.Assets.at("images/orientation/steps/ic_point.png")">
-            </div><br>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <h4 class="text-left" style="margin:0;">DD/MM/AA</h4>
-                    <h4 class="text-left" style="margin:0;">Empresa:</h4>
-                    <h4 class="text-left" style="margin:0;">Dirección: </h4>
-                    <br>
-                </div>
-                <div class="col-md-8">
-                    <h4 class="text-left" style="margin:0;">hh:mm </h4><br>
-                    <a class="font3" href="@routes.OrientationController.travel()"><ins>Como llegar</ins></a>
-                </div>
-            </div>
+            @if(user.interviewScheduleList.isEmpty()){
+                <p class="arial size10 brown_adecco">No tienes ninguna entrevista programada.</p>
+            }else{
+                @for(interview <- user.interviewScheduleList) {
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4 class="text-left" style="margin:0;">@interview.getInterviewDate()</h4>
+                            <h4 class="text-left" style="margin:0;">@interview.company</h4>
+                            <h4 class="text-left" style="margin:0;">@interview.address</h4>
+                            <br>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="text-left" style="margin:0;">@interview.getInterviewTime()</h4><br>
+                            <a class="font3" href="@routes.OrientationController.travel()"><ins>Como llegar</ins></a>
+                        </div>
+                    </div>
+                    <div class="col-md-5" id="points-line2">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_point.png")">
+                    </div><br>
+                }
+            }
         </div>
     </div>
-    <div class="col-md-4 ">
+    <div class="col-md-4">
         <a class="add-new button-cursor-pointer" href="@routes.OrientationController.deadline()" ><img ALT="Añadir experiencia" src="@routes.Assets.at("images/orientation/ic_newinterview.png")"></a>
     </div>
 
