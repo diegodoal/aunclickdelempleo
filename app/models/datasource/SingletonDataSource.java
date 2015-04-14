@@ -80,6 +80,8 @@ public class SingletonDataSource {
                 append(Constants.USER_PHONE_NUMBER, user.phoneNumber).
                 append(Constants.USER_STUDY_TITLE, user.studyTitle).
                 append(Constants.USER_STUDY_LOCATION, user.studyLocation).
+                append(Constants.USER_DRIVING_LICENSE, user.drivingLicense).
+                append(Constants.USER_CERTIFICATE_OF_DISABILITY, user.certificateOfDisability).
                 append(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson())).
                 append(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString())).
                 append(Constants.USER_SKILLS_LIST, JSON.parse(user.skillsToJson())).
@@ -203,6 +205,8 @@ public class SingletonDataSource {
         newDocument.put(Constants.USER_PHONE_NUMBER, user.phoneNumber);
         newDocument.put(Constants.USER_STUDY_TITLE, user.studyTitle);
         newDocument.put(Constants.USER_STUDY_LOCATION, user.studyLocation);
+        newDocument.put(Constants.USER_DRIVING_LICENSE, user.drivingLicense);
+        newDocument.put(Constants.USER_CERTIFICATE_OF_DISABILITY, user.certificateOfDisability);
         newDocument.put(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson()));
         newDocument.put(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString()));
         newDocument.put(Constants.USER_SKILLS_LIST, JSON.parse(user.skillsToJson()));

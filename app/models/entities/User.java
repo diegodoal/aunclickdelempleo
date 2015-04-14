@@ -39,6 +39,9 @@ public class User {
     public String studyTitle;
     public String studyLocation;
 
+    public String drivingLicense;
+    public String certificateOfDisability;
+
     public CompletedOrientationSteps completedOrientationSteps;
 
     //Orientation steps
@@ -65,6 +68,9 @@ public class User {
 
         this.studyTitle = null;
         this.studyLocation = null;
+
+        this.drivingLicense = null;
+        this.certificateOfDisability = null;
 
         this.currentSituation = new CurrentSituation();
         this.skill = new ArrayList<>();
@@ -94,6 +100,9 @@ public class User {
 
         this.studyTitle = null;
         this.studyLocation = null;
+
+        this.drivingLicense = null;
+        this.certificateOfDisability = null;
 
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();

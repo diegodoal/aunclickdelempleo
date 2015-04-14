@@ -33,7 +33,45 @@ public class GenerateDocumentsController {
         return ok(views.html.complete_user_profile.complete_user_profile_3.render());
     }
 
-    public static Result cv1(){return ok(views.html.complete_cv.complete_cv_1.render());}
+    public static Result cv1(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.complete_cv.complete_cv_1.render(user));
+    }
+
+    public static Result submitCv1(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user != null){
+            String[] personalInformation = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
+
+            //user.name = personalInformation[0];
+            //user.surnames = personalInformation[1];
+            user.birthDate = personalInformation[2];
+            user.residenceCity = personalInformation[3];
+            user.residenceAddress = personalInformation[4];
+            user.residenceNumber = personalInformation[5];
+            user.residenceZipCode = personalInformation[6];
+            //user.email = personalInformation[7];
+            user.phoneNumber = personalInformation[8];
+
+            if(!personalInformation[9].equals("")){
+                //Add driving license
+                user.drivingLicense = personalInformation[9];
+            }else{
+                user.drivingLicense = null;
+            }
+
+            if(!personalInformation[10].equals("")){
+                user.certificateOfDisability = personalInformation[10];
+            }else{
+                user.certificateOfDisability = null;
+            }
+
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/orientation/gettools/cv2");
+    }
 
     public static Result cv2(){return ok(views.html.complete_cv.complete_cv_2.render());}
 
