@@ -29,8 +29,11 @@
 <!--Datos Personales-->
 
   <div class="row">
-    <div class="col-md-12 arial gray_adecco size18 bold">
-        Datos personales
+    <div class="col-md-12">
+        <div id="cv1_alert" hidden>
+            <div class="alert alert-danger" id="cv1_alert" role="alert">Por favor, completa todo el fomulario.</div><br>
+        </div>
+        <span class="arial gray_adecco size18 bold">Datos personales</span>
     </div>
   </div><br>
   <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
@@ -44,11 +47,7 @@
                 <input type="text" name='register_name' class="form-control" id="name"  required="required" placeholder="Nombre">
             }
             
-            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-
-
-
-            
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">            
         </div>
     </div>
 
@@ -371,8 +370,12 @@
     function sendForm(){
         var result = [];
         var counter = 0;
+        var emptyField = false;
         //Adding Personal Information
         $('.form-horizontal input').each(function(){
+            if($(this).val() == ""){
+                emptyField = true;
+            }
             result[counter] = $(this).val();
             counter++;
         });
@@ -382,8 +385,10 @@
         if($('#check_license').is(':checked')){
             result[counter] = "";
             counter++;
+        }else if($("#license_select option:selected").val() == 0){
+            emptyField = true;
         }else{
-            result[counter] = $( "#license_select option:selected").text();
+            result[counter] = $("#license_select option:selected").text();
             counter++;
         }
 
@@ -391,22 +396,28 @@
         if($('#check_certificate').is(':checked')){
             result[counter] = "";
             counter++;
+        }else if($('#certificate_select option:selected').val() == 0){
+            emptyField = true;
         }else{
-            result[counter] = $( "#certificate_select option:selected").text();
+            result[counter] = $("#certificate_select option:selected").text();
         }
 
-
-        $.ajax({
-            type: 'post',
-            data: JSON.stringify(result),
-            url: "/orientation/gettools/cv1",
-            contentType: 'application/json',
-            error: function(){
-            },
-            success: function(){
-                window.location.assign("/orientation/gettools/cv2");
-            }
-        });
+        if(emptyField == true){
+            $('#cv1_alert').show();
+            window.scrollTo(0,0);
+        }else{
+            $.ajax({
+                type: 'post',
+                data: JSON.stringify(result),
+                url: "/orientation/gettools/cv1",
+                contentType: 'application/json',
+                error: function(){
+                },
+                success: function(){
+                    window.location.assign("/orientation/gettools/cv2");
+                }
+            });
+        }
     }
 </script>
 }
