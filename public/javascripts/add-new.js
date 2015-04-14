@@ -4,7 +4,7 @@ var clonar = 0;
 var campos = 0;
     $('body').on( "click", ".add-new", function() {
 
-$('.main-div-sections .form-horizontal').each(function(){
+    $(this).closest('.main-div-sections .form-horizontal').each(function(){
             $(this).find('input').each(function(){
             clonar = clonar +1;
                if($(this).val() != ""){
