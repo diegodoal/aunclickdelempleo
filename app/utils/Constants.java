@@ -40,6 +40,7 @@ public final class Constants {
 
     public final static String USER_STUDY_TITLE = "studyTitle";
     public final static String USER_STUDY_LOCATION = "studyLocation";
+    public final static String USER_EDUCATION_LEVEL = "educationLevel";
 
     public final static String USER_DRIVING_LICENSE = "drivingLicense";
     public final static String USER_CERTIFICATE_OF_DISABILITY = "certificateOfDisability";

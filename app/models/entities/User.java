@@ -38,6 +38,7 @@ public class User {
 
     public String studyTitle;
     public String studyLocation;
+    public String educationLevel;
 
     public String drivingLicense;
     public String certificateOfDisability;
@@ -68,6 +69,7 @@ public class User {
 
         this.studyTitle = null;
         this.studyLocation = null;
+        this.educationLevel = null;
 
         this.drivingLicense = null;
         this.certificateOfDisability = null;
@@ -100,6 +102,7 @@ public class User {
 
         this.studyTitle = null;
         this.studyLocation = null;
+        this.educationLevel = null;
 
         this.drivingLicense = null;
         this.certificateOfDisability = null;

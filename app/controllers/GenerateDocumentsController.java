@@ -73,7 +73,30 @@ public class GenerateDocumentsController {
         return redirect("/orientation/gettools/cv2");
     }
 
-    public static Result cv2(){return ok(views.html.complete_cv.complete_cv_2.render());}
+    public static Result cv2(){
+        User user = SingletonDataSource.getUserByEmail(session().get("email"));
+        return ok(views.html.complete_cv.complete_cv_2.render(user));
+    }
+
+    public static Result submitCv2(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user != null){
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
+
+            user.educationLevel = result[0];
+            String professionalExperience = result[1];
+
+            List<String> interests = new Gson().fromJson(result[2].toString(), new TypeToken<List<String>>() {
+            }.getType());
+
+            user.interests = interests;
+
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/orientation/gettools/cv3");
+    }
 
     public static Result cv3(){return ok(views.html.complete_cv.complete_cv_3.render());}
 

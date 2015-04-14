@@ -59,6 +59,7 @@ GET     /pdf/:template                              controllers.PDFController.fa
 GET     /orientation/gettools/cv1                   controllers.GenerateDocumentsController.cv1()
 POST    /orientation/gettools/cv1                   controllers.GenerateDocumentsController.submitCv1()
 GET     /orientation/gettools/cv2                   controllers.GenerateDocumentsController.cv2()
+POST    /orientation/gettools/cv2                   controllers.GenerateDocumentsController.submitCv2()
 GET     /orientation/gettools/cv3                   controllers.GenerateDocumentsController.cv3()
 
 #Carta de Presentacion
