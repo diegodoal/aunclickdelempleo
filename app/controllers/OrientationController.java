@@ -305,14 +305,13 @@ public class OrientationController extends Controller {
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user != null){
+            List<InterviewSchedule> auxList = new ArrayList<>();
             String[][] result = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {}.getType());
             for(int i=0; i<result.length; i++){
-                InterviewSchedule auxInterviewSchedule = new InterviewSchedule(result[i][0] + " " + result[i][1], result[i][2], result[i][3]);
-                if(!user.interviewScheduleList.contains(auxInterviewSchedule)){
-                    user.interviewScheduleList.add(auxInterviewSchedule);
-                }
+                auxList.add(new InterviewSchedule(result[i][0] + " " + result[i][1], result[i][2], result[i][3]));
             }
 
+            user.interviewScheduleList = auxList;
             user.completedOrientationSteps.deadLine = String.valueOf(true);
             SingletonDataSource.getInstance().updateAllUserData(user);
         }
