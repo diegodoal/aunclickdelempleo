@@ -54,8 +54,8 @@
     </div>
 
     <p class="arial size10 brown_adecco">El proceso de búsqueda de empleo es largo pero debes pasar todos los pasos para obtener éxito en tu trabajo.</p>
-    <p class="arial size10 brown_adecco">A continuación podrás ver como es tu situación, para mejorarla tan solo tienes que ir realizando el resto de actividades: <a class="font3" href="@routes.OrientationController.blank()"><ins>Aquí.</ins></a></p>
-    <p class="arial size12 brown_adecco"><b>Puedes ver toda la información que hayas completado: </b><a class="font3" href="@routes.ProfileController.textPlainInfo()"><ins>Aquí.</ins></a></p><br>
+    <p class="arial size10 brown_adecco">A continuación podrás ver como es tu situación, para mejorarla tan solo tienes que ir realizando el resto de actividades <a class="font3" href="@routes.OrientationController.blank()"><ins>Aquí.</ins></a></p>
+    <p class="arial size12 brown_adecco"><b>Puedes ver toda la información que hayas completado </b><a class="font3" href="@routes.ProfileController.textPlainInfo()"><ins>Aquí.</ins></a></p><br>
 
     <div class="row">
         <div class="col-md-2 center">
@@ -91,15 +91,49 @@
     <p class="arial size10 brown_adecco">Solo aparecerán las entrevistas que hayas programado tu mismo:</p>
 
     <div class="row">
-    <div class="col-md-2  center">
-        <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_planificacion.png")">
-    </div>
-    <div class="col-md-10">
+        <div class="col-md-2  center">
+            <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_planificacion.png")">
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-4">
 
+                    @for(interview <- user.interviewScheduleList) {
+                    <h4 class="text-left" style="margin:0;">Fecha: @interview.date</h4>
+                    <h4 class="text-left" style="margin:0;">Empresa: @interview.company</h4>
+                    <h4 class="text-left" style="margin:0;">Dirección: @interview.address</h4>
+                    <br>
+                    }
+                </div>
+                <div class="col-md-8">
+                    <br><br>
+                    <a class="font3" href="@routes.OrientationController.travel()"><ins>Como llegar</ins></a>
+                </div>
+            </div>
+
+            <div class="col-md-5" id="points-line2">
+                <img src="@routes.Assets.at("images/orientation/steps/ic_point.png")">
+            </div><br>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h4 class="text-left" style="margin:0;">DD/MM/AA</h4>
+                    <h4 class="text-left" style="margin:0;">Empresa:</h4>
+                    <h4 class="text-left" style="margin:0;">Dirección: </h4>
+                    <br>
+                </div>
+                <div class="col-md-8">
+                    <h4 class="text-left" style="margin:0;">hh:mm </h4><br>
+                    <a class="font3" href="@routes.OrientationController.travel()"><ins>Como llegar</ins></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 ">
+        <a class="add-new button-cursor-pointer" href="@routes.OrientationController.deadline()" ><img ALT="Añadir experiencia" src="@routes.Assets.at("images/orientation/ic_newinterview.png")"></a>
     </div>
 
-    </div>
-    <br>
+    <br><br>
 </article>
 
 <article class="container">
@@ -116,9 +150,31 @@
             <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_cv.png")">
         </div>
         <div class="col-md-10">
-
+            <div class="row">
+                <div class="col-md-1  center">
+                    <a class="add-new button-cursor-pointer" href="@routes.OrientationController.deadline()" ><img ALT="Modificar curriculum vitae" src="@routes.Assets.at("images/orientation/steps/ic_bigpoint.png")"></a>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-left" style="margin:0;">Curriculum vitae</h4><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1  center">
+                    <a class="add-new button-cursor-pointer" href="@routes.OrientationController.deadline()" ><img ALT="Modificar carta de presentación" src="@routes.Assets.at("images/orientation/steps/ic_bigpoint.png")"></a>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-left" style="margin:0;">Carta de presentación</h4><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1  center">
+                    <a class="add-new button-cursor-pointer" href="@routes.OrientationController.deadline()" ><img ALT="Modificar email de contacto" src="@routes.Assets.at("images/orientation/steps/ic_bigpoint.png")"></a>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-left" style="margin:0;">Email de contacto</h4><br>
+                </div>
+            </div>
         </div>
-
     </div>
     <br>
 </article>
