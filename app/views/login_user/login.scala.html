@@ -1,4 +1,4 @@
-@(error_login_msg: String, error_signup_msg: String)
+@(error_login_msg: String, error_signup_msg: String, error_password_length: String)
 
 @main(){
 <!-- ADVANTAGES -->
@@ -115,6 +115,12 @@
                     @if(error_signup_msg != null) {
                     <div class="col-md-offset-1 col-md-11">
                         <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_signup_msg</div>
+                    </div>
+                    }
+                    
+                    @if(error_password_length != null) {
+                    <div class="col-md-offset-1 col-md-11">
+                        <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_password_length</div>
                     </div>
                     }
                 </div>
