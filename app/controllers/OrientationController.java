@@ -43,12 +43,12 @@ public class OrientationController extends Controller {
         String[] studies = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
         for(int i=0; i<studies.length-1; i++){
             if(studies[i].contains("No tengo estudios")){
-                Logger.info("Entra el if de no tengo estudios");
+                //Logger.info("Entra el if de no tengo estudios");
                 user.currentSituation.clearEducationLevel();
                 user.currentSituation.addEducationLevel(studies[i]);
             }
             else if (!studies[i].contains("No tengo estudios") && !user.currentSituation.educationLevelList.contains(studies[i])) {
-                Logger.info("Entra el if de  No Contiene no tengo estudios");
+                //Logger.info("Entra el if de  No Contiene no tengo estudios");
                 if (user.currentSituation.educationLevelList.contains("No tengo estudios")){
                     Logger.info("La lista de la base de datos contiene no tengo estudios");
                     user.currentSituation.educationLevelList.remove("No tengo estudios");
@@ -57,11 +57,19 @@ public class OrientationController extends Controller {
             }
         }
         String[][] experience = new Gson().fromJson(studies[studies.length-1].toString(), new TypeToken<String[][]>(){}.getType());
-        for (int i=0; i<experience.length; i++){
-            if(!user.currentSituation.professionalExperienceList.contains(experience[i])){
-                user.currentSituation.addProfessionalExperience(experience[i][0],experience[i][1],experience[i][2]);
+        //for(int j=0; j<user.currentSituation.professionalExperienceList.size();j++){
+            for (int i=0; i<experience.length; i++){
+                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2]);
+               /* if(!user.currentSituation.professionalExperienceList.get(j).company.equals(experience[0])){
+                    //Logger.info("Nueva Experiencia para añadir a la bbdd");
+
+
+
+                }else{
+                    Logger.info("Experiencia repetida");
+                }
+            }*/
             }
-        }
         user.completedOrientationSteps.currentSituation = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
 
@@ -90,7 +98,18 @@ public class OrientationController extends Controller {
             }
         }
         String checkExperience = new Gson().fromJson(studies[studies.length-1].toString(), new TypeToken<String>(){}.getType());
-        user.currentSituation.addProfessionalExperience(checkExperience,"","");
+        for(int i=0; i<user.currentSituation.professionalExperienceList.size();i++){
+            if(user.currentSituation.professionalExperienceList.get(i).company.equals("No tengo experiencia")){
+                //Logger.info("La Base de datos  contiene el check de no tengo experiencia");
+
+            }else{
+               // Logger.info("La Base de datos  no contiene el check de no tengo experiencia");
+                user.currentSituation.clearProfessionalExperience();
+                user.currentSituation.addProfessionalExperience(checkExperience, "", "");
+            }
+        }
+
+
 
         user.completedOrientationSteps.currentSituation = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
