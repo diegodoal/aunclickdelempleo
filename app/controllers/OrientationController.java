@@ -186,8 +186,11 @@ public class OrientationController extends Controller {
         return redirect("/orientation");
     }
 
-    public static Result professional() { return ok(views.html.orientation.professional.render()); }
-
+    public static Result professional() {
+    	User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+    	return ok(views.html.orientation.professional.render(user));
+    }
+    
     public static Result submitProfessional(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
@@ -197,8 +200,14 @@ public class OrientationController extends Controller {
             String[][] professionalValues = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
             }.getType());
 
-            for (int i = 0; i < professionalValues.length; i++) {
-                user.professionalValues.add(new ProfessionalValue(professionalValues[i][0], professionalValues[i][1]));
+            if(user.professionalValues.isEmpty()) {            	
+	            for (int i = 0; i < professionalValues.length; i++) {
+	                user.professionalValues.add(i, new ProfessionalValue(professionalValues[i][0], professionalValues[i][1]));
+	            }
+            } else {
+            	for (int i = 0; i < professionalValues.length; i++) {
+            		user.professionalValues.get(i).valuation = professionalValues[i][1];
+            	}
             }
 
             user.completedOrientationSteps.professional = String.valueOf(true);

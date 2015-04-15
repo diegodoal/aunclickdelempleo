@@ -1,9 +1,11 @@
+@(user: models.entities.User)
+
 @main() {
 
 <section class="container">
     <h2 class="red_adecco century_gothic">Valores profesionales</h2>
     <div class="brown_adecco arial size14">
-        <p> Conoce tus valores profesionales para determinar qué aspectos prefieres de un puesto de trabajo.</p>
+        <p>Conoce tus valores profesionales para determinar qué aspectos prefieres de un puesto de trabajo.</p>
         <p>Los valores profesionales contribuyen a nuestro bienestar personal, y son muy subjetivos.</p>
         <p>Tus valores pueden ser distintos a los de tu pareja, tus padres o tus amigos.</p>
         <p>Sin embargo, la vida también implica adaptarse y buscar soluciones intermedias.</p>
@@ -13,7 +15,7 @@
     <div class="size16 gray_adecco arial">
         <p>Actividad: Valora cuales de ellos quieres en tu futuro puesto de trabajo.</p>
     </div><br>
-
+	<div class="alert alert-danger" hidden id="radiosError" role="alert">Por favor, completa todo el formulario.</div><br>
 </section>
 
 <section class="container">
@@ -23,7 +25,7 @@
                 <tr>
                     <th></th>
                     <th style="vertical-align: middle;">Descripción de valores profesionales</th>
-                    <th>Valoración<br><pre class="gray_adecco blod">NO          NO SÉ          SÍ</pre></th>
+                    <th>Valoración<br><pre class="gray_adecco blod">     NO          NO SÉ          SÍ</pre></th>
                 </tr>
             </thead>
             <tbody>
@@ -38,16 +40,28 @@
                     <td>
                         <div class="radio" value="Poner en práctica la creatividad y propuestas innovadoras">
                             <label>
-                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_1" name="group_1" value="No"><label for="radio-si_1"><span></span></label>
+                                <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">  
+	                                @if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(0).valuation == "NO") {
+	                                	<input class="radio-normal" type="radio" id="radio-no_1" name="group_1" value="NO" checked><label for="radio-no_1"><span></span></label>
+	                                } else {
+	                                	 <input class="radio-normal" type="radio" id="radio-no_1" name="group_1" value="NO"><label for="radio-no_1"><span></span></label>
+	                                }           
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_1" name="group_1" value="No sé"><label for="radio-nose_1"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(0).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_1" name="group_1" value="NOSE" checked><label for="radio-nose_1"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_1" name="group_1" value="NOSE"><label for="radio-nose_1"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_1" name="group_1" value="Si"><label for="radio-no_1"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(0).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_1" name="group_1" value="SI" checked><label for="radio-si_1"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_1" name="group_1" value="SI"><label for="radio-si_1"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -55,15 +69,27 @@
                         <div class="radio" value="Desarrollar nuevas ideas y teorías">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_2" name="group_2" value="No"><label for="radio-si_2"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(1).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_2" name="group_2" value="NO" checked><label for="radio-no_2"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_2" name="group_2" value="NO"><label for="radio-no_2"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_2" name="group_2" value="No sé"><label for="radio-nose_2"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(1).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_2" name="group_2" value="NOSE" checked><label for="radio-nose_2"><span></span></label>
+                                   	} else {
+                                   		<input class="radio-good" type="radio" id="radio-nose_2" name="group_2" value="NOSE"><label for="radio-nose_2"><span></span></label>
+                                   	}
                                 </div>
-
+								
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_2" name="group_2" value="Si"><label for="radio-no_2"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(1).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_2" name="group_2" value="SI" checked><label for="radio-si_2"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_2" name="group_2" value="SI"><label for="radio-si_2"><span></span></label>
+                                    }
                                 </div>
 
                             </label>
@@ -72,15 +98,27 @@
                         <div class="radio" value="Responsabilidad y toma de decisiones">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_3" name="group_3" value="No"><label for="radio-si_3"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(2).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_3" name="group_3" value="NO" checked><label for="radio-no_3"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_3" name="group_3" value="NO"><label for="radio-no_3"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_3" name="group_3" value="No sé"><label for="radio-nose_3"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(2).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_3" name="group_3" value="NOSE" checked><label for="radio-nose_3"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_3" name="group_3" value="NOSE"><label for="radio-nose_3"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_3" name="group_3" value="Si"><label for="radio-no_3"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(2).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_3" name="group_3" value="SI" checked><label for="radio-si_3"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_3" name="group_3" value="SI"><label for="radio-si_3"><span></span></label>
+                                    }
                                 </div>
 
 
@@ -101,15 +139,27 @@
                         <div class="radio" value="Reconocimiento de la lealtad a la empresa">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_4" name="group_4" value="No"><label for="radio-si_4"><span></span></label>
+                                    @if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(3).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_4" name="group_4" value="NO" checked><label for="radio-no_4"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_4" name="group_4" value="NO"><label for="radio-no_4"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_4" name="group_4" value="No sé"><label for="radio-nose_4"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(3).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_4" name="group_4" value="NOSE" checked><label for="radio-nose_4"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_4" name="group_4" value="NOSE"><label for="radio-nose_4"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_4" name="group_4" value="Si"><label for="radio-no_4"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(3).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_4" name="group_4" value="SI" checked><label for="radio-si_4"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_4" name="group_4" value="SI"><label for="radio-si_4"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -117,15 +167,27 @@
                         <div class="radio" value="Reconocimiento del rendimiento en el trabajo">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_5" name="group_5" value="No"><label for="radio-si_5"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(4).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_5" name="group_5" value="NO" checked><label for="radio-no_5"><span></span></label>
+                                   	} else {
+                                   		<input class="radio-normal" type="radio" id="radio-no_5" name="group_5" value="NO"><label for="radio-no_5"><span></span></label>
+                                   	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_5" name="group_5" value="No sé"><label for="radio-nose_5"><span></span></label>
+	                               	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(4).valuation == "NOSE") {
+	                                   	<input class="radio-good" type="radio" id="radio-nose_5" name="group_5" value="NOSE" checked><label for="radio-nose_5"><span></span></label>
+	                           		} else {
+	                                   	<input class="radio-good" type="radio" id="radio-nose_5" name="group_5" value="NOSE"><label for="radio-nose_5"><span></span></label>
+	                               	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_5" name="group_5" value="Si"><label for="radio-no_5"><span></span></label>
+	                                @if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(4).valuation == "SI") {
+	                                    <input class="radio-excellent" type="radio" id="radio-si_5" name="group_5" value="SI" checked><label for="radio-si_5"><span></span></label>
+	                                } else {
+	                                	<input class="radio-excellent" type="radio" id="radio-si_5" name="group_5" value="SI"><label for="radio-si_5"><span></span></label>
+	                                }
                                 </div>
                             </label>
                         </div>
@@ -133,15 +195,27 @@
                         <div class="radio" value="Reconocimiento de la seriedad y calidad del trabajo realizado">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_6" name="group_6" value="No"><label for="radio-si_6"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(5).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_6" name="group_6" value="NO" checked><label for="radio-no_6"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_6" name="group_6" value="NO"><label for="radio-no_6"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_6" name="group_6" value="No sé"><label for="radio-nose_6"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(5).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_6" name="group_6" value="NOSE" checked><label for="radio-nose_6"><span></span></label>
+                                	} else {
+                                		<input class="radio-good" type="radio" id="radio-nose_6" name="group_6" value="NOSE"><label for="radio-nose_6"><span></span></label>
+                                	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_6" name="group_6" value="Si"><label for="radio-no_6"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(5).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_6" name="group_6" value="SI" checked><label for="radio-si_6"><span></span></label>
+                                	} else {
+                                		<input class="radio-excellent" type="radio" id="radio-si_6" name="group_6" value="SI"><label for="radio-si_6"><span></span></label>
+                                	}
                                 </div>
                             </label>
                         </div>
@@ -174,15 +248,27 @@
                         <div class="radio" value="Posibilidades de organizar el trabajo">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_7" name="group_7" value="No"><label for="radio-si_7"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(6).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_7" name="group_7" value="NO" checked><label for="radio-no_7"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_7" name="group_7" value="NO"><label for="radio-no_7"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_7" name="group_7" value="No sé"><label for="radio-nose_7"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(6).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_7" name="group_7" value="NOSE" checked><label for="radio-nose_7"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_7" name="group_7" value="NOSE"><label for="radio-nose_7"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_7" name="group_7" value="Si"><label for="radio-no_7"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(6).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_7" name="group_7" value="SI" checked><label for="radio-si_7"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_7" name="group_7" value="SI"><label for="radio-si_7"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -190,15 +276,27 @@
                         <div class="radio" value="Trabajo físico">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_8" name="group_8" value="No"><label for="radio-si_8"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(7).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_8" name="group_8" value="NO" checked><label for="radio-no_8"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_8" name="group_8" value="NO"><label for="radio-no_8"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_8" name="group_8" value="No sé"><label for="radio-nose_8"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(7).valuation == "NOSE") { 	
+                                    	<input class="radio-good" type="radio" id="radio-nose_8" name="group_8" value="NOSE" checked><label for="radio-nose_8"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_8" name="group_8" value="NOSE"><label for="radio-nose_8"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_8" name="group_8" value="Si"><label for="radio-no_8"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(7).valuation == "SI") { 	
+                                    	<input class="radio-excellent" type="radio" id="radio-si_8" name="group_8" value="SI" checked><label for="radio-si_8"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_8" name="group_8" value="SI"><label for="radio-si_8"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -206,15 +304,27 @@
                         <div class="radio" value="Trabajo intelectual">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_9" name="group_9" value="No"><label for="radio-si_9"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(8).valuation == "NO") {
+										<input class="radio-normal" type="radio" id="radio-no_9" name="group_9" value="NO" checked><label for="radio-no_9"><span></span></label>
+									} else {
+										<input class="radio-normal" type="radio" id="radio-no_9" name="group_9" value="NO"><label for="radio-no_9"><span></span></label>
+									}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_9" name="group_9" value="No sé"><label for="radio-nose_9"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(8).valuation == "NOSE") {	
+                                    	<input class="radio-good" type="radio" id="radio-nose_9" name="group_9" value="NOSE" checked><label for="radio-nose_9"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_9" name="group_9" value="NOSE"><label for="radio-nose_9"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_9" name="group_9" value="Si"><label for="radio-no_9"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(8).valuation == "SI") {	
+                                    	<input class="radio-excellent" type="radio" id="radio-si_9" name="group_9" value="SI" checked><label for="radio-si_9"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_9" name="group_9" value="SI"><label for="radio-si_9"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -222,15 +332,27 @@
                         <div class="radio" value="Trabajo que implique realizar actividades sociales">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_10" name="group_10" value="No"><label for="radio-si_10"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(9).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_10" name="group_10" value="NO" checked><label for="radio-no_10"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_10" name="group_10" value="NO"><label for="radio-no_10"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_10" name="group_10" value="No sé"><label for="radio-nose_10"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(9).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_10" name="group_10" value="NOSE" checked><label for="radio-nose_10"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_10" name="group_10" value="NOSE"><label for="radio-nose_10"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_10" name="group_10" value="Si"><label for="radio-no_10"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(9).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_10" name="group_10" value="SI" checked><label for="radio-si_10"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_10" name="group_10" value="SI"><label for="radio-si_10"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -238,15 +360,27 @@
                         <div class="radio" value="Utilizar tecnología punta">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_11" name="group_11" value="No"><label for="radio-si_11"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(10).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_11" name="group_11" value="NO" checked><label for="radio-no_11"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_11" name="group_11" value="NO"><label for="radio-no_11"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_11" name="group_11" value="No sé"><label for="radio-nose_11"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(10).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_11" name="group_11" value="NOSE" checked><label for="radio-nose_11"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_11" name="group_11" value="NOSE"><label for="radio-nose_11"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_11" name="group_11" value="Si"><label for="radio-no_11"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(10).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_11" name="group_11" value="SI" checked><label for="radio-si_11"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_11" name="group_11" value="SI"><label for="radio-si_11"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -254,15 +388,27 @@
                         <div class="radio" value="Cuidado de personas">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_12" name="group_12" value="No"><label for="radio-si_12"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(11).valuation == "NO") {
+                                		<input class="radio-normal" type="radio" id="radio-no_12" name="group_12" value="NO" checked><label for="radio-no_12"><span></span></label>
+                                	} else {
+                                		<input class="radio-normal" type="radio" id="radio-no_12" name="group_12" value="NO"><label for="radio-no_12"><span></span></label>
+                                	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_12" name="group_12" value="No sé"><label for="radio-nose_12"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(11).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_12" name="group_12" value="NOSE" checked><label for="radio-nose_12"><span></span></label>
+                                   	} else {
+                                   		<input class="radio-good" type="radio" id="radio-nose_12" name="group_12" value="NOSE"><label for="radio-nose_12"><span></span></label>
+                                   	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_12" name="group_12" value="Si"><label for="radio-no_12"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(11).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_12" name="group_12" value="SI" checked><label for="radio-si_12"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_12" name="group_12" value="SI"><label for="radio-si_12"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -270,15 +416,27 @@
                         <div class="radio" value="Trabajar con niños">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_13" name="group_13" value="No"><label for="radio-si_13"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(12).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_13" name="group_13" value="NO" checked><label for="radio-no_13"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_13" name="group_13" value="NO"><label for="radio-no_13"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_13" name="group_13" value="No sé"><label for="radio-nose_13"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(12).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_13" name="group_13" value="NOSE" checked><label for="radio-nose_13"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_13" name="group_13" value="NOSE"><label for="radio-nose_13"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_13" name="group_13" value="Si"><label for="radio-no_13"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(12).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_13" name="group_13" value="SI" checked><label for="radio-si_13"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_13" name="group_13" value="SI"><label for="radio-si_13"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -286,15 +444,27 @@
                         <div class="radio" value="Trabajar con enfermos, discapacitados o ancianos">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_14" name="group_14" value="No"><label for="radio-si_14"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(13).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_14" name="group_14" value="NO" checked><label for="radio-no_14"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_14" name="group_14" value="NO"><label for="radio-no_14"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_14" name="group_14" value="No sé"><label for="radio-nose_14"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(13).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_14" name="group_14" value="NOSE" checked><label for="radio-nose_14"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_14" name="group_14" value="NOSE"><label for="radio-nose_14"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_14" name="group_14" value="Si"><label for="radio-no_14"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(13).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_14" name="group_14" value="SI" checked><label for="radio-si_14"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_14" name="group_14" value="SI"><label for="radio-si_14"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -302,15 +472,27 @@
                         <div class="radio" value="Trabajo que precise paciencia y precisión">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_15" name="group_15" value="No"><label for="radio-si_15"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(14).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_15" name="group_15" value="NO" checked><label for="radio-no_15"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_15" name="group_15" value="NO"><label for="radio-no_15"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_15" name="group_15" value="No sé"><label for="radio-nose_15"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(14).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_15" name="group_15" value="NOSE" checked><label for="radio-nose_15"><span></span></label>
+                                    } else {
+										<input class="radio-good" type="radio" id="radio-nose_15" name="group_15" value="NOSE"><label for="radio-nose_15"><span></span></label>       	
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_15" name="group_15" value="Si"><label for="radio-no_15"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(14).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_15" name="group_15" value="SI" checked><label for="radio-si_15"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_15" name="group_15" value="SI"><label for="radio-si_15"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -318,15 +500,27 @@
                         <div class="radio" value="Trabajo con máquinas">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_16" name="group_16" value="No"><label for="radio-si_16"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(15).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_16" name="group_16" value="NO" checked><label for="radio-no_16"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_16" name="group_16" value="NO"><label for="radio-no_16"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_16" name="group_16" value="No sé"><label for="radio-nose_16"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(15).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_16" name="group_16" value="NOSE" checked><label for="radio-nose_16"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_16" name="group_16" value="NOSE"><label for="radio-nose_16"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_16" name="group_16" value="Si"><label for="radio-no_16"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(15).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_16" name="group_16" value="SI" checked><label for="radio-si_16"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_16" name="group_16" value="SI"><label for="radio-si_16"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -334,15 +528,27 @@
                         <div class="radio" value="Reparar diferentes objetos">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_17" name="group_17" value="No"><label for="radio-si_17"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(16).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_17" name="group_17" value="NO" checked><label for="radio-no_17"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_17" name="group_17" value="NO"><label for="radio-no_17"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_17" name="group_17" value="No sé"><label for="radio-nose_17"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(16).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_17" name="group_17" value="NOSE" checked><label for="radio-nose_17"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_17" name="group_17" value="NOSE"><label for="radio-nose_17"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_17" name="group_17" value="Si"><label for="radio-no_17"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(16).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_17" name="group_17" value="SI" checked><label for="radio-si_17"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_17" name="group_17" value="SI"><label for="radio-si_17"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -350,15 +556,27 @@
                         <div class="radio" value="Trabajo con animales">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_18" name="group_18" value="No"><label for="radio-si_18"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(17).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_18" name="group_18" value="NO" checked><label for="radio-no_18"><span></span></label>
+                                   	} else {
+                                   		<input class="radio-normal" type="radio" id="radio-no_18" name="group_18" value="NO"><label for="radio-no_18"><span></span></label>
+                                   	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_18" name="group_18" value="No sé"><label for="radio-nose_18"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(17).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_18" name="group_18" value="NOSE" checked><label for="radio-nose_18"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_18" name="group_18" value="NOSE"><label for="radio-nose_18"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_18" name="group_18" value="Si"><label for="radio-no_18"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(17).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_18" name="group_18" value="SI" checked><label for="radio-si_18"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_18" name="group_18" value="SI"><label for="radio-si_18"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -366,15 +584,27 @@
                         <div class="radio" value="Asignar tareas a otros">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_19" name="group_19" value="No"><label for="radio-si_19"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(18).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_19" name="group_19" value="NO" checked><label for="radio-no_19"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_19" name="group_19" value="NO"><label for="radio-no_19"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_19" name="group_19" value="No sé"><label for="radio-nose_19"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(18).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_19" name="group_19" value="NOSE" checked><label for="radio-nose_19"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_19" name="group_19" value="NOSE"><label for="radio-nose_19"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_19" name="group_19" value="Si"><label for="radio-no_19"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(18).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_19" name="group_19" value="SI" checked><label for="radio-si_19"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_19" name="group_19" value="SI"><label for="radio-si_19"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -382,15 +612,27 @@
                         <div class="radio" value="Recibir órdenes de otros">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_20" name="group_20" value="No"><label for="radio-si_20"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(19).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_20" name="group_20" value="NO" checked><label for="radio-no_20"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_20" name="group_20" value="NO"><label for="radio-no_20"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_20" name="group_20" value="No sé"><label for="radio-nose_20"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(19).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_20" name="group_20" value="NOSE" checked><label for="radio-nose_20"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_20" name="group_20" value="NOSE"><label for="radio-nose_20"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_20" name="group_20" value="Si"><label for="radio-no_20"><span></span></label>
+                               		@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(19).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_20" name="group_20" value="SI" checked><label for="radio-si_20"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_20" name="group_20" value="SI"><label for="radio-si_20"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -398,31 +640,55 @@
                         <div class="radio" value="Actuar en público o entretener a la gente">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_21" name="group_21" value="No"><label for="radio-si_21"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(20).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_21" name="group_21" value="NO" checked><label for="radio-no_21"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_21" name="group_21" value="NO"><label for="radio-no_21"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_21" name="group_21" value="No sé"><label for="radio-nose_21"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(20).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_21" name="group_21" value="NOSE" checked><label for="radio-nose_21"><span></span></label>
+                                	} else {
+                                		<input class="radio-good" type="radio" id="radio-nose_21" name="group_21" value="NOSE"><label for="radio-nose_21"><span></span></label>
+                                	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_21" name="group_21" value="Si"><label for="radio-no_21"><span></span></label>
+                        			@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(20).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_21" name="group_21" value="SI" checked><label for="radio-si_21"><span></span></label>
+                                	} else {
+                                		<input class="radio-excellent" type="radio" id="radio-si_21" name="group_21" value="SI"><label for="radio-si_21"><span></span></label>
+                                	}	
                                 </div>
                             </label>
-                        </div>
+                        </div>              
 
                         <div class="radio" value="Trabajar con formas artísticas y diseñar">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_22" name="group_22" value="No"><label for="radio-si_22"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(21).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_22" name="group_22" value="NO" checked><label for="radio-no_22"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_22" name="group_22" value="NO"><label for="radio-no_22"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_22" name="group_22" value="No sé"><label for="radio-nose_22"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(21).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_22" name="group_22" value="NOSE" checked><label for="radio-nose_22"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_22" name="group_22" value="NOSE"><label for="radio-nose_22"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_22" name="group_22" value="Si"><label for="radio-no_22"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(21).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_22" name="group_22" value="SI" checked><label for="radio-si_22"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_22" name="group_22" value="SI"><label for="radio-si_22"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -430,15 +696,27 @@
                         <div class="radio" value="Claridad a la hora de informar sobre las tareas">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_23" name="group_23" value="No"><label for="radio-si_23"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(22).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_23" name="group_23" value="NO" checked><label for="radio-no_23"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_23" name="group_23" value="NO"><label for="radio-no_23"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_23" name="group_23" value="No sé"><label for="radio-nose_23"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(22).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_23" name="group_23" value="NOSE" checked><label for="radio-nose_23"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_23" name="group_23" value="NOSE"><label for="radio-nose_23"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_23" name="group_23" value="Si"><label for="radio-no_23"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(22).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_23" name="group_23" value="SI" checked><label for="radio-si_23"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_23" name="group_23" value="SI"><label for="radio-si_23"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -459,15 +737,27 @@
                         <div class="radio" value="Trabajar al aire libre">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_24" name="group_24" value="SI"><label for="radio-si_24"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(23).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_24" name="group_24" value="NO" checked><label for="radio-no_24"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_24" name="group_24" value="NO"><label for="radio-no_24"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_24" name="group_24" value="NOSE"><label for="radio-nose_24"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(23).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_24" name="group_24" value="NOSE" checked><label for="radio-nose_24"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_24" name="group_24" value="NOSE"><label for="radio-nose_24"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_24" name="group_24" value="NO"><label for="radio-no_24"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(23).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_24" name="group_24" value="SI" checked><label for="radio-si_24"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_24" name="group_24" value="SI"><label for="radio-si_24"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -475,15 +765,27 @@
                         <div class="radio" value="Trabajar en un edificio">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_25" name="group_25" value="SI"><label for="radio-si_25"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(24).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_25" name="group_25" value="NO" checked><label for="radio-no_25"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_25" name="group_25" value="NO"><label for="radio-no_25"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_25" name="group_25" value="NOSE"><label for="radio-nose_25"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(24).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_25" name="group_25" value="NOSE" checked><label for="radio-nose_25"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_25" name="group_25" value="NOSE"><label for="radio-nose_25"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_25" name="group_25" value="NO"><label for="radio-no_25"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(24).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_25" name="group_25" value="SI" checked><label for="radio-si_25"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_25" name="group_25" value="SI"><label for="radio-si_25"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -505,15 +807,28 @@
                         <div class="radio" value="Trabajar en equipo">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_26" name="group_26" value="SI"><label for="radio-si_26"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(25).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_26" name="group_26" value="NO" checked><label for="radio-no_26"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_26" name="group_26" value="NO"><label for="radio-no_26"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_26" name="group_26" value="NOSE"><label for="radio-nose_26"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(25).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_26" name="group_26" value="NOSE" checked><label for="radio-nose_26"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_26" name="group_26" value="NOSE"><label for="radio-nose_26"><span></span></label>
+                                    }
+
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_26" name="group_26" value="NO"><label for="radio-no_26"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(25).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_26" name="group_26" value="SI" checked><label for="radio-si_26"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_26" name="group_26" value="SI"><label for="radio-si_26"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -521,15 +836,27 @@
                         <div class="radio" value="Trabajar solo">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_27" name="group_27" value="SI"><label for="radio-si_27"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(26).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_27" name="group_27" value="NO" checked><label for="radio-no_27"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_27" name="group_27" value="NO"><label for="radio-no_27"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_27" name="group_27" value="NOSE"><label for="radio-nose_27"><span></span></label>
+                                    @if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(26).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_27" name="group_27" value="NOSE" checked><label for="radio-nose_27"><span></span></label>
+                                	} else {
+                                		<input class="radio-good" type="radio" id="radio-nose_27" name="group_27" value="NOSE"><label for="radio-nose_27"><span></span></label>
+                                	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_27" name="group_27" value="NO"><label for="radio-no_27"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(26).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_27" name="group_27" value="SI" checked><label for="radio-si_27"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_27" name="group_27" value="SI"><label for="radio-si_27"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -537,15 +864,27 @@
                         <div class="radio" value="Trabajo que implique estar en contacto con clientes">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_28" name="group_28" value="SI"><label for="radio-si_28"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(27).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_28" name="group_28" value="NO" checked><label for="radio-no_28"><span></span></label>
+                                	} else {
+                                		<input class="radio-normal" type="radio" id="radio-no_28" name="group_28" value="NO"><label for="radio-no_28"><span></span></label>
+                                	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_28" name="group_28" value="NOSE"><label for="radio-nose_28"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(27).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_28" name="group_28" value="NOSE" checked><label for="radio-nose_28"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_28" name="group_28" value="NOSE"><label for="radio-nose_28"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_28" name="group_28" value="NO"><label for="radio-no_28"><span></span></label>
+                                    @if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(27).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_28" name="group_28" value="SI" checked><label for="radio-si_28"><span></span></label>
+                                	} else {
+                                		<input class="radio-excellent" type="radio" id="radio-si_28" name="group_28" value="SI"><label for="radio-si_28"><span></span></label>
+                                	}
                                 </div>
                             </label>
                         </div>
@@ -553,15 +892,27 @@
                         <div class="radio" value="Trabajo que implique pasar tiempo fuera de casa">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_29" name="group_29" value="SI"><label for="radio-si_29"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(28).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_29" name="group_29" value="NO" checked><label for="radio-no_29"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_29" name="group_29" value="NO"><label for="radio-no_29"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_29" name="group_29" value="NOSE"><label for="radio-nose_29"><span></span></label>
+                                    @if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(28).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_29" name="group_29" value="NOSE" checked><label for="radio-nose_29"><span></span></label>
+                                	} else {
+                                		<input class="radio-good" type="radio" id="radio-nose_29" name="group_29" value="NOSE"><label for="radio-nose_29"><span></span></label>
+                                	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_29" name="group_29" value="NO"><label for="radio-no_29"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(28).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_29" name="group_29" value="SI" checked><label for="radio-si_29"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_29" name="group_29" value="SI"><label for="radio-si_29"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -585,31 +936,55 @@
                         <div class="radio" value="Flexibilidad horaria">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_30" name="group_30" value="SI"><label for="radio-si_30"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(29).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_30" name="group_30" value="NO" checked><label for="radio-no_30"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_30" name="group_30" value="NO"><label for="radio-no_30"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_30" name="group_30" value="NOSE"><label for="radio-nose_30"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(29).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_30" name="group_30" value="NOSE" checked><label for="radio-nose_30"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_30" name="group_30" value="NOSE"><label for="radio-nose_30"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_30" name="group_30" value="NO"><label for="radio-no_30"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(29).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_30" name="group_30" value="SI" checked><label for="radio-si_30"><span></span></label>
+                                   	} else {
+                                   		<input class="radio-excellent" type="radio" id="radio-si_30" name="group_30" value="SI"><label for="radio-si_30"><span></span></label>
+                                   	}
                                 </div>
                             </label>
                         </div>
-
+						
                         <div class="radio" value="Trabajo con un horario fijo">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_31" name="group_31" value="SI"><label for="radio-si_31"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(30).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_31" name="group_31" value="NO" checked><label for="radio-no_31"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_31" name="group_31" value="NO"><label for="radio-no_31"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_31" name="group_31" value="NOSE"><label for="radio-nose_31"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(30).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_31" name="group_31" value="NOSE" checked><label for="radio-nose_31"><span></span></label>
+                                	} else {
+                                		<input class="radio-good" type="radio" id="radio-nose_31" name="group_31" value="NOSE"><label for="radio-nose_31"><span></span></label>
+                                	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_31" name="group_31" value="NO"><label for="radio-no_31"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(30).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_31" name="group_31" value="SI" checked><label for="radio-si_31"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_31" name="group_31" value="SI"><label for="radio-si_31"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -617,15 +992,27 @@
                         <div class="radio" value="Libertad en la forma de vestir">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_32" name="group_32" value="SI"><label for="radio-si_32"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(31).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_32" name="group_32" value="NO" checked><label for="radio-no_32"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_32" name="group_32" value="NO"><label for="radio-no_32"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_32" name="group_32" value="NOSE"><label for="radio-nose_32"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(31).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_32" name="group_32" value="NOSE" checked><label for="radio-nose_32"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_32" name="group_32" value="NOSE"><label for="radio-nose_32"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_32" name="group_32" value="NO"><label for="radio-no_32"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(31).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_32" name="group_32" value="SI" checked><label for="radio-si_32"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_32" name="group_32" value="SI"><label for="radio-si_32"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -633,15 +1020,27 @@
                         <div class="radio" value="Trabajo conciliable con la vida personal">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_33" name="group_33" value="SI"><label for="radio-si_33"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(32).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_33" name="group_33" value="NO" checked><label for="radio-no_33"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_33" name="group_33" value="NO"><label for="radio-no_33"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_33" name="group_33" value="NOSE"><label for="radio-nose_33"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(32).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_33" name="group_33" value="NOSE" checked><label for="radio-nose_33"><span></span></label>
+                                    } else {
+                                    	<input class="radio-good" type="radio" id="radio-nose_33" name="group_33" value="NOSE"><label for="radio-nose_33"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_33" name="group_33" value="NO"><label for="radio-no_33"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(32).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_33" name="group_33" value="SI" checked><label for="radio-si_33"><span></span></label>
+                                    } else {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_33" name="group_33" value="SI"><label for="radio-si_33"><span></span></label>
+                                    }
                                 </div>
                             </label>
                         </div>
@@ -649,15 +1048,27 @@
                         <div class="radio" value="Trabajo preciso en el que no haya cabida para errores">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_34" name="group_34" value="SI"><label for="radio-si_34"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(33).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_34" name="group_34" value="NO" checked><label for="radio-no_34"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_34" name="group_34" value="NO"><label for="radio-no_34"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_34" name="group_34" value="NOSE"><label for="radio-nose_34"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(33).valuation == "NOSE") {
+                                    	<input class="radio-good" type="radio" id="radio-nose_34" name="group_34" value="NOSE" checked><label for="radio-nose_34"><span></span></label>
+                                	} else {
+                                		<input class="radio-good" type="radio" id="radio-nose_34" name="group_34" value="NOSE"><label for="radio-nose_34"><span></span></label>
+                                	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_34" name="group_34" value="NO"><label for="radio-no_34"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(33).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_34" name="group_34" value="SI" checked><label for="radio-si_34"><span></span></label>
+                                	} else {
+                                		<input class="radio-excellent" type="radio" id="radio-si_34" name="group_34" value="SI"><label for="radio-si_34"><span></span></label>
+                                	}
                                 </div>
                             </label>
                         </div>
@@ -665,15 +1076,27 @@
                         <div class="radio" value="Trabajo que implique cierto grado de aventura y riesgo">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-normal" type="radio" id="radio-si_35" name="group_35" value="SI"><label for="radio-si_35"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(34).valuation == "NO") {
+                                    	<input class="radio-normal" type="radio" id="radio-no_35" name="group_35" value="NO" checked><label for="radio-no_35"><span></span></label>
+                                    } else {
+                                    	<input class="radio-normal" type="radio" id="radio-no_35" name="group_35" value="NO"><label for="radio-no_35"><span></span></label>
+                                    }
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-good" type="radio" id="radio-nose_35" name="group_35" value="NOSE"><label for="radio-nose_35"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(34).valuation == "NOSE") {
+                                   		<input class="radio-good" type="radio" id="radio-nose_35" name="group_35" value="NOSE" checked><label for="radio-nose_35"><span></span></label>
+                                	} else {
+                                		<input class="radio-good" type="radio" id="radio-nose_35" name="group_35" value="NOSE"><label for="radio-nose_35"><span></span></label>
+                                	}
                                 </div>
 
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
-                                    <input class="radio-excellent" type="radio" id="radio-no_35" name="group_35" value="NO"><label for="radio-no_35"><span></span></label>
+                                	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(34).valuation == "SI") {
+                                    	<input class="radio-excellent" type="radio" id="radio-si_35" name="group_35" value="SI" checked><label for="radio-si_35"><span></span></label>
+                                	} else {
+                                		<input class="radio-excellent" type="radio" id="radio-si_35" name="group_35" value="SI"><label for="radio-si_35"><span></span></label>
+                                	}
                                 </div>
                             </label>
                         </div>
@@ -697,6 +1120,7 @@ function sendProfessionalValues(){
     var radioArray = [];
 
     var counter = 0;
+    var num_checked = 0;
     $('input[type=radio]').each(function () {
         if(this.checked){
             var auxArray = [];
@@ -704,17 +1128,24 @@ function sendProfessionalValues(){
         	auxArray[1] = $(this).val();
         	radioArray.push(auxArray);
             counter++;
+            num_checked++;
         }
     });
 
-    $.ajax({
-        type: 'post',
-        data: JSON.stringify(radioArray),
-        url: "/orientation/professional",
-        contentType: 'application/json'
-    }).done(function(o) {
-        window.location.assign("/orientation");
-    });
+    var totalRadios = $('.radio').length;
+    if(num_checked != totalRadios){
+    	$('#radiosError').show();
+    	window.scrollTo(0,0);
+    }else{
+    	$.ajax({
+            type: 'post',
+            data: JSON.stringify(radioArray),
+            url: "/orientation/professional",
+            contentType: 'application/json'
+        }).done(function(o) {
+            window.location.assign("/orientation");
+        });
+    }
 }
 </script>
 
