@@ -7040,29 +7040,28 @@ table td:not(:last-child), table th:not(:last-child) {
 
 .custom-radio-group input[type="radio"] + label span {
 
-     background-color:white;
+     background-color: white;
 }
 
 .custom-radio-group input[type="radio"]:checked.radio-normal + label span{
-     background-color:#fcea10;
+     background-color: #fcea10;
 }
 .custom-radio-group input[type="radio"].radio-normal + label span{
        border: 0.35em solid #fcea10;
 }
 
-
 .custom-radio-group input[type="radio"]:checked.radio-good + label span{
- background-color: #951b81;
+ background-color: #3aaa35;
 }
 .custom-radio-group input[type="radio"].radio-good + label span{
-border: 0.35em solid #951b81;
+border: 0.35em solid #3aaa35;
 }
 
 .custom-radio-group input[type="radio"]:checked.radio-excellent + label span{
-     background-color:#3aaa35;
+     background-color: #951b81;
 }
 .custom-radio-group input[type="radio"].radio-excellent + label span{
-     border: 0.35em solid #3aaa35;
+     border: 0.35em solid #951b81;
 }
 
 .custom-radio-group input[type="radio"] + label span,
