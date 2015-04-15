@@ -3,6 +3,8 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.sun.media.jfxmedia.logging.Logger;
+
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.data.DynamicForm;
@@ -14,6 +16,7 @@ import utils.Utils;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+
 import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
@@ -32,7 +35,7 @@ import static play.mvc.Results.redirect;
 public class LoginController {
 
     public static Result blank(){
-        return ok(views.html.login_user.login.render(null, null));
+        return ok(views.html.login_user.login.render(null, null, null));
     }
 
     public static Result submitLogin(){
@@ -53,23 +56,30 @@ public class LoginController {
         }
 
         error_login_msg = "Email o contraseña incorrecta";
-        return badRequest(views.html.login_user.login.render(error_login_msg, null));
+        return badRequest(views.html.login_user.login.render(error_login_msg, null, null));
     }
 
     public static Result submitSignUp(){
         String error_signup_msg = null;
+        String error_password_length = null;
+        
         DynamicForm filledForm = form().bindFromRequest();
 
         User userCreated = SingletonDataSource.getInstance().getUserByEmail(filledForm.get("register_email"));
 
         if (userCreated != null){
             error_signup_msg = "Usuario con ese email ya registrado";
-            return badRequest(views.html.login_user.login.render(null, error_signup_msg));
+            return badRequest(views.html.login_user.login.render(null, error_signup_msg, null));
         }
 
         if(!filledForm.get("register_password").equals(filledForm.get("register_repeat_password"))) {
             error_signup_msg = "Las contraseñas no coinciden";
-            return badRequest(views.html.login_user.login.render(null, error_signup_msg));
+            return badRequest(views.html.login_user.login.render(null, error_signup_msg, null));
+        }
+        
+        if(filledForm.get("register_password").length() < 6) {
+        	error_password_length = "Tamaño mínimo de contraseña 6 caracteres";
+        	return badRequest(views.html.login_user.login.render(null, null, error_password_length));
         }
 
         userCreated = new User(filledForm.get("register_name"), filledForm.get("register_surnames"),
@@ -98,7 +108,7 @@ public class LoginController {
         User user = SingletonDataSource.getInstance().getUserByEmail(email);
 
         if (user == null){
-            return badRequest(views.html.login_user.login.render(null, null));
+            return badRequest(views.html.login_user.login.render(null, null, null));
         }
 
         user.restorePasswordToken = UUID.randomUUID().toString();
