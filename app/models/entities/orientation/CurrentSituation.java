@@ -35,6 +35,8 @@ public class CurrentSituation {
     public void addProfessionalExperience(String company, String job, String experienceYears){
         this.professionalExperienceList.add(new ProfessionalExperience(company, job, experienceYears));
     }
+    public void clearProfessionalExperience(){this.professionalExperienceList.clear();}
+
 
     public String toJsonString(){
         return new Gson().toJson(this).toString();
