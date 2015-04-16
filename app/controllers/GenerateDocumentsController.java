@@ -108,7 +108,8 @@ public class GenerateDocumentsController {
     }
 
     public static Result cv3(){
-        return ok(views.html.complete_cv.complete_cv_3.render());
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.complete_cv.complete_cv_3.render(user));
     }
 
     public static Result submitCv3(){
