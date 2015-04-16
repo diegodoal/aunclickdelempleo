@@ -59,7 +59,7 @@ public class OrientationController extends Controller {
         String[][] experience = new Gson().fromJson(studies[studies.length-1].toString(), new TypeToken<String[][]>(){}.getType());
         for (int i=0; i<experience.length; i++){
             if(!user.currentSituation.professionalExperienceList.contains(experience[i])){
-                user.currentSituation.addProfessionalExperience(experience[i][0],experience[i][1],experience[i][2]);
+                user.currentSituation.addProfessionalExperience(experience[i][0],experience[i][1],experience[i][2], experience[i][3]);
             }
         }
         user.completedOrientationSteps.currentSituation = String.valueOf(true);
@@ -90,7 +90,7 @@ public class OrientationController extends Controller {
             }
         }
         String checkExperience = new Gson().fromJson(studies[studies.length-1].toString(), new TypeToken<String>(){}.getType());
-        user.currentSituation.addProfessionalExperience(checkExperience,"","");
+        user.currentSituation.addProfessionalExperience(checkExperience,"","", "");
 
         user.completedOrientationSteps.currentSituation = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);

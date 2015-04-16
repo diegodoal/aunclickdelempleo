@@ -6,6 +6,8 @@ import com.google.gson.reflect.TypeToken;
 import com.itextpdf.text.DocumentException;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
+import models.entities.orientation.CurrentSituation;
+import models.entities.orientation.ProfessionalExperience;
 import models.entities.orientation.Skill;
 import play.mvc.Result;
 import utils.Files;
@@ -86,7 +88,14 @@ public class GenerateDocumentsController {
             String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
 
             user.educationLevel = result[0];
-            String professionalExperience = result[1];
+
+            String[][] professionalExperience = new Gson().fromJson(result[1], new TypeToken<String[][]>(){}.getType());
+            List<ProfessionalExperience> auxProfessionalExperience = new ArrayList<>();
+            for(int i=0; i<professionalExperience.length; i++){
+                auxProfessionalExperience.add(new ProfessionalExperience(professionalExperience[i][0], professionalExperience[i][1], professionalExperience[i][2], professionalExperience[i][3]));
+            }
+            
+            user.currentSituation.professionalExperienceList = auxProfessionalExperience;
 
             List<String> interests = new Gson().fromJson(result[2].toString(), new TypeToken<List<String>>() {
             }.getType());

@@ -32,31 +32,12 @@ public class CurrentSituation {
     public void clearEducationLevel(){this.educationLevelList.clear();}
 
 
-    public void addProfessionalExperience(String company, String job, String experienceYears){
-        this.professionalExperienceList.add(new ProfessionalExperience(company, job, experienceYears));
+    public void addProfessionalExperience(String company, String job, String startDate, String endDate){
+        this.professionalExperienceList.add(new ProfessionalExperience(company, job, startDate, endDate));
     }
 
     public String toJsonString(){
         return new Gson().toJson(this).toString();
     }
 
-
-    /**
-     * PROFESSIONAL EXPERIENCE CLASS
-     */
-    public class ProfessionalExperience {
-        public String company;
-        public String job;
-        public String experienceYears;
-
-        public ProfessionalExperience(String company, String job, String experienceYears){
-            this.company = company;
-            this.job = job;
-            this.experienceYears = experienceYears;
-        }
-
-        public String toJsonInString(){
-            return new Gson().toJson(this).toString();
-        }
-    }
 }

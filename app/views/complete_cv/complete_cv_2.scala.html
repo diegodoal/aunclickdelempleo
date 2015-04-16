@@ -178,68 +178,19 @@
 
                     </div>
                     <div class="col-lg-5  col-lg-offset-2 input-mic-container">
-
                             <input type="text" class="form-control" placeholder="Puesto" id="office" value="" required="required">
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="col-lg-5 ">
-                            <select  class="form-control" id="sector" name="sector">
-                            <option value="s0" disabled selected="">Sector</option>
-                            <option value="s1">Agricultura, Montes, Pesca, Mineria</option>
-                            <option value="s2">Arte, Cultura, Sociedad</option>
-                            <option value="s3">Atención al cliente</option>
-                            <option value="s4">Banca y Seguros</option>
-                            <option value="s5">Bioquímica, Farmacia, Experimental</option>
-                            <option value="s6">Calidad</option>
-                            <option value="s7">Comercial, Ventas</option>
-                            <option value="s8">Compras</option>
-                            <option value="s9">Comunicación, Medios, Periodismo</option>
-                            <option value="s10">Construcción, Arquitectura, Promoción e Inmobiliaria</option>
-                            <option value="s11">Consultoría</option>
-                            <option value="s12">Dirección, Gerencia</option>
-                            <option value="s13">Diseño, Creatividad</option>
-                            <option value="s14">Edición, Artes gráficas, Documentación, Traducción</option>
-                            <option value="s15">Educación Formación</option>
-                            <option value="s16">Finanzas, Contabilidad, Auditoría</option>
-                            <option value="s17">Hostelería, Turismo</option>
-                            <option value="s18">I+D</option>
-                            <option value="s19">Informática</option>
-                            <option value="s20">Ingeniería, Fabricación, Producción</option>
-                            <option value="s21">Internet</option>
-                            <option value="s22">Jurídico, Fiscal</option>
-                            <option value="s23">Limpieza especializada, Saneamiento y Servicios urbanos</option>
-                            <option value="s24">Logística, Planificación, Transporte</option>
-                            <option value="s25">Mantenimiento, Instalación, Reparación</option>
-                            <option value="s26">Marketing, Publicidad</option>
-                            <option value="s27">Medio ambiente</option>
-                            <option value="s28">Oficios</option>
-                            <option value="s29">Prevención de riesgos laborales</option>
-                            <option value="s30">Recursos humanos</option>
-                            <option value="s31">Sanidad y Salud</option>
-                            <option value="s32">Seguridad, Defensa</option>
-                            <option value="s33">Servicios generales</option>
-                            <option value="s34">Servicios sociales</option>
-                            <option value="s35">Telecomunicaciones</option>
-                            <option value="s36">Otros</option>
-                        </select>
+                    <div class="col-lg-5">
+                           <input placeholder="Fecha de inicio" class="form-control" type="text" value="" onfocus="(this.type='month')">
                     </div>
+
+
                     <div class="col-lg-5  col-lg-offset-2">
-                        
-                            
-                            <select  class="form-control" name="experience" id="experience">
-                            <option value="s0" disabled selected="">Años de experiencia</option>
-                            <option value="s1"> Prácticas</option>
-                            <option value="s1"> Menos de un año</option>
-                            <option value="s2"> 1-3 años</option>
-                            <option value="s3"> 3-5 años</option>
-                            <option value="s4"> +5 años</option>
-                            <option value="s6"> +10 años</option>
-                            </select> 
-                        
+                        <input placeholder="Fecha de fin" class="form-control" type="text" value="" onfocus="(this.type='month')">
                     </div>
 
                 </div>
@@ -772,8 +723,26 @@
         counter++;
 
         //Adding job experience
-        result[counter] = "Job experience";
-        counter++;
+        var deadlineArray = [];
+        var counter = 0;
+        $('.main-div-sections .form-horizontal').each(function(){
+            var auxDeadline = [];
+            var valid = true;
+            $(this).find('input').each(function(){
+                if(valid == true && $(this).val() != ''){
+                    auxDeadline[counter] = $(this).val();
+                }else{
+                    valid = false;
+                }
+                counter++;
+            });
+            counter = 0;
+            if(valid==true){
+                deadlineArray.push(auxDeadline);
+            }
+        });
+
+        result.push(JSON.stringify(deadlineArray));
 
         //Adding professional interests
         var checkboxArray = [];

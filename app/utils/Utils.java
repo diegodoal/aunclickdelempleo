@@ -80,8 +80,8 @@ public class Utils {
             user.currentSituation.addEducationLevel("Secundaria");
             user.currentSituation.addEducationLevel("Grado");
 
-            user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "5 años");
-            user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "10 años");
+            user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "2014-10", "2015-05");
+            user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "2015-05", "2016-03");
 
             //Skills
             //user.skills.add(new Skill("Hablar en público", "Bien"));
