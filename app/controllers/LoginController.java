@@ -3,7 +3,6 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.sun.media.jfxmedia.logging.Logger;
 
 import models.datasource.SingletonDataSource;
 import models.entities.User;
