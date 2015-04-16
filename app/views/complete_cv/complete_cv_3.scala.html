@@ -270,8 +270,8 @@
             if($(this).find('#language').val() != ''){
                 auxLanguage[0] = $(this).find('#language').val();
                 auxLanguage[1] = $(this).find('#level option:selected').text();
+                languagesArray.push(auxLanguage);
             }
-            languagesArray.push(auxLanguage);
         });
 
         result.push(JSON.stringify(languagesArray));
@@ -283,8 +283,8 @@
             if($(this).find('#software').val() != ''){
                 auxSoftware[0] = $(this).find('#software').val();
                 auxSoftware[1] = $(this).find('#level option:selected').text();
+                software.push(auxSoftware);
             }
-            software.push(auxSoftware);
         });
 
         result.push(JSON.stringify(software));
@@ -297,7 +297,7 @@
                 error: function(){
                 },
                 success: function(){
-                    window.location.assign("/orientation/gettools/previewCV");
+                    window.location.assign("/orientation/gettools/cv/preview");
                 }
             });
     }

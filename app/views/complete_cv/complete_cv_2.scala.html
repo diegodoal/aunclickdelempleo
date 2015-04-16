@@ -23,7 +23,7 @@
 <section>
 	<div class="row">
         <div id="cv2_alert" hidden>
-            <div class="alert alert-danger" id="cv1_alert" role="alert">Por favor, completa todo el fomulario.</div><br>
+            <div class="alert alert-danger" id="cv2_alert" role="alert">Por favor, completa todo el fomulario.</div><br>
         </div>
 		<div class="arial gray_adecco size18 bold">Nivel de estudios</div>
 	</div>
@@ -723,14 +723,15 @@
         counter++;
 
         //Adding job experience
-        var deadlineArray = [];
+        var jobExperience = [];
         var counter = 0;
+
         $('.main-div-sections .form-horizontal').each(function(){
-            var auxDeadline = [];
+            var auxExperience = [];
             var valid = true;
             $(this).find('input').each(function(){
                 if(valid == true && $(this).val() != ''){
-                    auxDeadline[counter] = $(this).val();
+                    auxExperience[counter] = $(this).val();
                 }else{
                     valid = false;
                 }
@@ -738,11 +739,15 @@
             });
             counter = 0;
             if(valid==true){
-                deadlineArray.push(auxDeadline);
+                jobExperience.push(auxExperience);
             }
         });
 
-        result.push(JSON.stringify(deadlineArray));
+        if($('#check_experience').is(':checked')==false && jobExperience.length == 0){
+            emptyField = true;
+        }
+
+        result.push(JSON.stringify(jobExperience));
 
         //Adding professional interests
         var checkboxArray = [];

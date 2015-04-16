@@ -119,25 +119,31 @@ public class GenerateDocumentsController {
             String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
 
             String[][] courses = new Gson().fromJson(result[0], new TypeToken<String[][]>(){}.getType());
-            List<Course> auxCourses = new ArrayList<>();
-            for(int i=0; i<courses.length; i++){
-                auxCourses.add(new Course(courses[i][0], courses[i][1], courses[i][2]));
+            if(courses.length > 0){
+                List<Course> auxCourses = new ArrayList<>();
+                for(int i=0; i<courses.length; i++){
+                    auxCourses.add(new Course(courses[i][0], courses[i][1], courses[i][2]));
+                }
+                user.courses = auxCourses;
             }
-            user.courses = auxCourses;
 
             String[][] languages = new Gson().fromJson(result[1], new TypeToken<String[][]>(){}.getType());
-            List<Language> auxLanguages = new ArrayList<>();
-            for(int i=0; i<languages.length; i++){
-                auxLanguages.add(new Language(languages[i][0], languages[i][1]));
+            if(languages.length>0){
+                List<Language> auxLanguages = new ArrayList<>();
+                for(int i=0; i<languages.length; i++){
+                    auxLanguages.add(new Language(languages[i][0], languages[i][1]));
+                }
+                user.languages = auxLanguages;
             }
-            user.languages = auxLanguages;
 
             String[][] software = new Gson().fromJson(result[2], new TypeToken<String[][]>(){}.getType());
-            List<Software> auxSoftware = new ArrayList<>();
-            for(int i=0; i<software.length; i++){
-                auxSoftware.add(new Software(software[i][0], software[i][1]));
+            if(software.length>0){
+                List<Software> auxSoftware = new ArrayList<>();
+                for(int i=0; i<software.length; i++){
+                    auxSoftware.add(new Software(software[i][0], software[i][1]));
+                }
+                user.softwareList = auxSoftware;
             }
-            user.softwareList = auxSoftware;
 
             SingletonDataSource.getInstance().updateAllUserData(user);
         }
