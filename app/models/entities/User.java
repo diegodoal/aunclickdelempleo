@@ -43,6 +43,10 @@ public class User {
     public String drivingLicense;
     public String certificateOfDisability;
 
+    public List<Course> courses;
+    public List<Language> languages;
+    public List<Software> softwareList;
+
     public CompletedOrientationSteps completedOrientationSteps;
 
     //Orientation steps
@@ -73,6 +77,10 @@ public class User {
 
         this.drivingLicense = null;
         this.certificateOfDisability = null;
+
+        this.courses = new ArrayList<>();
+        this.languages = new ArrayList<>();
+        this.softwareList = new ArrayList<>();
 
         this.currentSituation = new CurrentSituation();
         this.skill = new ArrayList<>();
@@ -106,6 +114,10 @@ public class User {
 
         this.drivingLicense = null;
         this.certificateOfDisability = null;
+
+        this.courses = new ArrayList<>();
+        this.languages = new ArrayList<>();
+        this.softwareList = new ArrayList<>();
 
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();

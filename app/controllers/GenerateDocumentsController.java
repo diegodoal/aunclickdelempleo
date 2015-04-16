@@ -94,7 +94,7 @@ public class GenerateDocumentsController {
             for(int i=0; i<professionalExperience.length; i++){
                 auxProfessionalExperience.add(new ProfessionalExperience(professionalExperience[i][0], professionalExperience[i][1], professionalExperience[i][2], professionalExperience[i][3]));
             }
-            
+
             user.currentSituation.professionalExperienceList = auxProfessionalExperience;
 
             List<String> interests = new Gson().fromJson(result[2].toString(), new TypeToken<List<String>>() {

@@ -45,6 +45,10 @@ public final class Constants {
     public final static String USER_DRIVING_LICENSE = "drivingLicense";
     public final static String USER_CERTIFICATE_OF_DISABILITY = "certificateOfDisability";
 
+    public final static String USER_COURSES = "courses";
+    public final static String USER_LANGUAGES = "languages";
+    public final static String USER_SOFTWARE = "software";
+
     public final static String USER_ORIENTATION_STEPS = "orientationSteps";
     public final static String USER_ORIENTATION_STEPS_CURRENT_SITUATION = "orientationSteps.currentSituation";
     public final static String USER_ORIENTATION_STEPS_SKILLS = "orientationSteps.skills";

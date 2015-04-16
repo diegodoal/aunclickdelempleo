@@ -32,7 +32,7 @@
 
     <div class="main-div-sections">
         <div>
-            <form class="form-horizontal" autocomplete="on" method="post">
+            <form class="form-horizontal courses" autocomplete="on" method="post">
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
@@ -98,7 +98,7 @@
 
     <div class="main-div-sections center">
         <div>
-            <form class="form-horizontal" autocomplete="on" method="post">
+            <form class="form-horizontal languages" autocomplete="on" method="post">
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
@@ -159,11 +159,11 @@
 
     <div class="main-div-sections">
         <div>
-            <form class="form-horizontal" autocomplete="on" method="post">
+            <form class="form-horizontal software" autocomplete="on" method="post">
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control" id="programs" value="" placeholder="Programas informáticos" >
+                            <input type="text" class="form-control" id="software" value="" placeholder="Programas informáticos" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </div>
@@ -237,6 +237,58 @@
         addNew();
     };
 </script>
-    
+ 
+<script type="text/javascript">
+    function sendForm(){
+        var result = []
+        //Adding courses
+        var coursesArray = [];
+        var counter = 0;
+        $('.main-div-sections .courses').each(function(){
+            var auxCourses = [];
+            var valid = true;
+            $(this).find('input').each(function(){
+                if(valid == true && $(this).val() != ''){
+                    auxCourses[counter] = $(this).val();
+                }else{
+                    valid = false;
+                }
+                counter++;
+            });
+            counter = 0;
+            if(valid==true){
+                coursesArray.push(auxCourses);
+            }
+        });
+
+        result.push(JSON.stringify(coursesArray));
+
+        //Adding languages
+        var languagesArray = [];
+        $('.main-div-sections .languages').each(function(){
+            var auxLanguage = [];
+            if($(this).find('#language').val() != ''){
+                auxLanguage[0] = $(this).find('#language').val();
+                auxLanguage[1] = $(this).find('#level option:selected').text();
+            }
+            languagesArray.push(auxLanguage);
+        });
+
+        result.push(JSON.stringify(languagesArray));
+
+        //Adding IT level
+        var software = [];
+        $('.main-div-sections .software').each(function(){
+            var auxSoftware = [];
+            if($(this).find('#software').val() != ''){
+                auxSoftware[0] = $(this).find('#software').val();
+                auxSoftware[1] = $(this).find('#level option:selected').text();
+            }
+            software.push(auxSoftware);
+        });
+
+        result.push(JSON.stringify(software));
+    }
+</script>   
 
 }
