@@ -276,4 +276,19 @@ public class User {
 
         return result;
     }
+
+    public String coursesToJson(){
+        Type listType = new TypeToken<List<Course>>(){}.getType();
+        return new Gson().toJson(this.courses, listType);
+    }
+
+    public String languagesToJson(){
+        Type listType = new TypeToken<List<Language>>(){}.getType();
+        return new Gson().toJson(this.languages, listType);
+    }
+
+    public String softwareToJson(){
+        Type listType = new TypeToken<List<Software>>(){}.getType();
+        return new Gson().toJson(this.softwareList, listType);
+    }
 }

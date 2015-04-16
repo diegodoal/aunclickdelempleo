@@ -210,7 +210,7 @@
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 center">
-            <button class="button-finish-1" onclick="location.href=#">FINALIZAR</button>
+            <button class="button-finish-1" onclick="sendForm()">FINALIZAR</button>
         </div>
     </div>
 </section>
@@ -288,6 +288,18 @@
         });
 
         result.push(JSON.stringify(software));
+
+        $.ajax({
+                type: 'post',
+                data: JSON.stringify(result),
+                url: "/orientation/gettools/cv3",
+                contentType: 'application/json',
+                error: function(){
+                },
+                success: function(){
+                    window.location.assign("/");
+                }
+            });
     }
 </script>   
 

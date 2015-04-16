@@ -81,9 +81,9 @@ public class SingletonDataSource {
                 append(Constants.USER_EDUCATION_LEVEL, user.educationLevel).
                 append(Constants.USER_DRIVING_LICENSE, user.drivingLicense).
                 append(Constants.USER_CERTIFICATE_OF_DISABILITY, user.certificateOfDisability).
-                append(Constants.USER_COURSES, JSON.parse(new Gson().toJson(user.courses))).
-                append(Constants.USER_LANGUAGES, JSON.parse(new Gson().toJson(user.languages))).
-                append(Constants.USER_SOFTWARE, JSON.parse(new Gson().toJson(user.softwareList))).
+                append(Constants.USER_COURSES, JSON.parse(user.coursesToJson())).
+                append(Constants.USER_LANGUAGES, JSON.parse(user.languagesToJson())).
+                append(Constants.USER_SOFTWARE, JSON.parse(user.softwareToJson())).
                 append(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson())).
                 append(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString())).
                 append(Constants.USER_SKILLS_LIST, JSON.parse(user.skillsToJson())).
@@ -132,6 +132,7 @@ public class SingletonDataSource {
 
             //Deserialize ArrayList of Software
             user.softwareList = new Gson().fromJson(dbObject.get(Constants.USER_SOFTWARE).toString(), new TypeToken<List<Software>>(){}.getType());
+
             mongoClient.close();
             return user;
         }else{
@@ -225,9 +226,9 @@ public class SingletonDataSource {
         newDocument.put(Constants.USER_EDUCATION_LEVEL, user.educationLevel);
         newDocument.put(Constants.USER_DRIVING_LICENSE, user.drivingLicense);
         newDocument.put(Constants.USER_CERTIFICATE_OF_DISABILITY, user.certificateOfDisability);
-        newDocument.put(Constants.USER_COURSES, new Gson().toJson(user.courses));
-        newDocument.put(Constants.USER_LANGUAGES, new Gson().toJson(user.languages));
-        newDocument.put(Constants.USER_SOFTWARE, new Gson().toJson(user.softwareList));
+        newDocument.put(Constants.USER_COURSES, JSON.parse(user.coursesToJson()));
+        newDocument.put(Constants.USER_LANGUAGES, JSON.parse(user.languagesToJson()));
+        newDocument.put(Constants.USER_SOFTWARE, JSON.parse(user.softwareToJson()));
         newDocument.put(Constants.USER_ORIENTATION_STEPS, JSON.parse(user.completedOrientationSteps.orientationStepsToJson()));
         newDocument.put(Constants.USER_CURRENT_SITUATION, JSON.parse(user.currentSituation.toJsonString()));
         newDocument.put(Constants.USER_SKILLS_LIST, JSON.parse(user.skillsToJson()));

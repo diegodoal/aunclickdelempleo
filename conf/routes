@@ -61,6 +61,7 @@ POST    /orientation/gettools/cv1                   controllers.GenerateDocument
 GET     /orientation/gettools/cv2                   controllers.GenerateDocumentsController.cv2()
 POST    /orientation/gettools/cv2                   controllers.GenerateDocumentsController.submitCv2()
 GET     /orientation/gettools/cv3                   controllers.GenerateDocumentsController.cv3()
+POST    /orientation/gettools/cv3                   controllers.GenerateDocumentsController.submitCv3()
 
 #Carta de Presentacion
 

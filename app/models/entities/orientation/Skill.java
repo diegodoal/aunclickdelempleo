@@ -1,14 +1,5 @@
 package models.entities.orientation;
 
-import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
-import models.entities.orientation.CurrentSituation.ProfessionalExperience;
-
 /**
  * Created by Victor on 11/03/2015.
  */

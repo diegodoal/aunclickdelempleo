@@ -6,9 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import com.itextpdf.text.DocumentException;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
-import models.entities.orientation.CurrentSituation;
-import models.entities.orientation.ProfessionalExperience;
-import models.entities.orientation.Skill;
+import models.entities.orientation.*;
 import play.mvc.Result;
 import utils.Files;
 import utils.pdf.PresentationLetter;
@@ -107,7 +105,43 @@ public class GenerateDocumentsController {
         return redirect("/orientation/gettools/cv3");
     }
 
-    public static Result cv3(){return ok(views.html.complete_cv.complete_cv_3.render());}
+    public static Result cv3(){
+        return ok(views.html.complete_cv.complete_cv_3.render());
+    }
+
+    public static Result submitCv3(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user != null){
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
+
+            String[][] courses = new Gson().fromJson(result[0], new TypeToken<String[][]>(){}.getType());
+            List<Course> auxCourses = new ArrayList<>();
+            for(int i=0; i<courses.length; i++){
+                auxCourses.add(new Course(courses[i][0], courses[i][1], courses[i][2]));
+            }
+            user.courses = auxCourses;
+
+            String[][] languages = new Gson().fromJson(result[1], new TypeToken<String[][]>(){}.getType());
+            List<Language> auxLanguages = new ArrayList<>();
+            for(int i=0; i<languages.length; i++){
+                auxLanguages.add(new Language(languages[i][0], languages[i][1]));
+            }
+            user.languages = auxLanguages;
+
+            String[][] software = new Gson().fromJson(result[2], new TypeToken<String[][]>(){}.getType());
+            List<Software> auxSoftware = new ArrayList<>();
+            for(int i=0; i<software.length; i++){
+                auxSoftware.add(new Software(software[i][0], software[i][1]));
+            }
+            user.softwareList = auxSoftware;
+
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+
+        return redirect("/");
+    }
 
     public static Result lp1(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
