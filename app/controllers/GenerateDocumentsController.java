@@ -10,6 +10,8 @@ import models.entities.orientation.*;
 import play.mvc.Result;
 import utils.Files;
 import utils.pdf.PresentationLetter;
+import utils.pdf.cv_templates.Template1;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -143,6 +145,25 @@ public class GenerateDocumentsController {
         return redirect("/");
     }
 
+    public static Result previewCV(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user == null){
+            return badRequest("No se ha podido generar el CV porque no existe el usuario");
+        }
+        String route = Files.newPathForNewFile("public/pdf", "pdf");
+
+        Template1 template = new Template1();
+        try {
+            template.createPdf(route, user);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return redirect(routes.Assets.at(route.substring(7)));
+    }
+
     public static Result lp1(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
         return ok(views.html.complete_letter_presentation.letter_presentation_1.render(user));
@@ -258,7 +279,6 @@ public class GenerateDocumentsController {
         if(session().get("lp2_attach_certificates").equals("true")){
             attachments.add("Certificados");
         }
-
 
         try {
             template.createPdf(route, user.name, user.surnames, user.studyTitle, user.studyLocation, session().get("lp2_company_name"), session().get("lp2_job_name"), attachments, user.personalCharacteristics, user.skill, user.email, user.phoneNumber);

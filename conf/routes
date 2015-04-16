@@ -63,6 +63,8 @@ POST    /orientation/gettools/cv2                   controllers.GenerateDocument
 GET     /orientation/gettools/cv3                   controllers.GenerateDocumentsController.cv3()
 POST    /orientation/gettools/cv3                   controllers.GenerateDocumentsController.submitCv3()
 
+GET     /orientation/gettools/cv/preview            controllers.GenerateDocumentsController.previewCV()
+
 #Carta de Presentacion
 
 GET     /orientation/gettools/lp1                   controllers.GenerateDocumentsController.lp1()
