@@ -32,23 +32,27 @@ public class Template1 {
 
         document.add(Chunk.NEWLINE);
 
-        addProfessionalExperience(user.currentSituation.professionalExperienceList);
-
-        document.add(Chunk.NEWLINE);
+        if(!user.currentSituation.professionalExperienceList.isEmpty()){
+            addProfessionalExperience(user.currentSituation.professionalExperienceList);
+            document.add(Chunk.NEWLINE);
+        }
 
         //addEducation(user.currentSituation.educationLevelList);
+        //document.add(Chunk.NEWLINE);
 
-        document.add(Chunk.NEWLINE);
+        if(!user.courses.isEmpty()){
+            addCourses(user.courses);
+            document.add(Chunk.NEWLINE);
+        }
 
-        addCourses(user.courses);
+        if(!user.languages.isEmpty()){
+            addLanguages(user.languages);
+            document.add(Chunk.NEWLINE);
+        }
 
-        document.add(Chunk.NEWLINE);
-
-        addLanguages(user.languages);
-
-        document.add(Chunk.NEWLINE);
-
-        addSkills(user.skill);
+        if(!user.skill.isEmpty()){
+            addSkills(user.skill);
+        }
 
         document.close();
     }
