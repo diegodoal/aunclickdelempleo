@@ -154,7 +154,7 @@
 
 
     <div class="row">
-        <div class="col-lg-12  arial gray_adecco size18 bold">Experiencia laboral </div>
+        <div class="col-lg-12  arial gray_adecco size18 bold">Experiencia laboral</div>
     </div><br>
 
     <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
@@ -167,9 +167,64 @@
         </div>
     </div><br>
         
-    <div class="main-div-sections">
+    <div class="main-div-sections" id="job_experience_group">
+        @if(user != null){
         <div>
-            <form class="form-horizontal" autocomplete="on" method="post" id="job_experience_group">
+            @for(experience <- user.currentSituation.professionalExperienceList){
+                <form class="form-horizontal" autocomplete="on" method="post">
+                    <div class="form-group form-inline" >
+                        <div class="col-lg-5 input-mic-container ">
+
+                                <input type="text" class="form-control" placeholder="Empresa" id="company" value="@experience.company" required="required" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+
+                        </div>
+                        <div class="col-lg-5  col-lg-offset-2 input-mic-container">
+                                <input type="text" class="form-control" placeholder="Puesto" id="office" value="@experience.job" required="required">
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-5">
+                               <input placeholder="Fecha de inicio" class="form-control" type="text" value="@experience.startDate" onfocus="(this.type='month')">
+                        </div>
+
+
+                        <div class="col-lg-5  col-lg-offset-2">
+                            <input placeholder="Fecha de fin" class="form-control" type="text" value="@experience.endDate" onfocus="(this.type='month')">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-5  col-lg-offset-2">
+                           
+                        </div>
+                        <div class="col-lg-5 ">
+                            <div class="">
+                            <div class="form-group center brown_adecco arial size13">
+                                Debes añadir cada uno de los cursos que hayas realizado.
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                    <div class="form-group">
+                        <div class="col-lg-5 ">
+                         <!--div añadido extra porque sino el boton añadir no va-->   
+                        </div>
+                        <div class="col-lg-5  col-lg-offset-2">
+                            <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                <img class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            }
+        }
+            <form class="form-horizontal" autocomplete="on" method="post">
                 <div class="form-group form-inline" >
                     <div class="col-lg-5 input-mic-container ">
 
@@ -723,31 +778,35 @@
         counter++;
 
         //Adding job experience
-        var jobExperience = [];
-        var counter = 0;
-
-        $('.main-div-sections .form-horizontal').each(function(){
-            var auxExperience = [];
-            var valid = true;
-            $(this).find('input').each(function(){
-                if(valid == true && $(this).val() != ''){
-                    auxExperience[counter] = $(this).val();
-                }else{
-                    valid = false;
+        if($('#check_experience').is(':checked')){
+            result[counter] = "EmptyExperience";
+            counter++;
+        }else{
+            var jobExperience = [];
+            var counter = 0;
+        
+            $('.main-div-sections .form-horizontal').each(function(){
+                var auxExperience = [];
+                var valid = true;
+                $(this).find('input').each(function(){
+                    if(valid == true && $(this).val() != ''){
+                        auxExperience[counter] = $(this).val();
+                    }else{
+                        valid = false;
+                    }
+                    counter++;
+                });
+                counter = 0;
+                if(valid==true){
+                    jobExperience.push(auxExperience);
                 }
-                counter++;
             });
-            counter = 0;
-            if(valid==true){
-                jobExperience.push(auxExperience);
-            }
-        });
+            result.push(JSON.stringify(jobExperience));
+        }
 
         if($('#check_experience').is(':checked')==false && jobExperience.length == 0){
             emptyField = true;
         }
-
-        result.push(JSON.stringify(jobExperience));
 
         //Adding professional interests
         var checkboxArray = [];
