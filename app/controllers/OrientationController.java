@@ -20,10 +20,82 @@ import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 
+import static play.mvc.Http.Context.Implicit.request;
+
 public class OrientationController extends Controller {
 	public static Result blank() {
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
         return ok(views.html.orientation.orientation.render(user));
+    }
+
+    public static Result updateCheckbox(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user != null) {
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+            switch (result[0]){
+                case "check1":
+                    user.completedOrientationSteps.currentSituation = result[1];
+                    break;
+                case "check2":
+                    user.completedOrientationSteps.skills = result[1];
+                    break;
+                case "check3":
+                    user.completedOrientationSteps.interestIdentification = result[1];
+                    break;
+                case "check4":
+                    user.completedOrientationSteps.personal = result[1];
+                    break;
+                case "check5":
+                    user.completedOrientationSteps.professional = result[1];
+                    break;
+                case "check6":
+                    user.completedOrientationSteps.photo = result[1];
+                    break;
+                case "check7":
+                    user.completedOrientationSteps.channels = result[1];
+                    break;
+                case "check8":
+                    user.completedOrientationSteps.learnTools = result[1];
+                    break;
+                case "check9":
+                    user.completedOrientationSteps.getTools = result[1];
+                    break;
+                case "check10":
+                    user.completedOrientationSteps.tInterview = result[1];
+                    break;
+                case "check11":
+                    user.completedOrientationSteps.pInterview = result[1];
+                    break;
+                case "check12":
+                    user.completedOrientationSteps.actInterview = result[1];
+                    break;
+                case "check13":
+                    user.completedOrientationSteps.questionsInterview = result[1];
+                    break;
+                case "check14":
+                    user.completedOrientationSteps.deadLine = result[1];
+                    break;
+                case "check15":
+                    user.completedOrientationSteps.travel = result[1];
+                    break;
+                case "check16":
+                    user.completedOrientationSteps.specialization = result[1];
+                    break;
+                case "check17":
+                    user.completedOrientationSteps.bestDeals = result[1];
+                    break;
+                case "check18":
+                    user.completedOrientationSteps.level = result[1];
+                    break;
+                case "check19":
+                    user.completedOrientationSteps.reputation = result[1];
+                    break;
+            }
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return ok();
     }
 
     /* PUNTO 1: CONOCETE A TI MISMO */

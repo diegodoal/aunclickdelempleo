@@ -25,6 +25,7 @@ GET     /profile/info                               controllers.ProfileControlle
 
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()
+POST    /orientation                                controllers.OrientationController.updateCheckbox()
 
 # PUNTO 1: CONOCETE A TI MISMO
 GET     /orientation/currentsituation 				controllers.OrientationController.currentsituation()

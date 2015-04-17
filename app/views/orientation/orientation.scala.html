@@ -290,4 +290,26 @@
         </div>
     </div>
 </section>
+
+<script>
+    window.onload = function(){
+        $('input:checkbox').change(function () {
+            var result = [];
+            result[0] = $(this).attr('id');
+            result[1] = $(this).is(':checked');
+            $.ajax({
+                type: 'post',
+                data: JSON.stringify(result),
+                url: "/orientation",
+                contentType: 'application/json',
+                error: function(){
+                    alert("Error!!");
+                },
+                success: function(){
+                    //window.location.assign("/orientation");
+                }
+            });
+        });
+    }
+</script>
 }
