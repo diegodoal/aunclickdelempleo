@@ -22,6 +22,9 @@
     <!--Datos de Empresa-->
 
     <div class="row">
+        <div id="lp2_alert" hidden>
+            <div class="alert alert-danger" id="cv2_alert" role="alert">Por favor, completa todo el fomulario.</div><br>
+        </div>
         <div class="col-md-12 arial gray_adecco size18 bold">
             Datos de empresa para la que solicitas un puesto
         </div>
@@ -123,14 +126,20 @@ function sendForm(){
     result[4] = $('#check_lr').is(':checked');
     result[5] = $('#check_certificates').is(':checked');
 
-    $.ajax({
-            type: 'post',
-            data: JSON.stringify(result),
-            url: "/orientation/gettools/lp2",
-            contentType: 'application/json'
-        }).done(function(o) {
-            window.location.assign("/orientation/gettools/lp3");
-        });
+
+    if(result[0] == '' || result[1] == ''){
+        $('#lp2_alert').show();
+            window.scrollTo(0,0);
+    }else{
+        $.ajax({
+                type: 'post',
+                data: JSON.stringify(result),
+                url: "/orientation/gettools/lp2",
+                contentType: 'application/json'
+            }).done(function(o) {
+                window.location.assign("/orientation/gettools/lp3");
+            });
+    }
 }
 </script>
 }

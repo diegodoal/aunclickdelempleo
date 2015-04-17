@@ -10,10 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import models.S3File;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
-import models.entities.orientation.CurrentSituation;
-import models.entities.orientation.InterviewSchedule;
-import models.entities.orientation.ProfessionalValue;
-import models.entities.orientation.Skill;
+import models.entities.orientation.*;
 
 import org.apache.commons.codec.binary.Base64;
 
@@ -58,33 +55,33 @@ public class OrientationController extends Controller {
             }
         }
         String[][] experience = new Gson().fromJson(studies[studies.length-1].toString(), new TypeToken<String[][]>(){}.getType());
-        List<CurrentSituation.ProfessionalExperience> currentExperienceCopy = new ArrayList<CurrentSituation.ProfessionalExperience>();
+        List<ProfessionalExperience> currentExperienceCopy = new ArrayList<ProfessionalExperience>();
         //for(int j=0; j<user.currentSituation.professionalExperienceList.size();j++){
         if (user.currentSituation.professionalExperienceList.size() == 0){
             for (int i=0; i<experience.length; i++) {
-                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2]);
+                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2], "");
             }
         }else{
             // Copiamos el array de experiencia profesional
-            for (CurrentSituation.ProfessionalExperience professionalExperience : user.currentSituation.professionalExperienceList) {
+            for (ProfessionalExperience professionalExperience : user.currentSituation.professionalExperienceList) {
                 currentExperienceCopy.add(professionalExperience);
             }
 
             for (int i=0; i<experience.length; i++) {
                 Logger.debug("For experience");
                 int addNewElement = 1;
-                for (CurrentSituation.ProfessionalExperience professionalExperience : currentExperienceCopy) {
+                for (ProfessionalExperience professionalExperience : currentExperienceCopy) {
                     Logger.debug("For Comprobar coincidencia");
                     Logger.debug("Dato1"+professionalExperience.company);
                     Logger.debug("Dato1"+experience[i][0]);
                     Logger.debug("Dato2"+professionalExperience.job);
                     Logger.debug("Dato2"+experience[i][1]);
-                    Logger.debug("Dato3"+professionalExperience.experienceYears);
+                    //Logger.debug("Dato3"+professionalExperience.experienceYears);
                     Logger.debug("Dato3"+experience[i][2]);
 
                     if (professionalExperience.company.toLowerCase().equals(experience[i][0].toLowerCase())
                             && professionalExperience.job.toLowerCase().equals(experience[i][1].toLowerCase())
-                            && professionalExperience.experienceYears.equals(experience[i][2])) {
+                            /*&& professionalExperience.experienceYears.equals(experience[i][2])*/) {
                         Logger.debug("Salgo del for porque ya existe");
                         addNewElement = 0;
                         break;
@@ -93,10 +90,10 @@ public class OrientationController extends Controller {
                 }
                 if (addNewElement == 1){
                     Logger.debug("Añado la nueva experiencia");
-                    user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2]);
+                    user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2], "");
                 }
             }
-            
+
             }
         user.completedOrientationSteps.currentSituation = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);
@@ -107,7 +104,6 @@ public class OrientationController extends Controller {
     public static Result submitCurrentSituationCheck(){
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
-
 
         String[] studies = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
         for(int i=0; i<studies.length-1; i++){
@@ -128,7 +124,7 @@ public class OrientationController extends Controller {
         String checkExperience = new Gson().fromJson(studies[studies.length-1].toString(), new TypeToken<String>(){}.getType());
 
         if(user.currentSituation.professionalExperienceList.size() == 0){
-            user.currentSituation.addProfessionalExperience(checkExperience, "", "");
+            user.currentSituation.addProfessionalExperience(checkExperience, "", "", "");
         }else {
             for (int i = 0; i < user.currentSituation.professionalExperienceList.size(); i++) {
 
@@ -138,12 +134,10 @@ public class OrientationController extends Controller {
                 } else {
                     //Logger.info("La Base de datos  no contiene el check de no tengo experiencia");
                     user.currentSituation.clearProfessionalExperience();
-                    user.currentSituation.addProfessionalExperience(checkExperience, "", "");
+                    user.currentSituation.addProfessionalExperience(checkExperience, "", "", "");
                 }
             }
         }
-
-
 
         user.completedOrientationSteps.currentSituation = String.valueOf(true);
         SingletonDataSource.getInstance().updateAllUserData(user);

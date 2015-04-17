@@ -16,12 +16,12 @@
 
     <h4>Experiencia profesional</h4>
     <ul>
-        @for(professional <- user.currentSituation.professionalExperienceList) {
-        <li><b>Empresa:</b> @professional.company</li>
-        <li><b>Puesto:</b> @professional.job</li>
-        <li><b>Años de experiencia:</b> @professional.experienceYears</li>
-        <br>
-        }
+    	@for(professional <- user.currentSituation.professionalExperienceList) {
+    				<li><b>Empresa:</b> @professional.company</li>
+    				<li><b>Puesto:</b> @professional.job</li>
+    				<li><b>Años de experiencia:</b> @professional.startDate - @professional.endDate</li>
+    		<br>
+	    }
     </ul>
 
     <h3><b>Habilidades</b></h3>

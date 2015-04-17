@@ -29,8 +29,13 @@ public class PresentationLetter {
 
         document.add(Chunk.NEWLINE);
 
-        String paragraph = "Mi nombre es " + name + " " + surnames + " y he estudiado " + studyName + " en " + studyLocation + ". Le escribo para solicitar el " +
-                "puesto de " + jobName + " en " + companyName + ".";
+        String paragraph = "Mi nombre es " + name + " " + surnames;
+
+        if(studyName != null && studyLocation != null){
+            paragraph+=" y he estudiado " + studyName + " en " + studyLocation;
+        }
+
+        paragraph+= ". Le escribo para solicitar el puesto de " + jobName + " en " + companyName + ".";
 
         if(!attachments.isEmpty()){
             paragraph += " Conforme a lo solicitado, adjunto " + formatAttachments(attachments) + " donde se puede comprobar mi trayectoria.";
