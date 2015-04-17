@@ -1,0 +1,196 @@
+@(user : models.entities.User)
+
+@main(){
+<article class="container">
+
+        <h2 class="red_adecco century_gothic">Tu perfil</h2>
+        <div class="brown_adecco arial size18">
+            <p><b>Datos personales</b></p>
+        </div>
+        <div>
+            <p class="arial size10 brown_adecco">Puedes rellenar los siguientes campos con voz. <a class="font3" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></p><br>
+        </div>
+
+        <div class="col-md-8">
+            <form class="form-horizontal" role="form" action="@routes.LoginController.submitSignUp()" method="post">
+                <div class="form-group form-inline">
+                    <div class="col-md-6 input-mic-container">
+                        <input type="text" name='register_name' class="form-control" id="register_name"  required="required" placeholder="Nombre" value="@user.name">
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6 input-mic-container">
+                        <input type="text" name='register_surnames' class="form-control" id="register_surnames" required="required" placeholder="Apellidos" value="@user.surnames">
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="email" name='register_email' class="form-control" id="register_part_email" required="required" placeholder="Correo electrónico" value="@user.email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="password" name='register_password' class="form-control" id="register_part_password_1" required="required" placeholder="Contraseña">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="password" name='register_repeat_password' class="form-control" id="register_part_password_2" required="required" placeholder="Repetir contraseña">
+                    </div>
+                </div>
+            </form>
+        </div>
+</article>
+
+<article class="container">
+    <div class="brown_adecco arial size18">
+        <p><b>Tu orientación</b></p>
+    </div>
+
+    <p class="arial size10 brown_adecco">El proceso de búsqueda de empleo es largo pero debes pasar todos los pasos para obtener éxito en tu trabajo.</p>
+    <p class="arial size10 brown_adecco">A continuación podrás ver como es tu situación, para mejorarla tan solo tienes que ir realizando el resto de actividades <a class="font3" href="@routes.OrientationController.blank()"><ins>Aquí.</ins></a></p>
+    <p class="arial size12 brown_adecco"><b>Puedes ver toda la información que hayas completado </b><a class="font3" href="@routes.ProfileController.textPlainInfo()"><ins>Aquí.</ins></a></p><br>
+
+    <div class="row">
+        <div class="col-md-2 center">
+            <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_orientation.png")">
+        </div>
+        <div class="col-md-10" >
+            <progress class="custom-progress" value="@user.getCompletedOrientationPercentage()" max="100" style="width:100%; vertical-align: middle;"></progress>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="text-left" style="margin:0;">0%</h3>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-center" style="margin:0;">50%</h3>
+                </div>
+                <div class="col-md-4">
+                    <h3 class="text-right" style="margin:0;">100%</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</article>
+
+
+
+<article class="container">
+
+    <div class="brown_adecco arial size18">
+        <p><b>Tu planificación</b></p>
+    </div>
+
+    <p class="arial size10 brown_adecco">En este apartado encontrarás las próximas entrevistas de trabajo que has programado. Es importante que estés preparado desde unos días antes.</p>
+    <p class="arial size10 brown_adecco">Solo aparecerán las entrevistas que hayas programado tu mismo:</p>
+
+    <div class="row">
+        <div class="col-md-2  center">
+            <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_planificacion.png")">
+        </div>
+        <div class="col-md-10">
+
+            @if(user.interviewScheduleList.isEmpty()){
+                <p class="arial size10 brown_adecco">No tienes ninguna entrevista programada.</p>
+            }else{
+                @for(interview <- user.interviewScheduleList) {
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4 class="text-left" style="margin:0;">@interview.getInterviewDate()</h4>
+                            <h4 class="text-left" style="margin:0;">@interview.company</h4>
+                            <h4 class="text-left" style="margin:0;">@interview.address</h4>
+                            <br>
+                        </div>
+                        <div class="col-md-8">
+                            <h4 class="text-left" style="margin:0;">@interview.getInterviewTime()</h4><br>
+                            <a class="font3" href="@routes.OrientationController.travel()"><ins>Como llegar</ins></a>
+                        </div>
+                    </div>
+                    <div class="col-md-5" id="points-line2">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_point.png")">
+                    </div><br>
+                }
+            }
+        </div>
+    </div>
+    <div class="col-md-4">
+        <a class="add-new button-cursor-pointer" href="@routes.OrientationController.deadline()" ><img ALT="Añadir experiencia" src="@routes.Assets.at("images/orientation/ic_newinterview.png")"></a>
+    </div>
+
+    <br><br>
+</article>
+
+<article class="container">
+
+    <div class="brown_adecco arial size18">
+        <p><b>Tus documentos</b></p>
+    </div>
+
+    <p class="arial size10 brown_adecco">Aquí tienes todos los documentos que has generado en un mismo apartado.</p>
+    <p class="arial size10 brown_adecco">Puedes editarlos y todos los cambios que realices se quedarán guardados aquí:</p>
+
+    <div class="row">
+        <div class="col-md-2  center">
+            <img style="width: 40%;" src="@routes.Assets.at("images/index/ic_cv.png")">
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-1  center">
+                    <a class="add-new button-cursor-pointer" href="@routes.GenerateDocumentsController.cv1()" ><img ALT="Modificar curriculum vitae" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-left" style="margin:0;">Curriculum vitae</h4><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1  center">
+                    <a class="add-new button-cursor-pointer" href="@routes.GenerateDocumentsController.lp1()" ><img ALT="Modificar carta de presentación" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-left" style="margin:0;">Carta de presentación</h4><br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1  center">
+                    <a class="add-new button-cursor-pointer" href="#" ><img ALT="Modificar email de contacto" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
+                </div>
+                <div class="col-md-4">
+                    <h4 class="text-left" style="margin:0;">Email de contacto</h4><br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</article>
+
+
+
+
+
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?<h2>
+            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+      window.onload = function() {
+        loadRecognition();
+    };
+</script>
+}

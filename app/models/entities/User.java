@@ -252,4 +252,66 @@ public class User {
 
         return result;
     }
+
+    public double getCompletedOrientationPercentage(){
+        int totalTrue = 0;
+        if(completedOrientationSteps.currentSituation.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.skills.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.interestIdentification.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.personal.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.professional.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.photo.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.channels.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.learnTools.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.getTools.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.tInterview.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.pInterview.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.actInterview.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.questionsInterview.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.deadLine.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.travel.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.specialization.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.bestDeals.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.level.equals("true")){
+            totalTrue++;
+        }
+        if(completedOrientationSteps.reputation.equals("true")){
+            totalTrue++;
+        }
+        return totalTrue*100/18;
+    }
 }

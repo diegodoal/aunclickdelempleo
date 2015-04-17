@@ -15,6 +15,14 @@ public class ProfileController extends Controller {
         if (user == null){
             return redirect("/");
         }
+        return ok(views.html.user_profile.profile.render(user));
+    }
+
+    public static Result textPlainInfo(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        if (user == null){
+            return redirect("/");
+        }
         return ok(views.html.user_profile.user_info.render(user));
     }
 }

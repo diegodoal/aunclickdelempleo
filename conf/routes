@@ -21,6 +21,7 @@ GET     /restore/:email/:token                      controllers.LoginController.
 POST    /restore                                    controllers.LoginController.restorePassword()
 
 GET     /profile                                    controllers.ProfileController.blank()
+GET     /profile/info                               controllers.ProfileController.textPlainInfo()
 
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()

@@ -181,3 +181,10 @@
  height: 100%;
  background-position: center;
  }
+
+  #points-line2{
+  background-image: url("../images/orientation/steps/ic_point.png");
+  background-repeat: repeat-x;
+  height: 100%;
+  background-position: center;
+  }
