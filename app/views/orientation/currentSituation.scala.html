@@ -283,8 +283,10 @@
 
 <section class="container">
     <div class="row">
-        <div class="col-md-8"></div>
+        <div class="col-md-8">
+            </div>
         <div class="col-md-4 center">
+            <button class="button-return-1" onclick="location.href='@routes.OrientationController.blank()';">VOLVER</button>
             <button class="button-finish-1" onclick="sendForm()">FINALIZAR</button>
         </div>
     </div>
@@ -372,7 +374,7 @@ var result = checkboxArray.concat(JSON.stringify(experienceArray));
 //Comprobar con el alert si se esta pasando correctamente el checkboxArray
 //alert("DATO" +JSON.stringify(checkboxArray));
 
-alert("DATO EXPERIENCE:"+JSON.stringify(result));
+//alert("DATO EXPERIENCE:"+JSON.stringify(result));
 
 if(studyChecked == 0){
     $('#validate_cb').show();
