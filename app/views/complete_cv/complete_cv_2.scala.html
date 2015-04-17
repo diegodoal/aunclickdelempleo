@@ -38,7 +38,7 @@
 	            <div class="form-group" id="level_studies_group">
                     <div class="col-lg-5 ">
                         <select class="form-control" id="level_studies" name="level_studies">
-                            @if(user != null && user.educationLevel == null){
+                            @if((user != null && user.educationLevel == null) || user == null){
                                 <option value="0" disabled selected="">Nivel de estudios</option>
                                 <option value="1">PCPI / Garantía social</option>
                                 <option value="2">Graduado escolar</option>

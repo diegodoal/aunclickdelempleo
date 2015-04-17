@@ -173,6 +173,7 @@ public class OrientationController extends Controller {
         return ok(Json.toJson(studies));
 
     }
+
     public static Result submitCurrentSituationCheck(){
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
