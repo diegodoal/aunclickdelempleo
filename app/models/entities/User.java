@@ -38,6 +38,14 @@ public class User {
 
     public String studyTitle;
     public String studyLocation;
+    public String educationLevel;
+
+    public String drivingLicense;
+    public String certificateOfDisability;
+
+    public List<Course> courses;
+    public List<Language> languages;
+    public List<Software> softwareList;
 
     public CompletedOrientationSteps completedOrientationSteps;
 
@@ -65,6 +73,14 @@ public class User {
 
         this.studyTitle = null;
         this.studyLocation = null;
+        this.educationLevel = null;
+
+        this.drivingLicense = null;
+        this.certificateOfDisability = null;
+
+        this.courses = new ArrayList<>();
+        this.languages = new ArrayList<>();
+        this.softwareList = new ArrayList<>();
 
         this.currentSituation = new CurrentSituation();
         this.skill = new ArrayList<>();
@@ -94,6 +110,14 @@ public class User {
 
         this.studyTitle = null;
         this.studyLocation = null;
+        this.educationLevel = null;
+
+        this.drivingLicense = null;
+        this.certificateOfDisability = null;
+
+        this.courses = new ArrayList<>();
+        this.languages = new ArrayList<>();
+        this.softwareList = new ArrayList<>();
 
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
@@ -253,65 +277,81 @@ public class User {
         return result;
     }
 
-    public double getCompletedOrientationPercentage(){
+    public double getCompletedOrientationPercentage() {
         int totalTrue = 0;
-        if(completedOrientationSteps.currentSituation.equals("true")){
+        if (completedOrientationSteps.currentSituation.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.skills.equals("true")){
+        if (completedOrientationSteps.skills.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.interestIdentification.equals("true")){
+        if (completedOrientationSteps.interestIdentification.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.personal.equals("true")){
+        if (completedOrientationSteps.personal.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.professional.equals("true")){
+        if (completedOrientationSteps.professional.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.photo.equals("true")){
+        if (completedOrientationSteps.photo.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.channels.equals("true")){
+        if (completedOrientationSteps.channels.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.learnTools.equals("true")){
+        if (completedOrientationSteps.learnTools.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.getTools.equals("true")){
+        if (completedOrientationSteps.getTools.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.tInterview.equals("true")){
+        if (completedOrientationSteps.tInterview.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.pInterview.equals("true")){
+        if (completedOrientationSteps.pInterview.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.actInterview.equals("true")){
+        if (completedOrientationSteps.actInterview.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.questionsInterview.equals("true")){
+        if (completedOrientationSteps.questionsInterview.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.deadLine.equals("true")){
+        if (completedOrientationSteps.deadLine.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.travel.equals("true")){
+        if (completedOrientationSteps.travel.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.specialization.equals("true")){
+        if (completedOrientationSteps.specialization.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.bestDeals.equals("true")){
+        if (completedOrientationSteps.bestDeals.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.level.equals("true")){
+        if (completedOrientationSteps.level.equals("true")) {
             totalTrue++;
         }
-        if(completedOrientationSteps.reputation.equals("true")){
+        if (completedOrientationSteps.reputation.equals("true")) {
             totalTrue++;
         }
-        return totalTrue*100/18;
+        return totalTrue * 100 / 18;
+    }
+
+    public String coursesToJson(){
+        Type listType = new TypeToken<List<Course>>(){}.getType();
+        return new Gson().toJson(this.courses, listType);
+    }
+
+    public String languagesToJson(){
+        Type listType = new TypeToken<List<Language>>(){}.getType();
+        return new Gson().toJson(this.languages, listType);
+    }
+
+    public String softwareToJson(){
+        Type listType = new TypeToken<List<Software>>(){}.getType();
+        return new Gson().toJson(this.softwareList, listType);
+
     }
 }

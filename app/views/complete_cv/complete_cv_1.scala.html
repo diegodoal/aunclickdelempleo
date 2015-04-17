@@ -1,3 +1,5 @@
+@(user: models.entities.User)
+
 @main(){
 <script type='text/javascript' src="@routes.Assets.at("javascripts/disableLicense.js")"></script>
 <script type='text/javascript' src="@routes.Assets.at("javascripts/disableCertificate.js")"></script>
@@ -27,8 +29,11 @@
 <!--Datos Personales-->
 
   <div class="row">
-    <div class="col-md-12 arial gray_adecco size18 bold">
-        Datos personales
+    <div class="col-md-12">
+        <div id="cv1_alert" hidden>
+            <div class="alert alert-danger" id="cv1_alert" role="alert">Por favor, completa todo el fomulario.</div><br>
+        </div>
+        <span class="arial gray_adecco size18 bold">Datos personales</span>
     </div>
   </div><br>
   <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
@@ -36,54 +41,78 @@
   <form class="form-horizontal" role="form">
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
+            @if(user != null){
+                <input type="text" name='register_name' class="form-control" id="name" value="@user.name" required="required" placeholder="Nombre">
+            }else{
+                <input type="text" name='register_name' class="form-control" id="name"  required="required" placeholder="Nombre">
+            }
             
-            <input type="text" name='register_name' class="form-control" id="name"  required="required" placeholder="Nombre">
-            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-
-
-
-            
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">            
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="surname" value="" required="required" placeholder="Apellidos">
-            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="date" required="required" value="" placeholder="Fecha de nacimiento" >
+            @if(user != null){
+                <input type="text" class="form-control" id="surname" value="@user.surnames" required="required" placeholder="Apellidos">
+            }else{
+                <input type="text" class="form-control" id="surname" value="" required="required" placeholder="Apellidos">
+            }
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="register_city" value="" required="required"  placeholder="Ciudad de residencia">
+            @if(user != null){
+                <input type="text" class="form-control" id="date" required="required" value="@user.birthDate" placeholder="Fecha de nacimiento" >
+            }else{
+                <input type="text" class="form-control" id="date" required="required" value="" placeholder="Fecha de nacimiento" >
+            }
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="dress" value="" required="required"  placeholder="Calle">
+            @if(user != null){
+                <input type="text" class="form-control" id="register_city" value="@user.residenceCity" required="required"  placeholder="Ciudad de residencia">
+            }else{
+                <input type="text" class="form-control" id="register_city" value="" required="required"  placeholder="Ciudad de residencia">
+            }
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="number" value="" required="required"  placeholder="Número">
+            @if(user != null){
+                <input type="text" class="form-control" id="dress" value="@user.residenceAddress" required="required"  placeholder="Calle">
+            }else{
+                <input type="text" class="form-control" id="dress" value="" required="required"  placeholder="Calle">
+            }
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
-            <input type="post" class="form-control" id="post" value="" placeholder="Código postal">
+            @if(user != null){
+                <input type="text" class="form-control" id="number" value="@user.residenceNumber" required="required"  placeholder="Número">
+            }else{
+                <input type="text" class="form-control" id="number" value="" required="required"  placeholder="Número">
+            }
+            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-5 input-mic-container">
+            @if(user != null){
+                <input type="post" class="form-control" id="post" value="@user.residenceZipCode" placeholder="Código postal">
+            }else{
+                <input type="post" class="form-control" id="post" value="" placeholder="Código postal">
+            }
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
@@ -101,13 +130,21 @@
     <form class="form-horizontal" role="form">
         <div class="form-group">
             <div class="col-lg-5">
-                <input type="email" name='email' class="form-control" id="access_email" value="" required="required" placeholder="Correo electrónico">
+                @if(user != null){
+                    <input type="email" name='email' class="form-control" id="access_email" value="@user.email" required="required" placeholder="Correo electrónico">
+                }else{
+                    <input type="email" name='email' class="form-control" id="access_email" value="" required="required" placeholder="Correo electrónico">
+                }
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-lg-5 input-mic-container">
-            <input type="text" class="form-control" id="telephone" value="" placeholder="Teléfono de contacto">
+                @if(user != null){
+                    <input type="text" class="form-control" id="telephone" value="@user.phoneNumber" placeholder="Teléfono de contacto">
+                }else{
+                    <input type="text" class="form-control" id="telephone" value="" placeholder="Teléfono de contacto">
+                }
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
             </div>
         </div>
@@ -126,7 +163,7 @@
     <div class="row orientation-points">
         <div class="col-lg-5  arial size14">
             <input type="checkbox" id="check_license" value="No tengo carnet" onclick=" licenseCertificateHidden(this.checked)">
-            <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
+            <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>            
         </div>
     </div><br>
 
@@ -134,21 +171,107 @@
 
       <div class="form-group" >
         <div class="col-lg-5">
-          <select  class="form-control"  name="license_group">
-              <option value="0" disabled selected="">Tipo de permiso de conducir</option>
-              <option value="1">A1</option>
-              <option value="2">A</option>
-              <option value="3">B</option>
-              <option value="4">C1</option>
-              <option value="5">C</option>
-              <option value="6">D1</option>
-              <option value="7">D</option>
-              <option value="8">BE</option>
-              <option value="9">C1E</option>
-              <option value="10">CE</option>
-              <option value="11">D1E</option>
-              <option value="12">DE</option>
-              <option value="13">btp</option>
+          <select  class="form-control" id="license_select" name="license_group">
+             @if(user != null){
+                @if(user.drivingLicense == null){
+                    <option value="0" disabled selected="">Tipo de permiso de conducir</option>
+                    <option value="1">A1</option>
+                    <option value="2">A</option>
+                    <option value="3">B</option>
+                    <option value="4">C1</option>
+                    <option value="5">C</option>
+                    <option value="6">D1</option>
+                    <option value="7">D</option>
+                    <option value="8">BE</option>
+                    <option value="9">C1E</option>
+                    <option value="10">CE</option>
+                    <option value="11">D1E</option>
+                    <option value="12">DE</option>
+                    <option value="13">btp</option>
+                }else{
+                    <option value="0" disabled>Tipo de permiso de conducir</option>
+                    @if(user.drivingLicense.equals("A1")){
+                        <option value="1" selected>A1</option>
+                    }else{
+                        <option value="1">A1</option>
+                    }
+                    @if(user.drivingLicense.equals("A")){
+                        <option value="2" selected>A</option>
+                    }else{
+                        <option value="2">A</option>
+                    }
+                    @if(user.drivingLicense.equals("B")){
+                        <option value="3" selected>B</option>
+                    }else{
+                        <option value="3">B</option>
+                    }
+                    @if(user.drivingLicense.equals("C1")){
+                        <option value="4" selected>C1</option>
+                    }else{
+                        <option value="4">C1</option>
+                    }
+                    @if(user.drivingLicense.equals("C")){
+                        <option value="5" selected>C</option>
+                    }else{
+                        <option value="5">C</option>
+                    }
+                    @if(user.drivingLicense.equals("D1")){
+                        <option value="6" selected>D1</option>
+                    }else{
+                        <option value="6">D1</option>
+                    }
+                    @if(user.drivingLicense.equals("D")){
+                        <option value="7" selected>D</option>
+                    }else{
+                        <option value="7">D</option>
+                    }
+                    @if(user.drivingLicense.equals("BE")){
+                        <option value="8" selected>BE</option>
+                    }else{
+                        <option value="8">BE</option>
+                    }
+                    @if(user.drivingLicense.equals("C1E")){
+                        <option value="9" selected>C1E</option>
+                    }else{
+                        <option value="9">C1E</option>
+                    }
+                    @if(user.drivingLicense.equals("CE")){
+                        <option value="10" selected>CE</option>
+                    }else{
+                        <option value="10">CE</option>
+                    }
+                    @if(user.drivingLicense.equals("D1E")){
+                        <option value="11" selected>D1E</option>
+                    }else{
+                        <option value="11">D1E</option>
+                    }
+                    @if(user.drivingLicense.equals("DE")){
+                        <option value="12" selected>DE</option>
+                    }else{
+                        <option value="12">DE</option>
+                    }
+                    @if(user.drivingLicense.equals("btp")){
+                        <option value="13" selected>btp</option>
+                    }else{
+                        <option value="13">btp</option>
+                    }
+                }
+            }else{
+                <option value="0" disabled selected="">Tipo de permiso de conducir</option>
+                <option value="1">A1</option>
+                <option value="2">A</option>
+                <option value="3">B</option>
+                <option value="4">C1</option>
+                <option value="5">C</option>
+                <option value="6">D1</option>
+                <option value="7">D</option>
+                <option value="8">BE</option>
+                <option value="9">C1E</option>
+                <option value="10">CE</option>
+                <option value="11">D1E</option>
+                <option value="12">DE</option>
+                <option value="13">btp</option>
+            }
           </select>
         </div>
       </div>
@@ -166,6 +289,11 @@
 
         <div class="row orientation-points">
             <div class="col-lg-5  arial size14">
+                @if(user != null){
+
+                }else{
+
+                }
                 <input type="checkbox" id="check_certificate" value="No tengo certificado"  onclick="disCertificateHidden(this.checked)">
                 <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
             </div>
@@ -175,11 +303,33 @@
 
             <div class="form-group" >
                 <div class="col-lg-5">
-                    <select  class="form-control"  name="certificate_group">
-                        <option value="0" disabled selected="">Tipo de certificado</option>
-                        <option value="1">Menos del 33%</option>
-                        <option value="2">Más del 33%</option>
-                        <option value="3">Más del 66%</option>
+                    <select  class="form-control" id="certificate_select" name="certificate_group">
+                        @if(user != null && user.certificateOfDisability != null){
+                            <option value="0" disabled>Tipo de certificado</option>
+                            @if(user.certificateOfDisability.equals("Menos del 33%")){
+                                <option value="1" selected>Menos del 33%</option>
+                            }else{
+                                <option value="1">Menos del 33%</option>
+                            }
+
+                            @if(user.certificateOfDisability.equals("Más del 33%")){
+                                <option value="2" selected>Más del 33%</option>
+                            }else{
+                                <option value="2">Más del 33%</option>
+                            }
+
+                            @if(user.certificateOfDisability.equals("Más del 66%")){
+                                <option value="3" selected>Más del 66%</option>
+                            }else{
+                                <option value="3">Más del 66%</option>
+                            }
+
+                        }else{
+                            <option value="0" disabled selected="">Tipo de certificado</option>
+                            <option value="1">Menos del 33%</option>
+                            <option value="2">Más del 33%</option>
+                            <option value="3">Más del 66%</option>
+                        }
                     </select>
                 </div>
             </div>
@@ -191,7 +341,7 @@
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 center">
-           <button class="button-finish-1" onclick="location.href='@routes.GenerateDocumentsController.cv2()';">SIGUIENTE</button>
+           <button class="button-finish-1" onclick="sendForm()">SIGUIENTE</button>
         </div>
     </div>
 </section>
@@ -216,4 +366,58 @@
     };
 </script>
 
+<script type="text/javascript">
+    function sendForm(){
+        var result = [];
+        var counter = 0;
+        var emptyField = false;
+        //Adding Personal Information
+        $('.form-horizontal input').each(function(){
+            if($(this).val() == ""){
+                emptyField = true;
+            }
+            result[counter] = $(this).val();
+            counter++;
+        });
+
+
+        //Adding driving license
+        if($('#check_license').is(':checked')){
+            result[counter] = "";
+            counter++;
+        }else if($("#license_select option:selected").val() == 0){
+            emptyField = true;
+        }else{
+            result[counter] = $("#license_select option:selected").text();
+            counter++;
+        }
+
+        //Adding driving license
+        if($('#check_certificate').is(':checked')){
+            result[counter] = "";
+            counter++;
+        }else if($('#certificate_select option:selected').val() == 0){
+            emptyField = true;
+        }else{
+            result[counter] = $("#certificate_select option:selected").text();
+        }
+
+        if(emptyField == true){
+            $('#cv1_alert').show();
+            window.scrollTo(0,0);
+        }else{
+            $.ajax({
+                type: 'post',
+                data: JSON.stringify(result),
+                url: "/orientation/gettools/cv1",
+                contentType: 'application/json',
+                error: function(){
+                },
+                success: function(){
+                    window.location.assign("/orientation/gettools/cv2");
+                }
+            });
+        }
+    }
+</script>
 }

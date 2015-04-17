@@ -6,10 +6,12 @@ import com.google.gson.reflect.TypeToken;
 import com.itextpdf.text.DocumentException;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
-import models.entities.orientation.Skill;
+import models.entities.orientation.*;
 import play.mvc.Result;
 import utils.Files;
 import utils.pdf.PresentationLetter;
+import utils.pdf.cv_templates.Template1;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +35,145 @@ public class GenerateDocumentsController {
         return ok(views.html.complete_user_profile.complete_user_profile_3.render());
     }
 
-    public static Result cv1(){return ok(views.html.complete_cv.complete_cv_1.render());}
+    public static Result cv1(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.complete_cv.complete_cv_1.render(user));
+    }
 
-    public static Result cv2(){return ok(views.html.complete_cv.complete_cv_2.render());}
+    public static Result submitCv1(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
-    public static Result cv3(){return ok(views.html.complete_cv.complete_cv_3.render());}
+        if(user != null){
+            String[] personalInformation = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
+
+            //user.name = personalInformation[0];
+            //user.surnames = personalInformation[1];
+            user.birthDate = personalInformation[2];
+            user.residenceCity = personalInformation[3];
+            user.residenceAddress = personalInformation[4];
+            user.residenceNumber = personalInformation[5];
+            user.residenceZipCode = personalInformation[6];
+            //user.email = personalInformation[7];
+            user.phoneNumber = personalInformation[8];
+
+            if(!personalInformation[9].equals("")){
+                //Add driving license
+                user.drivingLicense = personalInformation[9];
+            }else{
+                user.drivingLicense = null;
+            }
+
+            if(!personalInformation[10].equals("")){
+                user.certificateOfDisability = personalInformation[10];
+            }else{
+                user.certificateOfDisability = null;
+            }
+
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/orientation/gettools/cv2");
+    }
+
+    public static Result cv2(){
+        User user = SingletonDataSource.getUserByEmail(session().get("email"));
+        return ok(views.html.complete_cv.complete_cv_2.render(user));
+    }
+
+    public static Result submitCv2(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user != null){
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
+
+            user.educationLevel = result[0];
+
+            if(result[1].equals("EmptyExperience")){
+                user.currentSituation.professionalExperienceList = new ArrayList<>();
+            }else {
+                String[][] professionalExperience = new Gson().fromJson(result[1], new TypeToken<String[][]>() {
+                }.getType());
+                List<ProfessionalExperience> auxProfessionalExperience = new ArrayList<>();
+                for (int i = 0; i < professionalExperience.length; i++) {
+                    auxProfessionalExperience.add(new ProfessionalExperience(professionalExperience[i][0], professionalExperience[i][1], professionalExperience[i][2], professionalExperience[i][3]));
+                }
+
+                user.currentSituation.professionalExperienceList = auxProfessionalExperience;
+            }
+            List<String> interests = new Gson().fromJson(result[2].toString(), new TypeToken<List<String>>() {
+            }.getType());
+
+            user.interests = interests;
+
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/orientation/gettools/cv3");
+    }
+
+    public static Result cv3(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.complete_cv.complete_cv_3.render(user));
+    }
+
+    public static Result submitCv3(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user != null){
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>(){}.getType());
+
+            String[][] courses = new Gson().fromJson(result[0], new TypeToken<String[][]>(){}.getType());
+            if(courses.length > 0){
+                List<Course> auxCourses = new ArrayList<>();
+                for(int i=0; i<courses.length; i++){
+                    auxCourses.add(new Course(courses[i][0], courses[i][1], courses[i][2]));
+                }
+                user.courses = auxCourses;
+            }
+
+            String[][] languages = new Gson().fromJson(result[1], new TypeToken<String[][]>(){}.getType());
+            if(languages.length>0){
+                List<Language> auxLanguages = new ArrayList<>();
+                for(int i=0; i<languages.length; i++){
+                    auxLanguages.add(new Language(languages[i][0], languages[i][1]));
+                }
+                user.languages = auxLanguages;
+            }
+
+            String[][] software = new Gson().fromJson(result[2], new TypeToken<String[][]>(){}.getType());
+            if(software.length>0){
+                List<Software> auxSoftware = new ArrayList<>();
+                for(int i=0; i<software.length; i++){
+                    auxSoftware.add(new Software(software[i][0], software[i][1]));
+                }
+                user.softwareList = auxSoftware;
+            }
+
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+
+        return redirect("/");
+    }
+
+    public static Result previewCV(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user == null){
+            return badRequest("No se ha podido generar el CV porque no existe el usuario");
+        }
+        String route = Files.newPathForNewFile("public/pdf", "pdf");
+
+        Template1 template = new Template1();
+        try {
+            template.createPdf(route, user);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return redirect(routes.Assets.at(route.substring(7)));
+    }
 
     public static Result lp1(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
@@ -154,7 +290,6 @@ public class GenerateDocumentsController {
         if(session().get("lp2_attach_certificates").equals("true")){
             attachments.add("Certificados");
         }
-
 
         try {
             template.createPdf(route, user.name, user.surnames, user.studyTitle, user.studyLocation, session().get("lp2_company_name"), session().get("lp2_job_name"), attachments, user.personalCharacteristics, user.skill, user.email, user.phoneNumber);
