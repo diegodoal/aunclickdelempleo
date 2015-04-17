@@ -193,23 +193,22 @@
     <div class="main-div-sections">
         <div class="panel-group new-input-container center" style="margin-auto;">
             <form id="experience_group" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
-                <div class="form-group form-inline" id="job_experience_group_1">
+                <div class="form-group form-inline">
                     <div class="col-md-6">
                         <div class="input-mic-container">
-                            <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" value="Empresa: @professional.company" disabled>
+                            <input type="text"  class="" name="company" placeholder="Empresa" value="@professional.company" disabled>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" value="Puesto: @professional.job" disabled >
+                            <input type="text" class=""  name="job" placeholder="Puesto" value="@professional.job" disabled >
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group form-inline" id="job_experience_group_3">
-                    
+                <div class="form-group form-inline">
                     <div class="col-md-6">
-                        <input style="width: 100%; margin-left: 0;" type="text" class="form-control"  name="experience"  value="Experiencia: @professional.experienceYears" disabled>
+                        <input style="width: 100%; margin-left: 0;" type="text" class=""  name="experience"  value="@professional.experienceYears" disabled>
                     </div>
                 </div>
 
@@ -238,7 +237,7 @@
         </div>
         <div class="main-div-sections">
             <div class="panel-group new-input-container center" style="margin-auto;">
-                <form id="experience_group" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
+                <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
                     <div class="form-group form-inline" id="job_experience_group_1">
                         <div class="col-md-6">
                             <div class="input-mic-container">
@@ -332,7 +331,7 @@
         var URLroutes = "";
 
     if( $('input[name="company"]').val() != "" && $('input[name="job"]').val() != "" && $('select[name="experience"]').val() != "" ){
-        $('.main-div-sections .form-horizontal').each(function(){
+        $('.main-div-sections #experience_group_new').each(function(){
             var auxExperience = [];
             $(this).find('input').each(function(){
                 auxExperience[counter] = $(this).val();
@@ -373,7 +372,7 @@ var result = checkboxArray.concat(JSON.stringify(experienceArray));
 //Comprobar con el alert si se esta pasando correctamente el checkboxArray
 //alert("DATO" +JSON.stringify(checkboxArray));
 
-//alert("DATO EXPERIENCE:"+JSON.stringify(result));
+alert("DATO EXPERIENCE:"+JSON.stringify(result));
 
 if(studyChecked == 0){
     $('#validate_cb').show();

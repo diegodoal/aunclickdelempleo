@@ -2,6 +2,7 @@ package models.entities.orientation;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import play.Logger;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
