@@ -58,6 +58,21 @@ public class LoginController {
         return badRequest(views.html.login_user.login.render(error_login_msg, null, null));
     }
 
+    //METODO PARA LA APP DE ALFONSO
+
+    public static Result submitLoginApp(){
+        String error_login_msg = null; //Contains the msg if there's a login error
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(request.get("email").asText());
+
+        if(user != null && Utils.encryptWithSHA1(request.get("password").asText()).equals(user.password)){
+            return ok("success");
+        }
+
+        return badRequest("fail");
+    }
+
+
     public static Result submitSignUp(){
         String error_signup_msg = null;
         String error_password_length = null;

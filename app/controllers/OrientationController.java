@@ -105,7 +105,6 @@ public class OrientationController extends Controller {
     }
 
     public static Result submitCurrentSituation(){
-
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
@@ -120,7 +119,7 @@ public class OrientationController extends Controller {
             else if (!studies[i].contains("No tengo estudios") && !user.currentSituation.educationLevelList.contains(studies[i])) {
                 //Logger.info("Entra el if de  No Contiene no tengo estudios");
                 if (user.currentSituation.educationLevelList.contains("No tengo estudios")){
-                    Logger.info("La lista de la base de datos contiene no tengo estudios");
+                    //Logger.info("La lista de la base de datos contiene no tengo estudios");
                     user.currentSituation.educationLevelList.remove("No tengo estudios");
                 }
                 user.currentSituation.addEducationLevel(studies[i]);
@@ -128,10 +127,11 @@ public class OrientationController extends Controller {
         }
         String[][] experience = new Gson().fromJson(studies[studies.length-1].toString(), new TypeToken<String[][]>(){}.getType());
         List<ProfessionalExperience> currentExperienceCopy = new ArrayList<ProfessionalExperience>();
+
         //for(int j=0; j<user.currentSituation.professionalExperienceList.size();j++){
         if (user.currentSituation.professionalExperienceList.size() == 0){
             for (int i=0; i<experience.length; i++) {
-                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2], "");
+                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2],experience[i][3] );
             }
         }else{
             // Copiamos el array de experiencia profesional
@@ -140,29 +140,28 @@ public class OrientationController extends Controller {
             }
 
             for (int i=0; i<experience.length; i++) {
-                Logger.debug("For experience");
+                //Logger.debug("For experience");
                 int addNewElement = 1;
                 for (ProfessionalExperience professionalExperience : currentExperienceCopy) {
-                    Logger.debug("For Comprobar coincidencia");
-                    Logger.debug("Dato1"+professionalExperience.company);
-                    Logger.debug("Dato1"+experience[i][0]);
-                    Logger.debug("Dato2"+professionalExperience.job);
-                    Logger.debug("Dato2"+experience[i][1]);
-                    //Logger.debug("Dato3"+professionalExperience.experienceYears);
-                    Logger.debug("Dato3"+experience[i][2]);
-
                     if (professionalExperience.company.toLowerCase().equals(experience[i][0].toLowerCase())
                             && professionalExperience.job.toLowerCase().equals(experience[i][1].toLowerCase())
                             /*&& professionalExperience.experienceYears.equals(experience[i][2])*/) {
-                        Logger.debug("Salgo del for porque ya existe");
+                        //Logger.debug("Salgo del for porque ya existe");
                         addNewElement = 0;
                         break;
                     }
 
                 }
                 if (addNewElement == 1){
-                    Logger.debug("Añado la nueva experiencia");
-                    user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2], "");
+                    for(ProfessionalExperience professionalExperience : currentExperienceCopy){
+                        if (professionalExperience.company.equals("No tengo experiencia")){
+                            //  Logger.debug("Borro");
+                            user.currentSituation.clearProfessionalExperience();
+                        }
+                    }
+
+                    // Logger.debug("Añado la nueva experiencia");
+                    user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2], experience[i][3]);
                 }
             }
 
