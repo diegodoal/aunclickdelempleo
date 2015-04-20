@@ -15,9 +15,39 @@
             <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
         </div>
     </div>
-    <div class="row">
+
+
+    <div class="row" style="margin-bottom: 0;">
         <div class="col-md-12 ic_paso2">
-            <img src="@routes.Assets.at("images/complete_user_profile_3/ic_paso3.png")" class="ic_paso2">
+
+            <div class="row-same-height row-full-height">
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv1()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_1.png")">
+                    </a>
+                </div>
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv2()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_2.png")" class="ic_paso2">
+                    </a>
+                </div>
+
+
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv3()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_3.png")">
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
