@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import models.entities.orientation.*;
 
 import java.lang.reflect.Type;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.UUID;
 public class User {
 
     // Step 1
+    public String id;
     public String name;
     public String surnames;
     public String email;

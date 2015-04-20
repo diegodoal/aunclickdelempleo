@@ -133,6 +133,8 @@ public class SingletonDataSource {
             //Deserialize ArrayList of Software
             user.softwareList = new Gson().fromJson(dbObject.get(Constants.USER_SOFTWARE).toString(), new TypeToken<List<Software>>(){}.getType());
 
+            user.id = dbObject.get("_id").toString();
+
             mongoClient.close();
             return user;
         }else{

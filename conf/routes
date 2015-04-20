@@ -107,3 +107,7 @@ GET     /orientation/reputation/submit              controllers.OrientationContr
 
 #Planning
 GET    /planning                                   controllers.PlanningController.plan()
+
+# ADMIN
+GET     /admin/show                                 controllers.AdminController.blank(email = null, id = null)
+GET     /admin/show/:email/:id                      controllers.AdminController.blank(email: String, id: String)
