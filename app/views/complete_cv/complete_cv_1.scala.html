@@ -16,9 +16,39 @@
             <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12 col-xs-12 col-sm-12 ic_paso2">
-            <img src="@routes.Assets.at("images/complete_user_profile_1/ic_paso1.png")" class="ic_paso2" alt="Paso de Completar tu curriculum" title="Curriculum">
+
+
+    <div class="row" style="margin-bottom: 0;">
+        <div class="col-md-12 ic_paso2">
+
+            <div class="row-same-height row-full-height">
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv1()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_1.png")" class="ic_paso2" alt="Paso 1 de Completar tu curriculum" title="Curriculum">
+                    </a>
+                </div>
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv2()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_2.png")" alt="Paso 2 de Completar tu curriculum" title="Curriculum">
+                    </a>
+                </div>
+
+
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv3()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_3.png")" alt="Paso 3 de Completar tu curriculum" title="Curriculum">
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
