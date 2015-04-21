@@ -174,6 +174,9 @@ public class SingletonDataSource {
 
                 //Deserialize ArrayList of Software
                 user.softwareList = new Gson().fromJson(cursor.curr().get(Constants.USER_SOFTWARE).toString(), new TypeToken<List<Software>>(){}.getType());
+
+                user.id = cursor.curr().get("_id").toString();
+
                 users.add(user);
             }
         } finally {
