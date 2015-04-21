@@ -3,13 +3,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
     <!--  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap.css")">
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap-theme.css")">
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/custom-style.css")">
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/custom-fonts.css")">
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/jquery-1.11.2.min.js")"></script>
     <link rel="shortcut icon" type="image/jpg" href="@routes.Assets.at("images/adecco_logo.jpg")">
-	<meta charset="utf-8">
 	<title>A un click del empleo - ADMINISTRACIÓN</title>
 </head>
 <body>
@@ -26,11 +27,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-            <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search" method="post" action="@routes.AdminController.searchUser()">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" name="email" placeholder="Buscar usuario (email)">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default">Buscar</button>
             </form>
         </div>
             <ul class="nav navbar-nav navbar-right">

@@ -62,6 +62,20 @@ public class AdminController extends Controller{
         }
     }
 
+    public static Result searchUser(){
+        DynamicForm form = form().bindFromRequest();
+        if(checkConnection(session().get("user"))) {
+            User user = SingletonDataSource.getInstance().getUserByEmail(form.get("email"));
+            if (user != null) {
+                return redirect("/admin/show/" + user.email + "/" + user.id);
+            } else {
+                return redirect("/admin/show");
+            }
+        }else{
+            return unauthorized("Access denied");
+        }
+    }
+
     public static Result deleteUser(String email, String id){
         if(checkConnection(session().get("user"))) {
             User user = SingletonDataSource.getInstance().getUserByEmail(email);
