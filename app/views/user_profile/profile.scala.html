@@ -46,6 +46,11 @@
                 </div>
             </form>
         </div>
+        <div class="col-md-4">
+            @if(!user.photo.id.equals("")){
+                <img src="https://s3.amazonaws.com/aunclickdelempleo2/@user.photo.id"/>
+            }
+        </div>
 </article>
 
 <article class="container">
