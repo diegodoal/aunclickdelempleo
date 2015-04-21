@@ -111,3 +111,4 @@ GET    /planning                                   controllers.PlanningControlle
 # ADMIN
 GET     /admin/show                                 controllers.AdminController.blank(email = null, id = null)
 GET     /admin/show/:email/:id                      controllers.AdminController.blank(email: String, id: String)
+GET     /admin/delete/:email/:id                    controllers.AdminController.deleteUser(email: String, id: String)

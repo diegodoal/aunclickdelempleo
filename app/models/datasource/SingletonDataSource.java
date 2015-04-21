@@ -3,11 +3,13 @@ package models.datasource;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.mongodb.*;
+import com.mongodb.casbah.commons.ValidBSONType;
 import com.mongodb.util.JSON;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import models.entities.User;
 import models.entities.orientation.*;
+import org.bson.types.ObjectId;
 import utils.Constants;
 import utils.Utils;
 
@@ -260,6 +262,20 @@ public class SingletonDataSource {
             collection.update(query, updateQuery);
         }
         mongoClient.close();
+    }
+
+    public static boolean deleteUser(String email){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        BasicDBObject query = new BasicDBObject().append("email", email);
+        DBObject dbObject = collection.findOne(query);
+        if(dbObject != null){
+            collection.remove(dbObject);
+            mongoClient.close();
+            return true;
+        }else{
+            mongoClient.close();
+            return false;
+        }
     }
 
 }

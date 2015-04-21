@@ -78,16 +78,44 @@
                 <br>
                 }
             </ul>
+            <button type="button" class="btn btn-danger" onclick="javascript: $('#confirmDeleteModal').modal('show');">Eliminar</button>
         </div>
     </div>
 }
 </section>
 
+<!-- PHOTO-TAKING MODAL -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- dialog body -->
+            <div class="modal-body">
+                <h3>¿Seguro que desea eliminar el usuario?</h3>
+                <p>Una vez eliminado el usuario, no se podrá recuperar... ¿Desea continuar?</p>
+            </div>
+            <!-- dialog buttons -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="javascript: $('#confirmDeleteModal').modal('hide');">Cancelar</button>
+                <button type="button" id="confirmDeleteBtn" class="btn btn-danger" onclick="confirmDelete()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END OF PHOTO-TAKING MODAL -->
+
+
 <script type="text/javascript">
     function changeUserInfo(){
         var result = "/admin/show/"+$('#users_select').val();
-
         window.location.replace(result);
+    }
+
+    function confirmDelete(){
+        @if(user!=null){
+            alert("Usuario eliminado!");
+            $('#confirmDeleteModal').modal('hide');
+            window.location.replace("/admin/delete/@user.email/@user.id");
+        }
     }
 </script>
 

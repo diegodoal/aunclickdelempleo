@@ -1,5 +1,6 @@
 package controllers;
 
+import com.google.gson.Gson;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.mvc.Controller;
@@ -25,4 +26,19 @@ public class AdminController extends Controller{
 
         return ok(views.html.admin.admin_main.render(users, null));
     }
+
+    public static Result deleteUser(String email, String id){
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+        if(user != null && user.id.equals(id)){
+            boolean result = SingletonDataSource.getInstance().deleteUser(email);
+            if(result == true)
+                return redirect("/admin/show");
+            else
+                return badRequest("Cannot delete.");
+        }
+        else
+            return badRequest("Cannot delete. User not found or invalid user.");
+    }
+
+
 }
