@@ -10,7 +10,7 @@ public class Photo {
     public String id;
 
     public Photo(){
-
+        this.id = "";
     }
 
     public Photo(String id){

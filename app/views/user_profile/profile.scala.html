@@ -46,10 +46,20 @@
                 </div>
             </form>
         </div>
+
         <div class="col-md-4">
-            @if(!user.photo.id.equals("")){
-                <img src="https://s3.amazonaws.com/aunclickdelempleo2/@user.photo.id"/>
-            }
+            <div class="canvas-container custom-canvas-background" style="margin-right:2.5em;">
+                <div class="center">
+                    @if(!user.photo.id.equals("")){
+                        <img src="https://s3.amazonaws.com/aunclickdelempleo2/@user.photo.id"/>
+                    } else {
+                        <img class="center hidden" src="@routes.Assets.at("images/orientation/photo/ic_profile.png")">
+                        <canvas id="mainCanvas" width="137" height="162" style="background-color: white;"></canvas>
+                    }
+                    <button class="button-finish-1 photo_height" onclick="location.href='@routes.OrientationController.photo()';">CAMBIAR FOTO</button>
+                </div>
+
+            </div>
         </div>
 </article>
 
@@ -174,11 +184,6 @@
     <br>
 </article>
 
-
-
-
-
-
 <!-- POP UP WINDOW -->
 <div id="accesibility_pop_up2" class="mask_pop_up">
     <div class="box_pop_up resize">
@@ -196,6 +201,7 @@
 <script type="text/javascript">
       window.onload = function() {
         loadRecognition();
+        cleanCanvas();
     };
 </script>
 }
