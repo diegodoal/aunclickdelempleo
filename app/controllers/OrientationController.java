@@ -495,7 +495,11 @@ public class OrientationController extends Controller {
             List<InterviewSchedule> auxList = new ArrayList<>();
             String[][] result = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {}.getType());
             for(int i=0; i<result.length; i++){
-                auxList.add(new InterviewSchedule(result[i][0] + " " + result[i][1], result[i][2], result[i][3]));
+                String address = result[i][3];
+                for(int j=4; j<result[i].length; j++){
+                    address+=", "+result[i][j];
+                }
+                auxList.add(new InterviewSchedule(result[i][0] + " " + result[i][1], result[i][2], address));
             }
 
             user.interviewScheduleList = auxList;
