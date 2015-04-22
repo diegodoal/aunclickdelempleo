@@ -6,6 +6,7 @@ import models.entities.User;
 import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.Stats;
 import utils.Utils;
 
 import java.util.List;
@@ -90,6 +91,10 @@ public class AdminController extends Controller{
         }else{
             return unauthorized("Access denied");
         }
+    }
+
+    public static Result stats(){
+        return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense()));
     }
 
 

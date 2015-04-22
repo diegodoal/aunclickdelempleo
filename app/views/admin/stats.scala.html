@@ -1,0 +1,66 @@
+@(stats1 : Array[Integer])
+
+@header(){
+
+
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div id="graph1" style="width: 100%; height: 20em;"></div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ##################################################################### -->
+<style>
+    #container {
+    width : 600px;
+    height: 384px;
+    margin: 8px auto;
+    }
+</style>
+
+
+
+
+<script type="text/javascript">
+      (function () {
+
+  var
+    container = document.getElementById('graph1'),
+    d1 = [[0, @stats1(0)]],
+    d2 = [[0, @stats1(1)]],
+    graph;
+
+  graph = Flotr.draw(container, [
+    { data : d1, label : 'Con carnet de conducir' },
+    { data : d2, label : 'Sin carnet de conducir' }
+  ], {
+    HtmlText : false,
+    grid : {
+      verticalLines : false,
+      horizontalLines : false
+    },
+    xaxis : { showLabels : false },
+    yaxis : { showLabels : false },
+    pie : {
+      show : true,
+      explode : 6
+    },
+    mouse : { track : true },
+    legend : {
+      position : 'se',
+      backgroundColor : '#D2E8FF'
+    }
+  });
+      })();
+
+    </script>
+
+
+
+<!-- ##################################################################### -->
+
+}
