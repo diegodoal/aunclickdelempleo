@@ -10,12 +10,14 @@ public class ProfessionalExperience {
     public String job;
     public String startDate;
     public String endDate;
+    public String ID;
 
-    public ProfessionalExperience(String company, String job, String startDate, String endDate){
+    public ProfessionalExperience(String company, String job, String startDate, String endDate, String ID){
         this.company = company;
         this.job = job;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.ID = ID;
     }
 
     public String toJsonInString(){

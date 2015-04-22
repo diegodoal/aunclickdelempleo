@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
@@ -19,6 +20,7 @@ import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import java.util.concurrent.TimeUnit.*;
 
 import static play.mvc.Http.Context.Implicit.request;
 
@@ -130,8 +132,16 @@ public class OrientationController extends Controller {
 
         //for(int j=0; j<user.currentSituation.professionalExperienceList.size();j++){
         if (user.currentSituation.professionalExperienceList.size() == 0){
+            String experienceID;
+
             for (int i=0; i<experience.length; i++) {
-                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2],experience[i][3] );
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                }catch (InterruptedException e){
+
+                }
+                 experienceID =  new Date().toString();
+                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2],experience[i][3],experienceID );
             }
         }else{
             // Copiamos el array de experiencia profesional
@@ -140,6 +150,11 @@ public class OrientationController extends Controller {
             }
 
             for (int i=0; i<experience.length; i++) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                }catch (InterruptedException e){
+
+                }
                 //Logger.debug("For experience");
                 int addNewElement = 1;
                 for (ProfessionalExperience professionalExperience : currentExperienceCopy) {
@@ -153,15 +168,17 @@ public class OrientationController extends Controller {
 
                 }
                 if (addNewElement == 1){
+
                     for(ProfessionalExperience professionalExperience : currentExperienceCopy){
                         if (professionalExperience.company.equals("No tengo experiencia")){
                             //  Logger.debug("Borro");
                             user.currentSituation.clearProfessionalExperience();
+
                         }
                     }
-
+                    String experienceID =  new Date().toString();
                     // Logger.debug("Añado la nueva experiencia");
-                    user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2], experience[i][3]);
+                    user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2], experience[i][3], experienceID);
                 }
             }
 
@@ -196,7 +213,8 @@ public class OrientationController extends Controller {
         String checkExperience = new Gson().fromJson(studies[studies.length-1].toString(), new TypeToken<String>(){}.getType());
 
         if(user.currentSituation.professionalExperienceList.size() == 0){
-            user.currentSituation.addProfessionalExperience(checkExperience, "", "", "");
+            String experienceID =  new Date().toString();
+            user.currentSituation.addProfessionalExperience(checkExperience, "", "", "",experienceID);
         }else {
             for (int i = 0; i < user.currentSituation.professionalExperienceList.size(); i++) {
 
@@ -206,7 +224,8 @@ public class OrientationController extends Controller {
                 } else {
                     //Logger.info("La Base de datos  no contiene el check de no tengo experiencia");
                     user.currentSituation.clearProfessionalExperience();
-                    user.currentSituation.addProfessionalExperience(checkExperience, "", "", "");
+                    String experienceID =  new Date().toString();
+                    user.currentSituation.addProfessionalExperience(checkExperience, "", "", "",experienceID);
                 }
             }
         }
@@ -215,6 +234,24 @@ public class OrientationController extends Controller {
         SingletonDataSource.getInstance().updateAllUserData(user);
 
         return ok(Json.toJson(studies));
+
+    }
+    public static Result deleteExperienceCurrentSituation(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        String idExperience = new Gson().fromJson(request.toString(), new TypeToken<String>() {}.getType());
+          for( int i=0; i<user.currentSituation.professionalExperienceList.size(); i++){
+              if(user.currentSituation.professionalExperienceList.get(i).ID.contains(idExperience)){
+                  user.currentSituation.professionalExperienceList.remove(i);
+                  break;
+              }
+          }
+
+        user.completedOrientationSteps.currentSituation = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
+
+        return ok(Json.toJson(idExperience));
 
     }
 

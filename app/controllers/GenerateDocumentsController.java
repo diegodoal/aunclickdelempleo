@@ -14,7 +14,10 @@ import utils.pdf.cv_templates.Template1;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import static play.mvc.Controller.session;
 import static play.mvc.Http.Context.Implicit.request;
 import static play.mvc.Results.badRequest;
@@ -95,8 +98,14 @@ public class GenerateDocumentsController {
                 String[][] professionalExperience = new Gson().fromJson(result[1], new TypeToken<String[][]>() {
                 }.getType());
                 List<ProfessionalExperience> auxProfessionalExperience = new ArrayList<>();
+
                 for (int i = 0; i < professionalExperience.length; i++) {
-                    auxProfessionalExperience.add(new ProfessionalExperience(professionalExperience[i][0], professionalExperience[i][1], professionalExperience[i][2], professionalExperience[i][3]));
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    }catch (InterruptedException e){
+                    }
+                    String experienceID =  new Date().toString();
+                    auxProfessionalExperience.add(new ProfessionalExperience(professionalExperience[i][0], professionalExperience[i][1], professionalExperience[i][2], professionalExperience[i][3],experienceID));
                 }
 
                 user.currentSituation.professionalExperienceList = auxProfessionalExperience;

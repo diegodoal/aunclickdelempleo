@@ -79,9 +79,10 @@ public class Utils {
             user.currentSituation.addEducationLevel("Primaria");
             user.currentSituation.addEducationLevel("Secundaria");
             user.currentSituation.addEducationLevel("Grado");
-
-            user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "2014-10", "2015-05");
-            user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "2015-05", "2016-03");
+            String experienceID =  new Date().toString();
+            user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "2014-10", "2015-05",experienceID);
+            String experienceID2 =  new Date().toString();
+            user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "2015-05", "2016-03",experienceID2);
 
             //Skills
             //user.skills.add(new Skill("Hablar en público", "Bien"));
