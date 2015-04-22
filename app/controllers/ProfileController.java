@@ -39,8 +39,13 @@ public class ProfileController extends Controller {
                 user.name = result[0];
             if(!result[1].equals(""))
                 user.surnames = result[1];
-            if(!result[2].equals(""))
+            if(!result[2].equals("")) {
+                User auxUser = SingletonDataSource.getInstance().getUserByEmail(result[2]);
+                if (!result[2].equals(user.email) && auxUser != null){
+                    return badRequest();
+                }
                 user.email = result[2];
+            }
             if(!result[3].equals(""))
                 user.password = Utils.encryptWithSHA1(result[3]);
 

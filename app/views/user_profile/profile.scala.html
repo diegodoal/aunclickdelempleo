@@ -207,9 +207,9 @@
     </div>
 </div>
 
+<!-- CONFIRM CHANGES MODAL -->
 <div class="modal fade" id="confirmChangesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog custom-modal">
-
         <div>
             <h2 class="sub-title">Cambiar datos personales</h2>
             <p class="text-brown">Para cambiar tus datos personales, introduce tu contraseña antigua:</p>
@@ -228,6 +228,19 @@
                 <div class="col-md-6 center">
                         <button type="button" id="acceptChangeBtn" class="button-accept button-modal" >ACEPTAR</button>
                         <button type="button" id="cancelChangeBtn" class="button-cancel button-modal" data-dismiss="modal">CANCELAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- UPDATING CHANGES MODAL -->
+<div class="modal fade" id="updatingChangesModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <p id="photoUploadingText">Actualizando información... Este proceso puede tardar unos segundos, espere por favor.</p>
                 </div>
             </div>
         </div>
@@ -262,6 +275,7 @@
             var oldPassword = CryptoJS.SHA1($('#confirm-password').val());;
             var userPassword = "@user.password";
             if(oldPassword == userPassword){
+                $('#updatingChangesModal').modal('show');
                 sendChanges();
                 $('#confirmChangesModal').modal('hide');
             }else{
