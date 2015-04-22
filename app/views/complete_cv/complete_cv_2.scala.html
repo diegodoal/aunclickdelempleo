@@ -55,20 +55,29 @@
             <div class="alert alert-danger" id="cv2_alert" role="alert">Por favor, completa todo el fomulario.</div><br>
         </div>
 		<div class=" col-lg-12  arial gray_adecco size18 bold">Nivel de estudios</div>
-	</div>
+	</div><br>
+
+    <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
 
 
-        
-	<div class="row orientation-points">
+
+
+
+    <div class="row orientation-points">
 		<div class="col-lg-12 ">
             <input type="checkbox" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
 		    <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
 		</div>
    	</div><br>
 	        <form class="form-horizontal">
+
+
 	            <div class="form-group" id="level_studies_group">
-                    <div class="col-lg-5 ">
-                        <select class="form-control" id="level_studies" name="level_studies">
+                    <div class="col-lg-5 input-mic-container">
+
+                        <input type="text" class="form-control" placeholder="Título" id="titulo" value="" required="requerided">
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                      <!--  <select class="form-control" id="level_studies" name="level_studies">
                             @if((user != null && user.educationLevel == null) || user == null){
                                 <option value="0" disabled selected="">Nivel de estudios</option>
                                 <option value="1">PCPI / Garantía social</option>
@@ -165,8 +174,13 @@
                                 }
                             }
                         </select>
+
+                        -->
+
                      </div>
-                    <div class="col-lg-5 col-lg-offset-2">
+                    <div class="col-lg-5 col-lg-offset-2 input-mic-container">
+                        <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="requerided">
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
 	            </div>
 	        </form><br>
@@ -182,183 +196,6 @@
         <div class="col-lg-12  arial gray_adecco size18 bold">Experiencia laboral</div>
     </div><br>
 
-    <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
-
-    <!--
-
-    @if(user != null){
-    @if(user.currentSituation.professionalExperienceList.size() != 0){
-    @for(professional <- user.currentSituation.professionalExperienceList) {
-
-    @if(professional.company == "No tengo experiencia"){
-    <div class="row orientation-points hidden_check_exp" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
-        <div class="col-md-6">
-            <input type="checkbox" id="check_exp_bbdda" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHidden(this.checked)" checked >
-            <label for="check_exp_bbdda" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
-        </div>
-    </div>
-    }else{
-    <div class="main-div-sections">
-        <div class="panel-group new-input-container center" style="margin-auto;">
-            <form id="experience_group" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
-                <div class="form-group form-inline">
-                    <div class="col-md-6">
-                        <input style="width: 100%; margin-left: 0;"  type="text"  class="" name="company" placeholder="Empresa" value="@professional.company" disabled>
-                    </div>
-                    <div class="col-md-6">
-                        <input style="width: 100%; margin-left: 0;"  type="text" class=""  name="job" placeholder="Puesto" value="@professional.job" disabled >
-                    </div>
-                </div>
-                <div class="form-group form-inline">
-                    <div class="col-md-6">
-                        <input style="width: 100%; margin-left: 0;" type="text" class=""  name="startDate"  value="@professional.startDate" disabled>
-                    </div>
-                    <div class="col-md-6">
-                        <input style="width: 100%; margin-left: 0;" type="text" class=""  name="endDate"  value="@professional.endDate" disabled>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1 right">
-                        <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                            <img class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        }
-        }
-        <div class="main-div-sections">
-            <div class="panel-group new-input-container center" style="margin-auto;">
-                <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
-                    <div class="form-group form-inline" id="job_experience_group_1">
-                        <div class="col-md-6">
-                            <div class="input-mic-container">
-                                <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
-                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-mic-container">
-                                <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
-                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group form-inline" id="job_experience_group_3">
-                        <div class="col-md-6">
-                            <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="startDate">
-                        </div>
-                        <div class="col-md-6">
-                            <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="endDate">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1 right">
-                            <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        }else{
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <span id="validate_exp_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu experiencia profesional.</span><br>
-        </div>
-        <div class="row orientation-points" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
-            <div class="col-md-6">
-                <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenLog(this.checked)">
-                <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
-            </div>
-        </div>
-        <div class="main-div-sections">
-            <div class="panel-group new-input-container center" style="margin-auto;">
-                <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
-                    <div class="form-group form-inline" id="job_experience_group_1">
-                        <div class="col-md-6">
-                            <div class="input-mic-container">
-                                <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
-                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-mic-container">
-                                <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
-                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group form-inline" id="job_experience_group_3">
-                        <div class="col-md-6">
-                            <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="startDate">
-                        </div>
-                        <div class="col-md-6">
-                            <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="endDate">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1 right">
-                            <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        }
-        }else{
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <span id="validate_exp_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu experiencia profesional.</span><br>
-        </div>
-        <div class="row orientation-points" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
-            <div class="col-md-6">
-                <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenNoLog(this.checked)">
-                <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
-            </div>
-        </div>
-        <div class="main-div-sections">
-            <div class="panel-group new-input-container center" style="margin-auto;">
-                <form id="experience_group_new_no_log" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
-                    <div class="form-group form-inline" id="job_experience_group_1">
-                        <div class="col-md-6">
-                            <div class="input-mic-container">
-                                <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
-                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="input-mic-container">
-                                <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
-                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group form-inline" id="job_experience_group_3">
-                        <div class="col-md-6">
-                            <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="startDate">
-                        </div>
-                        <div class="col-md-6">
-                            <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="endDate">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1 right">
-                            <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        }
-
-
-
-    -->
 
     <div class="row orientation-points" id="check_exp_cb">
         <div class="col-lg-12  arial size14">
