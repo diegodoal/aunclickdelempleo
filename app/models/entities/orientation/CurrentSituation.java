@@ -33,8 +33,8 @@ public class CurrentSituation {
     public void clearEducationLevel(){this.educationLevelList.clear();}
 
 
-    public void addProfessionalExperience(String company, String job, String startDate, String endDate){
-        this.professionalExperienceList.add(new ProfessionalExperience(company, job, startDate, endDate));
+    public void addProfessionalExperience(String company, String job, String startDate, String endDate, String ID){
+        this.professionalExperienceList.add(new ProfessionalExperience(company, job, startDate, endDate, ID));
     }
     public void clearProfessionalExperience(){this.professionalExperienceList.clear();}
 

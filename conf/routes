@@ -13,7 +13,6 @@ GET     /login                                      controllers.LoginController.
 GET     /logout                                     controllers.LoginController.logout()
 POST    /login                                      controllers.LoginController.submitLogin()
 POST    /signup                                     controllers.LoginController.submitSignUp()
-POST    /submitLoginApp                             controllers.LoginController.submitLoginApp()
 
 GET     /forgotten                                  controllers.LoginController.forgottenPasswordBlank()
 POST    /forgotten                                  controllers.LoginController.sendRestoreEmail()
@@ -32,6 +31,7 @@ POST    /orientation                                controllers.OrientationContr
 GET     /orientation/currentsituation 				controllers.OrientationController.currentsituation()
 POST    /orientation/currentsituation               controllers.OrientationController.submitCurrentSituation()
 POST    /orientation/currentsituation/Check         controllers.OrientationController.submitCurrentSituationCheck()
+POST    /orientation/currentsituation/Delete        controllers.OrientationController.deleteExperienceCurrentSituation()
 GET     /orientation/skills							controllers.OrientationController.skills()
 POST    /orientation/skills          		        controllers.OrientationController.submitSkills()
 GET     /orientation/interestidentification         controllers.OrientationController.interestIdentification()
@@ -107,3 +107,7 @@ GET     /orientation/reputation/submit              controllers.OrientationContr
 
 #Planning
 GET    /planning                                   controllers.PlanningController.plan()
+
+# APP
+POST    /submitLoginApp                            controllers.AppController.submitLoginApp()
+POST    /getInterviews                             controllers.AppController.getInterviews()

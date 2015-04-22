@@ -2,6 +2,7 @@
 @main(){
 <script type='text/javascript' src="@routes.Assets.at("javascripts/hide_experience.js")"></script>
 <script type='text/javascript' src="@routes.Assets.at("javascripts/hide_studies_reload.js")"></script>
+
 <article class="container">
     <div class="row">
         <h2 class="red_adecco century_gothic">Conoce tu situación actual</h2>
@@ -211,8 +212,9 @@
                 </div>
                 <div class="row">
                      <div class="col-md-1 right">
-                             <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                <img class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                             <div class="form-group add-other-btn-div button-cursor-pointer delete-experience" id="delete-experience-@professional.ID">
+                                 <input style="width: 100%; margin-left: 0;" type="hidden" name="ID" value="@professional.ID">
+                                 <img  class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
                              </div>
                      </div>
                  </div>
@@ -361,11 +363,13 @@
 <script type="text/javascript">
       window.onload = function() {
         addNew();
+        deleteExperience();
         loadRecognition();
         disableOtherChecks();
     };
 </script>
 <script>
+
     function sendForm(){
 
     var HtmlRedirect = "";
@@ -397,13 +401,14 @@
         var counter = 0;
         var URLroutes = "";
 
-    if( $('input[name="company"]').val() != "" && $('input[name="job"]').val() != "" && $('input[name="startDate"]').val() != "" && $('input[name="endDate"]').val() != ""){
+    if( $(' #experience_group_new input[name="company"]').val() != "" && $('#experience_group_new input[name="job"]').val() != "" && $('#experience_group_new input[name="startDate"]').val() != "" && $(' #experience_group_new input[name="endDate"]').val() != ""){
         $('.main-div-sections #experience_group_new').each(function(){
             var auxExperience = [];
             $(this).find('input').each(function(){
                 auxExperience[counter] = $(this).val();
                 counter++;
             });
+
             auxExperience[counter] = $(this).find('select option:selected').text();
             counter = 0;
             experienceArray.push(auxExperience);
