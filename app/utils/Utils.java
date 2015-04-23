@@ -71,16 +71,14 @@ public class Utils {
         return diff;
     }
 
-    public static void initFakeDBCollection(String certificate) {
-        for (int counter = 0; counter < 500; counter++) {
+    public static void initFakeDBCollection() {
+        for (int counter = 0; counter < 50; counter++) {
             User user = new User("Name" + counter, "Surname" + counter, "email" + counter + "@gmail.com", "password" + counter);
 
             //Current Situation
             user.currentSituation.addEducationLevel("Primaria");
             user.currentSituation.addEducationLevel("Secundaria");
             user.currentSituation.addEducationLevel("Grado");
-
-            user.certificateOfDisability = certificate;
 
             user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "2014-10", "2015-05");
             user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "2015-05", "2016-03");

@@ -82,6 +82,29 @@
         </div>
     </div>
 }
+
+<!-- ################### -->
+
+<table id="users_table" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for(user <- users){
+            <tr>
+                <td>@user.name</td>
+                <td>@user.surnames</td>
+                <td>@user.email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- ################### -->
 </section>
 
 <!-- PHOTO-TAKING MODAL -->
@@ -105,6 +128,10 @@
 
 
 <script type="text/javascript">
+$(document).ready(function() {
+    $('#users_table').DataTable();
+} );
+
     function changeUserInfo(){
         var result = "/admin/show/"+$('#users_select').val();
         window.location.replace(result);
