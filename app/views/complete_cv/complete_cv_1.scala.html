@@ -93,13 +93,12 @@
     </div>
 
     <div class="form-group">
-        <div class="col-lg-5 input-mic-container">
+        <div class="col-lg-5">
             @if(user != null){
                 <input type="text" class="form-control" id="date" onfocus="(this.type='date')" required="required" value="@user.birthDate" placeholder="Fecha de nacimiento" >
             }else{
                 <input type="text" class="form-control" id="date" onfocus="(this.type='date')" required="required" value="" placeholder="Fecha de nacimiento" >
             }
-            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
     </div>
 
