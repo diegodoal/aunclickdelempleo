@@ -3,7 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import models.datasource.AmazonDataSource;
+import models.datasource.ConfDataSource;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.data.DynamicForm;
@@ -15,7 +15,6 @@ import utils.Utils;
 import java.util.List;
 
 import static play.data.Form.form;
-import static play.mvc.Http.Context.Implicit.request;
 
 
 /**
@@ -51,7 +50,7 @@ public class AdminController extends Controller{
     }
 
     public static Result usersBlank(){
-        String[] result = AmazonDataSource.getInstance().getAmazonConf();
+        String[] result = ConfDataSource.getInstance().getAmazonConf();
        // System.out.println("@@@@@@@@@@@@@@@" + result[0] + "---"+result[1]+"----"+result[2]);
 
         if(checkConnection(session().get("user"))) {
@@ -98,5 +97,23 @@ public class AdminController extends Controller{
         return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(), Stats.getCertificatesOfDisability()));
     }
 
+    /* ############### OPTIONS ############### */
+    public static Result optionsBlank(){
+        String[] amazon = ConfDataSource.getInstance().getAmazonConf();
+        return ok(views.html.admin.options.render(amazon));
+    }
+
+    public static Result updateAmazonOptions(){
+        DynamicForm form = form().bindFromRequest();
+        String bucket = form.get("bucket_name");
+        String access_key = form.get("access_key");
+        String secret_key = form.get("secret_key");
+
+        if(bucket != null && access_key != null && secret_key != null){
+            ConfDataSource.getInstance().updateAmazonConf(bucket.trim(), access_key.trim(), secret_key.trim());
+        }
+
+        return redirect("/admin/options");
+    }
 
 }

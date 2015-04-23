@@ -4,7 +4,7 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
-import models.datasource.AmazonDataSource;
+import models.datasource.ConfDataSource;
 import play.Application;
 import play.Logger;
 import play.Plugin;
@@ -29,7 +29,7 @@ public class S3Plugin extends Plugin{
 
     @Override
     public void onStart() {
-        String[] amazonConf = AmazonDataSource.getInstance().getAmazonConf();
+        String[] amazonConf = ConfDataSource.getInstance().getAmazonConf();
         //String accessKey = application.configuration().getString(AWS_ACCESS_KEY);
         //String secretKey = application.configuration().getString(AWS_SECRET_KEY);
         //s3Bucket = application.configuration().getString(AWS_S3_BUCKET);

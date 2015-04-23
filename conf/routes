@@ -115,3 +115,5 @@ GET     /admin/users                                controllers.AdminController.
 GET     /admin/users/:email/:id                     controllers.AdminController.userInfo(email: String, id: String)
 POST    /admin/delete                               controllers.AdminController.deleteUser()
 GET     /admin/stats                                controllers.AdminController.stats()
+GET     /admin/options                              controllers.AdminController.optionsBlank()
+POST    /admin/options                              controllers.AdminController.updateAmazonOptions()

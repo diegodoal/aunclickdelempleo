@@ -9,14 +9,14 @@ import java.net.UnknownHostException;
 /**
  * Created by Victor on 23/04/2015.
  */
-public class AmazonDataSource {
+public class ConfDataSource {
 
     /**
      * Object field, contructor and method for Singleton Pattern
      */
-    private static AmazonDataSource INSTANCE = new AmazonDataSource();
-    private AmazonDataSource(){}
-    public static AmazonDataSource getInstance(){
+    private static ConfDataSource INSTANCE = new ConfDataSource();
+    private ConfDataSource(){}
+    public static ConfDataSource getInstance(){
         return INSTANCE;
     }
 
