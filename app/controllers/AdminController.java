@@ -94,7 +94,7 @@ public class AdminController extends Controller{
     }
 
     public static Result stats(){
-        return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense()));
+        return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(), Stats.getCertificatesOfDisability()));
     }
 
 
