@@ -113,5 +113,5 @@ GET     /admin/login                                controllers.AdminController.
 POST    /admin/login                                controllers.AdminController.submitLogin()
 GET     /admin/users                                controllers.AdminController.usersBlank()
 GET     /admin/users/:email/:id                     controllers.AdminController.userInfo(email: String, id: String)
-GET     /admin/delete/:email/:id                    controllers.AdminController.deleteUser(email: String, id: String)
+POST    /admin/delete                               controllers.AdminController.deleteUser()
 GET     /admin/stats                                controllers.AdminController.stats()

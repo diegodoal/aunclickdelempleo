@@ -1,72 +1,69 @@
 @(user : models.entities.User)
 
 @header("users"){
-<section class="container-fluid">
-        <div>
-            <h3><b>Información Personal</b></h3>
-            <p>@user.name @user.surnames</p>
-            <p>@user.email</p>
+<h3><b>Información Personal</b></h3>
+    <p>@user.name @user.surnames</p>
+    <p>@user.email</p>
 
-            <h3><b>Situación Actual</b></h3>
-            <h4>Nivel de educación</h4>
-            <ul>
-                @for(education <- user.currentSituation.educationLevelList) {
-                <li>@education</li>
-                }
-            </ul>
+    <h3><b>Situación Actual</b></h3>
+    <h4>Nivel de educación</h4>
+    <ul>
+        @for(education <- user.currentSituation.educationLevelList) {
+        <li>@education</li>
+        }
+    </ul>
 
-            <h4>Experiencia profesional</h4>
-            <ul>
-                @for(professional <- user.currentSituation.professionalExperienceList) {
-                            <li><b>Empresa:</b> @professional.company</li>
-                            <li><b>Puesto:</b> @professional.job</li>
-                            <li><b>Años de experiencia:</b> @professional.startDate - @professional.endDate</li>
-                    <br>
-                }
-            </ul>
+    <h4>Experiencia profesional</h4>
+    <ul>
+        @for(professional <- user.currentSituation.professionalExperienceList) {
+                    <li><b>Empresa:</b> @professional.company</li>
+                    <li><b>Puesto:</b> @professional.job</li>
+                    <li><b>Años de experiencia:</b> @professional.startDate - @professional.endDate</li>
+            <br>
+        }
+    </ul>
 
-            <h3><b>Habilidades</b></h3>
-            <ul>
-                @for(skill <- user.skill) {
-                <li>@skill.name | <b>Nivel:</b> @skill.level</li>
-                }
-            </ul>
+    <h3><b>Habilidades</b></h3>
+    <ul>
+        @for(skill <- user.skill) {
+        <li>@skill.name | <b>Nivel:</b> @skill.level</li>
+        }
+    </ul>
 
-            <h3><b>Intereses</b></h3>
-            <ul>
-                @for(interest <- user.interests) {
-                <li>@interest</li>
-                }
-            </ul>
+    <h3><b>Intereses</b></h3>
+    <ul>
+        @for(interest <- user.interests) {
+        <li>@interest</li>
+        }
+    </ul>
 
-            <h3><b>Características personales</b></h3>
-            <ul>
-                @for(characteristic <- user.personalCharacteristics) {
-                <li>@characteristic</li>
-                }
-            </ul>
+    <h3><b>Características personales</b></h3>
+    <ul>
+        @for(characteristic <- user.personalCharacteristics) {
+        <li>@characteristic</li>
+        }
+    </ul>
 
-            <h3><b>Valores profesionales</b></h3>
-            <ul>
-                @for(values <- user.professionalValues) {
-                @if(values.valuation == "Si"){
-                <li>@values.name</li>
-                }
-                }
-            </ul>
+    <h3><b>Valores profesionales</b></h3>
+    <ul>
+        @for(values <- user.professionalValues) {
+        @if(values.valuation == "Si"){
+        <li>@values.name</li>
+        }
+        }
+    </ul>
 
-            <h3><b>Próximas entrevistas</b></h3>
-            <ul>
-                @for(interview <- user.interviewScheduleList) {
-                <li><b>Fecha:</b> @interview.date</li>
-                <li><b>Empresa:</b> @interview.company</li>
-                <li><b>Dirección:</b> @interview.address</li>
-                <br>
-                }
-            </ul>
-            <button type="button" class="btn btn-danger" onclick="showModal()">Eliminar</button>
-        </div>
-</section>
+    <h3><b>Próximas entrevistas</b></h3>
+    <ul>
+        @for(interview <- user.interviewScheduleList) {
+        <li><b>Fecha:</b> @interview.date</li>
+        <li><b>Empresa:</b> @interview.company</li>
+        <li><b>Dirección:</b> @interview.address</li>
+        <br>
+        }
+    </ul>
+
+<button type="button" class="btn btn-danger" onclick="javascript: $('#confirmDeleteModal').modal('show');">Eliminar</button>
 
 <!-- CONFIRM DELETE USER MODAL -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -87,18 +84,28 @@
 </div>
 <!-- END OF CONFIRM DELETE USER MODAL -->
 
-
 <script type="text/javascript">
-
-    function showModal(){
-        $('#confirmDeleteModal').modal('show');
-    }
     function confirmDelete(){
-        @if(user!=null){
-            alert("Usuario eliminado!");
-            $('#confirmDeleteModal').modal('hide');
-            window.location.replace("/admin/delete/@user.email/@user.id");
-        }
+        var result = [];
+        result[0] = "@user.email";
+        result[1] = "@user.id";
+
+        $.ajax({
+                type: 'post',
+                data: JSON.stringify(result),
+                url: "/admin/delete",
+                contentType: 'application/json',
+                error: function(){
+                    alert("Error al eliminar usuario...");
+                },
+                success: function(){
+                    alert("Usuario eliminado correctamente");
+                    $('#confirmDeleteModal').modal('hide');
+                    window.location.assign("/admin/users");
+
+                }
+            });
+
     }
 </script>
 }

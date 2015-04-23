@@ -1,6 +1,8 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.data.DynamicForm;
@@ -12,6 +14,7 @@ import utils.Utils;
 import java.util.List;
 
 import static play.data.Form.form;
+import static play.mvc.Http.Context.Implicit.request;
 
 
 /**
@@ -68,17 +71,20 @@ public class AdminController extends Controller{
         }
     }
 
-    public static Result deleteUser(String email, String id){
+    public static Result deleteUser(){
         if(checkConnection(session().get("user"))) {
-            User user = SingletonDataSource.getInstance().getUserByEmail(email);
-            if (user != null && user.id.equals(id)) {
-                boolean result = SingletonDataSource.getInstance().deleteUser(email);
-                if (result == true)
-                    return redirect("/admin/users");
-                else
-                    return badRequest("Cannot delete.");
-            } else
+            JsonNode request = request().body().asJson();
+
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
+            }.getType());
+
+            User user = SingletonDataSource.getInstance().getUserByEmail(result[0]);
+            if(user != null && user.id.equals(result[1])){
+                SingletonDataSource.getInstance().deleteUser(user.email);
+                return ok();
+            }else{
                 return badRequest("Cannot delete. User not found or invalid user.");
+            }
         }else{
             return unauthorized("Access denied");
         }
