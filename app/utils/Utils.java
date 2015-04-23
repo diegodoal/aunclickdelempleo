@@ -79,10 +79,10 @@ public class Utils {
             user.currentSituation.addEducationLevel("Primaria");
             user.currentSituation.addEducationLevel("Secundaria");
             user.currentSituation.addEducationLevel("Grado");
-            String experienceID =  new Date().toString();
-            user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "2014-10", "2015-05",experienceID);
-            String experienceID2 =  new Date().toString();
-            user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "2015-05", "2016-03",experienceID2);
+            String expID =  UUID.randomUUID().toString();
+            user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "2014-10", "2015-05",expID);
+            String expID2 =  UUID.randomUUID().toString();
+            user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "2015-05", "2016-03",expID2);
 
             //Skills
             //user.skills.add(new Skill("Hablar en público", "Bien"));
