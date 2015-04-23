@@ -7231,5 +7231,13 @@ a.format:hover, a.format:focus {
 .custom-progress::-webkit-progress-value{
     background: #422918;
     border-radius: 20px;
+}
 
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
 }
