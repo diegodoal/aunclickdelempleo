@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import models.datasource.AmazonDataSource;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.data.DynamicForm;
@@ -50,6 +51,9 @@ public class AdminController extends Controller{
     }
 
     public static Result usersBlank(){
+        String[] result = AmazonDataSource.getInstance().getAmazonConf();
+       // System.out.println("@@@@@@@@@@@@@@@" + result[0] + "---"+result[1]+"----"+result[2]);
+
         if(checkConnection(session().get("user"))) {
             List<User> users = SingletonDataSource.getInstance().findAll();
             return ok(views.html.admin.users.render(users));
