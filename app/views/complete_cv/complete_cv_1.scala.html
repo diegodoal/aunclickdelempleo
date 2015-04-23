@@ -128,9 +128,9 @@
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
             @if(user != null){
-                <input type="text" class="form-control" id="number" value="@user.residenceNumber" required="required"  placeholder="Número">
+                <input type="number" class="form-control" id="number" value="@user.residenceNumber" required="required"  placeholder="Número">
             }else{
-                <input type="text" class="form-control" id="number" value="" required="required"  placeholder="Número">
+                <input type="number" class="form-control" id="number" value="" required="required" placeholder="Número">
             }
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
@@ -139,9 +139,9 @@
     <div class="form-group">
         <div class="col-lg-5 input-mic-container">
             @if(user != null){
-                <input type="post" class="form-control" id="post" value="@user.residenceZipCode" placeholder="Código postal">
+                <input type="number" class="form-control" id="post" value="@user.residenceZipCode" placeholder="Código postal">
             }else{
-                <input type="post" class="form-control" id="post" value="" placeholder="Código postal">
+                <input type="number" class="form-control" id="post" value="" placeholder="Código postal">
             }
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
         </div>
@@ -157,7 +157,7 @@
         </div>
     </div><br>
 
-    <form class="form-horizontal" role="form">
+    <form class="form-horizontal" role="form" method="POST">
         <div class="form-group">
             <div class="col-lg-5">
                 @if(user != null){
@@ -171,9 +171,9 @@
         <div class="form-group">
             <div class="col-lg-5 input-mic-container">
                 @if(user != null){
-                    <input type="text" class="form-control" id="telephone" value="@user.phoneNumber" placeholder="Teléfono de contacto">
+                    <input type="tel" maxlength="9" class="form-control" id="telephone" value="@user.phoneNumber" placeholder="Teléfono de contacto">
                 }else{
-                    <input type="text" class="form-control" id="telephone" value="" placeholder="Teléfono de contacto">
+                    <input type="tel" maxlength="9" class="form-control" id="telephone" value="" placeholder="Teléfono de contacto">
                 }
             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
             </div>
@@ -381,10 +381,10 @@
     <div class="box_pop_up resize">
         <a href="#close" title="Cerrar" class="close">X</a>
 
-        <h2 text-align="center">¿Cómo funciona?<h2>
+        <h2 text-align="center">¿Cómo funciona?</h2>
             <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
             <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
-            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button></h4><br>
             <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
 
     </div>
