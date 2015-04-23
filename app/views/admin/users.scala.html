@@ -1,0 +1,33 @@
+@(users : List[models.entities.User])
+
+@header("main"){
+<section class="container-fluid">
+    <table id="users_table" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(user <- users){
+                <tr>
+                    <td>
+                        <a href="/admin/users/@user.email/@user.id"><img width="5%" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
+                        @user.name</td>
+                    <td>@user.surnames</td>
+                    <td>@user.email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#users_table').DataTable();
+    } );
+</script>
+}

@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/custom-fonts.css")">
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/graphics.css")">
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/jquery.dataTables.min.css")">
+
     <script type='text/javascript' src="@routes.Assets.at("javascripts/jquery-1.11.2.min.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/flotr2.min.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/jquery.dataTables.min.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/graphics.js")"></script>
@@ -22,12 +24,12 @@
 <!-- NAV -->
 <nav class="navbar navbar-inverse" >
     <div class="container-fluid">
-        <a class="navbar-brand hidden-xs" href="@routes.AdminController.blank(null, null)">Adecco</a>
+        <a class="navbar-brand hidden-xs" href="#">Adecco</a>
         <ul class="nav navbar-nav">
             @if(nav == "users"){
-                <li class="active"><a href="@routes.AdminController.blank(null, null)">Usuarios<span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="@routes.AdminController.usersBlank()">Usuarios<span class="sr-only">(current)</span></a></li>
             }else{
-                <li><a href="@routes.AdminController.blank(null, null)">Usuarios<span class="sr-only">(current)</span></a></li>
+                <li><a href="@routes.AdminController.usersBlank()">Usuarios<span class="sr-only">(current)</span></a></li>
             }
             @if(nav == "stats"){
                 <li class="active"><a href="@routes.AdminController.stats()">Estadísticas</a></li>

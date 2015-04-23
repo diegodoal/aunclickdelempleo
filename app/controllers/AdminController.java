@@ -46,18 +46,23 @@ public class AdminController extends Controller{
         return badRequest();
     }
 
-    public static Result blank(String email, String id){
+    public static Result usersBlank(){
         if(checkConnection(session().get("user"))) {
             List<User> users = SingletonDataSource.getInstance().findAll();
-            if (email == null || id == null)
-                return ok(views.html.admin.admin_main.render(users, null));
+            return ok(views.html.admin.users.render(users));
+        }else{
+            return unauthorized("Access denied");
+        }
+    }
 
-            for (User user : users) {
-                if (user.email.equals(email) && user.id.equals(id)) {
-                    return ok(views.html.admin.admin_main.render(users, user));
-                }
+    public static Result userInfo(String email, String id){
+        if(checkConnection(session().get("user"))){
+            User user = SingletonDataSource.getInstance().getUserByEmail(email);
+            if(user != null && user.id.equals(id)){
+                return ok(views.html.admin.user_info.render(user));
+            }else{
+                return redirect("/admin/users");
             }
-            return ok(views.html.admin.admin_main.render(users, null));
         }else{
             return unauthorized("Access denied");
         }
