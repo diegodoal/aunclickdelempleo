@@ -1,4 +1,4 @@
-@(nav: String = "")(content: Html)
+@(nav: String)(content: Html)
 
 <!DOCTYPE html>
 <html lang="es">
@@ -16,15 +16,30 @@
 </head>
 <body>
 <!-- NAV -->
-<nav class="navbar navbar-default" style="background-color: grey;">
+<nav class="navbar navbar-inverse" >
     <div class="container-fluid">
         <a class="navbar-brand" href="@routes.AdminController.blank(null, null)">Adecco</a>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="@routes.AdminController.blank(null, null)">Usuarios<span class="sr-only">(current)</span></a></li>
-            <li><a href="@routes.AdminController.stats()">Estadísticas</a></li>
-            <li><a href="#">Opciones</a></li>
+            @if(nav == "users"){
+                <li class="active"><a href="@routes.AdminController.blank(null, null)">Usuarios<span class="sr-only">(current)</span></a></li>
+            }else{
+                <li><a href="@routes.AdminController.blank(null, null)">Usuarios<span class="sr-only">(current)</span></a></li>
+            }
+            @if(nav == "stats"){
+                <li class="active"><a href="@routes.AdminController.stats()">Estadísticas</a></li>
+            }else{
+                <li><a href="@routes.AdminController.stats()">Estadísticas</a></li>
+            }
+            @if(nav == "options"){
+                <li class="active"><a href="#">Opciones</a></li>
+            }else{
+                <li><a href="#">Opciones</a></li>
+            }
         </ul>
 
+        <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Salir</a></li>
+            </ul>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -34,10 +49,10 @@
                 </div>
                 <button type="submit" class="btn btn-default">Buscar</button>
             </form>
+
+
         </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Salir</a></li>
-            </ul>
+            
         <!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
@@ -47,3 +62,14 @@
     <section class="content">@content</section>
 </body>
 </html>
+
+<script type="text/javascript">
+    window.onload = function(){
+        $('.nav a').click(function(){
+            $(this).parent().parent().children('li').each(function(){
+                $(this).removeClass('active');
+            });
+            $(this).parent().addClass('active');
+        });
+    }
+</script>
