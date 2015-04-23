@@ -7233,15 +7233,3 @@ a.format:hover, a.format:focus {
     border-radius: 20px;
 
 }
-      .estilo_date{
-        background-color:white; 
-        width: 180px;
-        text-align: center;
-        border: 0.1em solid #ccc;
-        padding-top: 6px;
-        padding-bottom: 4px;
-        border-radius: 5px;
-      }
-.sombra:focus{
-  outline: none;
-}
