@@ -16,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import static play.mvc.Controller.session;
@@ -100,12 +101,8 @@ public class GenerateDocumentsController {
                 List<ProfessionalExperience> auxProfessionalExperience = new ArrayList<>();
 
                 for (int i = 0; i < professionalExperience.length; i++) {
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                    }catch (InterruptedException e){
-                    }
-                    String experienceID =  new Date().toString();
-                    auxProfessionalExperience.add(new ProfessionalExperience(professionalExperience[i][0], professionalExperience[i][1], professionalExperience[i][2], professionalExperience[i][3],experienceID));
+                    String expID =  UUID.randomUUID().toString();
+                    auxProfessionalExperience.add(new ProfessionalExperience(professionalExperience[i][0], professionalExperience[i][1], professionalExperience[i][2], professionalExperience[i][3],expID));
                 }
 
                 user.currentSituation.professionalExperienceList = auxProfessionalExperience;

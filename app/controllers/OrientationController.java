@@ -110,6 +110,10 @@ public class OrientationController extends Controller {
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
+        if(user == null){
+            return redirect("/orientation");
+        }
+
 
         String[] studies = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
         for(int i=0; i<studies.length-1; i++){
@@ -135,13 +139,8 @@ public class OrientationController extends Controller {
             String experienceID;
 
             for (int i=0; i<experience.length; i++) {
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                }catch (InterruptedException e){
-
-                }
-                 experienceID =  new Date().toString();
-                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2],experience[i][3],experienceID );
+                String expID =  UUID.randomUUID().toString();
+                user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2],experience[i][3],expID );
             }
         }else{
             // Copiamos el array de experiencia profesional
@@ -150,11 +149,6 @@ public class OrientationController extends Controller {
             }
 
             for (int i=0; i<experience.length; i++) {
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                }catch (InterruptedException e){
-
-                }
                 //Logger.debug("For experience");
                 int addNewElement = 1;
                 for (ProfessionalExperience professionalExperience : currentExperienceCopy) {
@@ -176,9 +170,9 @@ public class OrientationController extends Controller {
 
                         }
                     }
-                    String experienceID =  new Date().toString();
+                    String expID =  UUID.randomUUID().toString();
                     // Logger.debug("Añado la nueva experiencia");
-                    user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2], experience[i][3], experienceID);
+                    user.currentSituation.addProfessionalExperience(experience[i][0], experience[i][1], experience[i][2], experience[i][3], expID);
                 }
             }
 
@@ -193,6 +187,10 @@ public class OrientationController extends Controller {
     public static Result submitCurrentSituationCheck(){
         JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user == null){
+            return redirect("/orientation");
+        }
 
         String[] studies = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
         for(int i=0; i<studies.length-1; i++){
@@ -213,8 +211,8 @@ public class OrientationController extends Controller {
         String checkExperience = new Gson().fromJson(studies[studies.length-1].toString(), new TypeToken<String>(){}.getType());
 
         if(user.currentSituation.professionalExperienceList.size() == 0){
-            String experienceID =  new Date().toString();
-            user.currentSituation.addProfessionalExperience(checkExperience, "", "", "",experienceID);
+            String expID =  UUID.randomUUID().toString();
+            user.currentSituation.addProfessionalExperience(checkExperience, "", "", "",expID);
         }else {
             for (int i = 0; i < user.currentSituation.professionalExperienceList.size(); i++) {
 
@@ -224,8 +222,8 @@ public class OrientationController extends Controller {
                 } else {
                     //Logger.info("La Base de datos  no contiene el check de no tengo experiencia");
                     user.currentSituation.clearProfessionalExperience();
-                    String experienceID =  new Date().toString();
-                    user.currentSituation.addProfessionalExperience(checkExperience, "", "", "",experienceID);
+                    String expID =  UUID.randomUUID().toString();
+                    user.currentSituation.addProfessionalExperience(checkExperience, "", "", "",expID);
                 }
             }
         }
