@@ -41,7 +41,7 @@ public class AdminController extends Controller{
         String password = bindedForm.get("password");
         if(user.equals("adecco") && password.equals("password")){
             session("user", Utils.encryptWithSHA1(user));
-            return redirect("/admin/show");
+            return redirect("/admin/users");
         }
         return badRequest();
     }
@@ -63,29 +63,13 @@ public class AdminController extends Controller{
         }
     }
 
-    public static Result searchUser(){
-        DynamicForm form = form().bindFromRequest();
-        if(checkConnection(session().get("user"))) {
-            List<User> users = SingletonDataSource.getInstance().findAll();
-            for(User user : users){
-                String search = user.name.toLowerCase() + " " + user.surnames.toLowerCase() + " " + user.email.toLowerCase();
-                if(search.contains(form.get("query").toLowerCase().trim())){
-                    return redirect("/admin/show/" + user.email + "/" + user.id);
-                }
-            }
-            return redirect("/admin/show");
-        }else{
-            return unauthorized("Access denied");
-        }
-    }
-
     public static Result deleteUser(String email, String id){
         if(checkConnection(session().get("user"))) {
             User user = SingletonDataSource.getInstance().getUserByEmail(email);
             if (user != null && user.id.equals(id)) {
                 boolean result = SingletonDataSource.getInstance().deleteUser(email);
                 if (result == true)
-                    return redirect("/admin/show");
+                    return redirect("/admin/users");
                 else
                     return badRequest("Cannot delete.");
             } else

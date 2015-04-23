@@ -1,0 +1,148 @@
+@(users : List[models.entities.User])(user : models.entities.User)
+
+@header("users"){
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <select class="form-control" id="users_select" onchange="changeUserInfo()">
+                        <option value="0" disabled selected>Usuarios</option>
+                        @for(user <- users){
+                            <option value="@user.email/@user.id">@user.name @user.surnames (@user.email)</option>
+                        }
+                    </select>
+                </div>
+            </form>
+        </div>
+@if(user != null){
+        <div class="col-md-9">
+            <h3><b>Información Personal</b></h3>
+            <p>@user.name @user.surnames</p>
+            <p>@user.email</p>
+
+            <h3><b>Situación Actual</b></h3>
+            <h4>Nivel de educación</h4>
+            <ul>
+                @for(education <- user.currentSituation.educationLevelList) {
+                <li>@education</li>
+                }
+            </ul>
+
+            <h4>Experiencia profesional</h4>
+            <ul>
+                @for(professional <- user.currentSituation.professionalExperienceList) {
+                            <li><b>Empresa:</b> @professional.company</li>
+                            <li><b>Puesto:</b> @professional.job</li>
+                            <li><b>Años de experiencia:</b> @professional.startDate - @professional.endDate</li>
+                    <br>
+                }
+            </ul>
+
+            <h3><b>Habilidades</b></h3>
+            <ul>
+                @for(skill <- user.skill) {
+                <li>@skill.name | <b>Nivel:</b> @skill.level</li>
+                }
+            </ul>
+
+            <h3><b>Intereses</b></h3>
+            <ul>
+                @for(interest <- user.interests) {
+                <li>@interest</li>
+                }
+            </ul>
+
+            <h3><b>Características personales</b></h3>
+            <ul>
+                @for(characteristic <- user.personalCharacteristics) {
+                <li>@characteristic</li>
+                }
+            </ul>
+
+            <h3><b>Valores profesionales</b></h3>
+            <ul>
+                @for(values <- user.professionalValues) {
+                @if(values.valuation == "Si"){
+                <li>@values.name</li>
+                }
+                }
+            </ul>
+
+            <h3><b>Próximas entrevistas</b></h3>
+            <ul>
+                @for(interview <- user.interviewScheduleList) {
+                <li><b>Fecha:</b> @interview.date</li>
+                <li><b>Empresa:</b> @interview.company</li>
+                <li><b>Dirección:</b> @interview.address</li>
+                <br>
+                }
+            </ul>
+            <button type="button" class="btn btn-danger" onclick="javascript: $('#confirmDeleteModal').modal('show');">Eliminar</button>
+        </div>
+    </div>
+}
+
+<!-- ################### -->
+
+<table id="users_table" class="display" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for(user <- users){
+            <tr>
+                <td>@user.name</td>
+                <td>@user.surnames</td>
+                <td>@user.email</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<!-- ################### -->
+</section>
+
+<!-- PHOTO-TAKING MODAL -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- dialog body -->
+            <div class="modal-body">
+                <h3>¿Seguro que desea eliminar el usuario?</h3>
+                <p>Una vez eliminado el usuario, no se podrá recuperar... ¿Desea continuar?</p>
+            </div>
+            <!-- dialog buttons -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onclick="javascript: $('#confirmDeleteModal').modal('hide');">Cancelar</button>
+                <button type="button" id="confirmDeleteBtn" class="btn btn-danger" onclick="confirmDelete()">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END OF PHOTO-TAKING MODAL -->
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#users_table').DataTable();
+} );
+
+    function changeUserInfo(){
+        var result = "/admin/show/"+$('#users_select').val();
+        window.location.replace(result);
+    }
+
+    function confirmDelete(){
+        @if(user!=null){
+            alert("Usuario eliminado!");
+            $('#confirmDeleteModal').modal('hide');
+            window.location.replace("/admin/delete/@user.email/@user.id");
+        }
+    }
+</script>
+}

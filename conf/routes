@@ -111,8 +111,7 @@ GET    /planning                                   controllers.PlanningControlle
 # ADMIN
 GET     /admin/login                                controllers.AdminController.login()
 POST    /admin/login                                controllers.AdminController.submitLogin()
-GET     /admin/show                                 controllers.AdminController.blank(email = null, id = null)
-GET     /admin/show/:email/:id                      controllers.AdminController.blank(email: String, id: String)
+GET     /admin/users                                controllers.AdminController.blank(email = null, id = null)
+GET     /admin/users/:email/:id                     controllers.AdminController.blank(email: String, id: String)
 GET     /admin/delete/:email/:id                    controllers.AdminController.deleteUser(email: String, id: String)
-POST    /admin/show                                 controllers.AdminController.searchUser()
 GET     /admin/stats                                controllers.AdminController.stats()
