@@ -53,6 +53,10 @@
                 <div class="col-md-6" hidden id="alert-password">
                     <div class="alert alert-danger" role="alert">¡Las contraseñas no coinciden!</div>
                 </div>
+
+                <div class="col-md-8" hidden id="alert-minlength-password">
+                    <div class="alert alert-danger" role="alert">¡La contraseña debe tener como mínimo 6 caracteres!</div>
+                </div>
             </div>
         </div>
 
@@ -224,6 +228,7 @@
             <div class="col-md-8" hidden id="alert-confirm-password">
                 <div class="alert alert-danger" role="alert">¡Las contraseñas no coinciden!</div>
             </div>
+
             <div class="row">
                 <div class="col-md-6 center">
                         <button type="button" id="acceptChangeBtn" class="button-accept button-modal" >ACEPTAR</button>
@@ -262,13 +267,22 @@
         var password = $('#new-password').val();
         var changePassword = false;
         if(password == ""){
-           $('#confirmChangesModal').modal('show');
+            $('#alert-minlength-password').show();
+            $('#alert-password').hide();
         }else if(password == $('#repeat-new-password').val()){
                 changePassword = true;
-                $('#confirmChangesModal').modal('show');
         }else{
             $('#alert-password').show();
+            $('#alert-minlength-password').hide();
             window.scrollTo(0,0);
+        }
+
+        if(password.length < 6) {
+            $('#alert-minlength-password').show();
+            $('#alert-password').hide();
+            window.scrollTo(0,0);
+        } else if(password == $('#repeat-new-password').val()) {
+            $('#confirmChangesModal').modal('show');
         }
 
         acceptChangeBtn.addEventListener('click', function(ev){
@@ -281,6 +295,7 @@
             }else{
                 $('#alert-confirm-password').show();
             }
+
             ev.preventDefault();
             }, false
         );
@@ -288,6 +303,7 @@
         cancelChangeBtn.addEventListener('click', function(ev){
             $('#confirmChangesModal').modal('hide');
             $('#alert-password').hide();
+            $('#alert-minlength-password').hide();
             ev.preventDefault();
             }, false
         );
@@ -308,6 +324,7 @@
         success: function(){
             $('#confirmChangesModal').modal('hide');
             $('#alert-password').hide();
+            $('#alert-minlength-password').hide();
             window.location.replace('/profile');
         },
         error: function(){
