@@ -1,4 +1,4 @@
-@(amazon : Array[String])(adminUser : models.entities.AdminUser)
+@(amazon : Array[String])(adminUser : models.entities.AdminUser)(adminUsers : List[models.entities.AdminUser])
 @header("options"){
 <div class="panel panel-default">
     <div class="panel-heading">Configuración Amazon S3</div>
@@ -101,11 +101,48 @@
         </div>
     </div>
 </div>
+@if(adminUser.name == "adecco"){
+<div class="panel panel-default">
+    <div class="panel-heading">Usuarios de administración</div>
+    <div class="panel-body">
+        <table id="users_table" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Timestamp</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(user <- adminUsers){
+                <tr>
+                    <td>@user.name</td>
+                    <td>@user.connectionTimestamp</td>
+                    <td>
+                        @if(user.name != adminUser.name){
+                            <a href="#"><img width="5%" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
+                            <span>&emsp;</span>
+                            <a href="#"><img width="20%" src="@routes.Assets.at("images/orientation/ic_trash2.png")"></a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+</div>
+}
+
 
 <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
-<script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+            $('#users_table').DataTable();
+        } );
 </script>
+
 <script>
     function showModal(){
         var password = $('#user_password').val();

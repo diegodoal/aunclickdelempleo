@@ -128,7 +128,8 @@ public class AdminController extends Controller{
         AdminUser adminUser = checkConnection();
         if(adminUser != null) {
             String[] amazon = ConfDataSource.getInstance().getAmazonConf();
-            return ok(views.html.admin.options.render(amazon, adminUser));
+            List<AdminUser> adminUsers = ConfDataSource.getInstance().getAllAdminUsers();
+            return ok(views.html.admin.options.render(amazon, adminUser, adminUsers));
         }else{
             return unauthorized("Access denied");
         }
