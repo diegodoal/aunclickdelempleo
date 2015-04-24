@@ -2,6 +2,7 @@ function addNewExp(){
 var counter = 0;
 var clonar = 0;
 var campos = 0;
+var experiencieCount = 0;
     $('body').on( "click", ".add-new", function() {
     alert("Funciona");
 
@@ -23,6 +24,8 @@ alert("Clonar"+ clonar);
                   counter = counter -1;
              }else{ //Adding new section
                   var clone = $(this).parent().parent().parent().parent().parent().clone();
+                  //experiencieCount++;
+                  //clone.attr("id",clone.attr("id")+"-"+experiencieCount);
                   clone.find('.form-control').each(function(){
                       $(this).val('');
                   });
