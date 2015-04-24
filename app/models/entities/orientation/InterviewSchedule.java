@@ -3,26 +3,36 @@ package models.entities.orientation;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * Created by Victor on 05/03/2015.
  */
 public class InterviewSchedule {
 
+    public String id;
     public String date;
     public String company;
     public String address;
     public String notified;
+    public Date creationDate;
+    public Date modificationDate;
 
     public InterviewSchedule(){
+        this.id = UUID.randomUUID().toString();
         this.notified = "false";
+        this.creationDate = new Date();
+        this.modificationDate = new Date();
     }
 
     public InterviewSchedule(String date, String company, String address){
+        this.id = UUID.randomUUID().toString();
         this.date = date;
         this.company = company;
         this.address = address;
         this.notified = "false";
+        this.creationDate = new Date();
+        this.modificationDate = new Date();
     }
 
     public String getInterviewDate(){

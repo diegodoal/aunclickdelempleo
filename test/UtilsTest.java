@@ -19,8 +19,8 @@ public class UtilsTest {
         user.currentSituation.addEducationLevel("Secundaria");
 
         //Current Situation - Professional Experience
-        user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "5 años");
-        user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "10 años");
+        user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "", "", "");
+        user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "", "", "");
 
         //Skills
         user.skill.add(new Skill("Hablar en público", "Bien"));
