@@ -27,22 +27,22 @@ public class AdminController extends Controller{
     private final static String ADMIN_USER = "adecco";
     private final static String ADMIN_PASSWORD = "password";
 
-    public static boolean checkConnection(){
+    public static AdminUser checkConnection(){
         String user = session().get("a-user");
         String timestamp = session().get("a-timestamp");
         if(user != null && timestamp != null){
             for(AdminUser adminUser : ConfDataSource.getInstance().getAllAdminUsers()){
                 if(user.equals(adminUser.name) && adminUser.connectionTimestamp.equals(timestamp)){
-                    return true;
+                    return adminUser;
                 }
             }
         }
         session().clear();
-        return false;
+        return null;
     }
 
     public static Result login(){
-        if(checkConnection()){
+        if(checkConnection() != null){
             return redirect("/admin/users");
         }else {
             return ok(views.html.admin.login.render());
@@ -75,7 +75,7 @@ public class AdminController extends Controller{
 
     public static Result usersBlank(){
         String[] result = ConfDataSource.getInstance().getAmazonConf();
-        if(checkConnection()) {
+        if(checkConnection() != null) {
             List<User> users = SingletonDataSource.getInstance().findAll();
             return ok(views.html.admin.users.render(users));
         }else{
@@ -84,7 +84,7 @@ public class AdminController extends Controller{
     }
 
     public static Result userInfo(String email, String id){
-        if(checkConnection()){
+        if(checkConnection() != null){
             User user = SingletonDataSource.getInstance().getUserByEmail(email);
             if(user != null && user.id.equals(id)){
                 return ok(views.html.admin.user_info.render(user));
@@ -97,7 +97,7 @@ public class AdminController extends Controller{
     }
 
     public static Result deleteUser(){
-        if(checkConnection()) {
+        if(checkConnection() != null) {
             JsonNode request = request().body().asJson();
 
             String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
@@ -116,7 +116,7 @@ public class AdminController extends Controller{
     }
 
     public static Result stats(){
-        if(checkConnection()) {
+        if(checkConnection() != null) {
             return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(), Stats.getCertificatesOfDisability()));
         }else{
             return unauthorized("Access denied");
@@ -125,9 +125,10 @@ public class AdminController extends Controller{
 
     /* ############### OPTIONS ############### */
     public static Result optionsBlank(){
-        if(checkConnection()) {
+        AdminUser adminUser = checkConnection();
+        if(adminUser != null) {
             String[] amazon = ConfDataSource.getInstance().getAmazonConf();
-            return ok(views.html.admin.options.render(amazon));
+            return ok(views.html.admin.options.render(amazon, adminUser));
         }else{
             return unauthorized("Access denied");
         }
@@ -144,6 +145,28 @@ public class AdminController extends Controller{
         }
 
         return redirect("/admin/options");
+    }
+
+    public static Result updateAdminUserOptions(){
+        DynamicForm form = form().bindFromRequest();
+        JsonNode request = request().body().asJson();
+
+        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
+        }.getType());
+
+        AdminUser adminUser = ConfDataSource.getInstance().getAdminUser(result[0]);
+        if(adminUser!= null) {
+            if(!result[1].trim().equals("")){
+                adminUser.password = Utils.encryptWithSHA1(result[1]);
+            }
+            Date date = new Date();
+            adminUser.connectionTimestamp = date.toString();
+            session("a-user", adminUser.name);
+            session("a-timestamp", date.toString());
+            ConfDataSource.updateAdminUser(adminUser);
+            return redirect("/admin/options");
+        }
+        return badRequest("Cannot update user info.");
     }
 
 }

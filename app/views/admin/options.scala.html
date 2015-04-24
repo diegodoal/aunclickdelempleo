@@ -1,4 +1,4 @@
-@(amazon : Array[String])
+@(amazon : Array[String])(adminUser : models.entities.AdminUser)
 @header("options"){
 <div class="panel panel-default">
     <div class="panel-heading">Configuración Amazon S3</div>
@@ -38,4 +38,129 @@
         </form>
     </div>
 </div>
+
+<!-- USER INFO -->
+<div class="panel panel-default">
+    <div class="panel-heading">Configuración de cuenta</div>
+    <div class="panel-body">
+        <form class="form-horizontal" style="width: 50%;" role="form" autocomplete="on">
+
+            <div class="form-group">
+                    <span>Nombre de usuario</span>
+                    @if(adminUser != null){
+                        <input type="text" name='user_name' class="form-control" id="user_name" required="required" placeholder="Nombre de usuario" value="@adminUser.name" disabled>
+                    }else{
+                        <input type="text" name='user_name' class="form-control" id="user_name" required="required" placeholder="Nombre de usuario">
+                    }
+            </div>
+
+            <div class="form-group">
+                    <span>Contraseña</span>
+                    <input type="password" name='user_password' class="form-control" id="user_password" required="required" placeholder="Contraseña">
+            </div>
+
+            <div class="form-group">
+                    <span>Repetir contraseña</span>
+                    <input type="password" name='repeat_user_password' class="form-control" id="repeat_user_password" required="required" placeholder="Repetir contraseña">
+            </div>
+
+            <div class="form-group">
+                    <div class="alert alert-danger" id="alert-password" hidden role="alert">¡Las contraseñas no coinciden!</div>
+            </div>
+
+            <div class="form-group">
+                <button type="button" onclick="showModal()" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- CONFIRM CHANGES MODAL -->
+<div class="modal fade" id="confirmChangesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+        <div>
+            <h2 class="sub-title">Cambiar datos personales</h2>
+            <p class="text-brown">Para cambiar tus datos personales, introduce tu contraseña antigua:</p>
+            <div class="col-md-8">
+                <div class="form-horizontal">
+                    <div class="form-group form-inline">
+                            <input type="password" name='confirm-password' class="form-control" id="confirm-password" required="required" placeholder="Contraseña antigua">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8" hidden id="alert-confirm-password">
+                <div class="alert alert-danger" role="alert">¡Las contraseñas no coinciden!</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 center">
+                        <button type="button" id="acceptChangeBtn" class="button-accept button-modal" >ACEPTAR</button>
+                        <button type="button" id="cancelChangeBtn" class="button-cancel button-modal" data-dismiss="modal">CANCELAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+<script>
+
+</script>
+<script>
+    function showModal(){
+        var password = $('#user_password').val();
+        var changePassword = false;
+        if(password == ""){
+           $('#confirmChangesModal').modal('show');
+        }else if(password == $('#repeat_user_password').val()){
+                changePassword = true;
+                $('#confirmChangesModal').modal('show');
+        }else{
+            $('#alert-password').show();
+        }
+
+        acceptChangeBtn.addEventListener('click', function(ev){
+            var oldPassword = CryptoJS.SHA1($('#confirm-password').val());;
+            var userPassword = "@adminUser.password";
+            if(oldPassword == userPassword){
+                //$('#updatingChangesModal').modal('show');
+                sendChanges();
+                $('#confirmChangesModal').modal('hide');
+            }else{
+                $('#alert-confirm-password').show();
+            }
+            ev.preventDefault();
+            }, false
+        );
+
+        cancelChangeBtn.addEventListener('click', function(ev){
+            $('#confirmChangesModal').modal('hide');
+            $('#alert-password').hide();
+            ev.preventDefault();
+            }, false
+        );
+    }
+
+    function sendChanges(){
+        var result = [];
+        result[0] = $('#user_name').val();
+        result[1] = $('#user_password').val();
+
+        $.ajax({
+        type: 'post',
+        data: JSON.stringify(result),
+        url: "/admin/options/profile",
+        contentType: 'application/json',
+        success: function(){
+            $('#confirmChangesModal').modal('hide');
+            $('#alert-password').hide();
+            alert("Contraseña cambiada correctamente");
+            window.location.replace('/admin/options');
+        },
+        error: function(){
+            alert("No se han podido actualizar los datos. Por favor, inténtelo de nuevo");
+        }
+    });
+    }
+</script>
 }

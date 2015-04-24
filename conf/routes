@@ -118,3 +118,4 @@ POST    /admin/delete                               controllers.AdminController.
 GET     /admin/stats                                controllers.AdminController.stats()
 GET     /admin/options                              controllers.AdminController.optionsBlank()
 POST    /admin/options                              controllers.AdminController.updateAmazonOptions()
+POST    /admin/options/profile                      controllers.AdminController.updateAdminUserOptions()
