@@ -1,10 +1,16 @@
 package models.datasource;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.mongodb.*;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import models.entities.AdminUser;
+import play.Logger;
+import utils.Utils;
 
 import java.net.UnknownHostException;
+import java.util.Date;
 
 /**
  * Created by Victor on 23/04/2015.
@@ -47,6 +53,71 @@ public class ConfDataSource {
         return collection;
     }
 
+    /* #### ADMIN USERS ### */
+    public static void insertNewAdminUser(AdminUser adminUser){
+        DBCollection collection = connectDB("mongo.adminUsers");
+
+        BasicDBObject query = new BasicDBObject().
+                append("name", adminUser.name).
+                append("password", Utils.encryptWithSHA1(adminUser.password)).
+                append("connectionTimestamp", adminUser.connectionTimestamp);
+        collection.insert(WriteConcern.SAFE, query);
+        mongoClient.close();
+    }
+
+    public static void updateAdminUser(AdminUser adminUser){
+        DBCollection collection = connectDB("mongo.adminUsers");
+        BasicDBObject newDocument = new BasicDBObject();
+
+        newDocument.put("name", adminUser.name);
+        newDocument.put("password", Utils.encryptWithSHA1(adminUser.password));
+        newDocument.put("connectionTimestamp", adminUser.connectionTimestamp);
+
+        collection.update(new BasicDBObject().append("name", adminUser.name), newDocument);
+
+        mongoClient.close();
+    }
+
+    public static AdminUser getAdminUser(String name){
+        DBCollection collection = connectDB("mongo.adminUsers");
+
+        BasicDBObject query = new BasicDBObject().append("name", name);
+        DBObject dbObject = collection.findOne(query);
+
+        if(dbObject != null){
+            AdminUser adminUser = new Gson().fromJson(dbObject.toString(), AdminUser.class);
+            mongoClient.close();
+            return adminUser;
+        }else{
+            mongoClient.close();
+            return null;
+        }
+    }
+
+    public static void initializeAdminUser(){
+        String name = "adecco";
+        String password = "password";
+        if(getAdminUser(name) == null){
+            Logger.info("[There are not Super Admin users. Creating....]");
+            AdminUser adminUser = new AdminUser(name, password);
+            insertNewAdminUser(adminUser);
+        }else {
+            Logger.info("[There is an Adecco Super Admin user]");
+        }
+    }
+
+    /* #### AMAZON CONFIGURATION ### */
+    public static void insertNewAmazonConf(String aws_s3_bucket, String aws_access_key, String aws_secret_key){
+        DBCollection collection = connectDB("mongo.projectConf");
+        BasicDBObject query = new BasicDBObject().
+                append("plattform", "amazon").
+                append("aws_s3_bucket", aws_s3_bucket).
+                append("aws_access_key", aws_access_key).
+                append("aws_secret_key", aws_secret_key);
+        collection.insert(WriteConcern.SAFE, query);
+        mongoClient.close();
+    }
+
     public static String[] getAmazonConf(){
         DBCollection collection = connectDB("mongo.projectConf");
 
@@ -79,5 +150,14 @@ public class ConfDataSource {
         collection.update(new BasicDBObject().append("plattform", "amazon"), newDocument);
 
         mongoClient.close();
+    }
+
+    public static void initializeAmazonConf(){
+        if(getAmazonConf() == null){
+            Logger.info("[There is not Amazon Conf. Creating....]");
+            insertNewAmazonConf(null, null, null);
+        }else {
+            Logger.info("[There is an Amazon Conf. profile]");
+        }
     }
 }

@@ -3,6 +3,7 @@ import actors.FolderCleanerActor;
 import akka.actor.ActorRef;
 import akka.actor.Cancellable;
 import akka.actor.Props;
+import models.datasource.ConfDataSource;
 import play.Application;
 import play.GlobalSettings;
 import play.libs.Akka;
@@ -15,6 +16,9 @@ public class Global extends GlobalSettings {
     public void onStart(Application app) {
         super.onStart(app);
 
+        //Initialize database
+        ConfDataSource.initializeAdminUser();
+        ConfDataSource.initializeAmazonConf();
 
         ActorRef folderCleanerActor = Akka.system().actorOf(new Props(FolderCleanerActor.class));
 
