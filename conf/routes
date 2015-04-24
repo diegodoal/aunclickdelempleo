@@ -112,6 +112,7 @@ GET    /planning                                   controllers.PlanningControlle
 GET     /admin/login                                controllers.AdminController.login()
 POST    /admin/login                                controllers.AdminController.submitLogin()
 GET     /admin/users                                controllers.AdminController.usersBlank()
+GET     /admin/logout                               controllers.AdminController.logout()
 GET     /admin/users/:email/:id                     controllers.AdminController.userInfo(email: String, id: String)
 POST    /admin/delete                               controllers.AdminController.deleteUser()
 GET     /admin/stats                                controllers.AdminController.stats()

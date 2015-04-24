@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import models.datasource.ConfDataSource;
 import models.datasource.SingletonDataSource;
+import models.entities.AdminUser;
 import models.entities.User;
 import play.data.DynamicForm;
 import play.mvc.Controller;
@@ -12,6 +13,7 @@ import play.mvc.Result;
 import utils.Stats;
 import utils.Utils;
 
+import java.util.Date;
 import java.util.List;
 
 import static play.data.Form.form;
@@ -25,35 +27,55 @@ public class AdminController extends Controller{
     private final static String ADMIN_USER = "adecco";
     private final static String ADMIN_PASSWORD = "password";
 
-    public static boolean checkConnection(String user){
-        if(user != null && user.equals(Utils.encryptWithSHA1(ADMIN_USER))){
-            return true;
-        }else{
-            return false;
+    public static boolean checkConnection(){
+        String user = session().get("a-user");
+        String timestamp = session().get("a-timestamp");
+        if(user != null && timestamp != null){
+            for(AdminUser adminUser : ConfDataSource.getInstance().getAllAdminUsers()){
+                if(user.equals(adminUser.name) && adminUser.connectionTimestamp.equals(timestamp)){
+                    return true;
+                }
+            }
         }
+        session().clear();
+        return false;
     }
 
     public static Result login(){
-        return ok(views.html.admin.login.render());
+        if(checkConnection()){
+            return redirect("/admin/users");
+        }else {
+            return ok(views.html.admin.login.render());
+        }
     }
 
     public static Result submitLogin(){
         DynamicForm bindedForm = form().bindFromRequest();
 
-        String user = bindedForm.get("user");
+        String name = bindedForm.get("user");
         String password = bindedForm.get("password");
-        if(user.equals("adecco") && password.equals("password")){
-            session("user", Utils.encryptWithSHA1(user));
+
+        AdminUser adminUser = ConfDataSource.getInstance().getAdminUser(name);
+
+        if(adminUser != null && adminUser.password.equals(Utils.encryptWithSHA1(password))){
+            Date date = new Date();
+            adminUser.connectionTimestamp = date.toString();
+            session("a-user", name);
+            session("a-timestamp", date.toString());
+            ConfDataSource.updateAdminUser(adminUser);
             return redirect("/admin/users");
-        }
-        return badRequest();
+        }else
+            return badRequest("Login error!");
+    }
+
+    public static Result logout(){
+        session().clear();
+        return redirect("/admin/login");
     }
 
     public static Result usersBlank(){
         String[] result = ConfDataSource.getInstance().getAmazonConf();
-       // System.out.println("@@@@@@@@@@@@@@@" + result[0] + "---"+result[1]+"----"+result[2]);
-
-        if(checkConnection(session().get("user"))) {
+        if(checkConnection()) {
             List<User> users = SingletonDataSource.getInstance().findAll();
             return ok(views.html.admin.users.render(users));
         }else{
@@ -62,7 +84,7 @@ public class AdminController extends Controller{
     }
 
     public static Result userInfo(String email, String id){
-        if(checkConnection(session().get("user"))){
+        if(checkConnection()){
             User user = SingletonDataSource.getInstance().getUserByEmail(email);
             if(user != null && user.id.equals(id)){
                 return ok(views.html.admin.user_info.render(user));
@@ -75,7 +97,7 @@ public class AdminController extends Controller{
     }
 
     public static Result deleteUser(){
-        if(checkConnection(session().get("user"))) {
+        if(checkConnection()) {
             JsonNode request = request().body().asJson();
 
             String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
@@ -94,13 +116,21 @@ public class AdminController extends Controller{
     }
 
     public static Result stats(){
-        return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(), Stats.getCertificatesOfDisability()));
+        if(checkConnection()) {
+            return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(), Stats.getCertificatesOfDisability()));
+        }else{
+            return unauthorized("Access denied");
+        }
     }
 
     /* ############### OPTIONS ############### */
     public static Result optionsBlank(){
-        String[] amazon = ConfDataSource.getInstance().getAmazonConf();
-        return ok(views.html.admin.options.render(amazon));
+        if(checkConnection()) {
+            String[] amazon = ConfDataSource.getInstance().getAmazonConf();
+            return ok(views.html.admin.options.render(amazon));
+        }else{
+            return unauthorized("Access denied");
+        }
     }
 
     public static Result updateAmazonOptions(){

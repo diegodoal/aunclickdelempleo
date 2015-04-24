@@ -10,7 +10,9 @@ import play.Logger;
 import utils.Utils;
 
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Victor on 23/04/2015.
@@ -70,7 +72,7 @@ public class ConfDataSource {
         BasicDBObject newDocument = new BasicDBObject();
 
         newDocument.put("name", adminUser.name);
-        newDocument.put("password", Utils.encryptWithSHA1(adminUser.password));
+        newDocument.put("password", adminUser.password);
         newDocument.put("connectionTimestamp", adminUser.connectionTimestamp);
 
         collection.update(new BasicDBObject().append("name", adminUser.name), newDocument);
@@ -92,6 +94,25 @@ public class ConfDataSource {
             mongoClient.close();
             return null;
         }
+    }
+
+    public static List<AdminUser> getAllAdminUsers(){
+        DBCollection collection = connectDB("mongo.adminUsers");
+        DBCursor cursor = collection.find();
+        List<AdminUser> users = new ArrayList<>();
+        try {
+            while(cursor.hasNext()) {
+                AdminUser adminUser = new Gson().fromJson(cursor.next().toString(), AdminUser.class);
+
+                users.add(adminUser);
+            }
+        } finally {
+            cursor.close();
+        }
+
+        mongoClient.close();
+
+        return users;
     }
 
     public static void initializeAdminUser(){
