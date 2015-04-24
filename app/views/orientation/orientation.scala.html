@@ -5,7 +5,11 @@
 <section class="container-fluid size_font" id="orientation_banner">
     <div class="row">
         <div class="col-md-6 size_font" id="banner_text">
-            <p>Desde <b>Fundación Adecco</b> queremos guiarte en el proceso de búsqueda de empleo. Para ello te detallamos los pasos a seguir desde el inicio hasta el fin.<br>Todas las etapas son importantes y completarlas todas hará que obtengas resultados positivos.</p>
+            <p>Desde <b>Fundación Adecco</b>
+                queremos acompañarte en el proceso de búsqueda de empleo. Para ello a continuación te mostramos los pasos a
+                seguir para alacanzar el éxito  desde que tomas la decisión de iniciar la busqueda de empleo hasta
+                que finalmente alcanzas la meta <br>Todas las etapas son importantes y completarlas,
+                hará que obtengas resultados más eficaces y eficientes en dicho proceso.</p>
         </div>
     </div>
 </section>
@@ -68,7 +72,7 @@
                         }else{
                         <input type="checkbox" id="check5">
                         }
-                        <label for="check5" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.professional()">Valores profesionales</a></label>
+                        <label for="check5" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.professional()">Intereses profesionales</a></label>
                     </p>
                     <p>
                         @if(user != null && user.getCompletedOrientationSteps().getPhoto() == "true"){

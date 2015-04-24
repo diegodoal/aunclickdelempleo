@@ -7,10 +7,10 @@
         <div class="brown_adecco arial size14">
             <p>Las empresas necesitan trabajadores productivos que contribuyan a crear un buen ambiente laboral y sean capaces de solucionar problemas.</p>
             <p>Suelen buscar personas honestas, positivas, flexibles, leales, y dispuestas a mejorar su formación.</p>
-            <p>Aquí tienes una serie de características personales con las que te puedes identificar.</p>
+
         </div></br><br>
             <div class="gray_adecco size16 arial">
-                <p>Actividad: Elige aquellas cualidades en las que, en una escala de 0 a 10, consideres que está por encima de 5. De éstas, piensa en cuáles valdrían la pena incluir en una carta de presentación, o exponer en una entrevista de trabajo.<br>(Selecciona como máximo 3 con las que mas te indentifiques).</p>
+                <p>Actividad: Elige aquellas cualidades en las que, en una escala de 0 a 10, consideres que está por encima de 5. De éstas, piensa en cuáles valdrían la pena incluir en una carta de presentación, o exponer en una entrevista de trabajo.<br>(Selecciona como máximo 3 con las que mas te identifiques).</p>
             </div><br>
 </section>
 
@@ -23,7 +23,7 @@
                 }else{
                     <input type="checkbox" id="check1" value="Trabajador">
                 }
-                <label for="check1" class="size14 gray_adecco arial steps_height">Trabajador</label>
+                <label for="check1" class="size14 gray_adecco arial steps_height">Trabajador/Capacidad de esfuerzo</label>
             </p>
             <p>
                 @if(user != null && user.personalCharacteristics.contains("Ambicioso")){
@@ -122,7 +122,7 @@
                 }else{
                     <input type="checkbox" id="check13" value="Honesto">
                 }
-                <label for="check13" class="size14 gray_adecco arial steps_height">Honesto</label>
+                <label for="check13" class="size14 gray_adecco arial steps_height">Honesto/Sincero</label>
             </p>
             <p>
                 @if(user != null && user.personalCharacteristics.contains("Productivo")){

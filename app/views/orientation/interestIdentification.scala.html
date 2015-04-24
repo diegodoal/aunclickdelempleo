@@ -6,15 +6,14 @@
     <div class="row">
         <h2 class="red_adecco century_gothic">Identifica tus intereses</h2>
         <div class="brown_adecco arial size14">
-            <p>Debes conocer tus intereses para construir tu carrera en función de tus preferencias.</p>
+            <p>Debes conocer tus intereses,aquellas cosas que te emocionan y te motivan. Te ayudará a construir tu carrera con éxito y tomar decisiones profesionales.</p>
             <p>Tus intereses son todo aquello que te gusta hacer, puede tratarse de una actividad física, intelectual,creativa u otras actividades.</p>
-            <p>Los intereses determinan las elecciones profesionales.</p>
-            <p>Los intereses, al igual que los valores, son algo muy subjetivo, es decir, depende de cada persona. A unos les gusta manejar instrumentos o maquinaria, otros prefieren actividades que impliquen ayudar a los demás, habrá quien prefiera dedicarse a actividades artísticas y a quien le guste trabajar con datos y archivos.</p>
-            <p>Como ves, hay mucha diversidad de intereses. Se trata de que identifiques cuáles son los tuyos.</p>
-            <p>Esta lista de campos nos permitirá orientarte en los sectores que selecciones que sean de tu agrado.</p>
+
+            <p>Los intereses,son algo muy personal.</p>
+            <p>La lista que a continuación te presentamos nos permitirá orientarte en este sentido.</p>
         </div><br><br>
             <div class="arial gray_adecco size16">
-                <p>Actividad: Elige aquellos sectores por los que tengas preferencia.(Selecciona como máximo 3).</p>
+                <p>Actividad: Elige aquellos sectores o actividades profesionales por los que tengas preferencia.(Selecciona como máximo 3).</p>
             </div><br>
         
     </div>
@@ -26,12 +25,12 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    @if(user != null && user.interests.contains("Agricultura, Montes, Pesca, Mineria")){
-                        <input type="checkbox" id="check1" checked value="Agricultura, Montes, Pesca, Mineria">
+                    @if(user != null && user.interests.contains("Agricultura, Montes, Pesca, Minería")){
+                        <input type="checkbox" id="check1" checked value="Agricultura, Montes, Pesca, Minería">
                     }else{
                         <input type="checkbox" id="check1" value="Agricultura, Montes, Pesca, Mineria">
                     }
-                    <label for="check1" class="size14 gray_adecco arial steps_height">Agricultura, Montes, Pesca, Mineria</label>
+                    <label for="check1" class="size14 gray_adecco arial steps_height">Agricultura, Montes, Pesca, Minería</label>
                 </p>
             </div>
 
