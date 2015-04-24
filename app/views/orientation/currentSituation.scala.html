@@ -3,6 +3,7 @@
 <script type='text/javascript' src="@routes.Assets.at("javascripts/hide_experience.js")"></script>
 <script type='text/javascript' src="@routes.Assets.at("javascripts/hide_studies_reload.js")"></script>
 <script type='text/javascript' src="@routes.Assets.at("javascripts/concatenar_date.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/add-new-bbdd.js")"></script>
 
 <article class="container">
     <div class="row">
@@ -241,43 +242,45 @@
                             </div>
                         </div>
                         <div class="form-group form-inline" id="job_experience_group_5">
-                            <div class="col-md-2">
-                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
-                            </div>
-                            <div class="col-md-4">
-                                <div id="mydiv" class="estilo_date focuss">
-                                    <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="mydivinicio" class="estilo_date focussInicio">
+                                        <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
 
-                                    <span class="center" style="color:#ccc"> /</span>
+                                        <span class="center" style="color:#ccc"> /</span>
 
-                                    <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                        <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="mydivfin" class="estilo_date focussFin">
+                                        <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                        <span class="center" style="color:#ccc"> /</span>
+
+                                        <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
-                            </div>
-                            <div class="col-md-4">
-                                <div id="mydiv" class="estilo_date focuss">
-                                    <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
-
-                                    <span class="center" style="color:#ccc"> /</span>
-
-                                    <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                            <div class="row" hidden="hidden">
+                                <div class=" exp col-md-6">
+                                    <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                                </div>
+                                <div class=" exp col-md-6">
+                                    <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate" >
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group form-inline" id="job_experience_group_3" hidden>
-                            <div class=" exp col-md-6">
-                                <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="startDate">
-                            </div>
-                            <div class=" exp col-md-6">
-                                <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="endDate">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-1 right">
-                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                    <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                             <div class="row">
+                                <div class="col-md-1 right">
+                                    <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                        <img class="add-new-bbdd" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -312,43 +315,45 @@
                             </div>
                         </div>
                         <div class="form-group form-inline" id="job_experience_group_5">
-                            <div class="col-md-2">
-                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
-                            </div>
-                            <div class="col-md-4">
-                                <div id="mydiv" class="estilo_date focuss">
-                                    <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="mydivinicio" class="estilo_date focussInicio">
+                                        <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
 
-                                    <span class="center" style="color:#ccc"> /</span>
+                                        <span class="center" style="color:#ccc"> /</span>
 
-                                    <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                        <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="mydivfin" class="estilo_date focussFin">
+                                        <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                        <span class="center" style="color:#ccc"> /</span>
+
+                                        <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
-                            </div>
-                            <div class="col-md-4">
-                                <div id="mydiv" class="estilo_date focuss">
-                                    <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
-
-                                    <span class="center" style="color:#ccc"> /</span>
-
-                                    <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                            <div class="row" hidden="hidden">
+                                <div class=" exp col-md-6">
+                                    <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;"  id="startDate">
+                                </div>
+                                <div class=" exp col-md-6">
+                                    <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate">
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group form-inline" id="job_experience_group_3" hidden>
-                            <div class=" exp col-md-6">
-                                <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="startDate">
-                            </div>
-                            <div class=" exp col-md-6">
-                                <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="endDate">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-1 right">
-                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                    <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                             <div class="row">
+                                <div class="col-md-1 right">
+                                    <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                        <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -384,43 +389,45 @@
                             </div>
                         </div>
                         <div class="form-group form-inline" id="job_experience_group_5">
-                            <div class="col-md-2">
-                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
-                            </div>
-                            <div class="col-md-4">
-                                <div id="mydiv" class="estilo_date focuss">
-                                    <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="mydivinicio" class="estilo_date focussInicio">
+                                        <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
 
-                                    <span class="center" style="color:#ccc"> /</span>
+                                        <span class="center" style="color:#ccc"> /</span>
 
-                                    <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                        <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="mydivfin" class="estilo_date focussFin">
+                                        <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                        <span class="center" style="color:#ccc"> /</span>
+
+                                        <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
-                            </div>
-                            <div class="col-md-4">
-                                <div id="mydiv" class="estilo_date focuss">
-                                    <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
-
-                                    <span class="center" style="color:#ccc"> /</span>
-
-                                    <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                            <div class="row" hidden="hidden">
+                                <div class=" exp col-md-6">
+                                    <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                                </div>
+                                <div class=" exp col-md-6">
+                                    <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate">
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group form-inline" id="job_experience_group_3" hidden>
-                            <div class=" exp col-md-6">
-                                <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="startDate">
-                            </div>
-                            <div class=" exp col-md-6">
-                                <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="endDate">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-1 right">
-                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                    <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                             <div class="row">
+                                <div class="col-md-1 right">
+                                    <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                        <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -441,11 +448,11 @@
 </section>
 <script type="text/javascript">
       window.onload = function() {
-        addNewExp();
         deleteExperience();
         loadRecognition();
         disableOtherChecks();
         unir();
+        addNewBbdd();
     };
 </script>
 <script>
@@ -497,9 +504,6 @@
           HtmlRedirect = "/orientation";
           URLroutes = "/orientation/currentsituation";
 
-
-          alert("Aqui");
-
 //Comprobar el checkbox de no tengo experiencia y mandar a base de datos
     }else if($('input[name="check_experience"]').is(':checked')){
         $("#validate_exp_cb").hide();
@@ -528,7 +532,7 @@ var result = checkboxArray.concat(JSON.stringify(experienceArray));
 //Comprobar con el alert si se esta pasando correctamente el checkboxArray
 //alert("DATO" +JSON.stringify(experienceArray));
 
-alert("DATO EXPERIENCE:"+JSON.stringify(result));
+//alert("DATO EXPERIENCE:"+JSON.stringify(result));
 
 if(studyChecked == 0){
     $('#validate_cb').show();

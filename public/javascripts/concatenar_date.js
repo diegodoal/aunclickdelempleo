@@ -1,16 +1,26 @@
 
 
 function unir(){
-	$(".focuss").focusin(function() {
-		$("#mydiv").css("border","0.1em solid #66afe9");
-});
-		$(".focuss").focusout(function() {
-			$("#mydiv").css("border","0.1em solid #ccc ");
-			$("#mydiv").css("outline","0 ");
-			$("#mydiv").css("box-shadow:"," inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6); ");
+	$(".focussInicio").focusin(function() {
+   		$("#mydivinicio").css("border","0.1em solid #66afe9");
 
-			
-});
+   });
+   		$(".focussInicio").focusout(function() {
+   			$("#mydivinicio").css("border","0.1em solid #ccc ");
+   			$("#mydivinicio").css("outline","0 ");
+   			$("#mydivinicio").css("box-shadow:"," inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6); ");
+
+   });
+   	$(".focussFin").focusin(function() {
+   		$("#mydivfin").css("border","0.1em solid #66afe9");
+   });
+   		$(".focussFin").focusout(function() {
+   			$("#mydivfin").css("border","0.1em solid #ccc ");
+            $("#mydivfin").css("outline","0 ");
+            $("#mydivfin").css("box-shadow:"," inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6); ");
+
+
+   });
 
 
 	$('body').on( "click", ".concatenar", function() {
