@@ -1,5 +1,6 @@
 @(amazon : Array[String])(adminUser : models.entities.AdminUser)(adminUsers : List[models.entities.AdminUser])
 @header("options"){
+@if(adminUser.name == "adecco"){
 <div class="panel panel-default">
     <div class="panel-heading">Configuración Amazon S3</div>
     <div class="panel-body">
@@ -38,7 +39,7 @@
         </form>
     </div>
 </div>
-
+}
 <!-- USER INFO -->
 <div class="panel panel-default">
     <div class="panel-heading">Configuración de cuenta</div>
@@ -121,7 +122,6 @@
                     <td>@user.connectionTimestamp</td>
                     <td>
                         @if(user.name != adminUser.name){
-                            <a href="#"><img width="5%" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
                             <span>&emsp;</span>
                             <a href="javascript: deleteUser()" id="@user.name"><img width="20%" id="@user.name" src="@routes.Assets.at("images/orientation/ic_trash2.png")"></a>
                         }
