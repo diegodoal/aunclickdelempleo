@@ -3,17 +3,17 @@
 @main() {
 
 <section class="container">
-    <h2 class="red_adecco century_gothic">Valores profesionales</h2>
+    <h2 class="red_adecco century_gothic">Intereses profesionales</h2>
     <div class="brown_adecco arial size14">
-        <p>Conoce tus valores profesionales para determinar qué aspectos prefieres de un puesto de trabajo.</p>
-        <p>Los valores profesionales contribuyen a nuestro bienestar personal, y son muy subjetivos.</p>
-        <p>Tus valores pueden ser distintos a los de tu pareja, tus padres o tus amigos.</p>
-        <p>Sin embargo, la vida también implica adaptarse y buscar soluciones intermedias.</p>
-        <p>Por ello, tendrás que decidir lo que más te conviene. Estar sin trabajo, o hacer ciertas concesiones dejando a un lado algunos de tus valores profesionales.</p>
-        <p>Aquí tienes una tabla de valores que te puede ayudar a definir cuáles son los tuyos.</p>
+        <p>Conoce tus intereses profesionales para determinar qué aspectos prefieres de un puesto de trabajo.</p>
+        <p>Conocer bien nuestros  profesionales contribuye a alcanzar el bienestar y satisfacción personal y el sentimiento de logro profesional.</p>
+        <p>Sin embargo,para alcanzar tus metas profesionales es necesario adaptación y buscar
+            alternativas que equilibren los intereses profesionales y la realidad y situación del mercado laboral..</p>
+        <p>Por ello, tendrás que decidir lo que más te conviene. Estar sin trabajo, o hacer ciertas concesiones dejando a un lado algunos de tus intereses profesionales.</p>
+        <p>Aquí tienes una tabla de intereses que te guiará poara definir los tuyos propios.</p>
     </div></br><br>
     <div class="size16 gray_adecco arial">
-        <p>Actividad: Valora cuales de ellos quieres en tu futuro puesto de trabajo.</p>
+        <p>Actividad: Valora cuales son los principales intereses profesionales que te ayudarán a orientar tu búsqueda de empleo.</p>
     </div><br>
 	<div class="alert alert-danger" hidden id="radiosError" role="alert">Por favor, completa todo el formulario.</div><br>
 </section>
@@ -24,13 +24,13 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th style="vertical-align: middle;">Descripción de valores profesionales</th>
+                    <th style="vertical-align: middle;">Descripción de Intereses profesionales</th>
                     <th>Valoración<br><pre class="gray_adecco blod">         NO             SÍ           NO SÉ</pre></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td style="vertical-align: middle;">Valores relacionados<br> con la creatividad</td>
+                    <td style="vertical-align: middle;">Intereses relacionados<br> con la creatividad</td>
                     <td class="col-sm-6 col-xs-6" style="vertical-align: middle;">
                         <p style="margin-bottom: 1.2em;">- Poner en práctica la creatividad y propuestas innovadoras.</p>
                         <p style="margin-bottom: 1.2em;">- Desarrollar nuevas ideas y teorías.</p>
@@ -128,7 +128,7 @@
                 </tr>
 
                 <tr>
-                    <td style="vertical-align: middle;">Valores relacionados<br> con el salario</td>
+                    <td style="vertical-align: middle;">Intereses relacionados<br> con el salario</td>
                         <td  class="col-sm-6 col-xs-6" style="vertical-align: middle;">
                             <p style="margin-bottom: 1.2em;">- Reconocimiento de la lealtad a la empresa.</p>
                             <p style="margin-bottom: 1.2em;">- Reconocimiento del rendimiento en el trabajo.</p>
@@ -223,7 +223,7 @@
                 </tr>
 
                 <tr>
-                    <td style="vertical-align: top;">Valores relacionados<br> con el tipo de trabajo</td>
+                    <td style="vertical-align: top;">Intereses<br> con el tipo de trabajo</td>
                     <td class="col-sm-6 col-xs-6"><p style="vertical-align: middle;">
                         <p style="margin-bottom: 1.2em;">- Posibilidades de organizar el trabajo.</p>
                         <p style="margin-bottom: 1.2em;">- Trabajo físico.</p>
@@ -725,11 +725,14 @@
 
 
                 <tr>
-                    <td style="vertical-align: middle;">Valores relacionados<br> con el lugar de trabajo</td>
+                    <td style="vertical-align: middle;">Intereses relacionados<br> con el lugar de trabajo</td>
                     <td class="col-sm-6 col-xs-6">
                         <p style="vertical-align: middle;">
                             <p style="margin-bottom: 1.2em;">- Trabajar al aire libre.</p>
-                            <p style="margin-bottom: 1.2em;">- Trabajar en un edificio.</p>
+
+                            <p style="margin-bottom: 1.2em;">- Trabajar en la calle.</p>
+                            <p style="margin-bottom: 1.2em;">- Trabajar en oficinas.</p>
+                            <p style="margin-bottom: 1.2em;">- Trabajar en espacios industriales.</p>
                         </p>
                     </td>
 
@@ -793,12 +796,12 @@
                 </tr>
 
                 <tr>
-                    <td style="vertical-align: middle;">Valores relacionados<br> con el entorno de trabajo</td>
+                    <td style="vertical-align: middle;">Intereses relacionados<br> con el entorno de trabajo</td>
                     <td class="col-sm-6 col-xs-6">
                         <p style="vertical-align: middle;">
                             <p style="margin-bottom: 1.2em;">- Trabajar en equipo.</p>
                             <p style="margin-bottom: 1.2em;">- Trabajar solo.</p>
-                            <p style="margin-bottom: 1.2em;">- Trabajo que implique estar en contacto con clientes.</p>
+                            <p style="margin-bottom: 1.2em;">- Atención a los clientes.</p>
                             <p style="margin-bottom: 1.2em;">- Trabajo que implique pasar tiempo fuera de casa.</p>
                         </p>
                     </td>
@@ -861,7 +864,7 @@
                             </label>
                         </div>
 
-                        <div class="radio" value="Trabajo que implique estar en contacto con clientes">
+                        <div class="radio" value="Atención a los  clientes">
                             <label>
                                 <div class="col-md-4 col-sm-4 col-xs-4 custom-radio-group">
                                 	@if(user != null && user.professionalValues.size() != 0 && user.professionalValues.get(27).valuation == "NO") {
@@ -920,13 +923,14 @@
                 </tr>
 
                 <tr>
-                    <td style="vertical-align: middle;">Valores relacionados<br> con las condiciones de trabajo</td>
+                    <td style="vertical-align: middle;">Intereses relacionados<br> con las condiciones de trabajo</td>
                     <td class="col-sm-6 col-xs-6">
                         <p style="vertical-align: middle;">
                             <p style="margin-bottom: 1.2em;">- Flexibilidad horaria.</p>
                             <p style="margin-bottom: 1.2em;">- Trabajo con un horario fijo.</p>
                             <p style="margin-bottom: 1.2em;">- Libertad en la forma de vestir.</p>
                             <p style="margin-bottom: 1.2em;">- Trabajo conciliable con la vida personal.</p>
+                            <p style="margin-bottom: 1.2em;">- Teletrabajo.</p>
                             <p style="margin-bottom: 1.2em;">- Trabajo preciso en el que no haya cabida para errores.</p>
                             <p style="margin-bottom: 1.2em;">- Trabajo que implique cierto grado de aventura y riesgo.</p>
                         </p>
