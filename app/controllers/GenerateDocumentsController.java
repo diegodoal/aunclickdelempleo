@@ -7,6 +7,7 @@ import com.itextpdf.text.DocumentException;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.*;
+import play.libs.Json;
 import play.mvc.Result;
 import utils.Files;
 import utils.pdf.PresentationLetter;
@@ -18,12 +19,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import static play.mvc.Controller.session;
 import static play.mvc.Http.Context.Implicit.request;
 import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
 import static play.mvc.Results.redirect;
+
 
 /**
  * Created by Victor on 17/03/2015.
@@ -313,5 +316,84 @@ public class GenerateDocumentsController {
         session().remove("lp2_attach_certificates");
 
         return redirect(routes.Assets.at(route.substring(7)));
+    }
+    public static Result addExperienceGenerate(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user == null){
+            return redirect("/");
+        }
+
+
+        String[] experience = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+        List<ProfessionalExperience> currentExperienceCopy = new ArrayList<ProfessionalExperience>();
+
+        //for(int j=0; j<user.currentSituation.professionalExperienceList.size();j++){
+        if (user.currentSituation.professionalExperienceList.size() == 0){
+            String experienceID;
+
+
+
+                String expID =  UUID.randomUUID().toString();
+                user.currentSituation.addProfessionalExperience(experience[0], experience[1], experience[2],experience[3],expID );
+            
+        }else{
+            // Copiamos el array de experiencia profesional
+            for (ProfessionalExperience professionalExperience : user.currentSituation.professionalExperienceList) {
+                currentExperienceCopy.add(professionalExperience);
+            }
+
+                int addNewElement = 1;
+                for (ProfessionalExperience professionalExperience : currentExperienceCopy) {
+                    if (professionalExperience.company.toLowerCase().equals(experience[0].toLowerCase())
+                            && professionalExperience.job.toLowerCase().equals(experience[1].toLowerCase())
+                            /*&& professionalExperience.experienceYears.equals(experience[i][2])*/) {
+                        //Logger.debug("Salgo del for porque ya existe");
+                        addNewElement = 0;
+                        break;
+                    }
+
+                }
+                if (addNewElement == 1){
+
+                    for(ProfessionalExperience professionalExperience : currentExperienceCopy){
+                        if (professionalExperience.company.equals("No tengo experiencia")){
+                            //  Logger.debug("Borro");
+                            user.currentSituation.clearProfessionalExperience();
+
+                        }
+                    }
+                    String expID =  UUID.randomUUID().toString();
+                    // Logger.debug("Añado la nueva experiencia");
+                    user.currentSituation.addProfessionalExperience(experience[0], experience[1], experience[2], experience[3], expID);
+                }
+
+
+        }
+        user.completedOrientationSteps.currentSituation = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
+
+        return ok(Json.toJson(experience));
+
+    }
+
+    public static Result deleteExperienceCurrentSituation(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        String idExperience = new Gson().fromJson(request.toString(), new TypeToken<String>() {}.getType());
+        for( int i=0; i<user.currentSituation.professionalExperienceList.size(); i++){
+            if(user.currentSituation.professionalExperienceList.get(i).ID.contains(idExperience)){
+                user.currentSituation.professionalExperienceList.remove(i);
+                break;
+            }
+        }
+
+        user.completedOrientationSteps.currentSituation = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
+
+        return ok(Json.toJson(idExperience));
+
     }
 }
