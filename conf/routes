@@ -109,6 +109,7 @@ GET     /orientation/reputation/submit              controllers.OrientationContr
 GET    /planning                                   controllers.PlanningController.plan()
 
 # ADMIN
+GET     /admin                                      controllers.AdminController.blank()
 GET     /admin/login                                controllers.AdminController.login()
 POST    /admin/login                                controllers.AdminController.submitLogin()
 GET     /admin/users                                controllers.AdminController.usersBlank()

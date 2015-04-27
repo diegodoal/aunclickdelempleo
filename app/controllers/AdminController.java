@@ -74,8 +74,15 @@ public class AdminController extends Controller{
         return redirect("/admin/login");
     }
 
+    public static Result blank(){
+        if(checkConnection() != null) {
+            return ok(views.html.admin.index.render());
+        }else{
+            return unauthorized("Access denied");
+        }
+    }
+
     public static Result usersBlank(){
-        String[] result = ConfDataSource.getInstance().getAmazonConf();
         if(checkConnection() != null) {
             List<User> users = SingletonDataSource.getInstance().findAll();
             return ok(views.html.admin.users.render(users));
