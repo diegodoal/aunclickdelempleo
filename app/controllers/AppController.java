@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
-import play.Logger;
 import utils.Utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -66,9 +65,8 @@ public class AppController {
         int userSize = userInterviews.size();
         int appSize = appInterviews.size();
 
-        Logger.debug("Log -1 " + userSize);
         if(userSize == 0){
-            Logger.debug("Log 0");
+
             for (int i = 0; i < appSize; i++) {
                 //There's not equal interview in user's list. Add new
                 userInterviews.add(appInterviews.get(i));
@@ -78,12 +76,9 @@ public class AppController {
                 for (int j = 0; j < userSize; j++) {
                     if (appInterviews.get(i).id.equals(userInterviews.get(j).id)) {
                         //Has equal ID
-                        Logger.debug("Log 1");
                         if ((appInterviews.get(i).creationDate.getTime() - userInterviews.get(j).creationDate.getTime()) == 0) {
-                            Logger.debug("Log 2");
                             //Has equal ID and CreationDate
                             if ((appInterviews.get(i).modificationDate.getTime() - userInterviews.get(j).modificationDate.getTime()) > 0) {
-                                Logger.debug("Log 3");
                                 //Has been modificated -> Update interview in user's list
                                 userInterviews.get(j).date = appInterviews.get(i).date;
                                 userInterviews.get(j).address = appInterviews.get(i).address;
@@ -91,13 +86,11 @@ public class AppController {
                                 userInterviews.get(j).modificationDate = appInterviews.get(i).modificationDate;
                             }
                         } else {
-                            Logger.debug("Log 4");
                             //Has equal ID and different CreationDate
                             appInterviews.get(i).id = UUID.randomUUID().toString();
                             userInterviews.add(appInterviews.get(i));
                         }
                     } else {
-                        Logger.debug("Log 5");
                         //Has equal ID and different CreationDate
                         appInterviews.get(i).id = UUID.randomUUID().toString();
                         userInterviews.add(appInterviews.get(i));

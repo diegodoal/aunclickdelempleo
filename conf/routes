@@ -115,6 +115,5 @@ GET    /planning                                   controllers.PlanningControlle
 # APP
 POST    /submitLoginApp                             controllers.AppController.submitLoginApp()
 POST    /getInterviews                              controllers.AppController.getInterviews()
-POST    /updateInterviews                           controllers.AppController.updateInterviews()
 
 GET     /test/interviews                            controllers.TestController.testInterviews()
