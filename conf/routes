@@ -64,6 +64,9 @@ GET     /orientation/gettools/cv1                   controllers.GenerateDocument
 POST    /orientation/gettools/cv1                   controllers.GenerateDocumentsController.submitCv1()
 GET     /orientation/gettools/cv2                   controllers.GenerateDocumentsController.cv2()
 POST    /orientation/gettools/cv2                   controllers.GenerateDocumentsController.submitCv2()
+POST    /orientation/gettools/cv2/delete            controllers.GenerateDocumentsController.deleteExperienceCurrentSituation()
+POST    /orientation/gettools/cv2/Add               controllers.GenerateDocumentsController.addExperienceGenerate()
+
 GET     /orientation/gettools/cv3                   controllers.GenerateDocumentsController.cv3()
 POST    /orientation/gettools/cv3                   controllers.GenerateDocumentsController.submitCv3()
 

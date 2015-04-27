@@ -1,6 +1,10 @@
 @(user: models.entities.User)
 
 @main(){
+<script type='text/javascript' src="@routes.Assets.at("javascripts/hide_experience.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/concatenar_date.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/add-new-experience-bbdd.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/delete_experience_generate.js")"></script>
 <div class="container">
 <!--COMPLETE_CV_2-->
 <section  id="text_user_profile_2">
@@ -178,7 +182,7 @@
                         -->
 
                      </div>
-                    <div class="col-lg-5 col-lg-offset-2 input-mic-container">
+                    <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
                         <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="required">
                         <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
@@ -195,123 +199,261 @@
     <div class="row">
         <div class="col-lg-12  arial gray_adecco size18 bold">Experiencia laboral</div>
     </div><br>
+    @if(user != null){
+    @if(user.currentSituation.professionalExperienceList.size() != 0){
+    @for(professional <- user.currentSituation.professionalExperienceList) {
 
-
-    <div class="row orientation-points" id="check_exp_cb">
-        <div class="col-lg-12  arial size14">
-            <input type="checkbox" id="check_experience" value="No tengo experiencia" onclick=" jobExperienceHidden(this.checked)">
-            <label for="check_experience" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+    @if(professional.company == "No tengo experiencia"){
+    <div class="row orientation-points hidden_check_exp" id="check_exp_cb" style=" margin-bottom:1em;">
+        <div class="col-md-6">
+            <input type="checkbox" id="check_exp_bbdda" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHidden(this.checked)" checked >
+            <label for="check_exp_bbdda" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
         </div>
-    </div><br>
-        
-    <div class="main-div-sections" id="job_experience_group">
-        @if(user != null){
-            @for(experience <- user.currentSituation.professionalExperienceList){
-                <form class="form-horizontal" autocomplete="on" method="post">
-                    <div class="form-group" id="level_studies_group">
-                        <div class="col-lg-5 input-mic-container">
-                                <input type="text" class="form-control" placeholder="Empresa" id="company" value="@experience.company" required="required" >
+    </div>
+    }else{
+    <div class="main-div-sections">
+        <div class="panel-group new-input-container center" style="margin-auto;">
+            <form id="experience_group" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
+                <div class="form-group form-inline">
+                    <div class="col-md-5">
+                        <input style="width: 100%; margin-left: -3em;"  type="text"  class="" name="company" placeholder="Empresa" value="@professional.company" disabled>
+                    </div>
+                    <div class="col-md-5 col-md-offset-1">
+                        <input style="width: 100%; margin-left: 0;"  type="text" class=""  name="job" placeholder="Puesto" value="@professional.job" disabled >
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <div class="col-md-5">
+                        <input style="width: 100%; margin-left: -3em;" type="text" class=""  name="startDate"  value="@professional.startDate" disabled>
+                    </div>
+                    <div class="col-md-5 col-md-offset-1">
+                        <input style="width: 100%; margin-left: 0;" type="text" class=""  name="endDate"  value="@professional.endDate" disabled>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-9">
+                        <div class="form-group add-other-btn-div button-cursor-pointer delete-experience" id="delete-experience-@professional.ID">
+                            <input style="width: 100%; margin-left: 0;" type="hidden" name="ID" value="@professional.ID">
+                            <img  class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        }
+        }
+        <div class="main-div-sections">
+            <div class="panel-group new-input-container center" style="margin-auto;">
+                <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 2em;">
+                    <div class="form-group form-inline" id="job_experience_group_1">
+                        <div class="exp col-lg-5">
+                            <div class="input-mic-container">
+                                <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
                                 <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-
+                            </div>
                         </div>
-                        <div class="col-lg-5 col-lg-offset-2 input-mic-container">
-                                <input type="text" class="form-control" placeholder="Puesto" id="office" value="@experience.job" required="required">
+                        <div class=" exp col-lg-5 col-lg-offset-1">
+                            <div class="input-mic-container">
+                                <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
                                 <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                        </div>
-                    </div>
-
-                    <div class="form-group ">
-                        <div class="col-lg-5">
-                            <input placeholder="Fecha de inicio" class="form-control" type="text" value="@experience.startDate" onfocus="(this.type='month')"  onblur="(this.type='text')" id="month_start">
-                        </div>
-
-
-                        <div class="col-lg-5  col-lg-offset-2">
-                            <input placeholder="Fecha de fin" class="form-control" type="text" value="@experience.endDate" onfocus="(this.type='month')"  onblur="(this.type='text')" id="month_end">
-                        </div>
-                    </div>
-
-                    <div class=" form-group">
-                        <div class="col-lg-5  col-lg-offset-2">
-
-                        </div>
-                        <div class="col-lg-5 ">
-                            <div class="">
-                            <div class="form-group center brown_adecco arial size13">
-                                Debes añadir cada uno de los cursos que hayas realizado.
-                            </div>
                             </div>
                         </div>
                     </div>
+                    <div class="form-group form-inline" id="job_experience_group_5">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-1em;">Fecha Inicio:</span>
+                            </div>
+                            <div class="col-md-3" style=" margin-left:-3em;">
+                                <div id="mydivinicio" class="estilo_date focussInicio">
+                                    <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
 
+                                    <span class="center" style="color:#ccc"> /</span>
 
+                                    <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:1em;">Fecha Fin:</span>
+                            </div>
+                            <div class="col-md-4" style=" margin-left:-2em;">
+                                <div id="mydivfin" class="estilo_date focussFin">
+                                    <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
 
-                    <div class="form-group">
-                        <div class="col-lg-5 ">
-                         <!--div añadido extra porque sino el boton añadir no va-->
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-5  col-lg-offset-2">
-                            <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                <img class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                        <div class="row" hidden="hidden">
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                            </div>
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img class="add-new-bbdd" src="@routes.Assets.at("images/orientation/ic_añadirexperiencia.png")">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </form>
-            }
+            </div>
+        </div>
+        }else{
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <span id="validate_exp_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu experiencia profesional.</span><br>
+        </div>
+        <div class="row orientation-points" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
+            <div class="col-md-6" style="margin-left:-2em;">
+                <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenLog(this.checked)">
+                <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+            </div>
+        </div>
+        <div class="main-div-sections">
+            <div class="panel-group new-input-container center" style="margin-auto;">
+                <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 2em;">
+                    <div class="form-group form-inline" id="job_experience_group_1">
+                        <div class="exp col-lg-5">
+                            <div class="input-mic-container">
+                                <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                        <div class=" exp col-lg-5 col-lg-offset-1">
+                            <div class="input-mic-container">
+                                <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-inline" id="job_experience_group_5">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-1em;">Fecha Inicio:</span>
+                            </div>
+                            <div class="col-md-3" style=" margin-left:-3em;">
+                                <div id="mydivinicio" class="estilo_date focussInicio">
+                                    <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:1em;">Fecha Fin:</span>
+                            </div>
+                            <div class="col-md-4" style=" margin-left:-2em;">
+                                <div id="mydivfin" class="estilo_date focussFin">
+                                    <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" hidden="hidden">
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                            </div>
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img class="add-new-bbdd" src="@routes.Assets.at("images/orientation/ic_añadirexperiencia.png")">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
         }
-        <form class=" form-horizontal" autocomplete="on" method="post">
-            <div class="form-group form-inline" >
-                <div class="col-lg-5 input-mic-container ">
-
-                        <input type="text" class="form-control" placeholder="Empresa" id="company" value="" required="required" >
-                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-
-                </div>
-                <div class="col-lg-5  col-lg-offset-2 input-mic-container">
-                        <input type="text" class="form-control" placeholder="Puesto" id="office" value="" required="required">
-                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                </div>
+        }else{
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <span id="validate_exp_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu experiencia profesional.</span><br>
+        </div>
+        <div class="row orientation-points" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
+            <div class="col-md-6" style="margin-left:-2em;>
+                <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenNoLog(this.checked)">
+                <label for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
             </div>
-
-            <div class="form-group">
-                <div class="col-lg-5">
-                       <input placeholder="Fecha de inicio" class="form-control" type="text" value="" onfocus="(this.type='month')">
-                </div>
-
-
-                <div class="col-lg-5  col-lg-offset-2">
-                    <input placeholder="Fecha de fin" class="form-control" type="text" value="" onfocus="(this.type='month')">
-                </div>
-
-            </div>
-
-            <div class="form-group">
-                <div class="col-lg-5  col-lg-offset-2">
-
-                </div>
-                <div class="col-lg-5 ">
-                    <div class="">
-                    <div class="form-group center brown_adecco arial size15">
-                        Debes añadir cada uno de los trabajos que hayas realizado.
+        </div>
+        <div class="main-div-sections" id="experience_group_new_no_log">
+            <div class="panel-group new-input-container center" style="margin-auto;">
+                <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 2em;">
+                    <div class="form-group form-inline" id="job_experience_group_1">
+                        <div class="exp col-lg-5">
+                            <div class="input-mic-container">
+                                <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                        <div class=" exp col-lg-5 col-lg-offset-1">
+                            <div class="input-mic-container">
+                                <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
                     </div>
+                    <div class="form-group form-inline" id="job_experience_group_5">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-1em;">Fecha Inicio:</span>
+                            </div>
+                            <div class="col-md-3" style=" margin-left:-3em;">
+                                <div id="mydivinicio" class="estilo_date focussInicio">
+                                    <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:1em;">Fecha Fin:</span>
+                            </div>
+                            <div class="col-md-4" style=" margin-left:-2em;">
+                                <div id="mydivfin" class="estilo_date focussFin">
+                                    <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" hidden="hidden">
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                            </div>
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img class="add-new-bbdd" src="@routes.Assets.at("images/orientation/ic_añadirexperiencia.png")">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
+        </div>
+        }
 
-
-
-            <div class="form-group">
-                <div class="col-lg-5 ">
-                 <!--div añadido extra porque sino el boton añadir no va-->
-                </div>
-                <div class="col-lg-5  col-lg-offset-2">
-                    <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                        <img class="add-new" src="@routes.Assets.at("images/Orientation/ic_añadirexperiencia.png")">
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
 </section>
  <section class="container">
     <div class="row">
@@ -788,7 +930,9 @@
       window.onload = function() {
         limitCheckboxes(3);
         loadRecognition();
-        addNew();
+        deleteExperienceGenerate();
+        unir();
+        addNewBbddExp();
 
     };
 </script>
@@ -875,6 +1019,17 @@
             });
         }
     }
+</script>
+<script>
+     $('input[name="check_experience"]').each(function(){
+  if(this.checked){
+         document.getElementById("experience_group_new").hidden = true;
+         }
+         else{
+         document.getElementById("experience_group_new").hidden = false;
+         }
+ });
+
 </script>
 
 }
