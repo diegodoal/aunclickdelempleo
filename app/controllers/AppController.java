@@ -6,16 +6,14 @@ import com.google.gson.reflect.TypeToken;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
+import play.Logger;
 import utils.Utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
 import play.mvc.Result;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 import static play.mvc.Controller.request;
 
@@ -46,57 +44,67 @@ public class AppController {
         User user = SingletonDataSource.getInstance().getUserByEmail(request.get("email").asText());
 
         if(user != null && Utils.encryptWithSHA1(request.get("password").asText()).equals(user.password)){
-            return ok(user.interviewScheduleListToJson());
+
+            return updateInterviews(user, request.get("dataBase"));
         }
 
-        return badRequest("fail");
+        return badRequest("fail-invalid user");
     }
 
-    public static Result updateInterviews(){
-        Map<String, String[]> request = request().body().asFormUrlEncoded();
-        String email = request.get("email")[0];
-        String password = request.get("password")[0];
-        List<InterviewSchedule> appInterviews = new Gson().fromJson(request.get("dataBase")[0], new TypeToken<List<InterviewSchedule>>() {
+    public static Result updateInterviews(User user, JsonNode dataBase){
+        List<InterviewSchedule> appInterviews = new Gson().fromJson(dataBase.toString(), new TypeToken<List<InterviewSchedule>>() {
         }.getType());
 
-        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+        user.interviewScheduleList = updateInterviews(user, appInterviews);
+        SingletonDataSource.getInstance().updateAllUserData(user);
 
-        if(user != null && user.password.equals(password)){
-            user.interviewScheduleList = updateInterviews(user.interviewScheduleList, appInterviews);
-            SingletonDataSource.getInstance().updateAllUserData(user);
-        }else{
-            return badRequest("fail-invalid user");
-        }
-        return ok("success");
+        return ok(user.interviewScheduleListToJson());
     }
 
-    private static List<InterviewSchedule> updateInterviews(List<InterviewSchedule> userInterviews, List<InterviewSchedule> appInterviews){
-        for(int i=0; i<appInterviews.size(); i++){
-            boolean updated = false;
-            for(int j=0; j<userInterviews.size(); j++){
-                if(appInterviews.get(i).id.equals(userInterviews.get(j).id)){
-                    //Has equal ID
-                    if(appInterviews.get(i).id.equals(userInterviews.get(j).id)){
-                        //Has equal ID and CreationDate
-                        if ((appInterviews.get(i).modificationDate.getTime() - userInterviews.get(j).modificationDate.getTime()) > 0) {
-                            //Has been modificated -> Update interview in user's list
-                            userInterviews.remove(j);
-                            appInterviews.get(i).id = UUID.randomUUID().toString();
-                            userInterviews.add(appInterviews.get(i));
-                            updated = true;
-                        }
-                    }else{
-                        //Has equal ID and different CreationDate
-                        userInterviews.add(appInterviews.get(i));
-                        updated = true;
-                    }
-                }
-            }
-            if(!updated){
+    private static List<InterviewSchedule> updateInterviews(User user, List<InterviewSchedule> appInterviews){
+        List<InterviewSchedule> userInterviews = user.interviewScheduleList;
+        int userSize = userInterviews.size();
+        int appSize = appInterviews.size();
+
+        Logger.debug("Log -1 " + userSize);
+        if(userSize == 0){
+            Logger.debug("Log 0");
+            for (int i = 0; i < appSize; i++) {
                 //There's not equal interview in user's list. Add new
                 userInterviews.add(appInterviews.get(i));
             }
+        } else {
+            for (int i = 0; i < appSize; i++) {
+                for (int j = 0; j < userSize; j++) {
+                    if (appInterviews.get(i).id.equals(userInterviews.get(j).id)) {
+                        //Has equal ID
+                        Logger.debug("Log 1");
+                        if ((appInterviews.get(i).creationDate.getTime() - userInterviews.get(j).creationDate.getTime()) == 0) {
+                            Logger.debug("Log 2");
+                            //Has equal ID and CreationDate
+                            if ((appInterviews.get(i).modificationDate.getTime() - userInterviews.get(j).modificationDate.getTime()) > 0) {
+                                Logger.debug("Log 3");
+                                //Has been modificated -> Update interview in user's list
+                                userInterviews.get(j).date = appInterviews.get(i).date;
+                                userInterviews.get(j).address = appInterviews.get(i).address;
+                                userInterviews.get(j).company = appInterviews.get(i).company;
+                                userInterviews.get(j).modificationDate = appInterviews.get(i).modificationDate;
+                            }
+                        } else {
+                            Logger.debug("Log 4");
+                            //Has equal ID and different CreationDate
+                            appInterviews.get(i).id = UUID.randomUUID().toString();
+                            userInterviews.add(appInterviews.get(i));
+                        }
+                    } else {
+                        Logger.debug("Log 5");
+                        //Has equal ID and different CreationDate
+                        appInterviews.get(i).id = UUID.randomUUID().toString();
+                        userInterviews.add(appInterviews.get(i));
+                    }
+                }
+            }
         }
-        return userInterviews;
+        return user.interviewScheduleList;
     }
 }
