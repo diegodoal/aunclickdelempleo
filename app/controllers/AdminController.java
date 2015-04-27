@@ -186,4 +186,18 @@ public class AdminController extends Controller{
         }
     }
 
+    public static Result newAdminUser(){
+        if(checkConnection() != null){
+            JsonNode request = request().body().asJson();
+
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+
+            AdminUser adminUser = new AdminUser(result[0], result[1]);
+            ConfDataSource.getInstance().insertNewAdminUser(adminUser);
+            return ok();
+        }else{
+            return unauthorized("Access denied");
+        }
+    }
+
 }

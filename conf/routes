@@ -120,3 +120,4 @@ GET     /admin/options                              controllers.AdminController.
 POST    /admin/options                              controllers.AdminController.updateAmazonOptions()
 POST    /admin/options/profile                      controllers.AdminController.updateAdminUserOptions()
 POST    /admin/options/delete                       controllers.AdminController.deleteAdminUser()
+POST    /admin/options/newadmin                     controllers.AdminController.newAdminUser()

@@ -130,6 +130,47 @@
             }
         </tbody>
     </table>
+    <button type="button" onclick="showNewUserModal()" class="btn btn-primary">Añadir nuevo usuario</button>
+    </div>
+</div>
+
+<!-- NEW USER MODAL -->
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+        <div>
+            <h2 class="sub-title">Añadir nuevo usuario</h2>
+            <form class="form-horizontal" style="width: 50%;" role="form" autocomplete="on">
+
+            <div class="form-group">
+                    <span>Nombre de usuario</span>
+                    <input type="text" name='user_name' class="form-control" id="new_user_name" required="required" placeholder="Nombre de usuario" autofocus>
+                    <div class="alert alert-danger" id="alert-user-exists" hidden role="alert">¡Ya existe otro usuario con ese nombre!</div>
+                    <div class="alert alert-danger" id="alert-user-length" hidden role="alert">¡El nombre debe tener una longitud mínima de 4 caracteres!</div>
+            </div>
+
+            <div class="form-group">
+                    <span>Contraseña</span>
+                    <input type="password" name='user_password' class="form-control" id="new_user_password" required="required" placeholder="Contraseña">
+            </div>
+
+            <div class="form-group">
+                    <span>Repetir contraseña</span>
+                    <input type="password" name='repeat_user_password' class="form-control" id="new_repeat_user_password" required="required" placeholder="Repetir contraseña">
+            </div>
+
+            <div class="form-group">
+                    <div class="alert alert-danger" id="new_user_alert-password" hidden role="alert">¡Las contraseñas no coinciden!</div>
+                    <div class="alert alert-danger" id="alert-password-length" hidden role="alert">¡La contraseña debe tener una longitud mínima de 4 caracteres!</div>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" onclick="sendNewUser()">GUARDAR</button>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+            </div>
+        </form>
+        </div>
     </div>
 </div>
 }
@@ -141,6 +182,41 @@
     $(document).ready(function() {
             $('#users_table').DataTable();
         } );
+</script>
+
+<script type="text/javascript">
+//Check if exists other user with the same name
+ $( "#new_user_name" ).keyup(function() {
+    var name = $(this).val();
+    var exists = false;
+    @for(user <- adminUsers){
+        if("@user.name" == name){
+            exists = true;
+        }
+    }
+    if(exists == true){
+        $("#alert-user-exists").show();
+    }else{
+        $("#alert-user-exists").hide();
+    }
+
+    if(name.length < 4){
+        $("#alert-user-length").show();
+    }else{
+        $("#alert-user-length").hide();
+    }
+});
+
+ //Check password length
+ $( "#new_user_password" ).keyup(function() {
+    var password = $(this).val();
+
+    if(password.length < 4){
+        $("#alert-password-length").show();
+    }else{
+        $("#alert-password-length").hide();
+    }
+});
 </script>
 
 <script>
@@ -202,6 +278,7 @@
 </script>
 
 <script type="text/javascript">
+//Delete admin User
 $("#users_table").on("click", "td img", function() {
         $.ajax({
         type: 'post',
@@ -217,5 +294,56 @@ $("#users_table").on("click", "td img", function() {
         }
     });
    });
+</script>
+
+<script type="text/javascript">
+//Adding new users....
+    function showNewUserModal(){
+        $('#newUserModal').modal('show');
+    }
+
+    function sendNewUser(){
+        var password = $('#new_user_password').val();
+        var repeat_password = $('#new_repeat_user_password').val();
+
+        var validForm = true;
+        if($('#new_user_name').val().length < 4){
+            validForm = false;
+            $('#alert-user-length').show();
+        }else{
+            $('#alert-user-length').hide();
+        }
+
+        if(password != repeat_password){
+            $('#new_user_alert-password').show();
+            validForm = false;
+        }
+
+        if($("#alert-user-exists").is(":visible")){
+            validForm = false;
+        }
+
+        if(validForm == true){
+            var result = [];
+            result[0] = $('#new_user_name').val();
+            result[1] = $('#new_user_password').val();
+
+            $.ajax({
+            type: 'post',
+            data: JSON.stringify(result),
+            url: "/admin/options/newadmin",
+            contentType: 'application/json',
+            success: function(){
+                $('#newUserModal').modal('hide');
+                alert("Usuario añadido correctamente");
+                window.location.replace('/admin/options');
+            },
+            error: function(){
+                alert("No se ha podido crear el usuario. Por favor, inténtelo de nuevo");
+            }
+            });
+        }
+
+    }
 </script>
 }
