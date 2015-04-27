@@ -180,6 +180,9 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <p class="century_gothic gray_adecco size22 bold advices_height" style="margin-left:1em;">¿Cuál es tu experiencia profesional?</p> <br>
         </div>
+        <div class="font1_g"  style="margin-left:3em;">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
+
+
         <div class="row">
         @if(user != null){
         @if(user.currentSituation.professionalExperienceList.size() != 0){
@@ -374,8 +377,8 @@
                 <div class="col-md-6 col-md-offset-1">
                     <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenNoLog(this.checked)">
                     <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
-                </div><br><br>
-            </div>
+                </div>
+            </div><br><br>
 
             <div class="main-div-sections" id="experience_group_new_no_log">
                 <div class="panel-group new-input-container center" style="margin-auto;"><br><br>
@@ -454,6 +457,19 @@
         </div>
     </div>
 </section>
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?</h2>
+        <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+        <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+        <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button></h4><br>
+        <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
 <script type="text/javascript">
       window.onload = function() {
         deleteExperience();
