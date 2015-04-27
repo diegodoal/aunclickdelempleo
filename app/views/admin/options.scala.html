@@ -116,14 +116,14 @@
 
         <tbody>
             @for(user <- adminUsers){
-                <tr>
-                    <td>@user.name</td>
+                <tr class="user-entry">
+                    <td class="user-name">@user.name</td>
                     <td>@user.connectionTimestamp</td>
                     <td>
                         @if(user.name != adminUser.name){
                             <a href="#"><img width="5%" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
                             <span>&emsp;</span>
-                            <a href="#"><img width="20%" src="@routes.Assets.at("images/orientation/ic_trash2.png")"></a>
+                            <a href="javascript: deleteUser()" id="@user.name"><img width="20%" id="@user.name" src="@routes.Assets.at("images/orientation/ic_trash2.png")"></a>
                         }
                     </td>
                 </tr>
@@ -199,5 +199,23 @@
         }
     });
     }
+</script>
+
+<script type="text/javascript">
+$("#users_table").on("click", "td img", function() {
+        $.ajax({
+        type: 'post',
+        data: $(this).attr('id'),
+        url: "/admin/options/delete",
+        contentType: 'text/plain',
+        success: function(){
+            alert("Usuario eliminado!");
+            window.location.replace('/admin/options');
+        },
+        error: function(){
+            alert("No se ha podido eliminar el usuario. Por favor, inténtelo de nuevo");
+        }
+    });
+   });
 </script>
 }

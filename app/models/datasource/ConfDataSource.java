@@ -127,6 +127,20 @@ public class ConfDataSource {
         }
     }
 
+    public static boolean deleteAdminUser(String name){
+        DBCollection collection = connectDB("mongo.adminUsers");
+        BasicDBObject query = new BasicDBObject().append("name", name);
+        DBObject dbObject = collection.findOne(query);
+        if(dbObject != null){
+            collection.remove(dbObject);
+            mongoClient.close();
+            return true;
+        }else{
+            mongoClient.close();
+            return false;
+        }
+    }
+
     /* #### AMAZON CONFIGURATION ### */
     public static void insertNewAmazonConf(String aws_s3_bucket, String aws_access_key, String aws_secret_key){
         DBCollection collection = connectDB("mongo.projectConf");

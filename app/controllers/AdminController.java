@@ -7,6 +7,7 @@ import models.datasource.ConfDataSource;
 import models.datasource.SingletonDataSource;
 import models.entities.AdminUser;
 import models.entities.User;
+import play.Logger;
 import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -168,6 +169,21 @@ public class AdminController extends Controller{
             return redirect("/admin/options");
         }
         return badRequest("Cannot update user info.");
+    }
+
+    public static Result deleteAdminUser(){
+        if(checkConnection() != null) {
+            String request = request().body().asText();
+
+            AdminUser adminUser = ConfDataSource.getInstance().getAdminUser(request);
+            if(adminUser != null && ConfDataSource.getInstance().deleteAdminUser(request)){
+                return ok();
+            }else{
+                return badRequest("Cannot delete. User not found or invalid user.");
+            }
+        }else{
+            return unauthorized("Access denied");
+        }
     }
 
 }
