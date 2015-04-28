@@ -3,11 +3,13 @@ package models.datasource;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.mongodb.*;
+import com.mongodb.casbah.commons.ValidBSONType;
 import com.mongodb.util.JSON;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import models.entities.User;
 import models.entities.orientation.*;
+import org.bson.types.ObjectId;
 import utils.Constants;
 import utils.Utils;
 
@@ -70,6 +72,7 @@ public class SingletonDataSource {
                 append(Constants.USER_CONNECTION_TIMESTAMP, user.connectionTimestamp).
                 append(Constants.USER_RESTORE_PASSWORD_TOKEN, user.restorePasswordToken).
                 append(Constants.USER_RESTORE_PASSWORD_TIMESTAMP, user.restorePasswordTimestamp).
+                append(Constants.USER_REGISTRATION_DATE, user.registrationDate).
                 append(Constants.USER_BIRTH_DATE, user.birthDate).
                 append(Constants.USER_RESIDENCE_CITY, user.residenceCity).
                 append(Constants.USER_RESIDENCE_ADDRESS, user.residenceAddress).
@@ -133,6 +136,8 @@ public class SingletonDataSource {
             //Deserialize ArrayList of Software
             user.softwareList = new Gson().fromJson(dbObject.get(Constants.USER_SOFTWARE).toString(), new TypeToken<List<Software>>(){}.getType());
 
+            user.id = dbObject.get("_id").toString();
+
             mongoClient.close();
             return user;
         }else{
@@ -172,6 +177,9 @@ public class SingletonDataSource {
 
                 //Deserialize ArrayList of Software
                 user.softwareList = new Gson().fromJson(cursor.curr().get(Constants.USER_SOFTWARE).toString(), new TypeToken<List<Software>>(){}.getType());
+
+                user.id = cursor.curr().get("_id").toString();
+
                 users.add(user);
             }
         } finally {
@@ -215,6 +223,7 @@ public class SingletonDataSource {
         newDocument.put(Constants.USER_CONNECTION_TIMESTAMP, user.connectionTimestamp);
         newDocument.put(Constants.USER_RESTORE_PASSWORD_TOKEN, user.restorePasswordToken);
         newDocument.put(Constants.USER_RESTORE_PASSWORD_TIMESTAMP, user.restorePasswordTimestamp);
+        newDocument.put(Constants.USER_REGISTRATION_DATE, user.registrationDate);
         newDocument.put(Constants.USER_BIRTH_DATE, user.birthDate);
         newDocument.put(Constants.USER_RESIDENCE_CITY, user.residenceCity);
         newDocument.put(Constants.USER_RESIDENCE_ADDRESS, user.residenceAddress);
@@ -255,6 +264,20 @@ public class SingletonDataSource {
             collection.update(query, updateQuery);
         }
         mongoClient.close();
+    }
+
+    public static boolean deleteUser(String email){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        BasicDBObject query = new BasicDBObject().append("email", email);
+        DBObject dbObject = collection.findOne(query);
+        if(dbObject != null){
+            collection.remove(dbObject);
+            mongoClient.close();
+            return true;
+        }else{
+            mongoClient.close();
+            return false;
+        }
     }
 
 }

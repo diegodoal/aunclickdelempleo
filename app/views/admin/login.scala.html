@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!--  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap-theme.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/custom-style.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/custom-fonts.css")">
+    <link rel="shortcut icon" type="image/jpg" href="@routes.Assets.at("images/adecco_logo.jpg")">
+    <meta charset="utf-8">
+    <title>A un click del empleo - ADMINISTRACIÓN</title>
+</head>
+<body>
+    <section class="container">
+        <h3>Acceso a Administración</h3>
+        <form class="form-horizontal" style="width: 50%;" role="form" action="@routes.AdminController.submitLogin()" autocomplete="on" method="post">
+            <div class="form-group">
+                    <input type="text" name='user' class="form-control" id="access_user" required="required" placeholder="Usuario">
+            </div>
+
+            <div class="form-group">
+                    <input type="password" name='password' class="form-control" id="access_password" required="required" placeholder="Contraseña">
+            </div>
+
+            <div class="form-group">
+                <div class="button-create">
+                    <button type="submit">ENTRAR</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

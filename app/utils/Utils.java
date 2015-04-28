@@ -72,7 +72,7 @@ public class Utils {
     }
 
     public static void initFakeDBCollection() {
-        for (int counter = 0; counter < 500; counter++) {
+        for (int counter = 0; counter < 50; counter++) {
             User user = new User("Name" + counter, "Surname" + counter, "email" + counter + "@gmail.com", "password" + counter);
 
             //Current Situation

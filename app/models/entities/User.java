@@ -4,8 +4,10 @@ package models.entities;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import models.entities.orientation.*;
+import utils.Utils;
 
 import java.lang.reflect.Type;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,12 +19,15 @@ import java.util.UUID;
 public class User {
 
     // Step 1
+    public String id;
     public String name;
     public String surnames;
     public String email;
     public String password;
     public String emailVerificationKey;
     public String connectionTimestamp;
+
+    public String registrationDate;
 
     public String restorePasswordToken;
     public String restorePasswordTimestamp;
@@ -64,6 +69,7 @@ public class User {
         this.restorePasswordToken = null;
         this.restorePasswordTimestamp = null;
 
+        this.registrationDate = Utils.formatDateToCustomPattern(new Date());
         this.birthDate = null;
         this.residenceCity = null;
         this.residenceAddress = null;
@@ -100,6 +106,8 @@ public class User {
         this.connectionTimestamp = new Date().toString();
         this.restorePasswordToken = null;
         this.restorePasswordTimestamp = null;
+
+        this.registrationDate = Utils.formatDateToCustomPattern(new Date());
 
         this.birthDate = null;
         this.residenceCity = null;

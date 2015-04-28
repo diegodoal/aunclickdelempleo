@@ -1,0 +1,33 @@
+@(drivingLicense : Array[Integer])(certificates : Array[Integer])
+
+@header("stats"){
+
+
+
+<section class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="graph-md" id="graph-drivingLicense"></div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="graph-md" id="graph-certificate"></div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ##################################################################### -->
+
+
+
+<script>
+    graph_drivingLicense(@drivingLicense(0), @drivingLicense(1));
+    graph_certificate(@certificates(0), @certificates(1), @certificates(2), @certificates(3));
+</script>
+
+
+
+<!-- ##################################################################### -->
+
+}
