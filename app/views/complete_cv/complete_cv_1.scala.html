@@ -180,191 +180,292 @@
     </form><br>
 </section>
 
-<section>
 
-    <!--Carnet-->
+    <!--CARNET-->
+<section>
     <div class="row">
         <div class="col-md-12 arial gray_adecco size18 bold">
-        Carnet de conducir
-        </div>
-    </div>
-
-    <div class="row orientation-points">
-        <div class="col-lg-5  arial size14">
-            <input type="checkbox" id="check_license" value="No tengo carnet" onclick=" licenseCertificateHidden(this.checked)">
-            <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>            
+            Carnet de conducir
         </div>
     </div><br>
-
-    <form class="form-horizontal" autocomplete="on" method="post" id="license_group">
-
-      <div class="form-group" >
-        <div class="col-lg-5">
-          <select  class="form-control" id="license_select" name="license_group">
-             @if(user != null){
-                @if(user.drivingLicense == null){
-                    <option value="0" disabled selected="">Tipo de permiso de conducir</option>
-                    <option value="1">A1</option>
-                    <option value="2">A</option>
-                    <option value="3">B</option>
-                    <option value="4">C1</option>
-                    <option value="5">C</option>
-                    <option value="6">D1</option>
-                    <option value="7">D</option>
-                    <option value="8">BE</option>
-                    <option value="9">C1E</option>
-                    <option value="10">CE</option>
-                    <option value="11">D1E</option>
-                    <option value="12">DE</option>
-                    <option value="13">btp</option>
-                }else{
-                    <option value="0" disabled>Tipo de permiso de conducir</option>
-                    @if(user.drivingLicense.equals("A1")){
-                        <option value="1" selected>A1</option>
-                    }else{
-                        <option value="1">A1</option>
-                    }
-                    @if(user.drivingLicense.equals("A")){
-                        <option value="2" selected>A</option>
-                    }else{
-                        <option value="2">A</option>
-                    }
-                    @if(user.drivingLicense.equals("B")){
-                        <option value="3" selected>B</option>
-                    }else{
-                        <option value="3">B</option>
-                    }
-                    @if(user.drivingLicense.equals("C1")){
-                        <option value="4" selected>C1</option>
-                    }else{
-                        <option value="4">C1</option>
-                    }
-                    @if(user.drivingLicense.equals("C")){
-                        <option value="5" selected>C</option>
-                    }else{
-                        <option value="5">C</option>
-                    }
-                    @if(user.drivingLicense.equals("D1")){
-                        <option value="6" selected>D1</option>
-                    }else{
-                        <option value="6">D1</option>
-                    }
-                    @if(user.drivingLicense.equals("D")){
-                        <option value="7" selected>D</option>
-                    }else{
-                        <option value="7">D</option>
-                    }
-                    @if(user.drivingLicense.equals("BE")){
-                        <option value="8" selected>BE</option>
-                    }else{
-                        <option value="8">BE</option>
-                    }
-                    @if(user.drivingLicense.equals("C1E")){
-                        <option value="9" selected>C1E</option>
-                    }else{
-                        <option value="9">C1E</option>
-                    }
-                    @if(user.drivingLicense.equals("CE")){
-                        <option value="10" selected>CE</option>
-                    }else{
-                        <option value="10">CE</option>
-                    }
-                    @if(user.drivingLicense.equals("D1E")){
-                        <option value="11" selected>D1E</option>
-                    }else{
-                        <option value="11">D1E</option>
-                    }
-                    @if(user.drivingLicense.equals("DE")){
-                        <option value="12" selected>DE</option>
-                    }else{
-                        <option value="12">DE</option>
-                    }
-                    @if(user.drivingLicense.equals("btp")){
-                        <option value="13" selected>btp</option>
-                    }else{
-                        <option value="13">btp</option>
-                    }
-                }
+    @if(user != null){
+        @if(user.drivingLicense.equals("")){
+            <section>
+                <div class="row orientation-points">
+                    <div class="col-lg-5  arial size14">
+                        <input type="checkbox" name="license" id="check_license" value="No tengo carnet" onclick=" licenseCertificateHidden(this.checked)">
+                        <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
+                    </div>
+                </div><br>
+                <form class="form-horizontal" autocomplete="on" method="post" id="license_group">
+                    <div class="form-group" >
+                        <div class="col-lg-5">
+                            <select  class="form-control" id="license_select" name="license_group">
+                                <option value="0" disabled selected="">Tipo de permiso de conducir</option>
+                                <option value="1">A1</option>
+                                <option value="2">A</option>
+                                <option value="3">B</option>
+                                <option value="4">C1</option>
+                                <option value="5">C</option>
+                                <option value="6">D1</option>
+                                <option value="7">D</option>
+                                <option value="8">BE</option>
+                                <option value="9">C1E</option>
+                                <option value="10">CE</option>
+                                <option value="11">D1E</option>
+                                <option value="12">DE</option>
+                                <option value="13">btp</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        }else{
+            @if(user.drivingLicense.equals("No tengo carnet")){
+                <section>
+                    <div class="row orientation-points">
+                        <div class="col-lg-5  arial size14">
+                            <input type="checkbox" name="license" checked id="check_license" value="No tengo carnet" onclick="licenseCertificateHiddenNo(this.checked)">
+                            <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
+                        </div>
+                    </div><br>
+                    <form class="form-horizontal" autocomplete="on" method="post" id="license_group_no">
+                        <div class="form-group" >
+                            <div class="col-lg-5">
+                                <select  class="form-control" id="license_select" name="license_group">
+                                    <option value="0" disabled selected="">Tipo de permiso de conducir</option>
+                                    <option value="1">A1</option>
+                                    <option value="2">A</option>
+                                    <option value="3">B</option>
+                                    <option value="4">C1</option>
+                                    <option value="5">C</option>
+                                    <option value="6">D1</option>
+                                    <option value="7">D</option>
+                                    <option value="8">BE</option>
+                                    <option value="9">C1E</option>
+                                    <option value="10">CE</option>
+                                    <option value="11">D1E</option>
+                                    <option value="12">DE</option>
+                                    <option value="13">btp</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </section>
             }else{
-                <option value="0" disabled selected="">Tipo de permiso de conducir</option>
-                <option value="1">A1</option>
-                <option value="2">A</option>
-                <option value="3">B</option>
-                <option value="4">C1</option>
-                <option value="5">C</option>
-                <option value="6">D1</option>
-                <option value="7">D</option>
-                <option value="8">BE</option>
-                <option value="9">C1E</option>
-                <option value="10">CE</option>
-                <option value="11">D1E</option>
-                <option value="12">DE</option>
-                <option value="13">btp</option>
-            }
-          </select>
-        </div>
-      </div>
-    </form><br>
-
+                <section>
+                    <form class="form-horizontal" autocomplete="on" method="post" id="license_group">
+                        <div class="form-group" >
+                            <div class="col-lg-5">
+                                <select  class="form-control" id="license_select" name="license_group">
+                                    @if(user.drivingLicense.equals("A1")){
+                                    <option value="1" selected>A1</option>
+                                    }else{
+                                    <option value="1">A1</option>
+                                    }
+                                    @if(user.drivingLicense.equals("A")){
+                                    <option value="2" selected>A</option>
+                                    }else{
+                                    <option value="2">A</option>
+                                    }
+                                    @if(user.drivingLicense.equals("B")){
+                                    <option value="3" selected>B</option>
+                                    }else{
+                                    <option value="3">B</option>
+                                    }
+                                    @if(user.drivingLicense.equals("C1")){
+                                    <option value="4" selected>C1</option>
+                                    }else{
+                                    <option value="4">C1</option>
+                                    }
+                                    @if(user.drivingLicense.equals("C")){
+                                    <option value="5" selected>C</option>
+                                    }else{
+                                    <option value="5">C</option>
+                                    }
+                                    @if(user.drivingLicense.equals("D1")){
+                                    <option value="6" selected>D1</option>
+                                    }else{
+                                    <option value="6">D1</option>
+                                    }
+                                    @if(user.drivingLicense.equals("D")){
+                                    <option value="7" selected>D</option>
+                                    }else{
+                                    <option value="7">D</option>
+                                    }
+                                    @if(user.drivingLicense.equals("BE")){
+                                    <option value="8" selected>BE</option>
+                                    }else{
+                                    <option value="8">BE</option>
+                                    }
+                                    @if(user.drivingLicense.equals("C1E")){
+                                    <option value="9" selected>C1E</option>
+                                    }else{
+                                    <option value="9">C1E</option>
+                                    }
+                                    @if(user.drivingLicense.equals("CE")){
+                                    <option value="10" selected>CE</option>
+                                    }else{
+                                    <option value="10">CE</option>
+                                    }
+                                    @if(user.drivingLicense.equals("D1E")){
+                                    <option value="11" selected>D1E</option>
+                                    }else{
+                                    <option value="11">D1E</option>
+                                    }
+                                    @if(user.drivingLicense.equals("DE")){
+                                    <option value="12" selected>DE</option>
+                                    }else{
+                                    <option value="12">DE</option>
+                                    }
+                                    @if(user.drivingLicense.equals("btp")){
+                                    <option value="13" selected>btp</option>
+                                    }else{
+                                    <option value="13">btp</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+    }
+        }
+    }else{
+        <section>
+            <div class="row orientation-points">
+                <div class="col-lg-5  arial size14">
+                    <input type="checkbox" name="license" id="check_license" value="No tengo carnet" onclick=" licenseCertificateHidden(this.checked)">
+                    <label for="check_license" class="size14 gray_adecco arial steps_height">No tengo carnet</label>
+                </div>
+            </div><br>
+            <form class="form-horizontal" autocomplete="on" method="post" id="license_group">
+                <div class="form-group" >
+                    <div class="col-lg-5">
+                        <select  class="form-control" id="license_select" name="license_group">
+                            <option value="0" disabled selected="">Tipo de permiso de conducir</option>
+                            <option value="1">A1</option>
+                            <option value="2">A</option>
+                            <option value="3">B</option>
+                            <option value="4">C1</option>
+                            <option value="5">C</option>
+                            <option value="6">D1</option>
+                            <option value="7">D</option>
+                            <option value="8">BE</option>
+                            <option value="9">C1E</option>
+                            <option value="10">CE</option>
+                            <option value="11">D1E</option>
+                            <option value="12">DE</option>
+                            <option value="13">btp</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </section>
+    }
 </section>
-<section>
 
-        <!--Certificado-->
+    <!--CERTIFICADO-->
+    <section>
         <div class="row">
             <div class="col-md-12 arial gray_adecco size18 bold">
                 Certificado de discapacidad
             </div>
-        </div>
-
-        <div class="row orientation-points">
-            <div class="col-lg-5  arial size14">
-                @if(user != null){
-
-                }else{
-
-                }
-                <input type="checkbox" id="check_certificate" value="No tengo certificado"  onclick="disCertificateHidden(this.checked)">
-                <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
-            </div>
         </div><br>
-
-        <form class="form-horizontal" autocomplete="on" method="post" id="certificate_group">
-
-            <div class="form-group" >
-                <div class="col-lg-5">
-                    <select  class="form-control" id="certificate_select" name="certificate_group">
-                        @if(user != null && user.certificateOfDisability != null){
-                            <option value="0" disabled>Tipo de certificado</option>
-                            @if(user.certificateOfDisability.equals("Menos del 33%")){
-                                <option value="1" selected>Menos del 33%</option>
-                            }else{
-                                <option value="1">Menos del 33%</option>
-                            }
-
-                            @if(user.certificateOfDisability.equals("Más del 33%")){
-                                <option value="2" selected>Más del 33%</option>
-                            }else{
-                                <option value="2">Más del 33%</option>
-                            }
-
-                            @if(user.certificateOfDisability.equals("Más del 66%")){
-                                <option value="3" selected>Más del 66%</option>
-                            }else{
-                                <option value="3">Más del 66%</option>
-                            }
-
-                        }else{
+        @if(user != null){
+        @if(user.certificateOfDisability.equals("")){
+        <section>
+            <div class="row orientation-points">
+                <div class="col-lg-5  arial size14">
+                    <input type="checkbox" name="certificate" id="check_certificate" value="No tengo certificado" onclick=" disCertificateHidden(this.checked)">
+                    <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
+                </div>
+            </div><br>
+            <form class="form-horizontal" autocomplete="on" method="post" id="certificate_group">
+                <div class="form-group" >
+                    <div class="col-lg-5">
+                        <select  class="form-control" id="certificate_select" name="certificate_group">
                             <option value="0" disabled selected="">Tipo de certificado</option>
                             <option value="1">Menos del 33%</option>
                             <option value="2">Más del 33%</option>
                             <option value="3">Más del 66%</option>
-                        }
-                    </select>
+                        </select>
+                    </div>
                 </div>
-            </div>
-        </form>
-</section>
-</div>
+            </form>
+        </section>
+        }else{
+        @if(user.certificateOfDisability.equals("No tengo certificado")){
+        <section>
+            <div class="row orientation-points">
+                <div class="col-lg-5  arial size14">
+                    <input type="checkbox" name="certificate" checked id="check_certificate" value="No tengo certificado" onclick="disCertificateHiddenNo(this.checked)">
+                    <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
+                </div>
+            </div><br>
+            <form class="form-horizontal" autocomplete="on" method="post" id="certificate_group_no">
+                <div class="form-group" >
+                    <div class="col-lg-5">
+                        <select  class="form-control" id="certificate_select" name="certificate_group">
+                            <option value="0" disabled selected="">Tipo de certificado</option>
+                            <option value="1">Menos del 33%</option>
+                            <option value="2">Más del 33%</option>
+                            <option value="3">Más del 66%</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </section>
+        }else{
+        <section>
+            <form class="form-horizontal" autocomplete="on" method="post" id="certificate_group">
+                <div class="form-group" >
+                    <div class="col-lg-5">
+                        <select  class="form-control" id="certificate_select" name="certificate_group">
+                            @if(user.certificateOfDisability.equals("Menos del 33%")){
+                            <option value="1" selected>Menos del 33%</option>
+                            }else{
+                            <option value="1">Menos del 33%</option>
+                            }
+                            @if(user.certificateOfDisability.equals("Más del 33%")){
+                            <option value="2" selected>Más del 33%</option>
+                            }else{
+                            <option value="2">Mas del 33%</option>
+                            }
+                            @if(user.certificateOfDisability.equals("Más del 66%")){
+                            <option value="3" selected>Más del 66%</option>
+                            }else{
+                            <option value="3">Más del 66%</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </section>
+        }
+        }
+        }else{
+        <section>
+            <div class="row orientation-points">
+                <div class="col-lg-5  arial size14">
+                    <input type="checkbox" name="certificate" id="check_certificate" value="No tengo certificado" onclick=" disCertificateHidden(this.checked)">
+                    <label for="check_certificate" class="size14 gray_adecco arial steps_height">No tengo certificado</label>
+                </div>
+            </div><br>
+            <form class="form-horizontal" autocomplete="on" method="post" id="certificate_group">
+                <div class="form-group" >
+                    <div class="col-lg-5">
+                        <select  class="form-control" id="certificate_select" name="certificate_group">
+                            <option value="0" disabled selected="">Tipo de certificado</option>
+                            <option value="1">Menos del 33%</option>
+                            <option value="2">Más del 33%</option>
+                            <option value="3">Más del 66%</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </section>
+        }
+    </section>
 
 <section class="container">
     <div class="row">
@@ -394,7 +495,26 @@
         loadRecognition();
     };
 </script>
+<script>
+     $('input[name="license"]').each(function(){
+  if(this.checked){
+         document.getElementById("license_group_no").hidden = true;
+         }
+         else{
+         document.getElementById("license_group_no").hidden = false;
+         }
+ });
 
+      $('input[name="certificate"]').each(function(){
+  if(this.checked){
+         document.getElementById("certificate_group_no").hidden = true;
+         }
+         else{
+         document.getElementById("certificate_group_no").hidden = false;
+         }
+ });
+
+</script>
 <script type="text/javascript">
     function sendForm(){
         var result = [];
@@ -412,7 +532,7 @@
 
         //Adding driving license
         if($('#check_license').is(':checked')){
-            result[counter] = "";
+            result[counter] = "No tengo carnet";
             counter++;
         }else if($("#license_select option:selected").val() == 0){
             emptyField = true;
@@ -421,16 +541,15 @@
             counter++;
         }
 
-        //Adding driving license
+        //Adding certificate
         if($('#check_certificate').is(':checked')){
-            result[counter] = "";
+            result[counter] = "No tengo certificado";
             counter++;
         }else if($('#certificate_select option:selected').val() == 0){
             emptyField = true;
         }else{
             result[counter] = $("#certificate_select option:selected").text();
         }
-
         if(emptyField == true){
             $('#cv1_alert').show();
             window.scrollTo(0,0);
