@@ -87,7 +87,6 @@ public class AdminController extends Controller{
         List<User> recentUsers = new ArrayList<>();
         for(User user : users){
             long diff = Utils.getDiffBetweenTwoDates(Utils.stringToDate(user.registrationDate), new Date());
-            Logger.info("###############"+user.email + "   " + diff);
             if(diff <= 1){
                 recentUsers.add(user);
             }
