@@ -18,7 +18,6 @@ public class Global extends GlobalSettings {
 
         //Initialize database
         ConfDataSource.initializeAdminUser();
-        ConfDataSource.initializeAmazonConf();
 
         ActorRef folderCleanerActor = Akka.system().actorOf(new Props(FolderCleanerActor.class));
 

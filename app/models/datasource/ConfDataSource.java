@@ -190,7 +190,7 @@ public class ConfDataSource {
     public static void initializeAmazonConf(){
         if(getAmazonConf() == null){
             Logger.info("[There is not Amazon Conf. Creating....]");
-            insertNewAmazonConf(null, null, null);
+            insertNewAmazonConf("", "", "");
         }else {
             Logger.info("[There is an Amazon Conf. profile]");
         }
