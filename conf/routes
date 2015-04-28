@@ -112,11 +112,14 @@ GET    /planning                                   controllers.PlanningControlle
 GET     /admin                                      controllers.AdminController.blank()
 GET     /admin/login                                controllers.AdminController.login()
 POST    /admin/login                                controllers.AdminController.submitLogin()
-GET     /admin/users                                controllers.AdminController.usersBlank()
 GET     /admin/logout                               controllers.AdminController.logout()
+
+GET     /admin/users                                controllers.AdminController.usersBlank()
 GET     /admin/users/:email/:id                     controllers.AdminController.userInfo(email: String, id: String)
 POST    /admin/delete                               controllers.AdminController.deleteUser()
+
 GET     /admin/stats                                controllers.AdminController.stats()
+
 GET     /admin/options                              controllers.AdminController.optionsBlank()
 POST    /admin/options                              controllers.AdminController.updateAmazonOptions()
 POST    /admin/options/profile                      controllers.AdminController.updateAdminUserOptions()

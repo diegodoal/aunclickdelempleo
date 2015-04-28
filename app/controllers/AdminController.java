@@ -64,7 +64,7 @@ public class AdminController extends Controller{
             session("a-user", name);
             session("a-timestamp", date.toString());
             ConfDataSource.updateAdminUser(adminUser);
-            return redirect("/admin/users");
+            return redirect("/admin");
         }else
             return badRequest("Login error!");
     }
