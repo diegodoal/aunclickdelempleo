@@ -27,6 +27,7 @@ public final class Constants {
     public final static String USER_PASSWORD = "password";
     public final static String USER_EMAIL_VERIFICATION_KEY = "emailVerificationKey";
     public final static String USER_CONNECTION_TIMESTAMP = "connectionTimestamp";
+    public final static String USER_REGISTRATION_DATE = "registrationDate";
 
     public final static String USER_RESTORE_PASSWORD_TOKEN = "restorePasswordToken";
     public final static String USER_RESTORE_PASSWORD_TIMESTAMP = "restorePasswordTimestamp";

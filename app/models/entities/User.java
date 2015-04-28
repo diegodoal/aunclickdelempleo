@@ -4,6 +4,7 @@ package models.entities;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import models.entities.orientation.*;
+import utils.Utils;
 
 import java.lang.reflect.Type;
 import java.security.SecureRandom;
@@ -25,6 +26,8 @@ public class User {
     public String password;
     public String emailVerificationKey;
     public String connectionTimestamp;
+
+    public String registrationDate;
 
     public String restorePasswordToken;
     public String restorePasswordTimestamp;
@@ -66,6 +69,7 @@ public class User {
         this.restorePasswordToken = null;
         this.restorePasswordTimestamp = null;
 
+        this.registrationDate = Utils.formatDateToCustomPattern(new Date());
         this.birthDate = null;
         this.residenceCity = null;
         this.residenceAddress = null;
@@ -102,6 +106,8 @@ public class User {
         this.connectionTimestamp = new Date().toString();
         this.restorePasswordToken = null;
         this.restorePasswordTimestamp = null;
+
+        this.registrationDate = Utils.formatDateToCustomPattern(new Date());
 
         this.birthDate = null;
         this.residenceCity = null;

@@ -72,6 +72,7 @@ public class SingletonDataSource {
                 append(Constants.USER_CONNECTION_TIMESTAMP, user.connectionTimestamp).
                 append(Constants.USER_RESTORE_PASSWORD_TOKEN, user.restorePasswordToken).
                 append(Constants.USER_RESTORE_PASSWORD_TIMESTAMP, user.restorePasswordTimestamp).
+                append(Constants.USER_REGISTRATION_DATE, user.registrationDate).
                 append(Constants.USER_BIRTH_DATE, user.birthDate).
                 append(Constants.USER_RESIDENCE_CITY, user.residenceCity).
                 append(Constants.USER_RESIDENCE_ADDRESS, user.residenceAddress).
@@ -222,6 +223,7 @@ public class SingletonDataSource {
         newDocument.put(Constants.USER_CONNECTION_TIMESTAMP, user.connectionTimestamp);
         newDocument.put(Constants.USER_RESTORE_PASSWORD_TOKEN, user.restorePasswordToken);
         newDocument.put(Constants.USER_RESTORE_PASSWORD_TIMESTAMP, user.restorePasswordTimestamp);
+        newDocument.put(Constants.USER_REGISTRATION_DATE, user.registrationDate);
         newDocument.put(Constants.USER_BIRTH_DATE, user.birthDate);
         newDocument.put(Constants.USER_RESIDENCE_CITY, user.residenceCity);
         newDocument.put(Constants.USER_RESIDENCE_ADDRESS, user.residenceAddress);

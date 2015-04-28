@@ -1,10 +1,38 @@
+@(recentUsers : List[models.entities.User])
 @header("options"){
 <h1>Panel de administración</h1>
 
 <div class="panel panel-default">
     <div class="panel-heading">NOVEDADES</div>
     <div class="panel-body">
-        <h4>Novedades en la web....</h4>
+@if(recentUsers.isEmpty()){
+	<h4>No hay usuarios registrados recientemente</h4>
+}else{
+    	<div class="panel panel-default">
+		<div class="panel-heading">Usuarios de administración</div>
+			<div class="panel-body">
+    			<table id="new_users_table" class="display" cellspacing="0" width="100%">
+        			<thead>
+            			<tr>
+                			<th>Nombre</th>
+                			<th>Email</th>
+                			<th>Fecha de registro</th>
+            			</tr>
+        			</thead>
+
+			        <tbody>
+            			@for(user <- recentUsers){
+                		<tr class="user-entry">
+        	            	<td>@user.name @user.surnames</td>
+                    		<td>@user.email</td>
+                    		<td>@user.registrationDate</td>
+    	            	</tr>
+            			}
+        			</tbody>
+    			</table>
+			</div>
+		</div>
+}
     </div>
 </div>
 
@@ -79,4 +107,11 @@
 
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+            $('#new_users_table').DataTable();
+        } );
+</script>
+
 }

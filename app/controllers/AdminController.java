@@ -14,6 +14,7 @@ import play.mvc.Result;
 import utils.Stats;
 import utils.Utils;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -75,11 +76,23 @@ public class AdminController extends Controller{
     }
 
     public static Result blank(){
-        if(checkConnection() != null) {
-            return ok(views.html.admin.index.render());
-        }else{
+        if(checkConnection() == null) {
             return unauthorized("Access denied");
         }
+        return ok(views.html.admin.index.render(recentUsers()));
+    }
+
+    public static List<User> recentUsers(){
+        List<User> users = SingletonDataSource.getInstance().findAll();
+        List<User> recentUsers = new ArrayList<>();
+        for(User user : users){
+            long diff = Utils.getDiffBetweenTwoDates(Utils.stringToDate(user.registrationDate), new Date());
+            Logger.info("###############"+user.email + "   " + diff);
+            if(diff <= 1){
+                recentUsers.add(user);
+            }
+        }
+        return recentUsers;
     }
 
     public static Result usersBlank(){
