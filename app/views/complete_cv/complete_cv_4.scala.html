@@ -3,53 +3,60 @@
 @main(){
 <div class="container">
 
-<!--COMPLETE_CV_3-->
+<!--COMPLETE_CV_4-->
 <section id="text_user_profile_2">
     <div class="row">
-        <div class="col-md-12  brown_adecco century_gothic">
-            <h2>COMPLETA TU PERFIL</h2>
+        <div class="col-md-12 brown_adecco century_gothic">
+            <h2>ÚLTIMO PASO: PERSONALIZA TU CV</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 brown_adecco century_gothic size22">
-            <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
+            <p>Elije entre <span class="red_adecco" >4 estilos.</span></p>
         </div>
     </div>
 
 
-    <div class="row" style="margin-bottom: 0;">
-        <div class="col-md-12 ic_paso2">
+    <div class="row">
+        <div class="col-md-3">
+            <img class="gray_adecco cv-format" src="@routes.Assets.at("images/orientation/cv-templates/CV1.jpg")"">
+        </div>
 
-            <div class="row-same-height row-full-height">
-                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
-                    <a href="@routes.GenerateDocumentsController.cv1()">
-                        <img src="@routes.Assets.at("images/orientation/steps/ic_1claro.png")">
-                    </a>
-                </div>
-                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+        <div class="col-md-3">
+            <img class="gray_adecco cv-format" src="@routes.Assets.at("images/orientation/cv-templates/CV2.jpg")">
+        </div>
 
-                </div>
+        <div class="col-md-3">
+            <img class="gray_adecco cv-format" src="@routes.Assets.at("images/orientation/cv-templates/CV3.jpg")">
+        </div>
 
-                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
-                    <a href="@routes.GenerateDocumentsController.cv2()">
-                        <img src="@routes.Assets.at("images/orientation/steps/ic_2claro.png")">
-                    </a>
-                </div>
-
-
-                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
-
-                </div>
-
-                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
-                    <a href="@routes.GenerateDocumentsController.cv3()">
-                        <img src="@routes.Assets.at("images/orientation/steps/ic_3.png")">
-                    </a>
-                </div>
-
-            </div>
+        <div class="col-md-3">
+            <img class="gray_adecco cv-format" src="@routes.Assets.at("images/orientation/cv-templates/CV4.jpg")">
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <input type="radio" id="radio_cv1" name="radio_cv" value="template1">
+            <label for="radio_cv1"></label>
+        </div>
+
+        <div class="col-md-3">
+            <input type="radio" id="radio_cv2" name="radio_cv" value="template2">
+            <label for="radio_cv2"></label>
+        </div>
+
+        <div class="col-md-3">
+            <input type="radio" id="radio_cv3" name="radio_cv" value="template3">
+            <label for="radio_cv3"></label>
+        </div>
+
+        <div class="col-md-3">
+            <input type="radio" id="radio_cv4" name="radio_cv" value="template4">
+            <label for="radio_cv4"></label>
+        </div>
+    </div>
+
 </section>
 
 <section>
@@ -519,8 +526,7 @@
                 error: function(){
                 },
                 success: function(){
-                    //window.location.assign("/orientation/gettools/cv/preview");
-                    window.location.assign("/orientation/gettools/cv4");
+                    window.location.assign("/orientation/gettools/cv/preview");
                 }
             });
     }

@@ -162,6 +162,23 @@ public class GenerateDocumentsController {
             SingletonDataSource.getInstance().updateAllUserData(user);
         }
 
+        return redirect("/orientation/gettools/cv4");
+    }
+
+    public static Result cv4(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+        return ok(views.html.complete_cv.complete_cv_4.render(user));
+    }
+
+    public static Result submitCv4(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user != null){
+            // FALTA DE HACER
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+
         return redirect("/");
     }
 

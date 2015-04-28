@@ -7253,3 +7253,9 @@ input[type=number] {
 .sombra:focus{
   outline: none;
 }
+
+.cv-format {
+    width: 15em;
+    border: 0.2em solid;
+    padding: 0.1em;
+}
