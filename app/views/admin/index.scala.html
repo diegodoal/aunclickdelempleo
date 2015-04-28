@@ -1,44 +1,49 @@
 @(recentUsers : List[models.entities.User])
-@header("options"){
+@header(""){
 <h1>Panel de administración</h1>
 
 <div class="panel panel-default">
-    <div class="panel-heading">NOVEDADES</div>
+    <div class="panel-heading"><b>NOVEDADES</b></div>
     <div class="panel-body">
-@if(recentUsers.isEmpty()){
-	<h4>No hay usuarios registrados recientemente</h4>
-}else{
     	<div class="panel panel-default">
-		<div class="panel-heading">Usuarios de administración</div>
-			<div class="panel-body">
-    			<table id="new_users_table" class="display" cellspacing="0" width="100%">
-        			<thead>
-            			<tr>
-                			<th>Nombre</th>
-                			<th>Email</th>
-                			<th>Fecha de registro</th>
-            			</tr>
-        			</thead>
+		<div class="panel-heading">Usuarios de recientes</div>
+		<div class="panel-body">
+@if(recentUsers.isEmpty()){
+	No hay usuarios registrados recientemente
+}else{
+    	
+		
+			<table id="new_users_table" class="display" cellspacing="0" width="100%">
+    			<thead>
+        			<tr>
+            			<th>Nombre</th>
+            			<th>Email</th>
+            			<th>Fecha de registro</th>
+        			</tr>
+    			</thead>
 
-			        <tbody>
-            			@for(user <- recentUsers){
-                		<tr class="user-entry">
-        	            	<td>@user.name @user.surnames</td>
-                    		<td>@user.email</td>
-                    		<td>@user.registrationDate</td>
-    	            	</tr>
-            			}
-        			</tbody>
-    			</table>
-			</div>
-		</div>
+		        <tbody>
+        			@for(user <- recentUsers){
+            		<tr class="user-entry">
+    	            	<td>
+    	            		<a href="/admin/users/@user.email/@user.id"><img width="5%" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
+    	            		@user.name @user.surnames
+    	            	</td>
+                		<td>@user.email</td>
+                		<td>@user.registrationDate</td>
+	            	</tr>
+        			}
+    			</tbody>
+			</table>
 }
+		</div>
+		</div>
     </div>
 </div>
 
 <!-- USER GUIDE -->
 <div class="panel panel-default">
-    <div class="panel-heading">MANUAL DE USUARIO</div>
+    <div class="panel-heading"><b>MANUAL DE USUARIO</b></div>
     <div class="panel-body">
         
 
