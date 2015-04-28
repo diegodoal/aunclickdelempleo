@@ -75,8 +75,8 @@ public class User {
         this.studyLocation = null;
         this.educationLevel = null;
 
-        this.drivingLicense = null;
-        this.certificateOfDisability = null;
+        this.drivingLicense = "";
+        this.certificateOfDisability = "";
 
         this.courses = new ArrayList<>();
         this.languages = new ArrayList<>();
@@ -112,8 +112,8 @@ public class User {
         this.studyLocation = null;
         this.educationLevel = null;
 
-        this.drivingLicense = null;
-        this.certificateOfDisability = null;
+        this.drivingLicense = "";
+        this.certificateOfDisability = "";
 
         this.courses = new ArrayList<>();
         this.languages = new ArrayList<>();
