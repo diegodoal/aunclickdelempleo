@@ -5,6 +5,7 @@
 <script type='text/javascript' src="@routes.Assets.at("javascripts/concatenar_date.js")"></script>
 <script type='text/javascript' src="@routes.Assets.at("javascripts/add-new-experience-bbdd.js")"></script>
 <script type='text/javascript' src="@routes.Assets.at("javascripts/delete_experience_generate.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/save_studies.js")"></script>
 <div class="container">
 <!--COMPLETE_CV_2-->
 <section  id="text_user_profile_2">
@@ -60,142 +61,111 @@
         </div>
 		<div class=" col-lg-12  arial gray_adecco size18 bold">Nivel de estudios</div>
 	</div><br>
-
     <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
-
-
-
-
-
-    <div class="row orientation-points">
-		<div class="col-lg-12 ">
-            <input type="checkbox" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
-		    <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
-		</div>
-   	</div><br>
-	        <form class="form-horizontal">
-
-
-	            <div class="form-group" id="level_studies_group">
-                    <div class="col-lg-5 input-mic-container">
-
-                        <input type="text" class="form-control" placeholder="Título" id="titulo" value="" required="required">
-                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                      <!--  <select class="form-control" id="level_studies" name="level_studies">
-                            @if((user != null && user.educationLevel == null) || user == null){
-                                <option value="0" disabled selected="">Nivel de estudios</option>
-                                <option value="1">PCPI / Garantía social</option>
-                                <option value="2">Graduado escolar</option>
-                                <option value="3">Certificado de escolaridad o de la ESO</option>
-                                <option value="4">BUP, Bachillerato y COU</option>
-                                <option value="5">Enseñanzas de régimen especial</option>
-                                <option value="6">Graduado en ESO</option>
-                                <option value="7">FP 1/ Técnico medio</option>
-                                <option value="8">FP 2/ Técnico superior</option>
-                                <option value="9">Diplomado, Ing. Técnico, Arquitecto técnico</option>
-                                <option value="10">Grado</option>
-                                <option value="11">Licenciado, Ingeniero, Arquitecto</option>
-                                <option value="12">Título Propio/ Carrera no homologada</option>
-                                <option value="13">Máster/ Título Propio de Postgrado</option>
-                                <option value="14">Doctorado</option>
-                                <option value="15">Oposiciones</option>
-                            }else{
-                                <option value="0" disabled>Nivel de estudios</option>
-                                @if(user.educationLevel.equals("PCPI / Garantía social")){
-                                    <option value="1" selected>PCPI / Garantía social</option>
-                                }else{
-                                    <option value="1">PCPI / Garantía social</option>
-                                }
-                                @if(user.educationLevel.equals("Graduado escolar")){
-                                    <option value="2" selected>Graduado escolar</option>
-                                }else{
-                                    <option value="2">Graduado escolar</option>
-                                }
-                                @if(user.educationLevel.equals("Certificado de escolaridad o de la ESO")){
-                                    <option value="3" selected>Certificado de escolaridad o de la ESO</option>
-                                }else{
-                                    <option value="3">Certificado de escolaridad o de la ESO</option>
-                                }
-                                @if(user.educationLevel.equals("BUP, Bachillerato y COU")){
-                                    <option value="4" selected>BUP, Bachillerato y COU</option>
-                                }else{
-                                    <option value="4">BUP, Bachillerato y COU</option>
-                                }
-                                @if(user.educationLevel.equals("Enseñanzas de régimen especial")){
-                                    <option value="5" selected>Enseñanzas de régimen especial</option>
-                                }else{
-                                    <option value="5">Enseñanzas de régimen especial</option>
-                                }
-                                @if(user.educationLevel.equals("Graduado en ESO")){
-                                    <option value="6" selected>Graduado en ESO</option>
-                                }else{
-                                    <option value="6">Graduado en ESO</option>
-                                }
-                                @if(user.educationLevel.equals("FP 1/ Técnico medio")){
-                                    <option value="7" selected>FP 1/ Técnico medio</option>
-                                }else{
-                                    <option value="7">FP 1/ Técnico medio</option>
-                                }
-                                @if(user.educationLevel.equals("FP 2/ Técnico superior")){
-                                    <option value="8" selected>FP 2/ Técnico superior</option>
-                                }else{
-                                    <option value="8">FP 2/ Técnico superior</option>
-                                }
-                                @if(user.educationLevel.equals("Diplomado, Ing. Técnico, Arquitecto técnico")){
-                                    <option value="9" selected>Diplomado, Ing. Técnico, Arquitecto técnico</option>
-                                }else{
-                                    <option value="9">Diplomado, Ing. Técnico, Arquitecto técnico</option>
-                                }
-                                @if(user.educationLevel.equals("Grado")){
-                                    <option value="10" selected>Grado</option>
-                                }else{
-                                    <option value="10">Grado</option>
-                                }
-                                @if(user.educationLevel.equals("Licenciado, Ingeniero, Arquitecto")){
-                                    <option value="11" selected>Licenciado, Ingeniero, Arquitecto</option>
-                                }else{
-                                    <option value="11">Licenciado, Ingeniero, Arquitecto</option>
-                                }
-                                @if(user.educationLevel.equals("Título Propio/ Carrera no homologada")){
-                                    <option value="12" selected>Título Propio/ Carrera no homologada</option>
-                                }else{
-                                    <option value="12">Título Propio/ Carrera no homologada</option>
-                                }
-                                @if(user.educationLevel.equals("Máster/ Título Propio de Postgrado")){
-                                    <option value="13" selected>Máster/ Título Propio de Postgrado</option>
-                                }else{
-                                    <option value="13">Máster/ Título Propio de Postgrado</option>
-                                }
-                                @if(user.educationLevel.equals("Doctorado")){
-                                    <option value="14" selected>Doctorado</option>
-                                }else{
-                                    <option value="14">Doctorado</option>
-                                }
-                                @if(user.educationLevel.equals("Oposiciones")){
-                                    <option value="15" selected>Oposiciones</option>
-                                }else{
-                                    <option value="15">Oposiciones</option>
-                                }
-                            }
-                        </select>
-
-                        -->
-
-                     </div>
-                    <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
-                        <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="required">
-                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                    </div>
-	            </div>
-	        </form><br>
-	    
-	
-
 </section>
+    @if(user != null){
+        @if(user.studyTitle == ""){
+            <section>
+                <div class="row orientation-points">
+                    <div class="col-lg-12 ">
+                        <input type="checkbox" name="check_no_studies" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
+                        <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+                    </div>
+                </div><br>
+                <form class="form-horizontal" >
+                    <div class="form-group" id="level_studies_group">
+                        <div class="col-lg-5 input-mic-container">
+                            <input type="text" name="title" class="form-control" placeholder="Título" id="titulo" value="" required="required">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                        <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
+                            <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="required">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                    </div>
+                    <div class="form-group" id="save">
+                        <div class="col-lg-2 col-lg-offset-9">
+                            <img id="save_studies" class="img-btn save-studies" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                        </div>
+                    </div>
+                </form><br>
+            </section>
+        }else{
+            @if(user.studyTitle == "No tengo estudios"){
+                <section>
+                    <div class="row orientation-points">
+                        <div class="col-lg-12 ">
+                            <input type="checkbox" checked name="check_no_studies" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHiddenNo(this.checked)">
+                            <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+                        </div>
+                    </div><br>
+                    <form class="form-horizontal" id="level_studies_group_no">
+                        <div class="form-group" >
+                            <div class="col-lg-5 input-mic-container">
+                                <input type="text" name="title" class="form-control" placeholder="Título" id="titulo" value="" required="required">
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                            <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
+                                <input type="text" name="location" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="required">
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                        <div class="form-group" id="save">
+                            <div class="col-lg-2 col-lg-offset-9">
+                                <img id="save_studies" class="img-btn save-studies-no" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                            </div>
+                        </div>
+                    </form><br>
+                </section>
+
+            }else{
+            <section>
+                    <form class="form-horizontal" id="level_studies_group_no">
+                        <div class="form-group" >
+                            <div class="col-lg-5 input-mic-container">
+                                <input type="text" name="title" class="form-control" placeholder="Título" id="titulo" value="@user.studyTitle" required="required">
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                            <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
+                                <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="@user.studyLocation" required="required">
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                    </form><br>
+                </section>
+
+            }
+        }
+    }else{
+            <section>
+                <div class="row orientation-points">
+                    <div class="col-lg-12 ">
+                        <input type="checkbox" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
+                        <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+                    </div>
+                </div><br>
+                <form class="form-horizontal" id="level_studies_group">
+                    <div class="form-group" >
+                        <div class="col-lg-5 input-mic-container">
+                            <input type="text" class="form-control" placeholder="Título" id="titulo" value="" required="required">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                        <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
+                            <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="required">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                    </div>
+                    <div class="form-group" id="save">
+                        <div class="col-lg-2 col-lg-offset-9">
+                            <img id="save_studies" class="img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                        </div>
+                    </div>
+                </form><br>
+            </section>
+            }
+
 
 <section>
-
-
     <div class="row">
         <div class="col-lg-12  arial gray_adecco size18 bold">Experiencia laboral</div>
     </div><br>
@@ -933,6 +903,7 @@
         deleteExperienceGenerate();
         unir();
         addNewBbddExp();
+        saveStudies();
 
     };
 </script>
@@ -1027,6 +998,14 @@
          }
          else{
          document.getElementById("experience_group_new").hidden = false;
+         }
+ });
+      $('input[name="check_no_studies"]').each(function(){
+  if(this.checked){
+         document.getElementById("level_studies_group_no").hidden = true;
+         }
+         else{
+         document.getElementById("level_studies_group_no").hidden = false;
          }
  });
 
