@@ -71,8 +71,8 @@ public class User {
         this.residenceZipCode = null;
         this.phoneNumber = null;
 
-        this.studyTitle = null;
-        this.studyLocation = null;
+        this.studyTitle = "";
+        this.studyLocation = "";
         this.educationLevel = null;
 
         this.drivingLicense = "";
@@ -108,8 +108,8 @@ public class User {
         this.residenceZipCode = null;
         this.phoneNumber = null;
 
-        this.studyTitle = null;
-        this.studyLocation = null;
+        this.studyTitle = "";
+        this.studyLocation = "";
         this.educationLevel = null;
 
         this.drivingLicense = "";

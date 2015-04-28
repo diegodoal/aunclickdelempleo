@@ -396,4 +396,36 @@ public class GenerateDocumentsController {
         return ok(Json.toJson(idExperience));
 
     }
+    public static Result addNoStudiesGenerate(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        String[] studies = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+
+        user.studyTitle=studies[0];
+        user.studyLocation="";
+
+
+        user.completedOrientationSteps.currentSituation = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
+
+        return ok(Json.toJson(studies));
+
+    }
+    public static Result addStudiesGenerate(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        String[] studies = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+
+        user.studyTitle=studies[0];
+        user.studyLocation=studies[1];
+
+
+        user.completedOrientationSteps.currentSituation = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
+
+        return ok(Json.toJson(studies));
+
+    }
 }
