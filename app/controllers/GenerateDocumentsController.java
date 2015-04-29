@@ -377,6 +377,40 @@ public class GenerateDocumentsController {
         return ok(Json.toJson(experience));
 
     }
+    public static Result addCheckExperienceGenerate(){
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user == null){
+            return redirect("/orientation/gettools/cv2");
+        }
+
+        String checkExperience = new Gson().fromJson(request.toString(), new TypeToken<String>(){}.getType());
+
+        if(user.currentSituation.professionalExperienceList.size() == 0){
+            String expID =  UUID.randomUUID().toString();
+            user.currentSituation.addProfessionalExperience(checkExperience, "", "", "",expID);
+        }else {
+            for (int i = 0; i < user.currentSituation.professionalExperienceList.size(); i++) {
+
+                if (user.currentSituation.professionalExperienceList.get(i).company.equals("No tengo experiencia")) {
+                    //Logger.info("La Base de datos  contiene el check de no tengo experiencia");
+
+                } else {
+                    //Logger.info("La Base de datos  no contiene el check de no tengo experiencia");
+                    user.currentSituation.clearProfessionalExperience();
+                    String expID =  UUID.randomUUID().toString();
+                    user.currentSituation.addProfessionalExperience(checkExperience, "", "", "",expID);
+                }
+            }
+        }
+
+        user.completedOrientationSteps.currentSituation = String.valueOf(true);
+        SingletonDataSource.getInstance().updateAllUserData(user);
+
+        return ok(Json.toJson(checkExperience));
+
+    }
 
     public static Result deleteExperienceCurrentSituation(){
         JsonNode request = request().body().asJson();
