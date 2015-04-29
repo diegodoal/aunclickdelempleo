@@ -15,7 +15,7 @@
             <p>Actividad: Debes seleccionar cual es tu nivel de estudios y completar tu experiencia profesional si la tuvieras.</p>
         </div>
     </div><br>
-</article>        
+</article>
 
 <section class="container back" style="margin: auto;">
     <div class="orientation-points">
@@ -176,20 +176,20 @@
             </div>
         </div>
     </div>
-    <div class="orientation-points">
+    <div class="row orientation-points">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <p class="century_gothic gray_adecco size22 bold advices_height" style="margin-left:1em;">¿Cuál es tu experiencia profesional?</p> <br>
         </div>
         <div class="font1_g"  style="margin-left:3em;">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
 
 
-        <div class="row">
+
         @if(user != null){
         @if(user.currentSituation.professionalExperienceList.size() != 0){
         @for(professional <- user.currentSituation.professionalExperienceList) {
 
         @if(professional.company == "No tengo experiencia"){
-        <div class="orientation-points hidden_check_exp" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
+        <div class="row orientation-points hidden_check_exp" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
             <div class="col-md-6 col-md-offset-1">
                 <input type="checkbox" id="check_exp_bbdda" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHidden(this.checked)" checked >
                 <label for="check_exp_bbdda" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
@@ -209,10 +209,10 @@
                         </div>
                     </div>
                 <div class="form-group form-inline">
-                    <div class="col-md-6">
+                    <div class="col-md-5 col-md-offset-1">
                         <input style="width: 100%; margin-left: 0;" type="text" class=""  name="startDate"  value="@professional.startDate" disabled>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5 col-md-offset-1">
                         <input style="width: 100%; margin-left: 0;" type="text" class=""  name="endDate"  value="@professional.endDate" disabled>
                     </div>
                 </div>
@@ -225,6 +225,7 @@
                      </div>
                  </div>
             </form>
+        </div>
         </div>
         }
         }
@@ -247,10 +248,10 @@
                         </div>
                         <div class="form-group form-inline" id="job_experience_group_5">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
+                                <div class="col-md-2 col-md-offset-1">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-1em;">Fecha Inicio:</span>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div id="mydivinicio" class="estilo_date focussInicio">
                                         <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
 
@@ -259,10 +260,10 @@
                                         <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
+                                <div class="col-md-2 col-md-offset-2 ">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:2em;">Fecha Fin:</span>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div id="mydivfin" class="estilo_date focussFin">
                                         <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
 
@@ -273,10 +274,10 @@
                                 </div>
                             </div>
                             <div class="row" hidden="hidden">
-                                <div class=" exp col-md-6">
+                                <div class=" exp col-md-5 col-md-offset-1">
                                     <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
                                 </div>
-                                <div class=" exp col-md-6">
+                                <div class=" exp col-md-5 col-md-offset-1">
                                     <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate" >
                                 </div>
                             </div>
@@ -301,19 +302,19 @@
                     <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenLog(this.checked)">
                     <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
                 </div>
-            </div><br><br>
+            </div><br>
 
             <div class="main-div-sections">
                 <div class="panel-group new-input-container center" style="margin-auto;">
                     <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
                         <div class="form-group form-inline" id="job_experience_group_1">
-                            <div class="exp col-md-6">
+                            <div class="exp col-md-5 col-md-offset-1">
                                 <div class="input-mic-container">
                                     <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
                                     <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                                 </div>
                             </div>
-                            <div class=" exp col-md-6">
+                            <div class=" exp col-md-5 col-md-offset-1">
                                 <div class="input-mic-container">
                                     <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
                                     <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
@@ -322,10 +323,10 @@
                         </div>
                         <div class="form-group form-inline" id="job_experience_group_5">
                             <div class="row">
-                                <div class="col-md-2">
-                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
+                                <div class="col-md-2 col-md-offset-1">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-1em;">Fecha Inicio:</span>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div id="mydivinicio" class="estilo_date focussInicio">
                                         <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
 
@@ -334,10 +335,10 @@
                                         <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
+                                <div class="col-md-2 col-md-offset-2 ">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:2em;">Fecha Fin:</span>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-2">
                                     <div id="mydivfin" class="estilo_date focussFin">
                                         <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
 
@@ -348,10 +349,10 @@
                                 </div>
                             </div>
                             <div class="row" hidden="hidden">
-                                <div class=" exp col-md-6">
+                                <div class=" exp col-md-5 col-md-offset-1">
                                     <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;"  id="startDate">
                                 </div>
-                                <div class=" exp col-md-6">
+                                <div class=" exp col-md-5 col-md-offset-1">
                                     <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate">
                                 </div>
                             </div>
@@ -373,12 +374,12 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <span id="validate_exp_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu experiencia profesional.</span><br>
             </div>
-            <div class="orientation-points" id="check_exp_cb" style="margin-left:0em; margin-bottom:1em;">
+            <div class="row orientation-points" id="check_exp_cb" style="margin-left:0em; margin-bottom:1em;">
                 <div class="col-md-6 col-md-offset-1">
                     <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenNoLog(this.checked)">
                     <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
                 </div>
-            </div><br><br>
+            </div><br>
 
             <div class="main-div-sections" id="experience_group_new_no_log">
                 <div class="panel-group new-input-container center" style="margin-auto;"><br><br>
@@ -412,7 +413,7 @@
                                         <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
                                     </div>
                                 </div>
-                                <div class="col-md-2 col.-md-offset-3 ">
+                                <div class="col-md-2 col-md-offset-2 ">
                                     <span class="size14 gray_adecco arial steps_height" style="margin-left:2em;">Fecha Fin:</span>
                                 </div>
                                 <div class="col-md-2">
@@ -426,10 +427,10 @@
                                 </div>
                             </div>
                             <div class="row" hidden="hidden">
-                                <div class=" exp col-md-6">
+                                <div class=" exp col-md-5 col-md-offset-1">
                                     <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
                                 </div>
-                                <div class=" exp col-md-6">
+                                <div class=" exp col-md-5 col-md-offset-1">
                                     <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate">
                                 </div>
                             </div>
@@ -443,8 +444,8 @@
                         </div>
                     </form>
                 </div>
-                </div>
             </div>
+
             }
 </section>
 <section class="container">
