@@ -6,6 +6,8 @@
 <script type='text/javascript' src="@routes.Assets.at("javascripts/add-new-experience-bbdd.js")"></script>
 <script type='text/javascript' src="@routes.Assets.at("javascripts/delete_experience_generate.js")"></script>
 <script type='text/javascript' src="@routes.Assets.at("javascripts/save_studies.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/save_interest_generate.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/next-cv2.js")"></script>
 <div class="container">
 <!--COMPLETE_CV_2-->
 <section  id="text_user_profile_2">
@@ -112,7 +114,7 @@
                         </div>
                         <div class="form-group" id="save">
                             <div class="col-lg-2 col-lg-offset-9">
-                                <img id="save_studies" class="img-btn save-studies-no" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                                <img id="save_studies" class=" img-btn save-studies-no" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
                             </div>
                         </div>
                     </form><br>
@@ -157,7 +159,7 @@
                     </div>
                     <div class="form-group" id="save">
                         <div class="col-lg-2 col-lg-offset-9">
-                            <img id="save_studies" class="img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                            <img id="save_studies" class=" img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
                         </div>
                     </div>
                 </form><br>
@@ -177,7 +179,7 @@
     <div class="row orientation-points hidden_check_exp" id="check_exp_cb" style=" margin-bottom:1em;">
         <div class="col-md-6">
             <input type="checkbox" id="check_exp_bbdda" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHidden(this.checked)" checked >
-            <label for="check_exp_bbdda" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+            <label  for="check_exp_bbdda" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
         </div>
     </div>
     }else{
@@ -271,6 +273,13 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img id="save_studies" class="add-new-bbdd img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -346,6 +355,13 @@
                         </div>
                     </div>
                 </form>
+                <div class="row">
+                    <div class="col-lg-1 col-lg-offset-10">
+                        <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                            <img id="save_studies" class="add-new-bbdd img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         }
@@ -356,7 +372,7 @@
         <div class="row orientation-points" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
             <div class="col-md-6" style="margin-left:-2em;>
                 <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenNoLog(this.checked)">
-                <label for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+                <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
             </div>
         </div>
         <div class="main-div-sections" id="experience_group_new_no_log">
@@ -415,6 +431,13 @@
                             <div class="col-lg-1 col-lg-offset-10">
                                 <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
                                     <img class="add-new-bbdd" src="@routes.Assets.at("images/orientation/ic_añadirexperiencia.png")">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img id="save_studies" class="add-new-bbdd img-btn save-studies" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
                                 </div>
                             </div>
                         </div>
@@ -871,16 +894,32 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-1 col-lg-offset-11">
+            <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                <img id="save_studies" class="add-new-interest img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+            </div>
+        </div>
+    </div>
 </section>
 </div>
 <section class="container">
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 center">
-           <button class="button-finish-1" onclick="sendForm()" >SIGUIENTE</button>
+           <button class=" next button-finish-1" onclick="" >SIGUIENTE</button>
         </div>
     </div>
 </section>
+@if(user != null){
+    @if(user.studyTitle != "" && user.currentSituation.professionalExperienceList.size != 0 && user.interests.size != 0){
+    <input  id="next-step" type="text" value="next" hidden>
+    }else{
+    <input  id="next-step" type="text" value="no" hidden>
+    }
+}else{
+<input  id="next-step" type="text" value="next" hidden>
+}
 
 <!-- POP UP WINDOW -->
 <div id="accesibility_pop_up2" class="mask_pop_up">
@@ -904,93 +943,12 @@
         unir();
         addNewBbddExp();
         saveStudies();
+        addIntesetGenerate();
+        next();
 
     };
 </script>
 
-<script type="text/javascript">
-    function sendForm(){
-        var result = [];
-        var counter = 0;
-        var emptyField = false;
-
-        //Adding study level
-        if($('#check_study').is(':checked')){
-            result[counter] = "";
-        }else{
-            if($('#level_studies option:selected').val() == 0){
-                emptyField = true;
-            }
-            result[counter] = $('#level_studies option:selected').text();
-        }
-        counter++;
-
-        //Adding job experience
-        if($('#check_experience').is(':checked')){
-            result[counter] = "EmptyExperience";
-            counter++;
-        }else{
-            var jobExperience = [];
-            var counter = 0;
-        
-            $('.main-div-sections .form-horizontal').each(function(){
-                var auxExperience = [];
-                var valid = true;
-                $(this).find('input').each(function(){
-                    if(valid == true && $(this).val() != ''){
-                        auxExperience[counter] = $(this).val();
-                    }else{
-                        valid = false;
-                    }
-                    counter++;
-                });
-                counter = 0;
-                if(valid==true){
-                    jobExperience.push(auxExperience);
-                }
-            });
-            result.push(JSON.stringify(jobExperience));
-        }
-
-        if($('#check_experience').is(':checked')==false && jobExperience.length == 0){
-            emptyField = true;
-        }
-
-        //Adding professional interests
-        var checkboxArray = [];
-        var counter = 0;
-        $('.checkbox-group input[type=checkbox]').each(function () {
-            if(this.checked){
-                checkboxArray[counter] = $(this).val();
-                counter++;
-            }
-        });
-
-        if(counter == 0){
-            emptyField = true;
-        }
-
-        result.push(JSON.stringify(checkboxArray));
-
-        if(emptyField == true){
-            $('#cv2_alert').show();
-            window.scrollTo(0,0);
-        }else{
-            $.ajax({
-                type: 'post',
-                data: JSON.stringify(result),
-                url: "/orientation/gettools/cv2",
-                contentType: 'application/json',
-                error: function(){
-                    alert("Error!!");
-                },
-                success: function(){
-                    window.location.assign("/orientation/gettools/cv3");
-                }
-            });
-        }
-    }
-</script>
 <script>
      $('input[name="check_experience"]').each(function(){
   if(this.checked){

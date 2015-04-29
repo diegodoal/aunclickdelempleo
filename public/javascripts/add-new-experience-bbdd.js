@@ -28,8 +28,17 @@
            HtmlRedirect = "/orientation/gettools/cv2 ";
            URLroutes = "/orientation/gettools/cv2/Add ";
      }else{
-          HtmlRedirect = "/orientation/gettools/cv2 ";
-          URLroutes = "";
+
+        if($('input[name="check_experience"]').is(':checked')) {
+            auxExperience = $('input[name="check_experience"]').val();
+            HtmlRedirect = "/orientation/gettools/cv2 ";
+            URLroutes = "/orientation/gettools/cv2/AddCheck ";
+
+        }else{
+            HtmlRedirect = "/orientation/gettools/cv2 ";
+            URLroutes = "";
+        }
+
      }
      //Pasar a la base de datos
              $.ajax({

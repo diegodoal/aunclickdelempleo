@@ -21,8 +21,6 @@
               }
         });
         }
-      alert("URL"+URLroutes);
-      alert("studies:"+studies);
            //Pasar a la base de datos
                        $.ajax({
                        type: 'post',
@@ -58,8 +56,6 @@
                     }
               });
               }
-            alert("URL"+URLroutes);
-            alert("studies:"+studies);
                  //Pasar a la base de datos
                              $.ajax({
                              type: 'post',
