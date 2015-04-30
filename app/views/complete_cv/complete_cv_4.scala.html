@@ -1,6 +1,8 @@
 @(user: models.entities.User)
 
 @main(){
+<link rel="stylesheet" href="@routes.Assets.at("stylesheets/cv_pop_up.css")">
+
 <div class="container">
 
 <!--COMPLETE_CV_4-->
@@ -18,58 +20,74 @@
 
 
     <div class="row">
-        <div class="col-md-3 col-sm-3 col-xs-3">
-            <label for="radio_cv1"><img class="gray_adecco cv-format" src="@routes.Assets.at("images/orientation/cv-templates/CV1.jpg")""></label>
+        <div class="col-md-3 col-sm-3">
+            <label for="radio_cv1">
+                <img class="gray_adecco cv-format" alt="Seleccionar el primer estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/CV1.jpg")">
+            </label>
         </div>
 
-        <div class="col-md-3 col-sm-3 col-xs-3">
-            <label for="radio_cv2"><img class="gray_adecco cv-format" src="@routes.Assets.at("images/orientation/cv-templates/CV2.jpg")"></label>
+        <div class="col-md-3 col-sm-3">
+            <label for="radio_cv2">
+                <img class="gray_adecco cv-format" alt="Seleccionar el segundo estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/CV2.jpg")">
+            </label>
         </div>
 
-        <div class="col-md-3 col-sm-3 col-xs-3">
-            <label for="radio_cv3"><img class="gray_adecco cv-format" src="@routes.Assets.at("images/orientation/cv-templates/CV3.jpg")"></label>
+        <div class="col-md-3 col-sm-3">
+            <label for="radio_cv3">
+                <img class="gray_adecco cv-format" alt="Seleccionar el tercer estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/CV3.jpg")">
+            </label>
         </div>
 
-        <div class="col-md-3 col-sm-3 col-xs-3">
-            <label for="radio_cv4"><img class="gray_adecco cv-format" src="@routes.Assets.at("images/orientation/cv-templates/CV4.jpg")"></label>
+        <div class="col-md-3 col-sm-3">
+            <label for="radio_cv4">
+                <img class="gray_adecco cv-format" alt="Seleccionar el cuarto estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/CV4.jpg")">
+            </label>
         </div>
     </div>
 
     <div class="row radios_cv">
-        <div class="col-md-1 col-sm-1 col-xs-1 hidden-xs">
+        <div class="col-md-1 col-sm-1 hidden-xs">
             <input type="radio" id="radio_cv1" name="radio_cv" value="template1" class="radio_cv">
             <label for="radio_cv1"><span></span></label>
         </div>
 
-        <div class="col-md-1 col-sm-1 col-xs-1 col-md-offset-1">
-            <img class="lupa-format" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+        <div class="col-md-1 col-sm-1 hidden-xs col-md-offset-1">
+            <a href="#cv1_pop_up">
+                <img class="lupa-format" alt="Ver el primer estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+            </a>
         </div>
 
-        <div class="col-md-1 col-sm-1 col-xs-1 hidden-xs">
+        <div class="col-md-1 col-sm-1 hidden-xs">
             <input type="radio" id="radio_cv2" name="radio_cv" value="template2" class="radio_cv">
             <label for="radio_cv2"><span></span></label>
         </div>
 
-        <div class="col-md-1 col-sm-1 col-xs-1 col-md-offset-1">
-            <img class="lupa-format" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+        <div class="col-md-1 col-sm-1 hidden-xs col-md-offset-1">
+            <a href="#cv2_pop_up">
+                <img class="lupa-format" alt="Ver el segundo estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+            </a>
         </div>
 
-        <div class="col-md-1 col-sm-1 col-xs-1 hidden-xs">
+        <div class="col-md-1 col-sm-1 hidden-xs">
             <input type="radio" id="radio_cv3" name="radio_cv" value="template3" class="radio_cv">
             <label for="radio_cv3"><span></span></label>
         </div>
 
-        <div class="col-md-1 col-sm-1 col-xs-1 col-md-offset-1">
-            <img class="lupa-format" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+        <div class="col-md-1 col-sm-1 hidden-xs col-md-offset-1">
+            <a href="#cv3_pop_up">
+                <img class="lupa-format" alt="Ver el tercer estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+            </a>
         </div>
 
-        <div class="col-md-1 col-sm-1 col-xs-1 hidden-xs">
+        <div class="col-md-1 col-sm-1 hidden-xs">
             <input type="radio" id="radio_cv4" name="radio_cv" value="template4" class="radio_cv">
             <label for="radio_cv4"><span></span></label>
         </div>
 
-        <div class="col-md-1 col-sm-1 col-xs-1 col-md-offset-1">
-            <img class="lupa-format" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+        <div class="col-md-1 col-sm-1 hidden-xs col-md-offset-1">
+            <a href="#cv4_pop_up">
+                <img class="lupa-format" alt="Ver el cuarto estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+            </a>
         </div>
     </div>
 
@@ -88,30 +106,43 @@
     </div><br>
 </section>
 
-<!--Button Finalizar-->
-<section class="container">
+<section class="col-md-6">
     <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 center">
-            <button class="button-finish-1" onclick="sendForm()">FINALIZAR</button>
-        </div>
+        <button type="button" class="button-accept" onclick="sendForm()">GENERAR CV</button>
+    </div>
+    <div class="row">
+        <button type="button" class="button-cancel" onclick="location.href='@routes.OrientationController.getTools()';">CANCELAR</button>
     </div>
 </section>
 
-<!-- POP UP WINDOW -->
-<div id="accesibility_pop_up2" class="mask_pop_up">
-    <div class="box_pop_up resize">
-        <a href="#close" title="Cerrar" class="close">X</a>
-
-        <h2 text-align="center">¿Cómo funciona?</h2>
-            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
-            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
-            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
-            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
-
+<!-- POP UP WINDOWS -->
+<div id="cv1_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <img class="img-btn" src="@routes.Assets.at("images/orientation/cv-templates/CV1.jpg")">
     </div>
 </div>
 
+<div id="cv2_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <img class="img-btn" src="@routes.Assets.at("images/orientation/cv-templates/CV2.jpg")">
+    </div>
+</div>
+
+<div id="cv3_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <img class="img-btn" src="@routes.Assets.at("images/orientation/cv-templates/CV3.jpg")">
+    </div>
+</div>
+
+<div id="cv4_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <img class="img-btn" src="@routes.Assets.at("images/orientation/cv-templates/CV4.jpg")">
+    </div>
+</div>
 
 <script type="text/javascript">
       window.onload = function() {
