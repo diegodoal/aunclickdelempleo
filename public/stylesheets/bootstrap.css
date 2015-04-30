@@ -6698,12 +6698,13 @@ input[type="checkbox"] {
   text-align: center;
   vertical-align: middle;
 }
-input[type=checkbox]:checked + label:before{
-  content:'✓';
-  font-size: 1em;
-  color: #88c64b;
 
-}
+input[type=checkbox]:checked + label:before{
+   content:'✓';
+   font-size: 1em;
+   color: #88c64b;
+ }
+
 input[type=checkbox]:disabled + label:before{
   content:' ';
   border: transparent;
@@ -7252,4 +7253,40 @@ input[type=number] {
       }
 .sombra:focus{
   outline: none;
+}
+
+.cv-format {
+    max-width: 15.5em;
+    border: 0.2em solid;
+    padding: 0.1em;
+}
+
+.lupa-format {
+    width: 1.75em;
+}
+
+.radios_cv input[type=radio].radio_cv {
+    display: none;
+}
+
+.radios_cv input[type=radio].radio_cv + label span {
+    display: inline-block;
+    content:' ';
+    background: white;
+    border: 4px solid #94877a;
+    border-radius: 0.2em;
+    display: inline-block;
+    height: 1.75em;
+    width: 1.75em;
+    text-align: center;
+    vertical-align: middle;
+    margin: -1px 4px 0 0;
+    vertical-align: middle;
+    cursor:pointer;
+}
+
+.radios_cv input[type=radio].radio_cv:checked + label span:before {
+    content:'✓';
+    font-size: 1em;
+    color: #88c64b;
 }
