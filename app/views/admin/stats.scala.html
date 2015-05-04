@@ -1,4 +1,4 @@
-@(drivingLicense : Array[Integer])(certificates : Array[Integer])
+@(drivingLicense : Array[Integer])(certificates : Array[Integer])(education : Array[Integer])
 
 @header("stats"){
 
@@ -13,6 +13,12 @@
         <div class="col-md-4">
             <div class="graph-md" id="graph-certificate"></div>
         </div>
+
+        <div class="row">
+        <div class="col-md-12">
+            <div class="graph-md" id="graph-education"></div>
+        </div>
+        </div>
     </div>
 
 </section>
@@ -24,6 +30,8 @@
 <script>
     graph_drivingLicense(@drivingLicense(0), @drivingLicense(1));
     graph_certificate(@certificates(0), @certificates(1), @certificates(2), @certificates(3));
+    graph_education(@education(0), @education(1), @education(2), @education(3), @education(4), @education(5), @education(6), @education(7), @education(8), @education(9), 
+        @education(10), @education(11), @education(12), @education(13));
 </script>
 
 

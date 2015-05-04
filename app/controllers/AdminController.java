@@ -137,7 +137,8 @@ public class AdminController extends Controller{
 
     public static Result stats(){
         if(checkConnection() != null) {
-            return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(), Stats.getCertificatesOfDisability()));
+            List<User> users = SingletonDataSource.getInstance().findAll();
+            return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(users), Stats.getCertificatesOfDisability(users), Stats.getEducationLevel(users)));
         }else{
             return unauthorized("Access denied");
         }
