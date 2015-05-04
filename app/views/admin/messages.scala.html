@@ -1,0 +1,204 @@
+@(inboxMessages : List[models.entities.Message])(sentMessages : List[models.entities.Message])(inboxDeleted : List[models.entities.Message])(sentDeleted : List[models.entities.Message])(notRead : String)
+@header("messages"){
+<!-- Begin Body -->
+<div class="row">
+  <div class="col-md-2">
+    <div class="list-group" id="sidebar">
+      @if(notRead.equals("0")){
+        <a href="javascript: inbox()" class="list-group-item" id="inbox-btn">Bandeja de entrada</a>
+      }else{
+        <a href="javascript: inbox()" class="list-group-item" id="inbox-btn">Bandeja de entrada<span class="badge">@notRead</span></a>
+      }
+      <a href="javascript: sent()" class="list-group-item" id="sent-btn">Enviados</a>
+      <a href="javascript: deleted()" class="list-group-item" id="deleted-btn">Eliminados</a>
+    </div>
+              
+  </div>  
+  <div class="col-md-10">
+  	<div class="panel panel-default" hidden id="inbox-messages-panel">
+      <div class="panel-heading"><b>Bandeja de entrada</b></div>
+      <div class="panel-body">
+        <table id="inbox_messages_table" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Usuario</th>
+                  <th></th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+
+            <tbody>
+              @for(message <- inboxMessages){
+                <tr class="user-entry">
+                  @if(message.read){
+                    <td>@message.fromUser</td>
+                    <td>[@message.subject] - @message.message</td>
+                    <td>@message.date</td>
+                  }else{
+                    <td><b>@message.fromUser</b></td>
+                    <td><b>[@message.subject] - @message.message</b></td>
+                    <td><b>@message.date</b></td>
+                  }
+                </tr>
+              }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default" hidden id="sent-messages-panel">
+      <div class="panel-heading"><b>Mensajes enviados</b></div>
+      <div class="panel-body">
+        <table id="sent_messages_table" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Usuario</th>
+                  <th></th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+
+            <tbody>
+              @for(message <- sentMessages){
+                <tr class="user-entry">
+                    <td>@message.toUser</td>
+                    <td>[@message.subject] - @message.message</td>
+                    <td>@message.date</td>
+                </tr>
+              }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default" hidden id="deleted-messages-panel">
+      <div class="panel-heading"><b>Mensajes eliminados</b></div>
+      <div class="panel-body">
+        <div class="panel panel-default">
+        <div class="panel-heading"><b>Recibidos</b></div>
+        <div class="panel-body">
+          <table id="deleted_inbox_table" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Usuario</th>
+                  <th></th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+
+            <tbody>
+              @for(message <- inboxDeleted){
+                <tr class="user-entry">
+                  @if(message.read){
+                    <td>@message.fromUser</td>
+                    <td>[@message.subject] - @message.message</td>
+                    <td>@message.date</td>
+                  }else{
+                    <td><b>@message.toUser</b></td>
+                    <td><b>[@message.subject] - @message.message</b></td>
+                    <td><b>@message.date</b></td>
+                  }
+                </tr>
+              }
+          </tbody>
+        </table>
+      </div>
+        </div>
+        <div class="panel panel-default">
+        <div class="panel-heading"><b>Enviados</b></div>
+        <div class="panel-body">
+          <table id="deleted_sent_table" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Usuario</th>
+                  <th></th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+
+          <tbody>
+            @for(message <- sentDeleted){
+              <tr class="user-entry">
+                @if(message.read){
+                  <td>@message.toUser</td>
+                  <td>[@message.subject] - @message.message</td>
+                  <td>@message.date</td>
+                }else{
+                  <td><b>@message.toUser</b></td>
+                  <td><b>[@message.subject] - @message.message</b></td>
+                  <td><b>@message.date</b></td>
+                }
+              </tr>
+            }
+          </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+            $('#inbox_messages_table').dataTable( {
+                "columns": [
+                  null,
+                  null,
+                  { "searchable": false } //Disable search by date
+                ] } );
+
+            $('#sent_messages_table').dataTable( {
+                "columns": [
+                  null,
+                  null,
+                  { "searchable": false } //Disable search by date
+                ] } );
+            $('#deleted_inbox_table').dataTable( {
+                "columns": [
+                  null,
+                  null,
+                  { "searchable": false } //Disable search by date
+                ] } );
+            $('#deleted_sent_table').dataTable( {
+                "columns": [
+                  null,
+                  null,
+                  { "searchable": false } //Disable search by date
+                ] } );
+        } );
+
+
+  window.onload = inbox();
+
+  function inbox(){
+    $('#inbox-btn').css("font-weight","Bold");
+    $('#sent-btn').css("font-weight","Normal");
+    $('#deleted-btn').css("font-weight","Normal");
+
+    $('#inbox-messages-panel').show();
+    $('#sent-messages-panel').hide();
+    $('#deleted-messages-panel').hide();
+  }
+
+  function sent(){
+    $('#inbox-btn').css("font-weight","Normal");
+    $('#sent-btn').css("font-weight","Bold");
+    $('#deleted-btn').css("font-weight","Normal");
+
+    $('#inbox-messages-panel').hide();
+    $('#sent-messages-panel').show();
+    $('#deleted-messages-panel').hide();
+  }
+
+  function deleted(){
+    $('#inbox-btn').css("font-weight","Normal");
+    $('#sent-btn').css("font-weight","Normal");
+    $('#deleted-btn').css("font-weight","Bold");
+
+    $('#inbox-messages-panel').hide();
+    $('#sent-messages-panel').hide();
+    $('#deleted-messages-panel').show();
+  }
+</script>
+}

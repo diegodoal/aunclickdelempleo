@@ -4,8 +4,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import models.datasource.ConfDataSource;
+import models.datasource.MessagesDataSource;
 import models.datasource.SingletonDataSource;
 import models.entities.AdminUser;
+import models.entities.Message;
 import models.entities.User;
 import play.Logger;
 import play.data.DynamicForm;
@@ -141,6 +143,34 @@ public class AdminController extends Controller{
         }else{
             return unauthorized("Access denied");
         }
+    }
+
+    /* ############### MESSAGES ############### */
+    public static Result messages(){
+        List<Message> allInbox = MessagesDataSource.getInstance().getMessagesByReceiver("adecco");
+        List<Message> inboxNotDeleted = new ArrayList<>();
+        List<Message> inboxDeleted = new ArrayList<>();
+        for(Message message : allInbox){
+            if(message.deletedByReceiver == false){
+                inboxNotDeleted.add(message);
+            }else{
+                inboxDeleted.add(message);
+            }
+        }
+
+        List<Message> sentMessages = MessagesDataSource.getInstance().getMessagesBySender("adecco");
+        List<Message> sentNotDeleted = new ArrayList<>();
+        List<Message> sentDeleted = new ArrayList<>();
+        for(Message message : sentMessages){
+            if(message.deletedBySender == false){
+                sentNotDeleted.add(message);
+            }else{
+                sentDeleted.add(message);
+            }
+        }
+
+        String notReadMessages = ""+MessagesDataSource.getInstance().getNumberOfNotReadMessages("adecco");
+        return ok(views.html.admin.messages.render(inboxNotDeleted, sentMessages, inboxDeleted, sentDeleted, notReadMessages));
     }
 
     /* ############### OPTIONS ############### */
