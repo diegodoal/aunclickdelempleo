@@ -17,7 +17,7 @@
       var auxExperience = [];
       var HtmlRedirect = "";
 
-     if( $(' #experience_group_new input[name="company"]').val() != "" && $('#experience_group_new input[name="job"]').val() != "" && $('#experience_group_new input[name="startDate"]').val() != "" && $(' #experience_group_new input[name="endDate"]').val() != ""){
+     if( $(' #experience_group_new input[name="company"]').val() != "" && $('#experience_group_new input[name="job"]').val() != "" && $('#experience_group_new input[name="startDate"]').val() != " / " && $(' #experience_group_new input[name="endDate"]').val() != " / "){
          $("#validate_exp_cb").hide();
          $('.main-div-sections #experience_group_new').each(function(){
              $('.exp').find('input').each(function(){
