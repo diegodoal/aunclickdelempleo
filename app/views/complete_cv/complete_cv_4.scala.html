@@ -153,67 +153,41 @@
  
 <script type="text/javascript">
     function sendForm(){
-        var result = []
-        //Adding courses
-        var coursesArray = [];
-        var counter = 0;
-        $('.main-div-sections .courses').each(function(){
-            var auxCourses = [];
-            var valid = true;
-            $(this).find('input').each(function(){
-                if(valid == true && $(this).val() != ''){
-                    auxCourses[counter] = $(this).val();
-                }else{
-                    valid = false;
-                }
-                counter++;
-            });
-            counter = 0;
-            if(valid==true){
-                coursesArray.push(auxCourses);
+        var result = "";
+        var redirect = "";
+        $('body').find('input[type="radio"]').each(function(){
+            if(this.checked){
+                result = $(this).val();
             }
-        });
 
-        result.push(JSON.stringify(coursesArray));
-
-        //Adding languages
-        var languagesArray = [];
-        $('.main-div-sections .languages').each(function(){
-            var auxLanguage = [];
-            if($(this).find('#language').val() != ''){
-                auxLanguage[0] = $(this).find('#language').val();
-                auxLanguage[1] = $(this).find('#level option:selected').text();
-                languagesArray.push(auxLanguage);
+            switch(result){
+                case "template1":
+                    redirect = "/orientation/gettools/cv/preview1";
+                    break;
+                case "template2":
+                    redirect = "/orientation/gettools/cv/preview2";
+                    break;
+                case "template3":
+                    redirect = "/orientation/gettools/cv/preview3";
+                    break;
+                case "template4":
+                    redirect = "/orientation/gettools/cv/preview4";
+                    break;
             }
+
         });
-
-        result.push(JSON.stringify(languagesArray));
-
-        //Adding IT level
-        var software = [];
-        $('.main-div-sections .software').each(function(){
-            var auxSoftware = [];
-            if($(this).find('#software').val() != ''){
-                auxSoftware[0] = $(this).find('#software').val();
-                auxSoftware[1] = $(this).find('#level option:selected').text();
-                software.push(auxSoftware);
-            }
-        });
-
-        result.push(JSON.stringify(software));
 
         $.ajax({
                 type: 'post',
-                data: JSON.stringify(result),
-                url: "/orientation/gettools/cv3",
-                contentType: 'application/json',
+                url: "/orientation/gettools/cv4",
+                async: false,
                 error: function(){
                 },
                 success: function(){
-                    window.location.assign("/orientation/gettools/cv/preview");
+                    window.open(redirect);
                 }
             });
     }
-</script>   
+</script>
 
 }

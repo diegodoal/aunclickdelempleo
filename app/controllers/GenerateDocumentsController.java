@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Logger;
+import play.Logger;
 
 import static play.mvc.Controller.session;
 import static play.mvc.Http.Context.Implicit.request;
@@ -171,18 +171,76 @@ public class GenerateDocumentsController {
     }
 
     public static Result submitCv4(){
-        JsonNode request = request().body().asJson();
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user != null){
-            // FALTA DE HACER
             SingletonDataSource.getInstance().updateAllUserData(user);
+        } else {
+            return badRequest("No se ha podido generar el CV porque no existe el usuario");
         }
 
         return redirect("/");
     }
 
-    public static Result previewCV(){
+    // Modificar el Template que sea, hay que crearlos
+    public static Result previewCV1(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user == null){
+            return badRequest("No se ha podido generar el CV porque no existe el usuario");
+        }
+        String route = Files.newPathForNewFile("public/pdf", "pdf");
+
+        Template1 template = new Template1();
+        try {
+            template.createPdf(route, user);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return redirect(routes.Assets.at(route.substring(7)));
+    }
+
+    public static Result previewCV2(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user == null){
+            return badRequest("No se ha podido generar el CV porque no existe el usuario");
+        }
+        String route = Files.newPathForNewFile("public/pdf", "pdf");
+
+        Template1 template = new Template1();
+        try {
+            template.createPdf(route, user);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return redirect(routes.Assets.at(route.substring(7)));
+    }
+
+    public static Result previewCV3(){
+        User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
+
+        if(user == null){
+            return badRequest("No se ha podido generar el CV porque no existe el usuario");
+        }
+        String route = Files.newPathForNewFile("public/pdf", "pdf");
+
+        Template1 template = new Template1();
+        try {
+            template.createPdf(route, user);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        return redirect(routes.Assets.at(route.substring(7)));
+    }
+
+    public static Result previewCV4(){
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user == null){
