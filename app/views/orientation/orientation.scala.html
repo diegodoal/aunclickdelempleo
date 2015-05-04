@@ -23,7 +23,7 @@
                 <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
                     <img src="@routes.Assets.at("images/orientation/steps/ic_1.png")">
                 </div>
-                <div class="col-xs-10 col-xs-height col-full-height">
+                <div class="col-xs-10 col-xs-height col-full-height" id="point1">
                     <span class="size25 red_adecco century_gothic">Conocete a ti mismo</span>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                 <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
                     <img src="@routes.Assets.at("images/orientation/steps/ic_2.png")">
                 </div>
-                <div class="col-xs-10 col-xs-height col-full-height">
+                <div class="col-xs-10 col-xs-height col-full-height" id="point2">
                     <span class="size25 red_adecco century_gothic">Prepárate para buscar empleo</span>
                 </div>
             </div>
@@ -141,7 +141,7 @@
                 <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
                     <img src="@routes.Assets.at("images/orientation/steps/ic_3.png")">
                 </div>
-                <div class="col-xs-10 col-xs-height col-full-height">
+                <div class="col-xs-10 col-xs-height col-full-height" id="point3">
                     <span class="size25 red_adecco century_gothic">Proceso de selección</span>
                 </div>
             </div>
@@ -197,7 +197,7 @@
                 <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
                     <img src="@routes.Assets.at("images/orientation/steps/ic_4.png")">
                 </div>
-                <div class="col-xs-10 col-xs-height col-full-height">
+                <div class="col-xs-10 col-xs-height col-full-height" id="point4">
                     <span class="size25 red_adecco century_gothic">Planifícate</span>
                 </div>
             </div>
@@ -237,7 +237,7 @@
                 <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
                     <img src="@routes.Assets.at("images/orientation/steps/ic_5.png")">
                 </div>
-                <div class="col-xs-10 col-xs-height col-full-height">
+                <div class="col-xs-10 col-xs-height col-full-height" id="point5">
                     <span class="size25 red_adecco century_gothic">Mejora profesionalmente</span>
                 </div>
             </div>
@@ -272,7 +272,7 @@
                     }
                     <label for="check18" class="size14 brown_adecco arial steps_height"><a href="@routes.OrientationController.level()">Mejora tu nivel de idiomas</a></label>
                 </p>
-                <p>
+                <p id="point6">
                     @if(user != null && user.getCompletedOrientationSteps().getReputation() == "true"){
                     <input type="checkbox" id="check19" checked="true">
                     }else{
