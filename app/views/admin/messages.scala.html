@@ -147,7 +147,6 @@
                   null,
                   { "searchable": false } //Disable search by date
                 ] } );
-
             $('#inbox_messages_table td').each(function() {
                 if($(this).html().length > 100){
                   $(this).html($(this).html().substring(0, 98)+"...");
@@ -160,18 +159,36 @@
                   null,
                   { "searchable": false } //Disable search by date
                 ] } );
+            $('#sent_messages_table td').each(function() {
+                if($(this).html().length > 100){
+                  $(this).html($(this).html().substring(0, 98)+"...");
+                }
+            });
+
             $('#deleted_inbox_table').dataTable( {
                 "columns": [
                   null,
                   null,
                   { "searchable": false } //Disable search by date
                 ] } );
+            $('#deleted_inbox_table td').each(function() {
+                if($(this).html().length > 100){
+                  $(this).html($(this).html().substring(0, 98)+"...");
+                }
+            });
+
             $('#deleted_sent_table').dataTable( {
                 "columns": [
                   null,
                   null,
                   { "searchable": false } //Disable search by date
                 ] } );
+            $('#deleted_sent_table td').each(function() {
+                if($(this).html().length > 100){
+                  $(this).html($(this).html().substring(0, 98)+"...");
+                }
+            });
+
         } );
 
 
