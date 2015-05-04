@@ -148,6 +148,12 @@
                   { "searchable": false } //Disable search by date
                 ] } );
 
+            $('#inbox_messages_table td').each(function() {
+                if($(this).html().length > 100){
+                  $(this).html($(this).html().substring(0, 98)+"...");
+                }
+            });
+
             $('#sent_messages_table').dataTable( {
                 "columns": [
                   null,
@@ -167,6 +173,8 @@
                   { "searchable": false } //Disable search by date
                 ] } );
         } );
+
+
 
 
   window.onload = inbox();
