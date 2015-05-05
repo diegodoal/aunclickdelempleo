@@ -4,6 +4,15 @@ function readMsg(modalType, id, fromUser, subject, message, date, toUser){
   $('#readMsgModal .modal-title').html('<b>Mensaje de: '+fromUser+'</b>  ['+date+']<br><b>Asunto:</b> '+subject);
   $('#readMsgModal .modal-body').html(message);
 
+  if(modalType == 'sent'){
+  	$('#readMsgModal #responseMsg').hide();
+  }
+
+  if(modalType == 'inboxDeleted' || modalType == 'sentDeleted'){
+  	$('#readMsgModal #deleteMsg').hide();
+  	$('#readMsgModal #responseMsg').hide();
+  }
+
   $('#readMsgModal #responseMsg').click(function(){
     alert("Response msg...");
   });

@@ -29,7 +29,7 @@
 
             <tbody>
               @for(message <- inboxMessages){
-                <tr onclick="readMsg('inbox', @message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.toUser')">
+                <tr onclick="readMsg('inbox', '@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.toUser')">
                   @if(message.read){
                     <td>@message.fromUser</td>
                     <td>[@message.subject] - @message.message</td>
@@ -60,7 +60,7 @@
 
             <tbody>
               @for(message <- sentMessages){
-                <tr onclick="readMsg('sent', @message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.fromUser')">
+                <tr onclick="readMsg('sent', '@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.fromUser')">
                     <td>@message.toUser</td>
                     <td>[@message.subject] - @message.message</td>
                     <td>@message.date</td>
@@ -88,7 +88,7 @@
 
             <tbody>
               @for(message <- inboxDeleted){
-                <tr class="user-entry">
+                <tr onclick="readMsg('inboxDeleted', '@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.fromUser')">
                   @if(message.read){
                     <td>@message.fromUser</td>
                     <td>[@message.subject] - @message.message</td>
@@ -118,7 +118,7 @@
 
           <tbody>
             @for(message <- sentDeleted){
-              <tr class="user-entry">
+              <tr onclick="readMsg('sentDeleted', '@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.fromUser')">
                 @if(message.read){
                   <td>@message.toUser</td>
                   <td>[@message.subject] - @message.message</td>
