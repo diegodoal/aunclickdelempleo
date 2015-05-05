@@ -183,8 +183,27 @@ public class AdminController extends Controller{
         if(message != null){
             message.read = true;
             MessagesDataSource.getInstance().updateMessage(message);
-            Logger.info("@@@@@Read: "+message.id);
         }
+        return ok();
+    }
+
+    public static Result deleteMessage(){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        JsonNode request = request().body().asJson();
+
+        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
+        }.getType());
+        Message message = MessagesDataSource.getInstance().getMessagesById(result[0]);
+
+        if(message.toUser.equals(result[1])){
+            message.deletedByReceiver = true;
+        }else{
+            message.deletedBySender = true;
+        }
+        MessagesDataSource.getInstance().updateMessage(message);
+
         return ok();
     }
 

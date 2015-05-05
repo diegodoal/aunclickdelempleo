@@ -1,21 +1,34 @@
-function sendDeleteMsgRequest(id, deletedBy){
-	
+function readMsg(id, fromUser, subject, message, date, toUser){
+  sendReadMsgRequest(id);
+  $('#readMsgModal').modal('show');
+  $('#readMsgModal .modal-title').html('<b>Mensaje de: '+fromUser+'</b>  ['+date+']<br><b>Asunto:</b> '+subject);
+  $('#readMsgModal .modal-body').html(message);
 
+  $('#readMsgModal #responseMsg').click(function(){
+    alert("Response msg...");
+  });
+
+  $('#readMsgModal #deleteMsg').click(function(){
+  	sendDeleteMsgRequest(id, toUser);
+  });
+}
+
+function sendDeleteMsgRequest(id, deletedBy){
+	var result = [];
+	result[0] = id;
+	result[1] = deletedBy;
 	$.ajax({
             type: 'post',
             data: JSON.stringify(result),
-            url: "/admin/options/newadmin",
+            url: "/admin/messages/delete",
             contentType: 'application/json',
             success: function(){
-                $('#newUserModal').modal('hide');
-                alert("Usuario añadido correctamente");
-                window.location.replace('/admin/options');
+                alert("Mensaje eliminado");
             },
             error: function(){
-                alert("No se ha podido crear el usuario. Por favor, inténtelo de nuevo");
+                alert("No se ha podido eliminar el mensaje. Por favor, inténtelo de nuevo");
             }
             });
-
 }
 
 function sendReadMsgRequest(id){
@@ -25,9 +38,6 @@ function sendReadMsgRequest(id){
         url: "/admin/messages/read",
         contentType: 'text/plain',
         success: function(){
-            alert("Marcado como leido");
-            
-            //window.location.replace('/admin/options');
         },
         error: function(){
             alert("No se ha podido marcar como leido");

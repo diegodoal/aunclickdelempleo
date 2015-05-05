@@ -29,7 +29,7 @@
 
             <tbody>
               @for(message <- inboxMessages){
-                <tr class="user-entry" id="@message.id" onclick="readMsg('@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date')">
+                <tr class="user-entry" id="@message.id" onclick="readMsg('@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.toUser')">
                   @if(message.read){
                     <td class="fromUser">@message.fromUser</td>
                     <td><span class="subject">[@message.subject]</span> - <span class="message">@message.message</span></td>
@@ -163,24 +163,12 @@
 
 <script type="text/javascript">
 
+//Reload page after closing modal dialog
 $('#readMsgModal').on('hidden.bs.modal', function () {
   window.parent.location.reload();
 })
 
-function readMsg(id, fromUser, subject, message, date){
-  sendReadMsgRequest(id);
-  $('#readMsgModal').modal('show');
-  $('#readMsgModal .modal-title').html('<b>Mensaje de: '+fromUser+'</b>  ['+date+']<br><b>Asunto:</b> '+subject);
-  $('#readMsgModal .modal-body').html(message);
 
-  $('#readMsgModal #responseMsg').click(function(){
-    alert("Response msg...");
-  });
-
-  $('#readMsgModal #deleteMsg').click(function(){
-    alert("Deleted msg...");
-  });
-}
   $(document).ready(function() {
             $('#inbox_messages_table').dataTable( {
                 "columns": [
