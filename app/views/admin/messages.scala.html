@@ -29,13 +29,13 @@
 
             <tbody>
               @for(message <- inboxMessages){
-                <tr class="user-entry" id="@message.id" onclick="readMsg('@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.toUser')">
+                <tr onclick="readMsg('inbox', @message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.toUser')">
                   @if(message.read){
-                    <td class="fromUser">@message.fromUser</td>
-                    <td><span class="subject">[@message.subject]</span> - <span class="message">@message.message</span></td>
-                    <td><span class="date">@message.date</span></td>
+                    <td>@message.fromUser</td>
+                    <td>[@message.subject] - @message.message</td>
+                    <td>@message.date</td>
                   }else{
-                    <td id="fromUser"><b>@message.fromUser</b></td>
+                    <td><b>@message.fromUser</b></td>
                     <td><b>[@message.subject] - @message.message</b></td>
                     <td><b>@message.date</b></td>
                   }
@@ -60,7 +60,7 @@
 
             <tbody>
               @for(message <- sentMessages){
-                <tr class="user-entry">
+                <tr onclick="readMsg('sent', @message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.fromUser')">
                     <td>@message.toUser</td>
                     <td>[@message.subject] - @message.message</td>
                     <td>@message.date</td>
@@ -223,12 +223,6 @@ $('#readMsgModal').on('hidden.bs.modal', function () {
 
 
   window.onload = inbox();
-
-  $('table td').on('click', function(ev){
-    var msgID = $(this).parent().attr('id');
-    var msgFromUser = $(this).parent().closest('#fromUser').text();
-    $('#readMsgModal').modal('show');
-  });
 
   function inbox(){
     $('#inbox-btn').css("font-weight","Bold");

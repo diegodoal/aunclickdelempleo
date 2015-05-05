@@ -1,4 +1,4 @@
-function readMsg(id, fromUser, subject, message, date, toUser){
+function readMsg(modalType, id, fromUser, subject, message, date, toUser){
   sendReadMsgRequest(id);
   $('#readMsgModal').modal('show');
   $('#readMsgModal .modal-title').html('<b>Mensaje de: '+fromUser+'</b>  ['+date+']<br><b>Asunto:</b> '+subject);
@@ -24,6 +24,7 @@ function sendDeleteMsgRequest(id, deletedBy){
             contentType: 'application/json',
             success: function(){
                 alert("Mensaje eliminado");
+                $('#readMsgModal').modal('hide');
             },
             error: function(){
                 alert("No se ha podido eliminar el mensaje. Por favor, inténtelo de nuevo");

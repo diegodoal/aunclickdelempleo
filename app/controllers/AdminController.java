@@ -170,7 +170,7 @@ public class AdminController extends Controller{
         }
 
         String notReadMessages = ""+MessagesDataSource.getInstance().getNumberOfNotReadMessages("adecco");
-        return ok(views.html.admin.messages.render(inboxNotDeleted, sentMessages, inboxDeleted, sentDeleted, notReadMessages));
+        return ok(views.html.admin.messages.render(inboxNotDeleted, sentNotDeleted, inboxDeleted, sentDeleted, notReadMessages));
     }
 
     public static Result readMessage(){
