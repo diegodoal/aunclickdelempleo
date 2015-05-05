@@ -104,6 +104,20 @@ public class MessagesDataSource {
         return messages;
     }
 
+    public static Message getMessagesById(String id){
+        DBCollection collection = connectDB();
+        BasicDBObject query = new BasicDBObject().append("id", id);
+        DBObject dbObject = collection.findOne(query);
+        if(dbObject != null) {
+            Message message = new Gson().fromJson(dbObject.toString(), Message.class);
+            mongoClient.close();
+            return message;
+        }else{
+            mongoClient.close();
+            return null;
+        }
+    }
+
     public static int getNumberOfNotReadMessages(String receiver){
         List<Message> messages = getMessagesByReceiver(receiver);
         int result = 0;
@@ -112,5 +126,24 @@ public class MessagesDataSource {
                 result++;
         }
         return result;
+    }
+
+    public static void updateMessage(Message message){
+        DBCollection collection = connectDB();
+        BasicDBObject newDocument = new BasicDBObject();
+
+        newDocument.put("id", message.id);
+        newDocument.put("fromUser", message.fromUser);
+        newDocument.put("toUser", message.toUser);
+        newDocument.put("subject", message.subject);
+        newDocument.put("message", message.message);
+        newDocument.put("date", message.date);
+        newDocument.put("read", message.read);
+        newDocument.put("deletedBySender", message.deletedBySender);
+        newDocument.put("deletedByReceiver", message.deletedByReceiver);
+
+        collection.update(new BasicDBObject().append("id", message.id), newDocument);
+
+        mongoClient.close();
     }
 }

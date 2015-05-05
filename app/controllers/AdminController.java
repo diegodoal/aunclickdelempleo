@@ -173,6 +173,21 @@ public class AdminController extends Controller{
         return ok(views.html.admin.messages.render(inboxNotDeleted, sentMessages, inboxDeleted, sentDeleted, notReadMessages));
     }
 
+    public static Result readMessage(){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        String request = request().body().asText();
+
+        Message message = MessagesDataSource.getInstance().getMessagesById(request);
+        if(message != null){
+            message.read = true;
+            MessagesDataSource.getInstance().updateMessage(message);
+            Logger.info("@@@@@Read: "+message.id);
+        }
+        return ok();
+    }
+
     /* ############### OPTIONS ############### */
     public static Result optionsBlank(){
         AdminUser adminUser = checkConnection();

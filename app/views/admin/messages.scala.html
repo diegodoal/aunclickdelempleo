@@ -29,13 +29,13 @@
 
             <tbody>
               @for(message <- inboxMessages){
-                <tr class="user-entry">
+                <tr class="user-entry" id="@message.id" onclick="readMsg('@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date')">
                   @if(message.read){
-                    <td>@message.fromUser</td>
-                    <td>[@message.subject] - @message.message</td>
-                    <td>@message.date</td>
+                    <td class="fromUser">@message.fromUser</td>
+                    <td><span class="subject">[@message.subject]</span> - <span class="message">@message.message</span></td>
+                    <td><span class="date">@message.date</span></td>
                   }else{
-                    <td><b>@message.fromUser</b></td>
+                    <td id="fromUser"><b>@message.fromUser</b></td>
                     <td><b>[@message.subject] - @message.message</b></td>
                     <td><b>@message.date</b></td>
                   }
@@ -139,17 +139,58 @@
   </div>
 </div>
 
+<!-- READ MSG MODAL -->
+
+
+<div class="modal fade" id="readMsgModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="responseMsg">Responder</button>
+        <button type="button" class="btn btn-danger" id="deleteMsg">Eliminar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 <script type="text/javascript">
+
+$('#readMsgModal').on('hidden.bs.modal', function () {
+  window.parent.location.reload();
+})
+
+function readMsg(id, fromUser, subject, message, date){
+  sendReadMsgRequest(id);
+  $('#readMsgModal').modal('show');
+  $('#readMsgModal .modal-title').html('<b>Mensaje de: '+fromUser+'</b>  ['+date+']<br><b>Asunto:</b> '+subject);
+  $('#readMsgModal .modal-body').html(message);
+
+  $('#readMsgModal #responseMsg').click(function(){
+    alert("Response msg...");
+  });
+
+  $('#readMsgModal #deleteMsg').click(function(){
+    alert("Deleted msg...");
+  });
+}
   $(document).ready(function() {
             $('#inbox_messages_table').dataTable( {
                 "columns": [
                   null,
                   null,
-                  { "searchable": false } //Disable search by date
+                  { "searchable": false, "width": "15%" } //Disable search by date
                 ] } );
             $('#inbox_messages_table td').each(function() {
                 if($(this).html().length > 100){
-                  $(this).html($(this).html().substring(0, 98)+"...");
+                  $(this).html($(this).html().substring(0, 90)+"...");
                 }
             });
 
@@ -157,11 +198,11 @@
                 "columns": [
                   null,
                   null,
-                  { "searchable": false } //Disable search by date
+                  { "searchable": false, } //Disable search by date
                 ] } );
             $('#sent_messages_table td').each(function() {
                 if($(this).html().length > 100){
-                  $(this).html($(this).html().substring(0, 98)+"...");
+                  $(this).html($(this).html().substring(0, 90)+"...");
                 }
             });
 
@@ -173,7 +214,7 @@
                 ] } );
             $('#deleted_inbox_table td').each(function() {
                 if($(this).html().length > 100){
-                  $(this).html($(this).html().substring(0, 98)+"...");
+                  $(this).html($(this).html().substring(0, 90)+"...");
                 }
             });
 
@@ -185,16 +226,21 @@
                 ] } );
             $('#deleted_sent_table td').each(function() {
                 if($(this).html().length > 100){
-                  $(this).html($(this).html().substring(0, 98)+"...");
+                  $(this).html($(this).html().substring(0, 90)+"...");
                 }
             });
-
         } );
 
 
 
 
   window.onload = inbox();
+
+  $('table td').on('click', function(ev){
+    var msgID = $(this).parent().attr('id');
+    var msgFromUser = $(this).parent().closest('#fromUser').text();
+    $('#readMsgModal').modal('show');
+  });
 
   function inbox(){
     $('#inbox-btn').css("font-weight","Bold");
