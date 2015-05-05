@@ -3,16 +3,14 @@
 <h1>Panel de administración</h1>
 
 <div class="panel panel-default">
-    <div class="panel-heading"><b>NOVEDADES</b></div>
-    <div class="panel-body">
-    	<div class="panel panel-default">
-		<div class="panel-heading">Usuarios de recientes</div>
-		<div class="panel-body">
-@if(recentUsers.isEmpty()){
-	No hay usuarios registrados recientemente
-}else{
-    	
-		
+  <div class="panel-heading"><b>NOVEDADES</b></div>
+  <div class="panel-body">
+  	<div class="panel panel-default">
+  		<div class="panel-heading">Usuarios de recientes</div>
+  		<div class="panel-body">
+      @if(recentUsers.isEmpty()){
+    	 No hay usuarios registrados recientemente
+      }else{
 			<table id="new_users_table" class="display" cellspacing="0" width="100%">
     			<thead>
         			<tr>
@@ -34,11 +32,11 @@
 	            	</tr>
         			}
     			</tbody>
-			</table>
-}
+  			</table>
+      }
+  		</div>
 		</div>
-		</div>
-    </div>
+  </div>
 </div>
 
 <!-- USER GUIDE -->
