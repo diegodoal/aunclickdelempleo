@@ -11,9 +11,11 @@ import play.libs.Json;
 import play.mvc.Result;
 import utils.Files;
 import utils.pdf.PresentationLetter;
-import utils.pdf.cv_templates.Template1;
+import utils.pdf.cv_templates.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -221,7 +223,7 @@ public class GenerateDocumentsController {
         return redirect(routes.Assets.at(route.substring(7)));
     }
 
-    public static Result previewCV3(){
+    public static Result previewCV3() throws FileNotFoundException, DocumentException, MalformedURLException, IOException {
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user == null){
@@ -229,7 +231,7 @@ public class GenerateDocumentsController {
         }
         String route = Files.newPathForNewFile("public/pdf", "pdf");
 
-        Template1 template = new Template1();
+        Template3 template = new Template3();
         try {
             template.createPdf(route, user);
         } catch (FileNotFoundException e) {
