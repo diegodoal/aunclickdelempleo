@@ -95,7 +95,7 @@
         <div class="modal-dialog custom-modal">
 
             <div>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <button type="button " style="background:red" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                 <h2 class="sub-title">Hazte una fotografía</h2>
                 <p class="text-brown">Si quieres hacerte una fotografía aquí lo que necesitas es una WebCam y permitir la utilización de ésta.</p>
                 <div class="row">
@@ -110,18 +110,21 @@
                         </div>
 
                         -->
+                        <div class="row" style="margin-top:-2.5em;">
+                            <button class="button-accept button-modal" id="takePhotoButton">TOMAR FOTOGRAFÍA</button>
+
+                        </div>
                     </div>
 
                     <div class="col-md-6 center">
                         <div class="canvas-container custom-canvas-background">
                             <canvas id="canvasModal"></canvas>
                         </div>
-                        <div class="row">
-                            <button type="button" id="acceptPhotoButton" class="button-accept button-modal" data-dismiss="modal">ACEPTAR</button>
-                        </div>
-                        <div class="row">
-                            <button class="button-brown-1 button-modal" id="takePhotoButton">Hacer fotografía ahora</button>
 
+
+
+                        <div class="row">
+                            <button type="button" id="acceptPhotoButton" class="button-brown-1  button-modal" data-dismiss="modal">ACEPTAR</button>
                         </div>
                     </div>
                 </div>
