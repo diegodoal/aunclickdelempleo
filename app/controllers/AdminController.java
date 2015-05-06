@@ -169,8 +169,15 @@ public class AdminController extends Controller{
             }
         }
 
+        //Custom list for typeahead
+        List<User> users = SingletonDataSource.getInstance().findAll();
+        List<String> customUsers = new ArrayList<>();
+        for(User user : users){
+            customUsers.add(user.name + " " + user.surnames + " ("+user.email+")");
+        }
+
         String notReadMessages = ""+MessagesDataSource.getInstance().getNumberOfNotReadMessages("adecco");
-        return ok(views.html.admin.messages.render(inboxNotDeleted, sentNotDeleted, inboxDeleted, sentDeleted, notReadMessages));
+        return ok(views.html.admin.messages.render(customUsers, inboxNotDeleted, sentNotDeleted, inboxDeleted, sentDeleted, notReadMessages));
     }
 
     public static Result readMessage(){
@@ -203,6 +210,22 @@ public class AdminController extends Controller{
             message.deletedBySender = true;
         }
         MessagesDataSource.getInstance().updateMessage(message);
+
+        return ok();
+    }
+
+    public static Result sendMessage(){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        JsonNode request = request().body().asJson();
+
+        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
+        }.getType());
+
+        Message message = new Message("adecco", result[0], result[1], result[2]);
+
+        MessagesDataSource.insertNewMessage(message);
 
         return ok();
     }

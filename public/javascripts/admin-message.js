@@ -32,11 +32,11 @@ function sendDeleteMsgRequest(id, deletedBy){
             url: "/admin/messages/delete",
             contentType: 'application/json',
             success: function(){
-                alert("Mensaje eliminado");
+                alert("Mensaje archivado");
                 $('#readMsgModal').modal('hide');
             },
             error: function(){
-                alert("No se ha podido eliminar el mensaje. Por favor, inténtelo de nuevo");
+                alert("No se ha podido archivar el mensaje. Por favor, inténtelo de nuevo");
             }
             });
 }
@@ -53,4 +53,37 @@ function sendReadMsgRequest(id){
             alert("No se ha podido marcar como leido");
         }
 });
+}
+
+function sendMsg(){
+  var toUser = substringEmail($('#myTypeahead').val());
+  var subject = $('#newMsg_subject').val();
+  var message = $('#newMsg_content').val();
+
+  if(toUser.trim() == "" || subject.trim() == "" || message.trim() == ""){
+    $('#newMsgAlert').show();
+  }
+
+  var result = [];
+  result[0] = toUser;
+  result[1] = subject;
+  result[2] = message;
+  $.ajax({
+            type: 'post',
+            data: JSON.stringify(result),
+            url: "/admin/messages/send",
+            contentType: 'application/json',
+            success: function(){
+                alert("Mensaje enviado");
+                $('#newMsgModal').modal('hide');
+            },
+            error: function(){
+                alert("No se ha podido enviar el mensaje. Por favor, inténtelo de nuevo");
+            }
+            });
+
+}
+
+function substringEmail(nameWithEmail){
+  return(nameWithEmail.substring(nameWithEmail.indexOf("(")+1, nameWithEmail.length-1));
 }

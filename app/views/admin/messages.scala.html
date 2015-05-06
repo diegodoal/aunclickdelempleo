@@ -1,9 +1,10 @@
-@(inboxMessages : List[models.entities.Message])(sentMessages : List[models.entities.Message])(inboxDeleted : List[models.entities.Message])(sentDeleted : List[models.entities.Message])(notRead : String)
+@(typeaheadUsers : List[String])(inboxMessages : List[models.entities.Message])(sentMessages : List[models.entities.Message])(inboxDeleted : List[models.entities.Message])(sentDeleted : List[models.entities.Message])(notRead : String)
 @header("messages"){
 <!-- Begin Body -->
 <div class="row">
   <div class="col-md-2">
     <div class="list-group" id="sidebar">
+      <a href="javascript: $('#newMsgModal').modal('show');" class="list-group-item" id="newMsg-btn">REDACTAR</a>
       @if(notRead.equals("0")){
         <a href="javascript: inbox()" class="list-group-item" id="inbox-btn">Bandeja de entrada</a>
       }else{
@@ -140,8 +141,6 @@
 </div>
 
 <!-- READ MSG MODAL -->
-
-
 <div class="modal fade" id="readMsgModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -160,13 +159,54 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!-- NEW MSG MODAL -->
+<div class="modal fade" id="newMsgModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Nuevo mensaje</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" id="newMsgAlert" role="alert" hidden>Completa todos los campos por favor</div>
+        <input id="myTypeahead" class="form-control" type="text" data-provide="typeahead" placeholder="Para:"><br>
+        <input id="newMsg_subject" class="form-control" type="text" placeholder="Asunto"><br>
+        <textarea id="newMsg_content"class="form-control" rows="3" placeholder="Mensaje"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="sendMsg" onclick="sendMsg()">Enviar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 
 <script type="text/javascript">
+//Typeahed -> Autocomplete input while writing user name/email
+var jsonData = [];
+@for(user <- typeaheadUsers){
+  jsonData.push("@user");
+}
 
+var arrayData = $.map(jsonData, function(el) { return el; });
+$( '#myTypeahead' ).typeahead({
+  source : arrayData
+});
+
+//Clear alert on close [NEW MSG MODAL]
+$('#newMsgModal').on('hidden.bs.modal', function () {
+  $('#newMsgAlert').hide();
+  $("#myTypeahead").val("");
+  $('#newMsg_subject').val("");
+  $('#newMsg_content').val("");
+})
+</script>
+
+<script type="text/javascript">
 //Reload page after closing modal dialog
 $('#readMsgModal').on('hidden.bs.modal', function () {
   window.parent.location.reload();
-})
+});
 
 
   $(document).ready(function() {
