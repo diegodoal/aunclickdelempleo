@@ -10,7 +10,7 @@
         <a href="javascript: inbox()" class="list-group-item" id="inbox-btn">Bandeja de entrada<span class="badge">@notRead</span></a>
       }
       <a href="javascript: sent()" class="list-group-item" id="sent-btn">Enviados</a>
-      <a href="javascript: deleted()" class="list-group-item" id="deleted-btn">Eliminados</a>
+      <a href="javascript: deleted()" class="list-group-item" id="deleted-btn">Archivados</a>
     </div>
               
   </div>  
@@ -72,7 +72,7 @@
     </div>
 
     <div class="panel panel-default" hidden id="deleted-messages-panel">
-      <div class="panel-heading"><b>Mensajes eliminados</b></div>
+      <div class="panel-heading"><b>Mensajes Archivados</b></div>
       <div class="panel-body">
         <div class="panel panel-default">
         <div class="panel-heading"><b>Recibidos</b></div>
@@ -154,7 +154,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="responseMsg">Responder</button>
-        <button type="button" class="btn btn-danger" id="deleteMsg">Eliminar</button>
+        <button type="button" class="btn btn-danger" id="deleteMsg">Archivar</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -175,7 +175,24 @@ $('#readMsgModal').on('hidden.bs.modal', function () {
                   null,
                   null,
                   { "searchable": false, "width": "15%" } //Disable search by date
-                ] } );
+                ],
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  }
+                 } );
             $('#inbox_messages_table td').each(function() {
                 if($(this).html().length > 100){
                   $(this).html($(this).html().substring(0, 90)+"...");
@@ -187,7 +204,23 @@ $('#readMsgModal').on('hidden.bs.modal', function () {
                   null,
                   null,
                   { "searchable": false, } //Disable search by date
-                ] } );
+                ],
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  } } );
             $('#sent_messages_table td').each(function() {
                 if($(this).html().length > 100){
                   $(this).html($(this).html().substring(0, 90)+"...");
@@ -199,7 +232,23 @@ $('#readMsgModal').on('hidden.bs.modal', function () {
                   null,
                   null,
                   { "searchable": false } //Disable search by date
-                ] } );
+                ],
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  } } );
             $('#deleted_inbox_table td').each(function() {
                 if($(this).html().length > 100){
                   $(this).html($(this).html().substring(0, 90)+"...");
@@ -211,7 +260,23 @@ $('#readMsgModal').on('hidden.bs.modal', function () {
                   null,
                   null,
                   { "searchable": false } //Disable search by date
-                ] } );
+                ],
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  } } );
             $('#deleted_sent_table td').each(function() {
                 if($(this).html().length > 100){
                   $(this).html($(this).html().substring(0, 90)+"...");
