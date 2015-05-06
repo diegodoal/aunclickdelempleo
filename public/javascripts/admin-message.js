@@ -14,12 +14,22 @@ function readMsg(modalType, id, fromUser, subject, message, date, toUser){
   }
 
   $('#readMsgModal #responseMsg').click(function(){
-    alert("Response msg...");
+    showModalForResponse(fromUser, subject);
   });
 
   $('#readMsgModal #deleteMsg').click(function(){
   	sendDeleteMsgRequest(id, toUser);
   });
+}
+
+function showModalForResponse(toUser, subject){
+  var toUser = toUser;
+  var subject = "RE: "+subject;
+
+  //$('#readMsgModal').modal('hide');
+  $('#newMsgModal').modal('show');
+  $('#newMsgModal #myTypeahead').val(toUser);
+  $('#newMsgModal #newMsg_subject').val(subject);
 }
 
 function sendDeleteMsgRequest(id, deletedBy){
@@ -67,7 +77,7 @@ function sendMsg(){
   var result = [];
   result[0] = toUser;
   result[1] = subject;
-  result[2] = message;
+  result[2] = message.replace(/(?:\r\n|\r|\n)/g, '<br />');;
   $.ajax({
             type: 'post',
             data: JSON.stringify(result),
@@ -76,14 +86,18 @@ function sendMsg(){
             success: function(){
                 alert("Mensaje enviado");
                 $('#newMsgModal').modal('hide');
+                $('#readMsgModal').modal('hide');
             },
             error: function(){
-                alert("No se ha podido enviar el mensaje. Por favor, inténtelo de nuevo");
+                alert("No se ha podido enviar el mensaje. Compruebe que el destinatario es correcto e inténtelo de nuevo");
             }
             });
 
 }
 
 function substringEmail(nameWithEmail){
+  if(nameWithEmail.indexOf("(")<0){
+    return nameWithEmail;
+  }
   return(nameWithEmail.substring(nameWithEmail.indexOf("(")+1, nameWithEmail.length-1));
 }

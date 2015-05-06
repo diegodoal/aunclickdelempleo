@@ -223,6 +223,11 @@ public class AdminController extends Controller{
         String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
         }.getType());
 
+        User user = SingletonDataSource.getInstance().getUserByEmail(result[0]);
+        if(user == null){
+            return badRequest("El usuario no existe");
+        }
+
         Message message = new Message("adecco", result[0], result[1], result[2]);
 
         MessagesDataSource.insertNewMessage(message);
