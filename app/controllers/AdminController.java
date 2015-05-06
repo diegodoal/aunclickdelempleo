@@ -4,8 +4,10 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import models.datasource.ConfDataSource;
+import models.datasource.MessagesDataSource;
 import models.datasource.SingletonDataSource;
 import models.entities.AdminUser;
+import models.entities.Message;
 import models.entities.User;
 import play.Logger;
 import play.data.DynamicForm;
@@ -141,6 +143,96 @@ public class AdminController extends Controller{
         }else{
             return unauthorized("Access denied");
         }
+    }
+
+    /* ############### MESSAGES ############### */
+    public static Result messages(){
+        List<Message> allInbox = MessagesDataSource.getInstance().getMessagesByReceiver("adecco");
+        List<Message> inboxNotDeleted = new ArrayList<>();
+        List<Message> inboxDeleted = new ArrayList<>();
+        for(Message message : allInbox){
+            if(message.deletedByReceiver == false){
+                inboxNotDeleted.add(message);
+            }else{
+                inboxDeleted.add(message);
+            }
+        }
+
+        List<Message> sentMessages = MessagesDataSource.getInstance().getMessagesBySender("adecco");
+        List<Message> sentNotDeleted = new ArrayList<>();
+        List<Message> sentDeleted = new ArrayList<>();
+        for(Message message : sentMessages){
+            if(message.deletedBySender == false){
+                sentNotDeleted.add(message);
+            }else{
+                sentDeleted.add(message);
+            }
+        }
+
+        //Custom list for typeahead
+        List<User> users = SingletonDataSource.getInstance().findAll();
+        List<String> customUsers = new ArrayList<>();
+        for(User user : users){
+            customUsers.add(user.name + " " + user.surnames + " ("+user.email+")");
+        }
+
+        String notReadMessages = ""+MessagesDataSource.getInstance().getNumberOfNotReadMessages("adecco");
+        return ok(views.html.admin.messages.render(customUsers, inboxNotDeleted, sentNotDeleted, inboxDeleted, sentDeleted, notReadMessages));
+    }
+
+    public static Result readMessage(){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        String request = request().body().asText();
+
+        Message message = MessagesDataSource.getInstance().getMessagesById(request);
+        if(message != null){
+            message.read = true;
+            MessagesDataSource.getInstance().updateMessage(message);
+        }
+        return ok();
+    }
+
+    public static Result deleteMessage(){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        JsonNode request = request().body().asJson();
+
+        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
+        }.getType());
+        Message message = MessagesDataSource.getInstance().getMessagesById(result[0]);
+
+        if(message.toUser.equals(result[1])){
+            message.deletedByReceiver = true;
+        }else{
+            message.deletedBySender = true;
+        }
+        MessagesDataSource.getInstance().updateMessage(message);
+
+        return ok();
+    }
+
+    public static Result sendMessage(){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        JsonNode request = request().body().asJson();
+
+        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
+        }.getType());
+
+        User user = SingletonDataSource.getInstance().getUserByEmail(result[0]);
+        if(user == null){
+            return badRequest("El usuario no existe");
+        }
+
+        Message message = new Message("adecco", result[0], result[1], result[2]);
+
+        MessagesDataSource.insertNewMessage(message);
+
+        return ok();
     }
 
     /* ############### OPTIONS ############### */

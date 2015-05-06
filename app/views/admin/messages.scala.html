@@ -1,0 +1,366 @@
+@(typeaheadUsers : List[String])(inboxMessages : List[models.entities.Message])(sentMessages : List[models.entities.Message])(inboxDeleted : List[models.entities.Message])(sentDeleted : List[models.entities.Message])(notRead : String)
+@header("messages"){
+<!-- Begin Body -->
+<div class="row">
+  <div class="col-md-2">
+    <div class="list-group" id="sidebar">
+      <a href="javascript: $('#newMsgModal').modal('show');" class="list-group-item" id="newMsg-btn" style="background-color: #edebe3; text-align: center;">REDACTAR</a>
+      @if(notRead.equals("0")){
+        <a href="javascript: inbox()" class="list-group-item" id="inbox-btn">Bandeja de entrada</a>
+      }else{
+        <a href="javascript: inbox()" class="list-group-item" id="inbox-btn">Bandeja de entrada<span class="badge">@notRead</span></a>
+      }
+      <a href="javascript: sent()" class="list-group-item" id="sent-btn">Enviados</a>
+      <a href="javascript: deleted()" class="list-group-item" id="deleted-btn">Archivados</a>
+    </div>
+              
+  </div>  
+  <div class="col-md-10">
+  	<div class="panel panel-default" hidden id="inbox-messages-panel">
+      <div class="panel-heading"><b>Bandeja de entrada</b></div>
+      <div class="panel-body">
+        <table id="inbox_messages_table" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Usuario</th>
+                  <th></th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+
+            <tbody>
+              @for(message <- inboxMessages){
+                <tr onclick="readMsg('inbox', '@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.toUser')">
+                  @if(message.read){
+                    <td>@message.fromUser</td>
+                    <td>[@message.subject] - @message.message</td>
+                    <td>@message.date</td>
+                  }else{
+                    <td><b>@message.fromUser</b></td>
+                    <td><b>[@message.subject] - @message.message</b></td>
+                    <td><b>@message.date</b></td>
+                  }
+                </tr>
+              }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default" hidden id="sent-messages-panel">
+      <div class="panel-heading"><b>Mensajes enviados</b></div>
+      <div class="panel-body">
+        <table id="sent_messages_table" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Usuario</th>
+                  <th></th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+
+            <tbody>
+              @for(message <- sentMessages){
+                <tr onclick="readMsg('sent', '@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.fromUser')">
+                    <td>@message.toUser</td>
+                    <td>[@message.subject] - @message.message</td>
+                    <td>@message.date</td>
+                </tr>
+              }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel panel-default" hidden id="deleted-messages-panel">
+      <div class="panel-heading"><b>Mensajes Archivados</b></div>
+      <div class="panel-body">
+        <div class="panel panel-default">
+        <div class="panel-heading"><b>Recibidos</b></div>
+        <div class="panel-body">
+          <table id="deleted_inbox_table" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Usuario</th>
+                  <th></th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+
+            <tbody>
+              @for(message <- inboxDeleted){
+                <tr onclick="readMsg('inboxDeleted', '@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.fromUser')">
+                  @if(message.read){
+                    <td>@message.fromUser</td>
+                    <td>[@message.subject] - @message.message</td>
+                    <td>@message.date</td>
+                  }else{
+                    <td><b>@message.toUser</b></td>
+                    <td><b>[@message.subject] - @message.message</b></td>
+                    <td><b>@message.date</b></td>
+                  }
+                </tr>
+              }
+          </tbody>
+        </table>
+      </div>
+        </div>
+        <div class="panel panel-default">
+        <div class="panel-heading"><b>Enviados</b></div>
+        <div class="panel-body">
+          <table id="deleted_sent_table" class="display" cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Usuario</th>
+                  <th></th>
+                  <th>Fecha</th>
+              </tr>
+          </thead>
+
+          <tbody>
+            @for(message <- sentDeleted){
+              <tr onclick="readMsg('sentDeleted', '@message.id', '@message.fromUser', '@message.subject', '@message.message', '@message.date', '@message.fromUser')">
+                @if(message.read){
+                  <td>@message.toUser</td>
+                  <td>[@message.subject] - @message.message</td>
+                  <td>@message.date</td>
+                }else{
+                  <td><b>@message.toUser</b></td>
+                  <td><b>[@message.subject] - @message.message</b></td>
+                  <td><b>@message.date</b></td>
+                }
+              </tr>
+            }
+          </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- READ MSG MODAL -->
+<div class="modal fade" id="readMsgModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="responseMsg">Responder</button>
+        <button type="button" class="btn btn-danger" id="deleteMsg">Archivar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- NEW MSG MODAL -->
+<div class="modal fade" id="newMsgModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Nuevo mensaje</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" id="newMsgAlert" role="alert" hidden>Completa todos los campos por favor</div>
+        <input id="myTypeahead" class="form-control" type="text" data-provide="typeahead" placeholder="Para:"><br>
+        <input id="newMsg_subject" class="form-control" type="text" placeholder="Asunto"><br>
+        <textarea id="newMsg_content"class="form-control" rows="3" placeholder="Mensaje"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="sendMsg" onclick="sendMsg()">Enviar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script type="text/javascript">
+//Typeahed -> Autocomplete input while writing user name/email
+var jsonData = [];
+@for(user <- typeaheadUsers){
+  jsonData.push("@user");
+}
+
+var arrayData = $.map(jsonData, function(el) { return el; });
+$( '#myTypeahead' ).typeahead({
+  source : arrayData
+});
+
+//Clear alert on close [NEW MSG MODAL]
+$('#newMsgModal').on('hidden.bs.modal', function () {
+  $('#newMsgAlert').hide();
+  $("#myTypeahead").val("");
+  $('#newMsg_subject').val("");
+  $('#newMsg_content').val("");
+})
+</script>
+
+<script type="text/javascript">
+//Reload page after closing modal dialog
+$('#readMsgModal').on('hidden.bs.modal', function () {
+  window.parent.location.reload();
+});
+
+
+  $(document).ready(function() {
+            $('#inbox_messages_table').dataTable( {
+                "columns": [
+                  null,
+                  null,
+                  { "searchable": false, "width": "15%" } //Disable search by date
+                ],
+                "order": [[ 2, "desc" ]],
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  }
+                 } );
+            $('#inbox_messages_table td').each(function() {
+                if($(this).html().length > 100){
+                  $(this).html($(this).html().substring(0, 90)+"...");
+                }
+            });
+
+            $('#sent_messages_table').dataTable( {
+                "columns": [
+                  null,
+                  null,
+                  { "searchable": false, } //Disable search by date
+                ],
+                "order": [[ 2, "desc" ]],
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  } } );
+            $('#sent_messages_table td').each(function() {
+                if($(this).html().length > 100){
+                  $(this).html($(this).html().substring(0, 90)+"...");
+                }
+            });
+
+            $('#deleted_inbox_table').dataTable( {
+                "columns": [
+                  null,
+                  null,
+                  { "searchable": false } //Disable search by date
+                ],
+                "order": [[ 2, "desc" ]],
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  } } );
+            $('#deleted_inbox_table td').each(function() {
+                if($(this).html().length > 100){
+                  $(this).html($(this).html().substring(0, 90)+"...");
+                }
+            });
+
+            $('#deleted_sent_table').dataTable( {
+                "columns": [
+                  null,
+                  null,
+                  { "searchable": false } //Disable search by date
+                ],
+                "order": [[ 2, "desc" ]],
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  } } );
+            $('#deleted_sent_table td').each(function() {
+                if($(this).html().length > 100){
+                  $(this).html($(this).html().substring(0, 90)+"...");
+                }
+            });
+        } );
+
+
+
+
+  window.onload = inbox();
+
+  function inbox(){
+    $('#inbox-btn').css("font-weight","Bold");
+    $('#sent-btn').css("font-weight","Normal");
+    $('#deleted-btn').css("font-weight","Normal");
+
+    $('#inbox-messages-panel').show();
+    $('#sent-messages-panel').hide();
+    $('#deleted-messages-panel').hide();
+  }
+
+  function sent(){
+    $('#inbox-btn').css("font-weight","Normal");
+    $('#sent-btn').css("font-weight","Bold");
+    $('#deleted-btn').css("font-weight","Normal");
+
+    $('#inbox-messages-panel').hide();
+    $('#sent-messages-panel').show();
+    $('#deleted-messages-panel').hide();
+  }
+
+  function deleted(){
+    $('#inbox-btn').css("font-weight","Normal");
+    $('#sent-btn').css("font-weight","Normal");
+    $('#deleted-btn').css("font-weight","Bold");
+
+    $('#inbox-messages-panel').hide();
+    $('#sent-messages-panel').hide();
+    $('#deleted-messages-panel').show();
+  }
+</script>
+}

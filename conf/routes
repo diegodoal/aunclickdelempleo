@@ -137,6 +137,11 @@ POST    /admin/delete                               controllers.AdminController.
 
 GET     /admin/stats                                controllers.AdminController.stats()
 
+GET     /admin/messages                             controllers.AdminController.messages()
+POST    /admin/messages/read                        controllers.AdminController.readMessage()
+POST    /admin/messages/delete                      controllers.AdminController.deleteMessage()
+POST    /admin/messages/send                        controllers.AdminController.sendMessage()
+
 GET     /admin/options                              controllers.AdminController.optionsBlank()
 POST    /admin/options                              controllers.AdminController.updateAmazonOptions()
 POST    /admin/options/profile                      controllers.AdminController.updateAdminUserOptions()

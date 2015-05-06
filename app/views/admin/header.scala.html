@@ -12,15 +12,18 @@
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/graphics.css")">
     <link rel="stylesheet" href="@routes.Assets.at("stylesheets/jquery.dataTables.min.css")">
 
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/admin-message.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/jquery-1.11.2.min.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/flotr2.min.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/jquery.dataTables.min.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/typeahead.bundle.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/graphics.js")"></script>
     <link rel="shortcut icon" type="image/jpg" href="@routes.Assets.at("images/adecco_logo.jpg")">
 	<title>A un click del empleo - ADMINISTRACIÓN</title>
 </head>
 <body>
+
 <!-- NAV -->
 <nav class="navbar navbar-inverse" >
     <div class="container-fluid">
@@ -36,6 +39,11 @@
             }else{
                 <li><a href="@routes.AdminController.stats()">Estadísticas</a></li>
             }
+            @if(nav == "messages"){
+                <li class="active"><a href="@routes.AdminController.messages()">Mensajes</a></li>
+            }else{
+                <li><a href="@routes.AdminController.messages()">Mensajes</a></li>
+            }
             @if(nav == "options"){
                 <li class="active"><a href="@routes.AdminController.optionsBlank()">Opciones</a></li>
             }else{
@@ -48,9 +56,8 @@
         </ul>
     </div><!-- /.container-fluid -->
 </nav>
-
-
 <!-- END OF NAV -->
+
     <section class="content">@content</section>
 </body>
 </html>

@@ -3,16 +3,14 @@
 <h1>Panel de administración</h1>
 
 <div class="panel panel-default">
-    <div class="panel-heading"><b>NOVEDADES</b></div>
-    <div class="panel-body">
-    	<div class="panel panel-default">
-		<div class="panel-heading">Usuarios de recientes</div>
-		<div class="panel-body">
-@if(recentUsers.isEmpty()){
-	No hay usuarios registrados recientemente
-}else{
-    	
-		
+  <div class="panel-heading"><b>NOVEDADES</b></div>
+  <div class="panel-body">
+  	<div class="panel panel-default">
+  		<div class="panel-heading">Usuarios de recientes</div>
+  		<div class="panel-body">
+      @if(recentUsers.isEmpty()){
+    	 No hay usuarios registrados recientemente
+      }else{
 			<table id="new_users_table" class="display" cellspacing="0" width="100%">
     			<thead>
         			<tr>
@@ -34,11 +32,11 @@
 	            	</tr>
         			}
     			</tbody>
-			</table>
-}
+  			</table>
+      }
+  		</div>
 		</div>
-		</div>
-    </div>
+  </div>
 </div>
 
 <!-- USER GUIDE -->
@@ -115,7 +113,23 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-            $('#new_users_table').DataTable();
+            $('#new_users_table').DataTable({
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  }});
         } );
 </script>
 
