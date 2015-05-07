@@ -28,6 +28,7 @@ import static play.mvc.Http.Context.Implicit.request;
 import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
 import static play.mvc.Results.redirect;
+import utils.Utils;
 
 
 /**
@@ -58,7 +59,7 @@ public class GenerateDocumentsController {
 
             //user.name = personalInformation[0];
             //user.surnames = personalInformation[1];
-            user.birthDate = personalInformation[2];
+            user.birthDate = Utils.changeFormatDate(personalInformation[2]);
             user.residenceCity = personalInformation[3];
             user.residenceAddress = personalInformation[4];
             user.residenceNumber = personalInformation[5];
