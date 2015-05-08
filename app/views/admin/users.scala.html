@@ -18,9 +18,10 @@
                 <tr>
                     <td>
                         <a href="/admin/users/@user.email/@user.id"><img width="5%" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
+                        <a href="javascript: showSendModal('@user.email')"><img width="5%" src="@routes.Assets.at("images/msg.png")"></a>
                         @user.name</td>
                     <td>@user.surnames</td>
-                    <td>@user.email</td>
+                    <td><a href="mailto:@user.email">@user.email</a></td>
                     <td>@user.phoneNumber</td>
                     <td>@user.residenceCity</td>
                 </tr>
@@ -29,6 +30,34 @@
     </table>
 </section>
 
+<!-- NEW MSG MODAL -->
+<div class="modal fade" id="newMsgModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Nuevo mensaje</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" id="newMsgAlert" role="alert" hidden>Completa todos los campos por favor</div>
+        <input id="myTypeahead" class="form-control" type="text" data-provide="typeahead" placeholder="Para:"><br>
+        <input id="newMsg_subject" class="form-control" type="text" placeholder="Asunto"><br>
+        <textarea id="newMsg_content"class="form-control" rows="3" placeholder="Mensaje"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="sendMsg" onclick="sendMsg()">Enviar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+function showSendModal(toUser){
+    $('#newMsgModal').modal('show');
+    $('#myTypeahead').val(toUser);
+    $('#myTypeahead').prop('disabled', true);
+}
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#users_table').DataTable({
