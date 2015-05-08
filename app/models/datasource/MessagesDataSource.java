@@ -84,6 +84,13 @@ public class MessagesDataSource {
         return messages;
     }
 
+    public static int getNumberOfTotalMessages(){
+        DBCollection collection = connectDB();
+        int result = (int)collection.count();
+        mongoClient.close();
+        return result;
+    }
+
     public static List<Message> getMessagesByReceiver(String receiver){
         DBCollection collection = connectDB();
         BasicDBObject query = new BasicDBObject().append("toUser", receiver);

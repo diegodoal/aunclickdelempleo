@@ -134,7 +134,8 @@ public class AdminController extends Controller{
             List<User> users = SingletonDataSource.getInstance().findAll();
 
             return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(users), Stats.getCertificatesOfDisability(users), Stats.getEducationLevel(users),
-                    users.size(), Utils.getRecentUsers().size(), Stats.getNumberOfUsersWithFullProfile(users), new S3File().getNumberOfFiles()));
+                    users.size(), Utils.getRecentUsers().size(), Stats.getNumberOfUsersWithFullProfile(users),
+                    MessagesDataSource.getNumberOfTotalMessages(), new S3File().getNumberOfFiles()));
         }else{
             return unauthorized("Access denied");
         }

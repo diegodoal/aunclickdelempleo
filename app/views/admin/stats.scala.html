@@ -1,4 +1,4 @@
-@(drivingLicense : Array[Integer])(certificates : Array[Integer])(education : Array[Integer])(totalUsers : Integer)(numRecentUsers : Integer)(numOfFullProfiles : Integer)(numOfUplodadedPhotos : Integer)
+@(drivingLicense : Array[Integer])(certificates : Array[Integer])(education : Array[Integer])(totalUsers : Integer)(numRecentUsers : Integer)(numOfFullProfiles : Integer)(numberOfTotalMsg : Integer)(numOfUplodadedPhotos : Integer)
 
 @header("stats"){
 
@@ -52,7 +52,11 @@
                     <div class="panel panel-info">
                       <div class="panel-heading">Total de mensajes</div>
                       <div class="panel-body">
-                        450 Mensajes
+                        @if(numberOfTotalMsg == 1){
+                            1 Mensaje
+                        }else{
+                            @numberOfTotalMsg Mensajes
+                        }
                       </div>
                     </div>
                 </div>
