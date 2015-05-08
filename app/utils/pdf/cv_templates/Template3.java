@@ -11,14 +11,17 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.*;
 import models.entities.User;
-import sun.font.FontFamily;
+import models.entities.orientation.ProfessionalExperience;
+import models.entities.orientation.Software;
+import models.entities.orientation.Language;
 import utils.Constants;
-
+import java.util.List;
 
 public class Template3 {
 
     public static final String BACK_IMAGE = "public/images/orientation/cv-templates/CV3/ic_cv3background.png";
     public static final String SHORT_LINE_IMAGE = "public/images/orientation/cv-templates/CV3/ic_cv3shortline.png";
+    public static final String LONG_LINE_IMAGE = "public/images/orientation/cv-templates/CV3/ic_cv3longline.png";
     public static final String PHOTO_IMAGE = "public/images/orientation/photo/ic_profile.png";
     private Document document;
 
@@ -33,13 +36,20 @@ public class Template3 {
         addPersonalInformation(user);
         addAcademicExperience(user);
 
+        if(!user.currentSituation.professionalExperienceList.isEmpty()) {
+            addProfessionalExperience(user.currentSituation.professionalExperienceList);
+        }
 
-        //String address = user.residenceAddress + " " + user.residenceNumber + " - " + user.residenceZipCode + " " + user.residenceCity;
+        if(!user.softwareList.isEmpty()) {
+            addSoftware(user.softwareList);
+        }
 
-        //document.add(Chunk.NEWLINE);
+        if(!user.languages.isEmpty()) {
+            addLanguages(user.languages);
+        }
 
-        //addEducation(user.currentSituation.educationLevelList);
-        //document.add(Chunk.NEWLINE);
+        //POR AQUI
+        //addQualities(user.personalCharacteristics, user.);
 
         document.close();
     }
@@ -53,7 +63,36 @@ public class Template3 {
 
     private void addLineImage() throws DocumentException, IOException {
         Image short_line_img = Image.getInstance(SHORT_LINE_IMAGE);
-        short_line_img.setAbsolutePosition(225, 758);
+        short_line_img.setAbsolutePosition(236, 758);
+        short_line_img.setAlignment(Image.MIDDLE | Image.TEXTWRAP);
+        short_line_img.setBorderWidth(10);
+        short_line_img.setBorderColor(BaseColor.WHITE);
+        short_line_img.scaleToFit(300, 55);
+        document.add(short_line_img);
+
+        Image long_line_img = Image.getInstance(LONG_LINE_IMAGE);
+        long_line_img.setAbsolutePosition(37, 577);
+        long_line_img.setAlignment(Image.MIDDLE | Image.TEXTWRAP);
+        long_line_img.setBorderWidth(10);
+        long_line_img.setBorderColor(BaseColor.WHITE);
+        long_line_img.scaleToFit(500, 10);
+        document.add(long_line_img);
+
+        long_line_img.setAbsolutePosition(37, 481);
+        long_line_img.setAlignment(Image.MIDDLE | Image.TEXTWRAP);
+        long_line_img.setBorderWidth(10);
+        long_line_img.setBorderColor(BaseColor.WHITE);
+        long_line_img.scaleToFit(500, 10);
+        document.add(long_line_img);
+
+        long_line_img.setAbsolutePosition(37, 338);
+        long_line_img.setAlignment(Image.MIDDLE | Image.TEXTWRAP);
+        long_line_img.setBorderWidth(10);
+        long_line_img.setBorderColor(BaseColor.WHITE);
+        long_line_img.scaleToFit(500, 10);
+        document.add(long_line_img);
+
+        short_line_img.setAbsolutePosition(37, 229);
         short_line_img.setAlignment(Image.MIDDLE | Image.TEXTWRAP);
         short_line_img.setBorderWidth(10);
         short_line_img.setBorderColor(BaseColor.WHITE);
@@ -132,20 +171,18 @@ public class Template3 {
     }
 
     private void addAcademicExperience(User user) throws DocumentException, IOException {
-        Paragraph paragraph1, paragraph2, paragraph3, paragraph4, paragraph5, paragraph6, paragraph7;
-        Image photo_img = Image.getInstance(String.format(PHOTO_IMAGE));
+        Paragraph paragraph1, paragraph2;
         PdfPCell cell;
         PdfPTable table;
 
         table = new PdfPTable(new float[]{5});
         table.setWidthPercentage(100);
 
-        //First column
         cell = new PdfPCell();
         cell.setBorder(PdfPCell.NO_BORDER);
         cell.setPaddingRight(15);
         cell.setPaddingLeft(50);
-        cell.setPaddingTop(30);
+        cell.setPaddingTop(25);
 
         Font font1 = FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
         paragraph1 = new Paragraph("Experiencia académica", font1);
@@ -153,7 +190,7 @@ public class Template3 {
         cell.addElement(paragraph1);
 
         Font font2 = FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.NORMAL, Constants.T2_BASE_COLOR_CUSTOM_DARK_GREY);
-        paragraph2 = new Paragraph(user.studyTitle + ".\n" + user.studyLocation + ".", font2);
+        paragraph2 = new Paragraph(user.studyTitle.toUpperCase() + ".\n" + user.studyLocation.toUpperCase() + ".", font2);
         paragraph2.setAlignment(paragraph2.ALIGN_LEFT);
         paragraph2.setSpacingBefore(10);
         cell.addElement(paragraph2);
@@ -162,4 +199,224 @@ public class Template3 {
 
         document.add(table);
     }
+
+    private void addProfessionalExperience(List<ProfessionalExperience> experienceList) throws DocumentException {
+        Paragraph paragraph;
+        PdfPCell cell;
+        PdfPTable table;
+
+        for(int i=0; i<experienceList.size(); i++) {
+            table = new PdfPTable(new float[]{6,4});
+            table.setWidthPercentage(100);
+            table.setSpacingBefore(5);
+
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setPaddingRight(15);
+            cell.setPaddingLeft(50);
+
+            if(i==0) {
+                cell.setPaddingTop(25);
+            } else {
+                cell.setPaddingTop(5);
+            }
+
+            if(i==0) {
+                Font font = FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
+                paragraph = new Paragraph("Experiencia Profesional", font);
+            }else{
+                paragraph = new Paragraph("");
+            }
+            paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            cell.addElement(paragraph);
+
+            paragraph = new Paragraph(experienceList.get(i).job.toUpperCase() + ".\n" +experienceList.get(i).company.toUpperCase() + ".");
+            paragraph.setFont(FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.NORMAL));
+            paragraph.setSpacingBefore(10);
+            cell.addElement(paragraph);
+
+            table.addCell(cell);
+
+            //Second column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setPaddingRight(15);
+            cell.setPaddingLeft(50);
+
+            if(i==0) {
+                cell.setPaddingTop(25);
+            } else {
+                cell.setPaddingTop(5);
+            }
+
+
+            Font font = FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.NORMAL, BaseColor.BLACK);
+            if (i == 0) {
+                paragraph = new Paragraph(" ", font);
+                cell.addElement(paragraph);
+                paragraph = new Paragraph(experienceList.get(i).startDate.toUpperCase() + " - " + experienceList.get(i).endDate.toUpperCase() + ".", font);
+                paragraph.setSpacingBefore(10);
+                paragraph.setAlignment(paragraph.ALIGN_LEFT);
+                cell.addElement(paragraph);
+            } else {
+                paragraph = new Paragraph(experienceList.get(i).startDate.toUpperCase() + " - " + experienceList.get(i).endDate.toUpperCase() + ".", font);
+                paragraph.setAlignment(paragraph.ALIGN_LEFT);
+                cell.addElement(paragraph);
+            }
+            table.addCell(cell);
+            document.add(table);
+        }
+    }
+
+    private void addSoftware(List<Software> softwareList) throws DocumentException {
+        Paragraph paragraph;
+        PdfPCell cell;
+        PdfPTable table;
+
+        for(int i=0; i<softwareList.size(); i++) {
+            table = new PdfPTable(new float[]{6,4});
+            table.setWidthPercentage(100);
+            table.setSpacingBefore(5);
+
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setPaddingRight(15);
+            cell.setPaddingLeft(50);
+
+            if(i==0) {
+                cell.setPaddingTop(25);
+            } else {
+                cell.setPaddingTop(5);
+            }
+
+            if(i==0) {
+                Font font = FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
+                paragraph = new Paragraph("Informática", font);
+            }else{
+                paragraph = new Paragraph("");
+            }
+            paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            cell.addElement(paragraph);
+
+            paragraph = new Paragraph(softwareList.get(i).software + ".");
+            paragraph.setFont(FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.NORMAL));
+            paragraph.setSpacingBefore(10);
+            cell.addElement(paragraph);
+
+            table.addCell(cell);
+
+            //Second column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setPaddingRight(15);
+            cell.setPaddingLeft(50);
+
+            if(i==0) {
+                cell.setPaddingTop(25);
+            } else {
+                cell.setPaddingTop(5);
+            }
+
+
+            Font font = FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.NORMAL, BaseColor.BLACK);
+            if (i == 0) {
+                paragraph = new Paragraph(" ", font);
+                cell.addElement(paragraph);
+                paragraph = new Paragraph(softwareList.get(i).level + ".", font);
+                paragraph.setSpacingBefore(10);
+                paragraph.setAlignment(paragraph.ALIGN_LEFT);
+                cell.addElement(paragraph);
+            } else {
+                paragraph = new Paragraph(softwareList.get(i).level + ".", font);
+                paragraph.setAlignment(paragraph.ALIGN_LEFT);
+                cell.addElement(paragraph);
+            }
+            table.addCell(cell);
+            document.add(table);
+        }
+    }
+
+    private void addLanguages(List<Language> languages) throws DocumentException {
+        Paragraph paragraph;
+        PdfPCell cell;
+        PdfPTable table;
+
+        for(int i=0; i<languages.size(); i++) {
+            table = new PdfPTable(new float[]{6});
+            table.setWidthPercentage(100);
+            table.setSpacingBefore(5);
+
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setPaddingRight(15);
+            cell.setPaddingLeft(50);
+
+            if(i==0) {
+                cell.setPaddingTop(25);
+            } else {
+                cell.setPaddingTop(5);
+            }
+
+            if(i==0) {
+                Font font = FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
+                paragraph = new Paragraph("Idiomas", font);
+            }else{
+                paragraph = new Paragraph("");
+            }
+            paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            cell.addElement(paragraph);
+
+            paragraph = new Paragraph(languages.get(i).language + ". " + languages.get(i).level + ".");
+            paragraph.setFont(FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.NORMAL));
+            paragraph.setSpacingBefore(10);
+            cell.addElement(paragraph);
+
+            table.addCell(cell);
+            document.add(table);
+        }
+    }
+
+    /*private void addQualities(List<Language> languages) throws DocumentException {
+        Paragraph paragraph;
+        PdfPCell cell;
+        PdfPTable table;
+
+        for(int i=0; i<languages.size(); i++) {
+            table = new PdfPTable(new float[]{6});
+            table.setWidthPercentage(100);
+            table.setSpacingBefore(5);
+
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            cell.setPaddingRight(15);
+            cell.setPaddingLeft(50);
+
+            if(i==0) {
+                cell.setPaddingTop(25);
+            } else {
+                cell.setPaddingTop(5);
+            }
+
+            if(i==0) {
+                Font font = FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
+                paragraph = new Paragraph("Idiomas", font);
+            }else{
+                paragraph = new Paragraph("");
+            }
+            paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            cell.addElement(paragraph);
+
+            paragraph = new Paragraph(languages.get(i).language + ". " + languages.get(i).level + ".");
+            paragraph.setFont(FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.NORMAL));
+            paragraph.setSpacingBefore(10);
+            cell.addElement(paragraph);
+
+            table.addCell(cell);
+            document.add(table);
+        }
+    }*/
 }
