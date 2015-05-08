@@ -19,6 +19,15 @@ public final class Constants {
     public final static float T2_FONT_SIZE_TEXT = 10;
     public final static String T2_FONT_STYLE = "Arial";
 
+    //Template 4
+    public final static BaseColor COLOR_BLACK_T4 = new BaseColor(0, 0, 0);
+    public final static BaseColor COLOR_GRAY_T4 = new BaseColor(40, 40, 41);
+    public final static String FONT_ARIAL_T4= "Arial";
+    public final static String BOLD_T4= "BOLD";
+    public final static float SIZE14_T4 = 14;
+    public final static float SIZE12_T4 = 12;
+
+
 
     //USER COLLECTION FIELDS
     public final static String USER_NAME = "name";
