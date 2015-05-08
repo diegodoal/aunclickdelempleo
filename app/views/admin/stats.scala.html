@@ -1,4 +1,4 @@
-@(drivingLicense : Array[Integer])(certificates : Array[Integer])(education : Array[Integer])
+@(drivingLicense : Array[Integer])(certificates : Array[Integer])(education : Array[Integer])(totalUsers : Integer)(numRecentUsers : Integer)(numOfFullProfiles : Integer)(numOfUplodadedPhotos : Integer)
 
 @header("stats"){
 
@@ -11,18 +11,26 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6">
                     <div class="panel panel-info">
-                      <div class="panel-heading">Número de Usuarios</div>
+                      <div class="panel-heading">Total de registrados</div>
                       <div class="panel-body">
-                        35 Usuarios
+                        @totalUsers Usuarios
                       </div>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-sm-6">
                     <div class="panel panel-info">
-                      <div class="panel-heading">Nuevos usuarios</div>
+                      <div class="panel-heading">Registrados recientemente</div>
                       <div class="panel-body">
-                        5 Usuarios
+                        @if(numRecentUsers == 0){
+                            No hay nuevos
+                        }else{
+                            @if(numRecentUsers == 1){
+                                1 Usuario
+                            }else{
+                                @numRecentUsers Usuarios
+                            }
+                        }
                       </div>
                     </div>
                 </div>
@@ -31,7 +39,11 @@
                     <div class="panel panel-info">
                       <div class="panel-heading">Perfiles completados</div>
                       <div class="panel-body">
-                        35 Perfiles
+                        @if(numOfFullProfiles == 1){
+                            1 Perfil
+                        }else{
+                            @numOfFullProfiles Perfiles
+                        }
                       </div>
                     </div>
                 </div>
@@ -49,7 +61,11 @@
                     <div class="panel panel-info">
                       <div class="panel-heading">Fotos subidas</div>
                       <div class="panel-body">
-                        200 fotos
+                        @if(numOfUplodadedPhotos == 1){
+                            1 foto subida
+                        }else{
+                            @numOfUplodadedPhotos fotos subidas
+                        }
                       </div>
                     </div>
                 </div>

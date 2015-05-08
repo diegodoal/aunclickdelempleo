@@ -4,6 +4,7 @@ import models.datasource.SingletonDataSource;
 import models.entities.User;
 import play.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -93,6 +94,16 @@ public class Stats {
             }
         }
 
+        return result;
+    }
+
+    public static int getNumberOfUsersWithFullProfile(List<User> users){
+        int result = 0;
+        for(User user : users){
+            if(user.getCompletedOrientationPercentage() == 100){
+                result++;
+            }
+        }
         return result;
     }
 }

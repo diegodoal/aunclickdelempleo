@@ -10,9 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -115,5 +113,17 @@ public class Utils {
 
             SingletonDataSource.getInstance().insertIntoUsersCollection(user);
         }
+    }
+
+    public static List<User> getRecentUsers(){
+        List<User> users = SingletonDataSource.getInstance().findAll();
+        List<User> recentUsers = new ArrayList<>();
+        for(User user : users){
+            long diff = Utils.getDiffBetweenTwoDates(Utils.stringToDate(user.registrationDate), new Date());
+            if(diff <= 1){
+                recentUsers.add(user);
+            }
+        }
+        return recentUsers;
     }
 }

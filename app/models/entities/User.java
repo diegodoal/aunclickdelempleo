@@ -344,7 +344,7 @@ public class User {
         if (completedOrientationSteps.reputation.equals("true")) {
             totalTrue++;
         }
-        return totalTrue * 100 / 18;
+        return totalTrue * 100 / 19;
     }
 
     public String coursesToJson(){
