@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import models.S3File;
 import models.datasource.ConfDataSource;
 import models.datasource.MessagesDataSource;
 import models.datasource.SingletonDataSource;
@@ -21,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 import static play.data.Form.form;
+import static utils.Utils.getRecentUsers;
 
 
 /**
@@ -81,20 +83,10 @@ public class AdminController extends Controller{
         if(checkConnection() == null) {
             return unauthorized("Access denied");
         }
-        return ok(views.html.admin.index.render(recentUsers()));
+        return ok(views.html.admin.index.render(getRecentUsers()));
     }
 
-    public static List<User> recentUsers(){
-        List<User> users = SingletonDataSource.getInstance().findAll();
-        List<User> recentUsers = new ArrayList<>();
-        for(User user : users){
-            long diff = Utils.getDiffBetweenTwoDates(Utils.stringToDate(user.registrationDate), new Date());
-            if(diff <= 1){
-                recentUsers.add(user);
-            }
-        }
-        return recentUsers;
-    }
+
 
     public static Result usersBlank(){
         if(checkConnection() != null) {
@@ -139,7 +131,10 @@ public class AdminController extends Controller{
 
     public static Result stats(){
         if(checkConnection() != null) {
-            return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(), Stats.getCertificatesOfDisability()));
+            List<User> users = SingletonDataSource.getInstance().findAll();
+
+            return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(users), Stats.getCertificatesOfDisability(users), Stats.getEducationLevel(users),
+                    users.size(), Utils.getRecentUsers().size(), Stats.getNumberOfUsersWithFullProfile(users), new S3File().getNumberOfFiles()));
         }else{
             return unauthorized("Access denied");
         }

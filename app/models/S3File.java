@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 /**
  * Created by anquegi on 10/06/14.
@@ -54,6 +55,23 @@ public class S3File{
         else {
             S3Plugin.amazonS3.deleteObject(bucket, getActualFileName());
             this.file=null;
+        }
+    }
+
+    public int getNumberOfFiles() {
+        if(S3Plugin.amazonS3 == null){
+            Logger.error("Could not delete because amazonS3 was null");
+            throw new RuntimeException("Could not delete");
+        }else {
+            this.bucket = S3Plugin.s3Bucket;
+            ObjectListing listing = S3Plugin.amazonS3.listObjects(bucket);
+            List<S3ObjectSummary> summaries = listing.getObjectSummaries();
+
+            while (listing.isTruncated()) {
+                listing = S3Plugin.amazonS3.listNextBatchOfObjects(listing);
+                summaries.addAll(listing.getObjectSummaries());
+            }
+            return summaries.size();
         }
     }
 
