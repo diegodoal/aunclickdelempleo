@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import com.itextpdf.text.DocumentException;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
@@ -11,9 +12,10 @@ import play.libs.Json;
 import play.mvc.Result;
 import utils.Files;
 import utils.pdf.PresentationLetter;
-import utils.pdf.cv_templates.Template1;
+import utils.pdf.cv_templates.*;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -240,7 +242,7 @@ public class GenerateDocumentsController {
         return redirect(routes.Assets.at(route.substring(7)));
     }
 
-    public static Result previewCV4(){
+    public static Result previewCV4() throws DocumentException, IOException{
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user == null){
@@ -248,9 +250,9 @@ public class GenerateDocumentsController {
         }
         String route = Files.newPathForNewFile("public/pdf", "pdf");
 
-        Template1 template = new Template1();
+        Template4 template = new Template4();
         try {
-            template.createPdf(route, user);
+            template.createPdf(route, user, user.personalCharacteristics, user.skill);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
