@@ -1,4 +1,4 @@
-@(drivingLicense : Array[Integer])(certificates : Array[Integer])(education : Array[Integer])(totalUsers : Integer)(numRecentUsers : Integer)(numOfFullProfiles : Integer)(numberOfTotalMsg : Integer)(numOfUplodadedPhotos : Integer)
+@(drivingLicense : Array[Integer])(certificates : Array[Integer])(education : Array[Integer])(totalUsers : Integer)(numRecentUsers : Integer)(numOfFullProfiles : Integer)(numberOfTotalMsg : Integer)(numOfUplodadedPhotos : Integer)(numOfGeneratedDocs : Integer)
 
 @header("stats"){
 
@@ -78,7 +78,11 @@
                     <div class="panel panel-info">
                       <div class="panel-heading">Documentos generados</div>
                       <div class="panel-body">
-                        150 Documentos
+                        @if(numOfGeneratedDocs == 1){
+                            1 Documento
+                        }else{
+                            @numOfGeneratedDocs Documentos
+                        }
                       </div>
                     </div>
                 </div>

@@ -135,7 +135,7 @@ public class AdminController extends Controller{
 
             return ok(views.html.admin.stats.render(Stats.getUsersWithDrivingLicense(users), Stats.getCertificatesOfDisability(users), Stats.getEducationLevel(users),
                     users.size(), Utils.getRecentUsers().size(), Stats.getNumberOfUsersWithFullProfile(users),
-                    MessagesDataSource.getNumberOfTotalMessages(), new S3File().getNumberOfFiles()));
+                    MessagesDataSource.getNumberOfTotalMessages(), new S3File().getNumberOfFiles(), ConfDataSource.getNumberOfGeneratedDocs()));
         }else{
             return unauthorized("Access denied");
         }

@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import com.itextpdf.text.DocumentException;
+import models.datasource.ConfDataSource;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.*;
@@ -196,6 +197,7 @@ public class GenerateDocumentsController {
         Template1 template = new Template1();
         try {
             template.createPdf(route, user);
+            ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
@@ -215,6 +217,7 @@ public class GenerateDocumentsController {
         Template1 template = new Template1();
         try {
             template.createPdf(route, user);
+            ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
@@ -234,6 +237,7 @@ public class GenerateDocumentsController {
         Template1 template = new Template1();
         try {
             template.createPdf(route, user);
+            ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
@@ -253,6 +257,7 @@ public class GenerateDocumentsController {
         Template4 template = new Template4();
         try {
             template.createPdf(route, user, user.personalCharacteristics, user.skill);
+            ConfDataSource.addNewGeneratedDoc();    //Counter of all generated docs
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
@@ -379,6 +384,7 @@ public class GenerateDocumentsController {
 
         try {
             template.createPdf(route, user.name, user.surnames, user.studyTitle, user.studyLocation, session().get("lp2_company_name"), session().get("lp2_job_name"), attachments, user.personalCharacteristics, user.skill, user.email, user.phoneNumber);
+            ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {

@@ -195,4 +195,38 @@ public class ConfDataSource {
             Logger.info("[There is an Amazon Conf. profile]");
         }
     }
+
+    public static void addNewGeneratedDoc(){
+        DBCollection collection = connectDB("mongo.projectConf");
+        BasicDBObject query = new BasicDBObject().append("plattform", "generatedDocs");
+
+        DBObject dbObject = collection.findOne(query);
+        if(dbObject != null){
+            int newValue = Integer.parseInt(dbObject.get("total").toString())+1;
+            BasicDBObject newDocument = new BasicDBObject();
+
+            newDocument.put("plattform", "generatedDocs");
+            newDocument.put("total", newValue);
+
+            collection.update(new BasicDBObject().append("plattform", "generatedDocs"), newDocument);
+        }else{
+            query.append("total", 1);
+            collection.insert(WriteConcern.SAFE, query);
+        }
+        mongoClient.close();
+    }
+    public static int getNumberOfGeneratedDocs(){
+        DBCollection collection = connectDB("mongo.projectConf");
+        BasicDBObject query = new BasicDBObject().append("plattform", "generatedDocs");
+
+        DBObject dbObject = collection.findOne(query);
+        if(dbObject != null) {
+            int total = Integer.parseInt(dbObject.get("total").toString());
+            mongoClient.close();
+            return total;
+        }else{
+            mongoClient.close();
+            return 0;
+        }
+    }
 }
