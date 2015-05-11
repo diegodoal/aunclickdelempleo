@@ -178,6 +178,37 @@ public class AdminController extends Controller{
         }
         return redirect("/admin/users/"+email+"/"+id);
     }
+
+    public static Result userPersonal(String email, String id){
+        if (checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+        if(user != null && user.id.equals(id)) {
+            return ok(views.html.admin.user_personal.render(user));
+        }else{
+            return redirect("/admin/users");
+        }
+    }
+
+    public static Result submitUserPersonal(String email, String id){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        if(user != null && user.id.equals(id)) {
+            List<String> personalCharacteristics = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {
+            }.getType());
+
+            user.personalCharacteristics = personalCharacteristics;
+            user.completedOrientationSteps.personal = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/admin/users/"+email+"/"+id);
+    }
+
     public static Result deleteUser(){
         if(checkConnection() != null) {
             JsonNode request = request().body().asJson();
