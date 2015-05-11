@@ -133,6 +133,7 @@ GET     /admin/logout                               controllers.AdminController.
 
 GET     /admin/users                                controllers.AdminController.usersBlank()
 GET     /admin/users/:email/:id                     controllers.AdminController.userInfo(email: String, id: String)
+POST    /admin/users/personalInfo/:email/:id         controllers.AdminController.updatePersonalInfo(email: String, id: String)
 GET     /admin/users/skills/:email/:id              controllers.AdminController.userSkills(email : String, id : String)
 POST    /admin/users/skills/:email/:id              controllers.AdminController.submitUserSkills(email : String, id : String)
 GET     /admin/users/interests/:email/:id           controllers.AdminController.userInterests(email : String, id : String)

@@ -112,6 +112,31 @@ public class AdminController extends Controller{
         }
     }
 
+    public static Result updatePersonalInfo(String email, String id){
+        if(checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        JsonNode request = request().body().asJson();
+
+        if(user != null && user.id.equals(id)) {
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+
+            User auxUser = SingletonDataSource.getInstance().getUserByEmail(result[2]);
+            if(!result[2].equals(user.email) && auxUser != null){
+                return badRequest("Ya existe un usuario con este email");
+            }
+            user.name = result[0];
+            user.surnames = result[1];
+            user.email = result[2];
+
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/admin/users/"+user.email+"/"+id);
+
+    }
+
     public static Result userSkills(String email, String id){
         if (checkConnection() == null){
             return unauthorized("Access denied");
@@ -147,7 +172,7 @@ public class AdminController extends Controller{
             user.completedOrientationSteps.skills = String.valueOf(true);
             SingletonDataSource.getInstance().updateAllUserData(user);
         }
-        return redirect("admin/user/"+email+"/"+id);
+        return redirect("/admin/users/"+email+"/"+id);
     }
 
     public static Result userInterests(String email, String id){
