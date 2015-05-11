@@ -146,9 +146,38 @@ public class AdminController extends Controller{
             user.completedOrientationSteps.skills = String.valueOf(true);
             SingletonDataSource.getInstance().updateAllUserData(user);
         }
-        return redirect("/admin/users");
+        return redirect("admin/user/"+email+"/"+id);
     }
 
+    public static Result userInterests(String email, String id){
+        if (checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+        if(user != null && user.id.equals(id)) {
+            return ok(views.html.admin.user_interestIdentification.render(user));
+        }else{
+            return redirect("/admin/users");
+        }
+    }
+
+    public static Result submitUserInterests(String email, String id){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        if(user != null && user.id.equals(id)) {
+            List<String> interests = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {
+            }.getType());
+
+            user.interests = interests;
+            user.completedOrientationSteps.interestIdentification = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/admin/users/"+email+"/"+id);
+    }
     public static Result deleteUser(){
         if(checkConnection() != null) {
             JsonNode request = request().body().asJson();
