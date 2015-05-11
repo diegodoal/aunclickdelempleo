@@ -16,6 +16,8 @@ import models.entities.orientation.Software;
 import models.entities.orientation.Language;
 import models.entities.orientation.Skill;
 import utils.Constants;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Template3 {
@@ -54,7 +56,7 @@ public class Template3 {
             addLanguages(user.languages);
         }
         //SKILLS
-        addSkills(user, personalCharacteristics, skills);
+        addSkills(user, user.personalCharacteristics, user.skill);
         //CLOSE DOCUMENT
         document.close();
     }
