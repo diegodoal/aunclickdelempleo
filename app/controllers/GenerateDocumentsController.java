@@ -17,6 +17,8 @@ import utils.pdf.cv_templates.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +31,7 @@ import static play.mvc.Http.Context.Implicit.request;
 import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
 import static play.mvc.Results.redirect;
+import utils.Utils;
 
 
 /**
@@ -59,7 +62,7 @@ public class GenerateDocumentsController {
 
             //user.name = personalInformation[0];
             //user.surnames = personalInformation[1];
-            user.birthDate = personalInformation[2];
+            user.birthDate = Utils.changeFormatDate(personalInformation[2]);
             user.residenceCity = personalInformation[3];
             user.residenceAddress = personalInformation[4];
             user.residenceNumber = personalInformation[5];
@@ -226,7 +229,7 @@ public class GenerateDocumentsController {
         return redirect(routes.Assets.at(route.substring(7)));
     }
 
-    public static Result previewCV3(){
+    public static Result previewCV3() throws FileNotFoundException, DocumentException, MalformedURLException, IOException {
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user == null){
@@ -234,7 +237,7 @@ public class GenerateDocumentsController {
         }
         String route = Files.newPathForNewFile("public/pdf", "pdf");
 
-        Template1 template = new Template1();
+        Template3 template = new Template3();
         try {
             template.createPdf(route, user);
             ConfDataSource.addNewGeneratedDoc();

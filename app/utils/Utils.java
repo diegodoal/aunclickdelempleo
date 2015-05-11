@@ -23,6 +23,11 @@ public class Utils {
         return simpleDateFormat.format(date);
     }
 
+    public static String changeFormatDate(String date){
+        String newDate = date.replaceAll("(\\d+)-(\\d+)-(\\d+)", "$3-$2-$1");
+        return newDate;
+    }
+
     public static Date stringToDate(String date){
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         Date result = null;
