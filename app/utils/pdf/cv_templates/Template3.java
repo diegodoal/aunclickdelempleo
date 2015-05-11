@@ -14,6 +14,7 @@ import models.entities.User;
 import models.entities.orientation.ProfessionalExperience;
 import models.entities.orientation.Software;
 import models.entities.orientation.Language;
+import models.entities.orientation.Skill;
 import utils.Constants;
 import java.util.List;
 
@@ -24,33 +25,37 @@ public class Template3 {
     public static final String LONG_LINE_IMAGE = "public/images/orientation/cv-templates/CV3/ic_cv3longline.png";
     public static final String PHOTO_IMAGE = "public/images/orientation/photo/ic_profile.png";
     private Document document;
+    Font font1 = FontFactory.getFont(Constants.FONT_ARIAL_T4, Constants.SIZE12_T4, Font.BOLD, Constants.COLOR_BLACK_T4);
+    Font font2 = FontFactory.getFont(Constants.FONT_ARIAL_T4, Constants.SIZE12_T4, Constants.COLOR_GRAY_T4);
 
     public void createPdf(String path, User user) throws DocumentException, IOException {
         document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, new FileOutputStream(path));
 
         document.open();
-
+        //CONTENT
+        //IMAGES
         addBackgroundImage();
         addLineImage();
+        //PERSONAL INFORMATION
         addPersonalInformation(user);
+        //STUDIES
         addAcademicExperience(user);
-
+        //EXPERIENCE
         if(!user.currentSituation.professionalExperienceList.isEmpty()) {
             addProfessionalExperience(user.currentSituation.professionalExperienceList);
         }
-
+        //PROGRAMS
         if(!user.softwareList.isEmpty()) {
             addSoftware(user.softwareList);
         }
-
+        //LANGUAGES
         if(!user.languages.isEmpty()) {
             addLanguages(user.languages);
         }
-
-        //POR AQUI
-        //addQualities(user.personalCharacteristics, user.);
-
+        //SKILLS
+        addSkills(user, personalCharacteristics, skills);
+        //CLOSE DOCUMENT
         document.close();
     }
 
@@ -379,44 +384,112 @@ public class Template3 {
         }
     }
 
-    /*private void addQualities(List<Language> languages) throws DocumentException {
+    public List<String> selectSkills(List<Skill> skills){
+        List<String> result = new ArrayList<>();
+
+        for(int i=0; i<skills.size(); i++){
+            if(skills.get(i).level.equals("Excelente")){
+                result.add(skills.get(i).name);
+            }
+        }
+
+        if(result.size() >= 3){
+            return result;
+        }
+
+        for(int i=0; i<skills.size(); i++){
+            if(skills.get(i).level.equals("Bien")){
+                result.add(skills.get(i).name);
+            }
+        }
+
+        if(result.size() >= 3){
+            return result;
+        }
+
+        for(int i=0; i<skills.size(); i++){
+            if(skills.get(i).level.equals("Normal")){
+                result.add(skills.get(i).name);
+            }
+        }
+        return result;
+    }
+
+    private void addSkills(User user,  List<String> personalCharacteristics, List<Skill> skills) throws DocumentException {
         Paragraph paragraph;
         PdfPCell cell;
         PdfPTable table;
 
-        for(int i=0; i<languages.size(); i++) {
-            table = new PdfPTable(new float[]{6});
+        List<String> rankedSkills = selectSkills(skills);
+        if (personalCharacteristics.size() != 0 && rankedSkills.size() != 0) {
+            table = new PdfPTable(new float[]{1f});
             table.setWidthPercentage(100);
             table.setSpacingBefore(5);
 
             //First column
             cell = new PdfPCell();
             cell.setBorder(PdfPCell.NO_BORDER);
-            cell.setPaddingRight(15);
-            cell.setPaddingLeft(50);
-
-            if(i==0) {
-                cell.setPaddingTop(25);
-            } else {
-                cell.setPaddingTop(5);
-            }
-
-            if(i==0) {
-                Font font = FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.BOLD, Constants.BASE_COLOR_CUSTOM_BLUE_1);
-                paragraph = new Paragraph("Idiomas", font);
-            }else{
-                paragraph = new Paragraph("");
-            }
+            paragraph = new Paragraph("HABILIDADES PERSONALES", font1);
+            cell.setBorder(PdfPCell.NO_BORDER);
             paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            cell.setPaddingRight(10);
             cell.addElement(paragraph);
-
-            paragraph = new Paragraph(languages.get(i).language + ". " + languages.get(i).level + ".");
-            paragraph.setFont(FontFactory.getFont("Arial", Font.DEFAULTSIZE, Font.NORMAL));
-            paragraph.setSpacingBefore(10);
-            cell.addElement(paragraph);
-
             table.addCell(cell);
+
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            paragraph = new Paragraph("Me defino como una persona de carácter " +personalCharacteristics.get(1).toLowerCase() + " y " +personalCharacteristics.get(0).toLowerCase() + ".",font2);
+            cell.setBorder(PdfPCell.NO_BORDER);
+            paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            cell.setPaddingRight(10);
+            cell.addElement(paragraph);
+            table.addCell(cell);
+
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            paragraph = new Paragraph("Entre mis puntos fuertes destacan las " +rankedSkills.get(0).toLowerCase() + " y las " +rankedSkills.get(1).toLowerCase() + ".",font2);
+            cell.setBorder(PdfPCell.NO_BORDER);
+            paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            cell.setPaddingRight(10);
+            cell.addElement(paragraph);
+            table.addCell(cell);
+
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            paragraph = new Paragraph("Considero que soy una persona activa que presenta " +rankedSkills.get(2).toLowerCase() + ".",font2);
+            cell.setBorder(PdfPCell.NO_BORDER);
+            paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            cell.setPaddingRight(10);
+            cell.addElement(paragraph);
+            table.addCell(cell);
+
+            //First column
+            cell = new PdfPCell();
+            cell.setBorder(PdfPCell.NO_BORDER);
+            paragraph = new Paragraph("Además, una de las características que me define es que soy " +personalCharacteristics.get(2).toLowerCase() + ".",font2);
+            cell.setBorder(PdfPCell.NO_BORDER);
+            paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+            cell.setPaddingRight(10);
+            cell.addElement(paragraph);
+            table.addCell(cell);
+
+            if(!user.drivingLicense.equals("No tengo carnet")) {
+                //First column
+                cell = new PdfPCell();
+                cell.setBorder(PdfPCell.NO_BORDER);
+                paragraph = new Paragraph("Permiso de conducir: " +user.drivingLicense + ".", font2);
+                cell.setBorder(PdfPCell.NO_BORDER);
+                paragraph.setAlignment(Paragraph.ALIGN_LEFT);
+                cell.setPaddingRight(10);
+                cell.addElement(paragraph);
+                table.addCell(cell);
+            }
+
             document.add(table);
+
         }
-    }*/
+    }
 }
