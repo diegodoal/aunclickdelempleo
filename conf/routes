@@ -139,6 +139,8 @@ GET     /admin/users/interests/:email/:id           controllers.AdminController.
 POST    /admin/users/interests/:email/:id           controllers.AdminController.submitUserInterests(email : String, id : String)
 GET     /admin/users/personal/:email/:id            controllers.AdminController.userPersonal(email : String, id : String)
 POST    /admin/users/personal/:email/:id            controllers.AdminController.submitUserPersonal(email : String, id : String)
+GET     /admin/users/professional/:email/:id        controllers.AdminController.userProfessional(email : String, id : String)
+POST    /admin/users/professional/:email/:id        controllers.AdminController.submitUserProfessional(email : String, id : String)
 POST    /admin/delete                               controllers.AdminController.deleteUser()
 
 GET     /admin/stats                                controllers.AdminController.stats()

@@ -10,6 +10,7 @@ import models.datasource.SingletonDataSource;
 import models.entities.AdminUser;
 import models.entities.Message;
 import models.entities.User;
+import models.entities.orientation.ProfessionalValue;
 import models.entities.orientation.Skill;
 import play.Logger;
 import play.data.DynamicForm;
@@ -204,6 +205,46 @@ public class AdminController extends Controller{
 
             user.personalCharacteristics = personalCharacteristics;
             user.completedOrientationSteps.personal = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/admin/users/"+email+"/"+id);
+    }
+
+    public static Result userProfessional(String email, String id){
+        if (checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+        if(user != null && user.id.equals(id)) {
+            return ok(views.html.admin.user_professional.render(user));
+        }else{
+            return redirect("/admin/users");
+        }
+    }
+
+    public static Result submitUserProfessional(String email, String id){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        JsonNode request = request().body().asJson();
+
+        if(user != null && user.id.equals(id)) {
+            String[][] professionalValues = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
+            }.getType());
+
+            if(user.professionalValues.isEmpty()) {
+                for (int i = 0; i < professionalValues.length; i++) {
+                    user.professionalValues.add(i, new ProfessionalValue(professionalValues[i][0], professionalValues[i][1]));
+                }
+            } else {
+                for (int i = 0; i < professionalValues.length; i++) {
+                    user.professionalValues.get(i).valuation = professionalValues[i][1];
+                }
+            }
+
+            user.completedOrientationSteps.professional = String.valueOf(true);
             SingletonDataSource.getInstance().updateAllUserData(user);
         }
         return redirect("/admin/users/"+email+"/"+id);

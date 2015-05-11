@@ -44,10 +44,10 @@
         }
     </ul>
 
-    <h3><b>Valores profesionales</b></h3>
+    <h3><b>Valores profesionales</b>  <a href="/admin/users/professional/@user.email/@user.id">Editar</a></h3>
     <ul>
         @for(values <- user.professionalValues) {
-        @if(values.valuation == "Si"){
+        @if(values.valuation == "SI"){
         <li>@values.name</li>
         }
         }
