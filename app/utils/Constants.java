@@ -20,7 +20,7 @@ public final class Constants {
     public final static String T2_FONT_STYLE = "Arial";
 
     //Template 3
-    public final static BaseColor COLOR_BLUE_T3 = new BaseColor(0, 174, 29);
+    public final static BaseColor COLOR_BLUE_T3 = new BaseColor(0, 174, 239);
     public final static BaseColor COLOR_BLACK_T3 = new BaseColor(40, 40, 41);
     public final static float SIZE14_T3 = 14;
     public final static float SIZE12_T3 = 12;
