@@ -26,7 +26,6 @@ public class Template3 {
     public static final String BACK_IMAGE = "public/images/orientation/cv-templates/CV3/ic_cv3background.png";
     public static final String SHORT_LINE_IMAGE = "public/images/orientation/cv-templates/CV3/ic_cv3shortline.png";
     public static final String LONG_LINE_IMAGE = "public/images/orientation/cv-templates/CV3/ic_cv3longline.png";
-    public static final String PHOTO_IMAGE = "public/images/orientation/photo/ic_profile.png";
     private Document document;
 
     public static final Font font1;
@@ -101,9 +100,14 @@ public class Template3 {
 
     private void addPersonalInformation(User user) throws DocumentException, IOException {
         Paragraph paragraph;
-        Image photo_img = Image.getInstance(String.format(PHOTO_IMAGE));
         PdfPCell cell;
         PdfPTable table;
+        Image photo_img;
+        if(!user.photo.id.equals("")){
+            photo_img = Image.getInstance(String.format("https://s3.amazonaws.com/aunclickdelempleo2/" + user.photo.id));
+        } else {
+            photo_img = Image.getInstance(String.format("public/images/orientation/photo/ic_profile.png"));
+        }
 
         table = new PdfPTable(new float[]{3,7});
         table.setWidthPercentage(100);
@@ -115,9 +119,7 @@ public class Template3 {
         cell.setPaddingLeft(50);
         cell.setPaddingTop(30);
 
-        //photo_img.setAlignment(Image.LEFT | Image.TEXTWRAP);
         photo_img.setBorder(Image.BOX);
-        //photo_img.setBorderWidth(10);
         photo_img.setBorderColor(BaseColor.WHITE);
         photo_img.scaleToFit(1000, 115);
 
