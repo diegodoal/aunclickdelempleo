@@ -1,0 +1,174 @@
+@main(){
+<section class="container" style="z-index:-1;" id="text_user_profile_2">
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic">
+            <h2>TU CARTA DE PRESENTACIÓN</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic size20">
+            <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 0;">
+        <div class="col-md-12 ic_paso2">
+
+            <div class="row-same-height row-full-height">
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.lp1()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_1claro.png")" class="ic_paso2" alt="Paso 1 de Completar tu carta de presentación" title="Carta de presentación">
+                    </a>
+                </div>
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.lp2()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_2.png")" alt="Paso 2 de Completar tu carta de presentacion" title="Carta de presentación">
+                    </a>
+                </div>
+
+
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.lp3()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_3claro.png")" alt="Paso 3 de Completar tu carta de presentación" title="Carta de presentación">
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container" style="z-index:-1;">
+
+    <!--Datos de Empresa-->
+
+    <div class="row">
+        <div id="lp2_alert" hidden>
+            <div class="alert alert-danger" id="cv2_alert" role="alert">Por favor, completa todo el fomulario.</div><br>
+        </div>
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            Datos de empresa para la que solicitas un puesto
+        </div>
+    </div><br>
+    <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
+
+
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" name='register_name' class="form-control" id="name_company" value="" required="required" placeholder="Nombre de la empresa">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-5 input-mic-container">
+                <input type="text" class="form-control" id="job_name" value="" required="required" placeholder="Puesto">
+                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+            </div>
+        </div>
+    </form>
+
+</section><br>
+<section class="container">
+    <!--Documentos adjuntos-->
+
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            Documentos que adjunto a mi candidatura
+        </div>
+    </div><br>
+
+    <div class="row orientation-points">
+        <div class="col-lg-12 ">
+            <input type="checkbox" id="check_cv" value="Curriculm Vitae" onclick="curriculumVitaeSetHidden(this.checked)">
+            <label for="check_cv" class="size14 gray_adecco arial steps_height">Curriculum Vitae</label>
+        </div>
+    </div><br>
+
+    <div class="row orientation-points">
+        <div class="col-lg-12 ">
+            <input type="checkbox" id="check_pf" value="Portfolio" onclick="portFolioSetHidden(this.checked)">
+            <label for="check_pf" class="size14 gray_adecco arial steps_height">Portfolio</label>
+        </div>
+    </div><br>
+
+
+    <div class="row orientation-points">
+        <div class="col-lg-12 ">
+            <input type="checkbox" id="check_lr" value="letterPresentation" onclick="letterRecomendationSetHidden(this.checked)">
+            <label for="check_lr" class="size14 gray_adecco arial steps_height">Carta(s) de recomendación</label>
+        </div>
+    </div><br>
+
+
+    <div class="row orientation-points">
+        <div class="col-lg-12 ">
+            <input type="checkbox" id="check_certificates" value="Certificados" onclick="certificateSetHidden(this.checked)">
+            <label for="check_certificates" class="size14 gray_adecco arial steps_height">Certificado(s)</label>
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 center">
+            <button class="button-finish-1" onclick="sendForm()">SIGUIENTE</button>
+        </div>
+    </div>
+</section>
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?<h2>
+            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
+<script type="text/javascript">
+    window.onload = function(){
+        loadRecognition();
+    };
+</script>
+
+<script>
+function sendForm(){
+    var result = [];
+    result[0] = $('#name_company').val();
+    result[1] = $('#job_name').val();
+    result[2] = $('#check_cv').is(':checked');
+    result[3] = $('#check_pf').is(':checked');
+    result[4] = $('#check_lr').is(':checked');
+    result[5] = $('#check_certificates').is(':checked');
+
+
+    if(result[0] == '' || result[1] == ''){
+        $('#lp2_alert').show();
+            window.scrollTo(0,0);
+    }else{
+        $.ajax({
+                type: 'post',
+                data: JSON.stringify(result),
+                url: "/orientation/gettools/lp2",
+                contentType: 'application/json'
+            }).done(function(o) {
+                window.location.assign("/orientation/gettools/lp3");
+            });
+    }
+}
+</script>
+}

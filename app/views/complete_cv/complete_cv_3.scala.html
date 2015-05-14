@@ -1,3 +1,5 @@
+@(user: models.entities.User)
+
 @main(){
 <div class="container">
 
@@ -13,9 +15,39 @@
             <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
         </div>
     </div>
-    <div class="row">
+
+
+    <div class="row" style="margin-bottom: 0;">
         <div class="col-md-12 ic_paso2">
-            <img src="@routes.Assets.at("images/complete_user_profile_3/ic_paso3.png")" class="ic_paso2">
+
+            <div class="row-same-height row-full-height">
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv1()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_1claro.png")">
+                    </a>
+                </div>
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv2()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_2claro.png")">
+                    </a>
+                </div>
+
+
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv3()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_3.png")">
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
@@ -24,13 +56,68 @@
 <!--Cursos-->    
     <div class="row">
         <div class="col-md-12 arial gray_adecco size18 bold">
-            <p>Cursos</p>
+            Cursos
         </div>
-    </div>
+    </div><br>
+    <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
+
 
     <div class="main-div-sections">
-        
-            <form class="form-horizontal" autocomplete="on" method="post">
+            @if(user != null){
+                @for(course <- user.courses){
+                    <form class="form-horizontal courses" autocomplete="on" method="post">
+                        <div class="form-group">
+                            <div class="col-lg-5">
+                                <div class="input-mic-container">
+                                    <input type="text" class="form-control" id="namecourse" value="@course.name" placeholder="Nombre del curso" >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-lg-offset-2">
+                                <div class="input-mic-container">
+                                    <input type="text" class="form-control" id="imparted" value="@course.company" placeholder="Impartido por..." >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-5">
+                                <div class="input-mic-container">
+                                    <input type="text" class="form-control" id="numHour" value="@course.length" placeholder="Número de horas" >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                    
+                                </div>
+                                
+                            </div>
+
+                            <div class="col-lg-offset-2 col-lg-5">
+                                <div class="">
+                                <div class="form-group center brown_adecco arial size14">
+                                        Debes añadir cada uno de los cursos que hayas realizado.
+                                </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-5">
+                             <!--div añadido extra porque sino el boton añadir no va-->   
+                            </div>
+                            <div class="col-lg-5 col-lg-offset-2">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                        <img class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                }
+
+            }
+        <div>
+            <form class="form-horizontal courses" autocomplete="on" method="post">
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
@@ -41,7 +128,7 @@
 
                     <div class="col-lg-5 col-lg-offset-2">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control" id="imparted" value="Impartido" placeholder="Impartido por..." >
+                            <input type="text" class="form-control" id="imparted" value="" placeholder="Impartido por..." >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </div>
@@ -50,7 +137,7 @@
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control" id="numHour" value="Número de horas" placeholder="Número de horas" >
+                            <input type="text" class="form-control" id="numHour" value="" placeholder="Número de horas" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                             
                         </div>
@@ -72,16 +159,14 @@
                      <!--div añadido extra porque sino el boton añadir no va-->   
                     </div>
                     <div class="col-lg-5 col-lg-offset-2">
-                        <div class="">
                         <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                <img class="add-new" src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")">
-                        </div>
+                                <img class="add-new" src="@routes.Assets.at("images/Orientation/ic_añadir.png")">
                         </div>
                     </div>
                 </div>
             </form>
-        
-    </div>
+        </div>
+    </div><br>
 </section>
 
 
@@ -92,17 +177,98 @@
 
     <div class="row">
         <div class="col-md-12 arial gray_adecco size18 bold">
-            <p>Idiomas</p>
+            Idiomas
         </div>
-    </div>
+    </div><br>
 
     <div class="main-div-sections center">
-        
-            <form class="form-horizontal" autocomplete="on" method="post">
+        @if(user != null){
+                @for(language <- user.languages){
+                    <form class="form-horizontal languages" autocomplete="on" method="post">
+                        <div class="form-group">
+                            <div class="col-lg-5">
+                                <div class="input-mic-container">
+                                    <input type="text" class="form-control" id="language" value="@language.language" placeholder="Idioma" >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-lg-offset-2">
+                                <select  class="form-control" id="level" name="level">
+                                <option value="d0" disabled >Nivel</option>
+                                @if(language.level.equals("A1")){
+                                    <option value="d1" selected>A1</option>
+                                }else{
+                                    <option value="d1">A1</option>
+                                }
+                                @if(language.level.equals("A2")){
+                                    <option value="d2" selected>A2</option>
+                                }else{
+                                    <option value="d2">A2</option>
+                                }
+                                @if(language.level.equals("B1")){
+                                    <option value="d3" selected>B1</option>
+                                }else{
+                                    <option value="d3">B1</option>
+                                }
+                                @if(language.level.equals("B2")){
+                                    <option value="d4" selected>B2</option>
+                                }else{
+                                    <option value="d4">B2</option>
+                                }
+                                @if(language.level.equals("C1")){
+                                    <option value="d5" selected>C1</option>
+                                }else{
+                                    <option value="d5">C1</option>
+                                }
+                                @if(language.level.equals("C2")){
+                                    <option value="d6" selected>C2</option>
+                                }else{
+                                    <option value="d6">C2</option>
+                                }
+                                @if(language.level.equals("Otros")){
+                                    <option value="d7" selected>Otros</option>
+                                }else{
+                                    <option value="d7">Otros</option>
+                                }
+                            </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-lg-5">
+                                
+                            </div>
+
+                            <div class="col-lg-5 col-lg-offset-2 ">
+                                <div class="">
+                                <div class="form-group center brown_adecco arial size14">Debes añadir cada uno de los idiomas que dominas.</div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-5">
+                             <!--div añadido extra porque sino el boton añadir no va-->   
+                            </div>
+                            <div class="col-lg-5 col-lg-offset-2">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                        <img class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                }
+            }
+        <div>
+            <form class="form-horizontal languages" autocomplete="on" method="post">
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control" id="language" value="Idioma" placeholder="Idioma" >
+                            <input type="text" class="form-control" id="language" value="" placeholder="Idioma" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </div>
@@ -129,7 +295,7 @@
 
                     <div class="col-lg-5 col-lg-offset-2 ">
                         <div class="">
-                        <div class="form-group center brown_adecco arial size14">Debes añadir cada uno de los cursos que hayas realizado.</div>
+                        <div class="form-group center brown_adecco arial size14">Debes añadir cada uno de los idiomas que dominas</div>
                         </div>
                     </div>
                     
@@ -141,31 +307,85 @@
                      <!--div añadido extra porque sino el boton añadir no va-->   
                     </div>
                     <div class="col-lg-5 col-lg-offset-2">
-                        <div class="">
                         <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                <img class="add-new" src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")">
-                        </div>
+                                <img class="add-new" src="@routes.Assets.at("images/Orientation/ic_añadir.png")">
                         </div>
                     </div>
                 </div>
             </form>
-        
-    </div>
+        </div>
+    </div><br>
 </section>
 
 <section>
 
     <div class="row">
         <div class="col-md-12 arial gray_adecco size18 bold">Programas informáticos</div>
-    </div>
+    </div><br>
 
     <div class="main-div-sections">
-        
-            <form class="form-horizontal" autocomplete="on" method="post">
+        @if(user != null){
+            @for(software <- user.softwareList){
+                <form class="form-horizontal software" autocomplete="on" method="post">
+                    <div class="form-group">
+                        <div class="col-lg-5">
+                            <div class="input-mic-container">
+                                <input type="text" class="form-control" id="software" value="@software.software" placeholder="Programas informáticos" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-lg-offset-2">
+                            <select  class="form-control" id="level" name="level">
+                                <option value="s0" disabled >Nivel</option>
+                                @if(software.level.equals("Básico")){
+                                    <option value="s1" selected>Básico</option>
+                                }else{
+                                    <option value="s1">Básico</option>
+                                }
+                                @if(software.level.equals("Medio")){
+                                    <option value="s2" selected>Medio</option>
+                                }else{
+                                    <option value="s2">Medio</option>
+                                }
+                                @if(software.level.equals("Avanzado")){
+                                    <option value="s3" selected>Avanzado</option>
+                                }else{
+                                    <option value="s3">Avanzado</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-5 col-lg-offset-2">
+                           
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="">
+                            <div class="form-group center brown_adecco arial size14">Debes añadir cada uno de los programas informáticos que dominas</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-lg-5 col-lg-offset-2">
+                         <!--div añadido extra porque sino el boton añadir no va-->   
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            }
+        }
+        <div>
+            <form class="form-horizontal software" autocomplete="on" method="post">
                 <div class="form-group">
                     <div class="col-lg-5">
                         <div class="input-mic-container">
-                            <input type="text" class="form-control" id="programs" value="Programas informáticos" placeholder="Programas informáticos" >
+                            <input type="text" class="form-control" id="software" value="" placeholder="Programas informáticos" >
                             <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                         </div>
                     </div>
@@ -185,7 +405,7 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="">
-                        <div class="form-group center brown_adecco arial size14"> Debes añadir cada uno de los cursos que hayas realizado.</div>
+                        <div class="form-group center brown_adecco arial size14">Debes añadir cada uno de los programas informáticos que dominas</div>
                         </div>
                     </div>
                 </div>
@@ -195,15 +415,13 @@
                      <!--div añadido extra porque sino el boton añadir no va-->   
                     </div>
                     <div class="col-lg-5">
-                        <div class="">
                         <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                <img class="add-new" src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")">
-                        </div>
+                                <img class="add-new" src="@routes.Assets.at("images/Orientation/ic_añadir.png")">
                         </div>
                     </div>
                 </div>
             </form>
-        
+        </div>
     </div>
 </section>
 </div>
@@ -214,10 +432,25 @@
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 center">
-            <button class="button-finish-1" onclick="location.href=#">FINALIZAR</button>
+            <button class="button-finish-1" onclick="sendForm()">FINALIZAR</button>
         </div>
     </div>
 </section>
+
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?</h2>
+            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
 
 
 <script type="text/javascript">
@@ -226,6 +459,71 @@
         addNew();
     };
 </script>
-    
+ 
+<script type="text/javascript">
+    function sendForm(){
+        var result = []
+        //Adding courses
+        var coursesArray = [];
+        var counter = 0;
+        $('.main-div-sections .courses').each(function(){
+            var auxCourses = [];
+            var valid = true;
+            $(this).find('input').each(function(){
+                if(valid == true && $(this).val() != ''){
+                    auxCourses[counter] = $(this).val();
+                }else{
+                    valid = false;
+                }
+                counter++;
+            });
+            counter = 0;
+            if(valid==true){
+                coursesArray.push(auxCourses);
+            }
+        });
+
+        result.push(JSON.stringify(coursesArray));
+
+        //Adding languages
+        var languagesArray = [];
+        $('.main-div-sections .languages').each(function(){
+            var auxLanguage = [];
+            if($(this).find('#language').val() != ''){
+                auxLanguage[0] = $(this).find('#language').val();
+                auxLanguage[1] = $(this).find('#level option:selected').text();
+                languagesArray.push(auxLanguage);
+            }
+        });
+
+        result.push(JSON.stringify(languagesArray));
+
+        //Adding IT level
+        var software = [];
+        $('.main-div-sections .software').each(function(){
+            var auxSoftware = [];
+            if($(this).find('#software').val() != ''){
+                auxSoftware[0] = $(this).find('#software').val();
+                auxSoftware[1] = $(this).find('#level option:selected').text();
+                software.push(auxSoftware);
+            }
+        });
+
+        result.push(JSON.stringify(software));
+
+        $.ajax({
+                type: 'post',
+                data: JSON.stringify(result),
+                url: "/orientation/gettools/cv3",
+                contentType: 'application/json',
+                error: function(){
+                },
+                success: function(){
+                    //window.location.assign("/orientation/gettools/cv/preview");
+                    window.location.assign("/orientation/gettools/cv4");
+                }
+            });
+    }
+</script>   
 
 }

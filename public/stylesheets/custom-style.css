@@ -150,3 +150,64 @@
    height: auto;
 
  }
+
+
+
+
+ /*#############*/
+ /* columns of same height styles */
+
+ .row-full-height {
+   height: 100%;
+ }
+ .col-full-height {
+   height: 100%;
+   vertical-align: middle;
+ }
+ .row-same-height {
+   display: table;
+   width: 100%;
+   /* fix overflow */
+   table-layout: fixed;
+ }
+ .col-xs-height {
+   display: table-cell;
+   float: none !important;
+ }
+
+ #points-line{
+ background-image: url("../images/orientation/steps/ic_bigpoint.png");
+ background-repeat: repeat-y;
+ height: 100%;
+ background-position: center;
+ }
+
+ #points-line-cv{
+  background-image: url("../images/orientation/steps/ic_bigpoint.png");
+  background-repeat: repeat-x;
+
+  weight:100%;
+  background-position: center;
+  }
+
+  #points-line2{
+  background-image: url("../images/orientation/steps/ic_point.png");
+  background-repeat: repeat-x;
+  height: 100%;
+  background-position: center;
+  }
+
+
+  .button-return-1{
+  	-webkit-border-radius: 10;
+  	-moz-border-radius: 10;
+  	border-radius: 10px;
+  	color: #ffffff;
+  	background: #ab9e79;
+  	border: solid #ab9e79 2px;
+  	text-decoration: none;
+  	padding-right: 2em;
+  	padding-left: 2em;
+  	font-size: 18px;
+  	outline: 0px;
+  }

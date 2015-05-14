@@ -1,18 +1,19 @@
+@(user: models.entities.User)
+
 @main(){
 <div class="container">
 <section>
     <div class="row">
         <h2 class="red_adecco century_gothic">Identifica tus intereses</h2>
         <div class="brown_adecco arial size14">
-            <p>Debes conocer tus intereses para construir tu carrera en función de tus preferencias.</p>
+            <p>Debes conocer tus intereses,aquellas cosas que te emocionan y te motivan. Te ayudará a construir tu carrera con éxito y tomar decisiones profesionales.</p>
             <p>Tus intereses son todo aquello que te gusta hacer, puede tratarse de una actividad física, intelectual,creativa u otras actividades.</p>
-            <p>Los intereses determinan las elecciones profesionales.</p>
-            <p>Los intereses, al igual que los valores, son algo muy subjetivo, es decir, depende de cada persona. A unos les gusta manejar instrumentos o maquinaria, otros prefieren actividades que impliquen ayudar a los demás, habrá quien prefiera dedicarse a actividades artísticas y a quien le guste trabajar con datos y archivos.</p>
-            <p>Como ves, hay mucha diversidad de intereses. Se trata de que identifiques cuáles son los tuyos.</p>
-            <p>Esta lista de campos nos permitirá orientarte en los sectores que selecciones que sean de tu agrado.</p>
+
+            <p>Los intereses,son algo muy personal.</p>
+            <p>La lista que a continuación te presentamos nos permitirá orientarte en este sentido.</p>
         </div><br><br>
             <div class="arial gray_adecco size16">
-                <p>Actividad: Elige aquellos sectores por los que tengas preferencia.(Selecciona como máximo 5).</p>
+                <p>Actividad: Elige aquellos sectores o actividades profesionales por los que tengas preferencia.(Selecciona como máximo 3).</p>
             </div><br>
         
     </div>
@@ -24,14 +25,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check1" value="Agricultura, Montes, Pesca, Mineria">
-                    <label for="check1" class="size14 gray_adecco arial steps_height">Agricultura, Montes, Pesca, Mineria</label>
+                    @if(user != null && user.interests.contains("Agricultura, Montes, Pesca, Minería")){
+                        <input type="checkbox" id="check1" checked value="Agricultura, Montes, Pesca, Minería">
+                    }else{
+                        <input type="checkbox" id="check1" value="Agricultura, Montes, Pesca, Mineria">
+                    }
+                    <label for="check1" class="size14 gray_adecco arial steps_height">Agricultura, Montes, Pesca, Minería</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check2" value="Arte, Cultura, Sociedad">
+                    @if(user != null && user.interests.contains("Arte, Cultura, Sociedad")){
+                        <input type="checkbox" id="check2" checked value="Arte, Cultura, Sociedad">
+                    }else{
+                        <input type="checkbox" id="check2" value="Arte, Cultura, Sociedad">
+                    }
                     <label for="check2" class="size14 gray_adecco arial steps_height">Arte, Cultura, Sociedad</label>
                 </p>
             </div>
@@ -40,14 +49,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check3" value="Atención al cliente">
+                    @if(user != null && user.interests.contains("Atención al cliente")){
+                        <input type="checkbox" id="check3" checked value="Atención al cliente">
+                    }else{
+                        <input type="checkbox" id="check3" value="Atención al cliente">
+                    }
                     <label for="check3" class="size14 gray_adecco arial steps_height">Atención al cliente</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check4" value="Banca y Seguros">
+                    @if(user != null && user.interests.contains("Banca y Seguros")){
+                        <input type="checkbox" id="check4" checked value="Banca y Seguros">
+                    }else{
+                        <input type="checkbox" id="check4" value="Banca y Seguros">
+                    }
                     <label for="check4" class="size14 gray_adecco arial steps_height">Banca y Seguros</label>
                 </p>
             </div>
@@ -56,14 +73,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check5" value="Bioquímica, Farmacia, Experimental">
+                    @if(user != null && user.interests.contains("Bioquímica, Farmacia, Experimental")){
+                        <input type="checkbox" id="check5" checked value="Bioquímica, Farmacia, Experimental">
+                    }else{
+                        <input type="checkbox" id="check5" value="Bioquímica, Farmacia, Experimental">
+                    }
                     <label for="check5" class="size14 gray_adecco arial steps_height">Bioquímica, Farmacia, Experimental</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check6" value="Calidad">
+                    @if(user != null && user.interests.contains("Calidad")){
+                        <input type="checkbox" id="check6" checked value="Calidad">
+                    }else{
+                        <input type="checkbox" id="check6" value="Calidad">
+                    }
                     <label for="check6" class="size14 gray_adecco arial steps_height">Calidad</label>
                 </p>
             </div>
@@ -72,14 +97,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check7" value="Comercial, Ventas">
+                    @if(user != null && user.interests.contains("Comercial, Ventas")){
+                        <input type="checkbox" id="check7" checked value="Comercial, Ventas">
+                    }else{
+                        <input type="checkbox" id="check7" value="Comercial, Ventas">
+                    }
                     <label for="check7" class="size14 gray_adecco arial steps_height">Comercial, Ventas</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check8" value="Compras">
+                    @if(user != null && user.interests.contains("Compras")){
+                        <input type="checkbox" id="check8" checked value="Compras">
+                    }else{
+                        <input type="checkbox" id="check8" value="Compras">
+                    }
                     <label for="check8" class="size14 gray_adecco arial steps_height">Compras</label>
                 </p>
             </div>
@@ -88,14 +121,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check9" value="Comunicación, Medios, Periodismo">
+                    @if(user != null && user.interests.contains("Comunicación, Medios, Periodismo")){
+                        <input type="checkbox" id="check9" checked value="Comunicación, Medios, Periodismo">
+                    }else{
+                        <input type="checkbox" id="check9" value="Comunicación, Medios, Periodismo">
+                    }
                     <label for="check9" class="size14 gray_adecco arial steps_height">Comunicación, Medios, Periodismo</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check10" value="Construcción, Arquitectura, Inmobiliaria">
+                    @if(user != null && user.interests.contains("Construcción, Arquitectura, Inmobiliaria")){
+                        <input type="checkbox" id="check10" checked value="Construcción, Arquitectura, Inmobiliaria">
+                    }else{
+                        <input type="checkbox" id="check10" value="Construcción, Arquitectura, Inmobiliaria">
+                    }
                     <label for="check10" class="size14 gray_adecco arial steps_height">Construcción, Arquitectura, Inmobiliaria</label>
                 </p>
             </div>
@@ -104,14 +145,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check11" value="Consultoría">
+                    @if(user != null && user.interests.contains("Consultoría")){
+                        <input type="checkbox" id="check11" checked value="Consultoría">
+                    }else{
+                        <input type="checkbox" id="check11" value="Consultoría">
+                    }
                     <label for="check11" class="size14 gray_adecco arial steps_height">Consultoría</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check12" value="Dirección, Gerencia">
+                    @if(user != null && user.interests.contains("Dirección, Gerencia")){
+                        <input type="checkbox" id="check12" checked value="Dirección, Gerencia">
+                    }else{
+                        <input type="checkbox" id="check12" value="Dirección, Gerencia">
+                    }
                     <label for="check12" class="size14 gray_adecco arial steps_height">Dirección, Gerencia</label>
                 </p>
             </div>
@@ -120,14 +169,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check13" value="Diseño, Creatividad">
+                    @if(user != null && user.interests.contains("Diseño, Creatividad")){
+                        <input type="checkbox" id="check13" checked value="Diseño, Creatividad">
+                    }else{
+                        <input type="checkbox" id="check13" value="Diseño, Creatividad">
+                    }
                     <label for="check13" class="size14 gray_adecco arial steps_height">Diseño, Creatividad</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check14" value="Artes gráficas, Documentación, Traducción">
+                    @if(user != null && user.interests.contains("Artes gráficas, Documentación, Traducción")){
+                        <input type="checkbox" id="check14" checked value="Artes gráficas, Documentación, Traducción">
+                    }else{
+                        <input type="checkbox" id="check14" value="Artes gráficas, Documentación, Traducción">
+                    }
                     <label for="check14" class="size14 gray_adecco arial steps_height">Artes gráficas, Documentación, Traducción</label>
                 </p>
             </div>
@@ -136,14 +193,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check15" value="Educación, Formación">
+                    @if(user != null && user.interests.contains("Educación, Formación")){
+                        <input type="checkbox" id="check15" checked value="Educación, Formación">
+                    }else{
+                        <input type="checkbox" id="check15" value="Educación, Formación">
+                    }
                     <label for="check15" class="size14 gray_adecco arial steps_height">Educación, Formación</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check16" value="Finanzas, Contabilidad, Auditoría">
+                    @if(user != null && user.interests.contains("Finanzas, Contabilidad, Auditoría")){
+                        <input type="checkbox" id="check16" checked value="Finanzas, Contabilidad, Auditoría">
+                    }else{
+                        <input type="checkbox" id="check16" value="Finanzas, Contabilidad, Auditoría">
+                    }
                     <label for="check16" class="size14 gray_adecco arial steps_height">Finanzas, Contabilidad, Auditoría</label>
                 </p>
             </div>
@@ -152,14 +217,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check17" value="Hostelería, Turismo">
+                    @if(user != null && user.interests.contains("Hostelería, Turismo")){
+                        <input type="checkbox" id="check17" checked value="Hostelería, Turismo">
+                    }else{
+                        <input type="checkbox" id="check17" value="Hostelería, Turismo">
+                    }
                     <label for="check17" class="size14 gray_adecco arial steps_height">Hostelería, Turismo</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check18" value="I+D">
+                    @if(user != null && user.interests.contains("I+D")){
+                        <input type="checkbox" id="check18" checked value="I+D">
+                    }else{
+                        <input type="checkbox" id="check18" value="I+D">
+                    }
                     <label for="check18" class="size14 gray_adecco arial steps_height">I+D</label>
                 </p>
             </div>
@@ -168,14 +241,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check19" value="Informática">
+                    @if(user != null && user.interests.contains("Informática")){
+                        <input type="checkbox" id="check19" checked value="Informática">
+                    }else{
+                        <input type="checkbox" id="check19" value="Informática">
+                    }
                     <label for="check19" class="size14 gray_adecco arial steps_height">Informática</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check20" value="Ingeniería, Fabricación, Producción">
+                    @if(user != null && user.interests.contains("Ingeniería, Fabricación, Producción")){
+                        <input type="checkbox" id="check20" checked value="Ingeniería, Fabricación, Producción">
+                    }else{
+                        <input type="checkbox" id="check20" value="Ingeniería, Fabricación, Producción">
+                    }
                     <label for="check20" class="size14 gray_adecco arial steps_height">Ingeniería, Fabricación, Producción</label>
                 </p>
             </div>
@@ -184,14 +265,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check21" value="Internet">
+                    @if(user != null && user.interests.contains("Internet")){
+                        <input type="checkbox" id="check21" checked value="Internet">
+                    }else{
+                        <input type="checkbox" id="check21" value="Internet">
+                    }
                     <label for="check21" class="size14 gray_adecco arial steps_height">Internet</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check22" value="Jurídico, Fiscal">
+                    @if(user != null && user.interests.contains("Jurídico, Fiscal")){
+                        <input type="checkbox" id="check22" checked value="Jurídico, Fiscal">
+                    }else{
+                        <input type="checkbox" id="check22" value="Jurídico, Fiscal">
+                    }
                     <label for="check22" class="size14 gray_adecco arial steps_height">Jurídico, Fiscal</label>
                 </p>
             </div>
@@ -200,14 +289,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check23" value="Limpieza especializada, Saneamiento, Servicios urbanos">
+                    @if(user != null && user.interests.contains("Limpieza especializada, Saneamiento, Servicios urbanos")){
+                        <input type="checkbox" id="check23" checked value="Limpieza especializada, Saneamiento, Servicios urbanos">
+                    }else{
+                        <input type="checkbox" id="check23" value="Limpieza especializada, Saneamiento, Servicios urbanos">
+                    }
                     <label for="check23" class="size14 gray_adecco arial steps_height">Limpieza especializada, Saneamiento, Servicios urbanos</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check24" value="Logística, Planificación, Transporte">
+                    @if(user != null && user.interests.contains("Logística, Planificación, Transporte")){
+                        <input type="checkbox" id="check24" checked value="Logística, Planificación, Transporte">
+                    }else{
+                        <input type="checkbox" id="check24" value="Logística, Planificación, Transporte">
+                    }
                     <label for="check24" class="size14 gray_adecco arial steps_height">Logística, Planificación, Transporte</label>
                 </p>
             </div>
@@ -216,14 +313,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check25" value="Mantenimiento, Instalación, Reparación">
+                    @if(user != null && user.interests.contains("Mantenimiento, Instalación, Reparación")){
+                        <input type="checkbox" id="check25" checked value="Mantenimiento, Instalación, Reparación">
+                    }else{
+                        <input type="checkbox" id="check25" value="Mantenimiento, Instalación, Reparación">
+                    }
                     <label for="check25" class="size14 gray_adecco arial steps_height">Mantenimiento, Instalación, Reparación</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check26" value="Marketing, Publicidad">
+                    @if(user != null && user.interests.contains("Marketing, Publicidad")){
+                        <input type="checkbox" id="check26" checked value="Marketing, Publicidad">
+                    }else{
+                        <input type="checkbox" id="check26" value="Marketing, Publicidad">
+                    }
                     <label for="check26" class="size14 gray_adecco arial steps_height">Marketing, Publicidad</label>
                 </p>
             </div>
@@ -232,14 +337,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check27" value="Medio ambiente">
+                    @if(user != null && user.interests.contains("Medio ambiente")){
+                        <input type="checkbox" id="check27" checked value="Medio ambiente">
+                    }else{
+                        <input type="checkbox" id="check27" value="Medio ambiente">
+                    }
                     <label for="check27" class="size14 gray_adecco arial steps_height">Medio ambiente</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check28" value="Oficios">
+                    @if(user != null && user.interests.contains("Oficios")){
+                        <input type="checkbox" id="check28" checked value="Oficios">
+                    }else{
+                        <input type="checkbox" id="check28" value="Oficios">
+                    }
                     <label for="check28" class="size14 gray_adecco arial steps_height">Oficios</label>
                 </p>
             </div>
@@ -248,14 +361,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check29" value="Prevención de riesgos laborales">
+                    @if(user != null && user.interests.contains("Prevención de riesgos laborales")){
+                        <input type="checkbox" id="check29" checked value="Prevención de riesgos laborales">
+                    }else{
+                        <input type="checkbox" id="check29" value="Prevención de riesgos laborales">
+                    }
                     <label for="check29" class="size14 gray_adecco arial steps_height">Prevención de riesgos laborales</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check30" value="Recursos humanos">
+                    @if(user != null && user.interests.contains("Recursos humanos")){
+                        <input type="checkbox" id="check30" checked value="Recursos humanos">
+                    }else{
+                        <input type="checkbox" id="check30" value="Recursos humanos">
+                    }
                     <label for="check30" class="size14 gray_adecco arial steps_height">Recursos humanos</label>
                 </p>
             </div>
@@ -264,14 +385,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check31" value="Sanidad y Salud">
+                    @if(user != null && user.interests.contains("Sanidad y Salud")){
+                        <input type="checkbox" id="check31" checked value="Sanidad y Salud">
+                    }else{
+                        <input type="checkbox" id="check31" value="Sanidad y Salud">
+                    }
                     <label for="check31" class="size14 gray_adecco arial steps_height">Sanidad y Salud</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check32" value="Seguridad y Defensa">
+                    @if(user != null && user.interests.contains("Seguridad y Defensa")){
+                        <input type="checkbox" id="check32" checked value="Seguridad y Defensa">
+                    }else{
+                        <input type="checkbox" id="check32" value="Seguridad y Defensa">
+                    }
                     <label for="check32" class="size14 gray_adecco arial steps_height">Seguridad y Defensa</label>
                 </p>
             </div>
@@ -280,14 +409,22 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check33" value="Servicios generales">
+                    @if(user != null && user.interests.contains("Servicios generales")){
+                        <input type="checkbox" id="check33" checked value="Servicios generales">
+                    }else{
+                        <input type="checkbox" id="check33" value="Servicios generales">
+                    }
                     <label for="check33" class="size14 gray_adecco arial steps_height">Servicios generales</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check34" value="Servicios sociales">
+                    @if(user != null && user.interests.contains("Servicios sociales")){
+                        <input type="checkbox" id="check34" checked value="Servicios sociales">
+                    }else{
+                        <input type="checkbox" id="check34" value="Servicios sociales">
+                    }
                     <label for="check34" class="size14 gray_adecco arial steps_height">Servicios sociales</label>
                 </p>
             </div>
@@ -296,23 +433,34 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check35" value="Telecomunicaciones">
+                    @if(user != null && user.interests.contains("Telecomunicaciones")){
+                        <input type="checkbox" id="check35" checked value="Telecomunicaciones">
+                    }else{
+                        <input type="checkbox" id="check35" value="Telecomunicaciones">
+                    }
                     <label for="check35" class="size14 gray_adecco arial steps_height">Telecomunicaciones</label>
                 </p>
             </div>
 
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check36" value="Otros">
+                    @if(user != null && user.interests.contains("Otros")){
+                        <input type="checkbox" id="check36" checked value="Otros">
+                    }else{
+                        <input type="checkbox" id="check36" value="Otros">
+                    }
                     <label for="check36" class="size14 gray_adecco arial steps_height">Otros</label>
                 </p>
             </div>
         </div>
     </div>
 
+
     <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 center">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 center">
+            <button class="button-return-1" onclick="location.href='/orientation#point1';">VOLVER</button>
             <button class="button-finish-1" onclick="sendCheckboxes()">FINALIZAR</button>
         </div>
     </div>
@@ -320,7 +468,7 @@
 </div>
 <script type="text/javascript">
     window.onload = function(){
-        limitCheckboxes(5);
+        limitCheckboxes(3);
     };
 </script>
 

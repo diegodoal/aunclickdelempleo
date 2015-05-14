@@ -14,20 +14,33 @@ GET     /logout                                     controllers.LoginController.
 POST    /login                                      controllers.LoginController.submitLogin()
 POST    /signup                                     controllers.LoginController.submitSignUp()
 
+GET     /forgotten                                  controllers.LoginController.forgottenPasswordBlank()
+POST    /forgotten                                  controllers.LoginController.sendRestoreEmail()
+
+GET     /restore/:email/:token                      controllers.LoginController.restore(email : String, token : String)
+POST    /restore                                    controllers.LoginController.restorePassword()
+
+GET     /profile                                    controllers.ProfileController.blank()
+POST    /profile                                    controllers.ProfileController.updatePersonalInformation()
+GET     /profile/info                               controllers.ProfileController.textPlainInfo()
+
 # ORIENTATION
 GET     /orientation                                controllers.OrientationController.blank()
+POST    /orientation                                controllers.OrientationController.updateCheckbox()
 
 # PUNTO 1: CONOCETE A TI MISMO
 GET     /orientation/currentsituation 				controllers.OrientationController.currentsituation()
-POST    /orientation/currentsituation/submit        controllers.OrientationController.submitCurrentSituation()
+POST    /orientation/currentsituation               controllers.OrientationController.submitCurrentSituation()
+POST    /orientation/currentsituation/Check         controllers.OrientationController.submitCurrentSituationCheck()
+POST    /orientation/currentsituation/Delete        controllers.OrientationController.deleteExperienceCurrentSituation()
 GET     /orientation/skills							controllers.OrientationController.skills()
-GET     /orientation/skills/submit                  controllers.OrientationController.submitSkills()
+POST    /orientation/skills          		        controllers.OrientationController.submitSkills()
 GET     /orientation/interestidentification         controllers.OrientationController.interestIdentification()
 POST    /orientation/interestidentification         controllers.OrientationController.submitInterestIdentification()
 GET     /orientation/personal						controllers.OrientationController.personal()
-GET     /orientation/personal/submit                controllers.OrientationController.submitPersonal()
+POST    /orientation/personal		                controllers.OrientationController.submitPersonal()
 GET     /orientation/professional					controllers.OrientationController.professional()
-GET     /orientation/professional/submit            controllers.OrientationController.submitProfessional()
+POST    /orientation/professional                   controllers.OrientationController.submitProfessional()
 GET     /orientation/photo                          controllers.OrientationController.photo()
 POST    /orientation/photo                          controllers.OrientationController.uploadPhoto()
 
@@ -47,9 +60,35 @@ GET     /pdf/:template                              controllers.PDFController.fa
 
 
 #Curriculum Vitae
-GET     /orientation/gettools/cv1                   controllers.StashController.cv1()
-GET     /orientation/gettools/cv2                   controllers.StashController.cv2()
-GET     /orientation/gettools/cv3                   controllers.StashController.cv3()
+GET     /orientation/gettools/cv1                   controllers.GenerateDocumentsController.cv1()
+POST    /orientation/gettools/cv1                   controllers.GenerateDocumentsController.submitCv1()
+GET     /orientation/gettools/cv2                   controllers.GenerateDocumentsController.cv2()
+POST    /orientation/gettools/cv2                   controllers.GenerateDocumentsController.submitCv2()
+POST    /orientation/gettools/cv2/delete            controllers.GenerateDocumentsController.deleteExperienceCurrentSituation()
+POST    /orientation/gettools/cv2/Add               controllers.GenerateDocumentsController.addExperienceGenerate()
+POST    /orientation/gettools/cv2/AddCheck          controllers.GenerateDocumentsController.addCheckExperienceGenerate()
+POST    /orientation/gettools/cv2/AddStudies        controllers.GenerateDocumentsController.addStudiesGenerate()
+POST    /orientation/gettools/cv2/AddNoStudies      controllers.GenerateDocumentsController.addNoStudiesGenerate()
+GET     /orientation/gettools/cv3                   controllers.GenerateDocumentsController.cv3()
+POST    /orientation/gettools/cv3                   controllers.GenerateDocumentsController.submitCv3()
+GET     /orientation/gettools/cv4                   controllers.GenerateDocumentsController.cv4()
+POST    /orientation/gettools/cv4                   controllers.GenerateDocumentsController.submitCv4()
+
+GET     /orientation/gettools/cv/preview1            controllers.GenerateDocumentsController.previewCV1()
+GET     /orientation/gettools/cv/preview2            controllers.GenerateDocumentsController.previewCV2()
+GET     /orientation/gettools/cv/preview3            controllers.GenerateDocumentsController.previewCV3()
+GET     /orientation/gettools/cv/preview4            controllers.GenerateDocumentsController.previewCV4()
+
+#Carta de Presentacion
+
+GET     /orientation/gettools/lp1                   controllers.GenerateDocumentsController.lp1()
+POST    /orientation/gettools/lp1                   controllers.GenerateDocumentsController.submitLp1()
+GET     /orientation/gettools/lp2                   controllers.GenerateDocumentsController.lp2()
+POST    /orientation/gettools/lp2                   controllers.GenerateDocumentsController.submitLp2()
+GET     /orientation/gettools/lp3                   controllers.GenerateDocumentsController.lp3()
+POST    /orientation/gettools/lp3                   controllers.GenerateDocumentsController.submitLp3()
+
+GET     /orientation/gettools/lp/preview            controllers.GenerateDocumentsController.previewLP()
 
 # PUNTO 3: PROCESO DE SELECCION
 GET     /orientation/tinterview                     controllers.OrientationController.tinterview()
@@ -63,7 +102,7 @@ GET     /orientation/questionsinterview/submit      controllers.OrientationContr
 
 # PUNTO 4: PLANIFICATE
 GET     /orientation/deadline                       controllers.OrientationController.deadline()
-GET     /orientation/deadline/submit                controllers.OrientationController.submitDeadLine()
+POST    /orientation/deadline                       controllers.OrientationController.submitDeadLine()
 GET     /orientation/travel                         controllers.OrientationController.travel()
 GET     /orientation/travel/submit                  controllers.OrientationController.submitTravel()
 
@@ -79,3 +118,32 @@ GET     /orientation/reputation/submit              controllers.OrientationContr
 
 #Planning
 GET    /planning                                   controllers.PlanningController.plan()
+
+# APP
+POST    /submitLoginApp                             controllers.AppController.submitLoginApp()
+POST    /getInterviews                              controllers.AppController.getInterviews()
+
+GET     /test/interviews                            controllers.TestController.testInterviews()
+
+# ADMIN
+GET     /admin                                      controllers.AdminController.blank()
+GET     /admin/login                                controllers.AdminController.login()
+POST    /admin/login                                controllers.AdminController.submitLogin()
+GET     /admin/logout                               controllers.AdminController.logout()
+
+GET     /admin/users                                controllers.AdminController.usersBlank()
+GET     /admin/users/:email/:id                     controllers.AdminController.userInfo(email: String, id: String)
+POST    /admin/delete                               controllers.AdminController.deleteUser()
+
+GET     /admin/stats                                controllers.AdminController.stats()
+
+GET     /admin/messages                             controllers.AdminController.messages()
+POST    /admin/messages/read                        controllers.AdminController.readMessage()
+POST    /admin/messages/delete                      controllers.AdminController.deleteMessage()
+POST    /admin/messages/send                        controllers.AdminController.sendMessage()
+
+GET     /admin/options                              controllers.AdminController.optionsBlank()
+POST    /admin/options                              controllers.AdminController.updateAmazonOptions()
+POST    /admin/options/profile                      controllers.AdminController.updateAdminUserOptions()
+POST    /admin/options/delete                       controllers.AdminController.deleteAdminUser()
+POST    /admin/options/newadmin                     controllers.AdminController.newAdminUser()

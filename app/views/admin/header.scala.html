@@ -1,0 +1,74 @@
+@(nav: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!--  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap-theme.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/custom-style.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/custom-fonts.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/graphics.css")">
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/jquery.dataTables.min.css")">
+
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/admin-message.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/jquery-1.11.2.min.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/flotr2.min.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/jquery.dataTables.min.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/typeahead.bundle.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/graphics.js")"></script>
+    <link rel="shortcut icon" type="image/jpg" href="@routes.Assets.at("images/adecco_logo.jpg")">
+	<title>A un click del empleo - ADMINISTRACIÓN</title>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-inverse" >
+    <div class="container-fluid">
+        <a class="navbar-brand hidden-xs" href="@routes.AdminController.blank()">Adecco</a>
+        <ul class="nav navbar-nav">
+            @if(nav == "users"){
+                <li class="active"><a href="@routes.AdminController.usersBlank()">Usuarios<span class="sr-only">(current)</span></a></li>
+            }else{
+                <li><a href="@routes.AdminController.usersBlank()">Usuarios<span class="sr-only">(current)</span></a></li>
+            }
+            @if(nav == "stats"){
+                <li class="active"><a href="@routes.AdminController.stats()">Estadísticas</a></li>
+            }else{
+                <li><a href="@routes.AdminController.stats()">Estadísticas</a></li>
+            }
+            @if(nav == "messages"){
+                <li class="active"><a href="@routes.AdminController.messages()">Mensajes</a></li>
+            }else{
+                <li><a href="@routes.AdminController.messages()">Mensajes</a></li>
+            }
+            @if(nav == "options"){
+                <li class="active"><a href="@routes.AdminController.optionsBlank()">Opciones</a></li>
+            }else{
+                <li><a href="@routes.AdminController.optionsBlank()">Opciones</a></li>
+            }
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+                <li><a href="@routes.AdminController.logout()">Salir</a></li>
+        </ul>
+    </div><!-- /.container-fluid -->
+</nav>
+<!-- END OF NAV -->
+
+    <section class="content">@content</section>
+</body>
+</html>
+
+<script type="text/javascript">
+    window.onload = function(){
+        $('.nav a').click(function(){
+            $(this).parent().parent().children('li').each(function(){
+                $(this).removeClass('active');
+            });
+            $(this).parent().addClass('active');
+        });
+    }
+</script>

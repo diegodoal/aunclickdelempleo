@@ -14,6 +14,6 @@ public class FolderCleanerActor extends UntypedActor {
     @Override
     public void onReceive(Object message) throws Exception {
         Logger.info("[Deleting old folders at: " + new Date().toString() + "]\n");
-        Files.deleteOldFolders("assets");
+        Files.deleteOldFolders("public/pdf");
     }
 }

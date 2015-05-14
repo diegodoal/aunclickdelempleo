@@ -1,6 +1,7 @@
 package utils.cv.templates;
 
 import com.itextpdf.text.DocumentException;
+import models.entities.orientation.Skill;
 import utils.Files;
 import utils.cv.*;
 
@@ -35,6 +36,4 @@ public class TemplatesController {
         }
 
     }
-
-
 }

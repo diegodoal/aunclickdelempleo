@@ -1,0 +1,136 @@
+@(recentUsers : List[models.entities.User])
+@header(""){
+<h1>Panel de administración</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><b>NOVEDADES</b></div>
+  <div class="panel-body">
+  	<div class="panel panel-default">
+  		<div class="panel-heading">Usuarios de recientes</div>
+  		<div class="panel-body">
+      @if(recentUsers.isEmpty()){
+    	 No hay usuarios registrados recientemente
+      }else{
+			<table id="new_users_table" class="display" cellspacing="0" width="100%">
+    			<thead>
+        			<tr>
+            			<th>Nombre</th>
+            			<th>Email</th>
+            			<th>Fecha de registro</th>
+        			</tr>
+    			</thead>
+
+		        <tbody>
+        			@for(user <- recentUsers){
+            		<tr class="user-entry">
+    	            	<td>
+    	            		<a href="/admin/users/@user.email/@user.id"><img width="5%" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
+    	            		@user.name @user.surnames
+    	            	</td>
+                		<td>@user.email</td>
+                		<td>@user.registrationDate</td>
+	            	</tr>
+        			}
+    			</tbody>
+  			</table>
+      }
+  		</div>
+		</div>
+  </div>
+</div>
+
+<!-- USER GUIDE -->
+<div class="panel panel-default">
+    <div class="panel-heading"><b>MANUAL DE USUARIO</b></div>
+    <div class="panel-body">
+        
+
+    	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Usuarios</a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Muestra todos los usuarios registrados en la página web. Se puede acceder a su información pulsando sobre el icono de editar.
+        <br>
+        En la previsualización de la información de un usuario, existen dos opciones:
+        <br>
+        - Editar cualquier dato de su perfil
+        <br>
+        - Eliminar el usuario
+        <br>
+        <span class="red_adecco">¡Cuidado! Si se elimina un usuario, no se podrá volver a recuperarlo.</span>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Estadísticas</a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        Muestra diversas estadísticas sobre la información de los usuarios.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Opciones</a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        A un click del empleo cuenta con una cuenta de Administrador Principal que se genera automáticamente la primera vez que se ejecuta el proyecto. Aun así, se ha habilitado la opción 
+        de crear más usuarios de administración, aunque estos últimos, cuentan con algunas limitaciones.
+        <br><br>
+        <h4>Configuración Amazon S3 <span class="label label-danger">Sólo para Administrador Principal</span></h4>
+        Para poder utilizar la plataforma, es necesario crear una cuenta en <a href="http://aws.amazon.com/es/s3/">Amazon Web Services</a>. En esta cuenta, se almacenan las fotos realizadas por los usuarios. Una vez configurada la cuenta, es necesario crear un Bucket en el servicio S3 Storage, e introducir los datos que se piden: Bucket name, Access key, Secret key.
+        <br>
+        Una vez realizada esta configuración, es necesario reiniciar el servidor para que se actualice la información y se pueda empezar a utilizar el servicio completo en la web.
+        <br><br>
+        <h4>Configuración de cuenta</h4>
+        El usuario administrador podrá cambiar su contraseña desde este apartado.
+        <br>
+        <span class="red_adecco">¡Cuidado al cambiar la contraseña del Administrador Principal (adecco)! Si se olvida esta contraseña, es necesario contactar con el soporte para reiniciar su valor.</span>
+        <br><br>
+        <h4>Usuarios de administración <span class="label label-danger">Sólo para Administrador Principal</span></h4>
+        Muestra una lista de todos los usuarios de administración y la fecha en la que iniciaron sesión por última vez. Existe la opción de eliminar un usuario (haciendo click en eliminar) o de añadir un nuevo usuario en el botón inferior.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+            $('#new_users_table').DataTable({
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  }});
+        } );
+</script>
+
+}

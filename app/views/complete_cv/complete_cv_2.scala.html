@@ -1,7 +1,16 @@
+@(user: models.entities.User)
+
 @main(){
+<script type='text/javascript' src="@routes.Assets.at("javascripts/hide_experience.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/concatenar_date.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/add-new-experience-bbdd.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/delete_experience_generate.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/save_studies.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/save_interest_generate.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/next-cv2.js")"></script>
 <div class="container">
 <!--COMPLETE_CV_2-->
-<section id="text_user_profile_2">
+<section  id="text_user_profile_2">
     <div class="row">
         <div class="col-md-12  brown_adecco century_gothic">
             <h2>COMPLETA TU PERFIL</h2>
@@ -12,180 +21,434 @@
             <p>En tan sólo <span class="red_adecco" >3 pasos</span></p>
         </div>
     </div>
-    <div class="row">
+
+    <div class="row" style="margin-bottom: 0;">
         <div class="col-md-12 ic_paso2">
-            <img src="@routes.Assets.at("images/complete_user_profile_2/ic_paso2.png")" class="ic_paso2">
+
+            <div class="row-same-height row-full-height">
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv1()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_1claro.png")">
+                    </a>
+                </div>
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv2()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_2.png")" >
+                    </a>
+                </div>
+
+
+                <div class="col-xs-3 col-xs-height col-full-height" id="points-line-cv">
+
+                </div>
+
+                <div class="col-xs-2 col-xs-height col-full-height center hidden-xs">
+                    <a href="@routes.GenerateDocumentsController.cv3()">
+                        <img src="@routes.Assets.at("images/orientation/steps/ic_3claro.png")">
+                    </a>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
 <section>
 	<div class="row">
-		<div class="col-lg-12 arial gray_adecco size18 bold">Nivel de estudios</div>
-	</div>
-        
-	<div class="row orientation-points">
-		<div class="col-lg-12 ">
-		    <input type="checkbox" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
-		    <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
-		</div>
-   	</div><br>
-
-
-	        <form class="form-horizontal">
-	            <div class="form-group" id="level_studies_group">
-                    <div class="col-lg-5 ">
-	                <select class="form-control" id="level_studies" name="level_studies">
-	                    <option value="0" disabled selected="">Nivel de estudios</option>
-	                    <option value="1">PCPI / Garantía social</option>
-	                    <option value="2">Graduado escolar</option>
-	                    <option value="3">Certificado de escolaridad o de la ESO</option>
-	                    <option value="4">BUP, Bachillerato y COU</option>
-	                    <option value="5">Enseñanzas de régimen especial</option>
-	                    <option value="6">Graduado en ESO</option>
-	                    <option value="7">FP 1/ Técnico medio</option>
-	                    <option value="8">FP 2/ Técnico superior</option>
-	                    <option value="9">Diplomado, Ing. Técnico, Arquitecto técnico</option>
-	                    <option value="10">Grado</option>
-	                    <option value="11">Licenciado, Ingeniero, Arquitecto</option>
-	                    <option value="12">Título Propio/ Carrera no homologada</option>
-	                    <option value="13">Máster/ Título Propio de Postgrado</option>
-	                    <option value="14">Doctorado</option>
-	                    <option value="15">Otros cursos</option>
-	                    <option value="16">Oposiciones</option>
-	                </select>
-                     </div>
-                    <div class="col-lg-5 col-lg-offset-2">
-                    </div>
-	            </div>
-	        </form>
-	    
-	
-
+        <div  id="cv2_alert" hidden>
+            <div class="alert alert-danger" id="cv2_alert" role="alert">Por favor, completa todo el fomulario.</div><br>
+        </div>
+		<div class=" col-lg-12  arial gray_adecco size18 bold">Nivel de estudios</div>
+	</div><br>
+    <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
 </section>
+    @if(user != null){
+        @if(user.studyTitle == ""){
+            <section>
+                <div class="row orientation-points">
+                    <div class="col-lg-12 ">
+                        <input type="checkbox" name="check_no_studies" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
+                        <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+                    </div>
+                </div><br>
+                <form class="form-horizontal" >
+                    <div class="form-group" id="level_studies_group">
+                        <div class="col-lg-5 input-mic-container">
+                            <input type="text" name="title" class="form-control" placeholder="Título" id="titulo" value="" required="required">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                        <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
+                            <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="required">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                    </div>
+                    <div class="form-group" id="save">
+                        <div class="col-lg-2 col-lg-offset-9">
+                            <img id="save_studies" class="img-btn save-studies" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                        </div>
+                    </div>
+                </form><br>
+            </section>
+        }else{
+            @if(user.studyTitle == "No tengo estudios"){
+                <section>
+                    <div class="row orientation-points">
+                        <div class="col-lg-12 ">
+                            <input type="checkbox" checked name="check_no_studies" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHiddenNo(this.checked)">
+                            <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+                        </div>
+                    </div><br>
+                    <form class="form-horizontal" id="level_studies_group_no">
+                        <div class="form-group" >
+                            <div class="col-lg-5 input-mic-container">
+                                <input type="text" name="title" class="form-control" placeholder="Título" id="titulo" value="" required="required">
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                            <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
+                                <input type="text" name="location" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="required">
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                        <div class="form-group" id="save">
+                            <div class="col-lg-2 col-lg-offset-9">
+                                <img id="save_studies" class=" img-btn save-studies-no" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                            </div>
+                        </div>
+                    </form><br>
+                </section>
+
+            }else{
+            <section>
+                    <form class="form-horizontal" id="level_studies_group_no">
+                        <div class="form-group" >
+                            <div class="col-lg-5 input-mic-container">
+                                <input type="text" name="title" class="form-control" placeholder="Título" id="titulo" value="@user.studyTitle" required="required">
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                            <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
+                                <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="@user.studyLocation" required="required">
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                    </form><br>
+                </section>
+
+            }
+        }
+    }else{
+            <section>
+                <div class="row orientation-points">
+                    <div class="col-lg-12 ">
+                        <input type="checkbox" id="check_study" value="No tengo estudios" onclick="levelStudiesSetHidden(this.checked)">
+                        <label for="check_study" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
+                    </div>
+                </div><br>
+                <form class="form-horizontal" id="level_studies_group">
+                    <div class="form-group" >
+                        <div class="col-lg-5 input-mic-container">
+                            <input type="text" class="form-control" placeholder="Título" id="titulo" value="" required="required">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                        <div class="col-lg-5  input-mic-container" style=" margin-left:6em;">
+                            <input type="text" class="form-control" placeholder="Lugar de estudio" id="placeStudy" value="" required="required">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                    </div>
+                    <div class="form-group" id="save">
+                        <div class="col-lg-2 col-lg-offset-9">
+                            <img id="save_studies" class=" img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                        </div>
+                    </div>
+                </form><br>
+            </section>
+            }
+
 
 <section>
-
-
     <div class="row">
-        <div class="col-lg-12  arial gray_adecco size18 bold">Experiencia laboral </div>
-    </div>
-
-    <div class="row orientation-points">
-        <div class="col-lg-12  arial size14">
-            <input type="checkbox" id="check_experience" value="No tengo experiencia" onclick=" jobExperienceHidden(this.checked)">
-            <label for="check_experience" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
-        </div>
+        <div class="col-lg-12  arial gray_adecco size18 bold">Experiencia laboral</div>
     </div><br>
-        
+    @if(user != null){
+    @if(user.currentSituation.professionalExperienceList.size() != 0){
+    @for(professional <- user.currentSituation.professionalExperienceList) {
+
+    @if(professional.company == "No tengo experiencia"){
+    <div class="row orientation-points hidden_check_exp" id="check_exp_cb" style=" margin-bottom:1em;">
+        <div class="col-md-6">
+            <input type="checkbox" id="check_exp_bbdda" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHidden(this.checked)" checked >
+            <label  for="check_exp_bbdda" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+        </div>
+    </div>
+    }else{
     <div class="main-div-sections">
-        
-            <form class="form-horizontal" autocomplete="on" method="post" id="job_experience_group">
-                <div class="form-group form-inline" >
-                    <div class="col-lg-5 input-mic-container ">
-
-                            <input type="text" class="form-control" placeholder="Empresa" id="company" value="Empresa" required="required" >
-                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-
+        <div class="panel-group new-input-container center" style="margin-auto;">
+            <form id="experience_group" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 2em; padding-right: 2em;">
+                <div class="form-group form-inline">
+                    <div class="col-md-5">
+                        <input style="width: 100%; margin-left: -3em;"  type="text"  class="" name="company" placeholder="Empresa" value="@professional.company" disabled>
                     </div>
-                    <div class="col-lg-5  col-lg-offset-2 input-mic-container">
-
-                            <input type="text" class="form-control" placeholder="Puesto" id="office" value="Puesto" required="required">
-                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-
+                    <div class="col-md-5 col-md-offset-1">
+                        <input style="width: 100%; margin-left: 0;"  type="text" class=""  name="job" placeholder="Puesto" value="@professional.job" disabled >
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <div class="col-lg-5 ">
-                            <select  class="form-control" id="sector" name="sector">
-                            <option value="s0" disabled selected="">Sector</option>
-                            <option value="s1">Agricultura, Montes, Pesca, Mineria</option>
-                            <option value="s2">Arte, Cultura, Sociedad</option>
-                            <option value="s3">Atención al cliente</option>
-                            <option value="s4">Banca y Seguros</option>
-                            <option value="s5">Bioquímica, Farmacia, Experimental</option>
-                            <option value="s6">Calidad</option>
-                            <option value="s7">Comercial, Ventas</option>
-                            <option value="s8">Compras</option>
-                            <option value="s9">Comunicación, Medios, Periodismo</option>
-                            <option value="s10">Construcción, Arquitectura, Promoción e Inmobiliaria</option>
-                            <option value="s11">Consultoría</option>
-                            <option value="s12">Dirección, Gerencia</option>
-                            <option value="s13">Diseño, Creatividad</option>
-                            <option value="s14">Edición, Artes gráficas, Documentación, Traducción</option>
-                            <option value="s15">Educación Formación</option>
-                            <option value="s16">Finanzas, Contabilidad, Auditoría</option>
-                            <option value="s17">Hostelería, Turismo</option>
-                            <option value="s18">I+D</option>
-                            <option value="s19">Informática</option>
-                            <option value="s20">Ingeniería, Fabricación, Producción</option>
-                            <option value="s21">Internet</option>
-                            <option value="s22">Jurídico, Fiscal</option>
-                            <option value="s23">Limpieza especializada, Saneamiento y Servicios urbanos</option>
-                            <option value="s24">Logística, Planificación, Transporte</option>
-                            <option value="s25">Mantenimiento, Instalación, Reparación</option>
-                            <option value="s26">Marketing, Publicidad</option>
-                            <option value="s27">Medio ambiente</option>
-                            <option value="s28">Oficios</option>
-                            <option value="s29">Prevención de riesgos laborales</option>
-                            <option value="s30">Recursos humanos</option>
-                            <option value="s31">Sanidad y Salud</option>
-                            <option value="s32">Seguridad, Defensa</option>
-                            <option value="s33">Servicios generales</option>
-                            <option value="s34">Servicios sociales</option>
-                            <option value="s35">Telecomunicaciones</option>
-                            <option value="s36">Otros</option>
-                        </select>
+                <div class="form-group form-inline">
+                    <div class="col-md-5">
+                        <input style="width: 100%; margin-left: -3em;" type="text" class=""  name="startDate"  value="@professional.startDate" disabled>
                     </div>
-                    <div class="col-lg-5  col-lg-offset-2">
-                        
-                            
-                            <select  class="form-control" name="experience" id="experience">
-                            <option value="s0" disabled selected="">Años de experiencia</option>
-                            <option value="s1"> Prácticas</option>
-                            <option value="s1"> Menos de un año</option>
-                            <option value="s2"> 1-3 años</option>
-                            <option value="s3"> 3-5 años</option>
-                            <option value="s4"> +5 años</option>
-                            <option value="s6"> +10 años</option>
-                            </select> 
-                        
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <div class="col-lg-5  col-lg-offset-2">
-                       
-                    </div>
-                    <div class="col-lg-5 ">
-                        <div class="">
-                        <div class="form-group center brown_adecco arial size13">
-                            Debes añadir cada uno de los cursos que hayas realizado.
-                        </div>
-                        </div>
+                    <div class="col-md-5 col-md-offset-1">
+                        <input style="width: 100%; margin-left: 0;" type="text" class=""  name="endDate"  value="@professional.endDate" disabled>
                     </div>
                 </div>
-                
-
-
-                <div class="form-group">
-                    <div class="col-lg-5 ">
-                     <!--div añadido extra porque sino el boton añadir no va-->   
-                    </div>
-                    <div class="col-lg-5  col-lg-offset-2">
-                        <div class="">
-                        <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
-                                <img class="add-new" src="@routes.Assets.at("images/complete_user_profile_1/ic_add.png")">
-                        </div>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-9">
+                        <div class="form-group add-other-btn-div button-cursor-pointer delete-experience" id="delete-experience-@professional.ID">
+                            <input style="width: 100%; margin-left: 0;" type="hidden" name="ID" value="@professional.ID">
+                            <img  class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
                         </div>
                     </div>
                 </div>
             </form>
-        
-    </div>
+        </div>
+        }
+        }
+        <div class="main-div-sections">
+            <div class="panel-group new-input-container center" style="margin-auto;">
+                <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 2em;">
+                    <div class="form-group form-inline" id="job_experience_group_1">
+                        <div class="exp col-lg-5">
+                            <div class="input-mic-container">
+                                <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                        <div class=" exp col-lg-5 col-lg-offset-1">
+                            <div class="input-mic-container">
+                                <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-inline" id="job_experience_group_5">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-1em;">Fecha Inicio:</span>
+                            </div>
+                            <div class="col-md-3" style=" margin-left:-3em;">
+                                <div id="mydivinicio" class="estilo_date focussInicio">
+                                    <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:1em;">Fecha Fin:</span>
+                            </div>
+                            <div class="col-md-4" style=" margin-left:-2em;">
+                                <div id="mydivfin" class="estilo_date focussFin">
+                                    <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" hidden="hidden">
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                            </div>
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img class="add-new-bbdd" src="@routes.Assets.at("images/orientation/ic_añadirexperiencia.png")">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img id="save_studies" class="add-new-bbdd img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        }else{
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <span id="validate_exp_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu experiencia profesional.</span><br>
+        </div>
+        <div class="row orientation-points" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
+            <div class="col-md-6" style="margin-left:-2em;">
+                <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenLog(this.checked)">
+                <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+            </div>
+        </div>
+        <div class="main-div-sections">
+            <div class="panel-group new-input-container center" style="margin-auto;">
+                <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 2em;">
+                    <div class="form-group form-inline" id="job_experience_group_1">
+                        <div class="exp col-lg-5">
+                            <div class="input-mic-container">
+                                <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                        <div class=" exp col-lg-5 col-lg-offset-1">
+                            <div class="input-mic-container">
+                                <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-inline" id="job_experience_group_5">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-1em;">Fecha Inicio:</span>
+                            </div>
+                            <div class="col-md-3" style=" margin-left:-3em;">
+                                <div id="mydivinicio" class="estilo_date focussInicio">
+                                    <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:1em;">Fecha Fin:</span>
+                            </div>
+                            <div class="col-md-4" style=" margin-left:-2em;">
+                                <div id="mydivfin" class="estilo_date focussFin">
+                                    <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" hidden="hidden">
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                            </div>
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img class="add-new-bbdd" src="@routes.Assets.at("images/orientation/ic_añadirexperiencia.png")">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-lg-1 col-lg-offset-10">
+                        <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                            <img id="save_studies" class="add-new-bbdd img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        }else{
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <span id="validate_exp_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu experiencia profesional.</span><br>
+        </div>
+        <div class="row orientation-points" id="check_exp_cb" style="margin-left:1em; margin-bottom:1em;">
+            <div class="col-md-6" style="margin-left:-2em;>
+                <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenNoLog(this.checked)">
+                <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+            </div>
+        </div>
+        <div class="main-div-sections" id="experience_group_new_no_log">
+            <div class="panel-group new-input-container center" style="margin-auto;">
+                <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 2em;">
+                    <div class="form-group form-inline" id="job_experience_group_1">
+                        <div class="exp col-lg-5">
+                            <div class="input-mic-container">
+                                <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                        <div class=" exp col-lg-5 col-lg-offset-1">
+                            <div class="input-mic-container">
+                                <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
+                                <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-inline" id="job_experience_group_5">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:-1em;">Fecha Inicio:</span>
+                            </div>
+                            <div class="col-md-3" style=" margin-left:-3em;">
+                                <div id="mydivinicio" class="estilo_date focussInicio">
+                                    <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-lg-offset-1">
+                                <span class="size14 gray_adecco arial steps_height" style="margin-left:1em;">Fecha Fin:</span>
+                            </div>
+                            <div class="col-md-4" style=" margin-left:-2em;">
+                                <div id="mydivfin" class="estilo_date focussFin">
+                                    <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+
+                                    <span class="center" style="color:#ccc"> /</span>
+
+                                    <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" hidden="hidden">
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                            </div>
+                            <div class=" exp col-md-6">
+                                <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img class="add-new-bbdd" src="@routes.Assets.at("images/orientation/ic_añadirexperiencia.png")">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-1 col-lg-offset-10">
+                                <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                    <img id="save_studies" class="add-new-bbdd img-btn save-studies" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        }
+
 </section>
- <section>
+ <section class="container">
     <div class="row">
         <div class="col-md-12 arial gray_adecco size22 bold">
             Intereses profesionales
@@ -197,313 +460,513 @@
         </div>
     </div>
        
-    <div class=" row orientation-points checkbox-group">
+    <div class="row orientation-points back checkbox-group">
+
         <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check1" value="Agricultura,Motes,Pesca,Mineria">
+                    @if(user != null && user.interests.contains("Agricultura, Montes, Pesca, Mineria")){
+                        <input type="checkbox" id="check1" checked value="Agricultura, Montes, Pesca, Mineria">
+                    }else{
+                        <input type="checkbox" id="check1" value="Agricultura, Montes, Pesca, Mineria">
+                    }
                     <label for="check1" class="size14 gray_adecco arial steps_height">Agricultura, Montes, Pesca, Mineria</label>
                 </p>
             </div>
-            <div class="col-md-6">
+
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check2" value="Arte, Cultura, Sociedad">
-                    <label for="check2" class="size14 gray_adecco arial steps_height">Arte, Cultura, Sociedad </label>
+                    @if(user != null && user.interests.contains("Arte, Cultura, Sociedad")){
+                        <input type="checkbox" id="check2" checked value="Arte, Cultura, Sociedad">
+                    }else{
+                        <input type="checkbox" id="check2" value="Arte, Cultura, Sociedad">
+                    }
+                    <label for="check2" class="size14 gray_adecco arial steps_height">Arte, Cultura, Sociedad</label>
                 </p>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check3" value="Atención al cliente">
+                    @if(user != null && user.interests.contains("Atención al cliente")){
+                        <input type="checkbox" id="check3" checked value="Atención al cliente">
+                    }else{
+                        <input type="checkbox" id="check3" value="Atención al cliente">
+                    }
                     <label for="check3" class="size14 gray_adecco arial steps_height">Atención al cliente</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check4" value="Banca y Seguros">
+                    @if(user != null && user.interests.contains("Banca y Seguros")){
+                        <input type="checkbox" id="check4" checked value="Banca y Seguros">
+                    }else{
+                        <input type="checkbox" id="check4" value="Banca y Seguros">
+                    }
                     <label for="check4" class="size14 gray_adecco arial steps_height">Banca y Seguros</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check5" value="Bioquímica,Farmacia,Experimental">
+                    @if(user != null && user.interests.contains("Bioquímica, Farmacia, Experimental")){
+                        <input type="checkbox" id="check5" checked value="Bioquímica, Farmacia, Experimental">
+                    }else{
+                        <input type="checkbox" id="check5" value="Bioquímica, Farmacia, Experimental">
+                    }
                     <label for="check5" class="size14 gray_adecco arial steps_height">Bioquímica, Farmacia, Experimental</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check6" value="Calidad">
+                    @if(user != null && user.interests.contains("Calidad")){
+                        <input type="checkbox" id="check6" checked value="Calidad">
+                    }else{
+                        <input type="checkbox" id="check6" value="Calidad">
+                    }
                     <label for="check6" class="size14 gray_adecco arial steps_height">Calidad</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6 ">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check7" value="Comercial,Ventas">
+                    @if(user != null && user.interests.contains("Comercial, Ventas")){
+                        <input type="checkbox" id="check7" checked value="Comercial, Ventas">
+                    }else{
+                        <input type="checkbox" id="check7" value="Comercial, Ventas">
+                    }
                     <label for="check7" class="size14 gray_adecco arial steps_height">Comercial, Ventas</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check8" value="Compras">
+                    @if(user != null && user.interests.contains("Compras")){
+                        <input type="checkbox" id="check8" checked value="Compras">
+                    }else{
+                        <input type="checkbox" id="check8" value="Compras">
+                    }
                     <label for="check8" class="size14 gray_adecco arial steps_height">Compras</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check9" value="Arte, Cultura, Sociedad">
+                    @if(user != null && user.interests.contains("Comunicación, Medios, Periodismo")){
+                        <input type="checkbox" id="check9" checked value="Comunicación, Medios, Periodismo">
+                    }else{
+                        <input type="checkbox" id="check9" value="Comunicación, Medios, Periodismo">
+                    }
                     <label for="check9" class="size14 gray_adecco arial steps_height">Comunicación, Medios, Periodismo</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check10" value="Construcción,Arquitectura,Inmobiliaria">
+                    @if(user != null && user.interests.contains("Construcción, Arquitectura, Inmobiliaria")){
+                        <input type="checkbox" id="check10" checked value="Construcción, Arquitectura, Inmobiliaria">
+                    }else{
+                        <input type="checkbox" id="check10" value="Construcción, Arquitectura, Inmobiliaria">
+                    }
                     <label for="check10" class="size14 gray_adecco arial steps_height">Construcción, Arquitectura, Inmobiliaria</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check11" value="Consultoría">
+                    @if(user != null && user.interests.contains("Consultoría")){
+                        <input type="checkbox" id="check11" checked value="Consultoría">
+                    }else{
+                        <input type="checkbox" id="check11" value="Consultoría">
+                    }
                     <label for="check11" class="size14 gray_adecco arial steps_height">Consultoría</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check12" value="Dirección, Gerencia">
+                    @if(user != null && user.interests.contains("Dirección, Gerencia")){
+                        <input type="checkbox" id="check12" checked value="Dirección, Gerencia">
+                    }else{
+                        <input type="checkbox" id="check12" value="Dirección, Gerencia">
+                    }
                     <label for="check12" class="size14 gray_adecco arial steps_height">Dirección, Gerencia</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check13" value="Diseño, Creatividad">
+                    @if(user != null && user.interests.contains("Diseño, Creatividad")){
+                        <input type="checkbox" id="check13" checked value="Diseño, Creatividad">
+                    }else{
+                        <input type="checkbox" id="check13" value="Diseño, Creatividad">
+                    }
                     <label for="check13" class="size14 gray_adecco arial steps_height">Diseño, Creatividad</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check14" value="Artes gráficas, Documentación, Traducción">
+                    @if(user != null && user.interests.contains("Artes gráficas, Documentación, Traducción")){
+                        <input type="checkbox" id="check14" checked value="Artes gráficas, Documentación, Traducción">
+                    }else{
+                        <input type="checkbox" id="check14" value="Artes gráficas, Documentación, Traducción">
+                    }
                     <label for="check14" class="size14 gray_adecco arial steps_height">Artes gráficas, Documentación, Traducción</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check15" value="Educación, Formación" >
+                    @if(user != null && user.interests.contains("Educación, Formación")){
+                        <input type="checkbox" id="check15" checked value="Educación, Formación">
+                    }else{
+                        <input type="checkbox" id="check15" value="Educación, Formación">
+                    }
                     <label for="check15" class="size14 gray_adecco arial steps_height">Educación, Formación</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check16" value="Finanzas, Contabilidad, Auditoría">
+                    @if(user != null && user.interests.contains("Finanzas, Contabilidad, Auditoría")){
+                        <input type="checkbox" id="check16" checked value="Finanzas, Contabilidad, Auditoría">
+                    }else{
+                        <input type="checkbox" id="check16" value="Finanzas, Contabilidad, Auditoría">
+                    }
                     <label for="check16" class="size14 gray_adecco arial steps_height">Finanzas, Contabilidad, Auditoría</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check17" value="Hostelería, Turismo">
+                    @if(user != null && user.interests.contains("Hostelería, Turismo")){
+                        <input type="checkbox" id="check17" checked value="Hostelería, Turismo">
+                    }else{
+                        <input type="checkbox" id="check17" value="Hostelería, Turismo">
+                    }
                     <label for="check17" class="size14 gray_adecco arial steps_height">Hostelería, Turismo</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check18" value="I+D">
+                    @if(user != null && user.interests.contains("I+D")){
+                        <input type="checkbox" id="check18" checked value="I+D">
+                    }else{
+                        <input type="checkbox" id="check18" value="I+D">
+                    }
                     <label for="check18" class="size14 gray_adecco arial steps_height">I+D</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check19" value="Informática">
+                    @if(user != null && user.interests.contains("Informática")){
+                        <input type="checkbox" id="check19" checked value="Informática">
+                    }else{
+                        <input type="checkbox" id="check19" value="Informática">
+                    }
                     <label for="check19" class="size14 gray_adecco arial steps_height">Informática</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check20" value="Ingeniería, Fabricación, Producción">
+                    @if(user != null && user.interests.contains("Ingeniería, Fabricación, Producción")){
+                        <input type="checkbox" id="check20" checked value="Ingeniería, Fabricación, Producción">
+                    }else{
+                        <input type="checkbox" id="check20" value="Ingeniería, Fabricación, Producción">
+                    }
                     <label for="check20" class="size14 gray_adecco arial steps_height">Ingeniería, Fabricación, Producción</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check21" value="Internet">
+                    @if(user != null && user.interests.contains("Internet")){
+                        <input type="checkbox" id="check21" checked value="Internet">
+                    }else{
+                        <input type="checkbox" id="check21" value="Internet">
+                    }
                     <label for="check21" class="size14 gray_adecco arial steps_height">Internet</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check22" value="Jurídico,Fiscal">
+                    @if(user != null && user.interests.contains("Jurídico, Fiscal")){
+                        <input type="checkbox" id="check22" checked value="Jurídico, Fiscal">
+                    }else{
+                        <input type="checkbox" id="check22" value="Jurídico, Fiscal">
+                    }
                     <label for="check22" class="size14 gray_adecco arial steps_height">Jurídico, Fiscal</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check23" value="Limpieza especializada, Saneamiento, Servicios urbanos">
+                    @if(user != null && user.interests.contains("Limpieza especializada, Saneamiento, Servicios urbanos")){
+                        <input type="checkbox" id="check23" checked value="Limpieza especializada, Saneamiento, Servicios urbanos">
+                    }else{
+                        <input type="checkbox" id="check23" value="Limpieza especializada, Saneamiento, Servicios urbanos">
+                    }
                     <label for="check23" class="size14 gray_adecco arial steps_height">Limpieza especializada, Saneamiento, Servicios urbanos</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check24" value="Logística, Planificación, Transporte">
+                    @if(user != null && user.interests.contains("Logística, Planificación, Transporte")){
+                        <input type="checkbox" id="check24" checked value="Logística, Planificación, Transporte">
+                    }else{
+                        <input type="checkbox" id="check24" value="Logística, Planificación, Transporte">
+                    }
                     <label for="check24" class="size14 gray_adecco arial steps_height">Logística, Planificación, Transporte</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check25" value="Mantenimiento, Instalación, Reparación">
+                    @if(user != null && user.interests.contains("Mantenimiento, Instalación, Reparación")){
+                        <input type="checkbox" id="check25" checked value="Mantenimiento, Instalación, Reparación">
+                    }else{
+                        <input type="checkbox" id="check25" value="Mantenimiento, Instalación, Reparación">
+                    }
                     <label for="check25" class="size14 gray_adecco arial steps_height">Mantenimiento, Instalación, Reparación</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check26" value="Marketing, Publicidad">
+                    @if(user != null && user.interests.contains("Marketing, Publicidad")){
+                        <input type="checkbox" id="check26" checked value="Marketing, Publicidad">
+                    }else{
+                        <input type="checkbox" id="check26" value="Marketing, Publicidad">
+                    }
                     <label for="check26" class="size14 gray_adecco arial steps_height">Marketing, Publicidad</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check27" value="Medio ambiente">
+                    @if(user != null && user.interests.contains("Medio ambiente")){
+                        <input type="checkbox" id="check27" checked value="Medio ambiente">
+                    }else{
+                        <input type="checkbox" id="check27" value="Medio ambiente">
+                    }
                     <label for="check27" class="size14 gray_adecco arial steps_height">Medio ambiente</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check28" value="Oficios">
+                    @if(user != null && user.interests.contains("Oficios")){
+                        <input type="checkbox" id="check28" checked value="Oficios">
+                    }else{
+                        <input type="checkbox" id="check28" value="Oficios">
+                    }
                     <label for="check28" class="size14 gray_adecco arial steps_height">Oficios</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check29" value="Prevención de riesgos laborales">
+                    @if(user != null && user.interests.contains("Prevención de riesgos laborales")){
+                        <input type="checkbox" id="check29" checked value="Prevención de riesgos laborales">
+                    }else{
+                        <input type="checkbox" id="check29" value="Prevención de riesgos laborales">
+                    }
                     <label for="check29" class="size14 gray_adecco arial steps_height">Prevención de riesgos laborales</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check30" value="Recursos humanos">
+                    @if(user != null && user.interests.contains("Recursos humanos")){
+                        <input type="checkbox" id="check30" checked value="Recursos humanos">
+                    }else{
+                        <input type="checkbox" id="check30" value="Recursos humanos">
+                    }
                     <label for="check30" class="size14 gray_adecco arial steps_height">Recursos humanos</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check31" value="Sanidad y Salud">
+                    @if(user != null && user.interests.contains("Sanidad y Salud")){
+                        <input type="checkbox" id="check31" value="Sanidad y Salud">
+                    }else{
+                        <input type="checkbox" id="check31" value="Sanidad y Salud">
+                    }
                     <label for="check31" class="size14 gray_adecco arial steps_height">Sanidad y Salud</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check32" value="Seguridad y Defensa">
+                    @if(user != null && user.interests.contains("Seguridad y Defensa")){
+                        <input type="checkbox" id="check32" checked value="Seguridad y Defensa">
+                    }else{
+                        <input type="checkbox" id="check32" value="Seguridad y Defensa">
+                    }
                     <label for="check32" class="size14 gray_adecco arial steps_height">Seguridad y Defensa</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check33" value="Servicios generales">
+                    @if(user != null && user.interests.contains("Servicios generales")){
+                        <input type="checkbox" id="check33" checked value="Servicios generales">
+                    }else{
+                        <input type="checkbox" id="check33" value="Servicios generales">
+                    }
                     <label for="check33" class="size14 gray_adecco arial steps_height">Servicios generales</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check34" value="Servicios sociales">
+                    @if(user != null && user.interests.contains("Servicios sociales")){
+                        <input type="checkbox" id="check34" checked value="Servicios sociales">
+                    }else{
+                        <input type="checkbox" id="check34" value="Servicios sociales">
+                    }
                     <label for="check34" class="size14 gray_adecco arial steps_height">Servicios sociales</label>
                 </p>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check35" value="Telecomunicaciones">
+                    @if(user != null && user.interests.contains("Telecomunicaciones")){
+                        <input type="checkbox" id="check35" checked value="Telecomunicaciones">
+                    }else{
+                        <input type="checkbox" id="check35" value="Telecomunicaciones">
+                    }
                     <label for="check35" class="size14 gray_adecco arial steps_height">Telecomunicaciones</label>
                 </p>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check36" value="Otros">
+                    @if(user != null && user.interests.contains("Otros")){
+                        <input type="checkbox" id="check36" checked value="Otros">
+                    }else{
+                        <input type="checkbox" id="check36" value="Otros">
+                    }
                     <label for="check36" class="size14 gray_adecco arial steps_height">Otros</label>
-
                 </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-1 col-lg-offset-11">
+            <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                <img id="save_studies" class="add-new-interest img-btn" src="@routes.Assets.at("/images/complete_user_profile_2/ic_guardar.png")">
             </div>
         </div>
     </div>
 </section>
 </div>
-
 <section class="container">
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 center">
-           <button class="button-finish-1" onclick="location.href='@routes.StashController.cv3()';" >SIGUIENTE</button>
+           <button class=" next button-finish-1" onclick="" >SIGUIENTE</button>
         </div>
     </div>
 </section>
+@if(user != null){
+    @if(user.studyTitle != "" && user.currentSituation.professionalExperienceList.size != 0 && user.interests.size != 0){
+    <input  id="next-step" type="text" value="next" hidden>
+    }else{
+    <input  id="next-step" type="text" value="no" hidden>
+    }
+}else{
+<input  id="next-step" type="text" value="next" hidden>
+}
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?<h2>
+            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
 
 <script type="text/javascript">
       window.onload = function() {
         limitCheckboxes(3);
         loadRecognition();
-        addNew();
+        deleteExperienceGenerate();
+        unir();
+        addNewBbddExp();
+        saveStudies();
+        addIntesetGenerate();
+        next();
 
     };
+</script>
+
+<script>
+     $('input[name="check_experience"]').each(function(){
+  if(this.checked){
+         document.getElementById("experience_group_new").hidden = true;
+         }
+         else{
+         document.getElementById("experience_group_new").hidden = false;
+         }
+ });
+      $('input[name="check_no_studies"]').each(function(){
+  if(this.checked){
+         document.getElementById("level_studies_group_no").hidden = true;
+         }
+         else{
+         document.getElementById("level_studies_group_no").hidden = false;
+         }
+ });
+
 </script>
 
 }

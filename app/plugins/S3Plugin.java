@@ -4,6 +4,7 @@ import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
+import models.datasource.ConfDataSource;
 import play.Application;
 import play.Logger;
 import play.Plugin;
@@ -28,15 +29,24 @@ public class S3Plugin extends Plugin{
 
     @Override
     public void onStart() {
-        String accessKey = application.configuration().getString(AWS_ACCESS_KEY);
-        String secretKey = application.configuration().getString(AWS_SECRET_KEY);
-        s3Bucket = application.configuration().getString(AWS_S3_BUCKET);
+        ConfDataSource.initializeAmazonConf();
+        String[] amazonConf = ConfDataSource.getInstance().getAmazonConf();
+        //String accessKey = application.configuration().getString(AWS_ACCESS_KEY);
+        //String secretKey = application.configuration().getString(AWS_SECRET_KEY);
+        //s3Bucket = application.configuration().getString(AWS_S3_BUCKET);
+        String accessKey = amazonConf[1];
+        String secretKey = amazonConf[2];
+        s3Bucket = amazonConf[0];
 
+        try{
         if ((accessKey != null) && (secretKey != null)) {
             AWSCredentials awsCredentials = new BasicAWSCredentials(accessKey, secretKey);
             amazonS3 = new AmazonS3Client(awsCredentials);
             amazonS3.createBucket(s3Bucket);
             Logger.info("Using S3 Bucket: " + s3Bucket);
+        }
+        }catch(Exception e){
+            Logger.error("Invalid Amazon S3 Configuration");
         }
     }
 

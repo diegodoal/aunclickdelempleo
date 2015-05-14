@@ -1,3 +1,5 @@
+@(user: models.entities.User)
+
 @main(){
 <article class="container">
     <div class="row">
@@ -7,12 +9,57 @@
             <p>La empresa que te vaya a entrevistar te dirá cuando será la entrevista y tu debes ponerlo a continuación. Esto te ayudará a planificarte tanto a corto como a largo plazo gracias a los consejos y notificaciones que Fundación Adecco te enviará.</p>
         </div><br><br>
         <div class="arial size16 gray_adecco">
-            Actividad:Añade todas las entrevistas que tengas para que Fundación Adecco pueda mandarte consejos y notificaciones unos días antes.
+            Actividad: Añade todas las entrevistas que tengas para que Fundación Adecco pueda mandarte consejos y notificaciones unos días antes.
         </div><br>
+
+        <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
+
     </div>
 </article>
-<div class="main-div-sections">
-    <section class="panel-group container back new-input-container center" style="margin-auto;">
+
+<section class="container back" style="margin:auto;">
+    <div class="main-div-sections">
+    
+        
+        @if(user != null){
+            @for(interview <- user.interviewScheduleList){
+            <form class="form-horizontal" autocomplete="on" method="post">
+                <div class="form-group form-inline" id="job_experience_group_1">
+                    <div class="col-md-6">
+                        <input placeholder="Fecha" class="form-control" type="text" style="width: 100%;" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" value="@interview.getInterviewDate()">
+                    </div>
+                    <div class="col-md-6">
+                        <input placeholder="Hora" class="form-control" style="width: 100%;" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" id="time" value="@interview.getInterviewTime()">
+                    </div>
+                </div>
+
+                <div class="form-group form-inline" id="job_experience_group_3">
+                    <div class="col-md-6">
+                        <div class="input-mic-container">
+                            <input type="text" class="form-control" placeholder="Empresa" value="@interview.company">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-mic-container">
+                            <input type="text" class="form-control" placeholder="Dirección" value="@interview.address">
+                            <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                     <div class="col-md-1 right">
+                             <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                <img class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                             </div>
+                     </div>
+                </div>
+            </form>
+            }
+        }
+
+    <div class="panel-group new-input-container center" style="margin-auto;">
         <form class="form-horizontal" autocomplete="on" method="post">
             <div class="form-group form-inline" id="job_experience_group_1">
                 <div class="col-md-6">
@@ -26,13 +73,29 @@
             <div class="form-group form-inline" id="job_experience_group_3">
                 <div class="col-md-6">
                     <div class="input-mic-container">
-                        <input type="text" class="form-control" id="Empresa" placeholder="Empresa" >
+                        <input type="text" class="form-control" placeholder="Empresa" >
                         <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-mic-container">
-                        <input type="text" class="form-control" id="Dirección" placeholder="Dirección" />
+                        <input type="text" class="form-control" id="calle1" name="calle1"  placeholder="Calle, Número"/>
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group form-inline" id="job_experience_group_3">
+                <div class="col-md-6">
+                    <div class="input-mic-container">
+                        <input type="text" class="form-control" id="localidad" name="localidad"  placeholder="Localidad"/>
+                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-mic-container">
+                        <input type="text" id="provincia" class="form-control" name="provincia"  placeholder="Provincia" />
                         <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
                     </div>
                 </div>
@@ -46,23 +109,72 @@
                  </div>
              </div>
         </form>
-    </section>
-</div>
+    </div>
+    </div>
+</section>
+
 
 <section class="container">
     <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitDeadLine()';">FINALIZAR</button>
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 center">
+            <button class="button-return-1" onclick="location.href='/orientation#point4';">VOLVER</button>
+            <button class="button-finish-1" onclick="sendDeadLine()">FINALIZAR</button>
         </div>
     </div>
 </section>
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?<h2>
+            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
 
 <script type="text/javascript">
       window.onload = function() {
         addNew();
         loadRecognition();
     };
+</script>
+
+<script>
+    function sendDeadLine(){
+        var deadlineArray = [];
+        var counter = 0;
+        $('.main-div-sections .form-horizontal').each(function(){
+            var auxDeadline = [];
+            var valid = true;
+            $(this).find('input').each(function(){
+                if(valid == true && $(this).val() != ''){
+                    auxDeadline[counter] = $(this).val();
+                }else{
+                    valid = false;
+                }
+                counter++;
+            });
+            counter = 0;
+            if(valid==true){
+                deadlineArray.push(auxDeadline);
+            }
+        });
+
+        $.ajax({
+            type: 'post',
+            data: JSON.stringify(deadlineArray),
+            url: "/orientation/deadline",
+            contentType: 'application/json'
+        }).done(function(o) {
+            window.location.assign("/orientation");
+        });
+    }
 </script>
 
 }

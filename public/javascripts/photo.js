@@ -72,7 +72,7 @@ function takePhoto(){
   takePhotoButton.addEventListener('click', function(ev){
       canvasModal.width = 137;
       canvasModal.height = 162;
-      canvasModal.getContext('2d').drawImage(video, 0, 0, 137, 162);
+      canvasModal.getContext('2d').drawImage(video, -32, 0, 200, 162);
       MADE_PHOTO = true;
       ev.preventDefault();
       }, false

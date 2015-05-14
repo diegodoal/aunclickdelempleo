@@ -5,7 +5,6 @@ package models.entities.orientation;
  */
 public class Skill {
 
-    // Level must be one of: "Normal, Bien, Excelente"
     public String name;
     public String level;
 
@@ -14,3 +13,8 @@ public class Skill {
         this.level = level;
     }
 }
+
+
+
+
+    

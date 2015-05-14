@@ -1,28 +1,32 @@
 @main(){
 <section class="container">
-    <div class="row">
-        <h2 class="title">Hazte una foto</h2>
-    </div>
+    <div class="red_adecco century_gothic">
+        <h2>Hazte una foto</h2>
+    </div><br>
 
     <div class="row">
         <div class="col-md-6">
             <h2 class="sub-title">Cuida los detalles</h2>
-            <p class="text-brown">Elegir la vestimenta correcta, el color que te favorezca, el peinado y poner mucha importancia en los detalles del arreglo personal, puede potencializar tu imagen.</p>
-            <p class="text-brown">Una buena foto de curriculum no va a ser una razón por la que te seleccionen, aunque sí puede ayudarte. Lo que está claro es que una mala imagen puede ser un motivo por el que te descarten.</p>
-            <p class="text-brown">Vístete con colores lisos y neutros, oscuros o claros, los dos son adecuados pero eso marcará también tu personalidad en la imagen. Lleva ropa atemporal, ni demasiado de verano ni de demasiado abrigo. No muestres marcas que puedan encasillarte.</p>
+            <p class="text-brown">Elegir la vestimenta correcta, el color que te favorezca, el peinado y poner
+                mucha importancia en los detalles, puede favorecer la percepción positiva de tu imagen personal.</p>
+            <p class="text-brown">Una buena foto de curriculum no va a ser una razón por la que te seleccionen,
+                aunque sí puede ayudarte. Lo que está claro es que una mala imagen puede ser un motivo por el que te descarten.</p>
+            <p class="text-brown">Vístete con colores lisos y neutros, oscuros o claros, los dos son
+                adecuados pero eso marcará también tu personalidad en la imagen. Lleva ropa atemporal,
+                ni demasiado de verano ni de demasiado abrigo. No muestres marcas que puedan encasillarte.</p>
         </div>
 
         <div class="col-md-6">
             <h2 class="sub-title">Sé natural</h2>
-            <p class="text-brown">Una simple pose puede decir más que mil palabras. Sonreir suaviza la expresión de tu rostro y crea confianza.</p>
+            <p class="text-brown">Una simple pose puede decir más que mil palabras. Sonreír suaviza la expresión de tu rostro y crea confianza.</p>
             <p class="text-brown">Utiliza la postura que te sea más cómoda pero trata de ser profesional.
                 <br>¿Sonreir o no sonreir? Lo importante es que te sientas tu mismo pero sin forzar el gesto de tu cara.</p>
                 <p class="text-brown">Si por más que intentas no logras una fotografía que te represente, quizá sea tiempo de considerar invertir en un servicio profesional para obtener mejores resultados.</p>
             </div>
-        </div>
+        </div><br><br>
 
-        <div class="row">
-            <p class="text-dark-brown padding-left-column">Actividad: Elige o hazte una fotografía adecuada para tu búsqueda de empleo. Tienes dos opciones:</p>
+        <div class="">
+            <p class="text-dark-brown">Actividad: Elige o hazte una fotografía adecuada para tu búsqueda de empleo. Tienes dos opciones:</p>
         </div>
 
         <div class="row">
@@ -43,13 +47,13 @@
                 </div>
             </div>
 
-            <div class="col-md-6 hidden-xs">
+            <div class="col-md-6">
                 <h2 class="sub-title">Hazte una fotografía</h2>
                 <p class="text-brown">Si quieres hacerte una fotografía aquí lo que necesitas es una WebCam.</p>
-                <div class="center">
+                <div class="center " style="margin-top:6.7em;">
                     <button class="button-brown-1" data-toggle="modal" data-target="#photoTakingModal" onclick="takePhoto()">Hacer fotografía ahora</button>
                 </div>
-            </div>
+            </div><br><br>
         </div>
 
         <div class="row">
@@ -75,12 +79,13 @@
         </div>
 
     <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 center">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 center">
+            <button class="button-return-1" onclick="location.href='/orientation#point1';">VOLVER</button>
             <button class="button-finish-1" onclick="finishPhoto()">FINALIZAR</button>
         </div>
     </div>
-
     </section>
 
     <!-- MODALS -->
@@ -90,6 +95,7 @@
         <div class="modal-dialog custom-modal">
 
             <div>
+                <button type="button " style="background:red" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
                 <h2 class="sub-title">Hazte una fotografía</h2>
                 <p class="text-brown">Si quieres hacerte una fotografía aquí lo que necesitas es una WebCam y permitir la utilización de ésta.</p>
                 <div class="row">
@@ -97,8 +103,16 @@
                         <div class="canvas-container">
                             <video id="video" width="400" height="400"></video>
                         </div>
+                        <!--
                         <div class="row">
-                            <button class="button-brown-1 button-modal" id="takePhotoButton">Hacer fotografía ahora</button>
+                            <button type="button" id="cancelPhotoButton" class="button-cancel button-modal" data-dismiss="modal">CANCELAR</button>
+
+                        </div>
+
+                        -->
+                        <div class="row" style="margin-top:-2.5em;">
+                            <button class="button-accept button-modal" id="takePhotoButton">TOMAR FOTOGRAFÍA</button>
+
                         </div>
                     </div>
 
@@ -106,18 +120,18 @@
                         <div class="canvas-container custom-canvas-background">
                             <canvas id="canvasModal"></canvas>
                         </div>
+
+
+
                         <div class="row">
-                            <button type="button" id="acceptPhotoButton" class="button-accept button-modal" data-dismiss="modal">ACEPTAR</button>
-                        </div>
-                        <div class="row">
-                            <button type="button" id="cancelPhotoButton" class="button-cancel button-modal" data-dismiss="modal">CANCELAR</button>
+                            <button type="button" id="acceptPhotoButton" class="button-brown-1  button-modal" data-dismiss="modal">ACEPTAR</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END OF PHOTO-TAKING MODAL -->
+ <!-- END OF PHOTO-TAKING MODAL -->
 
     <!-- UPLOADING PHOTO MODAL -->
     <div class="modal fade" id="photoUploadingModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">

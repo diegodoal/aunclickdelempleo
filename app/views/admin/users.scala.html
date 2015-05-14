@@ -1,0 +1,82 @@
+@(users : List[models.entities.User])
+
+@header("users"){
+<section class="container-fluid">
+    <table id="users_table" class="display" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Ciudad</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(user <- users){
+                <tr>
+                    <td>
+                        <a href="/admin/users/@user.email/@user.id"><img width="5%" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
+                        <a href="javascript: showSendModal('@user.email')"><img width="5%" src="@routes.Assets.at("images/msg.png")"></a>
+                        @user.name</td>
+                    <td>@user.surnames</td>
+                    <td><a href="mailto:@user.email">@user.email</a></td>
+                    <td>@user.phoneNumber</td>
+                    <td>@user.residenceCity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
+<!-- NEW MSG MODAL -->
+<div class="modal fade" id="newMsgModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Nuevo mensaje</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" id="newMsgAlert" role="alert" hidden>Completa todos los campos por favor</div>
+        <input id="myTypeahead" class="form-control" type="text" data-provide="typeahead" placeholder="Para:"><br>
+        <input id="newMsg_subject" class="form-control" type="text" placeholder="Asunto"><br>
+        <textarea id="newMsg_content"class="form-control" rows="3" placeholder="Mensaje"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="sendMsg" onclick="sendMsg()">Enviar</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script type="text/javascript">
+function showSendModal(toUser){
+    $('#newMsgModal').modal('show');
+    $('#myTypeahead').val(toUser);
+    $('#myTypeahead').prop('disabled', true);
+}
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#users_table').DataTable({
+                "oLanguage": {
+                            "sLengthMenu": "Mostrar _MENU_ filas por página",
+                            "sZeroRecords": "Ningún resultado encontraro",
+                            "sInfo": "Mostrando _START_ a _END_ de _TOTAL_ resultados",
+                            "sSearch": " Buscar: ",
+                            "sInfoEmpty": "No hay datos",
+                            "sInfoFiltered": "(filtrado de _MAX_ resultados)",
+                            "sInfoEmpty": "Mostrando 0 a 0 de 0 resultados",
+                            "oPaginate":{
+                                "sNext": "Siguiente",
+                                "sPrevious":"Anterior",
+                                "sFirst":"Primero",
+                                "sLast":"Último"
+                                }
+
+                  }});
+    } );
+</script>
+}

@@ -1,0 +1,193 @@
+@(user: models.entities.User)
+
+@main(){
+<link rel="stylesheet" href="@routes.Assets.at("stylesheets/cv_pop_up.css")">
+
+<div class="container">
+
+<!--COMPLETE_CV_4-->
+<section id="text_user_profile_2">
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic">
+            <h2>ÚLTIMO PASO: PERSONALIZA TU CV</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 brown_adecco century_gothic size22">
+            <p>Elige entre <span class="red_adecco" >4 estilos.</span></p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-3 col-sm-3">
+            <label for="radio_cv1">
+                <img class="gray_adecco cv-format" alt="Seleccionar el primer estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/CV1.jpg")">
+            </label>
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+            <label for="radio_cv2">
+                <img class="gray_adecco cv-format" alt="Seleccionar el segundo estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/CV2.jpg")">
+            </label>
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+            <label for="radio_cv3">
+                <img class="gray_adecco cv-format" alt="Seleccionar el tercer estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/CV3.jpg")">
+            </label>
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+            <label for="radio_cv4">
+                <img class="gray_adecco cv-format" alt="Seleccionar el cuarto estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/CV4.jpg")">
+            </label>
+        </div>
+    </div>
+
+    <div class="row radios_cv">
+        <div class="col-md-1 col-sm-1 hidden-xs">
+            <input type="radio" id="radio_cv1" name="radio_cv" value="template1" class="radio_cv">
+            <label for="radio_cv1"><span></span></label>
+        </div>
+
+        <div class="col-md-1 col-sm-1 hidden-xs col-md-offset-1">
+            <a href="#cv1_pop_up">
+                <img class="lupa-format" alt="Ver el primer estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+            </a>
+        </div>
+
+        <div class="col-md-1 col-sm-1 hidden-xs">
+            <input type="radio" id="radio_cv2" name="radio_cv" value="template2" class="radio_cv">
+            <label for="radio_cv2"><span></span></label>
+        </div>
+
+        <div class="col-md-1 col-sm-1 hidden-xs col-md-offset-1">
+            <a href="#cv2_pop_up">
+                <img class="lupa-format" alt="Ver el segundo estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+            </a>
+        </div>
+
+        <div class="col-md-1 col-sm-1 hidden-xs">
+            <input type="radio" id="radio_cv3" name="radio_cv" value="template3" class="radio_cv">
+            <label for="radio_cv3"><span></span></label>
+        </div>
+
+        <div class="col-md-1 col-sm-1 hidden-xs col-md-offset-1">
+            <a href="#cv3_pop_up">
+                <img class="lupa-format" alt="Ver el tercer estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+            </a>
+        </div>
+
+        <div class="col-md-1 col-sm-1 hidden-xs">
+            <input type="radio" id="radio_cv4" name="radio_cv" value="template4" class="radio_cv">
+            <label for="radio_cv4"><span></span></label>
+        </div>
+
+        <div class="col-md-1 col-sm-1 hidden-xs col-md-offset-1">
+            <a href="#cv4_pop_up">
+                <img class="lupa-format" alt="Ver el cuarto estilo de curriculum vitae" src="@routes.Assets.at("images/orientation/cv-templates/ic_lupa.png")">
+            </a>
+        </div>
+    </div>
+
+</section>
+
+<section>
+<!--Cursos-->    
+    <div class="row">
+        <div class="col-md-12 arial gray_adecco size18 bold">
+            Tu curriculum vitae
+        </div>
+    </div><br>
+    <div class="font1_g">
+        Echa un vistazo a cómo quedaría tu CV. Si quieres modificarlo ve a pasos anteriores para editar tus datos.<br>
+        Elije un estilo que se adecúe a tu personalidad y al puesto para el que vas a solicitar empleo.
+    </div><br>
+</section>
+
+<section class="col-md-6">
+    <div class="row">
+        <button type="button" class="button-accept" onclick="sendForm()">GENERAR CV</button>
+    </div>
+    <div class="row">
+        <button type="button" class="button-cancel" onclick="location.href='@routes.OrientationController.getTools()';">CANCELAR</button>
+    </div>
+</section>
+
+<!-- POP UP WINDOWS -->
+<div id="cv1_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <img class="img-btn" src="@routes.Assets.at("images/orientation/cv-templates/CV1.jpg")">
+    </div>
+</div>
+
+<div id="cv2_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <img class="img-btn" src="@routes.Assets.at("images/orientation/cv-templates/CV2.jpg")">
+    </div>
+</div>
+
+<div id="cv3_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <img class="img-btn" src="@routes.Assets.at("images/orientation/cv-templates/CV3.jpg")">
+    </div>
+</div>
+
+<div id="cv4_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <img class="img-btn" src="@routes.Assets.at("images/orientation/cv-templates/CV4.jpg")">
+    </div>
+</div>
+
+<script type="text/javascript">
+      window.onload = function() {
+        loadRecognition();
+        addNew();
+    };
+</script>
+ 
+<script type="text/javascript">
+    function sendForm(){
+        var result = "";
+        var redirect = "";
+        $('body').find('input[type="radio"]').each(function(){
+            if(this.checked){
+                result = $(this).val();
+            }
+
+            switch(result){
+                case "template1":
+                    redirect = "/orientation/gettools/cv/preview1";
+                    break;
+                case "template2":
+                    redirect = "/orientation/gettools/cv/preview2";
+                    break;
+                case "template3":
+                    redirect = "/orientation/gettools/cv/preview3";
+                    break;
+                case "template4":
+                    redirect = "/orientation/gettools/cv/preview4";
+                    break;
+            }
+
+        });
+
+        $.ajax({
+                type: 'post',
+                url: "/orientation/gettools/cv4",
+                async: false,
+                error: function(){
+                },
+                success: function(){
+                    window.open(redirect);
+                }
+            });
+    }
+</script>
+
+}

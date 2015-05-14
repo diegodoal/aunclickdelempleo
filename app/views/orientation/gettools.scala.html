@@ -1,13 +1,21 @@
 @main(){
-<div class="container" style="background-color:antiquewhite; ">
+<section class="container-fluid size_font" id="gettools_banner">
+    <div class="row">
+        <div class="col-md-6 size_font" id="banner_text">
+            Es importante contar con unas buenas herramientas de búsqueda. Fundación Adecco te ayudará, guiándote paso a paso, a generar estos documentos. Posteriormente, podrás personalizarlos y editarlos para adaptarlos todavía más a ti. Estos documentos harán que te diferencies de los demás candidatos.
+
+        </div>
+        <div class="brown_adecco arial size14">
+
+        </div>
+    </div>
+</section>
+<div class="container">
  <section>
     <div class="row">
         <div class="col-md-12">
             <h2 class="red_adecco century_gothic">Genera tus documentos personalizados</h2>
-            <div class="brown_adecco arial size14">
-                <p>Es importante contar con unas buenas herramientas de búsqueda. Fundación Adecco te ayudará, guiándote paso a paso, a generar estos documentos. Posteriormente, podrás personalizarlos y editarlos para adaptarlos todavía más a ti. Estos documentos harán que te diferencies de los demás candidatos.</p>
-
-            </div></br>
+            </br><br>
         </div>
     </div>
 
@@ -24,7 +32,7 @@
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 center">
-            <button class="button-create-1" onclick="location.href= '@routes.StashController.cv1()';">CREAR</button>
+            <button class="button-create-1" onclick="location.href= '@routes.GenerateDocumentsController.cv1()';">&#xA0;&#xA0;CREAR&#xA0;&#xA0;</button>
         </div>
     </div>
 
@@ -45,7 +53,7 @@
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 center">
-            <button class="button-create-1" onclick="location.href= '#';">CREAR</button>
+            <button class="button-create-1" onclick="location.href= '@routes.GenerateDocumentsController.lp1()';">&#xA0;&#xA0;CREAR&#xA0;&#xA0;</button>
         </div>
     </div>
 
@@ -61,15 +69,17 @@
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2 center">
-            <button class="button-create-1" onclick="location.href= '#';">CREAR</button>
+            <button class="button-create-1" onclick="location.href= '#';">&#xA0;&#xA0;CREAR&#xA0;&#xA0;</button>
         </div>
     </div>
 </section><br>
 </div>
 <section class="container">
     <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 center">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 center">
+            <button class="button-return-1" onclick="location.href='/orientation#point2';">VOLVER</button>
             <button class="button-finish-1" onclick="location.href='@routes.OrientationController.submitGetTools()';">FINALIZAR</button>
         </div>
     </div>

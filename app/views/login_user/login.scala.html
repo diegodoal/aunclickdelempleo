@@ -1,17 +1,17 @@
-@(error_login_msg: String, error_signup_msg: String)
+@(error_login_msg: String, error_signup_msg: String, error_password_length: String)
 
 @main(){
 <!-- ADVANTAGES -->
 <section class="container" id="user_advantages">
     <div class="row">
         <div class="col-md-12 col-md-4" id="user_hands">
-            <img src="@routes.Assets.at("images/login_user/ic_manos.png")">
+            <img src="@routes.Assets.at("images/login_user/ic_ventaja11.png")">
         </div>
         <div class="hidden-xs hidden-sm col-md-4" id="user_puzzle">
-            <img src="@routes.Assets.at("images/login_user/ic_puzzle.png")">
+            <img src="@routes.Assets.at("images/login_user/ic_ventaja21.png")">
         </div>
         <div class="hidden-xs hidden-sm col-md-4" id="user_clock">
-            <img src="@routes.Assets.at("images/login_user/ic_reloj.png")">
+            <img src="@routes.Assets.at("images/login_user/ic_ventaja31.png")">
         </div>
     </div>
 </section>
@@ -37,26 +37,16 @@
                 </div>
 
                 <div class="form-group">
+                    <div class="col-md-offset-3 col-md-6">
+                        <span class="font1">Si has olvidado tu contraseña, <a class="font2" href="@routes.LoginController.forgottenPasswordBlank()">pulsa aquí.</a></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
 
                     <div class="col-md-offset-6 col-md-4 button-create">
                         <button type="submit">ENTRAR</button>
                     </div>
-
-                    <!-- FORMA DE ENRIQUE PERO NO FUNCIONA
-                    <div id="enterUser" class="col-md-offset-5 col-md-4 button-enter">
-                        ENTRAR
-                    </div>
-                    <script>
-                        $("#enterUser").click(function(){
-                            $("#formEnterUser").submit();
-                        });
-                    </script>-->
-
-                    @if(error_login_msg != null) {
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_login_msg</div>
-                    </div>
-                    }
                 </div>
             </form>
         </div>
@@ -125,6 +115,12 @@
                     @if(error_signup_msg != null) {
                     <div class="col-md-offset-1 col-md-11">
                         <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_signup_msg</div>
+                    </div>
+                    }
+                    
+                    @if(error_password_length != null) {
+                    <div class="col-md-offset-1 col-md-11">
+                        <div class="size14 arial red_adecco"><br><span class="bold">ERROR: </span>@error_password_length</div>
                     </div>
                     }
                 </div>

@@ -1,6 +1,16 @@
 function limitCheckboxes(max){
     var maxSelected = max;
     var currentSelected = 0;
+
+    $('.checkbox-group input:checkbox').each(function(){
+        if($(this).prop('checked') == true){
+            currentSelected++;
+        }
+    });
+
+    if(maxSelected == currentSelected){
+        disableOtherChecks();
+    }
     $('.checkbox-group input:checkbox').click(function(){
         if($(this).prop('checked') == true){
             currentSelected++;
@@ -23,3 +33,12 @@ function limitCheckboxes(max){
         }
     });
 }
+
+function disableOtherChecks(){
+    $('.checkbox-group input:checkbox').each(function(){
+        if($(this).prop('checked') == false){
+            $(this).prop('disabled', true);
+        }
+    });
+}
+

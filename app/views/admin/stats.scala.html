@@ -1,0 +1,135 @@
+@(drivingLicense : Array[Integer])(certificates : Array[Integer])(education : Array[Integer])(totalUsers : Integer)(numRecentUsers : Integer)(numOfFullProfiles : Integer)(numberOfTotalMsg : Integer)(numOfUplodadedPhotos : Integer)(numOfGeneratedDocs : Integer)
+
+@header("stats"){
+
+
+
+<section class="container">
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="panel panel-info">
+                      <div class="panel-heading">Total de registrados</div>
+                      <div class="panel-body">
+                        @totalUsers Usuarios
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="panel panel-info">
+                      <div class="panel-heading">Registrados recientemente</div>
+                      <div class="panel-body">
+                        @if(numRecentUsers == 0){
+                            No hay nuevos
+                        }else{
+                            @if(numRecentUsers == 1){
+                                1 Usuario
+                            }else{
+                                @numRecentUsers Usuarios
+                            }
+                        }
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="panel panel-info">
+                      <div class="panel-heading">Perfiles completados</div>
+                      <div class="panel-body">
+                        @if(numOfFullProfiles == 1){
+                            1 Perfil
+                        }else{
+                            @numOfFullProfiles Perfiles
+                        }
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="panel panel-info">
+                      <div class="panel-heading">Total de mensajes</div>
+                      <div class="panel-body">
+                        @if(numberOfTotalMsg == 1){
+                            1 Mensaje
+                        }else{
+                            @numberOfTotalMsg Mensajes
+                        }
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="panel panel-info">
+                      <div class="panel-heading">Fotos subidas</div>
+                      <div class="panel-body">
+                        @if(numOfUplodadedPhotos == 1){
+                            1 foto subida
+                        }else{
+                            @numOfUplodadedPhotos fotos subidas
+                        }
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="panel panel-info">
+                      <div class="panel-heading">Documentos generados</div>
+                      <div class="panel-body">
+                        @if(numOfGeneratedDocs == 1){
+                            1 Documento
+                        }else{
+                            @numOfGeneratedDocs Documentos
+                        }
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1 col-sm-6">
+                    <div class="graph-md" id="graph-drivingLicense"></div>
+                </div>
+
+                <div class="col-md-5 col-md-offset-1 col-sm-6">
+                    <div class="graph-md" id="graph-certificate"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="graph-md" style="width: auto;" id="graph-education"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+        <br>
+        
+    </div>
+
+</section>
+
+<!-- ##################################################################### -->
+
+
+
+<script>
+    graph_drivingLicense(@drivingLicense(0), @drivingLicense(1));
+    graph_certificate(@certificates(0), @certificates(1), @certificates(2), @certificates(3));
+    graph_education(@education(0), @education(1), @education(2), @education(3), @education(4), @education(5), @education(6), @education(7), @education(8), @education(9), 
+        @education(10), @education(11), @education(12), @education(13));
+</script>
+
+
+
+<!-- ##################################################################### -->
+
+}

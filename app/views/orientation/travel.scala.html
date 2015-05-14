@@ -6,12 +6,15 @@
     <div class="row">
         <h2 class="red_adecco century_gothic">Cómo llegar al lugar de la entrevista</h2>
         <div class="brown_adecco arial size14">
-            <p>Es muy importante que tengas pensado como vas a ir el dia de la entrevista hasta el lugar en el que se te ha citado. Para ello, te facilitamos un mapa, en el cual puedes introducir el origen y el destino.</p>
-            <p>Además puedes ver el tiempo estimado que vas ha tardar en los diferentes medios de transporte y la ruta que debes seguir para llegar hasta el lugar de destino.</p>
+            <p>Es muy importante que tengas pensado cómo vas a ir el día de la entrevista hasta el lugar en el que se te ha citado. Para ello, te facilitamos un mapa, en el cual puedes introducir el origen y el destino.</p>
+            <p>Además puedes ver el tiempo estimado que vas a tardar en los diferentes medios de transporte y la ruta que debes seguir para llegar hasta el lugar de destino.</p>
         </div><br><br>
         <div class="size16 gray_adecco arial">
             <p>Actividad: Desde este mapa, puedes introducir tu dirección y el destino del lugar de la entrevista y elegir el medio de transporte en el cual vas a ir.</p>
         </div>
+
+            <div class="font1_g">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
+
     </div><br>
 </article> 
 
@@ -114,12 +117,29 @@
 
 <section class="container">
     <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 center">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 center">
+            <button class="button-return-1" onclick="location.href='/orientation#point4';">VOLVER</button>
             <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitTravel()';">FINALIZAR</button>
         </div>
     </div>
 </section>
+
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?<h2>
+            <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+            <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+            <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button> </h4><br>
+            <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
+</div>
 
 <script type="text/javascript">
       window.onload = function() {

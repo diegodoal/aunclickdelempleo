@@ -7,6 +7,7 @@ import models.entities.orientation.*;
 import utils.Utils;
 
 import java.lang.reflect.Type;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.UUID;
 public class User {
 
     // Step 1
+    public String id;
     public String name;
     public String surnames;
     public String email;
@@ -25,11 +27,36 @@ public class User {
     public String emailVerificationKey;
     public String connectionTimestamp;
 
+    public String registrationDate;
+
+    public String restorePasswordToken;
+    public String restorePasswordTimestamp;
+
+    //CV and Presentation Letter
+    public String birthDate;
+    public String residenceCity;
+    public String residenceAddress;
+    public String residenceNumber;
+    public String residenceZipCode;
+
+    public String phoneNumber;
+
+    public String studyTitle;
+    public String studyLocation;
+    public String educationLevel;
+
+    public String drivingLicense;
+    public String certificateOfDisability;
+
+    public List<Course> courses;
+    public List<Language> languages;
+    public List<Software> softwareList;
+
     public CompletedOrientationSteps completedOrientationSteps;
 
     //Orientation steps
     public CurrentSituation currentSituation;
-    public List<Skill> skills;
+    public List<Skill> skill;
     public List<String> interests;
     public List<String> personalCharacteristics;
     public List<ProfessionalValue> professionalValues;
@@ -38,10 +65,31 @@ public class User {
 
     public User(){
         this.emailVerificationKey = UUID.randomUUID().toString();
-        //Includes an "a" at the end for more security. Stored with custom format in DB and with standard format in session
         this.connectionTimestamp = new Date().toString();
+        this.restorePasswordToken = null;
+        this.restorePasswordTimestamp = null;
+
+        this.registrationDate = Utils.formatDateToCustomPattern(new Date());
+        this.birthDate = null;
+        this.residenceCity = null;
+        this.residenceAddress = null;
+        this.residenceNumber = null;
+        this.residenceZipCode = null;
+        this.phoneNumber = null;
+
+        this.studyTitle = "";
+        this.studyLocation = "";
+        this.educationLevel = null;
+
+        this.drivingLicense = "";
+        this.certificateOfDisability = "";
+
+        this.courses = new ArrayList<>();
+        this.languages = new ArrayList<>();
+        this.softwareList = new ArrayList<>();
+
         this.currentSituation = new CurrentSituation();
-        this.skills = new ArrayList<>();
+        this.skill = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
         this.professionalValues = new ArrayList<>();
@@ -56,9 +104,32 @@ public class User {
         this.password = password;
         this.emailVerificationKey = UUID.randomUUID().toString();
         this.connectionTimestamp = new Date().toString();
+        this.restorePasswordToken = null;
+        this.restorePasswordTimestamp = null;
+
+        this.registrationDate = Utils.formatDateToCustomPattern(new Date());
+
+        this.birthDate = null;
+        this.residenceCity = null;
+        this.residenceAddress = null;
+        this.residenceNumber = null;
+        this.residenceZipCode = null;
+        this.phoneNumber = null;
+
+        this.studyTitle = "";
+        this.studyLocation = "";
+        this.educationLevel = null;
+
+        this.drivingLicense = "";
+        this.certificateOfDisability = "";
+
+        this.courses = new ArrayList<>();
+        this.languages = new ArrayList<>();
+        this.softwareList = new ArrayList<>();
+
         this.completedOrientationSteps = new CompletedOrientationSteps();
         this.currentSituation = new CurrentSituation();
-        this.skills = new ArrayList<>();
+        this.skill = new ArrayList<>();
         this.interests = new ArrayList<>();
         this.personalCharacteristics = new ArrayList<>();
         this.professionalValues = new ArrayList<>();
@@ -195,11 +266,9 @@ public class User {
         }
     }
 
-    public String skillstoJson(){
+    public String skillsToJson(){
         Type listType = new TypeToken<List<Skill>>(){}.getType();
-        String result = new Gson().toJson(this.skills, listType);
-
-        return result;
+        return new Gson().toJson(this.skill, listType);
     }
 
     public String professionalValuesToJson(){
@@ -214,5 +283,83 @@ public class User {
         String result = new Gson().toJson(this.interviewScheduleList, listType);
 
         return result;
+    }
+
+    public double getCompletedOrientationPercentage() {
+        int totalTrue = 0;
+        if (completedOrientationSteps.currentSituation.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.skills.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.interestIdentification.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.personal.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.professional.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.photo.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.channels.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.learnTools.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.getTools.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.tInterview.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.pInterview.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.actInterview.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.questionsInterview.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.deadLine.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.travel.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.specialization.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.bestDeals.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.level.equals("true")) {
+            totalTrue++;
+        }
+        if (completedOrientationSteps.reputation.equals("true")) {
+            totalTrue++;
+        }
+        return totalTrue * 100 / 19;
+    }
+
+    public String coursesToJson(){
+        Type listType = new TypeToken<List<Course>>(){}.getType();
+        return new Gson().toJson(this.courses, listType);
+    }
+
+    public String languagesToJson(){
+        Type listType = new TypeToken<List<Language>>(){}.getType();
+        return new Gson().toJson(this.languages, listType);
+    }
+
+    public String softwareToJson(){
+        Type listType = new TypeToken<List<Software>>(){}.getType();
+        return new Gson().toJson(this.softwareList, listType);
+
     }
 }

@@ -4,15 +4,13 @@ import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
 import models.entities.orientation.ProfessionalValue;
-import models.entities.orientation.Skill;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -23,6 +21,11 @@ public class Utils {
     public static String formatDateToCustomPattern(Date date){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         return simpleDateFormat.format(date);
+    }
+
+    public static String changeFormatDate(String date){
+        String newDate = date.replaceAll("(\\d+)-(\\d+)-(\\d+)", "$3-$2-$1");
+        return newDate;
     }
 
     public static Date stringToDate(String date){
@@ -59,6 +62,12 @@ public class Utils {
         return userTimestamp.equals(sessionTimestamp);
     }
 
+    /**
+     *
+     * @param date1
+     * @param date2
+     * @return Difference between Date2 and Date1
+     */
     public static long getDiffBetweenTwoDates(Date date1, Date date2){
         long diff = TimeUnit.DAYS.convert((date2.getTime() - date1.getTime()), TimeUnit.MILLISECONDS);
 
@@ -66,20 +75,21 @@ public class Utils {
     }
 
     public static void initFakeDBCollection() {
-        for (int counter = 0; counter < 500; counter++) {
+        for (int counter = 0; counter < 50; counter++) {
             User user = new User("Name" + counter, "Surname" + counter, "email" + counter + "@gmail.com", "password" + counter);
 
             //Current Situation
             user.currentSituation.addEducationLevel("Primaria");
             user.currentSituation.addEducationLevel("Secundaria");
             user.currentSituation.addEducationLevel("Grado");
-
-            user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "5 años");
-            user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "10 años");
+            String expID =  UUID.randomUUID().toString();
+            user.currentSituation.addProfessionalExperience("Telefonica", "Talentum", "2014-10", "2015-05",expID);
+            String expID2 =  UUID.randomUUID().toString();
+            user.currentSituation.addProfessionalExperience("Microsoft", "CEO", "2015-05", "2016-03",expID2);
 
             //Skills
-            user.skills.add(new Skill("Hablar en público", "Bien"));
-            user.skills.add(new Skill("Picar código", "Muy bien"));
+            //user.skills.add(new Skill("Hablar en público", "Bien"));
+            //user.skills.add(new Skill("Picar código", "Muy bien"));
 
             //Interests
             user.interests.add("Informática");
@@ -108,5 +118,17 @@ public class Utils {
 
             SingletonDataSource.getInstance().insertIntoUsersCollection(user);
         }
+    }
+
+    public static List<User> getRecentUsers(){
+        List<User> users = SingletonDataSource.getInstance().findAll();
+        List<User> recentUsers = new ArrayList<>();
+        for(User user : users){
+            long diff = Utils.getDiffBetweenTwoDates(Utils.stringToDate(user.registrationDate), new Date());
+            if(diff <= 1){
+                recentUsers.add(user);
+            }
+        }
+        return recentUsers;
     }
 }

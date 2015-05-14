@@ -2,6 +2,7 @@ package models.entities.orientation;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import play.Logger;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -27,35 +28,19 @@ public class CurrentSituation {
     }
 
 
-    public void addEducationLevel(String level){
-        this.educationLevelList.add(level);
-    }
+    public void addEducationLevel(String level){this.educationLevelList.add(level);}
 
-    public void addProfessionalExperience(String company, String job, String experienceYears){
-        this.professionalExperienceList.add(new ProfessionalExperience(company, job, experienceYears));
+    public void clearEducationLevel(){this.educationLevelList.clear();}
+
+
+    public void addProfessionalExperience(String company, String job, String startDate, String endDate, String ID){
+        this.professionalExperienceList.add(new ProfessionalExperience(company, job, startDate, endDate, ID));
     }
+    public void clearProfessionalExperience(){this.professionalExperienceList.clear();}
+
 
     public String toJsonString(){
         return new Gson().toJson(this).toString();
     }
 
-
-    /**
-     * PROFESSIONAL EXPERIENCE CLASS
-     */
-    public class ProfessionalExperience {
-        public String company;
-        public String job;
-        public String experienceYears;
-
-        public ProfessionalExperience(String company, String job, String experienceYears){
-            this.company = company;
-            this.job = job;
-            this.experienceYears = experienceYears;
-        }
-
-        public String toJsonInString(){
-            return new Gson().toJson(this).toString();
-        }
-    }
 }

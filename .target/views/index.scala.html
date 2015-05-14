@@ -22,24 +22,26 @@
         <div class="row">
 
             <div class="col-md-4">
-                <a href="#">
+                <a href="@routes.OrientationController.blank()" accesskey="O">
+                        <h1 class="size20 century_gothic brown_adecco">ORIENTACIÓN</h1>
+                        <img ALT="Orientación." src="@routes.Assets.at("images/index/ic_orientation.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_orientation_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_orientation.png")';">
+
+                    </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="@routes.OrientationController.getTools()" accesskey="G">
+                    <h1 class="size20 century_gothic brown_adecco">GENERAR DOCUMENTOS</h1>
+                    <img ALT="Genera tus documentos." src="@routes.Assets.at("images/index/ic_cv.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_cv_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_cv.png")';">
+                </a>
+            </div>
+
+
+            <div class="col-md-4">
+                <a href="@routes.PlanningController.plan()" accesskey="P" >
                     <h1 class="size20 century_gothic brown_adecco">PLANIFICACIÓN</h1>
-                    <img src="@routes.Assets.at("images/index/ic_planificacion.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_planificacion_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_planificacion.png")';">
-                </a>
-            </div>
+                    <img ALT="Planificación." src="@routes.Assets.at("images/index/ic_planificacion.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_planificacion_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_planificacion.png")';">
 
-            <div class="col-md-4">
-                <a href="@routes.PDFController.fakeCV("t1")">
-                    <h1 class="size20 century_gothic brown_adecco">GENERA TUS DOCUMENTOS</h1>
-                    <img src="@routes.Assets.at("images/index/ic_cv.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_cv_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_cv.png")';">
-                </a>
-            </div>
-
-
-            <div class="col-md-4">
-                <a href="@routes.OrientationController.blank()">
-                    <h1 class="size20 century_gothic brown_adecco">ORIENTACIÓN</h1>
-                    <img src="@routes.Assets.at("images/index/ic_orientation.png")" onmouseover="this.src='@routes.Assets.at("images/index/ic_orientation_dark.png")';" onmouseout="this.src='@routes.Assets.at("images/index/ic_orientation.png")';">
                 </a>
             </div>
 

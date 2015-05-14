@@ -1,7 +1,11 @@
-@(error_msg:String)
+@(user: models.entities.User)
 @main(){
-<div class="container">
-<section>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/hide_experience.js")"></script>
+ <script type='text/javascript' src="@routes.Assets.at("javascripts/hide_studies_reload.js")"></script>
+<script type='text/javascript' src="@routes.Assets.at("javascripts/concatenar_date.js")"></script>
++<script type='text/javascript' src="@routes.Assets.at("javascripts/add-new-bbdd.js")"></script>
+
+<article class="container">
     <div class="row">
         <h2 class="red_adecco century_gothic">Conoce tu situación actual</h2>
         <div class="brown_adecco arial size14">
@@ -11,197 +15,608 @@
             <p>Actividad: Debes seleccionar cual es tu nivel de estudios y completar tu experiencia profesional si la tuvieras.</p>
         </div>
     </div><br>
-</section>
+</article>
 
-<section>
-    <div class="row orientation-points back checkbox-group">
+<section class="container back" style="margin: auto;">
+    <div class="orientation-points">
         <p class="century_gothic gray_adecco size22 bold" style="margin-left:1em;">¿Cuál es tu nivel de estudios?</p> <br>
-        <div class="col-md-6 col-md-offset-1  col-xs-offset-1 col-sm-offset-1 col-sm-6 col-xs-6">
-            @if(error_msg != ""){
-            <label class="size20 bold red_adecco">@error_msg</label>
-            }
-        </div>
-
+        <span id="validate_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu nivel de estudios.</span>
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check1" name="studies" onclick="hide_studies(this)" >
+                    @if(user != null && user.currentSituation.educationLevelList.contains("No tengo estudios")){
+                    <input type="checkbox" id="check1" name="study" onclick="hide_studies(this)" value="No tengo estudios" checked>
+                    }else{
+                    <input type="checkbox" id="check1" name="study" onclick="hide_studies(this)" value="No tengo estudios">
+                    }
                     <label for="check1" class="size14 gray_adecco arial steps_height">No tengo estudios</label>
                 </p>
             </div>
-
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check2" name="studies" class="study">
-                    <label for="check2" class="size14 gray_adecco arial steps_height">Grado </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("Grado")){
+                    <input type="checkbox" id="check2" name="study" class="study" value="Grado" checked>
+                    }else{
+                    <input type="checkbox" id="check2" name="study" class="study" value="Grado">
+                    }
+                    <label for="check2" class="size14 gray_adecco arial steps_height">Grado</label>
                 </p>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check3" name="studies" class="study">
-                    <label for="check3" class="size14 gray_adecco arial steps_height">PCPI / Garantía social </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("PCPI / Garantía social")){
+                    <input type="checkbox" id="check3" name="study" class="study" value="PCPI / Garantía social" checked>
+                    }else{
+                    <input type="checkbox" id="check3" name="study" class="study" value="PCPI / Garantía social">
+                    }
+                    <label for="check3" class="size14 gray_adecco arial steps_height">PCPI / Garantía social</label>
                 </p>
             </div>
-
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check4" name="studies" class="study">
-                    <label for="check4" class="size14 gray_adecco arial steps_height">Licenciado / Arquitecto / Ingeniero </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("Licenciado / Arquitecto / Ingeniero")){
+                    <input type="checkbox" id="check4" name="study" class="study" value="Licenciado / Arquitecto / Ingeniero" checked>
+                    }else{
+                    <input type="checkbox" id="check4" name="study" class="study" value="Licenciado / Arquitecto / Ingeniero">
+                    }
+                    <label for="check4" class="size14 gray_adecco arial steps_height">Licenciado / Arquitecto / Ingeniero</label>
                 </p>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check5" name="studies" class="study">
-                    <label for="check5" class="size14 gray_adecco arial steps_height">Certificado de escolaridad / Graduado en ESO </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("Certificado de escolaridad / Graduado en ESO")){
+                    <input type="checkbox" id="check5" name="study" class="study" value="Certificado de escolaridad / Graduado en ESO" checked>
+                    }else{
+                    <input type="checkbox" id="check5" name="study" class="study" value="Certificado de escolaridad / Graduado en ESO">
+                    }
+                    <label for="check5" class="size14 gray_adecco arial steps_height">Certificado de escolaridad / Graduado en ESO</label>
                 </p>
             </div>
-
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check6" name="studies" class="study">
-                    <label for="check6" class="size14 gray_adecco arial steps_height">Título propio / Carrera no homolagada </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("Título propio / Carrera no homolagada")){
+                    <input type="checkbox" id="check6" name="study" class="study" value="Título propio / Carrera no homolagada" checked>
+                    }else{
+                    <input type="checkbox" id="check6" name="study" class="study" value="Título propio / Carrera no homolagada">
+                    }
+                    <label for="check6" class="size14 gray_adecco arial steps_height">Título propio / Carrera no homolagada</label>
                 </p>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check7" name="studies" class="study">
-                    <label for="check7" class="size14 gray_adecco arial steps_height">BUP / Bachillerato / COU </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("BUP / Bachillerato / COU")){
+                    <input type="checkbox" id="check7" name="study" class="study" value="BUP / Bachillerato / COU" checked>
+                    }else{
+                    <input type="checkbox" id="check7" name="study" class="study" value="BUP / Bachillerato / COU">
+                    }
+                    <label for="check7" class="size14 gray_adecco arial steps_height">BUP / Bachillerato / COU</label>
                 </p>
             </div>
-
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check8" name="studies" class="study">
-                    <label for="check8" class="size14 gray_adecco arial steps_height">Máster / Título propio de postgrado </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("Máster / Título propio de postgrado")){
+                    <input type="checkbox" id="check8" name="study" class="study" value="Máster / Título propio de postgrado" checked>
+                    }else{
+                    <input type="checkbox" id="check8" name="study" class="study" value="Máster / Título propio de postgrado">
+                    }
+                    <label for="check8" class="size14 gray_adecco arial steps_height">Máster / Título propio de postgrado</label>
                 </p>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check9" name="studies" class="study">
-                    <label for="check9" class="size14 gray_adecco arial steps_height">FP 1 / Técnico medio </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("FP 1 / Técnico medio")){
+                    <input type="checkbox" id="check9" name="study" class="study" value="FP 1 / Técnico medio" checked>
+                    }else{
+                    <input type="checkbox" id="check9" name="study" class="study" value="FP 1 / Técnico medio">
+                    }
+                    <label for="check9" class="size14 gray_adecco arial steps_height">FP 1 / Técnico medio</label>
                 </p>
             </div>
-
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check10" name="studies" class="study">
-                    <label for="check10" class="size14 gray_adecco arial steps_height">Doctorado </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("Doctorado")){
+                    <input type="checkbox" id="check10" name="study" class="study" value="Doctorado" checked>
+                    }else{
+                    <input type="checkbox" id="check10" name="study" class="study" value="Doctorado">
+                    }
+                    <label for="check10" class="size14 gray_adecco arial steps_height">Doctorado</label>
                 </p>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check11" name="studies" class="study">
-                    <label for="check11" class="size14 gray_adecco arial steps_height">FP 2 / Técnico superior </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("FP 2 / Técnico superior")){
+                    <input type="checkbox" id="check11" name="study" class="study" value="FP 2 / Técnico superior" checked>
+                    }else{
+                    <input type="checkbox" id="check11" name="study" class="study" value="FP 2 / Técnico superior">
+                    }
+                    <label for="check11" class="size14 gray_adecco arial steps_height">FP 2 / Técnico superior</label>
                 </p>
             </div>
-
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check12" name="studies" class="study">
+                    @if(user != null && user.currentSituation.educationLevelList.contains("Oposiciones")){
+                    <input type="checkbox" id="check12" name="study" class="study" value="Oposiciones" checked>
+                    }else{
+                    <input type="checkbox" id="check12" name="study" class="study" value="Oposiciones">
+                    }
                     <label for="check12" class="size14 gray_adecco arial steps_height">Oposiciones</label>
                 </p>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
                 <p>
-                    <input type="checkbox" id="check13" name="studies" class="study">
-                    <label for="check13" class="size14 gray_adecco arial steps_height">Diplomado / Arquitecto técnico / Ingeniero técnico </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("Diplomado / Arquitecto técnico / Ingeniero técnico")){
+                    <input type="checkbox" id="check13" name="study" class="study" value="Diplomado / Arquitecto técnico / Ingeniero técnico" checked>
+                    }else{
+                    <input type="checkbox" id="check13" name="study" class="study" value="Diplomado / Arquitecto técnico / Ingeniero técnico">
+                    }
+                    <label for="check13" class="size14 gray_adecco arial steps_height">Diplomado / Arquitecto técnico / Ingeniero técnico</label>
                 </p>
             </div>
-
             <div class="col-md-5">
                 <p>
-                    <input type="checkbox" id="check14" name="studies" class="study">
-                    <label for="check14" class="size14 gray_adecco arial steps_height">Otros Cursos </label>
+                    @if(user != null && user.currentSituation.educationLevelList.contains("Otros Cursos")){
+                    <input type="checkbox" id="check14" name="study" class="study" value="Otros Cursos" checked>
+                    }else{
+                    <input type="checkbox" id="check14" name="study" class="study" value="Otros Cursos">
+                    }
+                    <label for="check14" class="size14 gray_adecco arial steps_height">Otros Cursos</label>
                 </p>
             </div>
         </div>
-        <div class="row orientation-points">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-                <p class="century_gothic gray_adecco size22 bold advices_height" style="margin-left:1em;">¿Cuál es tu experiencia profesional?</p> <br>
-            </div>
-        </div>
-
-        <div class="panel-group new-input-container center" style="margin:auto;">
-        <form  class="form-horizontal" autocomplete="on" method="post" action="#" style="padding-left:2em; padding-right:2em;">
-        <div id="div_1" style="margin-bottom:5em;">
-            <div class="form-group form-inline">
-                <div class="col-lg-6">
-                    <div class="input-mic-container">
-                        <input type="text" class="form-control" id="company1" placeholder="Empresa" >
-                        <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="input-mic-container">
-                        <input type="text" class="form-control" id="job1" placeholder="Puesto">
-                        <img  class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
-                    </div>
-                </div>
-            </div>
-            <div class="form-group form-inline">
-                <div class="col-lg-6">
-                    <select style="width:100%; margin-left:0;" class="form-control" name="select_experience" id="experience1">
-                            <option value="">Años de experiencia</option>
-                            <option value="Practicas"> Prácticas</option>
-                            <option value="Menos de un año"> Menos de un año</option>
-                            <option value="1-3 años"> 1-3 años</option>
-                            <option value="3-5 años"> 3-5 años</option>
-                            <option value="5-10 años"> 5-10 años</option>
-                            <option value="+10 años"> +10 años</option>
-                    </select>
-                </div>
-           
-            
-                <div class="col-lg-2 col-lg-offset-4">
-                    <img class="bt_plus" id="1" src="@routes.Assets.at("/images/orientation/ic_newinterview.png")">
-                </div>
-            </div>
-
-             </div>
-                <!-- <button type="submit" class="boton">Save</button>   -->
-             </form>
-        </div>
-
-        
     </div>
+    <div class="orientation-points">
+        <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <p class="century_gothic gray_adecco size22 bold advices_height" style="margin-left:1em;">¿Cuál es tu experiencia profesional?</p> <br>
+        </div>
+        </div>
+        <div class="font1_g"  style="margin-left:3em;">Puedes rellenar los siguientes campos con voz. <a class="font2_g" href="#accesibility_pop_up2">¿<ins>Cómo funciona</ins>?</a></div><br>
 
+
+
+        @if(user != null){
+        @if(user.currentSituation.professionalExperienceList.size() != 0){
+        @for(professional <- user.currentSituation.professionalExperienceList) {
+
+        @if(professional.company == "No tengo experiencia"){
+        <div class=" orientation-points hidden_check_exp" id="check_exp_cb" style="margin-left:0em; margin-bottom:1em;">
+            <div class="row">
+            <div class="col-md-6 col-md-offset-1">
+                <input type="checkbox" id="check_exp_bbdda" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHidden(this.checked)" checked >
+                <label for="check_exp_bbdda" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+            </div>
+            </div>
+
+        </div>
+        }else{
+        <div class="main-div-sections">
+            <div class="panel-group new-input-container center" style="margin-auto;">
+                <form id="experience_group" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 0em;">
+                    <div class="form-group form-inline">
+                        <div class="col-md-5 col-md-offset-1">
+                            <input style="width: 100%; margin-left: 0;"  type="text"  class="" name="company" placeholder="Empresa" value="@professional.company" disabled>
+                        </div>
+                        <div class="col-md-5 col-md-offset-1">
+                            <input style="width: 100%; margin-left: 0;"  type="text" class=""  name="job" placeholder="Puesto" value="@professional.job" disabled >
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+
+                        <div class="col-md-5 col-md-offset-1">
+                            <input style="width: 100%; margin-left: 0;" type="text" class=""  name="startDate"  value="@professional.startDate" disabled>
+                        </div>
+                        <div class="col-md-5 col-md-offset-1">
+                            <input style="width: 100%; margin-left: 0;" type="text" class=""  name="endDate"  value="@professional.endDate" disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1 right">
+                            <div class="form-group add-other-btn-div button-cursor-pointer delete-experience" id="delete-experience-@professional.ID">
+                                <input style="width: 100%; margin-left: 0;" type="hidden" name="ID" value="@professional.ID">
+                                <img  class="add-new" src="@routes.Assets.at("images/orientation/ic_trash2.png")">
+                            </div>
+                        </div>
+                        <div class="col-md-11">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            }
+            }
+            <div class="main-div-sections">
+                <div class="panel-group new-input-container center" style="margin-auto;">
+                    <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 0em;">
+                        <div class="form-group form-inline" id="job_experience_group_1">
+                            <div class="exp col-md-5 col-md-offset-1">
+                                <div class="input-mic-container">
+                                    <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                </div>
+                            </div>
+                            <div class=" exp col-md-5 col-md-offset-1">
+                                <div class="input-mic-container">
+                                    <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="job_experience_group_5">
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-1">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="mydivinicio" class="estilo_date focussInicio">
+                                        <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+                                        <span class="center" style="color:#ccc"> /</span>
+                                        <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 col-md-offset-1">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="mydivfin" class="estilo_date focussFin">
+                                        <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+                                        <span class="center" style="color:#ccc"> /</span>
+                                        <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row" hidden="hidden">
+                                <div class=" exp col-md-5 col-md-offset-1">
+                                    <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                                </div>
+                                <div class=" exp col-md-5 col-md-offset-1">
+                                    <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate" >
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-1 right">
+                                    <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                        <img class="add-new-bbdd" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-11">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            }else{
+            <div class="row">             <div class="col-md-12 col-sm-12 col-xs-12">
+                <span id="validate_exp_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu experiencia profesional.</span><br>
+            </div>
+            </div>
+            <div class="orientation-points" id="check_exp_cb" style="margin-left:0em; margin-bottom:1em;">
+                <div class="row">
+                <div class="col-md-6 col-md-offset-1">
+                    <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenLog(this.checked)">
+                    <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+                </div>
+                <div class="col-md-5">
+                </div>
+                </div>
+
+            </div>
+            <div class="main-div-sections">
+                <div class="panel-group new-input-container center" style="margin-auto;">
+                    <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 0em;">
+                        <div class="form-group form-inline" id="job_experience_group_1">
+                            <div class="exp col-md-5 col-md-offset-1">
+                                <div class="input-mic-container">
+                                    <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                </div>
+                            </div>
+                            <div class=" exp col-md-5 col-md-offset-1">
+                                <div class="input-mic-container">
+                                    <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="job_experience_group_5">
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-1">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="mydivinicio" class="estilo_date focussInicio">
+                                        <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+                                        <span class="center" style="color:#ccc"> /</span>
+                                        <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 col-md-offset-1">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="mydivfin" class="estilo_date focussFin">
+                                        <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+                                        <span class="center" style="color:#ccc"> /</span>
+                                        <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" hidden="hidden">
+                                <div class=" exp col-md-5 col-md-offset-1">
+                                    <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;"  id="startDate">
+                                </div>
+                                <div class=" exp col-md-5 col-md-offset-1">
+                                    <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-1 right">
+                                    <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                        <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            }
+            }else{
+            <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <span id="validate_exp_cb" hidden class="size14 arial red_adecco" style="margin-left:1.5em;">*Por favor selecciona tu experiencia profesional.</span><br>
+            </div>
+            </div>
+            <div class="orientation-points" id="check_exp_cb" style="margin-left:0em; margin-bottom:1em;">
+                <div class="row">
+                <div class="col-md-6 col-md-offset-1">
+                    <input  type="checkbox" id="check_exp" name="check_experience"  value="No tengo experiencia" onclick="ExperienceHiddenNoLog(this.checked)">
+                    <label  for="check_exp" class="size14 gray_adecco arial steps_height">No tengo experiencia</label>
+                </div>
+                <div class="col-md-5">
+                </div>
+                </div>
+
+            </div>
+            <div class="main-div-sections" id="experience_group_new_no_log">
+                <div class="panel-group new-input-container center" style="margin-auto;">
+                    <form id="experience_group_new" class="form-horizontal" autocomplete="on" method="post" style="padding-left: 0em; padding-right: 0em;">
+                        <div class="form-group form-inline" id="job_experience_group_1">
+                            <div class="exp col-md-5 col-md-offset-1">
+                                <div class="input-mic-container">
+                                    <input type="text"  class="form-control disExp" name="company" placeholder="Empresa" >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                </div>
+                            </div>
+                            <div class=" exp col-md-5 col-md-offset-1">
+                                <div class="input-mic-container">
+                                    <input type="text" class="form-control disExp"  name="job" placeholder="Puesto" >
+                                    <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group form-inline" id="job_experience_group_5">
+
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-1">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Inicio:</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="mydivinicio" class="estilo_date focussInicio">
+                                        <input id="mes_inicio" type="text" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+                                        <span class="center" style="color:#ccc"> /</span>
+                                        <input id="año_inicio" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 col-md-offset-1">
+                                    <span class="size14 gray_adecco arial steps_height" style="margin-left:-2em;">Fecha Fin:</span>
+                                </div>
+                                <div class="col-md-3">
+                                    <div id="mydivfin" class="estilo_date focussFin">
+                                        <input id="mes_fin" type="rext" pattern="[0-9]" maxlength="2" class="center sombra" placeholder="Mes" style="width:57px; border:none;">
+                                        <span class="center" style="color:#ccc"> /</span>
+                                        <input id="año_fin" type="text" class="center sombra" pattern="[0-9]" maxlength="4" placeholder="Año" style="width:86px; border:none;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" hidden="hidden">
+                                <div class=" exp col-md-5 col-md-offset-1">
+                                    <input placeholder="Fecha Inicio" name="startDate" class="form-control" type="text" style="width: 100%;" id="startDate">
+                                </div>
+                                <div class=" exp col-md-5 col-md-offset-1">
+                                    <input placeholder="Fecha Fin" name="endDate" class="form-control" type="text" style="width: 100%;" id="endDate">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-1 right">
+                                    <div class="form-group add-other-btn-div button-cursor-pointer" id="job_experience_group_3">
+                                        <img class="add-new" src="@routes.Assets.at("images/orientation/ic_newinterview.png")">
+                                    </div>
+
+
+                                    <div class="col-md-11">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            }
+</section>
+
+<section class="container">
     <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 center">
-            <button class="button-finish-1" onclick="location.href= '@routes.OrientationController.submitInterestIdentification()';">FINALIZAR</button>
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 center">
+            <button class="button-return-1" onclick="location.href='/orientation#point1';">VOLVER</button>
+            <button class="button-finish-1 concatenar">FINALIZAR</button>
         </div>
     </div>
 </section>
+
+<!-- POP UP WINDOW -->
+<div id="accesibility_pop_up2" class="mask_pop_up">
+    <div class="box_pop_up resize">
+        <a href="#close" title="Cerrar" class="close">X</a>
+
+        <h2 text-align="center">¿Cómo funciona?</h2>
+        <h3 text-align="center">Para habilitar el uso del micrófono es necesario que sigas los siguientes pasos:</h3><br>
+        <h4>1. Haz click en el micrófono ->  <img class="img-btn" src="@routes.Assets.at("/images/speech/static-mic.png")"></h4><br>
+        <h4>2. Haz click en permitir para habilitar el uso del micrófono -> <button type="submit">Permitir</button></h4><br>
+        <h4 class="col-md-offset-3">Ya está listo para usarse</h4>
+
+    </div>
 </div>
 
 
 <script type="text/javascript">
-      window.onload = function() {
-        loadRecognition();
-        ValidarCheck();
-        
-    };
-</script>
+       window.onload = function() {
+         deleteExperience();
+         loadRecognition();
+         disableOtherChecks();
+         unir();
+         addNewBbdd();
+     };
+ </script>
+<script>
+
+     function sendForm(){
+
+     var HtmlRedirect = "";
+     var checkboxArray = [];
+     var studyChecked = 0;
+
+     //Comprobar y guardar los checkbox en un array checkboxArray
+
+     if ($('input[name="study"]').is(':checked')) {
+     studyChecked++;
+     $("#validate_cb").hide();
+         //Checkboxes
+          checkboxArray = [];
+         var counter = 0;
+         $('input[name="study"]').each(function () {
+             if(this.checked){
+                 checkboxArray[counter] = $(this).val();
+                 counter++;
+             }
+         });
+         HtmlRedirect = "/orientation";
+     }else{
+         HtmlRedirect = "/orientation/currentsituation";
+     }
+
+
+     //Comprobar y guardar los campos de experiencia en un array experienceArray
+         var experienceArray = [];
+         var counter = 0;
+         var URLroutes = "";
+
+     if( $(' #experience_group_new input[name="company"]').val() != "" && $('#experience_group_new input[name="job"]').val() != "" && $('#experience_group_new input[name="startDate"]').val() != "" && $(' #experience_group_new input[name="endDate"]').val() != ""){
+         $("#validate_exp_cb").hide();
+         $('.main-div-sections #experience_group_new').each(function(){
+             var auxExperience = [];
+             $('.exp').find('input').each(function(){
+                 auxExperience[counter] = $(this).val();
+                 counter++;
+             });
+
+             auxExperience[counter] = $(this).find('select option:selected').text();
+             counter = 0;
+             experienceArray.push(auxExperience);
+         });
+           HtmlRedirect = "/orientation";
+           URLroutes = "/orientation/currentsituation";
+
+ //Comprobar el checkbox de no tengo experiencia y mandar a base de datos
+     }else if($('input[name="check_experience"]').is(':checked')){
+         $("#validate_exp_cb").hide();
+         var experienceArray = [];
+         var counter = 0;
+         $('input[name="check_experience"]').each(function(){
+         if(this.checked){
+         experienceArray = $(this).val();
+         counter++;
+         }
+         });
+         HtmlRedirect = "/orientation";
+         URLroutes = "/orientation/currentsituation/Check";
+
+
+
+
+
+     }else{
+          HtmlRedirect = "/orientation/currentsituation";
+          URLroutes = "";
+     }
+
+ var result = checkboxArray.concat(JSON.stringify(experienceArray));
+
+ //Comprobar con el alert si se esta pasando correctamente el checkboxArray
+ //alert("DATO" +JSON.stringify(experienceArray));
+
+
+//alert("DATO EXPERIENCE:"+JSON.stringify(result));
+
+ if(studyChecked == 0){
+     $('#validate_cb').show();
+     window.scrollTo(0,300);
+ }
+  else if( URLroutes == ""){
+         $('#validate_exp_cb').show();
+         window.scrollTo(0,1000);
+     }else{
+
+ //Pasar a la base de datos
+         $.ajax({
+         type: 'post',
+         data: JSON.stringify(result), //variable que vamos a pasar a la base de datos
+         url: URLroutes, //direccion del routes al controlador
+         contentType: 'application/json'
+     }).done(function(result) {
+         console.log(result); //Mostrar en la consola el resultado que se ha guardado en la base de datos
+         window.location.assign(HtmlRedirect); //Redireccionar
+     });
+     }
+     }
+ </script>
+<script>
+      $('input[name="check_experience"]').each(function(){
+   if(this.checked){
+          document.getElementById("experience_group_new").hidden = true;
+          }
+          else{
+          document.getElementById("experience_group_new").hidden = false;
+          }
+  });
+
+ </script>
 }
-
-
-
-

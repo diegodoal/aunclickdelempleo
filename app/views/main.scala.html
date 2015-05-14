@@ -16,8 +16,6 @@
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/disableJob.js")"></script>
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/disableStudies.js")"></script>
 
-
-
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/script4.js")"></script>
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/script7.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/photo.js")"></script>
@@ -26,6 +24,7 @@
 
     <script type='text/javascript' src="@routes.Assets.at("javascripts/max_checkbox_selection.js")"></script>
     <script type='text/javascript' src="@routes.Assets.at("javascripts/add-new.js")"></script>
+    <script type='text/javascript' src="@routes.Assets.at("javascripts/delete_experience.js")"></script>
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/hide_studies.js")"></script>
 
 	<script type='text/javascript' src="@routes.Assets.at("javascripts/validar_check.js")"></script>
@@ -58,7 +57,7 @@
                 @if(session.get("email") == null){
                     <li class="button-nav-login"><a href="@routes.LoginController.blank()" accesskey="I"  tabindex="6"><button type="button" class="btn btn-default navbar-btn">ENTRAR</button></a></li>
                 }else{
-                    <li class="button-nav-login"><a href="@routes.Application.index()"><button type="button" class="btn btn-default navbar-btn"><b>@session.get("name").toUpperCase()</b></button></a></li>
+                    <li class="button-nav-login"><a href="@routes.ProfileController.blank()"><button type="button" class="btn btn-default navbar-btn"><b>@session.get("name").toUpperCase()</b></button></a></li>
                     <li class="button-nav-login"><a href="@routes.LoginController.logout()" accesskey="S"  tabindex="7"><button type="button" class="btn btn-default navbar-btn">SALIR</button></a></li>
                 }
             </ul>
@@ -78,17 +77,28 @@
             <a href="#accesibility_pop_up" onClick="zoom_font('reduce')">Reducir tamaño</a><br>
             <a href="#accesibility_pop_up" onClick="zoom_font('reset')">Reestablecer tamaño</a><br>
 
-            <h3>Colores de texto y fondo</h3>
+            <<h3><Co></Co></h3>lores de texto y fondo</h3>
             <h3>...</h3>
         </div>
     </div>
 
     <!-- FOOTER -->
-	<footer class="container-fluid">
-		<div class="container"><br>
-			<p>Derechos reservados @@2015</p>
-		</div>
-	</footer>
-	
+
+    <footer class="container-fluid" style="padding-bottom:1em;">
+        <div class="row">
+            <div class="row-same-height row-full-height center">
+                <div class="col-md-4 col-md-height col-full-height center">
+                    <a class="" href="http://www.fundacionadecco.es/Home/Home.aspx" target="_blank"><img ALT="Brand" src="@routes.Assets.at("images/footer/ic_logotipofundacion.png")"></a>
+                </div>
+                <div class="col-md-4 col-md-height col-full-height center" style="padding-top: 1.5em;">
+                    <span style="color: white;"><a href="#" style="color: white;">&#xA0;&#xA0;&#xA0;&#xA0;Aviso Legal</a>&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;  |&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;&#xA0;  <a href="#" style="color: white;">Política de Privacidad</a></span>
+                </div>
+                <div class="col-md-4 col-md-height col-full-height center hidden-xs" style="padding-top:1em;">
+                    <a class="" href="http://ofertas.adecco.es/candidato/ofertas/Ofertas.aspx?Accesible=false" target="_blank"><img ALT="Adecco" src="@routes.Assets.at("images/footer/ic_logoadecco.png")"></a>
+
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

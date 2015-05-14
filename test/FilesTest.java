@@ -1,5 +1,6 @@
 import org.junit.Test;
 import utils.Files;
+import utils.Utils;
 
 import java.io.File;
 import java.util.Date;
@@ -23,5 +24,4 @@ public class FilesTest {
         //assertEquals(Files.folderWhereSaveNewFile("assets"), "assets/"+Files.newFolderName(new Date()));
 
     }
-
 }

@@ -19,6 +19,21 @@ public final class Constants {
     public final static float T2_FONT_SIZE_TEXT = 10;
     public final static String T2_FONT_STYLE = "Arial";
 
+    //Template 3
+    public final static BaseColor COLOR_BLUE_T3 = new BaseColor(0, 174, 239);
+    public final static BaseColor COLOR_BLACK_T3 = new BaseColor(40, 40, 41);
+    public final static float SIZE14_T3 = 14;
+    public final static float SIZE12_T3 = 12;
+
+    //Template 4
+    public final static BaseColor COLOR_BLACK_T4 = new BaseColor(0, 0, 0);
+    public final static BaseColor COLOR_GRAY_T4 = new BaseColor(40, 40, 41);
+    public final static String FONT_ARIAL_T4= "Arial";
+    public final static String BOLD_T4= "BOLD";
+    public final static float SIZE14_T4 = 14;
+    public final static float SIZE12_T4 = 12;
+
+
 
     //USER COLLECTION FIELDS
     public final static String USER_NAME = "name";
@@ -27,6 +42,28 @@ public final class Constants {
     public final static String USER_PASSWORD = "password";
     public final static String USER_EMAIL_VERIFICATION_KEY = "emailVerificationKey";
     public final static String USER_CONNECTION_TIMESTAMP = "connectionTimestamp";
+    public final static String USER_REGISTRATION_DATE = "registrationDate";
+
+    public final static String USER_RESTORE_PASSWORD_TOKEN = "restorePasswordToken";
+    public final static String USER_RESTORE_PASSWORD_TIMESTAMP = "restorePasswordTimestamp";
+
+    public final static String USER_BIRTH_DATE = "birthDate";
+    public final static String USER_RESIDENCE_CITY = "residenceCity";
+    public final static String USER_RESIDENCE_ADDRESS = "residenceAddress";
+    public final static String USER_RESIDENCE_NUMBER = "residenceNumber";
+    public final static String USER_RESIDENCE_ZIP_CODE = "residenceZipCode";
+    public final static String USER_PHONE_NUMBER = "phoneNumber";
+
+    public final static String USER_STUDY_TITLE = "studyTitle";
+    public final static String USER_STUDY_LOCATION = "studyLocation";
+    public final static String USER_EDUCATION_LEVEL = "educationLevel";
+
+    public final static String USER_DRIVING_LICENSE = "drivingLicense";
+    public final static String USER_CERTIFICATE_OF_DISABILITY = "certificateOfDisability";
+
+    public final static String USER_COURSES = "courses";
+    public final static String USER_LANGUAGES = "languages";
+    public final static String USER_SOFTWARE = "software";
 
     public final static String USER_ORIENTATION_STEPS = "orientationSteps";
     public final static String USER_ORIENTATION_STEPS_CURRENT_SITUATION = "orientationSteps.currentSituation";
@@ -56,10 +93,11 @@ public final class Constants {
         public final static String PROFESSIONAL_EXPERIENCE_COMPANY = "company";
         public final static String PROFESSIONAL_EXPERIENCE_JOB = "job";
         public final static String PROFESSIONAL_EXPERIENCE_EXPERIENCE_YEARS = "experienceYears";
-
+        
     public final static String USER_SKILLS_LIST = "skills";
         public final static String SKILL_NAME = "name";
         public final static String SKILL_LEVEL = "level";
+        
     public final static String USER_INTERESTS_LIST = "interests";
     public final static String USER_PERSONAL_CHARACTERISTICS_LIST = "personalCharacteristics";
 
