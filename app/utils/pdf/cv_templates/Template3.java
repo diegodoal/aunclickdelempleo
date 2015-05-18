@@ -54,7 +54,7 @@ public class Template3 {
             addLanguages(user.languages);
         }
         //SKILLS
-        //addSkills(user, personalCharacteristics, skills);
+        addSkills(user, user.personalCharacteristics, user.skill);
         //CLOSE DOCUMENT
         document.close();
     }
