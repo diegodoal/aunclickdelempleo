@@ -217,9 +217,9 @@ public class GenerateDocumentsController {
         }
         String route = Files.newPathForNewFile("public/pdf", "pdf");
 
-        Template1 template = new Template1();
+        Template2 template = new Template2();
         try {
-            template.createPdf(route, user, user.personalCharacteristics, user.skill);
+            template.createPdf(route, user);
             ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
