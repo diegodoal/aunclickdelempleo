@@ -42,7 +42,7 @@ public class AppController {
     public static String photoAndName(User user){
         if(user.photo.id != null && !user.photo.id.equals("")) {
             S3File s3File = new S3File();
-            return ("{\"name\":\""+user.name+"\",\"photo\":\""+s3File.getUserUrl(user.photo.id)+"\"}");
+            return ("{\"name\":\""+user.name +" "+ user.surnames+"\",\"photo\":\""+s3File.getUserUrl(user.photo.id)+"\"}");
         }
         return ("{\"name\":\""+user.name+"\",\"photo\":"+null+"}");
 
