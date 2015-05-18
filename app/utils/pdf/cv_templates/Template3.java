@@ -386,7 +386,7 @@ public class Template3 {
         }
     }
 
-    /*public List<String> selectSkills(List<Skill> skills){
+    public List<String> selectSkills(List<Skill> skills){
         List<String> result = new ArrayList<>();
 
         for(int i=0; i<skills.size(); i++){
@@ -493,5 +493,5 @@ public class Template3 {
             document.add(table);
 
         }
-    }*/
+    }
 }
