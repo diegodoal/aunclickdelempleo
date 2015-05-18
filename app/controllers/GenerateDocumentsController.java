@@ -189,7 +189,7 @@ public class GenerateDocumentsController {
     }
 
     // Modificar el Template que sea, hay que crearlos
-    public static Result previewCV1(){
+    public static Result previewCV1()throws DocumentException, IOException{
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user == null){
@@ -199,7 +199,7 @@ public class GenerateDocumentsController {
 
         Template1 template = new Template1();
         try {
-            template.createPdf(route, user);
+            template.createPdf(route, user, user.personalCharacteristics, user.skill);
             ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -209,7 +209,7 @@ public class GenerateDocumentsController {
         return redirect(routes.Assets.at(route.substring(7)));
     }
 
-    public static Result previewCV2(){
+    public static Result previewCV2()throws DocumentException, IOException{
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user == null){
@@ -219,7 +219,7 @@ public class GenerateDocumentsController {
 
         Template1 template = new Template1();
         try {
-            template.createPdf(route, user);
+            template.createPdf(route, user, user.personalCharacteristics, user.skill);
             ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

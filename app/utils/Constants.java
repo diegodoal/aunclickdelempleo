@@ -12,6 +12,14 @@ public final class Constants {
     public final static BaseColor BASE_COLOR_CUSTOM_BLUE_1 = new BaseColor(67, 137, 215);
     public final static String FONT_TEMPLATE_1 = "Calibri";
 
+    public final static BaseColor COLOR_BLACK_T1 = new BaseColor(0, 0, 0);
+    public final static BaseColor COLOR_GRAY_T1 = new BaseColor(112,111,111);
+    public final static String FONT_CAVIAR_T1 = "Caviar Dream";
+    public final static float SIZE18_T1 = 18;
+    public final static String FONT_CALIBRI_T1 = "Calibri";
+    public final static float SIZE12_T1 = 12;
+    public final static float SIZE14_T1 = 14;
+
     //Template 2
     public final static BaseColor T2_BASE_COLOR_CUSTOM_DARK_GREY = new BaseColor(60, 60, 59);
     public final static float T2_FONT_SIZE_TITLE_1 = 20;
