@@ -54,7 +54,7 @@ public class Template3 {
             addLanguages(user.languages);
         }
         //SKILLS
-        addSkills(user, personalCharacteristics, skills);
+        //addSkills(user, personalCharacteristics, skills);
         //CLOSE DOCUMENT
         document.close();
     }
@@ -384,7 +384,7 @@ public class Template3 {
         }
     }
 
-    public List<String> selectSkills(List<Skill> skills){
+    /*public List<String> selectSkills(List<Skill> skills){
         List<String> result = new ArrayList<>();
 
         for(int i=0; i<skills.size(); i++){
@@ -491,5 +491,5 @@ public class Template3 {
             document.add(table);
 
         }
-    }
+    }*/
 }
