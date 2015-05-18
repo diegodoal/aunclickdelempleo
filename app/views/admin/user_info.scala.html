@@ -1,7 +1,8 @@
 @(user : models.entities.User)
 
 @header("users"){
-<h3><b>Información Personal</b></h3>
+
+<h3><b>Información Personal</b>  <a href="javascript: $('#updatePersonalInfoModal').modal('show');">Editar</a></h3>
     <p>@user.name @user.surnames</p>
     <p>@user.email</p>
 
@@ -23,31 +24,31 @@
         }
     </ul>
 
-    <h3><b>Habilidades</b></h3>
+    <h3><b>Habilidades</b>  <a href="/admin/users/skills/@user.email/@user.id">Editar</a></h3>
     <ul>
         @for(skill <- user.skill) {
         <li>@skill.name | <b>Nivel:</b> @skill.level</li>
         }
     </ul>
 
-    <h3><b>Intereses</b></h3>
+    <h3><b>Intereses</b>  <a href="/admin/users/interests/@user.email/@user.id">Editar</a></h3>
     <ul>
         @for(interest <- user.interests) {
         <li>@interest</li>
         }
     </ul>
 
-    <h3><b>Características personales</b></h3>
+    <h3><b>Características personales</b>  <a href="/admin/users/personal/@user.email/@user.id">Editar</a></h3>
     <ul>
         @for(characteristic <- user.personalCharacteristics) {
         <li>@characteristic</li>
         }
     </ul>
 
-    <h3><b>Valores profesionales</b></h3>
+    <h3><b>Valores profesionales</b>  <a href="/admin/users/professional/@user.email/@user.id">Editar</a></h3>
     <ul>
         @for(values <- user.professionalValues) {
-        @if(values.valuation == "Si"){
+        @if(values.valuation == "SI"){
         <li>@values.name</li>
         }
         }
@@ -64,6 +65,41 @@
     </ul>
 
 <button type="button" class="btn btn-danger" onclick="javascript: $('#confirmDeleteModal').modal('show');">Eliminar</button>
+
+<!-- UPDATE PERSONAL INFO MODAL -->
+<div class="modal fade" id="updatePersonalInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+        <div>
+            <form class="form-horizontal" style="width: 50%;" role="form" autocomplete="on">
+
+            <div class="form-group">
+                    <span>Nombre</span>
+                    <input type="text" name='user_name' class="form-control" id="update_user_name" required="required" placeholder="Nombre" value="@user.name" autofocus>
+            </div>
+
+            <div class="form-group">
+                    <span>Apellidos</span>
+                    <input type="text" name='user_surnames' class="form-control" id="update_user_surnames" required="required" placeholder="Apellidos" value="@user.surnames">
+            </div>
+
+            <div class="form-group">
+                    <span>Email</span>
+                    <input type="email" name='user_email' class="form-control" id="update_user_email" required="required" placeholder="Email" value="@user.email">
+            </div>
+
+            <div class="form-group">
+                    <div class="alert alert-danger" id="invalid_email" hidden role="alert">¡El email tiene un formato incorrecto!</div>
+            </div>
+
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+                <button type="button" class="btn btn-primary" onclick="sendUpdateUser()">GUARDAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END OF UPDATE PERSONAL INFO MODAL -->
 
 <!-- CONFIRM DELETE USER MODAL -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -106,6 +142,47 @@
                 }
             });
 
+    }
+
+    function sendUpdateUser(){
+        var name = $('#update_user_name').val();
+        var surnames = $('#update_user_surnames').val();
+        var email = $('#update_user_email').val();
+
+        if(name == "" || surnames == "" || email == ""){
+            alert("Complete todos los campos");
+        }else{
+            if(validateEmail(email) == false){
+                $('#invalid_email').show();
+            }else{
+                $('#invalid_email').hide();
+                var result = [];
+                result[0] = name;
+                result[1] = surnames;
+                result[2] = email;
+
+                $.ajax({
+                    type: 'post',
+                    data: JSON.stringify(result),
+                    url: "/admin/users/personalInfo/@user.email/@user.id",
+                    contentType: 'application/json',
+                    success: function(){
+                        $('#updatePersonalInfoModal').modal('hide');
+                        alert("Datos actualizados correctamente");
+                        window.location.replace('/admin/users/'+email+'/@user.id');
+                    },
+                    error: function(){
+                        alert("No se han podido actualizar los datos. Por favor, inténtelo de nuevo. Compruebe que no existe otro usuario con este email.");
+                    }
+                });
+            }
+        }
+    }
+
+
+    function validateEmail(email) {
+        var re = /[A-Z0-9._%+-]+@@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
+        return re.test(email);
     }
 </script>
 }

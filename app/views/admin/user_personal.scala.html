@@ -1,0 +1,259 @@
+@(user: models.entities.User)
+
+@header("") {
+<script type='text/javascript' src="@routes.Assets.at("javascripts/max_checkbox_selection.js")"></script>
+<section class="container">
+    <h2 class="red_adecco century_gothic">Características personales</h2>
+    <div class="brown_adecco arial size14">
+        <p>Las empresas necesitan trabajadores productivos que contribuyan a crear un buen ambiente laboral y sean capaces de solucionar problemas.</p>
+        <p>Suelen buscar personas honestas, positivas, flexibles, leales, y dispuestas a mejorar su formación.</p>
+
+    </div></br><br>
+    <div class="gray_adecco size16 arial">
+        <p>Actividad: Elige aquellas cualidades en las que, en una escala de 0 a 10, consideres que está por encima de 5. De éstas, piensa en cuáles valdrían la pena incluir en una carta de presentación, o exponer en una entrevista de trabajo.<br>(Selecciona como máximo 3 con las que mas te identifiques).</p>
+    </div><br>
+</section>
+
+<section class="container orientation-points">
+    <div class="row back checkbox-group">
+        <div class="col-md-offset-1 col-md-3">
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Trabajador")){
+                <input type="checkbox" id="check1" checked value="Trabajador">
+                }else{
+                <input type="checkbox" id="check1" value="Trabajador">
+                }
+                <label for="check1" class="size14 gray_adecco arial steps_height">Trabajador/Capacidad de esfuerzo</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Comprometido")){
+                <input type="checkbox" id="check2" checked value="Ambicioso">
+                }else{
+                <input type="checkbox" id="check2" value="Ambicioso">
+                }
+                <label for="check2" class="size14 gray_adecco arial steps_height">Comprometido</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Extrovertido")){
+                <input type="checkbox" id="check3" checked value="Extrovertido">
+                }else{
+                <input type="checkbox" id="check3" value="Extrovertido">
+                }
+                <label for="check3" class="size14 gray_adecco arial steps_height">Extrovertido</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Hablador")){
+                <input type="checkbox" id="check4" checked value="Hablador">
+                }else{
+                <input type="checkbox" id="check4" value="Hablador">
+                }
+                <label for="check4" class="size14 gray_adecco arial steps_height">Hablador</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Comprensivo")){
+                <input type="checkbox" id="check5" checked value="Comprensivo">
+                }else{
+                <input type="checkbox" id="check5" value="Comprensivo">
+                }
+                <label for="check5" class="size14 gray_adecco arial steps_height">Comprensivo</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Idealista")){
+                <input type="checkbox" id="check6" checked value="Idealista">
+                }else{
+                <input type="checkbox" id="check6" value="Idealista">
+                }
+                <label for="check6" class="size14 gray_adecco arial steps_height">Idealista</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Liderazgo")){
+                <input type="checkbox" id="check7" checked value="Tranquilo">
+                }else{
+                <input type="checkbox" id="check7" value="Tranquilo">
+                }
+                <label for="check7" class="size14 gray_adecco arial steps_height">Liderazgo</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Cuidadoso/Detallista")){
+                <input type="checkbox" id="check8" checked value="Cuidadoso">
+                }else{
+                <input type="checkbox" id="check8" value="Cuidadoso">
+                }
+                <label for="check8" class="size14 gray_adecco arial steps_height">Cuidadoso/Detallista</label>
+            </p>
+        </div>
+
+        <div class="col-md-offset-1 col-md-3">
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Creativo")){
+                <input type="checkbox" id="check9" checked value="Creativo">
+                }else{
+                <input type="checkbox" id="check9" value="Creativo">
+                }
+                <label for="check9" class="size14 gray_adecco arial steps_height">Creativo</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Digno de confianza")){
+                <input type="checkbox" id="check10" checked value="Digno de confianza">
+                }else{
+                <input type="checkbox" id="check10" value="Digno de confianza">
+                }
+                <label for="check10" class="size14 gray_adecco arial steps_height">Digno de confianza</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Entusiasta")){
+                <input type="checkbox" id="check11" checked value="Entusiasta">
+                }else{
+                <input type="checkbox" id="check11" value="Entusiasta">
+                }
+                <label for="check11" class="size14 gray_adecco arial steps_height">Entusiasta</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Responsable")){
+                <input type="checkbox" id="check12" checked value="Responsable">
+                }else{
+                <input type="checkbox" id="check12" value="Responsable">
+                }
+                <label for="check12" class="size14 gray_adecco arial steps_height">Responsable</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Honesto")){
+                <input type="checkbox" id="check13" checked value="Honesto">
+                }else{
+                <input type="checkbox" id="check13" value="Honesto">
+                }
+                <label for="check13" class="size14 gray_adecco arial steps_height">Honesto/Sincero</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Productivo")){
+                <input type="checkbox" id="check14" checked value="Productivo">
+                }else{
+                <input type="checkbox" id="check14" value="Productivo">
+                }
+                <label for="check14" class="size14 gray_adecco arial steps_height">Productivo</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Amable")){
+                <input type="checkbox" id="check15" checked value="Amable">
+                }else{
+                <input type="checkbox" id="check15" value="Amable">
+                }
+                <label for="check15" class="size14 gray_adecco arial steps_height">Amable</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Reflexivo")){
+                <input type="checkbox" id="check16" checked value="Reflexivo">
+                }else{
+                <input type="checkbox" id="check16" value="Reflexivo">
+                }
+                <label for="check16" class="size14 gray_adecco arial steps_height">Reflexivo</label>
+            </p>
+        </div>
+
+        <div class="col-md-offset-1 col-md-3">
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Formal")){
+                <input type="checkbox" id="check17" checked value="Formal">
+                }else{
+                <input type="checkbox" id="check17" value="Formal">
+                }
+
+                <label for="check17" class="size14 gray_adecco arial steps_height">Formal</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Optimista")){
+                <input type="checkbox" id="check18" checked value="Optimista">
+                }else{
+                <input type="checkbox" id="check18" value="Optimista">
+                }
+                <label for="check18" class="size14 gray_adecco arial steps_height">Optimista</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Flexible/Adaptación al cambio")){
+                <input type="checkbox" id="check19" checked value="Flexible">
+                }else{
+                <input type="checkbox" id="check19" value="Flexible">
+                }
+                <label for="check19" class="size14 gray_adecco arial steps_height">Flexible/Adaptación al cambio</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Racional")){
+                <input type="checkbox" id="check20" checked value="Racional">
+                }else{
+                <input type="checkbox" id="check20" value="Racional">
+                }
+                <label for="check20" class="size14 gray_adecco arial steps_height">Racional</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Dispuesto a aprender")){
+                <input type="checkbox" id="check21" checked value="Dispuesto a aprender">
+                }else{
+                <input type="checkbox" id="check21" value="Dispuesto a aprender">
+                }
+                <label for="check21" class="size14 gray_adecco arial steps_height">Dispuesto a aprender</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Observador")){
+                <input type="checkbox" id="check22" checked value="Observador">
+                }else{
+                <input type="checkbox" id="check22" value="Observador">
+                }
+                <label for="check22" class="size14 gray_adecco arial steps_height">Observador</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Educado")){
+                <input type="checkbox" id="check23" checked value="Educado">
+                }else{
+                <input type="checkbox" id="check23" value="Educado">
+                }
+                <label for="check23" class="size14 gray_adecco arial steps_height">Educado</label>
+            </p>
+            <p>
+                @if(user != null && user.personalCharacteristics.contains("Competitivo")){
+                <input type="checkbox" id="check24" checked value="Competitivo">
+                }else{
+                <input type="checkbox" id="check24" value="Competitivo">
+                }
+                <label for="check24" class="size14 gray_adecco arial steps_height">Competitivo</label>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-4 center">
+            <button class="button-finish-1" onclick="sendCheckboxes()">FINALIZAR</button>
+        </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        limitCheckboxes(3);
+    });
+</script>
+
+<script>
+function sendCheckboxes(){
+    var checkboxArray = [];
+    var counter = 0;
+    $('input[type=checkbox]').each(function () {
+        if(this.checked){
+            checkboxArray[counter] = $(this).val();
+            counter++;
+        }
+    });
+
+    $.ajax({
+        type: 'post',
+        data: JSON.stringify(checkboxArray),
+        url: "/admin/users/personal/@user.email/@user.id",
+        contentType: 'application/json'
+    }).done(function(o) {
+        alert("Usuario actualizado correctamente");
+        window.location.assign("/admin/users/@user.email/@user.id");
+    });
+}
+</script>
+}

@@ -10,6 +10,8 @@ import models.datasource.SingletonDataSource;
 import models.entities.AdminUser;
 import models.entities.Message;
 import models.entities.User;
+import models.entities.orientation.ProfessionalValue;
+import models.entities.orientation.Skill;
 import play.Logger;
 import play.data.DynamicForm;
 import play.mvc.Controller;
@@ -108,6 +110,169 @@ public class AdminController extends Controller{
         }else{
             return unauthorized("Access denied");
         }
+    }
+
+    public static Result updatePersonalInfo(String email, String id){
+        if(checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        JsonNode request = request().body().asJson();
+
+        if(user != null && user.id.equals(id)) {
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+
+            User auxUser = SingletonDataSource.getInstance().getUserByEmail(result[2]);
+            if(!result[2].equals(user.email) && auxUser != null){
+                return badRequest("Ya existe un usuario con este email");
+            }
+            user.name = result[0];
+            user.surnames = result[1];
+            user.email = result[2];
+
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/admin/users/"+user.email+"/"+id);
+
+    }
+
+    public static Result userSkills(String email, String id){
+        if (checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+        if(user != null && user.id.equals(id)) {
+            return ok(views.html.admin.user_skills.render(user));
+        }else{
+            return redirect("/admin/users");
+        }
+    }
+
+    public static Result submitUserSkills(String email, String id){
+        if (checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        JsonNode request = request().body().asJson();
+
+        if(user != null && user.id.equals(id)) {
+            String[][] skills = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
+            }.getType());
+            if(user.skill.isEmpty()){
+                for (int i = 0; i < skills.length; i++) {
+                    user.skill.add(i, new Skill(skills[i][0], skills[i][1]));
+                }
+            }else{
+                for (int i=0; i<skills.length; i++){
+                    user.skill.get(i).level = skills[i][1];
+                }
+            }
+            user.completedOrientationSteps.skills = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/admin/users/"+email+"/"+id);
+    }
+
+    public static Result userInterests(String email, String id){
+        if (checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+        if(user != null && user.id.equals(id)) {
+            return ok(views.html.admin.user_interestIdentification.render(user));
+        }else{
+            return redirect("/admin/users");
+        }
+    }
+
+    public static Result submitUserInterests(String email, String id){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        if(user != null && user.id.equals(id)) {
+            List<String> interests = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {
+            }.getType());
+
+            user.interests = interests;
+            user.completedOrientationSteps.interestIdentification = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/admin/users/"+email+"/"+id);
+    }
+
+    public static Result userPersonal(String email, String id){
+        if (checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+        if(user != null && user.id.equals(id)) {
+            return ok(views.html.admin.user_personal.render(user));
+        }else{
+            return redirect("/admin/users");
+        }
+    }
+
+    public static Result submitUserPersonal(String email, String id){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        JsonNode request = request().body().asJson();
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        if(user != null && user.id.equals(id)) {
+            List<String> personalCharacteristics = new Gson().fromJson(request.toString(), new TypeToken<List<String>>() {
+            }.getType());
+
+            user.personalCharacteristics = personalCharacteristics;
+            user.completedOrientationSteps.personal = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/admin/users/"+email+"/"+id);
+    }
+
+    public static Result userProfessional(String email, String id){
+        if (checkConnection() == null){
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+        if(user != null && user.id.equals(id)) {
+            return ok(views.html.admin.user_professional.render(user));
+        }else{
+            return redirect("/admin/users");
+        }
+    }
+
+    public static Result submitUserProfessional(String email, String id){
+        if(checkConnection() == null) {
+            return unauthorized("Access denied");
+        }
+        User user = SingletonDataSource.getInstance().getUserByEmail(email);
+
+        JsonNode request = request().body().asJson();
+
+        if(user != null && user.id.equals(id)) {
+            String[][] professionalValues = new Gson().fromJson(request.toString(), new TypeToken<String[][]>() {
+            }.getType());
+
+            if(user.professionalValues.isEmpty()) {
+                for (int i = 0; i < professionalValues.length; i++) {
+                    user.professionalValues.add(i, new ProfessionalValue(professionalValues[i][0], professionalValues[i][1]));
+                }
+            } else {
+                for (int i = 0; i < professionalValues.length; i++) {
+                    user.professionalValues.get(i).valuation = professionalValues[i][1];
+                }
+            }
+
+            user.completedOrientationSteps.professional = String.valueOf(true);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+        }
+        return redirect("/admin/users/"+email+"/"+id);
     }
 
     public static Result deleteUser(){

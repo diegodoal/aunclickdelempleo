@@ -247,7 +247,7 @@ public class SingletonDataSource {
         newDocument.put(Constants.USER_PHOTO, JSON.parse(user.photo.toJsonString()));
         newDocument.put(Constants.USER_NEXT_INTERVIEWS_LIST, JSON.parse(user.interviewScheduleListToJson()));
 
-        collection.update(new BasicDBObject().append("email", user.email), newDocument);
+        collection.update(new BasicDBObject().append(Constants.USER_REGISTRATION_DATE, user.registrationDate), newDocument);
 
         mongoClient.close();
     }
