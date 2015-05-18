@@ -27,6 +27,15 @@ public class S3File{
         return new URL("https://s3.amazonaws.com/" + bucket + "/" + getActualFileName());
     }
 
+    public String getUserUrl(String photoId){
+        if (S3Plugin.amazonS3 == null) {
+            Logger.error("Could not load because amazonS3 was null");
+            throw new RuntimeException("Could not load");
+        }else{
+            return ("https://s3.amazonaws.com/"+ S3Plugin.s3Bucket + "/"+photoId);
+        }
+    }
+
     private String getActualFileName() {
         return name;
     }
