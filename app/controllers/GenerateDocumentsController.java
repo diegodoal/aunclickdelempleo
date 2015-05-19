@@ -229,7 +229,7 @@ public class GenerateDocumentsController {
         return redirect(routes.Assets.at(route.substring(7)));
     }
 
-    public static Result previewCV3() throws FileNotFoundException, DocumentException, MalformedURLException, IOException {
+    public static Result previewCV3() throws DocumentException, IOException {
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user == null){
@@ -239,7 +239,7 @@ public class GenerateDocumentsController {
 
         Template3 template = new Template3();
         try {
-            template.createPdf(route, user);
+            template.createPdf(route, user, user.personalCharacteristics, user.skill);
             ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
