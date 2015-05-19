@@ -13,6 +13,7 @@ GET     /login                                      controllers.LoginController.
 GET     /logout                                     controllers.LoginController.logout()
 POST    /login                                      controllers.LoginController.submitLogin()
 POST    /signup                                     controllers.LoginController.submitSignUp()
+POST    /singup/confirmation                        controllers.LoginController.sendConfirmationEmail()
 GET     /validate/:email/:key                       controllers.LoginController.validateUser(email : String, key : String)
 
 GET     /forgotten                                  controllers.LoginController.forgottenPasswordBlank()

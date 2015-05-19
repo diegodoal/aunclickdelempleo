@@ -184,7 +184,7 @@ public class SingletonDataSource {
 
             user.id = dbObject.get("_id").toString();
 
-            if(user.emailVerificationKey.equals(emailVerificationKey)){
+            if(user.emailVerificationKey != null && user.emailVerificationKey.equals(emailVerificationKey)){
                 //user.emailVerificationKey = null;
                 mongoClient.close();
                 return user;
