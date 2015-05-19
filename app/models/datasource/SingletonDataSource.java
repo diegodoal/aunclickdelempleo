@@ -116,6 +116,10 @@ public class SingletonDataSource {
             //Get user object from JSON
             user = new Gson().fromJson(userStr, User.class);
 
+            if(user.emailVerificationKey != null){
+                return null;
+            }
+
             // Deserialize Current Situation object
             user.currentSituation = new Gson().fromJson(dbObject.get(Constants.USER_CURRENT_SITUATION).toString(), CurrentSituation.class);
 
@@ -140,6 +144,54 @@ public class SingletonDataSource {
 
             mongoClient.close();
             return user;
+        }else{
+            mongoClient.close();
+            return null;
+        }
+    }
+
+    public static User validateUser(String email, String emailVerificationKey){
+        DBCollection collection = connectDB("mongo.usersCollection");
+        BasicDBObject query = new BasicDBObject().append("email", email);
+        DBObject dbObject = collection.findOne(query);
+
+        if(dbObject != null){
+            User user = new User();
+            String userStr = dbObject.toString();
+
+            //Get user object from JSON
+            user = new Gson().fromJson(userStr, User.class);
+
+            // Deserialize Current Situation object
+            user.currentSituation = new Gson().fromJson(dbObject.get(Constants.USER_CURRENT_SITUATION).toString(), CurrentSituation.class);
+
+            // Deserialize ArrayList of Skills
+            user.skill = new Gson().fromJson(dbObject.get(Constants.USER_SKILLS_LIST).toString(), new TypeToken<List<Skill>>(){}.getType());
+
+            //Add to USER the completedOrientationSteps object stored in JSON
+            user.completedOrientationSteps = new Gson().fromJson(dbObject.get(Constants.USER_ORIENTATION_STEPS).toString(), User.CompletedOrientationSteps.class);
+            // Deserialize ArrayList of InterviewSchedule Objects
+            user.interviewScheduleList = new Gson().fromJson(dbObject.get(Constants.USER_NEXT_INTERVIEWS_LIST).toString(), new TypeToken<List<InterviewSchedule>>(){}.getType());
+
+            // Deserialize ArrayList of Courses
+            user.courses = new Gson().fromJson(dbObject.get(Constants.USER_COURSES).toString(), new TypeToken<List<Course>>(){}.getType());
+
+            //Deserialize ArrayList of Languages
+            user.languages = new Gson().fromJson(dbObject.get(Constants.USER_LANGUAGES).toString(), new TypeToken<List<Language>>(){}.getType());
+
+            //Deserialize ArrayList of Software
+            user.softwareList = new Gson().fromJson(dbObject.get(Constants.USER_SOFTWARE).toString(), new TypeToken<List<Software>>(){}.getType());
+
+            user.id = dbObject.get("_id").toString();
+
+            if(user.emailVerificationKey.equals(emailVerificationKey)){
+                //user.emailVerificationKey = null;
+                mongoClient.close();
+                return user;
+            }else{
+                mongoClient.close();
+                return null;
+            }
         }else{
             mongoClient.close();
             return null;

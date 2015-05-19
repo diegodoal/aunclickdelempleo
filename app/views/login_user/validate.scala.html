@@ -1,0 +1,39 @@
+@(email: String)
+
+@main(){
+<!-- ADVANTAGES -->
+<section class="container" id="user_advantages">
+    <div class="row">
+        <div class="col-md-12 col-md-4" id="user_hands">
+            <img src="@routes.Assets.at("images/login_user/ic_ventaja1.png")">
+        </div>
+        <div class="hidden-xs hidden-sm col-md-4" id="user_puzzle">
+            <img src="@routes.Assets.at("images/login_user/ic_ventaja2.png")">
+        </div>
+        <div class="hidden-xs hidden-sm col-md-4" id="user_clock">
+            <img src="@routes.Assets.at("images/login_user/ic_ventaja3.png")">
+        </div>
+    </div>
+</section>
+
+<!-- FORMS -->
+<article class="container">
+    <div class="row">
+        <!-- ACCESS -->
+        <div class="center">
+
+            <div id="restore_success">
+                <br>
+                @if(email == null){
+                    <p style="font-family: Arial; font-size: 42px; font-style: italic; color: #ab9e79;">¡Usuario confirmado!</p>
+                    <p class="text-brown">Tu cuenta se ha confirmado correctamente. Ya puedes empezar a completar tu perfil.</p>
+                }else{
+                    <p style="font-family: Arial; font-size: 42px; font-style: italic; color: #ab9e79;">¡Error al validar el usuario!</p>
+                    <p class="text-brown">Ha ocurrido un error. Por favor, contacta con Fundación Adecco</p>
+                }
+            </div>
+        </div>
+    </div>
+</article>
+
+}

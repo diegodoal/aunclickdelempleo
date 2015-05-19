@@ -92,6 +92,10 @@ public class LoginController {
         session("name", userCreated.name);
         session("timestamp", userCreated.connectionTimestamp);
 
+        String subject = "Bienvenido a \"A un click del empleo\"";
+        String message = "Bienvenido a A un click del empleo. Ya puedes empezar a completar tu perfil en: http://localhost:9000";
+        EmailUtil.emailMaker(userCreated.email, subject, message);
+
         return redirect("/");
     }
 
@@ -100,6 +104,17 @@ public class LoginController {
         return redirect("/");
     }
 
+    public static Result validateUser(String email, String emailVerificationKey){
+        User user = SingletonDataSource.getInstance().validateUser(email, emailVerificationKey);
+
+        if(user != null) {
+            user.emailVerificationKey = null;
+            SingletonDataSource.getInstance().updateAllUserData(user);
+            return ok(views.html.login_user.validate.render(null));
+        }else {
+            return ok(views.html.login_user.validate.render("Error al validar"));
+        }
+    }
     public static Result sendRestoreEmail(){
         JsonNode request = request().body().asJson();
 
