@@ -219,7 +219,7 @@ public class GenerateDocumentsController {
 
         Template2 template = new Template2();
         try {
-            template.createPdf(route, user);
+            template.createPdf(route, user,user.personalCharacteristics, user.skill);
             ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
