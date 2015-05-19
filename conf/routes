@@ -145,6 +145,7 @@ POST    /admin/users/personal/:email/:id            controllers.AdminController.
 GET     /admin/users/professional/:email/:id        controllers.AdminController.userProfessional(email : String, id : String)
 POST    /admin/users/professional/:email/:id        controllers.AdminController.submitUserProfessional(email : String, id : String)
 POST    /admin/delete                               controllers.AdminController.deleteUser()
+POST    /admin/users/delete                         controllers.AdminController.deleteUserNoValidated()
 
 GET     /admin/stats                                controllers.AdminController.stats()
 

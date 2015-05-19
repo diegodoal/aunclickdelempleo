@@ -5,6 +5,7 @@
     <table id="users_table" class="display" cellspacing="0" width="100%">
         <thead>
             <tr>
+                <th>Confirmado</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Email</th>
@@ -16,6 +17,13 @@
         <tbody>
             @for(user <- users){
                 <tr>
+                    <td>
+                        @if(user.emailVerificationKey == null){
+                        <img width="10%" src="@routes.Assets.at("images/tick.gif")">
+                        }else{
+                            <a href="javascript: deleteUser('@user.email', '@user.id')">Eliminar usuario</a>
+                        }
+                    </td>
                     <td>
                         <a href="/admin/users/@user.email/@user.id"><img width="5%" src="@routes.Assets.at("images/orientation/ic_editar.png")"></a>
                         <a href="javascript: showSendModal('@user.email')"><img width="5%" src="@routes.Assets.at("images/msg.png")"></a>
@@ -78,5 +86,24 @@ function showSendModal(toUser){
 
                   }});
     } );
+
+    function deleteUser(email, id){
+        var result = [];
+        result[0] = email;
+        result[1] = id;
+        $.ajax({
+            type: 'post',
+            data: JSON.stringify(result),
+            url: "/admin/users/delete",
+            contentType: 'application/json',
+            success: function(){
+                alert("Usuario eliminado correctamente");
+                window.parent.location.reload();
+            },
+            error: function(){
+                alert("No se ha podido eliminar el usuario. Por favor, inténtelo de nuevo.")
+            }
+    });
+    }
 </script>
 }

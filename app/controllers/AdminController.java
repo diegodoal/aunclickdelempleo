@@ -294,6 +294,23 @@ public class AdminController extends Controller{
         }
     }
 
+    public static Result deleteUserNoValidated(){
+        if(checkConnection() != null) {
+            JsonNode request = request().body().asJson();
+
+            String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {
+            }.getType());
+
+            if(SingletonDataSource.getInstance().deleteUser(result[0]))
+                return ok();
+            else
+                return badRequest("Cannot delete. User not found or invalid user.");
+
+        }else{
+            return unauthorized("Access denied");
+        }
+    }
+
     public static Result stats(){
         if(checkConnection() != null) {
             List<User> users = SingletonDataSource.getInstance().findAll();
