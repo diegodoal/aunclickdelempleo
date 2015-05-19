@@ -22,7 +22,13 @@ public final class Constants {
 
     //Template 2
     public final static BaseColor T2_BASE_COLOR_CUSTOM_DARK_GREY = new BaseColor(60, 60, 59);
-    public final static float T2_FONT_SIZE_TITLE_1 = 20;
+    public final static BaseColor T2_BASE_COLOR_CUSTOM_MONTSERRAT = new BaseColor(40,40,41);
+    public final static BaseColor T2_BASE_COLOR_CUSTOM_CALIBRI = new BaseColor(40,40,41);
+
+    public final static float SIZE24_T2 = 24;
+    public final static float SIZE14_T2 = 14;
+    public final static float SIZE12_T2 = 12;
+
     public final static float T2_FONT_SIZE_TITLE_2 = 14.5f;
     public final static float T2_FONT_SIZE_TEXT = 10;
     public final static String T2_FONT_STYLE = "Arial";
