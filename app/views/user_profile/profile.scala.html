@@ -267,7 +267,7 @@
         var password = $('#new-password').val();
         var changePassword = false;
         if(password == ""){
-            $('#alert-minlength-password').show();
+            //$('#alert-minlength-password').show();
             $('#alert-password').hide();
         }else if(password == $('#repeat-new-password').val()){
                 changePassword = true;
@@ -277,7 +277,7 @@
             window.scrollTo(0,0);
         }
 
-        if(password.length < 6) {
+        if(password.length < 6 && password.length != 0) {
             $('#alert-minlength-password').show();
             $('#alert-password').hide();
             window.scrollTo(0,0);
