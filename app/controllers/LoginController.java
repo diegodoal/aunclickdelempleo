@@ -102,12 +102,10 @@ public class LoginController {
 
         String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
 
-        Logger.info("############ "+result[0] + "   " + result[1]);
-
-            String subject = "Bienvenido a \"A un click del empleo\"";
-            String message = "Bienvenido a A un click del empleo. Ya puedes empezar a completar tu perfil en: http://localhost:9000/validate/"+ result[0]+"/"+result[1];
-            EmailUtil.emailMaker(result[0], subject, message);
-            return ok();
+        String subject = "Bienvenido a \"A un click del empleo\"";
+        String message = "Bienvenido a A un click del empleo. Ya puedes empezar a completar tu perfil en: http://localhost:9000/validate/"+ result[0]+"/"+result[1];
+        EmailUtil.emailMaker(result[0], subject, message);
+        return ok();
     }
 
     public static Result logout(){
