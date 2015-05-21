@@ -2,6 +2,14 @@ package utils;
 
 import com.itextpdf.text.BaseColor;
 
+/**
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
+ */
 public final class Constants {
 	public static final String MONGO_PARTICULAR_USERS_COLLECTION = "mongo.particularUsersCollection";
 	public static final String MONGO_COMPANY_USERS_COLLECTION = "mongo.companyUsersCollection";

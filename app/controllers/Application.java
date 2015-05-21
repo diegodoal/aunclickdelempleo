@@ -18,6 +18,14 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 
+/**
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
+ */
 public class Application extends Controller {
 
 	public static Result index() {

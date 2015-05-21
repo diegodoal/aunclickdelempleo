@@ -21,6 +21,14 @@ import utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
+ */
 public class Template3 {
 
     public static final String BACK_IMAGE = "public/images/orientation/cv-templates/CV3/ic_cv3background.png";
