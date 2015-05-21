@@ -53,7 +53,7 @@
         <!-- Agrupar los enlaces de navegación, los formularios y cualquier otro elemento que se pueda ocultar al minimizar la barra -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="button-nav-login" id="accesibility"><a href="#accesibility_pop_up" accesskey="A"  tabindex="5"><button type="button" class="btn btn-default navbar-btn"><img ALT="Acceso de adaptabilidad"src="@routes.Assets.at("images/nav/ic_adaptabilidad2.png")"></button></a></li>
+                <li class="button-nav-login" id="accesibility"><a href="@routes.OrientationController.adaptability()" accesskey="A"  tabindex="5"><button type="button" class="btn btn-default navbar-btn"><img ALT="Acceso de adaptabilidad"src="@routes.Assets.at("images/nav/ic_adaptabilidad2.png")"></button></a></li>
                 @if(session.get("email") == null){
                     <li class="button-nav-login"><a href="@routes.LoginController.blank()" accesskey="I"  tabindex="6"><button type="button" class="btn btn-default navbar-btn">ENTRAR</button></a></li>
                 }else{
