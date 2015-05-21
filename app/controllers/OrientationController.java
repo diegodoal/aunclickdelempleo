@@ -29,6 +29,9 @@ public class OrientationController extends Controller {
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
         return ok(views.html.orientation.orientation.render(user));
     }
+    public static Result adaptability() {
+        return ok(views.html.adaptability.render());
+    }
 
     public static Result updateCheckbox(){
         JsonNode request = request().body().asJson();
