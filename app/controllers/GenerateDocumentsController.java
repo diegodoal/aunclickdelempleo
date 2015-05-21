@@ -35,7 +35,12 @@ import utils.Utils;
 
 
 /**
- * Created by Victor on 17/03/2015.
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
  */
 public class GenerateDocumentsController {
 
@@ -189,7 +194,7 @@ public class GenerateDocumentsController {
     }
 
     // Modificar el Template que sea, hay que crearlos
-    public static Result previewCV1(){
+    public static Result previewCV1()throws DocumentException, IOException{
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user == null){
@@ -199,7 +204,7 @@ public class GenerateDocumentsController {
 
         Template1 template = new Template1();
         try {
-            template.createPdf(route, user);
+            template.createPdf(route, user, user.personalCharacteristics, user.skill);
             ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -209,7 +214,7 @@ public class GenerateDocumentsController {
         return redirect(routes.Assets.at(route.substring(7)));
     }
 
-    public static Result previewCV2(){
+    public static Result previewCV2()throws DocumentException, IOException{
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
 
         if(user == null){
@@ -217,9 +222,9 @@ public class GenerateDocumentsController {
         }
         String route = Files.newPathForNewFile("public/pdf", "pdf");
 
-        Template1 template = new Template1();
+        Template2 template = new Template2();
         try {
-            template.createPdf(route, user);
+            template.createPdf(route, user,user.personalCharacteristics, user.skill);
             ConfDataSource.addNewGeneratedDoc();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

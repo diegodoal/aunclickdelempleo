@@ -3,6 +3,7 @@ package controllers;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
+import models.S3File;
 import models.datasource.SingletonDataSource;
 import models.entities.User;
 import models.entities.orientation.InterviewSchedule;
@@ -21,7 +22,12 @@ import static play.mvc.Results.ok;
 
 
 /**
- * Created by alfonsocamberolorenzo on 21/04/15.
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
  */
 public class AppController {
 
@@ -32,10 +38,19 @@ public class AppController {
         User user = SingletonDataSource.getInstance().getUserByEmail(request.get("email").asText());
 
         if(user != null && Utils.encryptWithSHA1(request.get("password").asText()).equals(user.password)){
-            return ok("success");
+            return ok(photoAndName(user));
         }
 
         return badRequest("fail");
+    }
+
+    public static String photoAndName(User user){
+        if(user.photo.id != null && !user.photo.id.equals("")) {
+            S3File s3File = new S3File();
+            return ("{\"name\":\""+user.name +" "+ user.surnames+"\",\"photo\":\""+s3File.getUserUrl(user.photo.id)+"\"}");
+        }
+        return ("{\"name\":\""+user.name+"\",\"photo\":"+null+"}");
+
     }
 
     public static Result getInterviews() {
@@ -59,6 +74,8 @@ public class AppController {
 
         return ok(user.interviewScheduleListToJson());
     }
+
+
 
     private static List<InterviewSchedule> updateInterviews(User user, List<InterviewSchedule> appInterviews){
         List<InterviewSchedule> userInterviews = user.interviewScheduleList;

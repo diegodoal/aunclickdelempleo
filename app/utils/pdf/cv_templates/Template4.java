@@ -18,7 +18,14 @@ import utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
+ */
 public class Template4 {
     private Document document;
     Font font1 = FontFactory.getFont(Constants.FONT_ARIAL_T4, Constants.SIZE12_T4, Font.BOLD, Constants.COLOR_BLACK_T4);

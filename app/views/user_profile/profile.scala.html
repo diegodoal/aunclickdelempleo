@@ -1,6 +1,14 @@
 @(user : models.entities.User)
 
 @main(){
+<!--
+ Created by:
+ * Victor Garcia Zarco - victor.gzarco@@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@@gmail.com
+ * Victor Rodriguez Latorre - viypam@@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@@gmail.com
+-->
 <article class="container">
 
         <h2 class="red_adecco century_gothic">Tu perfil</h2>
@@ -267,7 +275,7 @@
         var password = $('#new-password').val();
         var changePassword = false;
         if(password == ""){
-            $('#alert-minlength-password').show();
+            //$('#alert-minlength-password').show();
             $('#alert-password').hide();
         }else if(password == $('#repeat-new-password').val()){
                 changePassword = true;
@@ -277,7 +285,7 @@
             window.scrollTo(0,0);
         }
 
-        if(password.length < 6) {
+        if(password.length < 6 && password.length != 0) {
             $('#alert-minlength-password').show();
             $('#alert-password').hide();
             window.scrollTo(0,0);

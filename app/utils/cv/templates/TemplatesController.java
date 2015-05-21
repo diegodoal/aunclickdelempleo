@@ -9,7 +9,12 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 /**
- * Created by Victor on 16/02/2015.
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
  */
 public class TemplatesController {
     public enum Template {Template1, Template2};

@@ -24,10 +24,21 @@ import java.util.concurrent.TimeUnit.*;
 
 import static play.mvc.Http.Context.Implicit.request;
 
+/**
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
+ */
 public class OrientationController extends Controller {
 	public static Result blank() {
         User user = SingletonDataSource.getInstance().getUserByEmail(session().get("email"));
         return ok(views.html.orientation.orientation.render(user));
+    }
+    public static Result adaptability() {
+        return ok(views.html.adaptability.render());
     }
 
     public static Result updateCheckbox(){

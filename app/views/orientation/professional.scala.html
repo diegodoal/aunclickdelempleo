@@ -1,10 +1,21 @@
 @(user: models.entities.User)
 
 @main() {
-
+<!--
+ Created by:
+ * Victor Garcia Zarco - victor.gzarco@@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@@gmail.com
+ * Victor Rodriguez Latorre - viypam@@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@@gmail.com
+-->
 <section class="container">
-    <h2 class="red_adecco century_gothic">Intereses profesionales</h2>
-    <div class="brown_adecco arial size14">
+    <div class="row">
+    <h2 class="col-md-8 red_adecco century_gothic">Intereses profesionales</h2>
+        <div class="col-md-2 col-md-offset-2">
+            <img src="@routes.Assets.at("/images/Orientation/ic_descarga.png")">
+        </div><br>
+    <div class="col-md-12 brown_adecco arial size14">
         <p>Conoce tus intereses profesionales para determinar qué aspectos prefieres de un puesto de trabajo.</p>
         <p>Conocer bien nuestros  profesionales contribuye a alcanzar el bienestar y satisfacción personal y el sentimiento de logro profesional.</p>
         <p>Sin embargo,para alcanzar tus metas profesionales es necesario adaptación y buscar
@@ -12,10 +23,11 @@
         <p>Por ello, tendrás que decidir lo que más te conviene. Estar sin trabajo, o hacer ciertas concesiones dejando a un lado algunos de tus intereses profesionales.</p>
         <p>Aquí tienes una tabla de intereses que te guiará poara definir los tuyos propios.</p>
     </div></br><br>
-    <div class="size16 gray_adecco arial">
+    <div class="col-md-12 size16 gray_adecco arial">
         <p>Actividad: Valora cuales son los principales intereses profesionales que te ayudarán a orientar tu búsqueda de empleo.</p>
     </div><br>
 	<div class="alert alert-danger" hidden id="radiosError" role="alert">Por favor, completa todo el formulario.</div><br>
+    </div>
 </section>
 
 <section class="container">

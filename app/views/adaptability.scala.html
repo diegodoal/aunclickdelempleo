@@ -1,0 +1,95 @@
+@main(){
+<!--
+ Created by:
+ * Victor Garcia Zarco - victor.gzarco@@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@@gmail.com
+ * Victor Rodriguez Latorre - viypam@@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@@gmail.com
+-->
+<link rel="stylesheet" href="@routes.Assets.at("stylesheets/adaptability.css")">
+<article class="container">
+<section>
+    <p class="red_adecco size16 arial">Cambiar tamaño de texto</p>
+    <p class="brown_adecco">En nuestra web puedes cambiar el tamaño del texto para ello selecciona tu navegador y te enseñamos a hacerlo:</p>
+    <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-3 center">
+            <a href="#cv1_pop_up"><img class="img-responsive" style="display:block; margin:auto;" src="@routes.Assets.at("images/adaptability/Chrome.png")"></a>
+            <p class="brown_adecco">Google Chrome</p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3 center">
+            <a href="#cv4_pop_up"><img class="img-responsive" style="display:block; margin:auto;" src="@routes.Assets.at("images/adaptability/Mozilla.png")"></a>
+            <p class="brown_adecco">Mozilla</p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3 center">
+            <a href="#cv2_pop_up"><img class="img-responsive" style="display:block; margin:auto;" src="@routes.Assets.at("images/adaptability/Explorer.png")"></a>
+            <p class="brown_adecco">Internet Explorer</p>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3 center">
+            <a href="#cv3_pop_up"><img class="img-responsive" style="display:block; margin:auto;" src="@routes.Assets.at("images/adaptability/Safari.png")"></a>
+            <p class="brown_adecco">Safari</p>
+        </div>
+    </div>
+</section>
+<section>
+    <p class="red_adecco size16">Rellenar los formularios con voz</p>
+    <p class="brown_adecco">Los formularios pueden ser rellenados por voz. Mira este video y aprende a hacerlo:</p>
+    <video width="400" controls src="@routes.Assets.at("images/adaptability/Formulario.mp4")"></video>
+</section>
+<section>
+    <p class="red_adecco size16">Hacerte una fotografía</p>
+    <p class="brown_adecco">Cuando quieras hacerte una fotografía debes permitir el uso de la cámara web. Mira este video y aprende a hacerlo:</p>
+    <video width="400" controls src="@routes.Assets.at("images/adaptability/Foto.mp4")"></video>
+</section>
+<section>
+    <p class="red_adecco size16">Accesos directos usando el teclado</p>
+    <p class="brown_adecco">Página principal: ALT+R</p>
+    <p class="brown_adecco">Adaptabilidad: ALT+A</p>
+    <p class="brown_adecco">Entrar: ALT+I</p>
+    <p class="brown_adecco">Salir: ALT+S</p>
+    <br>
+    <p class="brown_adecco bold">Comandos de redes sociales</p>
+    <p class="brown_adecco">Facebook: ALT+F</p>
+    <p class="brown_adecco">Twitter: ALT+T</p>
+    <p class="brown_adecco">Linkedin: ALT+K</p>
+    <br>
+    <p class="brown_adecco bold">Comandos de navegación</p>
+    <p class="brown_adecco">Planificación: ALT+P</p>
+    <p class="brown_adecco">Generar documentos: ALT+G</p>
+    <p class="brown_adecco">Orientación: ALT+O</p>
+</section>
+</article>
+
+<!-- POP UP WINDOWS -->
+<div id="cv1_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <br><br>
+        <img class="img-btn"  style="width:75em;" src="@routes.Assets.at("images/adaptability/Chrome.jpg")">
+    </div>
+</div>
+
+<div id="cv2_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <br><br>
+        <img class="img-btn" style="width:75em;" src="@routes.Assets.at("images/adaptability/ExplorerR.png")">
+    </div>
+</div>
+
+<div id="cv3_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <br><br>
+        <img class="img-btn" style="width:75em;" src="@routes.Assets.at("images/adaptability/SafariI.png")">
+    </div>
+</div>
+
+<div id="cv4_pop_up" class="cv_mask_pop_up">
+    <div class="cv_box_pop_up cv_resize">
+        <a href="#cv_close" title="Cerrar" class="cv_close">X</a>
+        <br><br>
+        <img class="img-btn" style="width:75em;" src="@routes.Assets.at("images/adaptability/Firefox.png")">
+    </div>
+</div>
+}

@@ -1,5 +1,13 @@
 @(user: models.entities.User)
 @main(){
+<!--
+ Created by:
+ * Victor Garcia Zarco - victor.gzarco@@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@@gmail.com
+ * Victor Rodriguez Latorre - viypam@@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@@gmail.com
+-->
 <script type='text/javascript' src="@routes.Assets.at("javascripts/hide_experience.js")"></script>
  <script type='text/javascript' src="@routes.Assets.at("javascripts/hide_studies_reload.js")"></script>
 <script type='text/javascript' src="@routes.Assets.at("javascripts/concatenar_date.js")"></script>
@@ -7,11 +15,16 @@
 
 <article class="container">
     <div class="row">
-        <h2 class="red_adecco century_gothic">Conoce tu situación actual</h2>
-        <div class="brown_adecco arial size14">
+        <h2 class="col-md-8 red_adecco century_gothic">Conoce tu situación actual</h2>
+
+        <div class="col-md-2 col-md-offset-2">
+            <img src="@routes.Assets.at("/images/Orientation/ic_descarga.png")">
+        </div>
+
+        <div class="col-md-12 brown_adecco arial size14">
             <p>Lo primero que nos debes facilitar es en qué situación te encuentras actualmente.</p>
-        </div><br><br>
-        <div class="arial size16 gray_adecco">
+        </div>
+        <div class="col-md-12 arial size16 gray_adecco">
             <p>Actividad: Debes seleccionar cual es tu nivel de estudios y completar tu experiencia profesional si la tuvieras.</p>
         </div>
     </div><br>
@@ -479,6 +492,7 @@
             <button class="button-return-1" onclick="location.href='/orientation#point1';">VOLVER</button>
             <button class="button-finish-1 concatenar">FINALIZAR</button>
         </div>
+
     </div>
 </section>
 

@@ -1,0 +1,53 @@
+@(email : String)(emailVerificationKey : String)
+@main(){
+<!--
+ Created by:
+ * Victor Garcia Zarco - victor.gzarco@@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@@gmail.com
+ * Victor Rodriguez Latorre - viypam@@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@@gmail.com
+-->
+<section class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p class="century_gothic size50 brown_adecco center">¡Enhorabuena!</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<p class="century_gothic size35 brown_adecco center">Ya formas parte de <span class="century_gothic size35 bold red_adecco">Fundación Adecco.</span></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<p class="century_gothic size25 brown_adecco center">Te hemos enviado un mensaje.</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<p class="century_gothic size25 brown_adecco center">Para continuar, debes <span class="century_gothic size25 bold brown_adecco">revisar tu correo electrónico.</span></p>
+			<p class="century_gothic size25 brown_adecco center">Si no has recibido el correo, haz click <a href="javascript: resendEmail()">aquí</a> para volver a enviártelo.</span></p>
+		</div>
+	</div>
+</section>
+
+<script>
+function resendEmail(){
+	var result = [];
+	result[0] = "@email";
+	result[1] = "@emailVerificationKey"
+	$.ajax({
+        type: 'post',
+        data: JSON.stringify(result),
+        url: "/singup/confirmation",
+        contentType: 'application/json',
+        success: function(){
+        },
+        error: function(){
+        }
+    });
+}
+
+</script>
+}

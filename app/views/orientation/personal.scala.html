@@ -1,17 +1,31 @@
 @(user: models.entities.User)
 
 @main() {
-
+<!--
+ Created by:
+ * Victor Garcia Zarco - victor.gzarco@@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@@gmail.com
+ * Victor Rodriguez Latorre - viypam@@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@@gmail.com
+-->
 <section class="container">
-        <h2 class="red_adecco century_gothic">Características personales</h2>
-        <div class="brown_adecco arial size14">
+        <div class="row">
+        <h2 class="col-md-8 red_adecco century_gothic">Características personales</h2>
+
+
+        <div class="col-md-2 col-md-offset-2">
+            <img src="@routes.Assets.at("/images/Orientation/ic_descarga.png")">
+        </div><br>
+        <div class="col-md-12 brown_adecco arial size14">
             <p>Las empresas necesitan trabajadores productivos que contribuyan a crear un buen ambiente laboral y sean capaces de solucionar problemas.</p>
             <p>Suelen buscar personas honestas, positivas, flexibles, leales, y dispuestas a mejorar su formación.</p>
 
         </div></br><br>
-            <div class="gray_adecco size16 arial">
+            <div class="col-md-12 gray_adecco size16 arial">
                 <p>Actividad: Elige aquellas cualidades en las que, en una escala de 0 a 10, consideres que está por encima de 5. De éstas, piensa en cuáles valdrían la pena incluir en una carta de presentación, o exponer en una entrevista de trabajo.<br>(Selecciona como máximo 3 con las que mas te identifiques).</p>
             </div><br>
+        </div>
 </section>
 
 <section class="container orientation-points">
@@ -23,7 +37,7 @@
                 }else{
                     <input type="checkbox" id="check1" value="Trabajador">
                 }
-                <label for="check1" class="size14 gray_adecco arial steps_height">Trabajador/Capacidad de esfuerzo</label>
+                <label for="check1" class="size14 gray_adecco arial steps_height">Trabajador</label>
             </p>
             <p>
                 @if(user != null && user.personalCharacteristics.contains("Comprometido")){
@@ -169,12 +183,12 @@
                 <label for="check18" class="size14 gray_adecco arial steps_height">Optimista</label>
             </p>
             <p>
-                @if(user != null && user.personalCharacteristics.contains("Flexible/Adaptación al cambio")){
+                @if(user != null && user.personalCharacteristics.contains("Flexible")){
                     <input type="checkbox" id="check19" checked value="Flexible">
                 }else{
                     <input type="checkbox" id="check19" value="Flexible">
                 }
-                <label for="check19" class="size14 gray_adecco arial steps_height">Flexible/Adaptación al cambio</label>
+                <label for="check19" class="size14 gray_adecco arial steps_height">Flexible</label>
             </p>
             <p>
                 @if(user != null && user.personalCharacteristics.contains("Racional")){
@@ -185,12 +199,12 @@
                 <label for="check20" class="size14 gray_adecco arial steps_height">Racional</label>
             </p>
             <p>
-                @if(user != null && user.personalCharacteristics.contains("Dispuesto a aprender")){
-                    <input type="checkbox" id="check21" checked value="Dispuesto a aprender">
+                @if(user != null && user.personalCharacteristics.contains("Buen aprendiz")){
+                    <input type="checkbox" id="check21" checked value="Buen aprendiz">
                 }else{
-                    <input type="checkbox" id="check21" value="Dispuesto a aprender">
+                    <input type="checkbox" id="check21" value="Buen aprendiz">
                 }
-                <label for="check21" class="size14 gray_adecco arial steps_height">Dispuesto a aprender</label>
+                <label for="check21" class="size14 gray_adecco arial steps_height">Buen aprendiz</label>
             </p>
             <p>
                 @if(user != null && user.personalCharacteristics.contains("Observador")){

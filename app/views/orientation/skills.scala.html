@@ -1,20 +1,33 @@
 @(user: models.entities.User)
 
 @main() {
-
+<!--
+ Created by:
+ * Victor Garcia Zarco - victor.gzarco@@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@@gmail.com
+ * Victor Rodriguez Latorre - viypam@@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@@gmail.com
+-->
 <section class="container">
     <div class="container">
-        <h2 class="red_adecco century_gothic">Conoce tus habilidades</h2>
-    <div class="brown_adecco arial size14">
+        <div class="row">
+        <h2 class="col-md-8 red_adecco century_gothic">Conoce tus habilidades</h2>
+
+        <div class="col-md-2 col-md-offset-2">
+            <img src="@routes.Assets.at("/images/Orientation/ic_descarga.png")">
+        </div><br>
+    <div class="col-md-12 brown_adecco arial size14">
         Todas las personas tenemos pequeñas y grandes habilidades para llevar a cabo diversas actividades y que
         de una u otra forma podemos aplicar a una actividad profesiona.Para conocerte mejor debes
         realizar un ejercicio de autoconocimiento que te permita identificar tus fortalezas, desarrollarlas y potenciarlas.
          Las habilidades son la capacidad que toda persona tiene para desarrollar una actividad determinada.
         <p>Reconoce cuáles son las que más te definen y potencialas de cara a presentarlas en una entrevista de trabajo como tu fortaleza.</p>
     </div><br><br>
-    <div class="gray_adecco size16 arial">
+    <div class="col-md-12 gray_adecco size16 arial">
         <p>Actividad: A continuación se muestra una lista de habilidades, sé sincero y valora cada una de ella según te desenvuelvas: normal, bien o excelente.</p>
     </div><br>
+            </div>
     <div class="alert alert-danger" hidden id="radiosError" role="alert">Por favor, completa todo el formulario.</div><br>
         <div class="table-responsive">
         <table class="table table-striped">

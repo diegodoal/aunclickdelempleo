@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 
 import models.datasource.SingletonDataSource;
 import models.entities.User;
+import play.Logger;
 import play.data.DynamicForm;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -29,7 +30,12 @@ import static play.mvc.Results.redirect;
 
 
 /**
- * Created by Victor on 09/03/2015.
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
  */
 public class LoginController {
 
@@ -57,7 +63,6 @@ public class LoginController {
         error_login_msg = "Email o contraseña incorrecta";
         return badRequest(views.html.login_user.login.render(error_login_msg, null, null));
     }
-
 
     public static Result submitSignUp(){
         String error_signup_msg = null;
@@ -88,11 +93,24 @@ public class LoginController {
         userCreated.connectionTimestamp = new Date().toString();
         SingletonDataSource.getInstance().insertIntoUsersCollection(userCreated);
 
-        session("email", userCreated.email);
-        session("name", userCreated.name);
-        session("timestamp", userCreated.connectionTimestamp);
 
-        return redirect("/");
+
+        String subject = "Bienvenido a \"A un click del empleo\"";
+        String message = "Bienvenido a A un click del empleo. Ya puedes empezar a completar tu perfil en: http://localhost:9000/validate/"+ userCreated.email+"/"+userCreated.emailVerificationKey;
+        EmailUtil.emailMaker(userCreated.email, subject, message);
+
+        return ok(views.html.login_user.post_signup.render(userCreated.email, userCreated.emailVerificationKey));
+    }
+
+    public static Result sendConfirmationEmail(){
+        JsonNode request = request().body().asJson();
+
+        String[] result = new Gson().fromJson(request.toString(), new TypeToken<String[]>() {}.getType());
+
+        String subject = "Bienvenido a \"A un click del empleo\"";
+        String message = "Bienvenido a A un click del empleo. Ya puedes empezar a completar tu perfil en: http://localhost:9000/validate/"+ result[0]+"/"+result[1];
+        EmailUtil.emailMaker(result[0], subject, message);
+        return ok();
     }
 
     public static Result logout(){
@@ -100,6 +118,21 @@ public class LoginController {
         return redirect("/");
     }
 
+    public static Result validateUser(String email, String emailVerificationKey){
+        User user = SingletonDataSource.getInstance().validateUser(email, emailVerificationKey);
+
+        if(user != null) {
+            user.emailVerificationKey = null;
+            user.connectionTimestamp = new Date().toString();
+            session("email", user.email);
+            session("name", user.name);
+            session("timestamp", user.connectionTimestamp);
+            SingletonDataSource.getInstance().updateAllUserData(user);
+            return ok(views.html.login_user.validate.render(null));
+        }else {
+            return ok(views.html.login_user.validate.render("Error al validar"));
+        }
+    }
     public static Result sendRestoreEmail(){
         JsonNode request = request().body().asJson();
 

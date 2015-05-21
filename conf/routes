@@ -8,11 +8,15 @@ GET     /                           controllers.Application.index()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
+GET     /adaptability                     controllers.OrientationController.adaptability()
+
 # LOGIN
 GET     /login                                      controllers.LoginController.blank()
 GET     /logout                                     controllers.LoginController.logout()
 POST    /login                                      controllers.LoginController.submitLogin()
 POST    /signup                                     controllers.LoginController.submitSignUp()
+POST    /singup/confirmation                        controllers.LoginController.sendConfirmationEmail()
+GET     /validate/:email/:key                       controllers.LoginController.validateUser(email : String, key : String)
 
 GET     /forgotten                                  controllers.LoginController.forgottenPasswordBlank()
 POST    /forgotten                                  controllers.LoginController.sendRestoreEmail()
@@ -133,7 +137,17 @@ GET     /admin/logout                               controllers.AdminController.
 
 GET     /admin/users                                controllers.AdminController.usersBlank()
 GET     /admin/users/:email/:id                     controllers.AdminController.userInfo(email: String, id: String)
+POST    /admin/users/personalInfo/:email/:id         controllers.AdminController.updatePersonalInfo(email: String, id: String)
+GET     /admin/users/skills/:email/:id              controllers.AdminController.userSkills(email : String, id : String)
+POST    /admin/users/skills/:email/:id              controllers.AdminController.submitUserSkills(email : String, id : String)
+GET     /admin/users/interests/:email/:id           controllers.AdminController.userInterests(email : String, id : String)
+POST    /admin/users/interests/:email/:id           controllers.AdminController.submitUserInterests(email : String, id : String)
+GET     /admin/users/personal/:email/:id            controllers.AdminController.userPersonal(email : String, id : String)
+POST    /admin/users/personal/:email/:id            controllers.AdminController.submitUserPersonal(email : String, id : String)
+GET     /admin/users/professional/:email/:id        controllers.AdminController.userProfessional(email : String, id : String)
+POST    /admin/users/professional/:email/:id        controllers.AdminController.submitUserProfessional(email : String, id : String)
 POST    /admin/delete                               controllers.AdminController.deleteUser()
+POST    /admin/users/delete                         controllers.AdminController.deleteUserNoValidated()
 
 GET     /admin/stats                                controllers.AdminController.stats()
 

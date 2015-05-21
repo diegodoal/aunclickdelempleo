@@ -12,7 +12,12 @@ import java.net.URL;
 import java.util.List;
 
 /**
- * Created by anquegi on 10/06/14.
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
  */
 
 public class S3File{
@@ -25,6 +30,15 @@ public class S3File{
 
     public URL getUrl() throws MalformedURLException {
         return new URL("https://s3.amazonaws.com/" + bucket + "/" + getActualFileName());
+    }
+
+    public String getUserUrl(String photoId){
+        if (S3Plugin.amazonS3 == null) {
+            Logger.error("Could not load because amazonS3 was null");
+            throw new RuntimeException("Could not load");
+        }else{
+            return ("https://s3.amazonaws.com/"+ S3Plugin.s3Bucket + "/"+photoId);
+        }
     }
 
     private String getActualFileName() {

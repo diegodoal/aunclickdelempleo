@@ -2,6 +2,14 @@ package utils;
 
 import com.itextpdf.text.BaseColor;
 
+/**
+ * Created by:
+ * Victor Garcia Zarco - victor.gzarco@gmail.com
+ * Mikel Garcia Najera - mikel.garcia.najera@gmail.com
+ * Carlos Fernandez-Lancha Moreta - carlos.fernandez.lancha@gmail.com
+ * Victor Rodriguez Latorre - viypam@gmail.com
+ * Stalin Yajamin Quisilema - rimid22021991@gmail.com
+ */
 public final class Constants {
 	public static final String MONGO_PARTICULAR_USERS_COLLECTION = "mongo.particularUsersCollection";
 	public static final String MONGO_COMPANY_USERS_COLLECTION = "mongo.companyUsersCollection";
@@ -12,19 +20,33 @@ public final class Constants {
     public final static BaseColor BASE_COLOR_CUSTOM_BLUE_1 = new BaseColor(67, 137, 215);
     public final static String FONT_TEMPLATE_1 = "Calibri";
 
+    public final static BaseColor COLOR_BLACK_T1 = new BaseColor(0, 0, 0);
+    public final static BaseColor COLOR_GRAY_T1 = new BaseColor(112,111,111);
+    public final static String FONT_CAVIAR_T1 = "Caviar Dream";
+    public final static float SIZE18_T1 = 18;
+    public final static String FONT_CALIBRI_T1 = "Calibri";
+    public final static float SIZE12_T1 = 12;
+    public final static float SIZE14_T1 = 14;
+
     //Template 2
     public final static BaseColor T2_BASE_COLOR_CUSTOM_DARK_GREY = new BaseColor(60, 60, 59);
-    public final static float T2_FONT_SIZE_TITLE_1 = 20;
+    public final static BaseColor T2_BASE_COLOR_CUSTOM_MONTSERRAT = new BaseColor(40,40,41);
+    public final static BaseColor T2_BASE_COLOR_CUSTOM_CALIBRI = new BaseColor(40,40,41);
+
+    public final static float SIZE24_T2 = 24;
+    public final static float SIZE14_T2 = 14;
+    public final static float SIZE12_T2 = 12;
+
     public final static float T2_FONT_SIZE_TITLE_2 = 14.5f;
     public final static float T2_FONT_SIZE_TEXT = 10;
     public final static String T2_FONT_STYLE = "Arial";
 
-    //Template 3
+	//Template 3
     public final static BaseColor COLOR_BLUE_T3 = new BaseColor(0, 174, 239);
     public final static BaseColor COLOR_BLACK_T3 = new BaseColor(40, 40, 41);
     public final static float SIZE14_T3 = 14;
     public final static float SIZE12_T3 = 12;
-
+	
     //Template 4
     public final static BaseColor COLOR_BLACK_T4 = new BaseColor(0, 0, 0);
     public final static BaseColor COLOR_GRAY_T4 = new BaseColor(40, 40, 41);
